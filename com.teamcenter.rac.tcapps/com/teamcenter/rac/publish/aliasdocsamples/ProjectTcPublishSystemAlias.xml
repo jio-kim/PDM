@@ -1,0 +1,1197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+23-Nov-2005  arigapud                updated with inclass, form attributes
+03-Mar-007   arigapud                Add ExportActivities
+13-Jun-07    fitzgera                PR 5762630  Updated ExportActivities
+$HISTORY$
+-->
+
+<!--
+Using the alias file:
+The alias file is to be used as a wrapper around plmxml file generated from TC to customize field names and extract relevant information from that plmxml file.
+We can imagine the plmxml file to be the database and aliasFile as a query mechanism.
+         
+//A basic aliasFile would look like this - standard xml element. 
+<?xml version="1.0" encoding="UTF-8"?>
+
+//The version attribute on the Mappings element is used only during installation of TC (We check to see if the prior one has
+ //the same version or not and only then import).
+<Mappings version="2">
+     //TraverseRoot element - should not be changed at all (unless the plmxml format for the starting element changes - unlikely.
+     <TraverseRoot>/PLMXML/Header/@traverseRootRefs</TraverseRoot>
+     //TransferModes section:A list of transfermodes - this is what is displayed in the UI - These must exist in Teamcenter - there is currently no check for that. 
+    <TransferModes>
+        <TransferMode name="tcm_export" description="Occurrences output"/>
+        <TransferMode name="ExportGraphic" description="Output graphic file"/>
+        <TransferMode name="ExportActivities" description="Export Activities only"/>
+     </TransferModes>
+
+
+      //Currently supported attributes on Alias element
+       //The assetType attribute is treated as an enum - currently possible values
+        // are 1 All(default), 2 Text, 4 3D Graphic, 8 Table, 16 2D Graphic 
+        //toolTip - to show up in publish ui
+        //qualifier - (1 - any, 2 - array, 4 - single)
+
+
+     
+     //Alias (top level) - These top level Alias elements (directly under Mappings element above) are what get displayed in the UI tree. 
+     //And the children are picked up from there.
+     //They must not have any Path,Xpath statements. Just Alias Child elements and any attributes like assetType,toolTip, qualifier.
+      //   The assetType,toolTip,qualifier are looked at only at this level. This Alias element
+      //    should list all the possible child alias elements.           
+     <Alias name="Parent1" assetType="8" toolTip="product data" qualifier="2">
+        <Alias name="Child1" default="use this value if you fail to evaluate"/>
+        <Alias name="Child2"/>
+    </Alias>
+     <Alias name="Parent2" assetType="8" toolTip="product data" qualifier="2">
+        <Alias name="Child11"/>
+        <Alias name="Child21"/>
+    </Alias>
+    
+    //ALIASALTERNATE: For each TopLevel AliasName there is one or more AliasAlternate elements. Each AliasAlternate element corresponds to 
+    // what is the starting element in plmxml traversal. For example if you are standing on an ItemRevision in Navigator when you 
+    // export the plmxml - the AliasAlternate elements that will be considered for processing
+    //  are those with the first <Path>element whose primary is ItemRevision. Every Path element has 3 parts: Primary:Secondary:Relation. 
+    //  The idea is to get to Secondary element from Primary element using the Relation. Relation is a pure XPath expression 
+    // (typically just an xml attribute). The Primiary and Secondary elements can have xpath conditionals applied to them.
+    //  Example: <Path>Occurrence:Occurrence[@subType='MEConsumed']:@occurrenceRefs</Path> means that, for this Primary Occurrence - 
+    //  collect it's child Occurrences, only if they are of type
+    //  MEConsumed (which is the subType attribute). Use Path elements to collect all the nodes in plmxml on which you want to perform an xpath 
+    //  expression. A sequence of Path elements is just narrowing down the nodes on which to operate on.
+     //    The only thing that will be contained in Top level AliasAlternate elements are the
+     //    path subelements. These will be evaluated in sequence, to collect all the nodes on which the subsequent xpath will be applied. 
+     //  The last path sub element in the Alias will yield the element(s) on which the xpaths will be evaluated.     
+    <AliasAlternate name="Parent1">
+      <Path>Primary|Primary1:secondary|secondary2:rel|rel2</Path>      //Here we are showing "oring" ability.
+      //If the rel field does not end with @someRef (note that someRef could be attachmentRef or associatedAttachmentRefs and so on), it is combined 
+      //with secondary condition and evaluated as one. Also, note that if you have namespace qualified elements - you would use ; as the token in the Path
+      // element.
+      <Alias name="Child1">
+           <Xpath>@name</Xpath>
+      </Alias>
+      <AliasAlternate name="Child1">
+           <Xpath>@name1</Xpath>
+      </AliasAlternate>
+    </AliasAlternate>
+
+    // Each Path element can have a depth attribute and target attribute.
+     default depth = "1..1" (immediate children)
+            
+      depth examples:
+        depth="0..1" (0 and 1)
+        depth="0..0" (only self)
+        depth="0" (self and recurse)
+        depth="1" (not self - but recurse on everything else).
+        depth="2..4" (2,3,4)
+        depth="leaf" (Collect only leaf nodes)
+        
+         If depth is specified - it will be active for each of the subsequent Path elements. To override this behavior - depth can be specified on the subsequent Path elements as appropriate.
+
+      target attribute: This is to be used on a Path element when, grouping of results is desired based on the nodes resulting from that Path evaluation. No more than one target node is supported in a sequence of Path elements. The searching of AliasAlternate will stop if a Path element with target attribute is reached. The number of values returned will equal the number of target nodes (multiple values will be joined together if needed).
+
+        
+        
+      //Xpath element can have these attributes - prefix, suffix - these are used to augment the output of the xpath expression.
+      <Xpath prefix="THIS IS $PLMXML_DIR$" suffix=" Ending text">@name</Xpath>
+       
+        $PLMXML_DIR$ is a keyword - which will give you the physical location of the plmxml file directory. Can be used for getting the path for files referenced in plmxml.
+        <Xpath prefix="$PLMXML_DIR$">@locationRef</Xpath>
+        
+        //If an xpath expression starts with a / - it is evaluated wrt the context node. If you want global context - you must specify absolute attribute on Xpath element.
+        //Example:
+        <Xpath absolute="true">/PLMXML/someelem/@attr</Xpath>
+        
+//        Another shortcut - if you want to join 2 values from the same base alias - you can use this
+        <Xpath suffix="$BOM.Property&amp;bl_item_item_id$/$BOM.Property&amp;bl_rev_item_revision_id$">...</Xpath>
+        Note that the element text is ... only. This would give you itemId/Rev - both of which are to be leaves at the same level.
+
+      //Xpath text can have xpath 1.0 string functions. There is simple support of 
+         //passing the id of context node: using the subst attribute.
+        <Path depth='0..0'>ProcessOccurrence:*:*</Path>
+        <Xpath absolute='1' subst='@id'>YourXpathExpression$@id$</Xpath>. Whereever
+        //$@id$ appears - it will be replaced by the id of the ProcessOccurrence
+          element. You can specify multiple substitutions - as subst='@id;@name' etc.
+
+
+NOTE: To validate that the alias file is still a valid xml file (after making changes) - try to open it in internet explorer and make sure there are no errors.
+     
+</Mappings>
+
+-->
+
+<!--
+  The DOCTYPE element below is used for ENTITY definitions - which reduce the number of lines to be copied.
+-->
+
+<!DOCTYPE Mappings [
+
+       <!ENTITY FORM-MASTER-ATTR-DEF "
+        <Alias name='project_id' default='cannot get project_id'/>
+        <Alias name='previous_item_id' default='cannot get previous itemid'/>
+        <Alias name='item_comment' default='cannot get comment'/>
+        <Alias name='serial_number' default='cannot get serial_number'/>
+        <Alias name='UserData1' default='cannot get user_data_1'/>
+        <Alias name='UserData2' default='cannot get user_data_2'/>
+        <Alias name='UserData3' default='cannot get user_data_3'/>  
+        <Alias name='rev_project_id' default='cannot get project_id'/>
+        <Alias name='rev_previous_item_id' default='cannot get previous itemid'/>
+        <Alias name='rev_item_comment' default='cannot get comment'/>
+        <Alias name='rev_serial_number' default='cannot get serial_number'/>
+        <Alias name='rev_UserData1' default='cannot get user_data_1'/>
+        <Alias name='rev_UserData2' default='cannot get user_data_2'/>
+        <Alias name='rev_UserData3' default='cannot get user_data_3'/>           
+        <Alias name='FormDescription' default='No description'/>
+      ">            
+      
+       <!-- inclass classification id alias defs-->
+       <!ENTITY ICO-ATTR-DEF "
+        <Alias name='RobotCapacity' default='cannot get classification_attributes' toolTip='Valid only for plmxml containing classification'/>
+        <Alias name='RobotCapacity_unit' default='cannot get attributeId value pairs' toolTip='Valid only for plmxml containing classification'/>
+       ">
+    
+     <!-- properties that you want to see on an occurrence. Entity definition is used to avoid lot of typing-->
+     <!ENTITY OCC-ATTR-DEF "
+        <Alias name='ID' default='No ID'/>
+        <Alias name='Description' default='No description'/>
+        <Alias name='Name' default='no name'/>
+        <Alias name='Rev' default='A'/>
+        <Alias name='Transform' default='Identity'/>
+        <Alias name='RevSubType' default='ItemRevision'/>
+        <Alias name='LogicalID' default='Logical Identity'/>
+        <Alias name='SequenceNumber' default='No find#'/>
+        <Alias name='Quantity' default='1'/>
+        <Alias name='ParentName' default='No parent'/>
+        <Alias name='Type' default='No type'/>
+        &FORM-MASTER-ATTR-DEF;
+        &ICO-ATTR-DEF;
+     ">
+     <!ENTITY OCC-ATTR "
+          <Alias name='ID'>
+            <Path>*:*:@instancedRef</Path>
+            <Path>*:*:@masterRef</Path>
+            <Xpath>@catalogueId|@productId</Xpath>
+        </Alias>
+        <Alias name='Description'>
+            <Path>*:*:@instancedRef</Path>
+            <Xpath>Description</Xpath>
+        </Alias>
+        
+        <Alias name='Name'>
+            <Path>*:*:@instancedRef</Path>
+            <Xpath>@name</Xpath>
+        </Alias>
+        
+        <Alias name='Rev'>
+            <Path>*:*:@instancedRef</Path>
+            <Xpath>@revision</Xpath>
+        </Alias>
+        
+        <Alias name='Transform'>
+            <Xpath>Transform</Xpath>
+        </Alias>
+
+        <Alias name='RevSubType'>
+            <Path>*:*:@instancedRef</Path>
+            <Xpath>@subType</Xpath>
+        </Alias>
+        
+        
+        <Alias name='Type'>
+            <Xpath>@subType</Xpath>
+        </Alias>
+
+        <Alias name='Type'>
+               <Path>*:*:@instancedRef</Path>
+               <Xpath>@subType</Xpath>
+        </Alias>
+        
+        <Alias name='SequenceNumber'>
+            <Xpath>UserData/UserValue[@title='SequenceNumber']/@value</Xpath>
+        </Alias>
+
+        <Alias name='Quantity'>
+            <Xpath>UserData/UserValue[@title='Quantity']/@value</Xpath>
+        </Alias>
+        
+        <Alias name='LogicalID'>
+            <Xpath>UserData/UserValue[@title='AO_ID']/@value</Xpath>
+        </Alias>
+        
+        <Alias name='ParentName'>
+            <Path>*:*:@parentRef</Path>
+            <Path>*:*:@instancedRef</Path>
+            <Xpath>@name</Xpath>
+        </Alias>
+     ">
+     <!ENTITY OPERATION-ATTR "
+         <Alias name='ID'>
+            <Path>*:OperationRevision:@instancedRef</Path>
+            <Path>*:*:@masterRef</Path>
+            <Xpath>@catalogueId|@productId</Xpath>
+        </Alias>
+         <Alias name='Name'>
+            <Path>*:OperationRevision:@instancedRef</Path>
+            <Xpath>@name</Xpath>
+        </Alias>
+        <Alias name='Description'>
+            <Path>*:OperationRevision:@instancedRef</Path>
+            <Xpath>Description</Xpath>
+        </Alias>
+        <Alias name='Revision'>
+            <Path>*:OperationRevision:@instancedRef</Path>
+            <Xpath>@revision</Xpath>
+        </Alias>
+        <Alias name='SubType'>
+            <Path>*:OperationRevision:@instancedRef</Path>
+            <Xpath>@subType</Xpath>
+        </Alias>
+        <Alias name='ParentName'>
+            <Path>*:*:@parentRef</Path>
+            <Path>*:*:@instancedRef</Path>
+            <Xpath>@name</Xpath>
+        </Alias>
+        <Alias name='OperationConsumedParts'>
+            <Path>ProcessOccurrence:Occurrence[@subType='MEConsumed']:@occurrenceRefs</Path>
+            <Path>*:*:@instancedRef</Path>
+            <Xpath>@name</Xpath>
+        </Alias>
+        <Alias name='OperationUsedResources'>
+            <Path>ProcessOccurrence:Occurrence[@subType='MEResource']:@occurrenceRefs</Path>
+            <Path>*:*:@instancedRef</Path>
+            <Xpath>@name</Xpath>
+        </Alias>
+      ">
+      
+     <!ENTITY ACTIVITY-BASE-PATH "
+            <Path>*:*:@attachmentRef|@activityRefs</Path>
+     ">    
+      <!ENTITY ACTIVITY-ATTR-DEF "
+        <Alias name='Description' default='no description'/>
+        <Alias name='Name' default='No Name'/>
+        <Alias name='SubType' default='None'/>
+        <Alias name='CalcDuration' default='0'/>
+        <Alias name='StartTime' default='0'/>
+        <Alias name='CalcStartTime' default='0'/>
+        <Alias name='Duration' default='0'/>
+        <Alias name='CalcMinStartTime' default='0'/>
+        <Alias name='ActivityConsumedParts' default='-'/>
+        <Alias name='ActivityUsedResources' default='-'/>
+        <Alias name='OperationID' default='-'/>
+     ">
+              
+     <!ENTITY ACTIVITY-ATTR "
+         <Alias name='Name'>
+             &ACTIVITY-BASE-PATH;
+            <Xpath>@name</Xpath>
+        </Alias>
+        <Alias name='Description'>
+             &ACTIVITY-BASE-PATH;
+            <Xpath>Description</Xpath>
+        </Alias>
+        <Alias name='SubType'>
+             &ACTIVITY-BASE-PATH;
+            <Xpath>@subType</Xpath>
+        </Alias>
+        <Alias name='CalcDuration'>
+             &ACTIVITY-BASE-PATH;
+            <Xpath>@calcDuration</Xpath>
+        </Alias>
+        <Alias name='StartTime'>
+             &ACTIVITY-BASE-PATH;
+            <Xpath>@startTime</Xpath>
+        </Alias>
+        <Alias name='CalcStartTime'>
+             &ACTIVITY-BASE-PATH;
+            <Xpath>@calcStartTime</Xpath>
+        </Alias>
+        <Alias name='Duration'>
+             &ACTIVITY-BASE-PATH;
+            <Xpath>@duration</Xpath>
+        </Alias>
+        <Alias name='CalcMinStartTime'>
+             &ACTIVITY-BASE-PATH;
+            <Xpath>@calcMinStartTime</Xpath>    
+        </Alias>
+        <Alias name='ActivityConsumedParts'>
+                 <Path>ConfiguredActivity:*:@childRefs</Path>
+                 <Path>*:Occurrence[@subType='MEConsumed']:@attachmentRef</Path>
+                 <Path>*:*:@instancedRef</Path>
+                 <Xpath>@name</Xpath>
+         </Alias>
+         <Alias name='ActivityUsedResources'>
+                 <Path>ConfiguredActivity:*:@childRefs</Path>
+                 <Path>*:Occurrence[@subType='MEResource']:@attachmentRef</Path>
+                <Path>*:*:@instancedRef</Path>
+                <Xpath>@name</Xpath>
+         </Alias>
+         <Alias name='OperationID'>
+                 <Path>ConfiguredActivity:*:UserData/UserValue[@title='al_activity_oper_bl']/@dataRef</Path> 
+                 <Path>*:*:@instancedRef</Path> 
+                 <Path>*:*:@masterRef</Path> 
+                 <Xpath>@catalogueId</Xpath> 
+         </Alias>
+      ">
+      
+       <!ENTITY FILE-ATTR "
+          <Alias name='file'>
+            <Xpath prefix='$PLMXML_DIR$'>@locationRef</Xpath>
+        </Alias>
+      ">
+
+       <!ENTITY OBJ-ATTR "
+        <Alias name='Name'>
+             <Xpath prefix='The name of the object ='>@name</Xpath>
+            </Alias>
+        <Alias name='Quantity'>
+            <Xpath prefix='The quantity ='>UserData/UserValue[@title='Quantity']/@value</Xpath>
+        </Alias>
+        <Alias name='Description' default='no description'>
+             <Xpath>Description</Xpath>
+            </Alias>
+        <AliasAlternate name='Description'>
+             <Path>*:*:@masterRef</Path>
+             <Xpath>Description</Xpath>
+            </AliasAlternate>
+      ">
+      
+      <!ENTITY ICO-CHILD-PATH "
+        <Path>*;plmxml_cl:Classification;./</Path>
+        <Path>*;plmxml_cl:ICO;@icoRefs</Path>
+     ">    
+           
+       
+       <!-- inclass classification alias alternates - only defined for cases we have an occurrence -->
+       <!ENTITY ICO-ATTR "
+        <Alias name='RobotCapacity'>
+             <Path>*:*:@instancedRef</Path>
+             &ICO-CHILD-PATH;
+               <Xpath>plmxml_cl:Property[@attributeId='-31001']/plmxml_cl:Value</Xpath> 
+        </Alias>
+        <AliasAlternate name='RobotCapacity'>
+             &ICO-CHILD-PATH;
+             <Xpath>plmxml_cl:Property[@attributeId='-31001']/plmxml_cl:Value</Xpath> 
+        </AliasAlternate>
+        
+        <Alias name='RobotCapacity_unit'>
+             <Path>*:*:@instancedRef</Path>
+             &ICO-CHILD-PATH;
+             <Xpath absolute='1'>/PLMXML/plmxml_cl:UserClass[@classId=/PLMXML/plmxml_cl:ICO/plmxml_cl:ClassId]/plmxml_cl:Attribute[@attributeId='-31001']/plmxml_cl:Unit</Xpath>
+        </Alias>
+        <AliasAlternate name='RobotCapacity_unit'>
+             &ICO-CHILD-PATH;
+             <Xpath absolute='1'>/PLMXML/plmxml_cl:UserClass[@classId=/PLMXML/plmxml_cl:ICO/plmxml_cl:ClassId]/plmxml_cl:Attribute[@attributeId='-31001']/plmxml_cl:Unit</Xpath>
+        </AliasAlternate>
+
+<!--
+          <AliasAlternate name='ico_values'>
+             <Path>*:*:@instancedRef</Path>
+             &ICO-CHILD-PATH;
+             <Xpath>plmxml_cl:Property/plmxml_cl:Value</Xpath>
+        </AliasAlternate>
+        <AliasAlternate name='ico_values'>
+             &ICO-CHILD-PATH;
+             <Xpath>plmxml_cl:Property/plmxml_cl:Value</Xpath>
+        </AliasAlternate>
+-->        
+       ">       
+     
+     
+     <!-- macro to get to item/product from an occurrence. -->
+      <!ENTITY FORM-MASTER-OCC-ATTR-BASE-PATH "
+             <Path>*:AssociatedAttachment[@role='IMAN_master_form']:@associatedAttachmentRefs</Path>
+              <Path>*:Form:@attachmentRef</Path>
+     ">
+     
+     <!-- macro to get to item/product from an occurrence - by going to instancedRef and then masterRef. Order dependent - if associatedAttachmentRefs is found
+           on the occurrence - we will get to the form that way. Otherwise, this method will be used.
+      -->
+      <!ENTITY FORM-MASTER-ATTR-BASE-PATH "
+             <Path>*:*:@instancedRef</Path>
+            <Path>*:*:@masterRef</Path>
+            <Path>*:Form[@subType='Item Master']:AssociatedForm/@formRef</Path>
+     ">
+    
+     <!-- macro to get to itemrev/productrev from an occurrence. --> 
+     <!ENTITY FORM-REVMASTER-ATTR-BASE-PATH "
+              <Path>*:*:@instancedRef</Path>
+            <Path>*:Form[@subType='ItemRevision Master']:AssociatedForm/@formRef</Path>
+     ">
+            
+
+    <!-- macro to be resued whenever, master form, rev master form attributes are needed anywhere.
+          The Alias and AliasAlternates here - handle the case where we are at an occurrence level - which has an associatedAttachmentRefs attr pointing to form, or directly on a Form element
+     --> 
+     <!ENTITY FORM-MASTER-ATTR "
+         <Alias name='project_id'>
+           &FORM-MASTER-OCC-ATTR-BASE-PATH;
+           <Xpath>/UserData/UserValue[@title='project_id']/@value</Xpath>
+         </Alias>
+          <AliasAlternate name='project_id'>              
+               &FORM-MASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='project_id']/@value</Xpath>
+        </AliasAlternate>
+        <AliasAlternate name='project_id'>
+            <Path>*:Form[@subType='Item Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='project_id']/@value</Xpath>
+        </AliasAlternate>
+        
+        <Alias name='previous_item_id'>
+                &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='previous_item_id']/@value</Xpath>        
+        </Alias>
+        <AliasAlternate name='previous_item_id'>
+                &FORM-MASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='previous_item_id']/@value</Xpath>        
+        </AliasAlternate>
+        <AliasAlternate name='previous_item_id'>
+            <Path>*:Form[@subType='Item Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='previous_item_id']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='item_comment'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='item_comment']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='item_comment'>
+            &FORM-MASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='item_comment']/@value</Xpath>
+        </AliasAlternate>
+        <AliasAlternate name='item_comment'>
+            <Path>*:Form[@subType='Item Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='item_comment']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='serial_number'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='serial_number']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='serial_number'>
+            &FORM-MASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='serial_number']/@value</Xpath>
+        </AliasAlternate>
+        <AliasAlternate name='serial_number'>
+            <Path>*:Form[@subType='Item Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='serial_number']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='UserData1'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_1']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='UserData1'>
+            &FORM-MASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_1']/@value</Xpath>
+        </AliasAlternate>
+        <AliasAlternate name='UserData1'>
+            <Path>*:Form[@subType='Item Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='user_data_1']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='UserData2'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_2']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='UserData2'>
+            &FORM-MASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_2']/@value</Xpath>
+        </AliasAlternate >
+        <AliasAlternate name='UserData2'>
+            <Path>*:Form[@subType='Item Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='user_data_2']/@value</Xpath>
+        </AliasAlternate>
+
+        <Alias name='UserData3'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_3']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='UserData3'>
+            &FORM-MASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_3']/@value</Xpath>
+        </AliasAlternate >    
+        <AliasAlternate name='UserData3'>
+            <Path>*:Form[@subType='Item Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='user_data_3']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='rev_project_id'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='project_id']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='rev_project_id'>
+            &FORM-REVMASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='project_id']/@value</Xpath>
+        </AliasAlternate >
+        <AliasAlternate name='rev_project_id'>
+            <Path>*:Form[@subType='ItemRevision Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='project_id']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='rev_previous_item_id'>
+                &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='previous_item_id']/@value</Xpath>        
+        </Alias>
+        <AliasAlternate name='rev_previous_item_id'>
+                &FORM-REVMASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='previous_item_id']/@value</Xpath>        
+        </AliasAlternate >
+        <AliasAlternate name='rev_previous_item_id'>
+            <Path>*:Form[@subType='ItemRevision Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='previous_item_id']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='rev_item_comment'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='item_comment']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='rev_item_comment'>
+            &FORM-REVMASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='item_comment']/@value</Xpath>
+        </AliasAlternate >
+        <AliasAlternate name='rev_item_comment'>
+            <Path>*:Form[@subType='ItemRevision Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='item_comment']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='rev_serial_number'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='serial_number']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='rev_serial_number'>
+            &FORM-REVMASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='serial_number']/@value</Xpath>
+        </AliasAlternate >
+        <AliasAlternate name='rev_serial_number'>
+            <Path>*:Form[@subType='ItemRevision Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='serial_number']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='rev_UserData1'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title=user_data_1']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='rev_UserData1'>
+            &FORM-REVMASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title=user_data_1']/@value</Xpath>
+        </AliasAlternate >
+        <AliasAlternate name='rev_UserData1'>
+            <Path>*:Form[@subType='ItemRevision Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='user_data_1']/@value</Xpath>
+        </AliasAlternate>
+
+        
+        <Alias name='rev_UserData2'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_2']/@value</Xpath>
+        </Alias>
+        <AliasAlternate  name='rev_UserData2'>
+            &FORM-REVMASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_2']/@value</Xpath>
+        </AliasAlternate >
+        <AliasAlternate name='rev_UserData2'>
+            <Path>*:Form[@subType='ItemRevision Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='user_data_2']/@value</Xpath>
+        </AliasAlternate>
+
+        <Alias name='rev_UserData3'>
+            &FORM-MASTER-OCC-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_3']/@value</Xpath>
+        </Alias>
+        <AliasAlternate name='rev_UserData3'>
+            &FORM-REVMASTER-ATTR-BASE-PATH;
+            <Xpath>/UserData/UserValue[@title='user_data_3']/@value</Xpath>
+        </AliasAlternate >    
+        <AliasAlternate name='rev_UserData3'>
+            <Path>*:Form[@subType='ItemRevision Master']:AssociatedForm/@formRef</Path>
+            <Xpath>/UserData/UserValue[@title='user_data_3']/@value</Xpath>
+        </AliasAlternate>
+        <Alias name='FormDescription'>
+            <Path>*:AssociatedAttachment[@role='IMAN_specification']:@associatedAttachmentRefs</Path>
+            <Path>*:Form:@attachmentRef</Path>
+            <Xpath>Description</Xpath>
+        </Alias>
+    ">      
+]>
+<!--
+IMPORTANT - whoever is updating this file - 
+  you must bump the version attribute on the Mapping root element
+ -->
+<Mappings version="10023">
+    <TraverseRoot>/PLMXML/Header/@traverseRootRefs</TraverseRoot>
+    <SeparatorChar>;</SeparatorChar>
+    
+    <TransferModes>
+        <TransferMode name="tcm_export" description="Occurrences output"/>
+        <TransferMode name="ExportGraphic" description="Output graphic file"/>
+        <TransferMode name="ExportActivities" description="Export Activities only"/>
+    </TransferModes>
+    
+
+    <!--#########Product part list information addresses the first level parts list of an occurrence
+                 it will return only the child occurrences of the first level occurrence selected.
+                 #################-->
+    <Alias name="ProductPartList" assetType="8" toolTip="product data" qualifier="2" accumulate="Quantity">
+        &OCC-ATTR-DEF;
+    </Alias>
+    
+    <!--#########Starting at occurrence as a root#################-->
+    <AliasAlternate name="ProductPartList">
+        <Path depth="1..1">*:*:@occurrenceRefs</Path> 
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    
+    <!--#########Starting at a structure context as a root to a top level item#################-->
+    <AliasAlternate name="ProductPartList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path depth="1..1">*:*:@occurrenceRefs</Path>
+        &OCC-ATTR;        
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    
+        <!--#########Starting at a structure context as a root to a an occurrence group
+                     This is the case of selecting multiple occurrences from a structure#################-->
+    <AliasAlternate name="ProductPartList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path depth="1..1">ConfiguredOccurrenceGroup:Occurrence:@childRefs</Path>
+        <Path depth="1..1">*:*:@occurrenceRefs</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+
+      <!-- the case where you could have a leaf Occurrence with no occurrenceRefs as above -->
+      <AliasAlternate name="ProductPartList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path depth="1..1">ConfiguredOccurrenceGroup:Occurrence:@childRefs</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+
+     <!-- The case where the attachmentRef of the child of root AssociatedAttachment points to an occurrence -->
+      <AliasAlternate name="ProductPartList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>    
+    
+    <!--######################this allias is to get the attribute
+                              of the first line selected without getting any child occurrences
+                              it mainly represents the header for the children to come
+                              ##############################-->
+    <Alias name="ProductHeader" assetType="8" toolTip="product data" qualifier="2">
+        &OCC-ATTR-DEF;
+    </Alias>
+    
+    <!--#########Starting from an occurrence context as a root#################-->
+    <AliasAlternate name="ProductHeader">
+        <Path depth="0..0">Occurrence:Occurrence:@occurrenceRefs</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    
+    <!--#########Starting from a structure context as a root#################-->
+    <AliasAlternate name="ProductHeader">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path depth="1..1">ConfiguredOccurrenceGroup:*:@childRefs</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    <AliasAlternate name="ProductHeader">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    
+    
+        <!--#########Process routing is the list of the first level processes.
+                 #################-->
+    <Alias name="ProcessRouting" assetType="8" toolTip="product data" qualifier="2" accumulate="Quantity">
+        &OCC-ATTR-DEF;
+    </Alias>
+    
+    <!--#########Starting at occurrence as a root#################-->
+    <AliasAlternate name="ProcessRouting">
+        <Path depth="1..1">ProcessOccurrence:*:@occurrenceRefs</Path> 
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    
+    <!--#########Starting at a structure context as a root to a top level item#################-->
+    <AliasAlternate name="ProcessRouting">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path depth="1..1">ConfiguredOccurrenceGroup:ProcessOccurrence:@childRefs</Path>
+        <Path depth="1..1">ProcessOccurrence:*:@occurrenceRefs</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    
+        <!--#########Starting at a structure context as a root to a top level item#################-->
+    <AliasAlternate name="ProcessRouting">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:ProcessOccurrence:@attachmentRef</Path>
+        <Path depth="1..1">ProcessOccurrence:ProcessOccurrence:@occurrenceRefs</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    
+            <!--#########Process Header will show the selected process and operation
+                         as one line.
+                 #################-->
+    <Alias name="ProcessHeader" assetType="8" toolTip="product data" qualifier="2">
+        &OCC-ATTR-DEF;
+    </Alias>
+    
+    <!--#########Starting at occurrence as a root#################-->
+    <AliasAlternate name="ProcessHeader">
+        <Path depth="0..0">ProcessOccurrence:*:@occurrenceRefs</Path> 
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    
+    <!--#########Starting at a structure context as a root to a top level item#################-->
+    <AliasAlternate name="ProcessHeader">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path depth="1..1">ConfiguredOccurrenceGroup:ProcessOccurrence:@childRefs</Path>
+        <Path depth="0..0">ProcessOccurrence:*:@occurrenceRefs</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+        <!--#########Starting at a structure context as a root to a top level item#################-->
+    <AliasAlternate name="ProcessHeader">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path depth="0..0">ProcessOccurrence:*:@occurrenceRefs</Path>
+        &OCC-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR;
+    </AliasAlternate>
+    
+    <!--#########The first level Operation List of a Process #################-->
+    <Alias name="ProcessOperationList" assetType="8" toolTip="Information about Operations under the selected Process" qualifier="2">
+        <Alias name="Description" default="no description"/>
+        <Alias name="ID" default="No ID"/>
+        <Alias name="Name" default="No Name"/>
+        <Alias name="Revision" default="A"/>
+        <Alias name="SubType" default="None"/>
+        <Alias name="ParentName" default="-"/>
+        <Alias name="OperationConsumedParts" default="-"/>
+        <Alias name="OperationUsedResources" default="-"/>
+    </Alias>
+    
+<!--#########Starting from a structure context as a root#################-->    
+   <AliasAlternate name="ProcessOperationList">
+       <Path depth="1..1" target="1">ProcessOccurrence:ProcessOccurrence:@occurrenceRefs</Path> 
+       &OPERATION-ATTR;
+   </AliasAlternate>
+   
+   <AliasAlternate name="ProcessOperationList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:ConfiguredOccurrenceGroup:@attachmentRef</Path>
+        <Path>ConfiguredOccurrenceGroup:ProcessOccurrence:@childRefs</Path>
+        <Path depth="1..1" target="1">ProcessOccurrence:ProcessOccurrence:@occurrenceRefs</Path>
+        &OPERATION-ATTR;
+    </AliasAlternate>
+    
+    <AliasAlternate name="ProcessOperationList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path depth="1..1" target="1">ProcessOccurrence:ProcessOccurrence:@occurrenceRefs</Path>
+        &OPERATION-ATTR;
+    </AliasAlternate>
+    
+    
+<!--#########The first level activity list of an operation#################-->
+    <Alias name="OperationActivityList" assetType="8" toolTip="Activity data" qualifier="2">
+        &ACTIVITY-ATTR-DEF;
+        <!-- &FORM-MASTER-ATTR-DEF; -->
+        <!-- &ICO-ATTR-DEF; -->
+    </Alias>
+    
+<!--#########Starting from a structure context as a root#################-->          
+         
+     <AliasAlternate name="OperationActivityList">
+        <Path>ProcessOccurrence:*:@configuredActivityRootRef</Path>
+        <Path>ConfiguredActivity:*:@attachmentRef</Path>
+        &ACTIVITY-ATTR;
+        &FORM-MASTER-ATTR;
+         &ICO-ATTR;
+    </AliasAlternate>
+
+ <AliasAlternate name="OperationActivityList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:ConfiguredOccurrenceGroup:@attachmentRef</Path>
+        <Path>ConfiguredOccurrenceGroup:ProcessOccurrence:@childRefs</Path>
+        <Path depth="0">ProcessOccurrence:ProcessOccurrence:@occurrenceRefs</Path>
+        <Path>ProcessOccurrence:*:@configuredActivityRootRef</Path>
+        <Path depth="1..1" target="1">ConfiguredActivity:ConfiguredActivity:@childRefs</Path>
+        &ACTIVITY-ATTR;
+        &FORM-MASTER-ATTR;
+         &ICO-ATTR;
+    </AliasAlternate>
+    
+    <AliasAlternate name="OperationActivityList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:ConfiguredOccurrenceGroup:@attachmentRef</Path>
+        <Path>ConfiguredOccurrenceGroup:ProcessOccurrence:@childRefs</Path>
+        <Path>ProcessOccurrence:*:@configuredActivityRootRef</Path>
+        <Path>ConfiguredActivity:*:@attachmentRef</Path>
+        &ACTIVITY-ATTR;
+        &FORM-MASTER-ATTR;
+         &ICO-ATTR;
+    </AliasAlternate>
+    
+    <AliasAlternate name="OperationActivityList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path>ProcessOccurrence:*:@configuredActivityRootRef</Path>
+        <Path>ConfiguredActivity:*:@attachmentRef</Path>
+        &ACTIVITY-ATTR;
+        &FORM-MASTER-ATTR;
+         &ICO-ATTR;
+    </AliasAlternate>
+    
+    <AliasAlternate name="OperationActivityList">
+       <Path depth="0">ProcessOccurrence:ProcessOccurrence:@occurrenceRefs</Path> 
+        <Path>ProcessOccurrence:*:@configuredActivityRootRef</Path>
+        <Path depth="1..1" target="1">ConfiguredActivity:ConfiguredActivity:@childRefs</Path>
+        &ACTIVITY-ATTR;
+        &FORM-MASTER-ATTR;
+         &ICO-ATTR;
+    </AliasAlternate>
+    
+    <AliasAlternate name="OperationActivityList">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:*:@attachmentRef</Path>
+        <Path depth="0">ProcessOccurrence:ProcessOccurrence:@occurrenceRefs</Path>
+        <Path>ProcessOccurrence:*:@configuredActivityRootRef</Path>
+        <Path depth="1..1" target="1">ConfiguredActivity:ConfiguredActivity:@childRefs</Path>
+        &ACTIVITY-ATTR;
+        &FORM-MASTER-ATTR;
+         &ICO-ATTR;
+    </AliasAlternate>    
+
+    <!-- export standing on an activity. Note that product must be visible
+         for Consumed Parts to work -->
+    <AliasAlternate name="OperationActivityList">
+        &ACTIVITY-ATTR;
+        &FORM-MASTER-ATTR;
+         &ICO-ATTR;
+    </AliasAlternate>    
+
+    <!--#########The consumed parts of an operation#################-->
+    <Alias name="OperationConsumedParts" assetType="8" toolTip="Consumed parts" qualifier="2">
+       &OCC-ATTR-DEF;
+    </Alias>
+
+    <AliasAlternate name="OperationConsumedParts">
+            <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+            <Path>AssociatedAttachment:*:@attachmentRef</Path>
+            <Path>ConfiguredOccurrenceGroup:ProcessOccurrence:@childRefs</Path>
+            <Path depth="0">*:*:@occurrenceRefs</Path>
+            <Path depth="0">Occurrence[@subType='MEConsumed']:*:@occurrenceRefs</Path>
+             &OCC-ATTR;
+             &FORM-MASTER-ATTR;
+             &ICO-ATTR;
+    </AliasAlternate>
+
+    <AliasAlternate name="OperationConsumedParts">
+            <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+            <Path>AssociatedAttachment:ProcessOccurrence:@attachmentRef</Path>
+            <Path depth="0">*:*:@occurrenceRefs</Path>
+             <Path depth="0..0">Occurrence[@subType='MEConsumed']:*:@occurrenceRefs</Path> 
+            &OCC-ATTR;
+            &FORM-MASTER-ATTR;
+            &ICO-ATTR;
+    </AliasAlternate>
+    
+    <AliasAlternate name="OperationConsumedParts">
+            <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+            <Path>AssociatedAttachment:ProcessOccurrence:@attachmentRef</Path>
+            <Path depth="1..1">ConfiguredOccurrenceGroup:*:@childRefs</Path>
+            <Path depth="0">*:*:@occurrenceRefs</Path>
+            <Path depth="0..0">Occurrence[@subType='MEConsumed']:*:@occurrenceRefs</Path>
+            &OCC-ATTR;
+            &FORM-MASTER-ATTR;
+            &ICO-ATTR;
+    </AliasAlternate>
+    
+        <!--#########The resource list for an operation#################-->
+    <Alias name="OperationResourceList" assetType="8" toolTip="Resource List" qualifier="2">
+        &OCC-ATTR-DEF;
+    </Alias>
+    <!--#########This is the case of selecting the top level#################-->
+    <AliasAlternate name="OperationResourceList">
+            <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+            <Path>AssociatedAttachment:ProcessOccurrence:@attachmentRef</Path>
+            <Path>ConfiguredOccurrenceGroup:*:@childRefs</Path>
+            <Path depth="0">*:*:@occurrenceRefs</Path>
+            <Path depth="0..0">Occurrence[@subType="MEResource"]:*:@occurrenceRefs</Path>
+            &OCC-ATTR;
+            &FORM-MASTER-ATTR;
+            &ICO-ATTR;
+    </AliasAlternate>
+    <AliasAlternate name="OperationResourceList">
+            <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+            <Path>AssociatedAttachment:*:@attachmentRef</Path>
+            <Path>ConfiguredOccurrenceGroup:ProcessOccurrence:@childRefs</Path>
+            <Path depth="0">*:*:@occurrenceRefs</Path>
+            <Path depth="0..0">Occurrence[@subType="MEResource"]:*:@occurrenceRefs</Path>
+               &OCC-ATTR;
+               &FORM-MASTER-ATTR;
+               &ICO-ATTR;
+    </AliasAlternate>
+
+    <!--#########This is the case a bomline that is not top. In this case
+                 it is captured as occurrence group #################-->
+        <AliasAlternate name="OperationResourceList">
+            <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+            <Path>AssociatedAttachment:ProcessOccurrence:@attachmentRef</Path>
+            <Path depth="0">*:*:@occurrenceRefs</Path>
+            <Path depth="0..0">Occurrence[@subType="MEResource"]:*:@occurrenceRefs</Path>
+            &OCC-ATTR;
+            &FORM-MASTER-ATTR;
+            &ICO-ATTR;
+    </AliasAlternate>
+     <!-- Added by Janakiram  May 30 2007 -->
+     <!--#########The first level activity details of selected Activity #################-->
+    <Alias name="ActivityRoutingDetails" assetType="8" toolTip="Activity Routing data" qualifier="2">
+        &ACTIVITY-ATTR-DEF;    
+    </Alias>
+          
+    <AliasAlternate name="ActivityRoutingDetails">
+        <Path depth="1..1" target="1">ConfiguredActivity:ConfiguredActivity:@childRefs</Path>
+        &ACTIVITY-ATTR;
+    </AliasAlternate>
+    
+     <!--#########The details of selected Activity #################-->
+    <Alias name="ActivityDetails" assetType="8" toolTip="Selected Activity Details" qualifier="2">
+        &ACTIVITY-ATTR-DEF;    
+    </Alias>
+          
+    <AliasAlternate name="ActivityDetails">
+        &ACTIVITY-ATTR;
+    </AliasAlternate>
+    
+     <!--#########The details of parts consumed in Activity #################-->
+    <Alias name="ActivityConsumedParts" assetType="8" toolTip="Parts Consumed in Activity" qualifier="2">
+        &OCC-ATTR-DEF;    
+    </Alias>
+          
+    <AliasAlternate name="ActivityConsumedParts">
+        <Path>ConfiguredActivity:AssociatedAttachment[@role='tool_list']:@childRefs</Path>
+        <Path>AssociatedAttachment:Occurrence[@subType='MEConsumed']:@attachmentRef</Path>
+        &OCC-ATTR;
+    </AliasAlternate>
+    
+    
+    <!--#############This is a 2D graphic jpg file extraction
+                       1. starting from structure context containing an occurrence that has 3d graphics
+                       2. starting from occurrence
+                       3. Starting from from attachments
+                       4. starting from a pure dataset
+                       #######################################-->
+    <Alias name="2DGraphic" assetType="16" toolTip="jpg, bmp and gif only" qualifier="2">
+        <Alias name="file" default="2d graphic file"/>
+    </Alias>
+    
+    <AliasAlternate name="2DGraphic">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:ConfiguredOccurreceGroup:@attachmentRef</Path>
+        <Path>ConfiguredOccurrenceGroup:*:@childRefs</Path>
+        <Path>Occurrence:AssociatedAttachment:@associatedAttachmentRefs</Path>
+        <Path>AssociatedAttachment:DataSet[@type='Image']:@attachmentRef</Path>
+        <Path>DataSet:ExternalFile[@format='jpg' or @format='jpeg' or @format='gif' or @format='bmp']:@memberRefs</Path>
+        &FILE-ATTR;
+    </AliasAlternate>
+    
+    <AliasAlternate name="2DGraphic">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:Occurrence|ProcessOccurrence|WorkAreaOccurrence:@attachmentRef</Path>
+        <Path>*:AssociatedAttachment:@associatedAttachmentRefs</Path>
+        <Path>AssociatedAttachment:DataSet[@type='Image']:@attachmentRef</Path>
+        <Path>DataSet:ExternalFile[@format='jpg' or @format='jpeg' or @format='gif' or @format='bmp']:@memberRefs</Path>
+        &FILE-ATTR;
+    </AliasAlternate>
+
+        
+    <AliasAlternate name="2DGraphic">
+        <Path>Occurrence|ProcessOccurrence:AssociatedAttachment:@associatedAttachmentRefs</Path>
+        <Path>AssociatedAttachment:DataSet[@type='Image']:@attachmentRef</Path>
+        <Path>DataSet:ExternalFile[@format='jpg' or @format='jpeg' or @format='gif' or @format='bmp']:@memberRefs</Path>
+        &FILE-ATTR;
+    </AliasAlternate>
+        
+    <AliasAlternate name="2DGraphic">
+        <Path>AssociatedAttachment:DataSet:@attachmentRef</Path>
+        <Path>DataSet:ExternalFile[@format='jpg' or @format='jpeg' or @format='gif' or @format='bmp']:@memberRefs</Path>
+        &FILE-ATTR;
+    </AliasAlternate>
+        
+    <AliasAlternate name="2DGraphic">
+        <Path>DataSet:ExternalFile[@format='jpg' or @format='jpeg' or @format='gif' or @format='bmp']:@memberRefs</Path>
+        &FILE-ATTR;
+    </AliasAlternate>
+        
+    <!--#############This is a 3D geometry asset created by 3D snapshot 
+                       1. starting from structure context containing an occurrence that has 3d graphics
+                       2. starting from occurrence
+                       3. Starting from from attachments
+                       4. starting from a pure dataset
+                       #######################################-->
+
+    <Alias name="3DGeometryAsset" assetType="4" toolTip="Snapshots" qualifier="2">
+        <Alias name="file" default="3d geometry asset file"/>
+    </Alias>
+    
+    <AliasAlternate name="3DGeometryAsset">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path> <!-- root_structures-->
+        <Path>AssociatedAttachment:ConfiguredOccurreceGroup:@attachmentRef</Path>
+        <Path>ConfiguredOccurreceGroup:*:@childRefs</Path>
+        <Path>Occurrence:AssociatedAttachment:@associatedAttachmentRefs</Path>
+        <Path>AssociatedAttachment:DataSet[@type='SnapShotViewData']:@attachmentRef</Path>
+        <Path>DataSet:ExternalFile[@format='asset']:@memberRefs</Path>
+        &FILE-ATTR;
+    </AliasAlternate>
+    
+    <AliasAlternate name="3DGeometryAsset">
+        <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+        <Path>AssociatedAttachment:Occurrence|ProcessOccurrence|WorkAreaOccurrence:@attachmentRef</Path>
+        <Path>*:AssociatedAttachment:@associatedAttachmentRefs</Path>
+        <Path>AssociatedAttachment:DataSet[@type='SnapShotViewData']:@attachmentRef</Path>
+        <Path>DataSet:ExternalFile[@format='asset']:@memberRefs</Path>
+    </AliasAlternate>
+
+    
+    <AliasAlternate name="3DGeometryAsset">
+        <Path>Occurrence:AssociatedAttachment:@attachmentRefs</Path>
+        <Path>AssociatedAttachment:DataSet[@type='SnapShotViewData']:@attachmentRef</Path>
+        <Path>DataSet:ExternalFile[@format='asset']:@memberRefs</Path>
+        &FILE-ATTR;
+    </AliasAlternate>
+    
+    <AliasAlternate name="3DGeometryAsset">
+        <Path>AssociatedAttachment:DataSet:@attachmentRef</Path>
+        <Path>DataSet:ExternalFile[@format='asset']:@memberRefs</Path>
+        &FILE-ATTR;
+    </AliasAlternate>
+    <AliasAlternate name="3DGeometryAsset">
+        <Path>DataSet:ExternalFile[@format='asset']:@memberRefs</Path>
+        &FILE-ATTR;
+    </AliasAlternate>    
+
+ <!-- Text Alias to show the Object Name, if Object is selected from Navigator, or from bomline or attachmentline -->
+     <Alias name="ObjectProperties" assetType="2" toolTip="details of object" qualifier="2">
+        <Alias name="Name" default="Cannot get name of object" />
+        <Alias name="Description" default="no description"/>
+        <Alias name='Quantity' default='1'/>
+        &FORM-MASTER-ATTR-DEF;
+     </Alias>
+<!--
+     <AliasAlternate name="ObjectProperties">
+       <Path>AssociatedAttachment:Dataset|Item|ItemRevision:@attachmentRef</Path>
+        &OBJ-ATTR;
+     </AliasAlternate>
+-->
+     <AliasAlternate name="ObjectProperties">
+       <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+       <Path>AssociatedAttachment:*:@attachmentRef</Path>
+       <Path>ConfiguredOccurrenceGroup:*:@childRefs</Path>
+        &OBJ-ATTR;
+          &FORM-MASTER-ATTR;
+          &ICO-ATTR;
+     </AliasAlternate>
+     <AliasAlternate name="ObjectProperties">
+       <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+       <Path>AssociatedAttachment:*:@attachmentRef</Path>
+       <Path>ConfiguredOccurrenceGroup:*:@childRefs</Path>
+       <Path>*:*:@instancedRef</Path>
+        &OBJ-ATTR;
+          &FORM-MASTER-ATTR;
+          &ICO-ATTR;
+     </AliasAlternate>
+     <AliasAlternate name="ObjectProperties">
+       <Path>AssociatedAttachment:AssociatedAttachment[@role='contents']:@childRefs</Path>
+       <Path>AssociatedAttachment:Occurrence|ProcessOccurrence|WorkAreaOccurrence:@attachmentRef</Path>
+           <Path>*:*:@instancedRef</Path>
+        &OBJ-ATTR;
+          &FORM-MASTER-ATTR;
+          &ICO-ATTR;
+     </AliasAlternate>
+
+  <!-- Get the name/desc from a selected Activity -->
+      <AliasAlternate name="ObjectProperties">
+       <Path>ConfiguredActivity:Activity:@attachmentRef</Path>
+           &OBJ-ATTR;
+           &FORM-MASTER-ATTR;
+      </AliasAlternate>
+      <AliasAlternate name="ObjectProperties">
+      <Path>ConfiguredActivity:ConfiguredActivity:@childRefs</Path>
+       <Path>ConfiguredActivity:Activity:@attachmentRef</Path>
+           &OBJ-ATTR;
+           &FORM-MASTER-ATTR;
+      </AliasAlternate>
+  <!-- ############################################# -->
+
+
+     <AliasAlternate name="ObjectProperties">
+        &OBJ-ATTR;
+        &FORM-MASTER-ATTR;
+        &ICO-ATTR-DEF;
+     </AliasAlternate>
+
+    <!--Linked Alias example: Assumes you are exporting a dataset-->
+    <Alias name="LinkedDataset" assetType="32" toolTip="For linked assets, use with tcm_export" qualifier="2"/>
+    <AliasAlternate name="LinkedDataset">
+     <Path depth="0..0">DataSet:*:*</Path>    
+     <Xpath text="linked asset sample text">//*[@id='id2']/@name</Xpath> <!-- if you want specific text, make sure absolute attribute on Xpath element is set and provide the simple xpath expression as content -->
+    </AliasAlternate>
+    <AliasAlternate name="LinkedDataset">
+     <Path>Occurrence|ProcessOccurrence:*:@instancedRef</Path>    
+     <Path>*:DataSet:AssociatedDataSet/@dataSetRef</Path>
+     <Xpath text="linked asset sample text"/>
+     </AliasAlternate>
+     <!-- End linked Alias -->
+ <!--Linked Alias object example: Assumes you are -->
+    <Alias name="LinkedObject" assetType="32" toolTip="For linked assets, use with tcm_export" qualifier="2"/>
+    <AliasAlternate name="LinkedObject">
+     <Path depth="0..0">*:*:*</Path>    
+     <Xpath text="linked asset sample text">//*[@id='id2']/@name</Xpath> <!-- if you want specific text, make sure absolute attribute on Xpath element is set and provide the simple xpath expression as content -->
+    </AliasAlternate>
+    <AliasAlternate name="LinkedObject">
+     <Path>Occurrence|ProcessOccurrence:*:@instancedRef</Path>    
+     <Path>*:DataSet:AssociatedDataSet/@dataSetRef</Path>
+     <Xpath text="linked asset sample text"/>
+     </AliasAlternate>
+     <!-- End linked Alias -->
+</Mappings>

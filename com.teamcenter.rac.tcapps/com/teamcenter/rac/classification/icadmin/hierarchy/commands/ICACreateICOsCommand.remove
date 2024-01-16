@@ -1,0 +1,147 @@
+/*==============================================================================
+
+                   Copyright (c) 1999,2000 Unigraphics Solutions
+                       Unpublished - All rights reserved
+================================================================================
+File description:
+
+        Filename:
+        Module  :
+
+================================================================================
+   Date      Name                    Description of Change
+21-Aug-2003  Helmut Lohmueller       created
+21-Aug-2003  Helmut Lohmueller       merge from Helmut
+30-Oct-2003  braun                   Change executeOperation to throw TCException with error messages.
+05-Feb-2006  Venkatesh Chitnis       de-imanization
+$HISTORY$
+================================================================================*/
+package com.teamcenter.rac.classification.icadmin.hierarchy.commands;
+
+import com.teamcenter.rac.aif.*;
+import com.teamcenter.rac.util.*;
+import com.teamcenter.rac.util.log.*;
+import com.teamcenter.rac.kernel.TCException;
+import com.teamcenter.rac.classification.common.*;
+import com.teamcenter.rac.classification.ics.*;
+import com.teamcenter.rac.classification.icadmin.hierarchy.*;
+
+import java.util.*;
+
+/**
+ * ICARefreshPFAttrListCommand.java
+ *
+ *
+ * Created: Mon Aug 18 11:28:52 2003
+ *
+ * @author <a href="mailto:helmutl@DECGN168">Helmut Lohmueller</a>
+ * @version 1.0
+ */
+public class ICACreateICOsCommand extends AbstractAIFCommand implements InterfaceAIFOperationExecutionListener
+{
+    private ICAHierarchyContext   m_context;
+    private ICSPFClassAttrMapping m_mapping;
+    private int                   m_options;
+
+    // set from operation
+    private int m_errorCount;
+
+    private boolean m_operationFailed;
+
+    //============================================================================
+
+    public ICACreateICOsCommand( ICAHierarchyContext    theContext,
+                                 ICSPFClassAttrMapping  theMapping,
+                                 int                    theOptions
+                                 )
+    {
+        m_context = theContext;
+        m_mapping = theMapping;
+        m_options = theOptions;
+    }
+
+    //============================================================================
+
+    public void executeCommand()
+    {
+        ICACreateICOsOperation op = new ICACreateICOsOperation();
+
+        op.addOperationListener ( this );
+
+        m_context.getAdminContext().getSession().queueOperation ( op );
+    }
+
+
+    //==============================================================================
+    /*  startOperation() is the implementation for InterfaceAIFOperationExecutionListener
+    **
+    */
+    public void startOperation (String message)
+    {
+        m_context.getAdminContext().setBusy( "!!!Create ICOs from Part Family Template..." );
+        m_operationFailed = false;
+
+    }
+
+    //==============================================================================
+    /*  endOperation() is the implementation for InterfaceAIFOperationExecutionListener
+    **  NOTE: it will be called regardless if exceptionThrown() is called
+    **        therefore m_operationFailed is used to determine if the operation has failed.
+    */
+    public void endOperation ()
+    {
+        if( !m_operationFailed )
+        {
+            MessageBox.post( m_context.getRegistry().getString("ica.attrMapping.createICO.ok.MESSAGE", "!!!ICOs created" ) ,
+                             m_context.getRegistry().getString("ica.attrMapping.createICO.TITLE",      "!!!Create ICOs" ),
+                             MessageBox.INFORMATION );
+
+            m_context.getAdminContext().setIdle( "!!!Create ICOs from Part Family Template done!" );
+        }
+    }
+
+    //==============================================================================
+    /*  exceptionThrown() is the implementation for InterfaceAIFOperationExecutionListener
+    **
+    */
+    public void exceptionThrown(Exception ex)
+    {
+        m_operationFailed = true;
+
+        MessageBox.post( m_context.getRegistry().getString("ica.attrMapping.createICO.errors.MESSAGE", "!!!ICO creation failed for some or all Members" ) ,
+                         ex,
+                         m_context.getRegistry().getString("ica.attrMapping.createICO.TITLE",   "!!!Create ICOs" ),
+                         MessageBox.ERROR );
+
+        m_context.getAdminContext().setIdle( "!!!Create ICOs from Part Family Template failed!" );
+    }
+
+    //==============================================================================
+    //
+    //
+    //
+    //==============================================================================
+
+    private class ICACreateICOsOperation extends AbstractAIFOperation
+    {
+
+        public ICACreateICOsOperation()
+        {
+        }
+
+        //==========================================================================
+
+        public void executeOperation() throws Exception
+        {
+            Debug.println( "G4M", "GICACreateICOsOperation:   executeOperation" );
+            Vector errorVector = new Vector();
+            m_errorCount = m_mapping.createICOs( m_options, errorVector );
+            if ( m_errorCount > 0 )
+            {
+                errorVector.add( 0, "" );
+                throw new TCException((String[]) errorVector.toArray( new String[m_errorCount] ));
+            } // end of if ()
+
+        }
+    }
+}

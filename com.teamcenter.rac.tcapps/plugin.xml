@@ -1,0 +1,2354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.8"?>
+<!--
+@<COPYRIGHT>@
+==================================================
+Copyright 2012.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+==================================================
+@<COPYRIGHT>@
+-->
+<plugin>
+    <extension point="com.teamcenter.rac.aifrcp.SectionComponent">
+        <SectionComponent ID="MyProjectsSectionComponent"
+            class="com.teamcenter.rac.explorer.taskpane.MyProjectsSectionComponent"
+            icon="platform:/plugin/com.teamcenter.rac.common/com/teamcenter/rac/common/images/projectobject_16.png"
+            iconBundleName="com.teamcenter.rac.common"
+            secondaryActionClass="com.teamcenter.rac.common.taskpane.TCSecondaryPopupShell"
+            secondaryIcon="platform:/plugin/com.teamcenter.rac.util/com/teamcenter/rac/util/images/multiforward_16.png"
+            secondaryIconBundleName="com.teamcenter.rac.util"
+            title="%myProjectsSectionComponent.title"
+            useDefaultOpenCommand="true"/>
+        <SectionComponent ID="ProjectAdminSectionComponent"
+            class="com.teamcenter.rac.project.taskpane.ProjectAdminSectionComponent"
+            icon="platform:/plugin/com.teamcenter.rac.common/com/teamcenter/rac/common/images/projectobject_16.png"
+            iconBundleName="com.teamcenter.rac.common"
+            title="%projectAdminSectionComponent.title"
+            useDefaultOpenCommand="true"/>
+        <SectionComponent ID="SmartFolderAdminSectionComponent"
+            class="com.teamcenter.rac.project.taskpane.SmartFolderAdminSectionComponent"
+            icon="platform:/plugin/com.teamcenter.rac.common/com/teamcenter/rac/common/images/projectobject_16.png"
+            iconBundleName="com.teamcenter.rac.common"
+            title="%smartFolderAdminSectionComponent.title"
+            useDefaultOpenCommand="true"/>
+    </extension>
+
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?before=tools">
+            <menu id="Graphics" label="%Graphics.NAME"
+                mnemonic="%Graphics.MNEMONIC">
+                <!-- E4 architecture change, menu update only evaluates first 1 levle menuElement
+                 under main menus, such as File, View. Workaround is add visibleWhen for
+                 application specific main menus, see WorkbenchWindow menuUpdater runnable
+                -->
+                <visibleWhen>
+                    <reference definitionId="com.teamcenter.rac.graphicMenuVisible"/>
+                </visibleWhen>
+                <separator name="GraphicsStart" visible="true"/>
+                <separator name="group1" visible="true"/>
+                <separator name="group2" visible="true"/>
+                <separator name="group3" visible="true"/>
+                <separator name="group4" visible="true"/>
+                <separator name="group5" visible="true"/>
+                <separator name="additions" visible="true"/>
+                <separator name="GraphicsEnd" visible="true"/>
+            </menu>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics?after=GraphicsStart">
+            <menu id="Graphics.Selection" label="%Graphics.Selection.NAME">
+                <separator name="Graphics.SelectionStart" visible="true"/>
+                <separator name="group1" visible="true"/>
+                <separator name="group2" visible="true"/>
+                <separator name="group3" visible="true"/>
+                <separator name="group4" visible="true"/>
+                <separator name="group5" visible="true"/>
+                <separator name="additions" visible="true"/>
+                <separator name="Graphics.SelectionEnd" visible="true"/>
+            </menu>
+            <menu id="Graphics.Visibility" label="%Graphics.Visibility.NAME">
+                <separator name="Graphics.VisibilityStart" visible="true"/>
+                <separator name="group1" visible="true"/>
+                <separator name="group2" visible="true"/>
+                <separator name="group3" visible="true"/>
+                <separator name="group4" visible="true"/>
+                <separator name="group5" visible="true"/>
+                <separator name="additions" visible="true"/>
+                <separator name="Graphics.VisibilityEnd" visible="true"/>
+            </menu>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics?after=group1">
+            <menu id="Graphics.Insert" label="%Graphics.Insert.NAME">
+                <separator name="Graphics.InsertStart" visible="true"/>
+                <separator name="group1" visible="true"/>
+                <separator name="group2" visible="true"/>
+                <separator name="group3" visible="true"/>
+                <separator name="group4" visible="true"/>
+                <separator name="group5" visible="true"/>
+                <separator name="additions" visible="true"/>
+                <separator name="Graphics.InsertEnd" visible="true"/>
+            </menu>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics?after=group2">
+            <menu id="Graphics.Views" label="%Graphics.Views.NAME">
+                <separator name="Graphics.ViewsStart" visible="true"/>
+                <separator name="group1" visible="true"/>
+                <separator name="group2" visible="true"/>
+                <separator name="group3" visible="true"/>
+                <separator name="group4" visible="true"/>
+                <separator name="group5" visible="true"/>
+                <separator name="additions" visible="true"/>
+                <separator name="Graphics.ViewsEnd" visible="true"/>
+            </menu>
+            <menu id="Graphics.Reposition" label="%Graphics.Reposition.NAME">
+                <separator name="Graphics.RepositionStart" visible="true"/>
+                <separator name="group1" visible="true"/>
+                <separator name="group2" visible="true"/>
+                <separator name="group3" visible="true"/>
+                <separator name="group4" visible="true"/>
+                <separator name="group5" visible="true"/>
+                <separator name="additions" visible="true"/>
+                <separator name="Graphics.RepositionEnd" visible="true"/>
+            </menu>
+            <menu id="Graphics.Replace_JT_File" label="%Graphics.Replace_JT_File.NAME">
+                <separator name="Graphics.Replace_JT_FileStart" visible="true"/>
+                <separator name="group1" visible="true"/>
+                <separator name="group2" visible="true"/>
+                <separator name="group3" visible="true"/>
+                <separator name="group4" visible="true"/>
+                <separator name="group5" visible="true"/>
+                <separator name="additions" visible="true"/>
+                <separator name="Graphics.Replace_JT_FileEnd" visible="true"/>
+            </menu>
+            <menu id="Graphics.Clearance" label="%Graphics.Clearance.NAME">
+                <separator name="Graphics.ClearanceStart" visible="true"/>
+                <separator name="group1" visible="true"/>
+                <separator name="group2" visible="true"/>
+                <separator name="group3" visible="true"/>
+                <separator name="group4" visible="true"/>
+                <separator name="group5" visible="true"/>
+                <separator name="additions" visible="true"/>
+                <separator name="Graphics.ClearanceEnd" visible="true"/>
+            </menu>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics.Clearance?after=group3">
+            <menu id="Graphics.Clearance.Preferences" label="%Graphics.Clearance.Preferences.NAME">
+                <separator name="Graphics.Clearance.PreferencesStart"
+                    visible="true"/>
+                <separator name="group1" visible="true"/>
+                <separator name="group2" visible="true"/>
+                <separator name="group3" visible="true"/>
+                <separator name="group4" visible="true"/>
+                <separator name="group5" visible="true"/>
+                <separator name="additions" visible="true"/>
+                <separator name="Graphics.Clearance.PreferencesEnd"
+                    visible="true"/>
+            </menu>
+        </menuContribution>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution locationURI="menu:Graphics.Selection?after=additions">
+            <command commandId="com.teamcenter.rac.selectAll">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.selectAll"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.selectNone">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.selectNone"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.reverseSelection">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.reverseSelection"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics.Visibility?after=additions">
+            <command commandId="com.teamcenter.rac.showSelected">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true"/>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.showSelected"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.blankSelected">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.blankSelected"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.blankAll">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals value="com.teamcenter.rac.blankAll"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.unblankAll">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.unblankAll"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.reverseBlankAll">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.reverseBlankAll"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.unloadSelected">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.unloadSelected"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics.Insert?after=additions">
+            <command commandId="com.teamcenter.rac.insertJTFile"
+                mnemonic="%insertJTFileAction.MNEMONIC">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.insertJTFile"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.pasteGraphics"
+                mnemonic="%pasteGraphicsAction.MNEMONIC">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.pasteGraphics"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics.Views?after=additions">
+            <command commandId="com.teamcenter.rac.viewCntl">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals value="com.teamcenter.rac.viewCntl"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution
+            locationURI="menu:Graphics.Replace_JT_File?after=additions">
+            <dynamic
+                class="com.teamcenter.rac.pse.graphics.actions.ReplaceJTFileCompoundContributionItem"
+                id="com.teamcenter.rac.replaceJTFile.items">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </dynamic>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics.Reposition?after=additions">
+            <dynamic
+                class="com.teamcenter.rac.pse.graphics.actions.RepositionCompoundContributionItem"
+                id="com.teamcenter.rac.reposition.items">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with
+                            variable="rac_property.GRAPHICS_REPOSITION_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </dynamic>
+        </menuContribution>
+        <menuContribution
+            locationURI="menu:Graphics.Clearance.Preferences?after=additions">
+            <command commandId="com.teamcenter.rac.clearanceCalcSettingsDialog">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_property.BOMLINE_CLEARANCE_ENABLED">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.clearanceCalcSettingsDialog"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.clearanceReqtsCompsDialog">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_property.BOMLINE_CLEARANCE_ENABLED">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.clearanceReqtsCompsDialog"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.clearanceResultsCompsDialog">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_property.BOMLINE_CLEARANCE_ENABLED">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.clearanceResultsCompsDialog"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics.Clearance?after=additions">
+            <command commandId="com.teamcenter.rac.showClearanceResultsWindow">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_property.BOMLINE_CLEARANCE_ENABLED">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.showClearanceResultsWindow"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics?after=Graphics.Visibility">
+            <command commandId="com.teamcenter.rac.editDisplayProps">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.editDisplayProps"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics?after=Graphics.Views">
+            <command commandId="com.teamcenter.rac.drawChildren">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.drawChildren"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.breakdownSolid"
+                mnemonic="%breakdownSolidAction.MNEMONIC">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.breakdownSolid"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.uniteSolid"
+                mnemonic="%uniteSolidAction.MNEMONIC">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.uniteSolid"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.teamcenter.rac.export3DFile">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_property.BOMLINE_EXPORT3D_LICENSELEVEL">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.export3DFile"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics?before=GraphicsEnd">
+            <command commandId="com.teamcenter.rac.showPerformanceDialog">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.showPerformanceDialog"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics?before=GraphicsEnd">
+            <command commandId="com.teamcenter.rac.showLayerFilterDialog">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.showLayerFilterDialog"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=group.expand">
+            <separator name="group.unload" visible="true"/>
+        </menuContribution>
+        <menuContribution locationURI="menu:Graphics?before=GraphicsEnd">
+            <command commandId="com.teamcenter.rac.showPropertiesDialog">
+                <visibleWhen>
+                    <and>
+                        <with variable="rac_property.BOMLINE_JTVIEWER_VISIBLE">
+                            <equals value="true">
+                            </equals>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.showPropertiesDialog"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <or>
+
+                            <!-- Redundance of applications' references for command suppression listing -->
+                            <reference
+                                definitionId="com.teamcenter.rac.pse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mpp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.fse.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.pmp.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.tcsim.inMainView">
+                              </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.cc.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.requirementsmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.cme.mrm.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.smb.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.specmgr.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.asbuiltmanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.servicemanager.inMainView">
+                            </reference>
+                            <reference
+                                definitionId="com.teamcenter.rac.serviceplanner.inMainView">
+                            </reference>
+                        </or>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution
+              locationURI="popup:org.eclipse.ui.popup.any?after=group.globalalternates">
+           <menu
+                 id="com.teamcenter.rac.setPreferredSubstitute.menu"
+                 label="%SetPreferredSubstitute.LABEL">
+              <dynamic
+                    class="com.teamcenter.rac.pse.common.BOMLineSubstitutionCompoundContributionItem"
+                    id="com.teamcenter.rac.setPreferredSubstitute.dynamic">
+                 <visibleWhen>
+                    <with
+                          variable="rac_contextmenu_suppression">
+                       <not>
+                          <iterate
+                                operator="or">
+                             <equals
+                                   value="com.teamcenter.rac.setPreferredSubstitute.dynamic">
+                             </equals>
+                          </iterate>
+                       </not>
+                    </with>
+                 </visibleWhen>
+              </dynamic>
+              <visibleWhen>
+                 <and>
+                    <not>
+                       <reference
+                             definitionId="com.teamcenter.rac.pse.bomMarkupActiveInPSE">
+                       </reference>
+                    </not>
+                    <with
+                          variable="rac_property.com.teamcenter.rac.pse.common.BOMTreeTable.SET_PREFERRED_SUBSTITUTE">
+                       <equals
+                             value="true">
+                       </equals>
+                    </with>
+                 </and>
+              </visibleWhen>
+           </menu>
+        </menuContribution>
+        <menuContribution
+              locationURI="menu:tools?after=additions">
+           <command
+                 commandId="com.teamcenter.rac.assigncomploc"
+                 id="com.teamcenter.rac.assigncomploc">
+              <visibleWhen>
+                 <and>
+                    <with
+                          variable="rac_command_suppression">
+                       <not>
+                          <iterate
+                                operator="or">
+                             <equals
+                                   value="com.teamcenter.rac.assigncomploc">
+                             </equals>
+                          </iterate></not>
+                    </with>
+                    <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                 </and>
+              </visibleWhen>
+           </command>
+        </menuContribution>
+        <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command commandId="com.teamcenter.rac.launchRemoteInbox"
+                mnemonic="R">
+                <visibleWhen>
+                    <and>
+                        <test
+                            property="com.teamcenter.rac.testers.isRemoteSiteConfigured"
+                            value="true">
+                        </test>
+                        <with variable="rac_contextmenu_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals value="com.teamcenter.rac.launchRemoteInbox">
+                                    </equals>
+                                </iterate>
+                            </not>
+                        </with>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals
+                                        value="com.teamcenter.rac.launchRemoteInbox"/>
+                                </iterate>
+                            </not>
+                        </with>
+                        <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                    </and>
+                </visibleWhen>
+            </command>
+            <separator name="separator" visible="true"/>
+            <separator name="additions"/>
+        </menuContribution>
+        
+    </extension>
+    <extension point="org.eclipse.ui.commands">
+        <command id="com.teamcenter.rac.launchRemoteInbox" name="%Launch_Remote_Inbox.TITLE"/>
+        <command id="com.teamcenter.rac.selectAll" name="%Select_All.TITLE"/>
+        <command id="com.teamcenter.rac.selectNone" name="%Select_None.TITLE"/>
+        <command id="com.teamcenter.rac.reverseSelection"
+            name="%Reverse_Selection.TITLE"/>
+        <command id="com.teamcenter.rac.showSelected"
+            name="%View_Selected.TITLE"/>
+        <command id="com.teamcenter.rac.blankSelected"
+            name="%Blank_Selected.TITLE"/>
+        <command id="com.teamcenter.rac.blankAll" name="%Blank_All.TITLE"/>
+        <command id="com.teamcenter.rac.unblankAll" name="%Unblank_All.TITLE"/>
+        <command id="com.teamcenter.rac.reverseBlankAll"
+            name="%Reverse_Blank_All.TITLE"/>
+        <command id="com.teamcenter.rac.unloadSelected"
+            name="%Unload_Selected.TITLE"/>
+        <command id="com.teamcenter.rac.editDisplayProps"
+            name="%Edit_ColorTranslucency.TITLE"/>
+        <command id="com.teamcenter.rac.insertJTFile"
+            name="%Insert_from_File.TITLE"/>
+        <command id="com.teamcenter.rac.pasteGraphics"
+            name="%Insert_from_Clipboard.TITLE"/>
+        <command id="com.teamcenter.rac.viewCntl" name="%View_Control.TITLE"/>
+        <command id="com.teamcenter.rac.drawChildren"
+            name="%Draw_Children.TITLE"/>
+        <command id="com.teamcenter.rac.breakdownSolid"
+            name="%Show_Subcomponents.TITLE"/>
+        <command id="com.teamcenter.rac.uniteSolid"
+            name="%Hide_Subcomponents.TITLE"/>
+        <command id="com.teamcenter.rac.ShowHideGCSCPLines"
+            name="%Show_GCS_CPs.TITLE"/>
+        <command id="com.teamcenter.rac.export3DFile"
+            name="%Export_3D_File.TITLE"/>
+        <command id="com.teamcenter.rac.effectivtyGroup"
+            name="%viewEditEffectivityGroup.NAME"/>
+        <command
+            defaultHandler="com.teamcenter.rac.pse.graphics.actions.ReplaceJTFileHandler"
+            id="com.teamcenter.rac.replaceJTFile" name="%Graphics.Replace_JT_File.NAME">
+            <commandParameter id="jtFileParamId" name="jtFileParam"
+                optional="true">
+            </commandParameter>
+        </command>
+        <command id="com.teamcenter.rac.explodeBOM" name="%Exploded_View.TITLE"/>
+        <command id="com.teamcenter.rac.editBOM" name="%BOM_Edit.TITLE"/>
+        <command
+            defaultHandler="com.teamcenter.rac.handlers.LegacyHandler:showPerformanceDialogAction:com.teamcenter.rac.psebase.psebase"
+            id="com.teamcenter.rac.showPerformanceDialog"
+            name="%Performance.TITLE">
+        </command>
+        <command
+            defaultHandler="com.teamcenter.rac.handlers.LegacyHandler:showLayerFilterDialogAction:com.teamcenter.rac.psebase.psebase"
+            id="com.teamcenter.rac.showLayerFilterDialog"
+            name="%LayerFilter.TITLE">
+        </command>
+        <command
+            defaultHandler="com.teamcenter.rac.handlers.LegacyHandler:showPropertiesDialogAction:com.teamcenter.rac.psebase.psebase"
+            id="com.teamcenter.rac.showPropertiesDialog"
+            name="%Properties.TITLE">
+        </command>
+        <command
+            defaultHandler="com.teamcenter.rac.handlers.LegacyHandler:showClearanceResultsWindowAction:com.teamcenter.rac.psebase.psebase"
+            id="com.teamcenter.rac.showClearanceResultsWindow"
+            name="%Toggle_Results_Window.TITLE">
+        </command>
+        <command
+            defaultHandler="com.teamcenter.rac.handlers.LegacyHandler:clearanceCalcSettingsDialogAction:com.teamcenter.rac.psebase.psebase"
+            id="com.teamcenter.rac.clearanceCalcSettingsDialog"
+            name="%Calculator_Settings.TITLE">
+        </command>
+        <command
+            defaultHandler="com.teamcenter.rac.handlers.LegacyHandler:clearanceReqtsCompsDialogAction:com.teamcenter.rac.psebase.psebase"
+            id="com.teamcenter.rac.clearanceReqtsCompsDialog"
+            name="%Clearance_Requirements.TITLE">
+        </command>
+        <command
+            defaultHandler="com.teamcenter.rac.handlers.LegacyHandler:clearanceResultsCompsDialogAction:com.teamcenter.rac.psebase.psebase"
+            id="com.teamcenter.rac.clearanceResultsCompsDialog"
+            name="%Clearance_Results.TITLE">
+        </command>
+        <command
+              defaultHandler="com.teamcenter.rac.pse.handlers.SetPreferredSubstituteHandler"
+              id="com.teamcenter.rac.setPreferredSubstitute"
+              name="%SetPreferredSubstitute.LABEL">
+           <commandParameter
+                 id="com.teamcenter.rac.setPreferredSubstituteID"
+                 name="setPreferredSubstitute"
+                 optional="false">
+           </commandParameter>
+        </command>
+        <command id="com.teamcenter.rac.OnDemandValidate"
+            name="%tools.OnDemandValidate.NAME"/>
+        <command id="com.teamcenter.rac.assigncomploc"
+            name="%Assign_Company_Location.TITLE"/>
+        <command
+              id="com.teamcenter.rac.pse.expandOnOpen"
+              name="Expand PSM Root Node">
+        </command>
+        <command
+              id="com.teamcenter.rac.pse.pcaexpandOnOpen"
+              name="%Expand_PSM_PCA_Node.TITLE">
+        </command>
+        <command
+              id="com.teamcenter.rac.pse.pca.OpenSVRDialog"
+              name="%Apply_SVR_Dialog.TITLE">
+        </command>
+    </extension>
+    <extension point="org.eclipse.ui.handlers">
+        <handler
+        class="com.teamcenter.rac.workflow.common.LaunchRemoteInboxHandler"
+        commandId="com.teamcenter.rac.launchRemoteInbox"/>
+        <handler
+            class="com.teamcenter.rac.pse.handlers.Fnd0MarkupPropertiesHandler"
+            commandId="org.eclipse.ui.file.properties">
+            <activeWhen>
+                <and>
+                    <iterate ifEmpty="false">
+                        <adapt type="com.teamcenter.rac.kernel.TCComponent">
+                            <test
+                                property="com.teamcenter.rac.kernel.TCComponent.typeClass"
+                                value="Fnd0Markup">
+                            </test>
+                        </adapt>
+                    </iterate>
+                    <with variable="rac_command_suppression">
+                        <not>
+                            <iterate operator="or">
+                                <equals value="org.eclipse.ui.file.properties"/>
+                            </iterate>
+                        </not>
+                    </with>
+                </and>
+            </activeWhen>
+        </handler>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:openInVMUAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.openInVMU">
+        </handler>
+        <handler class="com.teamcenter.rac.commands.senddatato.SendDataToHandler"
+            commandId="com.teamcenter.rac.sendDataTo">
+        </handler>
+        <handler class="com.teamcenter.rac.commands.senddatato.SendDataToHandler"
+            commandId="com.teamcenter.rac.sendAdditionalDataTo">
+        </handler>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:selectAllAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.selectAll"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:selectNoneAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.selectNone"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:reverseSelectionAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.reverseSelection"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:showSelectedAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.showSelected"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:blankSelectedAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.blankSelected"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:blankAllAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.blankAll"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:unblankAllAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.unblankAll"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:reverseBlankAllAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.reverseBlankAll"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:unloadSelectedAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.unloadSelected"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:editDisplayPropsAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.editDisplayProps"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:insertJTFileAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.insertJTFile"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:pasteGraphicsAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.pasteGraphics"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:viewCntlAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.viewCntl"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:drawChildrenAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.drawChildren"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:breakdownSolidAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.breakdownSolid"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:uniteSolidAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.uniteSolid"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:export3DFileAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.export3DFile"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:explodeBOMAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.explodeBOM"/>
+        <handler
+            class="com.teamcenter.rac.handlers.LegacyHandler:editBOMAction:com.teamcenter.rac.common.actions.actions"
+            commandId="com.teamcenter.rac.editBOM"/>
+        <handler class="com.teamcenter.rac.pse.handlers.EffectivityGroupHandler"
+            commandId="com.teamcenter.rac.effectivtyGroup"/>
+        <handler
+            class="com.teamcenter.rac.pse.handlers.ListSubstitutesHandler"
+            commandId="com.teamcenter.rac.listSubstitutes">
+            <enabledWhen>
+                <with variable="selection">
+                    <count value="1" />
+                    <iterate ifEmpty="false">
+                        <adapt type="com.teamcenter.rac.kernel.TCComponentBOMLine">
+                            <not>
+                                <test
+                                    forcePluginActivation="true"
+                                    property="com.teamcenter.rac.kernel.TCComponent.isRoot"
+                                    value="null">
+                                </test>
+                            </not>
+                        </adapt>
+                    </iterate>
+                </with>
+            </enabledWhen>
+        </handler>
+         <handler class="com.teamcenter.rac.pse.handlers.OnDemandValidateHandler"
+            commandId="com.teamcenter.rac.OnDemandValidate">
+            <activeWhen>
+                <or>
+                    <reference definitionId="com.teamcenter.rac.pse.inMainView"/>
+                    <reference definitionId="com.teamcenter.rac.cme.mpp.inMainView"/>
+                    <reference definitionId="com.teamcenter.rac.cme.cc.inMainView"/>
+                </or>
+            </activeWhen>
+        </handler>
+        <handler
+              class="com.teamcenter.rac.commands.assigncomploc.AssignCompLocHandler"
+              commandId="com.teamcenter.rac.assigncomploc">
+        </handler>
+        <handler
+              class="com.teamcenter.rac.pse.handlers.ExpandOnOpen"
+              commandId="com.teamcenter.rac.pse.expandOnOpen">
+        </handler>
+    </extension>
+    <extension
+          point="org.eclipse.core.expressions.propertyTesters">
+        <propertyTester
+            class="com.teamcenter.rac.testers.LaunchRemoteInboxTester"
+            id="com.teamcenter.rac.testers.LaunchRemoteInboxTester"
+            namespace="com.teamcenter.rac.testers"
+            properties="isRemoteSiteConfigured" 
+            type="java.lang.Object"/>
+        <propertyTester class="com.teamcenter.rac.testers.TVETester"
+            id="com.teamcenter.rac.testers.TVETester"
+            namespace="com.teamcenter.rac.kernel.TCComponent"
+            properties="isTVEConfigured"
+            type="com.teamcenter.rac.kernel.TCComponent"/>
+        <propertyTester
+            class="com.teamcenter.rac.psebase.visreports.IsVisReportApplicationVisTester"
+            id="com.teamcenter.rac.common.testers.IsVisReportApplicationVisTester"
+            namespace="com.teamcenter.rac.kernel.TCComponent"
+            properties="application" type="com.teamcenter.rac.kernel.TCComponent"/>
+        <propertyTester
+            class="com.teamcenter.rac.testers.PartViewerTester"
+            id="com.teamcenter.rac.testers.PartViewerTesterAIF"
+            namespace="com.teamcenter.rac.viewer.ViewerViewRegistry"
+            properties="isPartViewerEnabled"
+            type="com.teamcenter.rac.aif.kernel.AIFComponentContext">
+        </propertyTester>
+        <propertyTester
+              class="com.teamcenter.rac.testers.PartViewerTester"
+              id="com.teamcenter.rac.testers.PartViewerTester"
+              namespace="com.teamcenter.rac.viewer.ViewerViewRegistry"
+              properties="isPartViewerEnabled"
+              type="com.teamcenter.rac.kernel.TCComponent">
+        </propertyTester>
+        <propertyTester class="com.teamcenter.rac.testers.ComponentsSubstituteTester"
+            id="com.teamcenter.rac.testers.ComponentsSubstituteTester"
+            namespace="com.teamcenter.rac.kernel.TCComponentBOMLine"
+            properties="areSubstitutes"
+            type="java.lang.Object"/>
+        <propertyTester class="com.teamcenter.rac.testers.SubstituteTester"
+            id="com.teamcenter.rac.testers.SubstituteTester"
+            namespace="com.teamcenter.rac.kernel.TCComponentBOMLine"
+            properties="isSubstitute"
+            type="com.teamcenter.rac.kernel.TCComponent"/>
+       <propertyTester class="com.teamcenter.rac.testers.TraceLinkTypeTester"
+            id="com.teamcenter.rac.testers.TraceLinkTypeTester"
+            namespace="com.teamcenter.rac.testers.TraceLinkTypeTester"
+            properties="isTargetTraceLinkEnabled"
+            type="java.lang.Object"/>
+       <propertyTester class="com.teamcenter.rac.common.testers.PreferenceTester"
+               id="com.teamcenter.rac.kernel.TCPreferenceService.BVRManagement"
+            namespace="com.teamcenter.rac.kernel.TCPreferenceService"
+            properties="BVRManagement"
+            type="java.lang.Object"/>
+       <propertyTester class="com.teamcenter.rac.testers.ComponentBVRTester"
+            id="com.teamcenter.rac.testers.ComponentBVRAttachmentTester"
+            namespace="com.teamcenter.rac.testers"
+            properties="isComponentBVR"
+            type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine"/>
+       <propertyTester
+             class="com.teamcenter.rac.testers.ConfiguratorContextTester"
+             id="com.teamcenter.rac.kernel.TCComponentBOMLine.hasConfiguratorContext"
+             namespace="com.teamcenter.rac.kernel.TCComponentBOMLine"
+             properties="hasConfiguratorContext"
+             type="com.teamcenter.rac.kernel.TCComponent">
+       </propertyTester>
+       <propertyTester
+             class="com.teamcenter.rac.testers.PreferenceExistsTester"
+             id="com.teamcenter.rac.testers.PreferenceExistsTester.PSM_default_configurator_context"
+             namespace="com.teamcenter.rac.testers.PreferenceExistsTester"
+             properties="PSM_default_configurator_context"
+             type="java.lang.Object">
+       </propertyTester>
+    </extension>
+    <extension
+          point="com.teamcenter.rac.viewer.ViewerViewRegistry">
+       <viewer
+             autoCheckout="false"
+             factoryClassName="com.teamcenter.rac.common.tcviewer.factory.SwingViewerFactory"
+             id="VariantRuleViewer"
+             isSwing="true"
+             priority="100"
+             viewPanel="com.teamcenter.rac.pse.common.VariantRuleViewer">
+          <enableWhen
+                checkEnabled="false">
+          </enableWhen>
+       </viewer>
+       <viewer
+             autoCheckout="false"
+             factoryClassName="com.teamcenter.rac.common.tcviewer.factory.SwingViewerFactory"
+             id="TCClassificationViewer"
+             isSwing="true"
+             priority="100"
+             viewPanel="com.teamcenter.rac.classification.common.TCClassificationViewer">
+          <enableWhen
+                checkEnabled="false">
+          </enableWhen>
+       </viewer>
+       <viewer
+             autoCheckout="false"
+             factoryClassName="com.teamcenter.rac.common.tcviewer.factory.SwingViewerFactory"
+             id="EffectivityEndItemViewer"
+             isSwing="true"
+             priority="100"
+             viewPanel="com.teamcenter.rac.effectivity.EffectivityEndItemViewer">
+          <enableWhen
+                checkEnabled="false">
+          </enableWhen>
+       </viewer>
+       <viewer
+             autoCheckout="false"
+             factoryClassName="com.teamcenter.rac.common.tcviewer.factory.SwingViewerFactory"
+             id="PublishingPageViewer"
+             isSwing="true"
+             priority="100"
+             viewPanel="com.teamcenter.rac.publish.PublishingPageViewer">
+          <enableWhen
+                checkEnabled="false">
+          </enableWhen>
+       </viewer>
+       <viewer
+             autoCheckout="false"
+             factoryClassName="com.teamcenter.rac.common.tcviewer.factory.SwingViewerFactory"
+             id="PublishingPortfolioViewer"
+             isSwing="true"
+             priority="100"
+             viewPanel="com.teamcenter.rac.publish.PublishingPortfolioViewer">
+          <enableWhen
+                checkEnabled="false">
+          </enableWhen>
+       </viewer>
+       <viewer
+             autoCheckout="false"
+             factoryClassName="com.teamcenter.rac.common.tcviewer.factory.SwingViewerFactory"
+             id="PartViewer"
+             isSwing="true"
+             priority="100"
+             viewPanel="com.teamcenter.rac.common.tcviewer.PartViewer">
+          <enableWhen
+                checkEnabled="false">
+                <and>
+                 <count
+                       value="1">
+                 </count>
+                 <iterate
+                       ifEmpty="false"
+                       operator="and">
+                     <adapt
+                           type="com.teamcenter.rac.kernel.TCComponent">
+                        <test
+                              property="com.teamcenter.rac.viewer.ViewerViewRegistry.isPartViewerEnabled">
+                        </test>
+                     </adapt>
+                 </iterate>
+             </and>
+          </enableWhen>
+       </viewer>
+    </extension>
+    <extension point="org.eclipse.core.runtime.adapters">
+        <factory adaptableType="com.teamcenter.rac.workflow.common.TaskFlowNode" class="com.teamcenter.rac.kernel.adapter.TCComponentAdapterFactory">
+            <adapter type="com.teamcenter.rac.aif.kernel.InterfaceAIFComponent"/>
+            <adapter type="com.teamcenter.rac.aif.kernel.AIFComponentContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAMTree"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocation"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocationLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIDCLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMView"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBomChange"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgActivityLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentChangeItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFolder"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGroup"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReport"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReportRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItem"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMEAppearanceGroupLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMECfgLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentPerson"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentRole"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSchedule"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentScheduleTask"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentUser"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentWolfObject"/>
+        </factory>
+        <factory adaptableType="com.teamcenter.rac.kernel.TCComponentSignoff" class="com.teamcenter.rac.workflow.common.actions.TCComponentTaskAdapterFactory">
+            <adapter type="com.teamcenter.rac.kernel.TCComponentTask"/>
+        </factory>
+    </extension>
+    <extension
+          id="saveAsWizardRef"
+          point="com.teamcenter.rac.util.extWizardRef">
+       <extWizardPageGenRef
+             class="com.teamcenter.rac.project.ProjectPageGenerator"
+             startordinal="400"
+             wizardId="com.teamcenter.rac.ui.commands.saveas.SaveAsWizard">
+       </extWizardPageGenRef>
+    </extension>
+    <extension
+          id="reviseWizardRef"
+          point="com.teamcenter.rac.util.extWizardRef">
+       <extWizardPageGenRef
+             class="com.teamcenter.rac.project.ProjectPageGenerator"
+             startordinal="400"
+             wizardId="com.teamcenter.rac.ui.commands.revise.ReviseWizard">
+       </extWizardPageGenRef>
+    </extension>
+    <extension
+          id="newboWizardRef"
+          point="com.teamcenter.rac.util.extWizardRef">
+       <extWizardPageGenRef
+             class="com.teamcenter.rac.project.ProjectPageGeneratorForCreate"
+             startordinal="600"
+             wizardId="com.teamcenter.rac.ui.commands.create.bo.GenericItemWizard">
+       </extWizardPageGenRef>
+    </extension>
+    <extension id="userSettingPanelExtId" name="userSettingPanelName" point="com.teamcenter.rac.common.usersettingsPanelExt">
+       <usersettingsPanelExtRef class="com.teamcenter.rac.commands.assigncomploc.LocationCodeFieldContributor"/>
+    </extension>
+    <extension
+          id="newboWizardRef"
+          point="com.teamcenter.rac.util.extWizardRef">
+       <extWizardPageGenRef
+             class="com.teamcenter.rac.project.ProjectPageGeneratorForCreate"
+             startordinal="600"
+             wizardId="com.teamcenter.rac.ui.commands.create.bo.NewBOWizard">
+       </extWizardPageGenRef>
+    </extension>
+    <extension point="com.teamcenter.rac.util.extCustomPanel">
+        <custom_control
+            id="GenericItemWizard_CreatePropsPage_CustomPanel"
+            pageId="com.teamcenter.rac.ui.commands.create.bo.CreatePropsPage"
+            wizardId="com.teamcenter.rac.ui.commands.create.bo.GenericItemWizard"
+            ordinal="100">
+        <custom_panel
+              class="com.teamcenter.rac.classification.common.ClassifyPanel"
+              ordinal="200">
+          </custom_panel>
+        </custom_control>
+    </extension>
+    <extension
+          point="org.eclipse.core.expressions.definitions">
+       <definition
+             id="com.teamcenter.rac.tcapps.isOperationAllowedOnAttachmentBVR">
+            <adapt
+                type="com.teamcenter.rac.kernel.TCComponent">
+                <or>
+                       <test
+                         property="com.teamcenter.rac.kernel.TCPreferenceService.BVRManagement"
+                         value="false,False,FALSE">
+                       </test>
+                       <adapt
+                         type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine">
+                          <not>
+                             <test
+                                   property="com.teamcenter.rac.testers.isComponentBVR">
+                             </test>
+                          </not>
+                       </adapt>
+                </or>
+            </adapt>
+       </definition>
+    </extension>
+    <extension
+          point="com.teamcenter.rac.util.extMutuallyExclusiveCustomPanel">
+       <composite_of_mutually_exclusive_custom_panels>
+          <custom_panel 
+                custom_panel="com.teamcenter.rac.ui.commands.create.bo.OpenOnCreatePanel">
+          </custom_panel>
+          <custom_panel 
+                custom_panel="com.teamcenter.rac.classification.common.ClassifyPanel">
+          </custom_panel>
+       </composite_of_mutually_exclusive_custom_panels>
+    </extension> 
+</plugin>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+===============================================================================
+                Copyright (c) 2003-2005 UGS Corporation
+                   Unpublished - All Rights Reserved
+===============================================================================
+
+    Filename: queryHint.xml
+
+    Define dtd for tc query hints
+@<DEL>@
+=======================================================================
+Date         Name                    Description of Change
+24-Jan-2003  silvermm                Created
+28-Jan-2003  silvermm                sdlc1379 adds query builder hints...
+07-Mar-2003  silvermm                put in the hints used for product release
+11-Apr-2005  roudebus                Update copyright, block out history
+$HISTORY$
+=======================================================================
+@<DEL>@ -->
+<!DOCTYPE ImanQueryHintFile [
+
+    <!ELEMENT folder ( (folder | hint)* )>
+    <!ATTLIST folder name        CDATA #REQUIRED
+                     description CDATA #REQUIRED>
+    <!ELEMENT hint EMPTY>
+    <!ATTLIST hint name        CDATA #REQUIRED
+                   description CDATA #REQUIRED
+                   class       CDATA #REQUIRED
+                   hint_text   CDATA #REQUIRED>
+                   
+    <!ELEMENT ImanQueryHintFile ((folder | hint)*)>
+]>
+
+
+<ImanQueryHintFile>
+<!-- =============================================== -->
+<!-- ========= item hints ========================== -->
+<!-- =============================================== -->
+<folder name="Item Queries" description="Query Hints for Item Relationships">
+
+    <hint name="Item to Item Revision" description="adding item revision criteria to the item search" class="Item" hint_text="ItemRevision&lt;-items_tag.item_revision_id"/>
+
+    <hint name="Item to Item Master Form" description="adding master form criteria to the item search" class="Item" hint_text="Form:IMAN_master_form.ItemMaster:data_file.project_id"/>
+
+    <hint name="Item to Item Revision Form" description="adding criteria from an item revision master form into the item search" class="Item" hint_text="ItemRevision&lt;-items_tag.Form:IMAN_master_form_rev.ItemVersionMaster:data_file.project_id"/>
+
+    <hint name="Item to IMAN_Specification" description="adding criteria from an underlying item revision's dataset to the item search" class="Item" hint_text="ItemRevision&lt;-items_tag.Dataset:IMAN_specification.format_used"/>
+
+    <hint name="Item to IMAN_Aliasid" description="adding criteria from an associated alias identifier to the item search" class="Item" hint_text="Alias:IMAN_aliasid.alias_id"/>
+
+</folder>
+<!-- =============================================== -->
+<!-- ========= item revision hints ================= -->
+<!-- =============================================== -->
+<folder name="Item Revision Queries" description="Query Hints for Item Revision Relationships">
+
+    <hint name="Item Revision to IMAN_Specification" description="adding dataset criteria to the item revision search" class="ItemRevision" hint_text="Dataset:IMAN_specification.format_used"/>
+
+    <hint name="Item Revision to Item Revision Master Form" description="adding master form criteria to the item revision search" class="ItemRevision" hint_text="Form:IMAN_master_form_rev.ItemVersionMaster:data_file.project_id"/>
+
+    <hint name="Item Revision to Item" description="adding item criteria to the item revision search" class="ItemRevision" hint_text="items_tag.item_id"/>
+
+</folder>
+<!-- =============================================== -->
+<!-- ========= dataset hints ================= -->
+<!-- =============================================== -->
+<folder name="Dataset Queries" description="Query Hints for Dataset Relationships">
+
+    <hint name="Specification Dataset to owning Item Revision" description="adding item revision criteria to the specification dataset search" class="Dataset" hint_text="ItemRevision&lt;-IMAN_specification.object_name"/>
+
+    <hint name="Dataset with unknown relation to Item Revision" description="adding item revision criteria to the dataset search" class="Dataset" hint_text="ImanRelation&lt;-secondary_object.ItemRevision:primary_object.object_name"/>
+
+</folder>
+<!-- =============================================== -->
+<!-- ========= folder hints ================= -->
+<!-- =============================================== -->
+<folder name="Folder Queries" description="Query Hints for Folder Relationships">
+
+    <hint name="Contents to owning Folder" description="adding folder criteria to the content object search" class="WorkspaceObject" hint_text="Folder&lt;-contents.object_name"/>
+
+    <hint name="Folder to Contents" description="adding content object criteria to the folder search" class="Folder" hint_text="contents.object_name"/>
+
+</folder>
+<!-- =============================================== -->
+<!-- ========= product structure hints ================= -->
+<!-- =============================================== -->
+<folder name="Product Structure Queries" description="Query Hints for Product Structure Relationships">
+
+    <hint name="Assembly to child Components (Imprecise Structure)" description="adding child component item criteria to the assembly item revision search" class="ItemRevision" hint_text="structure_revisions.PSOccurrence&lt;-parent_bvr.Item:child_item.item_id"/>
+
+    <hint name="Child Components to Assembly (Imprecise Structure)" description="adding assembly item revision criteria to the child component item search" class="Item" hint_text="PSOccurrence&lt;-child_item.parent_bvr.ItemRevision&lt;-structure_revisions.object_name"/>
+
+    <hint name="Assembly to child Components (Precise Structure)" description="adding child component item revision criteria to the assembly item revision search" class="ItemRevision" hint_text="structure_revisions.PSOccurrence&lt;-parent_bvr.ItemRevision:child_item.object_name"/>
+
+    <hint name="Child Components to Assembly (Precise Structure)" description="adding assembly item revision criteria to the child component item revision search" class="ItemRevision" hint_text="PSOccurrence&lt;-child_item.parent_bvr.ItemRevision&lt;-structure_revisions.object_name"/>
+</folder>
+<!-- =============================================== -->
+<!-- ========= workspace object hints ============== -->
+<!-- =============================================== -->
+<folder name="Workspace Object" description="Query Hints for Workspace Objects">
+
+    <hint name="Contents to owning Folder" description="adding folder criteria to the content object search" class="WorkspaceObject" hint_text="Folder&lt;-contents.object_name"/>
+
+    <hint name="Workspace Object owner id" description="adding owner criteria to the workspace object search" class="WorkspaceObject" hint_text="owning_user.user_id"/>
+    <!-- note that this hint is repeated below.
+         hints can be duplicated under different folder haedings as needed -->
+     <hint name="Workspace Object in an EPMJob" description="adding EPMJob criteria to the workspace object search" class="WorkspaceObject" hint_text="EPMTask&lt;-attachments.EPMJob&lt;-root_task.object_name"/>
+
+</folder>
+<!-- =============================================== -->
+<!-- ========= EPMJob  hints ======================= -->
+<!-- =============================================== -->
+<folder name="Workflows" description="Query Hints for EPMJobs">
+
+    <hint name="Job by state" description="adding job state criteria to the EPMJob search" class="EPMJob" hint_text="root_task.state_value"/>
+    <!-- note that this hint is repeated above.
+         hints can be duplicated under different folder haedings as needed -->
+     <hint name="Workspace Object in an EPMJob" description="adding EPMJob criteria to the workspace object search" class="WorkspaceObject" hint_text="EPMTask&lt;-attachments.EPMJob&lt;-root_task.object_name"/>
+
+</folder>
+<!-- ==================================================== -->
+<!-- === one of every releationship type  hints ========= -->
+<!--                                                      -->
+<!-- This block includes an example of each type of       -->
+<!-- hint in a relationship by relationship type basis    -->
+<!--                                                      -->
+<!-- It is not intended that these be made available      -->
+<!-- in a production environment. This is why the are     -->
+<!-- commented out                                        -->
+<!--                                                      -->
+<!-- The below hints also demonstrate the sub-folder      -->
+<!-- capability of the hint tree. It is possibly to       -->
+<!-- organize hints by tc class (as above) or by        -->
+<!-- organization - as detailed below.                    -->
+<!--                                                      -->
+<!--                                                      -->
+<!-- ==================================================== -->
+<!--  commented out...
+<folder name="Dept 1 hints" description="hints for joe's department">
+    <hint name="simpleName" description="no levels of indirection" class="Item" hint_text="item_id"/>
+    <hint name="inClass" description="inClass classification... " class="Item" hint_text="&lt;Complex_analysis&gt;:IMAN_Classification.1000"/>
+    <hint name="inClass2" description="inClass classification...with funny name " class="Item" hint_text="&lt;33333&gt;:IMAN_Classification.1003"/>
+    <hint name="alias" description="iman alias relationship" class="Item" hint_text="Alias:iman_alias"/>
+    <hint name="owner id" description="one level of indirection" class="Item" hint_text="owning_user.user_id"/>
+    <hint name="item rev reference" description="references example" class="Item" hint_text="ItemRevision&lt;-items_tag.owning_user.user_id"/>
+</folder>
+<folder name="Designer's Hints" description="a list of queries used in the design group">
+    <folder name="engine design" description="yes we can nest n-levels deep">
+        <hint name="simpleName" description="no levels of indirection" class="Item" hint_text="item_id"/>
+        <hint name="inClass" description="inClass classification... " class="Item" hint_text="&lt;Complex_analysis&gt;:IMAN_Classification.1000"/>
+        <hint name="alias" description="iman alias relationship" class="Item" hint_text="Alias:iman_alias"/>
+        <hint name="owner id" description="one level of indirection" class="WorkspaceObject" hint_text="owning_user.user_id"/>
+        <hint name="item rev reference" description="references example" class="Item" hint_text="ItemRevision&lt;-items_tag.owning_user.user_id"/>
+    </folder>
+    <hint name="simpleName" description="no levels of indirection" class="Item" hint_text="item_id"/>
+    <hint name="inClass" description="inClass classification... " class="Item" hint_text="&lt;Complex_analysis&gt;:IMAN_Classification.1000"/>
+    <hint name="alias" description="iman alias relationship" class="Item" hint_text="Alias:iman_alias"/>
+    <hint name="owner id" description="one level of indirection" class="WorkspaceObject" hint_text="owning_user.user_id"/>
+    <hint name="item rev reference" description="references example" class="Item" hint_text="ItemRevision&lt;-items_tag.owning_user"/>
+</folder>
+
+-->
+</ImanQueryHintFile>
+
+
