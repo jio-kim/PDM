@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-11">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry exported="true" kind="lib" path="calendarcombo-1.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="classes12.jar"/>
+	<classpathentry exported="true" kind="lib" path="ctabletree.jar"/>
+	<classpathentry exported="true" kind="lib" path="cwt-0.9.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="datechooser-1.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="dom4j-1.6.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="formattedtext-1.0.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="jcommon-1.0.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="jdom.jar"/>
+	<classpathentry exported="true" kind="lib" path="jfreechart-1.0.13-swt.jar"/>
+	<classpathentry exported="true" kind="lib" path="jfreechart-1.0.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="jxl.jar"/>
+	<classpathentry exported="true" kind="lib" path="l2fprod-common-all.jar"/>
+	<classpathentry exported="true" kind="lib" path="log4j-1.2.16.jar"/>
+	<classpathentry exported="true" kind="lib" path="mybatis-3.0.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="NetComponents-1.3.8.jar"/>
+	<classpathentry exported="true" kind="lib" path="org.eclipse.nebula.widgets.pgroup_1.0.0.201105261448.jar"/>
+	<classpathentry exported="true" kind="lib" path="org.eclipse.nebula.widgets.pshelf_1.0.0.201105261452.jar"/>
+	<classpathentry exported="true" kind="lib" path="radiogroup-0.1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="sapjco3.jar"/>
+	<classpathentry exported="true" kind="lib" path="swing2swt.jar"/>
+	<classpathentry exported="true" kind="lib" path="swingx-2008_01_27.jar"/>
+	<classpathentry exported="true" kind="lib" path="swt-grouplayout.jar"/>
+	<classpathentry exported="true" kind="lib" path="xmlbeans-2.3.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="poi-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="poi-examples-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="poi-excelant-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="poi-ooxml-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="poi-ooxml-schemas-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="poi-scratchpad-3.9-20121203.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-codec-1.7.jar"/>
+	<classpathentry exported="true" kind="lib" path="miglayout15-swing.jar"/>
+	<classpathentry exported="true" kind="lib" path="swingCalendar.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-collections-3.2.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="javax.mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-codec.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-logging-1.1.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-net-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-pool-1.6.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-beanutils-1.8.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-dbcp-1.4.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-httpclient-3.1.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-lang-2.6.jar"/>
+	<classpathentry kind="lib" path="bin" sourcepath="bin"/>
+	<classpathentry exported="true" kind="lib" path="Cat2bmml.jar"/>
+	<classpathentry exported="true" kind="lib" path="Cat2ebscomservice.jar"/>
+	<classpathentry exported="true" kind="lib" path="Cat2tciccommon.jar"/>
+	<classpathentry exported="true" kind="lib" path="xml-apis.jar"/>
+	<classpathentry exported="true" kind="lib" path="org.apache.commons.httpclient.jar"/>
+	<classpathentry exported="true" kind="lib" path="serializer.jar"/>
+	<classpathentry exported="true" kind="lib" path="xalan.jar"/>
+	<classpathentry exported="true" kind="lib" path="xercesImpl.jar"/>
+	<classpathentry exported="true" kind="lib" path="axis-1.4_1.jar"/>
+	<classpathentry exported="true" kind="lib" path="commons-discovery-0.2.jar"/>
+	<classpathentry exported="true" kind="lib" path="javax.xml.rpc-3.1.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
