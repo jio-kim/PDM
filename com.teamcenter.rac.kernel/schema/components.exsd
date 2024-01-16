@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.teamcenter.rac.kernel" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appInfo>
+         <meta.schema plugin="com.teamcenter.rac.kernel" id="components" name="components"/>
+      </appInfo>
+      <documentation>
+         The purpose of this schema extension point is to control the mapping of the server side schema type definitions into the client.
+      </documentation>
+   </annotation>
+
+   <element name="components">
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+            <element ref="component"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appInfo>
+                  <meta.attribute translatable="true"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="component">
+      <annotation>
+         <documentation>
+            component definition
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  This is the type name as known by the server side schema. This is a case sensitive value.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  This is the component class name. This must be a subclass of TCComponent.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.teamcenter.rac.kernel.TCComponent:"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="type" type="string" use="required">
+            <annotation>
+               <documentation>
+                  This is the component type class name. This must be a subclass of TCComponentType.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="com.teamcenter.rac.kernel.TCComponentType:"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+         <attribute name="icct" type="string" use="required">
+            <annotation>
+               <documentation>
+                  This is the ICCT factory class name. This must be a subclass of ICCT.
+               </documentation>
+               <appInfo>
+                  <meta.attribute kind="java" basedOn="java.lang.Object:"/>
+               </appInfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="examples"/>
+      </appInfo>
+      <documentation>
+         &lt;extension id=&quot;com.teamcenter.rac.myplugin&quot;
+           point=&quot;com.teamcenter.rac.kernel.Kernel_Components&quot;&gt;
+    &lt;entry id=&quot;MyType&quot;
+           name=&quot;com.teamcenter.rac.interop.TCComponentMine&quot;
+           type=&quot;com.teamcenter.rac.kernel.TCComponentMineType&quot;
+           icct=&quot;ICCTMine&quot; /&gt;
+&lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+
+
+   <annotation>
+      <appInfo>
+         <meta.section type="copyright"/>
+      </appInfo>
+      <documentation>
+         Copyright 2010.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+      </documentation>
+   </annotation>
+
+</schema>

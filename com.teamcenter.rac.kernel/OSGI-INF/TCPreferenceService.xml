@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.kernel.TCPreferenceService">
+    <implementation class="com.teamcenter.rac.kernel.TCPreferenceService"/>
+    <service>
+        <provide interface="com.teamcenter.rac.kernel.TCPreferenceService"/>
+        <provide interface="com.teamcenter.rac.aif.kernel.IPreferenceService"/>
+        <provide interface="com.teamcenter.rac.kernel.ITCPreferenceService"/>
+        <provide interface="org.osgi.service.event.EventHandler"/>
+    </service>
+    <property name="event.topics" type="String">
+        com/teamcenter/rac/aifrcp/event/Session/Login/Pre
+        com/teamcenter/rac/aifrcp/event/Session/Resume
+        com/teamcenter/rac/aifrcp/event/Session/Logout/Post
+        com/teamcenter/rac/common/prefService/clearCache
+    </property>
+</scr:component>

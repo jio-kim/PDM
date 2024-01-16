@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+    <implementation class="com.teamcenter.rac.kernel.debug.RACRequestListener"/>
+    <service>
+        <provide interface="org.osgi.service.event.EventHandler"/>
+        <provide interface="com.teamcenter.rac.kernel.debug.IRACRequestListener"/>
+    </service>
+    <property name="event.topics" type="String" value="com/teamcenter/rac/aifrcp/event/Session/Login/Pre"/>
+</scr:component>

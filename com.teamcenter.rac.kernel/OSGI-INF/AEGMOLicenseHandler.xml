@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.kernel.services.impl.AEGMOLicenseHandler">
+   <implementation class="com.teamcenter.rac.kernel.services.impl.AEGMOLicenseHandler"/>
+   <service>
+      <provide interface="org.osgi.service.event.EventHandler"/>
+   </service>
+   <property name="event.topics" type="String">
+      org/eclipse/ui/Workbench/PostStartup
+   </property>
+   <reference bind="setPortalService" cardinality="1..1" interface="com.teamcenter.rac.services.IPortalService" name="IPortalService" policy="static"/>
+</scr:component>

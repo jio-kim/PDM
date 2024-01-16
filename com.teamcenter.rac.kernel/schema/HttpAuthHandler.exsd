@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.teamcenter.rac.kernel" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.teamcenter.rac.kernel" id="com.teamcenter.rac.kernel.HttpAuthHandler" name="HttpAuthHandler"/>
+      </appinfo>
+      <documentation>
+         The purpose of this schema extension point is to define the HTTP Authentication Handler.
+      </documentation>
+   </annotation>
+
+   <element name="handlers">
+      <complexType>
+         <sequence>
+            <element ref="handler"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="handler">
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  This is the service class name. This class must implement the AuthenticationHandler2 interface.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="com.teamcenter.soa.client.AuthenticationHandler2:"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="singleCookieHeader" type="boolean">
+            <annotation>
+               <documentation>
+                  Set this to true to configure the HTTP communication to use a single HTTP header
+                  for all HTTP cookies sent to the server.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;extension id=&quot;com.abc.rac.myplugin&quot; point=&quot;com.teamcenter.rac.kernel.HttpAuthHandler&quot;&gt;
+    &lt;entry id=&quot;MyAuthHandler&quot; name=&quot;com.abc.rac.myplugin.MyAuthHandler&quot;  singleCookieHeader=&quot;true&quot;/&gt;
+&lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright 2009.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+      </documentation>
+   </annotation>
+
+</schema>

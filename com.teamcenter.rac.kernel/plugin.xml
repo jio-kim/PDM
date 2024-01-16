@@ -1,0 +1,597 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.6"?>
+<!-- 
+   @<COPYRIGHT>@
+   ==================================================
+   Copyright 2018.
+   Siemens Product Lifecycle Management Software Inc.
+   All Rights Reserved.
+   ==================================================
+   @<COPYRIGHT>@
+-->
+<plugin>
+    <extension-point id="Kernel_Components" name="components" schema="schema/components.exsd"/>
+    <extension id="com.teamcenter.rac.kernel" point="com.teamcenter.rac.kernel.Kernel_Components">
+        <entry id="ADA_License" name="com.teamcenter.rac.kernel.TCComponentADALicense" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="AIEConnection" name="com.teamcenter.rac.kernel.TCComponentConnection" type="com.teamcenter.rac.kernel.TCComponentConnectionType" icct="ICCT" />
+        <entry id="AIEConnectionFile" name="com.teamcenter.rac.kernel.TCComponentConnectionFile" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="AIEConnectionFileList" name="com.teamcenter.rac.kernel.TCComponentConnectionFileList" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="AIEEncapsulation" name="com.teamcenter.rac.kernel.TCComponentEncapsulation" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="AIEPersistentConnection" name="com.teamcenter.rac.kernel.TCComponentAIEPersistentConnection" type="com.teamcenter.rac.kernel.TCComponentAIEPersistentConnectionType" icct="ICCTAIEPersistentConnection" />
+        <entry id="Allocation" name="com.teamcenter.rac.kernel.TCComponentAllocation" type="com.teamcenter.rac.kernel.TCComponentAllocationType" icct="ICCTAllocation" />
+        <entry id="AllocationLine" name="com.teamcenter.rac.kernel.TCComponentAllocationLine" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="AllocationMap" name="com.teamcenter.rac.kernel.TCComponentAllocationMap" type="com.teamcenter.rac.kernel.TCComponentAllocationMapType" icct="ICCTAllocationMap" />
+        <entry id="AllocationMapRevision" name="com.teamcenter.rac.kernel.TCComponentAllocationMapRev" type="com.teamcenter.rac.kernel.TCComponentAllocationMapRevType" icct="ICCTAllocationMapRev" />
+        <entry id="AllocationWindow" name="com.teamcenter.rac.kernel.TCComponentAllocationWindow" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="AllowedDeviation" name="com.teamcenter.rac.kernel.TCComponentAllowedDeviation" type="com.teamcenter.rac.kernel.TCComponentTcRelationType" icct="ICCTTcRelation" />
+        <entry id="AM_ACL" name="com.teamcenter.rac.kernel.TCComponentACL" type="com.teamcenter.rac.kernel.TCComponentACLType" icct="ICCTACL" />
+        <entry id="AM_privileges" name="com.teamcenter.rac.kernel.TCComponentPrivilege" type="com.teamcenter.rac.kernel.TCComponentPrivilegeType" icct="ICCTPrivilege" />
+        <entry id="AM_tree" name="com.teamcenter.rac.kernel.TCComponentAMTree" type="com.teamcenter.rac.kernel.TCComponentAMTreeType" icct="ICCTAMTree" />
+        <entry id="AppDataModelDefinition" name="com.teamcenter.rac.kernel.TCComponentAppDataModelDefinition" type="com.teamcenter.rac.kernel.TCComponentAppDataModelDefinitionType" icct="ICCTAppDataModelDefinition" />
+        <entry id="Appearance" name="com.teamcenter.rac.kernel.TCComponentAppearance" type="com.teamcenter.rac.kernel.TCComponentAppearanceType" icct="ICCTAppearance" />
+        <entry id="AppearanceAttrDefinition" name="com.teamcenter.rac.kernel.TCComponentAppearanceAttrDefinition" type="com.teamcenter.rac.kernel.TCComponentAppearanceAttrDefinitionType" icct="ICCTAppearanceAttrDefinition" />
+        <entry id="AppearanceAttrMapping" name="com.teamcenter.rac.kernel.TCComponentAppearanceAttrMapping" type="com.teamcenter.rac.kernel.TCComponentAppearanceAttrMappingType" icct="ICCTAppearanceAttrMapping" />
+        <entry id="AppearanceConfigContext" name="com.teamcenter.rac.kernel.TCComponentAppearanceConfigContext" type="com.teamcenter.rac.kernel.TCComponentAppearanceConfigContextType" icct="ICCTAppearanceConfigContext" />
+        <entry id="AppearanceGroup" name="com.teamcenter.rac.kernel.TCComponentAppearanceGroup" type="com.teamcenter.rac.kernel.TCComponentAppearanceGroupType" icct="ICCTAppearanceGroup" />
+        <entry id="AppearanceRoot" name="com.teamcenter.rac.kernel.TCComponentAppearanceRoot" type="com.teamcenter.rac.kernel.TCComponentAppearanceRootType" icct="ICCTAppearanceRoot" />
+        <entry id="AppearancesSearchResult" name="com.teamcenter.rac.kernel.TCComponentSearchResult" type="com.teamcenter.rac.kernel.TCComponentSearchResultType" icct="ICCTSearchResult" />
+        <entry id="AppearanceTrackedItemInfo" name="com.teamcenter.rac.kernel.TCComponentAppearanceTrackedItemInfo" type="com.teamcenter.rac.kernel.TCComponentAppearanceTrackedItemInfoType" icct="ICCTAppearanceTrackedItemInfo" />
+        <entry id="AppGroupBOPLine" name="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine" type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLineType" icct="ICCTAppGroupBOPLine" />
+        <entry id="AppInterface" name="com.teamcenter.rac.kernel.TCComponentAppInterface" type="com.teamcenter.rac.kernel.TCComponentAppInterfaceType" icct="ICCTAppInterface" />
+        <entry id="AppInterfaceType" name="com.teamcenter.rac.kernel.TCComponentAIType" type="com.teamcenter.rac.kernel.TCComponentAITypeType" icct="ICCTAppInterface" />
+        <entry id="ApprSearchCriteria" name="com.teamcenter.rac.kernel.TCComponentSearchCriteria" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaType" icct="ICCTSearchCriteria" />
+        <entry id="ApprSearchCriteriaAttribute" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaAttribute" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaAttributeType" icct="ICCTSearchCriteriaAttribute" />
+        <entry id="ApprSearchCriteriaBoxZone" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaBoxZone" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaBoxZoneType" icct="ICCTSearchCriteriaBoxZone" />
+        <entry id="ApprSearchCriteriaGroup" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaGrouping" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaGroupingType" icct="ICCTSearchCriteriaGrouping" />
+        <entry id="ApprSearchCriteriaInClass" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaInClass" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaInClassType" icct="ICCTSearchCriteriaInClass" />
+        <entry id="ApprSearchCriteriaMapAttr" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaMappedAttribute" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaMappedAttributeType" icct="ICCTSearchCriteriaMappedAttribute" />
+        <entry id="ApprSearchCriteriaNamedZone" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaNamedZone" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaNamedZoneType" icct="ICCTSearchCriteriaNamedZone" />
+        <entry id="ApprSearchCriteriaPlaneZone" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaPlaneZone" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaPlaneZoneType" icct="ICCTSearchCriteriaPlaneZone" />
+        <entry id="ApprSearchCriteriaProximity" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaProximity" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaProximityType" icct="ICCTSearchCriteriaProximity" />
+        <entry id="ApprSearchCriteriaSavedQry" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaSavedQuery" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaSavedQueryType" icct="ICCTSearchCriteriaSavedQuery" />
+        <entry id="ApprSearchCriteriaSlctState" name="com.teamcenter.rac.kernel.TCComponentSearchCriteriaAppearances" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaAppearancesType" icct="ICCTSearchCriteriaAppearances" />
+        <entry id="Architecture" name="com.teamcenter.rac.kernel.TCComponentArchitecture" type="com.teamcenter.rac.kernel.TCComponentArchitectureType" icct="ICCTArch" />
+        <entry id="ArchitectureRevision" name="com.teamcenter.rac.kernel.TCComponentArchitectureRevision" type="com.teamcenter.rac.kernel.TCComponentArchitectureRevisionType" icct="ICCTArchRevision" />
+        <entry id="AssemblyArrangement" name="com.teamcenter.rac.kernel.TCComponentAssemblyArrangement" type="com.teamcenter.rac.kernel.TCComponentAssemblyArrangementType" icct="ICCTAssemblyArrangement" />
+        <entry id="AuditDefinition" name="com.teamcenter.rac.kernel.TCComponentAuditDefinition" type="com.teamcenter.rac.kernel.TCComponentAuditDefinitionType" icct="ICCTAuditDefinition" />
+        <entry id="AuditReport" name="com.teamcenter.rac.kernel.TCComponentAuditReport" type="com.teamcenter.rac.kernel.TCComponentAuditReportType" icct="ICCTAuditReport" />
+        <entry id="BillRate" name="com.teamcenter.rac.kernel.TCComponentBillRate" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="BomChange" name="com.teamcenter.rac.kernel.TCComponentBomChange" type="com.teamcenter.rac.kernel.TCComponentBomChangeType" icct="ICCTBomChange" />
+        <entry id="BOMEdit" name="com.teamcenter.rac.kernel.TCComponentBOMEdit" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="BOMLine" name="com.teamcenter.rac.kernel.TCComponentBOMLine" type="com.teamcenter.rac.kernel.TCComponentBOMLineType" icct="ICCTBOMLine" />
+        <entry id="BOMLineMarkup" name="com.teamcenter.rac.kernel.TCComponentBOMLineMarkup" type="com.teamcenter.rac.kernel.TCComponentBOMLineType" icct="ICCTBOMLine" />
+        <entry id="BOMSupersedure" name="com.teamcenter.rac.kernel.TCComponentBOMSupersedure" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="BOMVariantRule" name="com.teamcenter.rac.kernel.TCComponentVariantRule" type="com.teamcenter.rac.kernel.TCComponentVariantRuleType" icct="ICCTVariantRule" />
+        <entry id="BOMWindow" name="com.teamcenter.rac.kernel.TCComponentBOMWindow" type="com.teamcenter.rac.kernel.TCComponentBOMWindowType" icct="ICCTBOMWindow" />
+        <entry id="BOPLine" name="com.teamcenter.rac.kernel.TCComponentBOPLine" type="com.teamcenter.rac.kernel.TCComponentBOPLineType" icct="ICCTBOPLine" />
+        <entry id="BOPWindow" name="com.teamcenter.rac.kernel.TCComponentBOPWindow" type="com.teamcenter.rac.kernel.TCComponentBOPWindowType" icct="ICCTBOPWindow" />
+        <entry id="BOSWindow" name="com.teamcenter.rac.kernel.TCComponentBOSWindow" type="com.teamcenter.rac.kernel.TCComponentBOSWindowType" icct="ICCTBOSWindow" />
+        <entry id="CAE0Config" name="com.teamcenter.rac.kernel.TCComponentCAE0Config" type="com.teamcenter.rac.kernel.TCComponentCAE0ConfigType" icct="ICCTCAEItem" />
+        <entry id="CAE0ConfigRevision" name="com.teamcenter.rac.kernel.TCComponentCAE0ConfigRevision" type="com.teamcenter.rac.kernel.TCComponentCAE0ConfigRevisionType" icct="ICCTCAEItemRevision" />
+        <entry id="CAE0FileCollection" name="com.teamcenter.rac.kernel.TCComponentCAE0FileCollection" type="com.teamcenter.rac.kernel.TCComponentCAE0FileCollectionType" icct="ICCT" />
+        <entry id="CAE0MDOTemplate" name="com.teamcenter.rac.kernel.TCComponentCAE0MDOTemplate" type="com.teamcenter.rac.kernel.TCComponentCAE0MDOTemplateType" icct="ICCTCAEItem" />
+        <entry id="CAE0MDOTemplateRevision" name="com.teamcenter.rac.kernel.TCComponentCAE0MDOTemplateRevision" type="com.teamcenter.rac.kernel.TCComponentCAE0MDOTemplateRevisionType" icct="ICCTCAEItemRevision" />
+        <entry id="CAE0StrMapFilter" name="com.teamcenter.rac.kernel.TCComponentCAE0StrMapFilter" type="com.teamcenter.rac.kernel.TCComponentCAE0StrMapFilterType" icct="ICCTCAEItem" />
+        <entry id="CAE0StrMapFilterRevision" name="com.teamcenter.rac.kernel.TCComponentCAE0StrMapFilterRevision" type="com.teamcenter.rac.kernel.TCComponentCAE0StrMapFilterRevisionType" icct="ICCTCAEItemRevision" />
+        <entry id="CAEAnalysis" name="com.teamcenter.rac.kernel.TCComponentCAEAnalysis" type="com.teamcenter.rac.kernel.TCComponentCAEAnalysisType" icct="ICCTCAEAnalysis" />
+        <entry id="CAEAnalysisRevision" name="com.teamcenter.rac.kernel.TCComponentCAEAnalysisRevision" type="com.teamcenter.rac.kernel.TCComponentCAEAnalysisRevisionType" icct="ICCTCAEAnalysisRevision" />
+        <entry id="CAEAttachmentWindow" name="com.teamcenter.rac.kernel.TCComponentCAEAttachmentWindow" type="com.teamcenter.rac.kernel.TCComponentCAEAttachmentWindowType" icct="ICCTCfgAttachmentWindow" />
+        <entry id="CAEBCItem" name="com.teamcenter.rac.kernel.TCComponentCAEBCItem" type="com.teamcenter.rac.kernel.TCComponentCAEBCItemType" icct="ICCTCAEBCItem" />
+        <entry id="CAEBCItemRevision" name="com.teamcenter.rac.kernel.TCComponentCAEBCItemRevision" type="com.teamcenter.rac.kernel.TCComponentCAEBCItemRevisionType" icct="ICCTCAEBCItemRevision" />
+        <entry id="CAEConnItem" name="com.teamcenter.rac.kernel.TCComponentCAEConnItem" type="com.teamcenter.rac.kernel.TCComponentCAEConnItemType" icct="ICCTCAEConnItem" />
+        <entry id="CAEConnItemRevision" name="com.teamcenter.rac.kernel.TCComponentCAEConnItemRevision" type="com.teamcenter.rac.kernel.TCComponentCAEConnItemRevisionType" icct="ICCTCAEConnItemRevision" />
+        <entry id="CAEGeometry" name="com.teamcenter.rac.kernel.TCComponentCAEGeometry" type="com.teamcenter.rac.kernel.TCComponentCAEGeometryType" icct="ICCTCAEGeometryItem" />
+        <entry id="CAEGeometryRevision" name="com.teamcenter.rac.kernel.TCComponentCAEGeometryRevision" type="com.teamcenter.rac.kernel.TCComponentCAEGeometryRevisionType" icct="ICCTCAEGeometryItemRevision" />
+        <entry id="CAEItem" name="com.teamcenter.rac.kernel.TCComponentCAEItem" type="com.teamcenter.rac.kernel.TCComponentCAEItemType" icct="ICCTCAEItem" />
+        <entry id="CAEItemRevision" name="com.teamcenter.rac.kernel.TCComponentCAEItemRevision" type="com.teamcenter.rac.kernel.TCComponentCAEItemRevisionType" icct="ICCTCAEItemRevision" />
+        <entry id="CAELoadItem" name="com.teamcenter.rac.kernel.TCComponentCAELoadItem" type="com.teamcenter.rac.kernel.TCComponentCAELoadItemType" icct="ICCTCAELoadItem" />
+        <entry id="CAELoadItemRevision" name="com.teamcenter.rac.kernel.TCComponentCAELoadItemRevision" type="com.teamcenter.rac.kernel.TCComponentCAELoadItemRevisionType" icct="ICCTCAELoadItemRevision" />
+        <entry id="CAEModel" name="com.teamcenter.rac.kernel.TCComponentCAEModel" type="com.teamcenter.rac.kernel.TCComponentCAEModelType" icct="ICCTCAEModelItem" />
+        <entry id="CAEModelRevision" name="com.teamcenter.rac.kernel.TCComponentCAEModelRevision" type="com.teamcenter.rac.kernel.TCComponentCAEModelRevisionType" icct="ICCTCAEModelItemRevision" />
+        <entry id="CAEResult" name="com.teamcenter.rac.kernel.TCComponentCAEResult" type="com.teamcenter.rac.kernel.TCComponentCAEResultType" icct="ICCTCAEResultItem" />
+        <entry id="CAEResultData" name="com.teamcenter.rac.kernel.TCComponentCAEResultData" type="com.teamcenter.rac.kernel.TCComponentCAEResultDataType" icct="ICCTCAEResultData" />
+        <entry id="CAEResultRevision" name="com.teamcenter.rac.kernel.TCComponentCAEResultRevision" type="com.teamcenter.rac.kernel.TCComponentCAEResultRevisionType" icct="ICCTCAEResultItemRevision" />
+        <entry id="CCObject" name="com.teamcenter.rac.kernel.TCComponentCCObject" type="com.teamcenter.rac.kernel.TCComponentCCObjectType" icct="ICCTCCObject" />
+        <entry id="CfgAbsOccAttachmentLine" name="com.teamcenter.rac.kernel.TCComponentCfgAbsOccAttachmentLine" type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLineType" icct="ICCTCfgAbsOccAttachmentLine" />
+        <entry id="CfgActivityLine" name="com.teamcenter.rac.kernel.TCComponentCfgActivityLine" type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLineType" icct="ICCTCfgActivityLine" />
+        <entry id="CfgAttachmentLine" name="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine" type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLineType" icct="ICCTCfgAttachmentLine" />
+        <entry id="CfgAttachmentWindow" name="com.teamcenter.rac.kernel.TCComponentCfgAttachmentWindow" type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentWindowType" icct="ICCTCfgAttachmentWindow" />
+        <entry id="CfgBlAttachmentLine" name="com.teamcenter.rac.kernel.TCComponentCfgBlAttachmentLine" type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLineType" icct="ICCTCfgBlAttachmentLine" />
+        <entry id="CFM_date_info" name="com.teamcenter.rac.kernel.TCComponentOccEffectivity" type="com.teamcenter.rac.kernel.TCComponentOccEffectivityType" icct="ICCTOccEffectivity" />
+        <entry id="ChangeItem" name="com.teamcenter.rac.kernel.TCComponentChangeItem" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="ChangeItemRevision" name="com.teamcenter.rac.kernel.TCComponentChangeItemRevision" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="ChangeTypeData" name="com.teamcenter.rac.kernel.TCComponentChangeType" type="com.teamcenter.rac.kernel.TCComponentChangeTypeType" icct="ICCTChangeType" />
+        <entry id="ClosureRule" name="com.teamcenter.rac.kernel.TCComponentClosureRule" type="com.teamcenter.rac.kernel.TCComponentClosureRuleType" icct="ICCTClosureRule" />
+        <entry id="ComponentRelation" name="com.teamcenter.rac.kernel.TCComponentComponentRelation" type="com.teamcenter.rac.kernel.TCComponentComponentRelationType" icct="ICCTComponentRelation" />
+        <entry id="CondValAgent" name="com.teamcenter.rac.kernel.TCComponentCondValAgent" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="CondValAgentRevision" name="com.teamcenter.rac.kernel.TCComponentCondValAgentRev" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="CondValResult" name="com.teamcenter.rac.kernel.TCComponentCondValResult" type="com.teamcenter.rac.kernel.TCComponentValidationResultType" icct="ICCTValidationResult" />
+        <entry id="ConfigurationContext" name="com.teamcenter.rac.kernel.TCComponentConfigurationContext" type="com.teamcenter.rac.kernel.TCComponentConfigurationContextType" icct="ICCTConfigurationContext" />
+        <entry id="ConfigurationFamily" name="com.teamcenter.rac.kernel.TCComponentConfigurationFamily" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="CostValue" name="com.teamcenter.rac.kernel.TCComponentCostValue" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="CrfQuerySource" name="com.teamcenter.rac.kernel.TCComponentCrfQuerySource" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="CRJob" name="com.teamcenter.rac.kernel.TCComponentProcess" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Dataset" name="com.teamcenter.rac.kernel.TCComponentDataset" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />        
+        <entry id="DatasetType" name="com.teamcenter.rac.kernel.TCComponentDatasetDefinition" type="com.teamcenter.rac.kernel.TCComponentDatasetDefinitionType" icct="ICCTDatasetDefinition" />
+        <entry id="Discipline" name="com.teamcenter.rac.kernel.TCComponentDiscipline" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Effectivity" name="com.teamcenter.rac.kernel.TCComponentEffectivity" type="com.teamcenter.rac.kernel.TCComponentEffectivityType" icct="ICCTEffectivity" />
+        <entry id="EngineeringChange" name="com.teamcenter.rac.kernel.TCComponentEngineeringChange" type="com.teamcenter.rac.kernel.TCComponentEngineeringChangeType" icct="ICCTEngineeringChange" />
+        <entry id="Envelope" name="com.teamcenter.rac.kernel.TCComponentEnvelope" type="com.teamcenter.rac.kernel.TCComponentEnvelopeType" icct="ICCTEnvelope" />
+        <entry id="EPMAssignmentList" name="com.teamcenter.rac.kernel.TCComponentAssignmentList" type="com.teamcenter.rac.kernel.TCComponentAssignmentListType" icct="ICCTAssignmentList" />
+        <entry id="EPMBRHandler" name="com.teamcenter.rac.kernel.TCComponentRuleHandler" type="com.teamcenter.rac.kernel.TCComponentRuleHandlerType" icct="ICCTRuleHandler" />
+        <entry id="EPMBusinessRule" name="com.teamcenter.rac.kernel.TCComponentRule" type="com.teamcenter.rac.kernel.TCComponentRuleType" icct="ICCTRule" />
+        <entry id="EPMHandler" name="com.teamcenter.rac.kernel.TCComponentActionHandler" type="com.teamcenter.rac.kernel.TCComponentActionHandlerType" icct="ICCTActionHandler" />
+        <entry id="EPMJob" name="com.teamcenter.rac.kernel.TCComponentProcess" type="com.teamcenter.rac.kernel.TCComponentProcessType" icct="ICCTProcess" />
+        <entry id="EPMPerformSignoffTaskTemplate" name="com.teamcenter.rac.kernel.TCComponentPerformSignoffTaskTemplate" type="com.teamcenter.rac.kernel.TCComponentTaskTemplateType" icct="ICCTTaskTemplate" />
+        <entry id="EPMSelectSignoffTaskTemplate" name="com.teamcenter.rac.kernel.TCComponentSelectSignoffTaskTemplate" type="com.teamcenter.rac.kernel.TCComponentTaskTemplateType" icct="ICCTTaskTemplate" />
+        <entry id="EPMSignoffProfile" name="com.teamcenter.rac.kernel.TCComponentProfile" type="com.teamcenter.rac.kernel.TCComponentProfileType" icct="ICCTSignoffProfile" />
+        <entry id="EPMTask" name="com.teamcenter.rac.kernel.TCComponentTask" type="com.teamcenter.rac.kernel.TCComponentTaskType" icct="ICCTTask" />
+        <entry id="EPMTaskTemplate" name="com.teamcenter.rac.kernel.TCComponentTaskTemplate" type="com.teamcenter.rac.kernel.TCComponentTaskTemplateType" icct="ICCTTaskTemplate" />
+        <entry id="ExternalAttribute" name="com.teamcenter.rac.kernel.TCComponentExternalAttribute" type="com.teamcenter.rac.kernel.TCComponentExternalAttributeType" icct="ICCTExternalAttribute" />
+        <entry id="ExternalDataSource" name="com.teamcenter.rac.kernel.TCComponentExternalDataSource" type="com.teamcenter.rac.kernel.TCComponentExternalDataSourceType" icct="ICCTExternalDataSource" />
+        <entry id="ExternalObject" name="com.teamcenter.rac.kernel.TCComponentExternalObject" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Filter" name="com.teamcenter.rac.kernel.TCComponentFilter" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0AbstractMarkupSpace" name="com.teamcenter.rac.kernel.TCComponentFnd0AbstractMarkupSpace" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0ApprSchCriteriaFormAttr" name="com.teamcenter.rac.kernel.TCComponentFnd0ApprSchCriteriaFormAttr" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaType" icct="ICCTSearchCriteria" />
+        <entry id="Fnd0ApprSchCriteriaScpAttr" name="com.teamcenter.rac.kernel.TCComponentFnd0ApprSchCriteriaScpAttr" type="com.teamcenter.rac.kernel.TCComponentSearchCriteriaType" icct="ICCTSearchCriteria" />
+        <entry id="Fnd0AuditLog" name="com.teamcenter.rac.kernel.TCComponentFnd0AuditLog" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0BOMLineLite" name="com.teamcenter.rac.kernel.TCComponentFnd0BOMLineLite" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0Branch" name="com.teamcenter.rac.kernel.TCComponentFnd0Branch" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" /> 
+        <entry id="Fnd0ChangeContext" name="com.teamcenter.rac.kernel.TCComponentFnd0ChangeContext" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0Diagram" name="com.teamcenter.rac.kernel.TCComponentFnd0Diagram" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="Fnd0DiagramRevision" name="com.teamcenter.rac.kernel.TCComponentFnd0DiagramRevision" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="Fnd0DiagramTmpl" name="com.teamcenter.rac.kernel.TCComponentFnd0DiagramTmpl" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="Fnd0DiagramTmplRelation" name="com.teamcenter.rac.kernel.TCComponentFnd0DiagramTmplRelation" type="com.teamcenter.rac.kernel.TCComponentTcRelationType" icct="ICCTTcRelation" />
+        <entry id="Fnd0DiagramTmplRevision" name="com.teamcenter.rac.kernel.TCComponentFnd0DiagramTmplRevision" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="Fnd0EditContext" name="com.teamcenter.rac.kernel.TCComponentFnd0EditContext" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0LicenseServer" name="com.teamcenter.rac.kernel.TCComponentFnd0LicenseServer" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0ListsParamReqments" name="com.teamcenter.rac.kernel.TCComponentFnd0ListsParamReqments" type="com.teamcenter.rac.kernel.TCComponentTcRelationType" icct="ICCTTcRelation" />
+        <entry id="Fnd0Message" name="com.teamcenter.rac.kernel.TCComponentFnd0Message" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0ModelViewProxy" name="com.teamcenter.rac.kernel.TCComponentFnd0ModelViewProxy" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0ParamReqmentRevision" name="com.teamcenter.rac.kernel.TCComponentFnd0ParamReqmentRevision" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="Fnd0Profiler" name="com.teamcenter.rac.kernel.TCComponentFnd0Profiler" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0ProxyTask" name="com.teamcenter.rac.kernel.TCComponentFnd0ProxyTask" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0Qualification" name="com.teamcenter.rac.kernel.TCComponentFnd0Qualification" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0QueryFolder" name="com.teamcenter.rac.kernel.TCComponentFnd0QueryFolder" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0RecipeContainer" name="com.teamcenter.rac.kernel.TCComponentFnd0RecipeContainer" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0SecondaryAudit" name="com.teamcenter.rac.kernel.TCComponentFnd0SecondaryAudit" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0ShapeRelation" name="com.teamcenter.rac.kernel.TCComponentFnd0ShapeRelation" type="com.teamcenter.rac.kernel.TCComponentTcRelationType" icct="ICCTTcRelation" />
+        <entry id="Fnd0SubscriptionTemplate" name="com.teamcenter.rac.kernel.TCComponentFnd0SubscriptionTemplate" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0SubscribeCriteriaConf" name="com.teamcenter.rac.kernel.TCComponentFnd0SubscribeCriteriaConf" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0TableRow" name="com.teamcenter.rac.kernel.TCComponentFnd0TableRow" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Fnd0VisioDiagram" name="com.teamcenter.rac.kernel.TCComponentFnd0VisioDiagram" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="Fnd0VisioDiagramRevision" name="com.teamcenter.rac.kernel.TCComponentFnd0VisioDiagramRevision" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="Fnd0VisioTmpl" name="com.teamcenter.rac.kernel.TCComponentFnd0VisioTmpl" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="Fnd0VisioTmplRevision" name="com.teamcenter.rac.kernel.TCComponentFnd0VisioTmplRevision" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="Fnd0WorkflowAudit" name="com.teamcenter.rac.kernel.TCComponentFnd0WorkflowAudit" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="FND_TraceLink" name="com.teamcenter.rac.kernel.TCComponentTraceLink" type="com.teamcenter.rac.kernel.TCComponentTcRelationType" icct="ICCTTcRelation" />
+        <entry id="Folder" name="com.teamcenter.rac.kernel.TCComponentFolder" type="com.teamcenter.rac.kernel.TCComponentFolderType" icct="ICCTFolder" />
+        <entry id="Form" name="com.teamcenter.rac.kernel.TCComponentForm" type="com.teamcenter.rac.kernel.TCComponentFormType" icct="ICCTForm" />
+        <entry id="FullText" name="com.teamcenter.rac.kernel.TCComponentFullText" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTFullText" />
+        <entry id="FullTextType" name="com.teamcenter.rac.kernel.TCComponentDatasetDefinition" type="com.teamcenter.rac.kernel.TCComponentDatasetDefinitionType" icct="ICCTDatasetDefinition" />
+        <entry id="GDEBOPLine" name="com.teamcenter.rac.kernel.TCComponentBOPLine" type="com.teamcenter.rac.kernel.TCComponentBOPLineType" icct="ICCTBOPLine" />
+        <entry id="GDELine" name="com.teamcenter.rac.kernel.TCComponentGDELine" type="com.teamcenter.rac.kernel.TCComponentBOMLineType" icct="ICCTBOMLine" />
+        <entry id="GDELinkLine" name="com.teamcenter.rac.kernel.TCComponentGDELinkLine" type="com.teamcenter.rac.kernel.TCComponentBOMLineType" icct="ICCTBOMLine" />
+        <entry id="GeneralDesignElement" name="com.teamcenter.rac.kernel.TCComponentGDE" type="com.teamcenter.rac.kernel.TCComponentGDEType" icct="ICCTGDE" />
+        <entry id="GeneralDesignElementLink" name="com.teamcenter.rac.kernel.TCComponentGDELink" type="com.teamcenter.rac.kernel.TCComponentGDELinkType" icct="ICCTGDELink" />
+        <entry id="Group" name="com.teamcenter.rac.kernel.TCComponentGroup" type="com.teamcenter.rac.kernel.TCComponentGroupType" icct="ICCTGroup" />
+        <entry id="GroupMember" name="com.teamcenter.rac.kernel.TCComponentGroupMember" type="com.teamcenter.rac.kernel.TCComponentGroupMemberType" icct="ICCTGroupMember" />
+        <entry id="GSIdentity" name="com.teamcenter.rac.kernel.TCComponentGSIdentity" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="icm0" name="com.teamcenter.rac.kernel.TCComponentICO" type="com.teamcenter.rac.kernel.TCComponentICOType" icct="ICCTICO" />
+        <entry id="IDCLine" name="com.teamcenter.rac.kernel.TCComponentIDCLine" type="com.teamcenter.rac.kernel.TCComponentIDCLineType" icct="ICCTIDCLine" />
+        <entry id="IDCLine_Activity" name="com.teamcenter.rac.kernel.TCComponentIDCLine" type="com.teamcenter.rac.kernel.TCComponentIDCLineType" icct="ICCTIDCLine" />
+        <entry id="IDCLine_Attachment" name="com.teamcenter.rac.kernel.TCComponentIDCLine" type="com.teamcenter.rac.kernel.TCComponentIDCLineType" icct="ICCTIDCLine" />
+        <entry id="IDCLine_BOM" name="com.teamcenter.rac.kernel.TCComponentIDCLine" type="com.teamcenter.rac.kernel.TCComponentIDCLineType" icct="ICCTIDCLine" />
+        <entry id="IDCLine_BOMWRITER" name="com.teamcenter.rac.kernel.TCComponentIDCLine" type="com.teamcenter.rac.kernel.TCComponentIDCLineType" icct="ICCTIDCLine" />
+        <entry id="IDCLine_Dataset" name="com.teamcenter.rac.kernel.TCComponentIDCLine" type="com.teamcenter.rac.kernel.TCComponentIDCLineType" icct="ICCTIDCLine" />
+        <entry id="IdContext" name="com.teamcenter.rac.kernel.TCComponentIdContext" type="com.teamcenter.rac.kernel.TCComponentIdContextType" icct="ICCTIdContext" />
+        <entry id="IdContextRule" name="com.teamcenter.rac.kernel.TCComponentIdContextRule" type="com.teamcenter.rac.kernel.TCComponentIdContextRuleType" icct="ICCTIdContextRule" />
+        <entry id="IDCWindow" name="com.teamcenter.rac.kernel.TCComponentIDCWindow" type="com.teamcenter.rac.kernel.TCComponentIDCWindowType" icct="ICCTIDCWindow" />
+        <entry id="IdDispRule" name="com.teamcenter.rac.kernel.TCComponentIdDisplayRule" type="com.teamcenter.rac.kernel.TCComponentIdDisplayRuleType" icct="ICCTIdDisplayRule" />
+        <entry id="IdeasAssembly" name="com.teamcenter.rac.kernel.TCComponentIdeasAssembly" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
+        <entry id="IdeasAssemblyData" name="com.teamcenter.rac.kernel.TCComponentIdeasAssemblyData" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="IdeasBoundingBox" name="com.teamcenter.rac.kernel.TCComponentIdeasBoundingBox" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="IdeasDrawing" name="com.teamcenter.rac.kernel.TCComponentIdeasDrawing" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
+        <entry id="IdeasDrawingReferences" name="com.teamcenter.rac.kernel.TCComponentIdeasDrawingReferences" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="IdeasDrawingSet" name="com.teamcenter.rac.kernel.TCComponentIdeasDrawingSet" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
+        <entry id="IdeasDrawingSetReferences" name="com.teamcenter.rac.kernel.TCComponentIdeasDrawingSetReferences" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="IdeasFem" name="com.teamcenter.rac.kernel.TCComponentIdeasFem" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
+        <entry id="IdeasFemReference" name="com.teamcenter.rac.kernel.TCComponentFemReference" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="IdeasGuids" name="com.teamcenter.rac.kernel.TCComponentIdeasVersionGuid" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="IdeasPart" name="com.teamcenter.rac.kernel.TCComponentIdeasPart" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
+        <entry id="Identifier" name="com.teamcenter.rac.kernel.TCComponentIdentifier" type="com.teamcenter.rac.kernel.TCComponentIdentifierType" icct="ICCTIdentifier" />
+        <entry id="ImanActionHandler" name="com.teamcenter.rac.kernel.TCComponentSubscriptionActionHandler" type="com.teamcenter.rac.kernel.TCComponentSubscriptionActionHandlerType" icct="ICCTSubscriptionActionHandler" />
+        <entry id="ImanAliasList" name="com.teamcenter.rac.kernel.TCComponentAliasList" type="com.teamcenter.rac.kernel.TCComponentAliasListType" icct="ICCTAliasList" />
+        <entry id="ImanEventType" name="com.teamcenter.rac.kernel.TCComponentEvent" type="com.teamcenter.rac.kernel.TCComponentEventType" icct="ICCTEvent" />
+        <entry id="ImanFile" name="com.teamcenter.rac.kernel.TCComponentTcFile" type="com.teamcenter.rac.kernel.TCComponentTcFileType" icct="ICCTTcFile" />
+        <entry id="ImanGRM" name="com.teamcenter.rac.kernel.TCComponentTcGrm" type="com.teamcenter.rac.kernel.TCComponentTcGrmType" icct="ICCTTcGrm" />
+        <entry id="ImanIDCreator" name="com.teamcenter.rac.kernel.TCComponentTcId" type="com.teamcenter.rac.kernel.TCComponentTcIdType" icct="ICCTTcId" />
+        <entry id="ImanItemBOPLine" name="com.teamcenter.rac.kernel.TCComponentBOPLine" type="com.teamcenter.rac.kernel.TCComponentBOPLineType" icct="ICCTBOPLine" />
+        <entry id="ImanPFF" name="com.teamcenter.rac.kernel.TCComponentPff" type="com.teamcenter.rac.kernel.TCComponentPffType" icct="ICCTPff" />
+        <entry id="ImanQuery" name="com.teamcenter.rac.kernel.TCComponentQuery" type="com.teamcenter.rac.kernel.TCComponentQueryType" icct="ICCTQuery" />
+        <entry id="ImanRelation" name="com.teamcenter.rac.kernel.TCComponentTcRelation" type="com.teamcenter.rac.kernel.TCComponentTcRelationType" icct="ICCTTcRelation" />
+        <entry id="ImanSubscription" name="com.teamcenter.rac.kernel.TCComponentSubscription" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="ImanVolume" name="com.teamcenter.rac.kernel.TCComponentVolume" type="com.teamcenter.rac.kernel.TCComponentVolumeType" icct="ICCTVolume" />
+        <entry id="IncrementalChangeElement" name="com.teamcenter.rac.kernel.TCComponentIncrementalChangeElement" type="com.teamcenter.rac.kernel.TCComponentIncrementalChangeElementType" icct="ICCTIncrementalChangeElement" />
+        <entry id="IssueReport" name="com.teamcenter.rac.kernel.TCComponentIssueReport" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="IssueReportRevision" name="com.teamcenter.rac.kernel.TCComponentIssueReportRevision" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="Item" name="com.teamcenter.rac.kernel.TCComponentItem" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="ItemRevision" name="com.teamcenter.rac.kernel.TCComponentItemRevision" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="Job" name="com.teamcenter.rac.kernel.TCComponentProcess" type="com.teamcenter.rac.kernel.TCComponentProcessType" icct="ICCTProcess" />
+        <entry id="ListOfValues" name="com.teamcenter.rac.kernel.TCComponentListOfValues" type="com.teamcenter.rac.kernel.TCComponentListOfValuesType" icct="ICCTListOfValues" />
+        <entry id="MappedProperty" name="com.teamcenter.rac.kernel.TCComponentMappedProperty" type="com.teamcenter.rac.kernel.TCComponentMappedPropertyType" icct="ICCTMappedProperty" />
+        <entry id="MEActivity" name="com.teamcenter.rac.kernel.TCComponentMEActivity" type="com.teamcenter.rac.kernel.TCComponentMEActivityType" icct="ICCTMEActivity" />
+        <entry id="MEAppearanceGroupLine" name="com.teamcenter.rac.kernel.TCComponentMEAppearanceGroupLine" type="com.teamcenter.rac.kernel.TCComponentMEAppearanceGroupLineType" icct="ICCTMEAppearanceGroupLine" />
+        <entry id="MEAppearanceLine" name="com.teamcenter.rac.kernel.TCComponentMEAppearanceLine" type="com.teamcenter.rac.kernel.TCComponentMEAppearanceLineType" icct="ICCTMEAppearanceLine" />
+        <entry id="MEAppearancePathNode" name="com.teamcenter.rac.kernel.TCComponentMEAppearancePathNode" type="com.teamcenter.rac.kernel.TCComponentMEAppearancePathNodeType" icct="ICCTMEAppearancePathNode" />
+        <entry id="MEAppearancePathRoot" name="com.teamcenter.rac.kernel.TCComponentMEAppearancePathRoot" type="com.teamcenter.rac.kernel.TCComponentMEAppearancePathRootType" icct="ICCTMEAppearancePathRoot" />
+        <entry id="MEAssemblyWindow" name="com.teamcenter.rac.kernel.TCComponentMEAssemblyWindow" type="com.teamcenter.rac.kernel.TCComponentMEAssemblyWindowType" icct="ICCTMEAssemblyWindow" />
+        <entry id="MECfgLine" name="com.teamcenter.rac.kernel.TCComponentMECfgLine" type="com.teamcenter.rac.kernel.TCComponentMECfgLineType" icct="ICCTMECfgLine" />
+        <entry id="MECfgWindow" name="com.teamcenter.rac.kernel.TCComponentMECfgWindow" type="com.teamcenter.rac.kernel.TCComponentMECfgWindowType" icct="ICCTMECfgWindow" />
+        <entry id="MEOP" name="com.teamcenter.rac.kernel.TCComponentMEOP" type="com.teamcenter.rac.kernel.TCComponentMEOPType" icct="ICCTMEOP" />
+        <entry id="MEOPRevision" name="com.teamcenter.rac.kernel.TCComponentMEOPRevision" type="com.teamcenter.rac.kernel.TCComponentMEOPRevisionType" icct="ICCTMEOPRevision" />
+        <entry id="MEProcess" name="com.teamcenter.rac.kernel.TCComponentMEProcess" type="com.teamcenter.rac.kernel.TCComponentMEProcessType" icct="ICCTMEProcess" />
+        <entry id="MEProcessRevision" name="com.teamcenter.rac.kernel.TCComponentMEProcessRevision" type="com.teamcenter.rac.kernel.TCComponentMEProcessRevisionType" icct="ICCTMEProcessRevision" />
+        <entry id="MEWorkarea" name="com.teamcenter.rac.kernel.TCComponentMEWorkarea" type="com.teamcenter.rac.kernel.TCComponentMEWorkareaType" icct="ICCTMEWorkarea" />
+        <entry id="MEWorkareaRevision" name="com.teamcenter.rac.kernel.TCComponentMEWorkareaRevision" type="com.teamcenter.rac.kernel.TCComponentMEWorkareaRevisionType" icct="ICCTMEWorkareaRevision" />
+        <entry id="MSWordX" name="com.teamcenter.rac.kernel.TCComponentMSWordX" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
+        <entry id="NamedVariantExpression" name="com.teamcenter.rac.kernel.TCComponentNamedVariantExpression" type="com.teamcenter.rac.kernel.TCComponentNamedVariantExpressionType" icct="ICCTNamedVariantExpression" />
+        <entry id="NameField" name="com.teamcenter.rac.kernel.TCComponentNameField" type="com.teamcenter.rac.kernel.TCComponentNameFieldType" icct="ICCTNameField" />
+        <entry id="NameRule" name="com.teamcenter.rac.kernel.TCComponentNameRule" type="com.teamcenter.rac.kernel.TCComponentNameRuleType" icct="ICCTNameRule" />
+        <entry id="NoteType" name="com.teamcenter.rac.kernel.TCComponentNoteType" type="com.teamcenter.rac.kernel.TCComponentNoteTypeType" icct="ICCTNoteType" />
+        <entry id="NXAgent" name="com.teamcenter.rac.kernel.TCComponentNXAgent" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="NXAgentRevision" name="com.teamcenter.rac.kernel.TCComponentNXAgentRev" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="NXCheckMateRevision" name="com.teamcenter.rac.kernel.TCComponentNXCheckMateRev" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="ObjectMapping" name="com.teamcenter.rac.kernel.TCComponentObjectMapping" type="com.teamcenter.rac.kernel.TCComponentObjectMappingType" icct="ICCTObjectMapping" />
+        <entry id="Participant" name="com.teamcenter.rac.kernel.TCComponentParticipant" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Person" name="com.teamcenter.rac.kernel.TCComponentPerson" type="com.teamcenter.rac.kernel.TCComponentPersonType" icct="ICCTPerson" />
+        <entry id="PIEActionRule" name="com.teamcenter.rac.kernel.TCComponentPIEActionRule" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="POM_application_object" name="com.teamcenter.rac.kernel.TCComponent" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="POM_imc" name="com.teamcenter.rac.kernel.TCComponentSite" type="com.teamcenter.rac.kernel.TCComponentSiteType" icct="ICCTSite" />
+        <entry id="POM_object" name="com.teamcenter.rac.kernel.TCComponent" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="POM_system_class" name="com.teamcenter.rac.kernel.TCComponent" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="ProgramView" name="com.teamcenter.rac.kernel.TCComponentDataset" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
+        <entry id="ProjectSmartFolder" name="com.teamcenter.rac.kernel.TCComponentProjectSmartFolder" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="PropertySet" name="com.teamcenter.rac.kernel.TCComponentPropertySet" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="PSBOMView" name="com.teamcenter.rac.kernel.TCComponentBOMView" type="com.teamcenter.rac.kernel.TCComponentBOMViewType" icct="ICCTBomView" />
+        <entry id="PSBOMViewRevision" name="com.teamcenter.rac.kernel.TCComponentBOMViewRevision" type="com.teamcenter.rac.kernel.TCComponentBOMViewRevisionType" icct="ICCTBomViewRevision" />
+        <entry id="PSConnection" name="com.teamcenter.rac.kernel.TCComponentPSConnection" type="com.teamcenter.rac.kernel.TCComponentPSConnectionType" icct="ICCTPSConnection" />
+        <entry id="PSConnectionRevision" name="com.teamcenter.rac.kernel.TCComponentPSConnectionRev" type="com.teamcenter.rac.kernel.TCComponentPSConnectionRevType" icct="ICCTPSConnectionRev" />
+        <entry id="PseudoFolder" name="com.teamcenter.rac.kernel.TCComponentPseudoFolder" type="com.teamcenter.rac.kernel.TCComponentPseudoFolderType" icct="ICCT" />
+        <entry id="PSOccurrenceType" name="com.teamcenter.rac.kernel.TCComponentOccType" type="com.teamcenter.rac.kernel.TCComponentOccTypeType" icct="ICCTOccType" />
+        <entry id="PSSignal" name="com.teamcenter.rac.kernel.TCComponentPSSignal" type="com.teamcenter.rac.kernel.TCComponentPSSignalType" icct="ICCTPSSignal" />
+        <entry id="PSSignalRevision" name="com.teamcenter.rac.kernel.TCComponentPSSignalRev" type="com.teamcenter.rac.kernel.TCComponentPSSignalRevType" icct="ICCTPSSignalRev" />
+        <entry id="PSViewType" name="com.teamcenter.rac.kernel.TCComponentViewType" type="com.teamcenter.rac.kernel.TCComponentViewTypeType" icct="ICCTViewType" />
+        <entry id="PublishedObject" name="com.teamcenter.rac.kernel.TCComponentPublishedObject" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="ReleaseStatus" name="com.teamcenter.rac.kernel.TCComponentReleaseStatus" type="com.teamcenter.rac.kernel.TCComponentReleaseStatusType" icct="ICCTReleaseStatus" />
+        <entry id="RemoteBOMLine" name="com.teamcenter.rac.kernel.TCComponentRemoteBOMLine" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="RemoteObject" name="com.teamcenter.rac.kernel.TCComponentRemoteObject" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="ReportDefinition" name="com.teamcenter.rac.kernel.TCComponentReportDefinition" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="ReportDesign" name="com.teamcenter.rac.kernel.TCComponentReportDesign" type="com.teamcenter.rac.kernel.TCComponentReportDesignType" icct="ICCTReportDesign" />
+        <entry id="RequestObject" name="com.teamcenter.rac.kernel.TCComponentRequestObject" type="com.teamcenter.rac.kernel.TCComponentRequestObjectType" icct="ICCTRequestObject" />
+        <entry id="ResourceAssignment" name="com.teamcenter.rac.kernel.TCComponentResourceAssignment" type="com.teamcenter.rac.kernel.TCComponentTcRelationType" icct="ICCTTcRelation" />
+        <entry id="ResourcePool" name="com.teamcenter.rac.kernel.TCComponentResourcePool" type="com.teamcenter.rac.kernel.TCComponentResourcePoolType" icct="ICCTResourcePool" />
+        <entry id="RevisionRule" name="com.teamcenter.rac.kernel.TCComponentRevisionRule" type="com.teamcenter.rac.kernel.TCComponentRevisionRuleType" icct="ICCTRevisionRule" />
+        <entry id="Role" name="com.teamcenter.rac.kernel.TCComponentRole" type="com.teamcenter.rac.kernel.TCComponentRoleType" icct="ICCTRole" />
+        <entry id="RouteCurve" name="com.teamcenter.rac.kernel.TCComponentRouteCurve" type="com.teamcenter.rac.kernel.TCComponentRouteCurveType" icct="ICCTRouteCurve" />
+        <entry id="RouteLocation" name="com.teamcenter.rac.kernel.TCComponentRouteLocation" type="com.teamcenter.rac.kernel.TCComponentRouteLocationType" icct="ICCTRouteLocation" />
+        <entry id="RouteLocationRevision" name="com.teamcenter.rac.kernel.TCComponentRouteLocationRev" type="com.teamcenter.rac.kernel.TCComponentRouteLocationRevType" icct="ICCTRouteLocationRev" />
+        <entry id="RouteNode" name="com.teamcenter.rac.kernel.TCComponentRouteNode" type="com.teamcenter.rac.kernel.TCComponentRouteNodeType" icct="ICCTRouteNode" />
+        <entry id="RoutePath" name="com.teamcenter.rac.kernel.TCComponentRoutePath" type="com.teamcenter.rac.kernel.TCComponentRoutePathType" icct="ICCTRoutePath" />
+        <entry id="RouteSegment" name="com.teamcenter.rac.kernel.TCComponentRouteSegment" type="com.teamcenter.rac.kernel.TCComponentRouteSegmentType" icct="ICCTRouteSegment" />
+        <entry id="RuntimeBusinessObject" name="com.teamcenter.rac.kernel.TCComponent" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="SchDeliverable" name="com.teamcenter.rac.kernel.TCComponentScheduleDeliverable" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Schedule" name="com.teamcenter.rac.kernel.TCComponentSchedule" type="com.teamcenter.rac.kernel.TCComponentScheduleType" icct="ICCT" />
+        <entry id="ScheduleMember" name="com.teamcenter.rac.kernel.TCComponentScheduleMember" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="ScheduleRevision" name="com.teamcenter.rac.kernel.TCComponentScheduleRevision" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="ScheduleTask" name="com.teamcenter.rac.kernel.TCComponentScheduleTask" type="com.teamcenter.rac.kernel.TCComponentScheduleTaskType" icct="ICCT" />
+        <entry id="SchedulingFixedCost" name="com.teamcenter.rac.kernel.TCComponentSchedulingFixedCost" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="SchTaskDeliverable" name="com.teamcenter.rac.kernel.TCComponentTaskDeliverable" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="SearchStructureContext" name="com.teamcenter.rac.kernel.TCComponentSearchStructureContext" type="com.teamcenter.rac.kernel.TCComponentStructureContextType" icct="ICCTStructureContext" />
+        <entry id="Signoff" name="com.teamcenter.rac.kernel.TCComponentSignoff" type="com.teamcenter.rac.kernel.TCComponentSignoffType" icct="ICCTSignoff" />
+        <entry id="Snapshot" name="com.teamcenter.rac.kernel.TCComponentSnapshot" type="com.teamcenter.rac.kernel.TCComponentFolderType" icct="ICCTFolder" /> 
+        <entry id="StorageMedia" name="com.teamcenter.rac.kernel.TCComponentStorageMedia" type="com.teamcenter.rac.kernel.TCComponentStorageMediaType" icct="ICCTStorageMedia" />
+        <entry id="StructureContext" name="com.teamcenter.rac.kernel.TCComponentStructureContext" type="com.teamcenter.rac.kernel.TCComponentStructureContextType" icct="ICCTStructureContext" />
+        <entry id="StructureMap" name="com.teamcenter.rac.kernel.TCComponentStructureMap" type="com.teamcenter.rac.kernel.TCComponentStructureMapType" icct="ICCTStructureMapItem" />
+        <entry id="StructureMapRevision" name="com.teamcenter.rac.kernel.TCComponentStructureMapRevision" type="com.teamcenter.rac.kernel.TCComponentStructureMapRevisionType" icct="ICCTStructureMapItemRevision" />
+        
+        <entry id="Supercedure" name="com.teamcenter.rac.kernel.TCComponentSupercedure" type="com.teamcenter.rac.kernel.TCComponentSupercedureType" icct="ICCTSupercedure" />
+        <entry id="TaskDependency" name="com.teamcenter.rac.kernel.TCComponentTaskDependency" type="com.teamcenter.rac.kernel.TCComponentTcRelationType" icct="ICCTTcRelation" />
+        <entry id="TaskInbox" name="com.teamcenter.rac.kernel.TCComponentTaskInBox" type="com.teamcenter.rac.kernel.TCComponentFolderType" icct="ICCTFolder" />
+        <entry id="TaskType" name="com.teamcenter.rac.kernel.TCComponentStatusType" type="com.teamcenter.rac.kernel.TCComponentStatusTypeType" icct="ICCTStatusType" />
+        <entry id="TCCalendar" name="com.teamcenter.rac.kernel.TCComponentTCCalendar" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="TCCalendarEvent" name="com.teamcenter.rac.kernel.TCComponentTCCalendarEvent" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="TCMPlmXml" name="com.teamcenter.rac.kernel.TCComponentTCMPlmXml" type="com.teamcenter.rac.kernel.TCComponentTCMPlmXmlType" icct="ICCTTCMPlmXml" />
+        <entry id="TCX_SCConfig" name="com.teamcenter.rac.kernel.TCComponentTCX_SCConfig" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT"/>
+        <entry id="TC_Project" name="com.teamcenter.rac.kernel.TCComponentProject" type="com.teamcenter.rac.kernel.TCComponentProjectType" icct="ICCTProject" />
+        <entry id="TC_WorkContext" name="com.teamcenter.rac.kernel.TCComponentWorkContext" type="com.teamcenter.rac.kernel.TCComponentWorkContextType" icct="ICCTWorkContext" />
+        <entry id="TimeSheetEntry" name="com.teamcenter.rac.kernel.TCComponentTimeSheetEntry" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="Tool" name="com.teamcenter.rac.kernel.TCComponentTool" type="com.teamcenter.rac.kernel.TCComponentToolType" icct="ICCTTool" />
+        <entry id="TransferMode" name="com.teamcenter.rac.kernel.TCComponentTransferMode" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="TransferOptionSet" name="com.teamcenter.rac.kernel.TCComponentTransferOptionSet" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="UnitOfMeasure" name="com.teamcenter.rac.kernel.TCComponentUnitOfMeasure" type="com.teamcenter.rac.kernel.TCComponentUnitOfMeasureType" icct="ICCTUnitOfMeasure" />
+        <entry id="User" name="com.teamcenter.rac.kernel.TCComponentUser" type="com.teamcenter.rac.kernel.TCComponentUserType" icct="ICCTUser" />
+        <entry id="UserSession" name="com.teamcenter.rac.kernel.TCComponent" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="ValidationAgent" name="com.teamcenter.rac.kernel.TCComponentValidationAgent" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="ValidationAgentRevision" name="com.teamcenter.rac.kernel.TCComponentValidationAgentRev" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="ValidationData" name="com.teamcenter.rac.kernel.TCComponentValidationData" type="com.teamcenter.rac.kernel.TCComponentValidationDataType" icct="ICCTValidationData" />
+        <entry id="ValidationResult" name="com.teamcenter.rac.kernel.TCComponentValidationResult" type="com.teamcenter.rac.kernel.TCComponentValidationResultType" icct="ICCTValidationResult" />
+        <entry id="ValToolAgent" name="com.teamcenter.rac.kernel.TCComponentValToolAgent" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
+        <entry id="ValToolAgentRevision" name="com.teamcenter.rac.kernel.TCComponentValToolAgentRev" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
+        <entry id="Variant" name="com.teamcenter.rac.kernel.TCComponentVariantOption" type="com.teamcenter.rac.kernel.TCComponentVariantOptionType" icct="ICCTVariantOption" />
+        <entry id="VariantRevision" name="com.teamcenter.rac.kernel.TCComponentVariantOptionRevision" type="com.teamcenter.rac.kernel.TCComponentVariantOptionRevisionType" icct="ICCTVariantOptionRevision" />
+        <entry id="VariantRule" name="com.teamcenter.rac.kernel.TCComponentSavedVariantRule" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="VerificationRule" name="com.teamcenter.rac.kernel.TCComponentVerificationRule" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
+        <entry id="VisStructureContext" name="com.teamcenter.rac.kernel.TCComponentVisStructureContext" type="com.teamcenter.rac.kernel.TCComponentStructureContextType" icct="ICCTStructureContext" />
+        <entry id="WolfObject" name="com.teamcenter.rac.kernel.TCComponentWolfObject" type="com.teamcenter.rac.kernel.TCComponentWolfObjectType" icct="ICCTWolfObject" />
+        <entry id="XMLRenderingStylesheet" name="com.teamcenter.rac.kernel.TCComponentXMLRenderingStylesheet" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />        
+        <entry id="Fnd0CustomUserProfile" name="com.teamcenter.rac.kernel.TCComponentFnd0CustomUserProfile" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />       
+    </extension>
+    <extension-point id="HttpAuthHandler" name="HttpAuthHandler" schema="schema/HttpAuthHandler.exsd"/>
+    <extension-point id="Feature_Processors" name="feature_processors" schema="schema/Feature_Processors.exsd"/>
+    <extension-point id="LoginAuthenticator" name="LoginAuthenticator" schema="schema/LoginAuthenticator.exsd"/>
+    <extension id="com.teamcenter.rac.kernel" point="com.teamcenter.rac.kernel.Feature_Processors">
+        <feature_processor name="TextData" class="com.teamcenter.rac.kernel.TCTextSvrFeatureProcessor"/>
+    </extension>
+    <extension point="org.eclipse.core.runtime.adapters">
+        <factory adaptableType="com.teamcenter.soa.client.SoaRuntimeException" class="com.teamcenter.rac.kernel.adapter.ExceptionAdapterFactory">
+            <adapter type="com.teamcenter.rac.util.InterfaceExceptionStack"/>
+        </factory>
+        <factory adaptableType="com.teamcenter.rac.aif.common.AbstractAIFTreeNode" class="com.teamcenter.rac.kernel.adapter.TCComponentAdapterFactory">
+            <adapter type="com.teamcenter.rac.aif.kernel.AIFComponentContext"/>
+            <adapter type="com.teamcenter.rac.aif.kernel.InterfaceAIFComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocation"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocationLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAMTree"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBomChange"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMView"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgActivityLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentChangeItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentDataset"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0AuditLog"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0Message"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0LicenseServer"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0ModelViewProxy"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0SecondaryAudit"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0WorkflowAudit"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFolder"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSearchStructureContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentForm"/>z
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGDELine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGroup"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIDCLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReport"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReportRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItem"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMEAppearanceGroupLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMECfgLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentPerson"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentRole"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSchedule"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentScheduleTask"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentTraceLink"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentUser"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentWolfObject"/>
+        </factory>
+        <factory adaptableType="com.teamcenter.rac.util.AbstractUINode" class="com.teamcenter.rac.kernel.adapter.TCComponentAdapterFactory">
+            <adapter type="com.teamcenter.rac.aif.kernel.InterfaceAIFComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocation"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocationLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAMTree"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBomChange"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMView"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgActivityLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentChangeItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentDataset"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0AbstractMarkupSpace"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0AuditLog"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0ChangeContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0EditContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0Message"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0ModelViewProxy"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0SecondaryAudit"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0WorkflowAudit"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFolder"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSearchStructureContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentForm"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGDELine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGroup"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIDCLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReport"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReportRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItem"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMEAppearanceGroupLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMECfgLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentPerson"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentRole"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSchedule"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentScheduleTask"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentTraceLink"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentUser"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentWolfObject"/>
+        </factory>
+        <factory adaptableType="com.teamcenter.rac.aif.kernel.InterfaceAIFComponent" class="com.teamcenter.rac.kernel.adapter.TCComponentAdapterFactory">
+            <adapter type="com.teamcenter.rac.aif.kernel.AIFComponentContext"/>
+            <adapter type="com.teamcenter.rac.aif.kernel.InterfaceAIFComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocation"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocationLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAMTree"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBomChange"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMView"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgActivityLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentChangeItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentDataset"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0AbstractMarkupSpace"/>             
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0AuditLog"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0ChangeContext"/>             
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0EditContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0Message"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0ModelViewProxy"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0SecondaryAudit"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0WorkflowAudit"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFolder"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSearchStructureContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentForm"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGDELine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGroup"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIDCLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReport"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReportRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItem"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMEAppearanceGroupLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMECfgLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentPerson"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentRole"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSchedule"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentScheduleTask"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentTraceLink"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentUser"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentWolfObject"/>
+        </factory>
+        <factory adaptableType="com.teamcenter.rac.aif.kernel.AIFComponentContext" class="com.teamcenter.rac.kernel.adapter.TCComponentAdapterFactory">
+            <adapter type="com.teamcenter.rac.aif.kernel.InterfaceAIFComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocation"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocationLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAMTree"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBomChange"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMView"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgActivityLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentChangeItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentDataset"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0AbstractMarkupSpace"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0ChangeContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0EditContext"/>            
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0Message"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFolder"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSearchStructureContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentForm"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGDELine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGroup"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIDCLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReport"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReportRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItem"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMEAppearanceGroupLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMECfgLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentPerson"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentRole"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSchedule"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentScheduleTask"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentTraceLink"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentUser"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentWolfObject"/>
+        </factory>
+        <factory adaptableType="com.teamcenter.rac.aif.navigationpane.ISectionComponent" class="com.teamcenter.rac.kernel.adapter.TCComponentAdapterFactory">
+            <adapter type="com.teamcenter.rac.aif.kernel.InterfaceAIFComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponent"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocation"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAllocationLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAMTree"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBomChange"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOMView"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentBOPLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgActivityLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentChangeItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentDataset"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0AbstractMarkupSpace"/>            
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0AuditLog"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0ChangeContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0EditContext"/> 
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0Message"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0ModelViewProxy"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0SecondaryAudit"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0WorkflowAudit"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentFolder"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSearchStructureContext"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentForm"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGDELine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentGroup"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIDCLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReport"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReportRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItem"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentItemRevision"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMEAppearanceGroupLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentMECfgLine"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentPerson"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentRole"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentSchedule"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentScheduleTask"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentTraceLink"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentUser"/>
+            <adapter type="com.teamcenter.rac.kernel.TCComponentWolfObject"/>
+        </factory>
+        <factory adaptableType="org.eclipse.jface.viewers.StructuredSelection" class="com.teamcenter.rac.kernel.adapter.TCComponentAdapterFactory">
+            <adapter type="com.teamcenter.rac.aif.kernel.InterfaceAIFComponent"/>
+        </factory>
+        <factory adaptableType="com.teamcenter.rac.aif.navigationpane.ISectionComponent" class="com.teamcenter.rac.kernel.adapter.TCComponentAdapterFactory">
+           <adapter type="com.teamcenter.rac.aif.kernel.InterfaceAIFComponent"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponent"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentAMTree"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentAllocation"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentAllocationLine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentBOMLine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentBOMView"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentBOPLine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentBomChange"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentCfgActivityLine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentCfgAttachmentLine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentChangeItemRevision"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentDataset"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentFnd0Message"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentFolder"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentSearchStructureContext"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentForm"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentGDELine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentGroup"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentIDCLine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReport"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentIssueReportRevision"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentItem"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentItemRevision"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentMEAppearanceGroupLine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentMECfgLine"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentPerson"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentRole"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentSchedule"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentScheduleTask"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentTraceLink"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentUser"/>
+           <adapter type="com.teamcenter.rac.kernel.TCComponentWolfObject"/>
+       </factory>
+    </extension>
+    <extension point="com.teamcenter.rac.aifrcp.LoginAuthenticator">
+       <loginAuthenticator class="com.teamcenter.rac.dialogs.login.RACLoginDialog" id="default" />
+       <loginAuthenticator class="com.teamcenter.rac.dialogs.login.RACLoginHeadless" id="headless" />
+       <loginAuthenticator class="com.teamcenter.rac.dialogs.login.SSOLoginDialog" id="sso" />
+       <loginAuthenticator class="com.teamcenter.rac.dialogs.login.TCCSLoginAuthenticator" id="tccs" />
+    </extension>
+</plugin>

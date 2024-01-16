@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.kernel.TcSoaObjectFactory">
+    <implementation class="com.teamcenter.rac.kernel.TcSoaObjectFactory"/>
+    <service>
+        <provide interface="org.osgi.service.event.EventHandler"/>
+    </service>
+    <property name="event.topics" type="String">
+        com/teamcenter/rac/aifrcp/event/Session/Login/Pre 
+        com/teamcenter/rac/kernel/TCPreferenceService/PREFERENCES_LOADED_FROM_SERVER
+    </property>
+</scr:component>

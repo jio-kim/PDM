@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+	<implementation class="com.teamcenter.rac.kernel.services.impl.PropertyPolicyService"/>
+	<service>
+		<provide interface="com.teamcenter.rac.kernel.services.IPropertyPolicyService"/>
+        <provide interface="org.osgi.service.event.EventHandler"/>
+	</service>
+    <property name="event.topics" type="String" value="com/teamcenter/rac/aifrcp/event/Session/Login/Post"/>
+    <reference bind="setPreferenceService" cardinality="1..1" interface="com.teamcenter.rac.kernel.TCPreferenceService" name="TCPreferenceService" policy="static"/>
+    <reference bind="setSession" cardinality="1..1" interface="com.teamcenter.rac.services.ISessionService" name="ISessionService" policy="static"/>
+</scr:component>

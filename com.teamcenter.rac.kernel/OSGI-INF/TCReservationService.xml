@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.kernel.TCReservationService">
+    <implementation class="com.teamcenter.rac.kernel.TCReservationService"/>
+    <service>
+        <provide interface="com.teamcenter.rac.kernel.TCReservationService"/>
+        <provide interface="org.osgi.service.event.EventHandler"/>
+    </service>
+    <property name="event.topics" type="String">
+        com/teamcenter/rac/aifrcp/event/Session/Login/Pre
+        com/teamcenter/rac/aifrcp/event/Session/Resume
+        com/teamcenter/rac/aifrcp/event/Session/Logout/Post
+        com/teamcenter/rac/aif/kernel/AIFComponentEvent
+    </property>
+    <reference bind="setPreferenceService" cardinality="1..1" interface="com.teamcenter.rac.kernel.TCPreferenceService" name="TCPreferenceService" policy="static"/>
+    <reference bind="setTypeService" cardinality="1..1" interface="com.teamcenter.rac.kernel.TCTypeService" name="TCTypeService" policy="static"/>
+</scr:component>

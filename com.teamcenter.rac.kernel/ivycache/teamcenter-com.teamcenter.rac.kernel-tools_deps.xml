@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="ivy-report.xsl"?>
+<ivy-report version="1.0">
+	<info
+		organisation="teamcenter"
+		module="com.teamcenter.rac.kernel"
+		revision="working@vAp051621515832"
+		conf="tools_deps"
+		confs="tools_deps"
+		date="20231116224604"/>
+	<dependencies>
+		<module organisation="teamcenter" name="pluginxmlvalidator">
+			<revision name="20231116222738" status="milestone" pubdate="20231116222807" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="true" default="false" conf="tcjars" position="0">
+				<metadata-artifact status="no" details="" size="1051" time="0" location="E:\udu\tc133013_1116_552759wn\wntx64\ivy\cache\teamcenter\pluginxmlvalidator\ivy-20231116222738.xml" searched="true" original-local-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\pluginxmlvalidator\20231116222738\ivy.xml" origin-is-local="true" origin-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\pluginxmlvalidator\20231116222738\ivy.xml"/>
+				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="tools_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@vAp051621515832"/>
+				<artifacts>
+					<artifact name="pluginxmlvalidator" type="jar" ext="jar" status="no" details="" size="31924" time="0" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\pluginxmlvalidator\20231116222738\pluginxmlvalidator.jar">
+						<origin-location is-local="true" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\pluginxmlvalidator\20231116222738\pluginxmlvalidator.jar"/>
+					</artifact>
+				</artifacts>
+			</revision>
+		</module>
+	</dependencies>
+</ivy-report>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.kernel.services.RefreshNotifyService">
+   <implementation class="com.teamcenter.rac.kernel.services.RefreshNotifyService"/>
+   <service>
+      <provide interface="org.osgi.service.event.EventHandler"/>
+      <provide interface="com.teamcenter.rac.kernel.services.RefreshNotifyService"/>
+   </service>
+   <property name="event.topics" type="String">
+      org/eclipse/ui/Workbench/PostStartup
+      com/teamcenter/rac/aifrcp/event/Session/Login/Post
+      com/teamcenter/rac/aifrcp/event/Session/Logout/Pre
+      com/teamcenter/rac/kernel/debug/RACRequest/Response
+      com/teamcenter/rac/kernel/TCPreferenceService/PREFERENCES_LOADED_FROM_SERVER
+      com/teamcenter/rac/kernel/TCPreferenceService/TC_refresh_notify
+      com/teamcenter/rac/kernel/TCPreferenceService/TC_refresh_notify_scope
+      com/teamcenter/rac/kernel/TCPreferenceService/TC_refresh_notify_pull_time_interval
+   </property>
+</scr:component>

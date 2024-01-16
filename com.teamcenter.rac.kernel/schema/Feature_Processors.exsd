@@ -1,0 +1,118 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.teamcenter.rac.kernel" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.teamcenter.rac.kernel" id="Feature_Processors" name="feature_processors"/>
+      </appinfo>
+      <documentation>
+         Immediately after login() to the TcServer an ordered list of client cache feature names along with the associated FMS tickets will be retrieved.  It will be possible register Feature processor for a given feature processor.
+      </documentation>
+   </annotation>
+
+   <element name="feature_processors">
+      <complexType>
+         <sequence minOccurs="0" maxOccurs="unbounded">
+            <element ref="feature_processor"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="feature_processor">
+      <complexType>
+         <attribute name="name" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Name of the feature for which this processor is registered for
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The class that will be processing the feature it must implement the com.teamcenter.rac.kernel.IFeatureProcessor Interface.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":com.teamcenter.rac.kernel.IFeatureProcessor"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         Teamcenter 9.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;extension
+   id=&quot;com.teamcenter.rac.kernel&quot;
+   point=&quot;com.teamcenter.rac.kernel.Feature_Processors&quot;&gt;
+   &lt;feature_processor name=&quot;TextData&quot; class=&quot;com.teamcenter.rac.kernel.TCTextSvrFeatureProcessor&quot;/&gt;
+&lt;/extension&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         Copyright 2010.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+      </documentation>
+   </annotation>
+
+</schema>

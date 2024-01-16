@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.teamcenter.rac.kernel" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.teamcenter.rac.kernel" id="LoginAuthenticator" name="LoginAuthenticator"/>
+      </appinfo>
+      <documentation>
+         This extension point is used to authenticate user login as per customer requirement.&lt;br&gt;
+Each customer can define extension to authenticate the user login and return the value.&lt;br&gt;
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <choice>
+            <element ref="authenticateLogin"/>
+         </choice>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="authenticateLogin">
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  A fully qualified name of the class that implements com.teamcenter.rac.services.IUserLoginAuthenticator. &lt;br&gt;
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":com.teamcenter.rac.services.IUserLoginAuthenticator"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;p&gt;
+&lt;pre&gt;
+   &lt;extension
+         point=&quot;com.teamcenter.rac.kernel.LoginAuthenticator&quot;&gt;
+      &lt;authenticateLogin
+            class=&quot;test.login.UserLoginAuthenticator&quot;&gt;
+      &lt;/authenticateLogin&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+
+&lt;b&gt;Authenticator class example&lt;/b&gt;
+
+&lt;pre&gt;
+public class UserLoginAuthenticator implements IUserLoginAuthenticator {
+
+ @Override
+ public void runUserLoginAuthentication() {
+  boolean userStatus = authenticateUserLogin();
+  if(!userStatus)
+  {
+   Display display = Display.getCurrent();
+   if(display == null) {
+    display = new Display();
+   }
+   MessageDialog.openError(display.getActiveShell(),
+     &quot;Login authenticator&quot;,
+     &quot;Failed to authenticate Login&quot;);
+  }
+ }
+ 
+ private boolean authenticateUserLogin() {
+ //TODO: Put your logic for authenticating user login and based on the result return true or false
+  return true;
+ }
+}
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+</schema>

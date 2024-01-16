@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.kernel.TCDebugService">
+    <implementation class="com.teamcenter.rac.kernel.TCDebugService"/>
+    <service>
+        <provide interface="com.teamcenter.rac.kernel.TCDebugService"/>
+        <provide interface="org.osgi.service.event.EventHandler"/>
+    </service>
+    <property name="event.topics" type="String">
+        com/teamcenter/rac/aifrcp/event/Session/Login/Pre 
+        com/teamcenter/rac/aifrcp/event/Session/Login/Post 
+        com/teamcenter/rac/aifrcp/event/Session/Resume
+        com/teamcenter/rac/aifrcp/event/Session/Logout/Pre
+        com/teamcenter/rac/aifrcp/event/Session/Logout/Post
+    </property>
+</scr:component>

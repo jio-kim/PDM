@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.kernel.TCPIEService">
+    <implementation class="com.teamcenter.rac.kernel.TCPIEService"/>
+    <service>
+        <provide interface="com.teamcenter.rac.kernel.TCPIEService"/>
+        <provide interface="org.osgi.service.event.EventHandler"/>
+    </service>
+    <property name="event.topics" type="String">
+        com/teamcenter/rac/aifrcp/event/Session/Login/Pre
+        com/teamcenter/rac/aifrcp/event/Session/Resume
+        com/teamcenter/rac/aifrcp/event/Session/Logout/Post
+    </property>
+    <reference bind="setImportExportService" cardinality="1..1" interface="com.teamcenter.rac.kernel.TCImportExportService" name="TCImportExportService" policy="static"/>
+    <reference bind="setTypeService" cardinality="1..1" interface="com.teamcenter.rac.kernel.TCTypeService" name="TCTypeService" policy="static"/>
+</scr:component>

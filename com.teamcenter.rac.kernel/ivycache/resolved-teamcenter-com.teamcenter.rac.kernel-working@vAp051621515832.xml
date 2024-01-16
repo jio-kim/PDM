@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 
+@<COPYRIGHT>@
+================================================================================
+Copyright 2012.
+Siemens Product Lifecycle Management Software Inc.
+All Rights Reserved.
+================================================================================
+@<COPYRIGHT>@
+-->
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info organisation="teamcenter" module="com.teamcenter.rac.kernel" revision="working@vAp051621515832" status="integration" publication="20231116221146"/>
+    <configurations>
+        <conf name="compile_deps" visibility="private"/>
+        <conf name="compile" extends="compile_deps"/>
+        <conf name="tcjars"/>
+        <conf name="tools_deps"/>
+        <conf name="svc_deps"/>
+        <conf name="javadoc_deps"/>
+    </configurations>
+    <publications>
+        <artifact name="com.teamcenter.rac.kernel_13000.3.0" type="jar">
+            <conf name="compile"/>
+            <conf name="tcjars"/>
+        </artifact>
+        <artifact name="com.teamcenter.rac.kernel.source_13000.3.0" type="jar">
+            <conf name="tcjars"/>
+        </artifact>
+    </publications>
+    <dependencies>
+        <dependency org="eclipse" name="javax.xml.rpc" rev="latest.integration" conf="compile_deps->default"/>
+        <dependency org="eclipse" name="org.apache.commons.discovery" rev="latest.integration" conf="compile_deps->default"/>
+        <dependency org="eclipse" name="org.eclipse.core.runtime" rev="latest.integration" conf="compile_deps->default"/>
+        <dependency org="eclipse" name="org.eclipse.swt_plat" rev="latest.integration" conf="compile_deps->default"/>
+        <dependency org="eclipse" name="org.eclipse.ui" rev="latest.integration" conf="compile_deps->default"/>
+
+        <dependency org="teamcenter" name="com.teamcenter.rac.aifrcp" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="com.teamcenter.rac.util" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="com.teamcenter.SecurityServices" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="httpclient" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="Cba1SoaCbaExtLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaCadBomAlignmentLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaAdministrationLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaGlobalMultiSiteLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaClient" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaCommon" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaCoreLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaStructureManagementLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaBomLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="Fnd0SoaDebugMonitorLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="icctstubs" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="Fnd0SoaConfigFilterCriteriaLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="Fnd0SoaEditContextLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaBusinessModelerLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaQueryLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaWorkflowLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaClassificationLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+        <dependency org="teamcenter" name="TcSoaProjectManagementLoose" rev="latest.integration" conf="compile_deps->tcjars"/>
+
+        <dependency org="toolbox" name="TcSS" rev="latest.integration" conf="compile_deps->default"/>
+        <dependency org="toolbox" name="commons_httpclient" rev="latest.integration" conf="compile_deps->default"/>
+        <dependency org="toolbox" name="fms" rev="latest.integration" conf="compile_deps->external"/>
+        <dependency org="toolbox" name="org.apache.logging.log4j" alias="log4j2plugin" rev="latest.integration" conf="compile_deps->default"/>
+
+        <dependency org="teamcenter" name="pluginxmlvalidator" rev="latest.integration" conf="tools_deps->tcjars"/>
+
+        <!-- modules from build/ant/svc -->
+        <dependency org="teamcenter" name="tccbaextsvc" rev="latest.integration" conf="svc_deps->svc"/>
+        <dependency org="teamcenter" name="tccbasvc" rev="latest.integration" conf="svc_deps->svc"/>
+        <dependency org="teamcenter" name="tccoresvc" rev="latest.integration" conf="svc_deps->svc"/>
+        <dependency org="teamcenter" name="tcmechatronicssvc" rev="latest.integration" conf="svc_deps->svc"/>
+        <dependency org="teamcenter" name="tcpsmsvc" rev="latest.integration" conf="svc_deps->svc"/>
+        <dependency org="teamcenter" name="tcscmsvc" rev="latest.integration" conf="svc_deps->svc"/>
+
+        <!-- LCS-359342, the CBI_HOME\ant\java\plugins\targets.xml is assuming
+             that the TcDoclet will have already built.  Since we started
+             building javadoc as part of the the all target that is not always
+             the case and we need the dependency explicit. -->
+       <dependency org="teamcenter" name="TcDoclet" rev="latest.integration" conf="javadoc_deps->tcjars"/>
+       <!-- UDU_JAXB2110_HOME  -->
+       <dependency org="toolbox" name="JAXB" rev="latest.integration" conf="compile_deps->default"/>
+
+    </dependencies>
+</ivy-module>

@@ -1,0 +1,157 @@
+<FindBugsFilter>	
+	<!-- 
+	Ignore AT:Sequence of calls to concurrent abstraction may not be atomic 
+	
+	Reason:
+	Dheivee added these, bugs not valid.
+	-->
+	<Match>
+		<Or>
+			<And>
+				<Class name="com.teamcenter.rac.kernel.TCPreferenceService" />
+				<Or>
+					<Method name="addPropertyChangeListener" />
+					<Method name="cacheDefinition" />
+					<Method name="cacheValue" />
+				</Or>
+			</And>
+			<And>
+				<Class name="com.teamcenter.rac.kernel.TCSession" />
+				<Or>
+					<Method name="addSessionChangeListener" />
+					<Method name="getService" />
+				</Or>
+			</And>
+		</Or>
+
+		<Bug code ="AT"/>
+	</Match>
+	
+	<!--
+	Ignore NP: Boolean method returns null
+	
+	Reason:
+		This issue was fixed by adding a new method that takes a default boolean value for the null case, but this method
+		is still called through the superclass, so we need to keep it.
+	-->
+	<Match>
+		<Class name="com.teamcenter.rac.kernel.TCPreferenceService"/>
+		<Method name="getLogicalValueAtLocation" />
+		
+		<Bug code="NP"/>
+	</Match>
+	
+	<!-- 
+	Ignore ST: static field written from instance method
+	
+	Reason:
+	These classes are most likely singleton, even though there is no code limiting it as such. Too expensive to try to switch to singleton logic.
+	-->
+	<Match>
+		<Class name="com.teamcenter.rac.kernel.KernelPlugin"/>	
+	
+		<Bug code ="ST"/>
+	</Match>
+	
+	<!--
+	Ignore NP: A possibly-null value is passed to a nonnull method parameter.
+	
+	Reason:
+	We were unable to find the reasoning/use case of this method. Discussed with several people that were unsure. Ignore for now, revisit at a later date.
+	-->
+	<Match>
+		<Class name="com.teamcenter.rac.kernel.TCSession"/>	
+		<Method name="isServerRunningOnClient"/>
+	
+		<Bug code ="NP"/>
+	</Match>
+	<!--
+	Ignore files not owned by RAC framework team.
+	
+	Eventually we should resolve all of these bugs. Implementing this filter to speed up integration of findbugs changes.
+	-->
+	<Match>
+		<or>
+			<Class name="com.teamcenter.rac.kernel.EffectivityExpression"/>
+			<Class name="com.teamcenter.rac.kernel.EffectivityValidityRange"/>
+			<Class name="com.teamcenter.rac.kernel.PropertySet"/>
+			<Class name="com.teamcenter.rac.kernel.TransferMode"/>
+		</or>
+		<Method name="equals"/>
+		<Bug code="HE"/>
+	</Match>
+	
+	<Match>
+		<Class name="com.teamcenter.rac.kernel.variants.VariantExpressionDateParser"/>
+		<or>
+		<Method name="isISO8601Format"/>
+		<Method name="toISO8601DateFormat"/>
+		<Method name="toShortDateFormat"/>
+		</or>
+		
+		<Bug code="STCAL"/>
+	</Match>
+	
+	<Match>
+		<Class name="com.teamcenter.rac.kernel.TransferMode"/>
+		<Method name="equals"/>
+		
+		<Bug code="Eq"/>
+	</Match>
+	
+	<Match>
+		<Class name="com.teamcenter.rac.kernel.NxCliString"/>
+		<or>
+		<Method name="generateCliStringFromDataset" />
+		<Method name="getCliFieldSeparator" />
+		</or>
+		
+		<Bug code="NP"/>
+	</Match>
+	
+	<Match>
+		<Class name="com.teamcenter.rac.kernel.testing.NxCliStringTest"/>
+		<Method name="_testGenerateCliStringForDatasetVersion" />
+		
+		<Bug code="NP"/>
+	</Match>
+	
+	<Match>
+		<or>
+			<and>
+				<Class name="com.teamcenter.rac.kernel.TCComponentMECfgLine"/>
+				<Method name="TCComponentMECfgLine" />
+			</and>
+			
+			<and>
+				<Class name="com.teamcenter.rac.kernel.TCPVViewerService"/>
+				<Method name="getPVModuleLevel" />
+			</and>
+			
+			<and>
+				<Class name="com.teamcenter.rac.kernel.UserList"/>
+				<Method name="UserList" />
+			</and>
+			
+			<Class name="com.teamcenter.rac.kernel.TCComponentMECfgLine"/>	
+		</or>
+		<Bug code="ST"/>
+	</Match>
+	
+	<Match>
+		<Class name="com.teamcenter.rac.kernel.testing.NxCliStringTest"/>
+		<Bug code="IP"/>
+	</Match>
+	
+	<Match>
+		<Class name="com.teamcenter.rac.kernel.testing.NxCliStringTest"/>
+		<Bug code="DLS"/>
+	</Match>
+	
+	<Match>	
+		<Class name="com.teamcenter.rac.filetransfer.FileTransferFactory"/>	
+		<Method name="getFileManagerforTransfer" />
+		
+		<Bug code ="NS"/>
+	</Match>
+</FindBugsFilter>
