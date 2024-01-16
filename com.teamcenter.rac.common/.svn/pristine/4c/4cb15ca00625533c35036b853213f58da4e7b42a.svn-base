@@ -1,2 +1,0 @@
-DefaultTogglePropertyHandler.message=Il faut ins\u00E9rer le Nom de propri\u00E9t\u00E9 de bascule dans DefaultTogglePropertyHandler dans le plugin.xml\n et lier l'\u00E9v\u00E9nement de modification de propri\u00E9t\u00E9 (via listener pattern) \u00E0 la fonctionnalit\u00E9 d'application r\u00E9elle.
-DefaultTogglePropertyHandler.title=Propri\u00E9t\u00E9 de bascule par d\u00E9faut

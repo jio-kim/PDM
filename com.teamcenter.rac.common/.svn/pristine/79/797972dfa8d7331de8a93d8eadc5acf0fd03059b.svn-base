@@ -1,2 +1,0 @@
-AbstractRACView.CREATING_MAIN_PANEL=Creating Main Panel
-AbstractRACView.CHECK_UI_SERVICE=Attempted to set the RAC View main panel to null. Check to see if your UI Service created a valid panel.

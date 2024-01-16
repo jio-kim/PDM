@@ -1,2 +1,0 @@
-DefaultTogglePropertyHandler.message=Inserire il nome propriet\u00E0 commutatore corretto di DefaultTogglePropertyHandler nel plugin.xml\n e collegare l'evento di modifica propriet\u00E0 (via pattern di ascolto) alla funzionalit\u00E0 Applicazione effettiva.
-DefaultTogglePropertyHandler.title=Propriet\u00E0 commutatore predefinito

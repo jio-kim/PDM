@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.services.UpdatePreference">
-   <implementation class="com.teamcenter.rac.services.UpdatePreference"/>
-   <property name="event.topics" type="String" value="com/teamcenter/rac/aifrcp/Preference/UpdatePreference"/>
-   <service>
-      <provide interface="org.osgi.service.event.EventHandler"/>
-   </service>
-</scr:component>

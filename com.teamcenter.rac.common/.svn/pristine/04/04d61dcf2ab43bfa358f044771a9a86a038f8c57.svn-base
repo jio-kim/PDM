@@ -1,5 +1,0 @@
-import=com.teamcenter.rac.common.common
-
-editCalendarDialog=com.teamcenter.rac.commands.editcalendar.EditCalendarDialog
-
-helpBT.ICON = images/help_16.png

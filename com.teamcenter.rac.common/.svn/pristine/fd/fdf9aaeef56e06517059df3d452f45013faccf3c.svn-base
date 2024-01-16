@@ -1,2 +1,0 @@
-DefaultTogglePropertyHandler.message=Debe insertar el nombre correcto de la propiedad Alternar para DefaultTogglePropertyHandler en el archivo plugin.xml\n y enlazar el evento de cambio de la propiedad (mediante un patr\u00F3n de proceso de escucha) con la funcionalidad real de la aplicaci\u00F3n.
-DefaultTogglePropertyHandler.title=Propiedad predeterminada de Alternar

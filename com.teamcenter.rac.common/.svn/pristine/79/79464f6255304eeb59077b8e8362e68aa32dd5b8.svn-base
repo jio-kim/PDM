@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.common.services.impl.CommonClientPreferenceFileService">
-   <implementation class="com.teamcenter.rac.common.services.impl.CommonClientPreferenceFileService"/>
-   <service>
-       <provide interface="com.teamcenter.rac.commonclient.common.ICommonClientPreferenceFileService"/>
-   </service>
-</scr:component>

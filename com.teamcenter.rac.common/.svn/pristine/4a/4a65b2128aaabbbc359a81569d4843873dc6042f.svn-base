@@ -1,4 +1,0 @@
-import=com.teamcenter.rac.explorer.common.common,com.teamcenter.rac.common.common,com.teamcenter.rac.common.taskpane.dialogs.dialogs
-
-# This is the favorites format
-favoritesFormat={0}:{1}:{2}:{3}

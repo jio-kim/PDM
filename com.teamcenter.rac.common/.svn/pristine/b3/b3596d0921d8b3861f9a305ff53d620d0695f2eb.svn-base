@@ -1,2 +1,0 @@
-DefaultTogglePropertyHandler.message=You must insert the correct Toggle Property Name to the DefaultTogglePropertyHandler in the plugin.xml\n and link the property change event (via listener pattern) to actual Application functionality.
-DefaultTogglePropertyHandler.title=Default Toggle Property
