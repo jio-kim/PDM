@@ -1,0 +1,39 @@
+
+#*==============================================================================
+#
+#             Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                        Unpublished - All rights reserved
+#
+#===============================================================================
+# File description: This properties file contains all locale specific keys for 
+#                   the erp package.
+#                   It is the intent that this file is to be localized based 
+#                   upon the Java localization resource bundle naming 
+#                   conventions.  For further information please refer to the 
+#                   Java doc on this subject.
+#
+#   Filename: erp_locale.properties
+#   Module  : com.teamcenter.rac.commands.erp
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#08-Sep-2000  x_sengup                SAPRFC Display Project. Initial creation.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Item Dialog
+# ----------------------
+command.TITLE = SAP \uB370\uC774\uD130 \uD45C\uC2DC
+
+# Messages for message center
+# ------------------------------
+displayingMaterial = RFC \uC790\uB8CC \uD45C\uC2DC \uD654\uBA74 \uC5EC\uB294 \uC911
+displayingBom = RFC BOM \uD45C\uC2DC \uD654\uBA74 \uC5EC\uB294 \uC911
+displayingEco = RFC ECO \uD45C\uC2DC \uD654\uBA74 \uC5EC\uB294 \uC911
+displayingDoc = RFC \uBB38\uC11C \uD45C\uC2DC \uD654\uBA74 \uC5EC\uB294 \uC911
+
+# Error Messages
+# ----------------------
+dispExeNotFound = tc_sap_rfc_disp\uB97C \uCC3E\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \uC124\uCE58 \uC5EC\uBD80\uC640 \uC2E4\uD589 \uD30C\uC77C \uB514\uB809\uD130\uB9AC\uB97C \uD655\uC778\uD558\uC2ED\uC2DC\uC624.
+

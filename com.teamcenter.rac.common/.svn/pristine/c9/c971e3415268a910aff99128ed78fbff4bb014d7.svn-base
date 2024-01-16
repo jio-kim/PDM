@@ -1,0 +1,112 @@
+#*==================================================================================================
+#
+#                    Copyright (c) 2004 UGS
+#                   Unpublished - All rights reserved
+#                   
+#                   
+# THIS PROGRAM IS AN UNPUBLISHED WORK FULLY PROTECTED BY THE UNITED STATES
+#  COPYRIGHT LAWS AND IS CONSIDERED A TRADE SECRET BELONGING TO THE COPYRIGHT
+#                                   HOLDER.
+#
+#====================================================================================================
+# File description: This properties file contains all locale specific keys for the saveas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: saveasconnection_locale.properties
+#   Module  : com.teamcenter.rac.commands.saveasconnection
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#04-Oct-2004  x_bhadra                Initial Version
+#08-Nov-2004  x_bhadra                Fixing the Registry Problem
+#08-Nov-2004  Narayana Murthy         Merge from P10.0.0.6
+#10-Nov-2004  x_bhadra                Merge from lbom_pse_support branch
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+dialog.TITLE=Ulo\u017Eit jako
+ConnectionType=Typ spojen\u00ED:
+
+# Save ItemAsDialog
+# ------------------------
+saveAsItem.TITLE = Ulo\u017Eit spojen\u00ED jako
+itemId = ID spojen\u00ED
+revId = ID revize
+itemType = Typ spojen\u00ED:
+itemInformation = Informace spojen\u00ED
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.NAME=Kontrola konfigurace
+viConfigStep.TOOLTIP=Zkontrolovat konfiguraci spojen\u00ED varianty
+viConfigStep.info=Ujistit se, \u017Ee konfigurace spojen\u00ED varianty je spr\u00E1vn\u00E1
+viConfigStep.table.option=Mo\u017Enost
+viConfigStep.table.value=Hodnota
+
+# New Connection Panel
+# -----------------------------
+createConfirm.TITLE=Nov\u00E9 spojen\u00ED
+createConfirm.MSG=Pro pokra\u010Dov\u00E1n\u00ED mus\u00ED b\u00FDt vytvo\u0159eno nov\u00E9 spojen\u00ED. \nChcete vytvo\u0159it nov\u00E9 spojen\u00ED?
+
+# Connection Info Panel
+# -----------------------------
+itemInfo.LABEL=Definujte z\u00E1kladn\u00ED informace pro kop\u00EDrovan\u00E9 spojen\u00ED.
+itemInfoStep.NAME=Vlo\u017Ete informace spojen\u00ED
+itemInfoStep.TOOLTIP=Definujte z\u00E1kladn\u00ED informace spojen\u00ED.
+
+# Connection Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=Definujte atributy hlavn\u00EDho formul\u00E1\u0159e spojen\u00ED.
+itemMasterFormStep.NAME=Zadat informace hlavn\u00EDho formul\u00E1\u0159e spojen\u00ED
+itemMasterFormStep.TOOLTIP=Definujte atributy hlavn\u00EDho formul\u00E1\u0159e spojen\u00ED.
+
+# ConnectionRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=Definujte atributy hlavn\u00EDho formul\u00E1\u0159e revize spojen\u00ED.
+itemRevMasterFormStep.NAME=Zadat informace hlavn\u00EDho formul\u00E1\u0159e revize
+itemRevMasterFormStep.TOOLTIP=Definujte atributy hlavn\u00EDho formul\u00E1\u0159e revize spojen\u00ED.
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Vytvo\u0159en\u00ED nov\u00E9ho spojen\u00ED
+
+# option panel
+# ------------
+checkOutOnCreate = Rezervovat revizi spojen\u00ED p\u0159i vytvo\u0159en\u00ED
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Vytvo\u0159en\u00ED nov\u00E9ho spojen\u00ED
+checkingIds=Kontrola ID a rev spojen\u00ED
+openingNewComponent=Otev\u0159en\u00ED nov\u00E9ho spojen\u00ED
+abort = Zru\u0161it otev\u0159en\u00ED nov\u00E9ho spojen\u00ED
+loadingItemTypes = Na\u010Dten\u00ED typ\u016F spojen\u00ED...
+creatingNewItem = Vytvo\u0159en\u00ED nov\u00E9ho spojen\u00ED 
+pastingNewItem=Vlo\u017Een\u00ED nov\u00E9ho spojen\u00ED
+creatingNewItemRevision = Vytvo\u0159en\u00ED revize nov\u00E9ho spojen\u00ED
+savingAsItemRev=Ukl\u00E1d\u00E1n\u00ED jako revize sign\u00E1lu
+
+# Error Messages
+# ----------------------
+error.TITLE = Nov\u00E9 spojen\u00ED...
+itemTypeError = Nelze na\u010D\u00EDst dostupn\u00FD seznam spojen\u00ED
+failFindDialog=Chyba p\u0159i hled\u00E1n\u00ED dialogov\u00E9ho okna nov\u00E9ho spojen\u00ED.
+sameAsOldId=Bylo nalezeno existuj\u00EDc\u00ED spojen\u00ED. Vytvo\u0159it nebo Ulo\u017Eit jako pouze vytvo\u0159\u00ED nov\u00E1 spojen\u00ED. \nK vytvo\u0159en\u00ED nov\u00E9 revize spojen\u00ED pou\u017Eijte p\u0159\u00EDkaz Soubor -> Revidovat.
+failToCreate = Chyba p\u0159i vytvo\u0159en\u00ED spojen\u00ED
+failToOpen = Spojen\u00ED nelze otev\u0159\u00EDt. Pravd\u011Bpodobn\u011B probl\u00E9m s va\u0161\u00EDm zabezpe\u010Den\u00EDm.
+failFindItemMaster=Chyba p\u0159i z\u00EDsk\u00E1n\u00ED hlavn\u00EDho formul\u00E1\u0159e spojen\u00ED.
+failFindItemRevMaster=Chyba p\u0159i z\u00EDsk\u00E1n\u00ED hlavn\u00EDho formul\u00E1\u0159e revize spojen\u00ED.
+sameAsoldId=Nalezeno existuj\u00EDc\u00ED spojen\u00ED. P\u0159\u00EDkaz Vytvo\u0159it nebo Ulo\u017Eit jako pouze vytvo\u0159\u00ED nov\u00E1 spojen\u00ED. \nK vytvo\u0159en\u00ED nov\u00E9 revize spojen\u00ED pou\u017Eijte p\u0159\u00EDkaz Soubor -> Revidovat.
+failToSaveAs=Do\u0161lo k selh\u00E1n\u00ED p\u0159i ukl\u00E1d\u00E1n\u00ED jako revize spojen\u00ED.
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Vytvo\u0159en\u00ED spojen\u00ED bylo p\u0159eru\u0161eno... Spojen\u00ED bylo vytvo\u0159eno a \u010D\u00E1ste\u010Dn\u011B vlo\u017Eeno.
+createConfirm.TITLE=Ulo\u017Eit jako revizi spojen\u00ED
+createConfirm.MSG=Pro pokra\u010Dov\u00E1n\u00ED mus\u00ED b\u00FDt vytvo\u0159eno nov\u00E9 spojen\u00ED. \nChcete vytvo\u0159it nov\u00E9 spojen\u00ED?
+
+genCompIDLabelText = ID objektu\nporuchy\nspojen\u00ED:

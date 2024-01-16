@@ -1,0 +1,58 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newbomviewrevision package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newbomviewrevision_locale.properties
+#   Module  : com.teamcenter.rac.commands.newbomviewrevision
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2000  huangz                  Revise and finish it after Scott left.
+#10-Mar-2000  huangz                  Change the key name
+#16-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#06-Apr-2000  huangz                  Change the value of key
+#18-Oct-2001  wangp                   add key for name
+#29-Mar-2004  Zhixin Huang            Fix PR 4923225 (give some infor for the view types empty in Save BVR and New BVR).
+#01-Apr-2004  Zhixin Huang            Fix bug
+#01-Apr-2004  Zhixin Huang            Merge to Troy.
+#30-Apr-2004  wangp                   fix pr 4963411: fix spelling error
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# SaveBOMViewRevisionAsDialog
+# ------------------------
+command.TITLE = Nouvelle r\u00E9vision de Vue de Nomenclature
+bvrInformation = Cr\u00E9er une nouvelle BVR (r\u00E9vision vue Nomenclature) pour :
+BVRId = ID d'article
+rev = ID de r\u00E9vision
+viewType = Type de vue:
+billDisplay = Cr\u00E9er en mode :
+precise = Fig\u00E9
+imprecise = Dynamique
+openOnCreate = Ouvrir \u00E0 l'issue de la cr\u00E9ation
+name = Nom
+
+loadingViewTypes = Chargement des types de vue de Nomenclature ...
+viewTypeError = Impossible de charger le type de vue de Nomenclature
+creatingNewBOMViewRevision = Cr\u00E9er une r\u00E9vision de vue de Nomenclature ...
+failToCreate = Echec de la cr\u00E9ation de vue de Nomenclature
+
+error.TITLE = Erreur
+multipleSelectionError = Vous ne pouvez pas s\u00E9lectionner plusieurs objets \u00E0 la fois.
+
+itemSelectionError = Vous devez s\u00E9lectionner un article ou une r\u00E9vision d'article.
+
+noValidViewTypes=Il n'y a pas de type de vue valable pour la r\u00E9vision d'article saisie.\n Soit la r\u00E9vision n'existe pas, soit tous les types de vues sont d\u00E9j\u00E0 utilis\u00E9s.
+noValidViewTypes.TITLE = Aucun type de vue
+
+remind.MSG = La liste des types de vues r\u00E9pertorie ceux qui sont disponibles d'apr\u00E8s l'article\n et les ID de r\u00E9vision saisis. Dans le cas o\u00F9 l'un des ID n'est pas valable,\n ou si tous les types de vues sont d\u00E9j\u00E0 utilis\u00E9s, la liste des types de vue serait vide.\n L'utilisateur peut saisir un autre ID et les types de vues disponibles seront alors d\u00E9termin\u00E9s et affich\u00E9s.

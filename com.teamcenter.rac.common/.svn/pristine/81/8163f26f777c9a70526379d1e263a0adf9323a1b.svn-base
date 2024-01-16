@@ -1,0 +1,36 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2002 Electronic Data Systems Corporation
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the TC project package.
+#                   This is an internal file so therefore only TC PBU developers should be
+#                   modifying this file.  To make changes please modify the project_user.properties
+#                   file.  Do NOT modify this file.  This allows properties found in this file
+#                   to be over-written but not destroyed.
+#
+#   Filename: project.properties
+#   Module  : com.teamcenter.rac.commands.project
+#
+#===================================================================================================
+#  Date        Name                    Description of Change
+#07-Nov-2002   Ming Fa                 Initial code
+#20-Dec-2002  faming                  V9 Project Level Security Project
+#23-Dec-2002  faming                  merged to P8110
+#19-Mar-2003  faming                  Project Level Security
+#20-Mar-2003  faming                  merged to P8114
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#24-Feb-2005  Zhixin Huang            Change the icon from gif to png file and clean up the entries phase 2.
+#30-Jun-2005  Zhixin Huang            Rebranch phase 6.
+#14-Jul-2005  faming                  004295: New AM Privileges for Project
+#12-Oct-2005  faming                  004259: new AM Project Privileges in V10 SR1
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+import=com.teamcenter.rac.project.project
+
+assignToProject.ICON = images/assign_to_project_16.png
+removeFromProject.ICON = images/remove_from_project_16.png
+

@@ -1,0 +1,110 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the newalteranteid package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newalternateid_locale.properties
+#   Module  : com.teamcenter.rac.commands.newalternateid
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Jun-2003  wangp                   initial create
+#08-Jul-2003  Endi Wu                 Add new entry
+#08-Jul-2003  Endi Wu                 Merge to Shah branch
+#14-Oct-2003  wangp                   fix pr4855293: add selectItemRev
+#15-Oct-2003  wangp                   fix pr pr4855293
+#07-Jul-2005  Satish Katte            PR fix 1410178
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = Nowe ID
+newAliasId.TITLE=Nowy ID aliasu
+alternateID=ID elementu alternatywnego
+aliasID=ID aliasu
+newAltIdFor=Nowy alternatywny ID dla
+newAliasId=Nowe ID aliasu
+
+# Select Command Panel
+# ------------------------------
+selectCommand.LABEL=Wybierz, aby utworzy\u0107 alternatywny ID lub ID aliasu
+selectCommandStep.NAME=Wybierz polecenie
+selectCommandStep.TOOLTIP=Wybierz, aby utworzy\u0107 nowy alternatywny ID lub ID aliasu.
+
+createAlternateId=Utw\u00F3rz nowy alternatywny ID
+createAliasId=Utw\u00F3rz nowy ID aliasu
+selectItemRev.LABEL=Wybierz rewizj\u0119 obiektu:
+
+# New Alternate ID Info Panel
+# -----------------------------
+alternateIdInfo.LABEL=Zdefiniuj podstawowe informacje w celu utworzenia identyfikatora.
+alternateIdInfoStep.NAME=Wprowad\u017A podstawowe informacje dla identyfikatora
+alternateIdInfoStep.TOOLTIP=Zdefiniuj podstawowe informacje dla identyfikatora.
+
+step1=Wybierz kontekst:
+step2=Wybierz typ:
+step3=Wprowad\u017A podstawowe informacje:
+
+id = ID
+rev = Zmiana
+name = Nazwa
+assign = Przypisz
+description = Opis :
+alternateInformation = ID - informacje
+
+# Additional Alternate ID info panel
+# --------------------------------------
+additionalIdInfo.LABEL=Zdefiniuj dodatkowe w\u0142a\u015Bciwo\u015Bci informacji o identyfikatorze.
+additionalIdInfoStep.NAME=Wprowad\u017A dodatkowe informacje o identyfikatorze
+additionalIdInfoStep.TOOLTIP=Zdefiniuj dodatkowe informacje o identyfikatorze.
+
+# Additional Alternate REV info panel
+# --------------------------------------
+additionalRevInfo.LABEL=Zdefiniuj dodatkowe w\u0142a\u015Bciwo\u015Bci informacji o zmianie.
+additionalRevInfoStep.NAME=Wprowad\u017A dodatkowe informacje o rewizji
+additionalRevInfoStep.TOOLTIP=Zdefiniuj dodatkowe informacje o rewizji.
+
+# Display Option Panel
+# --------------------------
+displayOptionInfo.LABEL=Wybierz opcje wy\u015Bwietlania dla alternatywnego ID i zmiany.
+displayOptionStep.NAME=Zdefiniuj opcje wy\u015Bwietlania
+displayOptionStep.TOOLTIP=Ustaw opcje wy\u015Bwietlania.
+
+idDisplay=U\u017Cyj identyfikatora obiektu jako domy\u015Blnego wy\u015Bwietlania
+revDisplay=U\u017Cyj identyfikatora zmiany jako domy\u015Blnego wy\u015Bwietlania
+
+# Finish Panel
+# -----------------------------
+newAlternateIdFinishInfo.LABEL=Tworzenie nowego identyfikatora
+
+# Messages for message center
+# ------------------------------
+loadingPanels=\u0141adowanie paneli...
+updatingPanels=Aktualizacja paneli...
+creatingNewIds=Tworzenie nowych ID
+settingIdInfo=Ustawianie w\u0142a\u015Bciwo\u015Bci nowych ID
+savingIds=Zapisywanie nowych ID
+pastingIds=Wklejanie nowych identyfikator\u00F3w aliasu
+settingOptions=Ustawianie opcji wy\u015Bwietlania
+
+pastingNewId=Wklejanie nowych identyfikator\u00F3w aliasu
+
+# Error Messages
+# ----------------------
+error.TITLE = Nowy ID ...
+
+failFindDialog=Nie znaleziono okna dialogowego nowego identyfikatora.
+invalidSelection.MSG=Polecenie to ma zastosowanie tylko do zmian pozycji i/lub pozycji.
+noRule.MSG=Brak regu\u0142 zdefiniowanych dla
+reviseRule.MSG=Dla tego identyfikator zostanie automatycznie utworzona zmiana, ze wzgl\u0119du na regu\u0142y g\u0142\u0119bokiego kopiowania.

@@ -1,0 +1,45 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the pasteas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: pasteas_locale.properties
+#   Module  : com.teamcenter.rac.commands.pasteas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = \u9009\u62E9\u6027\u7C98\u8D34
+addAs = \u6DFB\u52A0\u4E3A\uFF1A
+confirmationText = \u786E\u5B9A\u8981\u7C98\u8D34\u5417\uFF1F
+
+# Entries for error message
+clipboardEmpty = \u526A\u8D34\u677F\u4E3A\u7A7A\u3002
+error.TITLE = \u9009\u62E9\u6027\u7C98\u8D34
+
+#PasteBOMAsDialog
+componentOfSelectedAssembly = \u9009\u5B9A\u88C5\u914D\u7684\u7EC4\u4EF6
+substituteOfSelectedAssembly = \u9009\u5B9A\u88C5\u914D\u7684\u66FF\u4EE3\u4EF6
+numberOfOccurrences = \u4E8B\u4F8B\u6570\uFF1A
+quantityPerOccurrence = \u6BCF\u4E2A\u4E8B\u4F8B\u7684\u6570\u91CF\uFF1A
+ar = A/R
+sequenceNumber = \u67E5\u627E\u7F16\u53F7\uFF1A
+viewType = \u89C6\u56FE\u7C7B\u578B\uFF1A
+
+# Entries for message center
+loadingRelations=\u6B63\u5728\u52A0\u8F7D\u5173\u7CFB...
+
+# Entries for displaying error messages when wrong relation is used
+captureRelation = \u53EA\u5E94\u4F7F\u7528\u6355\u6349\u5173\u7CFB\u3002
+relation.TITLE = \u5173\u7CFB\u4E0D\u6B63\u786E

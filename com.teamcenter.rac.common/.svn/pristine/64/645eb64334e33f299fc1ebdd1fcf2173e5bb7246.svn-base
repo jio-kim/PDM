@@ -1,0 +1,52 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2002 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the selectcolumnwizard package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: selectcolumnwizard_locale.properties
+#   Module  : com.teamcenter.rac.common.selectcolumnwizard
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#30-Jul-2002  wangp                   initial creation
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+selectColumnWizardDialog.TITLE=Spalten einf\u00FCgen
+
+# entries for the home panel
+homeHeader=Schritt 1 von 3
+selectCategory=Welche Eigenschaft der Kategorie soll eingef\u00FCgt werden?
+
+form=Formular
+folder=Ordner
+item=Element
+itemRevision=Element\u00E4nderungsstand
+dataset=Dataset
+others=Andere
+
+# entries for the type panel
+typeHeader=Schritt 2 von 3
+selectType=Welcher Typ
+propertiesToInsert=Eigenschaften soll eingef\u00FCgt werden?
+
+loadingType=Typen werden geladen...
+
+# entries for the property panel
+propertyHeader=Schritt 3 von 3
+selectProperty=Welche Eigenschaften von
+wantToInsert=sollten eingef\u00FCgt werden?
+othersProperty=Welche Eigenschaften sollen eingef\u00FCgt werden?
+
+availableProperties.LABEL=Verf\u00FCgbar
+selectedProperties.LABEL=Ausgew\u00E4hlt
+displayName=Darstellbaren Namen verwenden
+
+loadingProperty=Eigenschaften werden geladen...

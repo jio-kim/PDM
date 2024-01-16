@@ -1,0 +1,79 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2002 Electronic Data Systems Corporation
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the project package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: project_locale.properties
+#   Module  : com.teamcenter.rac.commands.project
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#07-Nov-2002  Ming Fa                 Initial Promote.
+#20-Dec-2002  faming                  V9 Project Level Security Project
+#23-Dec-2002  faming                  merged to P8110
+#19-Mar-2003  faming                  Project Level Security
+#20-Mar-2003  faming                  merged to P8114
+#01-Apr-2003  faming                  Project Level Security
+#21-May-2003  faming                  Project Level Security
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#27-Jun-2003  faming                  change nothingFound back
+#30-Jun-2003  faming                  add unknownObject.NAME"
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#24-May-2007  M.Ram Narsimhamurty     Added support for ADS Program Context
+#$HISTORY$
+#=================================================================================================*/
+
+assignToProjectCommand.TITLE=Atribuir um objeto para {0}
+removeFromProjectCommand.TITLE=Remover um objeto de {0}
+
+assignToProjectCommands.TITLE=Atribuir objetos para {0}
+removeFromProjectCommands.TITLE=Remover objetos de {0}
+
+selectProjectForAssign.TITLE=Selecione {0} para atribuir um objeto para
+selectProjectsForRemove.TITLE=Selecione {0} para remover objeto de
+
+selectProjectForAssigns.TITLE=Selecione {0} para atribuir objetos para
+selectProjectsForRemoves.TITLE=Selecione {0} para remover objeto de
+
+assignAllButton.LABEL=Todos os objetos encontrados
+assignLoadedButton.LABEL=P\u00E1gina atual
+
+selectedObjects.TITLE=Objetos selecionados
+
+nothingFound.MESSAGE=Esta busca n\u00E3o retornou nenhum objeto.
+
+assignToProjects.MESSAGE=Atribua objetos para {0} ...
+removeFromProjects.MESSAGE=Removendo objetos de {0}
+
+more.LABEL=...
+more.TIP=Clique neste hyper link para ver um lista de objetos selecionados
+
+closeButton.LABEL=fechar
+
+folderContents.LABEL=Conte\u00FAdo
+folderContents.TIP=Atribua conte\u00FAdo de objetos para {0}
+folderObject.LABEL=Pasta
+folderObject.TIP=Atribuir a pasta a si mesma para {0}
+
+parentToAssign.LABEL=Pai a atribuir
+parentToAssign.TIP=Escolha o BOMLine pai do tipo para atribuir para {0}
+BOMLineParentItem.LABEL=Item
+BOMLineParentItemRev.LABEL=Revis\u00E3o do Item
+
+BOMPropagationLevel.LABEL=N\u00EDveis de filhos
+BOMPropagationLevel.TIP=Defina quantos n\u00EDveis de filhos BOMLine para processar
+BOMLinePropagationAll.LABEL=BOM completa
+
+messageBox.TITLE={0}
+assignToProjectsErrorDialog.MSG=Alguns erros ocorreram quando objetos eram designados para {0}
+removeFromProjectsErrorDialog.MSG=Alguns erros ocorreram quando objetos eram removidos de {0}
+unknownObject.NAME=Nome de objeto desconhecido
+
+noSessionProgram=O programa de sess\u00E3o deve ser selecionado para modo hier\u00E1rquico estrito.
+noSessionProgram.TITLE=Programa de sess\u00E3o inv\u00E1lido

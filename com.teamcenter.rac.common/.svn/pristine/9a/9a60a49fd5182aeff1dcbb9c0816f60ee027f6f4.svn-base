@@ -1,0 +1,35 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#=================================================================================================
+#  Date       Name                    Description of Change
+# 27-May-2009  kabra                   initial creation
+# $HISTORY$
+# =================================================================================================
+
+# Entries for AddNewHandler
+#-----------------------------
+AddNewHandler.NoSourceFound=Dla tego polecenia nie skonfigurowano atrybutu \u017Ar\u00F3d\u0142owego ani parametru
+AddNewHandler.NoObjectType=Nie mo\u017Cna znale\u017A\u0107 typu element do uruchomienia kreatora.
+ViewMarkupHandler.Title=Poka\u017C/Uwaga
+ViewMarkupHandler.CreateJob=Wy\u015Bwietl zadanie wczytywania plik\u00F3w/dodaj do niego uwag\u0119...
+ViewMarkupHandler.AppLaunchError=Niepowodzenie uruchomienia powi\u0105zanego narz\u0119dzia
+ViewMarkupHandler.PopulateMyViewMarkup=Definiowanie szybkiego \u0142\u0105cza M\u00F3j widok/Uwaga
+DigitalSigningHandler.Title=Podpisz
+DigitalSigningHandler.CreateJob=Podpisz zadanie wczytywania plik\u00F3w...
+DigitalSigningHandler.AppLaunchError=Niepowodzenie uruchomienia powi\u0105zanego narz\u0119dzia
+CancelSigningHandler.Title=Anuluj podpisywanie
+CancelSigningHandler.CreateJob=Anuluj podpisywanie zadania wczytywania plik\u00F3w...
+CancelSigningHandler.SessionError=Niepowodzenie inicjowania sesji
+CancelSigningHandler.ServiceError=Nie znaleziono us\u0142ugi DigitalSignature
+setPreference.MSG=Ustaw preferencj\u0119
+TaskStatusActionHandler.Title=B\u0142\u0105d
+
+warning=Ostrze\u017Cenie
+InvalidObjectToSendTo.TITLE=Nieprawid\u0142owa operacja
+InvalidObjectToSendTo.MESSAGE=Co najmniej jeden element wej\u015Bciowy jest nieprawid\u0142owy i nie mo\u017Cna przes\u0142a\u0107 go do elementu docelowego.

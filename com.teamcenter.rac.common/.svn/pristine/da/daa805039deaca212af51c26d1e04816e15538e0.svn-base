@@ -1,0 +1,57 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#/*==================================================================================================
+# File description:  This properties file contains all keys pertaining to the gdt package.  This is
+#                    internal development file.  It is designed by the system that when customization
+#                    is to occur that the integrator would modify the gdt_user.properties file
+#                    rather than this file.  The reason is that the gdt_user.properties allows the
+#                    user to override functionality but not replace.  Therefore, by doing so the
+#                    integrator can be guaranteed to have a fallback in the event of programming
+#                    errors within the properties file.
+#
+#Filename:   gdt.properties
+#Module  :   com.teamcenter.rac.stylesheet.gdt
+#
+#====================================================================================================
+#Date      Name                    Description of Change
+#01-Jan-2005  compl                  Initial Version
+#26-Jan-2005  huangjun                GDT
+#15-Nov-2005  huangjun                changed icons from .gif to .png
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#12-Feb-2006  Venkatesh Chitnis       de-imanization (bug fix)
+#17-Mar-2011  Vikrant Bawankule       gdt package moved to common.stylesheet from common.form
+#$HISTORY$
+#==================================================================================================*/
+
+refresh.ICON=images/refresh.png
+alg-center.ICON=images/alg-center.png
+alg-left.ICON=images/alg-left.png
+alg-right.ICON=images/alg-right.png
+set-size.ICON=images/set-size.png
+#dec-size.ICON=images/dec-size.png
+edit.ICON=/com/teamcenter/rac/common/images/edit_16.png
+EDAView.ICON=/com/teamcenter/rac/common/images/eda_view_16.png
+#inc-size.ICON=images/inc-size.png
+setcolor.ICON=images/setcolor.png
+tbold.ICON=images/tbold.png
+tframe.ICON=images/tframe.png
+titalic.ICON=images/titalic.png
+tunderline.ICON=images/tunderline.png
+superscript.ICON=images/superscript.png
+subscript.ICON=images/subscript.png
+tolerance.ICON=images/tolerance.png
+singleframe.ICON=images/singleframe.png
+compositeframe.ICON=images/compositeframe.png
+vseparator.ICON=images/vseparator.png
+nextframe.ICON=images/nextframe.png
+
+
+EDITOR_UPDATE_LATENCY=50
+
+HTML_GENERATION_TIMEOUT=300

@@ -1,0 +1,6 @@
+#* @<COPYRIGHT_START>@
+# ===============================================
+# Copyright 2007 UGS Corp. All Rights Reserved.
+# ===============================================
+# @<COPYRIGHT_END>@
+import=com.teamcenter.rac.common.common,com.teamcenter.rac.commands.properties.properties

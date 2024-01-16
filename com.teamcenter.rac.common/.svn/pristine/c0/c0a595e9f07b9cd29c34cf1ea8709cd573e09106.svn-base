@@ -1,0 +1,51 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newfolder package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newfolder_locale.properties
+#   Module  : com.teamcenter.rac.commands.newfolder
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2003  wangp                   fix pr 4426554: customize portal dialogs
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Folder Dialog
+# ----------------------
+command.TITLE=\u65B0\u5EFA\u6587\u4EF6\u5939
+
+name = \u540D\u79F0\uFF1A
+description = \u63CF\u8FF0\uFF1A
+type = \u7C7B\u578B\uFF1A
+openOnCreate = \u521B\u5EFA\u540E\u6253\u5F00
+
+# Messages for message center
+# ----------------------
+loadingTypes = \u6B63\u5728\u52A0\u8F7D\u6587\u4EF6\u5939\u7C7B\u578B...
+creatingNewFolder = \u6B63\u5728\u65B0\u5EFA\u6587\u4EF6\u5939
+abort = \u6253\u5F00\u65B0\u6587\u4EF6\u5939\u65F6\u4E2D\u6B62
+
+# Error Messages
+# ----------------------
+folderTypeError = \u83B7\u53D6\u6587\u4EF6\u5939\u7C7B\u578B\u5931\u8D25\u3002
+failToCreate = \u672A\u80FD\u521B\u5EFA\u6587\u4EF6\u5939
+failFindDialog=\u65E0\u6CD5\u627E\u5230\u65B0\u6587\u4EF6\u5939\u5BF9\u8BDD\u6846\u3002
+error.TITLE = \u65B0\u5EFA\u6587\u4EF6\u5939...
+
+# Messages and keys for the Abort Message Box
+# ----------------------
+aborted=\u6587\u4EF6\u5939\u521B\u5EFA\u4E2D\u65AD\u3002\u6587\u4EF6\u5939\u5DF2\u521B\u5EFA\u5E76\u5DF2\u90E8\u5206\u63D2\u5165
+aborted.TITLE=\u5DF2\u4E2D\u6B62
+
+aborting=\u6B63\u5728\u4E2D\u6B62...

@@ -1,0 +1,98 @@
+#*==================================================================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the findwithproperties package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: findwithproperties_locale.properties
+#   Module  : com.teamcenter.rac.common.findwithproperties
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Aug-2000  huangz                  Initial creation.
+#14-Aug-2000  huangz                  Change the key name
+#31-Oct-2000  Tony Dumont             Change find with properties to find in display
+#11-Feb-2002  faming                  added inCLASSSearchButton.NAME
+#15-Feb-2002  viswanat                Promote PVlook project - P8.0.0.5
+#23-Oct-2002  Tony Dumont             PR#4561506 - Allow user to expand
+#17-Nov-2003  helmutl                 PR#4880552 rename in-CLASS to Classification
+#17-Nov-2003  helmutl                 Merge from Helmut
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#28-Feb-2008  Asya Vainer              changed the text in findInBOM.MSG (used now also in "Show line where originally assigned" command) 
+#24-Aug-2008  Yael Grovman              Fixed PR#1674114 - 'MSE- Find in Display' doesn't search in collapsed structures
+#$HISTORY$
+#=================================================================================================*/
+
+
+
+
+
+findWithProperties.TITLE = \uB514\uC2A4\uD50C\uB808\uC774\uC5D0\uC11C \uCC3E\uAE30
+findWithProperties.TIP = \uB514\uC2A4\uD50C\uB808\uC774\uC5D0\uC11C \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uCC3E\uC2B5\uB2C8\uB2E4.
+
+# The table column header definitions
+tableHeaderLogicOp = AND/OR
+tableHeaderLogicAndOp = AND
+tableHeaderProperty =\uC18D\uC131 \uC774\uB984
+tableHeaderPropertyValue =\uC18D\uC131 \uAC12
+tableHeaderValue = \uAC80\uC0C9 \uAC12
+tableHeaderRelationOp = \uC5F0\uC0B0\uC790
+
+ClassSelectionButton.Tip=\uD074\uB9AD\uD558\uC5EC \uBD84\uB958 \uD2B8\uB9AC\uB97C \uC5F4\uACE0 \uD074\uB798\uC2A4\uB97C \uC120\uD0DD\uD569\uB2C8\uB2E4. 
+
+# Tip definitions
+upButton.TIP=\uC6B0\uC120\uC21C\uC704\uB97C \uB192\uC774\uB824\uBA74 \uC120\uD0DD\uD55C \uC870\uAC74\uC744 \uC704\uB85C \uC774\uB3D9\uD569\uB2C8\uB2E4.
+downButton.TIP=\uC6B0\uC120\uC21C\uC704\uB97C \uC5C6\uC560\uB824\uBA74 \uC120\uD0DD\uD55C \uC870\uAC74\uC744 \uC544\uB798\uB85C \uC774\uB3D9
+removeButton.TIP=\uC120\uD0DD\uD55C \uC870\uAC74\uC744 \uC81C\uAC70
+clearButton.TIP = \uD14C\uC774\uBE14 \uB0B4 \uBAA8\uB4E0 \uC870\uAC74\uC744 \uC81C\uAC70
+addButton.TIP=\uC0C8 \uAC80\uC0C9 \uC870\uAC74\uC744 \uCD94\uAC00
+
+logicOpColumn.TIP = \uB17C\uB9AC \uC5F0\uC0B0\uC790\uB97C \uC120\uD0DD\uD558\uB824\uBA74 \uB450 \uBC88 \uD074\uB9AD
+propertyColumn.TIP = \uC18D\uC131\uC744 \uC120\uD0DD\uD558\uB824\uBA74 \uB450 \uBC88 \uD074\uB9AD
+relationOpColumn.TIP = \uB450 \uBC88 \uD074\uB9AD\uD558\uC5EC \uAD00\uACC4 \uC5F0\uC0B0\uC790\uB97C \uC120\uD0DD
+valueColumn.TIP = \uD074\uB9AD\uD558\uC5EC \uAC12\uC744 \uC785\uB825\uD558\uAC70\uB098 \uBCC0\uACBD\uD569\uB2C8\uB2E4.
+
+equalOperator.TIP = \uC774 \uC5F0\uC0B0\uC790\uB97C \uC640\uC77C\uB4DC \uCE74\uB4DC \uAC80\uC0C9\uC5D0 \uC0AC\uC6A9
+sameOperator.TIP = \uC774 \uC5F0\uC0B0\uC790\uB97C \uC0AC\uC6A9\uD558\uC5EC \uC815\uD655\uD788 \uC77C\uCE58\uD558\uB294 \uAC80\uC0C9 \uAC12 \uAC80\uC0C9
+notEqualOperator.TIP = \uC774 \uC5F0\uC0B0\uC790\uB97C \uC0AC\uC6A9\uD558\uC5EC \uAC80\uC0C9 \uAC12\uC744 \uC81C\uC678\uD55C \uAE30\uD0C0 \uAC12 \uAC80\uC0C9
+greaterThanOp.TIP = \uC774 \uC5F0\uC0B0\uC790\uB97C \uC0AC\uC6A9\uD558\uC5EC \uAC80\uC0C9 \uAC12\uBCF4\uB2E4 \uD070 \uAC12 \uAC80\uC0C9
+greaterThanEqualOp.TIP = \uC774 \uC5F0\uC0B0\uC790\uB97C \uC0AC\uC6A9\uD558\uC5EC \uAC80\uC0C9 \uAC12\uBCF4\uB2E4 \uD06C\uAC70\uB098 \uAC19\uC740 \uAC12 \uAC80\uC0C9
+lessThanOp.TIP = \uC774 \uC5F0\uC0B0\uC790\uB97C \uC0AC\uC6A9\uD558\uC5EC \uAC80\uC0C9 \uAC12\uBCF4\uB2E4 \uC791\uC740 \uAC12 \uAC80\uC0C9
+lessThanEqualOp.TIP = \uC774 \uC5F0\uC0B0\uC790\uB97C \uC0AC\uC6A9\uD558\uC5EC \uAC80\uC0C9 \uAC12\uBCF4\uB2E4 \uC791\uAC70\uB098 \uAC19\uC740 \uAC12 \uAC80\uC0C9
+wildCardMessage.MSG = \uC9C0\uC6D0\uB418\uC9C0 \uC54A\uB294 \uC640\uC77C\uB4DC\uCE74\uB4DC \uBB38\uC790\uB97C \uC785\uB825\uD588\uC2B5\uB2C8\uB2E4. "=" \uC5F0\uC0B0\uC790\uAC00 \uC785\uB825\uD55C \uBB38\uC790\uC5F4\uC774 \uD3EC\uD568\uB41C \uBAA8\uB4E0 \uD30C\uC77C\uC744 \uCC3E\uC73C\uBBC0\uB85C \uC640\uC77C\uB4DC\uCE74\uB4DC\uB97C \uC0AC\uC6A9\uD558\uC9C0 \uC54A\uC544\uB3C4 \uB429\uB2C8\uB2E4.
+
+executeButton.TIP = \uC870\uD68C \uC2E4\uD589
+
+combo.TIP=\uD074\uB9AD\uD558\uBA74 \uCF64\uBCF4 \uC0C1\uC790\uB97C \uC5F4 \uC218 \uC788\uC2B5\uB2C8\uB2E4.
+choice.TIP=\uC120\uD0DD \uB9AC\uC2A4\uD2B8\uB97C \uBCF4\uB824\uBA74 \uC140\uC744 \uD074\uB9AD\uD558\uC2ED\uC2DC\uC624.
+
+# Button definitions
+closeButton = \uB2EB\uAE30
+nextButton.TIP=\uB2E4\uC74C \uD56D\uBAA9\uC744 \uCC3E\uC2B5\uB2C8\uB2E4.
+previousButton.TIP=\uC774\uC804 \uD56D\uBAA9\uC744 \uCC3E\uC2B5\uB2C8\uB2E4.
+allButton.TIP=\uBAA8\uB4E0 \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uCC3E\uC2B5\uB2C8\uB2E4.
+
+
+findWithPropertyDefaultMessage = \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+found = \uCC3E\uC558\uC2B5\uB2C8\uB2E4.
+allFound = \uBAA8\uB450 \uCC3E\uC558\uC2B5\uB2C8\uB2E4.
+
+
+searchingStatus.MSG = \uAC80\uC0C9 \uC9C4\uD589 \uC911...
+
+find = \uCC3E\uAE30
+
+inCLASSSearchButton.NAME=\uBD84\uB958 \uD074\uB798\uC2A4 \uAC80\uC0C9
+typeSearchButton.NAME=\uAC80\uC0C9 \uC720\uD615
+
+findInBOM.TITLE=BOM\uC5D0\uC11C \uCC3E\uAE30
+findInBOM.MSG= \uD604\uC7AC \uAC80\uC0C9 \uBC94\uC704\uC5D0\uC11C \uD589\uC744 \uCC3E\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.\uAD6C\uC870\uB97C \uC644\uC804\uD788 \uB85C\uB4DC\uD55C \uD6C4 \uB2E4\uC2DC \uAC80\uC0C9\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?\n\n(\uAD6C\uC870\uAC00 \uD074 \uACBD\uC6B0 \uC2DC\uAC04\uC774 \uAC78\uB9BD\uB2C8\uB2E4.)
+findInBOMShouldLoadBeforeSearch.MSG= \uC120\uD0DD\uD55C \uAD6C\uC870\uAC00 \uC644\uC804\uD788 \uB85C\uB4DC\uB418\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.\n\n"\uB85C\uB4DC \uBC0F \uAC80\uC0C9"\uC740 \uAC80\uC0C9 \uC804\uC5D0 \uBAA8\uB4E0 \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uB85C\uB4DC\uD569\uB2C8\uB2E4.(\uB300\uD615 \uAD6C\uC870\uC758 \uACBD\uC6B0\uC5D0\uB294 \uC2DC\uAC04\uC774 \uC624\uB798 \uAC78\uB9B4 \uC218 \uC788\uC2B5\uB2C8\uB2E4.)\n\n"\uC9C0\uAE08 \uAC80\uC0C9"\uC740 \uD604\uC7AC \uB85C\uB4DC\uB41C \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+findInBOMSearchAndLoad.TEXT= \uB85C\uB4DC \uBC0F \uAC80\uC0C9
+findInBOMSearchNow.TEXT= \uC9C0\uAE08 \uAC80\uC0C9
+
+

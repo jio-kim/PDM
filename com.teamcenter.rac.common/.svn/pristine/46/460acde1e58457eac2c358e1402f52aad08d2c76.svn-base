@@ -1,0 +1,167 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the commandstree package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: commandstree_locale.properties
+#   Module  : com.teamcenter.rac.commandsuppression.commandstree
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#19-Jul-2000  Ravi Yechuri            Initial Creation
+#25-Jul-2000  Ravi Yechuri            Merged local Changes
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#11-Nov-2013  Prerna kumari           added changes for showVendorParts
+#$HISTORY$
+#=================================================================================================*/
+
+dhtmlMenu.NAME=Espec\u00EDfico do cliente leve
+viewPSAction.NAME=Estrutura do produto
+viewMSVAction.NAME=Planejador de Processos de Manufatura
+whereClassifiedAction.NAME=Quem Classifica
+whereReferencedAction.NAME=Quem Referencia
+whereUsedAllAction.NAME=Quem Usa (todas as revis\u00F5es)
+whereUsedAction.NAME=Onde \u00E9 usado
+whereUsedTopAction.NAME=Quem Usa (n\u00EDvel topo)
+whereUsedPreciseAction.NAME=Quem Usa (fixo)
+thumbnailAction.NAME=Miniatura
+openInRAC.NAME=Abrir no Rich Client
+plmxmlExportAction.NAME=Exportar PLMXML
+plmxmlImportAction.NAME=Importar PLMXML
+bomCompareAction.NAME=Compara\u00E7\u00E3o da BOM
+viewInContextAction.NAME=Visualizar no contexto
+exportConfigNXAssemblyAction.NAME=Exportar conjunto NX configurado
+downloadFilesAction.NAME=Baixar arquivo(s)
+gdisViewAction.NAME=Visualizar GDIS
+gdisEditAction.NAME=Editar GDIS
+HTMLReportAction.NAME=Relat\u00F3rio HTML
+decisionsAction.NAME=Decis\u00F5es
+viewSubtaskAction.NAME=Subtarefa
+viewSubtaskParentAction.NAME=Subtarefa pai
+viewProcessAction.NAME=Processo
+dueDateDurationAction.NAME=Data limite/dura\u00E7\u00E3o
+assignAllTasksAction.NAME=Anexar todas as tarefas
+viewPerChartAction.NAME=Gr\u00E1fico Pert
+viewMSEPVAction.NAME=MSEPV
+generateMEReportAction.NAME=Gerar relat\u00F3rio ME
+addAlternateAction.NAME=Adicionar substituto
+removeAlternateAction.NAME=Remover/preferir substituto
+pasteGlobalAlternateAction.NAME=Colar alternativo global 
+addGlobalAlternateAction.NAME=Adicional alternativa global
+openBookmarkAction.NAME=NX/Mgr
+toggleViewerAction.NAME=Exibir/ocultar visualizador
+asTopLineAction.NAME=Como linha topo
+showUnconfiguredByDateAction.NAME=Exibir n\u00E3o configurado por data
+viewSupersedureAction.NAME=Substitui\u00E7\u00E3o...
+snapshotAction.NAME=Retrato...
+OnDemandValidate.NAME=Validar ocorr\u00EAncias...
+findInDisplayAction.NAME=Localizar na exibi\u00E7\u00E3o
+relateAlternatesAction.NAME=Relacionar alternativas
+optionalItemsAction.NAME=Itens opcionais
+sendToExternalSystemAction.NAME=Enviar para sistema externo
+editClassificationObjectAction.NAME=Editar objeto de classifica\u00E7\u00E3o
+addImageAction.NAME=Adicionar Imagem
+deleteImageAction.NAME=Excluir imagem
+viewTreeAction.NAME=\u00C1rvore
+viewQueryAction.NAME=Busca
+classImageAction.NAME=Imagem da classe
+instanceImageAction.NAME=Imagem da inst\u00E2ncia
+createBOMChangesAction.NAME=Criar altera\u00E7\u00F5es da BOM
+createSupersedureAction.NAME=Criar substitui\u00E7\u00E3o
+createTransferSupersedureAction.NAME=Criar transfer\u00EAncia (substitui\u00E7\u00E3o)
+viewExpandAction.NAME=Expandir
+viewCollapseAction.NAME=Recolher
+itemReportAction.NAME=Relat\u00F3rios de item
+changePasswordAction.NAME=Alterar Senha
+assignFSCsAction.NAME=Atribuir FSCs
+addToFavoritesAction.NAME=Adicionar a Favoritos
+LaunchAdhocAction.NAME=Abrir na visualiza\u00E7\u00E3o do ciclo de vida
+newVendorAction.NAME=Fornecedor...
+newBidPackageAction.NAME=Pacote de licita\u00E7\u00E3o...
+newCommercialPartAction.NAME=Parte comercial...
+newManufacturerPartAction.NAME=Parte do fornecedor...
+propertiesAction.NAME=Propriedades
+editPropertiesAction.NAME=Propriedades
+reviseAction.NAME=Revisar ...
+saveAsAction.NAME=Salvar Como ...
+viewRMAction.NAME=Requisitos
+viewDCAction.NAME=Contexto de design
+tcgsSearch.NAME=Monitor de servi\u00E7os globais
+openInUGAction.NAME=NX/Gerenciador
+openInJTEditorAction.NAME=Editor de JT
+openInSEECAction.NAME=Solid Edge
+importSpecAction.NAME=Importar especifica\u00E7\u00E3o
+exportExcelAction.NAME=Exportar para Excel
+manageGlobalAlternatesCommand.NAME=Alternativas globais
+viewmarkupAction.NAME=Visualizar/Marcar
+digitalsignAction.NAME=Assinar
+cancelsignAction.NAME=Cancelar assinatura
+addVendorRoleAction.NAME=Adicionar fun\u00E7\u00E3o do fornecedor...
+removeVendorRoleAction.NAME=Remover fun\u00E7\u00E3o do fornecedor...
+addBidPackageLineItemAction.NAME=Adicionar item de linha do pacote de licita\u00E7\u00E3o...
+changeVendorAction.NAME=Alterar Fornecedor...
+addBatchPrint.NAME=Impress\u00E3o em lote...
+builderReportAction.NAME=Relat\u00F3rios do construtor de relat\u00F3rio
+exportToGMSAction.NAME=Exportar para GMS
+publishODSAction.NAME=Publicar no ODS padr\u00E3o
+unpublishODSAction.NAME=Cancelar publica\u00E7\u00E3o do ODS padr\u00E3o
+applicationHelpAction.NAME=Cole\u00E7\u00E3o da Web
+frameworkHelpAction.NAME=Cole\u00E7\u00E3o geral
+requestSubstanceDeclarationAction.NAME=Solicitar declara\u00E7\u00E3o de subst\u00E2ncia...
+requestCMDAction.NAME=Solicitar declara\u00E7\u00E3o mineral de conformidade...
+initiateSubsCmplCheckAction.NAME=Iniciar verifica\u00E7\u00E3o de conformidade de subst\u00E2ncia...
+applyExemptionAction.NAME=Aplicar isen\u00E7\u00F5es...
+showMaterialSummaryAction.NAME=Exibir painel do material...
+showComplianceSummaryAction.NAME=Exibir painel de conformidade...
+
+dhtmlNewMenu.NAME=Novo
+dhtmlViewMenu.NAME=Visualizar
+dhtmlToolsMenu.NAME=Ferramentas
+dhtmlActionsMenu.NAME=A\u00E7\u00F5es
+dhtmlHelpMenu.NAME=Ajuda
+dhtmlEditMenu.NAME=Editar
+dhtmlRelatedAlternatesMenu.NAME=Alternativas relacionadas
+dhtmlAuditMenu.NAME=Auditoria
+dhtmlReportsMenu.NAME=Relat\u00F3rios
+dhtmlglobalservicesMenu.NAME=Servi\u00E7os globais
+
+newChangeWizardMenu.NAME=Change
+newCreateCMAction.NAME=Criar ...
+newContextCMAction.NAME=Cria\u00E7\u00E3o de contexto...
+newDerivedCMAction.NAME=Derivar Change...
+
+editParamReqParams.NAME=Par\u00E2metros de requisi\u00E7\u00E3o param\u00E9trica
+exportObjectsAction.NAME=Exportar por AIF
+embeddedSwExplorerMenu.NAME=Explorador de software incorporado
+showAssociatedProcessorsMenu.NAME=Mostrar processador(es) associado(s)
+showAssociatedSoftwareMenu.NAME=Exibir software associado
+showAssociatedProcessorAction.NAME=Incorpora\u00E7\u00E3o
+showProcessorAccessedAction.NAME=Acessado por
+showProcessorGatewayAction.NAME=Gateway
+showAssociatedSoftwareAction.NAME=Incorporado
+showUsedSoftwareAction.NAME=Usa
+showDependentSoftwareAction.NAME=Usado por
+showMakeFromStocksAction.NAME=Exibir criado do estoque
+configureVariantAction.NAME=Configura\u00E7\u00E3o da variante
+stockSelectionRuleAction.NAME=Regra de sele\u00E7\u00E3o de estoque
+embeddedSoftwareManagerMenu.NAME=Gerenciador de software incorporado
+associateSoftwaretoMenu.NAME=Associar software a
+associateProcessortoMenu.NAME=Associar processador a
+removeSoftwareAssociationMenu.NAME=Remover associa\u00E7\u00E3o de software
+removeProcessorAssociationMenu.NAME=Remover associa\u00E7\u00E3o do processador
+associateSoftwareToProcessorAction.NAME=Processador
+associateSoftwareToSoftwareAction.NAME=Software
+associateProcessorToGatewayAction.NAME=Gateway
+removeSoftwareToSoftwareAction.NAME=Software
+removeSoftwareToProcessorAction.NAME=Software
+removeProcessorAction.NAME=Gateway
+
+newRaiseActionItemAction.NAME=Aumentar item de a\u00E7\u00E3o...
+makeFromAction.NAME=Fazer de
+showVendorPartsAction.NAME=Exibir Pe\u00E7as de Representante

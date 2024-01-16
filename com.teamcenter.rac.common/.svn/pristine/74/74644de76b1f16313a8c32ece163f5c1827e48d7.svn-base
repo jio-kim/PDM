@@ -1,0 +1,112 @@
+#*==================================================================================================
+#
+#                    Copyright (c) 2004 UGS
+#                   Unpublished - All rights reserved
+#                   
+#                   
+# THIS PROGRAM IS AN UNPUBLISHED WORK FULLY PROTECTED BY THE UNITED STATES
+#  COPYRIGHT LAWS AND IS CONSIDERED A TRADE SECRET BELONGING TO THE COPYRIGHT
+#                                   HOLDER.
+#
+#====================================================================================================
+# File description: This properties file contains all locale specific keys for the saveas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: saveasconnection_locale.properties
+#   Module  : com.teamcenter.rac.commands.saveasconnection
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#04-Oct-2004  x_bhadra                Initial Version
+#08-Nov-2004  x_bhadra                Fixing the Registry Problem
+#08-Nov-2004  Narayana Murthy         Merge from P10.0.0.6
+#10-Nov-2004  x_bhadra                Merge from lbom_pse_support branch
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+dialog.TITLE=Zapisz jako
+ConnectionType=Typ po\u0142\u0105czenia :
+
+# Save ItemAsDialog
+# ------------------------
+saveAsItem.TITLE = Zapisz po\u0142\u0105czenie jako
+itemId = ID po\u0142\u0105czenia
+revId = ID rewizji
+itemType = Typ po\u0142\u0105czenia:
+itemInformation = Informacje o po\u0142\u0105czeniu
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.NAME=Sprawd\u017A konfiguracj\u0119
+viConfigStep.TOOLTIP=Sprawd\u017A konfiguracj\u0119 wariantu po\u0142\u0105czenia
+viConfigStep.info=Upewnij si\u0119, \u017Ce konfiguracja wariantu po\u0142\u0105czenia jest prawid\u0142owa
+viConfigStep.table.option=Opcja
+viConfigStep.table.value=Warto\u015B\u0107
+
+# New Connection Panel
+# -----------------------------
+createConfirm.TITLE=Nowe po\u0142\u0105czenie
+createConfirm.MSG=Aby kontynuowa\u0107, nale\u017Cy utworzy\u0107 nowe po\u0142\u0105czenie. \nCzy chcesz utworzy\u0107 nowe po\u0142\u0105czenie?
+
+# Connection Info Panel
+# -----------------------------
+itemInfo.LABEL=Zdefiniuj podstawowe informacje dla kopiowanego po\u0142\u0105czenia.
+itemInfoStep.NAME=Wprowad\u017A informacje o po\u0142\u0105czeniu
+itemInfoStep.TOOLTIP=Zdefiniuj podstawowe informacje o po\u0142\u0105czeniu.
+
+# Connection Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=Zdefiniuj atrybuty g\u0142\u00F3wnego formularza po\u0142\u0105czenia.
+itemMasterFormStep.NAME=Wprowad\u017A informacje g\u0142\u00F3wnego formularza po\u0142\u0105czenia
+itemMasterFormStep.TOOLTIP=Zdefiniuj atrybuty g\u0142\u00F3wnego formularza po\u0142\u0105czenia.
+
+# ConnectionRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=Zdefiniuj atrybuty g\u0142\u00F3wnego formularza zmiany po\u0142\u0105czenia.
+itemRevMasterFormStep.NAME=Wprowad\u017A informacje g\u0142\u00F3wnego formularza zmiany
+itemRevMasterFormStep.TOOLTIP=Zdefiniuj atrybuty g\u0142\u00F3wnego formularza zmiany po\u0142\u0105czenia.
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Tworzenie nowego po\u0142\u0105czenia
+
+# option panel
+# ------------
+checkOutOnCreate = Pobierz rewizj\u0119 po\u0142\u0105czenia po utworzeniu
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Tworzenie nowego po\u0142\u0105czenia
+checkingIds=Sprawdzanie identyfikatora i zmiany po\u0142\u0105czenia
+openingNewComponent=Otwieranie nowego po\u0142\u0105czenia
+abort = Przerwij otwieranie nowego po\u0142\u0105czenia
+loadingItemTypes = Wczytywanie typ\u00F3w po\u0142\u0105cze\u0144 ...
+creatingNewItem = Tworzenie nowego po\u0142\u0105czenia 
+pastingNewItem=Wklejanie nowego po\u0142\u0105czenia
+creatingNewItemRevision = Tworzenie nowej zmiany po\u0142\u0105czenia
+savingAsItemRev=Zapisywanie jako rewizja sygna\u0142u
+
+# Error Messages
+# ----------------------
+error.TITLE = Nowe po\u0142\u0105czenie ...
+itemTypeError = Nie mo\u017Cna za\u0142adowa\u0107 dost\u0119pnej listy po\u0142\u0105cze\u0144
+failFindDialog=Nie znaleziono okna dialogowego nowego po\u0142\u0105czenia.
+sameAsOldId=Znaleziono istniej\u0105ce po\u0142\u0105czenie. Utw\u00F3rz/Zapisz jako tworzy tylko nowe po\u0142\u0105czenia. \nAby utworzy\u0107 now\u0105 zmian\u0119 po\u0142\u0105czenia, u\u017Cyj polecenia Plik -> Utw\u00F3rz zmian\u0119.
+failToCreate = Utworzenie po\u0142\u0105czenia nie powiod\u0142o si\u0119
+failToOpen = Nie mo\u017Cna otworzy\u0107 po\u0142\u0105czenia. Mo\u017Ce by\u0107 to spowodowane problemem z zabezpieczeniami.
+failFindItemMaster=Pobranie g\u0142\u00F3wnego formularza po\u0142\u0105czenia nie powiod\u0142o si\u0119.
+failFindItemRevMaster=Pobranie g\u0142\u00F3wnego formularza zmiany po\u0142\u0105czenia nie powiod\u0142o si\u0119.
+sameAsoldId=Znaleziono istniej\u0105ce po\u0142\u0105czenie. Utw\u00F3rz/Zapisz jako tworzy tylko nowe po\u0142\u0105czenia. \nAby utworzy\u0107 now\u0105 zmian\u0119 po\u0142\u0105czenia, u\u017Cyj polecenia Plik -> Utw\u00F3rz zmian\u0119.
+failToSaveAs=Zapisanie jako zmiana po\u0142\u0105czenia nie powiod\u0142o si\u0119.
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Tworzenie po\u0142\u0105czenia zosta\u0142o przerwane..Po\u0142\u0105czenie zosta\u0142o utworzone i cz\u0119\u015Bciowo wstawione
+createConfirm.TITLE=Zapisz jako rewizje po\u0142\u0105czenia
+createConfirm.MSG=Aby kontynuowa\u0107, nale\u017Cy utworzy\u0107 nowe po\u0142\u0105czenie. \nCzy chcesz utworzy\u0107 nowe po\u0142\u0105czenie?
+
+genCompIDLabelText = ID po\u0142\u0105czenia\nrozbicia\nelementu:

@@ -1,0 +1,40 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the organization package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: organization_locale.properties
+#   Module  : com.teamcenter.rac.commands.organization
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=Organisation
+orgChart.TITLE=Organisationsdiagramm
+find=Suchen:
+color=Farbe:
+layout=Layout:
+
+# Entries for layout managers selection
+vertical=Vertikal
+reverseHorizontal=Horizontal
+treeLook=Baumstruktur
+
+# Entries for information
+name=Name:
+address=Adresse:
+phone=Telefon:
+email=E-Mail:
+organization=Organisation:
+employeeNumber=Mitarbeiternummer:

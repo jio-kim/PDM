@@ -1,0 +1,43 @@
+# @<COPYRIGHT>@
+#===============================================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#===============================================================================
+# @<COPYRIGHT>@
+
+# Entries for messages
+#---------------------
+# Status message while performing Implicit Check out
+doingImplicitCO=Saving changes and doing Implicit Check-Out/Check-In...
+
+#Entries for buttons
+#---------------------------------
+command.TITLE=Edit Properties
+
+loadingProperties=Loading properties ...
+savingProperties=Saving properties ...
+
+print.TIP = Print object properties.
+
+failToDisplay=Unable to display properties.
+
+saveCheckOut=Save
+saveCheckOut.TIP=Save and keep checked-out
+saveCheckOut.MNEMONIC=S
+
+saveCheckIn=Save and Check-In
+saveCheckIn.TIP=Save properties and check-in
+saveCheckIn.MNEMONIC=I
+
+cancelCheckOut=Cancel Check-Out
+cancelCheckOut.TIP=Cancel check-out and revert back to original
+cancelCheckOut.MNEMONIC=O
+
+ok=Ok
+ok.TIP=Save Changes
+ok.MNEMONIC=K
+
+apply=Apply
+apply.TIP=Save Changes
+apply.MNEMONIC=A

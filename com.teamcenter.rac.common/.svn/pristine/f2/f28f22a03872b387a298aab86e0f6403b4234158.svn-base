@@ -1,0 +1,164 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newdataset package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newdataset_locale.properties
+#   Module  : com.teamcenter.rac.commands.newdataset
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Oct-2000  wangp                   add tooltip for import button
+#02-Mar-2001  wangp                   Fix PR: 4227870: Add entry for no reference found.
+#30-Apr-2001  x_gopala                PR #4252773 Fix
+#30-Apr-2001  x_gopala                Merge in
+#27-Jun-2003  Zhixin Huang            Add key for NewDatasetForFile dialog.
+#27-Jan-2004  wangp                   fix pr 4902579: customize command/dialog
+#06-May-2005  gezou                   fix PR5174557, put error message
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#28-Aug-2009  Pushkar Raj              Added entries for Multiple file Drag and Drop.
+#$HISTORY$
+#=================================================================================================*/
+
+# New Dataset Dialog
+# --------------------
+command.TITLE = \u65B0\u589E\u8CC7\u6599\u96C6
+
+assign = \u6307\u6D3E
+
+datasetInformation = \u8CC7\u6599\u96C6\u8CC7\u8A0A
+datasetId = \u8CC7\u6599\u96C6 ID
+revId = \u7248\u672C ID
+
+name = \u540D\u7A31\uFF1A
+description = \u6558\u8FF0\uFF1A
+type = \u985E\u578B\uFF1A
+tool = \u6240\u7528\u5DE5\u5177\uFF1A
+openOnCreate = \u5EFA\u7ACB\u5F8C\u958B\u555F
+importLabel= \u532F\u5165\uFF1A
+importButton=\u532F\u5165...
+importButton.TIP=\u9078\u53D6\u532F\u5165\u6A94\u6848\u3002
+
+# Messages for message center
+# -------------------------------
+loadingTypes = \u6B63\u5728\u8F09\u5165\u8CC7\u6599\u96C6\u985E\u578B...
+creatingNewDataset = \u6B63\u5728\u65B0\u589E\u8CC7\u6599\u96C6
+importingFile=\u6B63\u5728\u5C07\u6A94\u6848\u532F\u5165\u81F3\u8CC7\u6599\u96C6...
+abort = \u4E2D\u6B62\u958B\u555F\u65B0\u8CC7\u6599\u96C6
+
+# Error Messages
+# --------------------
+datasetTypesError = \u672A\u80FD\u7372\u53D6\u8CC7\u6599\u96C6\u985E\u578B\u3002
+failToCreate = \u672A\u80FD\u5EFA\u7ACB\u8CC7\u6599\u96C6
+failFindDialog=\u627E\u4E0D\u5230\u300C\u65B0\u589E\u8CC7\u6599\u96C6\u300D\u5C0D\u8A71\u65B9\u584A\u3002
+error.TITLE = \u65B0\u589E\u8CC7\u6599\u96C6...
+noRefTypeFound=\u672A\u627E\u5230\u53C3\u7167\u985E\u578B\uFF0C\u7121\u6CD5\u532F\u5165\u3002
+noRefTypeFound.TITLE=\u8B66\u544A
+notAIEConfiguredDS = AIE \u5DF2\u555F\u7528\uFF0C\u4F46\u6C92\u6709\u7528 AIE \u914D\u7F6E\u9805\u76EE\u985E\u578B/\u8CC7\u6599\u96C6\u3002\u8ACB\u505C\u7528 AIE\uFF0C\u6216\u53C3\u7167\u300CTeamcenter \u8AAA\u660E\u300D\u7684\u300C\u61C9\u7528\u7A0B\u5F0F\u6574\u5408\u74B0\u5883 (AIE)\u300D\u90E8\u5206\u4EE5\u914D\u7F6E AIE\u3002
+notAIEConfiguredDS.TITLE=\u932F\u8AA4
+
+# Messages and keys for the Abort Message Box
+# ----------------------------------------------
+aborted=\u8CC7\u6599\u96C6\u5EFA\u7ACB\u5DF2\u4E2D\u65B7...\u8CC7\u6599\u96C6\u5DF2\u5EFA\u7ACB\u4E26\u5DF2\u90E8\u5206\u63D2\u5165
+aborted.TITLE=\u5DF2\u4E2D\u6B62
+
+aborting=\u6B63\u5728\u4E2D\u6B62...
+
+modifiedName.TITLE=\u91CD\u65B0\u547D\u540D\u8CC7\u6599\u96C6
+modifiedName.MSG=\u8981\u53D6\u4EE3\u8CC7\u6599\u96C6\u540D\u7A31\u55CE\uFF1F
+overrideName.TITLE=\u53D6\u4EE3\u8CC7\u6599\u96C6\u540D\u7A31
+overrideName.MSG=\u8CC7\u6599\u96C6\u540D\u7A31\u5C07\u88AB\u53D6\u4EE3
+
+# Keys for the New Dataset for File
+newFileDataset.TITLE = \u65B0\u589E\u8CC7\u6599\u96C6\uFF0C\u7528\u65BC
+type.TITLE = \u9078\u53D6\u985E\u578B
+type.INFO = \u8ACB\u9078\u53D6\u6A94\u6848\u7684\u8CC7\u6599\u96C6\u985E\u578B\u3002
+info.TILE = \u8F38\u5165\u8CC7\u6599\u96C6\u8CC7\u8A0A
+info.INFO = \u8F38\u5165\u8CC7\u6599\u96C6\u8CC7\u8A0A\u3002
+reference.TITLE = \u9078\u53D6\u53C3\u8003\u985E\u578B
+reference.INFO = \u9078\u53D6\u6A94\u6848\u7684\u53C3\u8003\u985E\u578B\u3002
+
+reference = \u53C3\u8003\uFF1A
+fileType = \u6A94\u6848\u985E\u578B\uFF1A
+template = \u7BC4\u672C\uFF1A
+noDatasetAvailable.MSG= \u6C92\u6709\u53EF\u70BA\u8A72\u6A94\u6848\u5EFA\u7ACB\u7684\u8CC7\u6599\u96C6\u985E\u578B\u3002
+noDatasetAvailable.TITLE = \u6C92\u6709\u8CC7\u6599\u96C6\u985E\u578B
+
+warning.TITLE=\u65B0\u8CC7\u6599\u96C6
+fileDoesNotExist.MSG=\u7121\u6CD5\u4E0A\u50B3\u8A72\u6A94\u6848\uFF0C\u56E0\u70BA\u6307\u5B9A\u7684\u6A94\u540D\u548C\u4F4D\u7F6E\u7121\u6548\u6216\u8005\u8A72\u6A94\u6848\u4E0D\u5B58\u5728\u3002\n\u8ACB\u9078\u53D6\u6709\u6548\u6A94\u6848\u4EE5\u4F9B\u532F\u5165\u3002
+invalidFile.MSG=\u8981\u532F\u5165\u7684\u9078\u5B9A\u6A94\u6848\u8207\u8CC7\u6599\u96C6\u985E\u578B\u4E0D\u7B26\u5408\u3002\n\u8ACB\u9078\u53D6\u6709\u6548\u6A94\u6848\u9032\u884C\u532F\u5165\u3002
+noDatasetType.MSG=\u8ACB\u5148\u9078\u53D6\u8CC7\u6599\u96C6\u985E\u578B\u3002
+
+fileNameWillbeTruncated.MSG=\u6A94\u540D\u8D85\u51FA\u9577\u5EA6\u9650\u5236\uFF08132 \u500B\u5B57\u5143\uFF09\u3002\u5B83\u5C07\u88AB\u622A\u65B7\u3002
+
+# Keys for select reference dialog (Elbit ER1409560)
+selectReference.INFO=\u591A\u500B\u53C3\u7167\u8207\u76EE\u524D\u9078\u5B9A\u7684\u6A94\u6848\u7B26\u5408\u3002\u8ACB\u9078\u53D6\u53C3\u7167\u985E\u578B\u4E26\u6309\u300C\u78BA\u5B9A\u300D\u6309\u9215\u7E7C\u7E8C\u3002
+noReference.MSG=\u627E\u4E0D\u5230\u53C3\u8003\u3002
+noRefSelected.MSG=\u672A\u9078\u53D6\u53C3\u7167\u985E\u578B\uFF0C\u56E0\u6B64\u4E0D\u80FD\u532F\u5165\u6A94\u6848\u3002\n\u9078\u5B9A\u7684\u532F\u5165\u6A94\u6848\u5C07\u88AB\u6E05\u9664\u3002
+
+#Keys for Multiple files Drag and Drop
+
+#Table Headers
+fileName=\u6A94\u540D
+datasetName=\u8CC7\u6599\u96C6\u540D\u7A31
+datasetDesc=\u6558\u8FF0
+datasetType=\u8CC7\u6599\u96C6\u985E\u578B
+templateName=\u6A94\u6848\u985E\u578B
+referenceName=\u53C3\u8003
+toolsUsed=\u6240\u7528\u5DE5\u5177
+
+#Messages
+newDnDDialog.MSG=\u70BA\u591A\u500B\u6A94\u6848\u65B0\u589E\u8CC7\u6599\u96C6
+newDnDDialog.TITLE=\u62D6\u653E\u591A\u500B\u6A94\u6848
+applySimilar.LABEL=\u5957\u7528\u65BC\u540C\u4E00\u985E\u578B
+applySimilar.TIP=\u5C07\u503C\u5957\u7528\u65BC\u540C\u4E00\u6A94\u6848\u985E\u578B\u7684\u6240\u6709\u8CC7\u6599\u96C6
+
+#Keys for Progress Dialog
+datasetNameRequired.MSG=\u300C\u8CC7\u6599\u96C6\u540D\u7A31\u300D\u662F\u5FC5\u586B\u6B04\u4F4D
+resultDialog.MSG=\u8CC7\u6599\u96C6\u5EFA\u7ACB\u9032\u5EA6
+
+file=\u6A94\u6848
+status=\u72C0\u614B
+
+#Status Messages
+ready.MSG=\u5C31\u7DD2
+started.MSG=\u5DF2\u958B\u59CB
+complete.MSG=\u5DF2\u5B8C\u6210
+userCancelledAction.MSG=\u4F7F\u7528\u8005\u52D5\u4F5C\u5DF2\u53D6\u6D88
+
+#Session Messages
+importingFileToDataset=\u6B63\u5728\u5C07\u6A94\u6848\u532F\u5165\u81F3\u8CC7\u6599\u96C6
+
+#Error Messages
+applySimilar.ERROR=\u8ACB\u9078\u53D6\u8868\u4E2D\u7684\u4E00\u5217\u4EE5\u5C0D\u76F8\u540C\u526F\u6A94\u540D\u985E\u578B\u7684\u6A94\u6848\u5957\u7528\u985E\u4F3C\u8A2D\u5B9A
+importFileInfoMissing.ERROR=\u7F3A\u5C11\u532F\u5165\u6A94\u6848\u6240\u5FC5\u9700\u7684\u8CC7\u8A0A
+pasteError.MSG=\u5C07\u8CC7\u6599\u96C6\u8CBC\u5230\u76EE\u6A19\u6642\u51FA\u932F
+incompleteInfo.MSG=\u8CC7\u6599\u96C6\u6216\u76EE\u6A19\u5143\u4EF6\u7121\u6548
+pasteCommand.ERROR=\u7372\u53D6\u8CBC\u4E0A\u6307\u4EE4\u6642\u51FA\u932F
+pastedIntoNewStuff.MSG=\u6240\u8981\u6C42\u7684\u8CBC\u4E0A\u52D5\u4F5C\u5931\u6557\uFF0C\u56E0\u6B64\u5DF2\u57F7\u884C\u6545\u969C\u9084\u539F\u52D5\u4F5C\u4EE5\u5C07\u5176\u8CBC\u4E0A\u5230\u60A8\u7684 NewStuff \u8CC7\u6599\u593E\u3002
+pasteToNewStuffError.ERROR=\u6240\u8981\u6C42\u7684\u8CBC\u4E0A\u4F5C\u696D\u5DF2\u5931\u6557\uFF0C\u56E0\u6B64\u6545\u969C\u9084\u539F\u52D5\u4F5C\u66FE\u5617\u8A66\u5C07\u5B83\u5011\u8CBC\u5230\u60A8\u7684 NewStuff \u8CC7\u6599\u593E\uFF0C\u800C\u5C07\u8CC7\u6599\u96C6\u8CBC\u5230 NewStuff \u8CC7\u6599\u593E\u6642\u767C\u751F\u67D0\u7A2E\u932F\u8AA4
+
+populatingTable.MSG=\u8ACB\u7A0D\u5019\uFF0C\u6B63\u5728\u586B\u5145\u8868\u683C...
+
+#Progress Dialog
+progress.TITLE=\u6B63\u5728\u8655\u7406
+progress.MSG=\u8ACB\u7A0D\u5019\uFF0C\u6B63\u5728\u5F9E\u6A94\u6848\u4E2D\u7372\u53D6\u6240\u9700\u8CC7\u8A0A...
+
+creatingDataset.MSG=\u6B63\u5728\u5EFA\u7ACB\u8CC7\u6599\u96C6...
+
+errorDetail.TITLE=\u932F\u8AA4
+creatingDataset.ERROR=\u5EFA\u7ACB\u8CC7\u6599\u96C6\u5931\u6557\uFF0C\u51FA\u73FE\u4EE5\u4E0B\u932F\u8AA4\uFF1A
+namingRule.ERROR=\u547D\u540D\u898F\u5247\u6A21\u5F0F\u4E0D\u7B26\u5408\u3002\u8ACB\u6839\u64DA\u4EE5\u4E0B\u8CC7\u8A0A\u9032\u884C\u5FC5\u8981\u7684\u8B8A\u66F4\u7136\u5F8C\u91CD\u8A66\u3002
+
+fileNameLengthTooLong=\u6A94\u540D\u8D85\u51FA\u9577\u5EA6\u9650\u5236
+fileLengthWarning.TITLE=\u8B66\u544A - \u6A94\u540D\u8D85\u51FA\u9577\u5EA6\u9650\u5236
+fileNameLengthTooLongMulitple=\u4EE5\u4E0B\u6A94\u6848\u672A\u5305\u62EC\u5728\u5167\uFF0C\u56E0\u70BA\u5176\u540D\u7A31\u8D85\u51FA\u9577\u5EA6\u9650\u5236\uFF1A
+

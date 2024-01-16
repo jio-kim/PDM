@@ -1,0 +1,42 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the cut package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: cut_locale.properties
+#   Module  : com.teamcenter.rac.commands.cut
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#09-Apr-2001  Endi Wu                 Define new entry for PR1074807
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#14-Oct-2003  scottb                  Add message for invalid arrangement cut
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = \uC798\uB77C\uB0B4\uAE30
+
+confirmationText = \uC798\uB77C\uB0B4\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+noConfirmationText = \uC798\uB77C\uB0B4\uB294 \uC911...
+
+noSelection = \uC798\uB77C\uB0BC \uAC1C\uCCB4\uB97C \uC120\uD0DD\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.
+rootSelection = \uB8E8\uD2B8\uB97C \uC798\uB77C\uB0BC \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+invalidSelection = \uC798\uB77C\uB0B4\uAE30 \uC704\uD574 \uC120\uD0DD\uD55C \uAC1C\uCCB4\uAC00 \uC720\uD6A8\uD558\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.
+invalidSelectionBOMViewRev = \uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC73C\uB85C\uBD80\uD130 BOM \uBDF0 \uB9AC\uBE44\uC804 \uC798\uB77C\uB0BC \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+invalidSelectionBOMView = \uC544\uC774\uD15C\uC73C\uB85C\uBD80\uD130 BOM \uBDF0 \uC798\uB77C\uB0BC \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+inaccessibleBOMViewRev = {0}\uC5D0\uC11C BOM \uD589\uC744 \uC798\uB77C\uB0BC \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+acessDenied = \uC4F0\uAE30 \uC561\uC138\uC2A4 \uAD8C\uD55C\uC774 \uAC70\uBD80\uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+invalidSelectionAssemblyArrangement = BOM \uBDF0 \uB9AC\uBE44\uC804\uC5D0\uC11C AssemblyArrangement\uC744 \uC798\uB77C\uB0BC \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+error.TITLE = \uC798\uB77C\uB0B4\uAE30
+
+cutting = \uC798\uB77C\uB0B4\uB294 \uC911...
+from = \uC6D0\uBCF8

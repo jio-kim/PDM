@@ -1,0 +1,45 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the pasteas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: pasteas_locale.properties
+#   Module  : com.teamcenter.rac.commands.pasteas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = Pegado especial
+addAs = Agregar como:
+confirmationText = \u00BFDesea pegar?
+
+# Entries for error message
+clipboardEmpty = El Portapapeles est\u00E1 vac\u00EDo.
+error.TITLE = Pegado especial
+
+#PasteBOMAsDialog
+componentOfSelectedAssembly = Componente del ensamble seleccionado
+substituteOfSelectedAssembly = Sustituto del ensamble seleccionado
+numberOfOccurrences = N\u00FAmero de ocurrencias:
+quantityPerOccurrence = Cantidad por ocurrencia:
+ar = A/R
+sequenceNumber = N\u00FAmero de b\u00FAsqueda:
+viewType = Tipo de vista:
+
+# Entries for message center
+loadingRelations=Cargando las relaciones ... 
+
+# Entries for displaying error messages when wrong relation is used
+captureRelation = Solamente se debe usar la relaci\u00F3n Captar.
+relation.TITLE = Relaci\u00F3n err\u00F3nea

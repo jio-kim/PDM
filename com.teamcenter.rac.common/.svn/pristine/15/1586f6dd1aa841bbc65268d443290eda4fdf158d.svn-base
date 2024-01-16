@@ -1,0 +1,154 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the organization package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: organization_locale.properties
+#   Module  : com.teamcenter.rac.common.organization
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Mar-2000  mccollr                 Initial Promote.
+#14-Mar-2000  wangp                   Add key for root node.
+#04-Oct-2001  wangp                   add more entries
+#05-Oct-2001  wangp                   Move org selection dlg key from common to common/organization
+#                                     Move group/role/user panel keys from common to common/organization
+#11-Oct-2001  wangp                   Fix merge problem
+#17-Oct-2001  wangp                   Modify noMatch message
+#02-Jun-2002  Sarma Cherukupalli      Promote deactivate group member
+#03-Jul-2002  Sarma Cherukupalli      Modify the tool tip on show/supress deactivate group member button
+#11-Feb-2003  wangp                   add msg for confirming loading search result
+#17-Apr-2003  x_brahma                added searchGroupRole.TIP
+#22-May-2003  Zhixin Huang            Conflict resolutions for P9.0.0.1
+#04-Mar-2004  wangp                   fix pr 2033901 per Rob M.
+#18-Oct-2004  Hugh Stewart            Last login time project.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#26-Feb-2006  Alisa Smith             PR5410098: FIxed spelling error.  Added "i" to adminstrator.
+#16-Mar-2006  liang                   De-imanization project
+#17-Mar-2006  liang                   merge to PLM1
+#$HISTORY$
+#=================================================================================================*/
+
+loadingGroupTree.MESSAGE=\u0141adowanie grup g\u0142\u00F3wnych...Prosz\u0119 czeka\u0107
+
+organization.TITLE=Organizacja
+
+# Entries for OrgTreePanel
+# -------------------------------------------
+search.TIP=Wprowad\u017A kryteria wyszukiwania dla grupy/roli/u\u017Cytkownika.
+searchText=Wprowad\u017A kryteria wyszukiwania...
+emptyPanelText=Wybierz grup\u0119, rol\u0119 lub u\u017Cytkownika z listy...
+searchGroupRole.TIP=Wprowad\u017A kryteria wyszukiwania dla grupy/roli.
+groupButton.TIP=Znajd\u017A grupy
+roleButton.TIP=Znajd\u017A role
+userButton.TIP=Znajd\u017A u\u017Cytkownik\u00F3w (w oparciu o ID i nazw\u0119 u\u017Cytkownika)
+searchButton.TIP=Znajd\u017A u\u017Cytkownik\u00F3w, je\u015Bli pole u\u017Cytkownika nie jest puste, filtruj\u0105c wyniki wed\u0142ug roli i grupy. Znajd\u017A role, je\u015Bli pole u\u017Cytkownika jest puste, a pole roli nie. Znajd grupy, je\u015Bli zar\u00F3wno pole u\u017Cytkownika, jak i pole roli s\u0105 puste, a pole grupy nie.
+userFieldText=Wprowad\u017A ID u\u017Cytkownika lub nazw\u0119 u\u017Cytkownika
+userField.TIP=Kryteria ID u\u017Cytkownika lub nazw u\u017Cytkownika. Wielko\u015B\u0107 znak\u00F3w nie ma znaczenia i dopuszczalne jest stosowanie symboli wieloznacznych.
+roleFieldText=Wprowad\u017A nazw\u0119 roli
+roleField.TIP=Kryteria nazwy roli. Dopuszczalne jest stosowanie symboli wieloznacznych.
+groupFieldText=Wprowad\u017A nazw\u0119 grupy
+groupField.TIP=Kryteria nazwy grupy. Dopuszczalne jest stosowanie symboli wieloznacznych.
+refreshButton.TIP=Za\u0142aduj ponownie drzewo organizacyjne
+supressAllGMButton.TIP=Zablokuj nieaktywnych cz\u0142onk\u00F3w grupy
+showAllGMButton.TIP=Poka\u017C nieaktywnych cz\u0142onk\u00F3w grupy
+
+localLabel=Lokalnie
+localUserButton.TIP=Znajd\u017A u\u017Cytkownik\u00F3w lokalnych
+replicaLabel=Replika
+replicaUserButton.TIP=Znajd\u017A u\u017Cytkownik\u00F3w repliki
+allLabel=Wszystkie
+allUserButton.TIP=Znajd\u017A wszystkich u\u017Cytkownik\u00F3w
+filterByHomeSite.TIP=Filtruj u\u017Cytkownik\u00F3w wed\u0142ug g\u0142\u00F3wnej lokalizacji
+
+FilterBySite.LABEL=Filtruj wed\u0142ug lokalizacji
+FilterByHomeSite.LABEL=Filtruj wed\u0142ug lokalizacji g\u0142\u00F3wnej
+
+searchingFor=Wyszukiwanie
+inOrgTree=w drzewie organizacyjnym.
+makeSelection=Dokonaj wyboru
+
+Group=grupa
+Role=rola
+User=u\u017Cytkownik
+
+Local=lokalnie
+Replica=replika
+All=wszystkie
+Users=u\u017Cytkownicy
+
+noGroupFound=Nie znaleziono grup o podanej nazwie.
+noRoleFound=Nie znaleziono r\u00F3l o podanej nazwie.
+noUserFound=Nie znaleziono u\u017Cytkownik\u00F3w o podanej nazwie.
+
+noSearchInput=Nie wprowadzono kryteri\u00F3w wyszukiwania.
+
+confirmSearchWithStar=Wprowadzenie znaku * w kryteriach wyszukiwania mo\u017Ce wyd\u0142u\u017Cy\u0107 proces wyszukiwania.\n Czy chcesz kontynuowa\u0107?
+thereAre=Znaleziono
+confirmLoad=obiekt\u00F3w - czy chcesz je za\u0142adowa\u0107?
+search.TITLE=Szukaj
+search=Szukaj:
+projects=Projekty: 
+
+#Resource Pool options panel labels
+#----------------------------------
+resourcePoolPanelLabel=Opcje puli zasob\u00F3w
+specificGroupRadioLabel=Konkretna grupa
+anyGroupRadioLabel=Dowolna grupa
+anyMemberRadioLabel=Dowolny cz\u0142onek
+allMemberRadioLabel=Wszyscy cz\u0142onkowie
+
+# Entries for OrganizationSelectionDialog class
+# ---------------------------------------------
+orgSelectionDialog.TITLE=Okno dialogowe wyboru organizacji...
+
+# Keys for the GroupPanel
+# -----------------------
+name=Nazwa:
+descriptionLabel=Opis :
+privilegeLabel=Uprawnienia administratora bazy danych:
+parentLabel=Grupa nadrz\u0119dna:
+volumeLabel=Obj\u0119to\u015B\u0107:
+roleLabel=Role:
+
+# Keys for the RolePanel
+# -----------------------
+groupLabel=Domy\u015Blna grupa:
+nameLabel=Nazwa:
+descriptionLabel=Opis :
+
+#Keys for the UserPanel
+#-----------------------
+userIDLabel=ID u\u017Cytkownika:
+userNameLabel=Nazwa u\u017Cytkownika:
+volumeLabel=Domy\u015Blny wolumen:
+localVolumeLabel=Wolumen lokalny:
+mailBoxLabel=Skrzynka pocztowa
+homeFolderLabel=Folder osobisty
+groupLabel=Domy\u015Blna grupa:
+newStuffFolderLabel=Folder NoweObiekty
+os_usernameLabel=Nazwa systemu operacyjnego:
+linkLabel=Powi\u0105zanie:
+userStatusLabel=Status u\u017Cytkownika:
+activeLabel=Aktywny
+inactiveLabel=Nieaktywny
+loginTimeLabel=Ostatnie logowanie:
+
+user.TITLE=U\u017Cytkownik
+person.TITLE=Osoba
+groupMember.TITLE=Cz\u0142onek
+
+roleLabel=Rola: 
+gaLabel=Administrator grupy:
+
+# citizenship
+Existing_Citizenship_MSG=Obywatelstwo {0} jest zdublowane.
+Existing_Citizenship_TLE=Istniej\u0105ce obywatelstwo
+
+

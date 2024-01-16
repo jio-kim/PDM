@@ -1,0 +1,85 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2011.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Keys for TCInfoCenter
+#-----------------------
+readAccess.TIP=\u5141\u8A31\u5C0D\u6B64\u7269\u4EF6\u5177\u6709\u8B80\u6B0A\u9650
+noReadAccess.TIP=\u4E0D\u5141\u8A31\u5C0D\u6B64\u7269\u4EF6\u5177\u6709\u8B80\u6B0A\u9650
+
+writeAccess.TIP=\u5141\u8A31\u5C0D\u6B64\u7269\u4EF6\u5177\u6709\u5BEB\u6B0A\u9650
+noWriteAccess.TIP=\u4E0D\u5141\u8A31\u5C0D\u6B64\u7269\u4EF6\u5177\u6709\u5BEB\u6B0A\u9650
+
+changeAccess.TIP=\u5141\u8A31\u5C0D\u6B64\u7269\u4EF6\u5177\u6709\u8B8A\u66F4\u6B0A\u9650
+noChangeAccess.TIP=\u4E0D\u5141\u8A31\u5C0D\u6B64\u7269\u4EF6\u5177\u6709\u8B8A\u66F4\u6B0A\u9650
+
+deleteAccess.TIP=\u5141\u8A31\u5C0D\u6B64\u7269\u4EF6\u5177\u6709\u522A\u9664\u6B0A\u9650
+noDeleteAccess.TIP=\u4E0D\u5141\u8A31\u5C0D\u6B64\u7269\u4EF6\u5177\u6709\u522A\u9664\u6B0A\u9650
+
+inProcess.TIP=\u6B63\u5728\u8655\u7406\u7269\u4EF6
+notInProcess.TIP=\u7269\u4EF6\u672A\u5728\u8655\u7406\u4E2D
+
+checkedOut.TIP=\u7269\u4EF6\u5DF2\u7C3D\u51FA
+notCheckedOut.TIP=\u7269\u4EF6\u672A\u7C3D\u51FA
+
+released.TIP=\u7269\u4EF6\u5DF2\u767C\u4F48
+notReleased.TIP=\u7269\u4EF6\u672A\u767C\u4F48
+
+published.TIP=\u7269\u4EF6\u5DF2\u767C\u4F48
+notPublished.TIP=\u7269\u4EF6\u672A\u767C\u4F48
+
+classified.TIP=\u7269\u4EF6\u5DF2\u5206\u985E
+notClassified.TIP=\u7269\u4EF6\u672A\u5206\u985E
+
+archived.TIP=\u7269\u4EF6\u5DF2\u6B78\u6A94
+notArchived.TIP=\u7269\u4EF6\u672A\u6B78\u6A94
+
+updateOptions.TITLE=\u66F4\u65B0\u9078\u9805
+
+whereReferenced.TIP=\u76EE\u524D\u9078\u5B9A\u7269\u4EF6\u7684\u300C\u4F55\u8655\u53C3\u8003\u8A08\u6578\u300D\u3002
+
+whereUsed.TIP=\u76EE\u524D\u9078\u5B9A\u7269\u4EF6\u7684\u300C\u4F55\u8655\u4F7F\u7528\u8A08\u6578\u300D\u3002
+
+childCount.TIP=\u9078\u5B9A\u7684\u5143\u4EF6\u7684\u5B50\u5143\u4EF6\u500B\u6578\u3002
+
+infoCenter.WhereUsed.TITLE=\u986F\u793A\u4F55\u8655\u4F7F\u7528\u8CC7\u8A0A
+infoCenter.WhereRefed.TITLE=\u986F\u793A\u4F55\u8655\u53C3\u8003\u8CC7\u8A0A
+infoCenter.ChildCount.TITLE=\u986F\u793A\u5B50\u4EF6\u8A08\u6578\u8CC7\u8A0A
+infoCenter.Access.TITLE=\u986F\u793A\u7269\u4EF6\u6B0A\u9650\u8CC7\u8A0A
+infoCenter.State.TITLE=\u986F\u793A\u7269\u4EF6\u72C0\u614B\u8CC7\u8A0A
+
+notImage.ICON=icons/not_16.png
+
+whereReferenced.ICON=icons/wherereferenced_16.png
+whereUsed.ICON=icons/whereused_16.png
+childCount.ICON=icons/childcount_16.png
+
+write.ICON=icons/writeaccess_16.png
+writeOff.ICON=icons/writeaccess_off_16.png
+
+delete.ICON=icons/deleteaccess_16.png
+deleteOff.ICON=icons/deleteaccess_off_16.png
+
+change.ICON=icons/changeaccess_16.png
+changeOff.ICON=icons/changeaccess_off_16.png
+
+inprocess.ICON=icons/inprocess_16.png
+inprocessOff.ICON=icons/inprocess_off_16.png
+
+checkout.ICON=icons/checkedout_16.png
+checkoutOff.ICON=icons/checkedout_off_16.png
+
+released.ICON=icons/released_16.png
+releasedOff.ICON=icons/released_off_16.png
+
+published.ICON=icons/published_16.png
+publishedOff.ICON=icons/published_off_16.png
+
+classified.ICON=icons/classified_16.png
+classifiedOff.ICON=icons/classified_off_16.png
+
+archived.ICON=icons/archived_16.png

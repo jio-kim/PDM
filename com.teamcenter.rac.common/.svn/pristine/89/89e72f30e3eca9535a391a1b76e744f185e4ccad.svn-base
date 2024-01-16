@@ -1,0 +1,26 @@
+#*==================================================================================================
+#
+#			               Copyright (c) 2006 UGS Corp.
+#                       Unpublished - All rights reserved
+#
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the TC license package.
+#                   This is an internal file so therefore only TC PBU developers should be
+#                   modifying this file.  To make changes please modify the license_user.properties
+#                   file.  Do NOT modify this file.  This allows properties found in this file
+#                   to be over-written but not destroyed.
+#
+#   Filename: license.properties
+#   Module  : com.teamcenter.rac.commands.license
+#
+#===================================================================================================
+#  Date              Name            Description of Change
+#12-Feb-2007   Sunil Gopinath          Initial Creation
+#$HISTORY$
+#=================================================================================================*/
+import=com.teamcenter.rac.license.license
+
+assignToLicense.ICON = images/license_16.png
+removeFromLicense.ICON = images/license_16.png
+

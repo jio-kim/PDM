@@ -1,0 +1,495 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2001 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the common package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: common_locale.properties
+#   Module  : com.teamcenter.rac.explorer.common
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Mar-2001  Zhixin Huang            Initial creation.
+#29-Mar-2001  Zhixin Huang            Add the loading thresh hold field.
+#02-Apr-2001  Zhixin Huang            Add refresh key.
+#04-Apr-2001  Zhixin Huang            Clean code and finish the document.
+#05-Apr-2001  Zhixin Huang            Add keys for compare report.
+#05-Apr-2001  Zhixin Huang            Add identical key.
+#05-Apr-2001  Zhixin Huang            Add the last diff and first diff button in compare
+#05-Apr-2001  Zhixin Huang            Add close all menu key
+#06-Apr-2001  Zhixin Huang            Add the status of the query.
+#12-Jun-2001  Zhixin Huang            Change the "Unique Only" to "Differences"
+#17-Sep-2001  Zhixin Huang            Merge down
+#19-Sep-2001  Zhixin Huang            Add more and less keys.
+#20-Sep-2001  Zhixin Huang            Add everything different key.
+#21-Sep-2001  Zhixin Huang            Add tooltip for find in display text field.
+#26-Sep-2001  Zhixin Huang            Change the key value for identical and difference.
+#26-Sep-2001  Zhixin Huang            Fix bug.
+#05-Oct-2001  Zhixin Huang            Add the difference key value.
+#19-Oct-2001  Zhixin Huang            Add the LOV popup button thresh hold.
+#02-Jan-2002  Zhixin Huang            Clean code according to Rob's comments.
+#03-Jan-2002  Zhixin Huang            Add the loading status and threading the loading.
+#12-Feb-2002  faming                  add advancedQuery
+#20-Feb-2002  faming                  added inClassQueryDialog.TITLE
+#04-Mar-2002  viswanat                Merge out from P8.0.0.5
+#21-Feb-2002  Zhixin Huang            Change the print title.
+#13-Mar-2002  Zhixin Huang            Add the queryDetail key.
+#15-Mar-2002  Zhixin Huang            Add some keys for query details.
+#21-Mar-2002  Zhixin Huang            Merge out from P8.0.0.5.
+#03-Apr-2002  Zhixin Huang,,,         Conflict resolutions for P8.0.0.6
+#09-May-2002  shankar                 Add site-limit strings
+#09-May-2002  shankar                 Merge into P8.0.0.7
+#15-may-2002  silvermm                sdcl1254 adds QTip.* messages for searchCriteriaPanel tool tips.
+#15-May-2002  silvermm                sdlc1254 adds tooltips for query fields...
+#28-May-2002  silvermm                sdlc1254-b adds an edit button tooltip...
+#02-Jul-2002  silvermm                fix tooltip bugs...
+#19-jul-2002  silvermm                fix spelling of seperator to separator
+#22-Jul-2002  silvermm                fix spelling of seperator to separator
+#26-Jul-2002  Zhixin Huang            Add noCriteria key.
+#05-Aug-2002  shankar                 Resolve P8.1.0.3 conflicts
+#30-Jul-2002  faming                  fixed a typo
+#05-Aug-2002  shankar                 Resolve P8.1.0.3 conflicts
+#04-Sep-2002  Zhixin Huang            Fix the msg problem.
+#23-Dec-2002  Endi Wu                 Add entries for favorite panel
+#12-Feb-2003  Rob McColl              Fix the selection priority issues PR#1226580.
+#11-Feb-2003  Endi Wu                 Add entries
+#30-Apr-2003  Zhixin Huang            Integrate from PRE_try_p9.0.0.0 to try_p9.0.0.1.
+#18-nov-2002  silvermm                add messages for BOM Limited Query
+#02-Jan-2003  silvermm                sdlc 1379 adds messages for query on BOM
+#06-Jan-2003  silvermm                merge up to v8.1.0.0
+#07-Jan-2003  shankar                 Add a tool-tip for the lock icon
+#07-Jan-2003  shankar                 Merge into V8.1.0.0
+#28-Jan-2003  silvermm                sdlc1379 adds text for query details in table print
+#28-Feb-2003  silvermm                add strings for pff, sdlc1379
+#10-Mar-2003  silvermm                move text from searchcriteriapanel to here
+#08-May-2003  shankar                 Add pff strings
+#13-May-2003  silvermm                merged iq_phase 2 (sdlc1379) with tc 9.0
+#16-May-2003  silvermm                introduce pff tool tip
+#22-May-2003  Zhixin Huang            Conflict resolutions for P9.0.0.1
+#30-Jun-2003  Rob McColl              Fix conflict resolution merge problem.
+#18-Jul-2003  silvermm                add select property formatter
+#24-Jul-2003  silvermm                9.0.0.3 conflict resolution
+#08-Sep-2003  silvermm                add messages for pff summery
+#30-Sep-2003  martinj                 PR4848657-added keys for user preference error messages
+#16-Oct-2003  silvermm                pr4860419 - load components when we want to keep tags bug also make limit tab prettier bug
+#17-Oct-2003  silvermm                merge to 9.0.0.6
+#03-Nov-2003  silvermm                pr4860419 adds message to remove warning
+#26-Nov-2003  Zhixin Huang            Fix PR 4869990 (Do not automatically delete the no found panel).
+#01-Dec-2003  Zhixin Huang            Change the msg context
+#10-Dec-2003  Mathieu Sarrazy         PR 4869990 fixes from Zhixin Huang.
+#17-Nov-2003  helmutl                 PR#4880552 rename in-CLASS to Classification
+#17-Nov-2003  helmutl                 Merge from Helmut
+#01-Dec-2003  Hui Xiao                PR4872006: fixed misspelling on project search panel tooltip
+#03-Dec-2003  Hui Xiao                merge changes for project integration
+#06-Jan-2004  Jim Towers              merge out from P9.0.0.11
+#25-Mar-2004  faming                  add searchClassificationHierarchyButton
+#13-Oct-2004  Geethika Chitturi       changing tc to Teamcenter
+#15-Oct-2004  Geethika Chitturi       Merge from x_chittu_hyd_p10.0.0.5 to x_chittu_hyd_p10.0.0.6
+#19-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#19-Oct-2004  Geethika Chitturi       Merging to project branch
+#17-Feb-2005  Zhixin Huang            Change the TC to TC.
+#17-Feb-2005  Zhixin Huang            Merge out.
+#13-Mar-2005  silvermm                pr5134888 is fixed by move TeamcenterPff back to TCPff
+#15-Mar-2005  silvermm                merge
+#01-Apr-2005  noolu                   Fix PR 1357428
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+##### Key for popup menu
+explorer.POPUP_TITLE = Men\u00FA emergente del explorador
+saveSearch = Guardar el resultado de la b\u00FAsqueda ...
+addToSavedSearches = Agregar a Mis b\u00FAsquedas guardadas
+print = Imprimir
+moveTo = Mover hacia
+moveLeft = Izquierda
+moveRight = Derecha
+moveFirst = Primera
+moveLast = \u00DAltima
+rename = Cambiar de nombre
+refresh = Actualizar
+compareTo = Comparar con
+close = Cerrar
+closeAll = Cerrar todo
+# Key for compareTo menu in ExplorerPopupMenu
+compareToOpenItemsList = Comparar con la lista de \u00CDtems abiertos
+compareToOpenItemsDialog.TITLE = Comparar con
+compareToOpenItemsDialog.HEADER = Seleccionar un \u00EDtem abierto de la lista siguiente y utilizar el bot\u00F3n Aceptar para iniciar la comparaci\u00F3n.
+
+SaveSearchDialog.TITLE=Agregar B\u00FAsqueda a Mis b\u00FAsquedas guardadas
+name=Nombre:
+existingSavedSearches=Mis b\u00FAsquedas guardadas existentes:
+addToSavedSearches.HEADER=Agregar esta consulta a la lista Mis b\u00FAsquedas guardadas.
+savingToSavedSearches.MESSAGE=Agregando la consulta a Mis b\u00FAsquedas guardadas...
+expandingSavedSearchesFolder.MESSAGE=Expandiendo la carpeta de b\u00FAsquedas guardadas...
+createdInButton=Creado en:
+deleteFolderButton=Eliminar la carpeta
+mySavedSearches=Mis b\u00FAsquedas guardadas
+SystemDefinedSearches=B\u00FAsquedas definidas por el sistema
+
+### Key for the NavigatorPanel title
+tableLabel=Propiedades de los objetos seleccionados
+tableLabelOneSelection=Contenido de:
+openedQuery.TITLE=Resultado de la b\u00FAsqueda
+
+# Messages for find in display
+# --------------------------------
+findInDisplay.NodeNotFound.MESSAGE=No se encontr\u00F3 ning\u00FAn objeto basado en el nombre de b\u00FAsqueda
+findInDisplay.NodeNotFound.TITLE=Objeto no encontrado
+findInDisplayField.TIP = <html><body><font size=2><p>Utilizar F3, Av P\u00E1g o la tecla Abajo para hallar el siguiente;</p><p>Re P\u00E1g, la tecla arriba para hallar el anterior;</p><p>la tecla Inicio para hallar el primero;</p><p>la tecla Fin para hallar el \u00FAltimo;</p></font></body></html>
+
+### Keys for query result panel
+rootNodeName=objeto u objetos encontrados
+of=de
+totalDifference = objetos diferentes encontrados en total.
+noObjectsFound.TITLE=Buscar informaci\u00F3n
+noObjectsFound.MESSAGE=No se ubic\u00F3 ning\u00FAn objeto utilizando los criterios especificados
+
+invalidComponentType.MESSAGE=Se intent\u00F3 abrir un tipo de componente no v\u00E1lido para esta aplicaci\u00F3n.
+invalidComponentType.TITLE=No se puede abrir
+
+#### Keys for options #######
+option.TITLE = Opciones ...
+favoriteOptions.TITLE=Opciones de favoritos
+queryOptions.TITLE=Opciones de consulta
+sortOptions.TITLE=Opciones de ordenamiento
+remoteOptions.TITLE=Opciones remotas
+
+queryNameColumnHeading=Nombre de la consulta
+favoriteColumnHeading=Favoritos
+
+favoritesCB=Favoritos
+allCB=Todo
+queryLabel=Consulta:
+
+caseSensitiveButton=Distinguir may\u00FAsculas de min\u00FAsculas
+caseSensitiveButton.TIP=Activa la opci\u00F3n Distinguir entre may\u00FAsculas y min\u00FAsculas
+
+showDetailsButton=Mostrar operandos
+showDetailsButton.TIP=Mostrar los operandos l\u00F3gicos y matem\u00E1ticos en el formulario de consulta
+
+showLatestDatasetButton=Versiones m\u00E1s recientes de los conjuntos de datos
+showLatestDatasetButton.TIP=Activar o desactivar la versi\u00F3n m\u00E1s reciente de los conjuntos de datos
+
+searchClassificationHierarchyButton=Buscar en la jerarqu\u00EDa de clasificaci\u00F3n
+searchClassificationHierarchyButton.TIP=Activar la b\u00FAsqueda en la jerarqu\u00EDa de clasificaci\u00F3n
+enableHierarchicalTypeSearchButton=Activar la b\u00FAsqueda por jerarqu\u00EDa de tipos
+enableHierarchicalTypeSearchButton.TIP=Activar la b\u00FAsqueda en la jerarqu\u00EDa de tipos
+
+loadLimit=Tama\u00F1o de la p\u00E1gina de carga
+loadLimit.TIP=N\u00FAmero de objetos encontrados que se pueden mostrar a la vez
+
+lovComboLimit=L\u00EDmite de n\u00FAmero de valor LOV para cuadro combinado
+lovComboLimit.TIP=N\u00FAmero l\u00EDmite de valores LOV para utilizar en cuadro combinado, o de lo contrario se utiliza el bot\u00F3n emergente LOV.
+
+queryOptions.TITLE=Opciones de consulta
+
+sortOptionTitle=Opciones de ordenamiento
+sortByColumnHeading=Ordenar por
+orderByColumnHeading=Ordenar por
+
+sortOptionsButton.TIP=Opciones de ordenamiento
+
+noneLabel=Ninguno
+ascendingLabel=Ascendente
+descendingLabel=Descendente
+
+upButton.TIP=Mover hacia arriba las filas seleccionadas para aumentar la precedencia
+downButton.TIP=Mover hacia abajo las filas seleccionadas para reducir la precedencia
+
+orderByColumn.TIP=Pulse la celda para mostrar una lista de selecciones
+orderByColumnCell.TIP=Pulse aqu\u00ED para mostrar el cuadro combinado
+
+siteNameColumnHeading=Nombre del sitio
+includColumnHeading=Incluir
+
+
+#### Keys for edit #######
+edit.TITLE = Editar
+
+
+#### Operation Messages ####
+buildQueryForm.MESSAGE=Cargando su b\u00FAsqueda...
+gatheringUserPref.MESSAGE=Cargando las opciones de usuario...
+savingUserPref.MESSAGE=Guardando las opciones de usuario...
+loadingFavoriteOptsButton.MESSAGE=Cargando los favoritos ...
+message.TITLE=Buscar
+noCriteriaEntered.MESSAGE=No se indic\u00F3 ning\u00FAn criterio de b\u00FAsqueda especificable por el usuario.
+noCriteria =Esta consulta no requiere\nla intervenci\u00F3n del usuario. Pulse\nel bot\u00F3n Ejecutar consulta\npara iniciar la consulta.
+savingSearch.MESSAGE=Guardando la b\u00FAsqueda...
+
+## key for search
+lockButton.TIP=Bloquear o desbloquear este formulario de consulta
+locked.TIP=Bloqueado. Pulse para desbloquear.
+unlocked.TIP=Desbloqueado. Pulse para bloquear.
+executionButton.TIP=Ejecuta la b\u00FAsqueda y muestra los resultados en la pesta\u00F1a nueva.
+refreshButton.TIP =Volver a ejecutar la b\u00FAsqueda. Mostrar los resultados en la pesta\u00F1a actualmente abierta.
+clearButton.TIP=Borrar todos los campos de b\u00FAsqueda
+more=M\u00E1s ...
+less = Menos ...
+
+refreshButton.LABEL=Volver a ejecutar
+clearButton.LABEL=Borrar
+
+search.TITLE = Buscar ...
+search.MSG = Buscar ...
+illegalCondition = Condici\u00F3n de b\u00FAsqueda no v\u00E1lida.
+found = Objeto u objetos encontrados. \u00BFDesea continuar?
+search.siteLimitMSG1 = objetos encontrados
+search.siteLimitMSG2 = Supera el l\u00EDmite del sitio de
+search.siteLimitMSG3 = objetos se mostrar\u00E1n
+search.siteLimitMSG4 =  El administrador del sitio puede incrementar el l\u00EDmite del sitio cambiando el valor de WSOM_find_set_total_limit en el archivo de preferencias de TC.
+
+nextButton.TIP=P\u00E1gina siguiente.
+previousButton.TIP=P\u00E1gina anterior.
+allButton.TIP=Cargar todo
+searchResultLabelWithCount.MSG=Resultado: p\u00E1gina {0} de {1} objetos encontrados
+searchResultLabelSuppressCount.MSG=Visualizaci\u00F3n de la p\u00E1gina {0} de Resultados
+searchNoObject.MSG=No se encontr\u00F3 ning\u00FAn objeto
+
+# Keys for RevisionSelectionButton
+#---------------------------------------------------------------
+revisionSelection.TIP=Bot\u00F3n emergente Selecci\u00F3n de revisi\u00F3n
+revisionSelection.TITLE=Selecci\u00F3n de la revisi\u00F3n
+
+workingFilter.TIP=Filtra la lista de revisiones para mostrar las revisiones en estado de Trabajo.
+inProcessFilter.TIP=Filtra la lista de revisiones para mostrar las revisiones en estado En proceso.
+releasedFilter.TIP=Filtra la lista de revisiones para mostrar las revisiones en estado de Liberadas.
+
+allRevisions=Todas las revisiones
+revisionRuleFilter=Filtro de visualizaci\u00F3n de revisiones:
+
+copyButton.TIP=Copia los componentes seleccionados en el Portapapeles.
+
+selectToLoad=Seleccione una regla para cargar las revisiones.
+numberFound=revisiones encontradas.
+itemNotValid=El \u00EDtem no es v\u00E1lido.
+loadingRevRule=Cargando las reglas de revisi\u00F3n.
+loadingRevisions=Cargando la revisi\u00F3n de acuerdo con la regla seleccionada.
+
+saveResult = Guardar el resultado de la b\u00FAsqueda ...
+default_search_desc=La preferencia permite al usuario configurar la b\u00FAsqueda predeterminada que tendr\u00E1 lugar la pr\u00F3xima vez que el usuario inicie la sesi\u00F3n.
+
+## key for compare report
+comparing = Comparando ...
+compareTitle.TITLE = Informe comparativo
+same = Igual;
+difference = Diferencia
+previousDiff.TIP = Diferencia anterior.
+nextDiff.TIP = Diferencia siguiente.
+firstDiff.TIP = Primera diferencia.
+lastDiff.TIP = \u00DAltima diferencia.
+uniqueOnly = Diferencias
+identical = Una vez comparadas las visualizaciones, son id\u00E9nticas. \u00BFDesea continuar?
+evertythingDifferent = Una vez comparadas las visualizaciones, son completamente diferentes.
+
+saveCompare.TIP = Guardar en la carpeta.
+objectsIn = Objeto u objetos en
+butNotIn = Pero no en
+sameObjects = Los mismos objetos
+printCompare.TIP = Imprimir el informe comparativo.
+vs = vs
+
+# Key for tooltip
+foundObjects = objeto u objetos encontrados
+noObjectFound = Objetos no encontrados
+noObjectFoundConfirm = \u00BFDesea cerrar la consulta?
+status = Estatus:
+notExecuted = No ejecutado
+
+queryDetail = Detalle de la consulta
+description = Descripci\u00F3n:
+queryClass = Clase de consulta:
+searchCriteria = Criterios de b\u00FAsqueda
+
+loading.MSG = Cargando los componentes ...
+
+###### Search Results Type
+resultsTypeLabel=Mostrar los resultados indentados
+
+###### Search Results Type Tooltip
+resultsTypeLabel.TIP=Seleccionar este casillero si desea mostrar los resultados con subniveles que satisfagan su criterio de b\u00FAsqueda.
+
+## Classification query
+inClassQueryDialog.TITLE=Consulta en clasificaci\u00F3n ad hoc
+advancedQuery.LABEL=Avanzadas...
+advancedQuery.TIP=Defina los criterios de la consulta Clasificaci\u00F3n ad hoc y Lista destino combinados con la b\u00FAsqueda guardada
+
+## tool tips for search...
+QTip.date=Este es un campo de fecha. Utilice el cuadro desplegable de creaci\u00F3n de fechas para introducir una fecha.
+QTip.char=Este es un campo de car\u00E1cter \u00FAnico. Introduzca un car\u00E1cter \u00FAnico.
+QTip.int=Este es un campo de n\u00FAmero entero. Introduzca un n\u00FAmero entero (1, 2, 3...)
+QTip.float=Este es un campo de n\u00FAmero real. Introduzca un n\u00FAmero real (1,0, 23,045, 1, 5...)
+QTip.string=Este es un campo de CADENA. Introduzca una cadena de texto.
+QTip.logical=Este es un campo L\u00D3GICO. Introduzca Verdadero o Falso (El campo acepta {VERDADERO|FALSO}, {1,0}, {V,F} como entrada).
+QTip.wildcardHead=Comodines en uso: 
+QTip.wildcard1=Estilo de SQL (%,_)
+QTip.wildcard2=Estilo de UNIX (*,.)
+QTip.wildcard3=Estilo de Windows (*,?)
+QTip.noWildCard=En este campo no se permite el uso de comodines.
+QTip.lov=Se puede realizar la selecci\u00F3n mediante el cuadro desplegable o si escribe la selecci\u00F3n. (Es necesario escribir la selecci\u00F3n cuando se utilizan comodines o entradas m\u00FAltiples)
+QTip.noMulti-OP=No se permiten entradas m\u00FAltiples - la coincidencia de campo no es =,!=.
+QTip.noMulti-USE=Las entradas m\u00FAltiples est\u00E1n deshabilitadas.  Para cambiar: Editar->opciones->consulta - permitir entradas m\u00FAltiples.
+QTip.Multi=Entradas m\u00FAltiples permitidas.  Utilice un signo
+QTip.Multi2= como separador entre las entradas.
+QTip.noMulti-SEP=No se permiten entradas m\u00FAltiples - no se fij\u00F3 un separador de campos. Para cambiar: Editar->opciones->consulta->Car\u00E1cter delimitador
+
+# sdlc1254 adds a tool tip for the edit button on the search panel...
+editbutton.TIP=Permite extensiones r\u00E1pidas de consultas existentes - solamente se encuentra a disposici\u00F3n de los administradores de Teamcenter y de los usuarios que figuran en la lista WSOM_find_editUserList
+
+#Favorite Panel
+#----------------
+banner.TITLE=Favoritos
+favorite.POPUP_TITLE = Men\u00FA emergente Favoritos
+addButton=Agregar...
+removeButton=Quitar
+noSelection=No hay ning\u00FAn objeto seleccionado para agregar.
+error.TITLE=Agregar...
+organizeButton=Organizar...
+
+#Add favorites panel
+#--------------------
+add.TITLE=Agregar favoritos
+createInButton=Crear en
+cancelButton=Cancelar
+newFolderButton=Carpeta nueva...
+createIn=Crear en:
+newFolderDialog.TITLE = Crear una carpeta nueva
+existing.MESSAGE=No se puede crear un archivo que ya existe.
+existing.TITLE=Agregar a Favoritos
+existsInFolder=ya existe en
+unableToOpen=no se puede abrir y no se agregar\u00E1 a la carpeta
+createIn.MNEMONIC=i
+newfolder.MNEMONIC=N
+
+#Organize favorites panel
+#------------------------
+organize.TITLE=Organizar favoritos
+deleteButton=Eliminar
+delete.MNEMONIC=D
+closeButton=Cerrar
+modified=Modificado:
+folderType=Carpeta Favoritos
+displayFormat=d-MMM-aaaa HH:mm
+
+# Balloon keys for the selection precedence.
+# -----------------------------------------------
+tabSelectionPrecedence.TITLE=NOTA
+tabSelectionPrecedence.MESSAGE=Las selecciones realizadas en cualquiera de estas tres pesta\u00F1as  tienen preferencia sobre el\n\u00E1rbol de navegaci\u00F3n. Esto afecta de forma directa a los comandos como Eliminar y Cortar\nque necesitan una referencia madre para ejecutarse.
+
+#------------------------------------------------
+# sdlc 1379 adds messages for Limited Query
+#------------------------------------------------
+bomQuery.fromPse=DEL Gestor de estructuras
+bomQuery.explainChunk=n\u00FAmero de objetos para tirar de ensamble en cada pase
+bomQuery.noPse=debe abrir la aplicaci\u00F3n Gestor de estructuras para utilizar esta funci\u00F3n
+bomQuery.noWindows=Gestor de estructuras debe tener al menos una ventana de BOM abierta para utilizar esta funci\u00F3n.
+bomQuery.noQuery=Debe haber una consulta activa para utilizar esta funci\u00F3n.
+bomQuery.noQueryTip=La consulta debe ser para los \u00EDtems, las revisiones de \u00EDtem o las ocurrencias PS.
+bomQuery.expanderTitle=Recopilar los elementos de BOM para ...
+bomQuery.expandSelected=Expandir las l\u00EDneas seleccionadas
+bomQuery.doTop=Expandir desde la l\u00EDnea superior
+bomQuery.go= IR
+bomQuery.notValid=Tipo de consulta no v\u00E1lido. \n Solo se aceptan consultas para los \u00EDtems, las revisiones de \u00EDtem y los eventos PS.
+bomQuery.invalidComponentType.MESSAGE=No es un tipo de componente v\u00E1lido \n Se aceptan solamente los \u00EDtems, las revisiones de \u00EDtems y las ocurrencias PSO.
+bomQuery.invalidComponentType.TITLE=No hay ning\u00FAn tipo de componente v\u00E1lido en esta l\u00EDnea
+bomQuery.badType=La consulta devuelve un tipo no v\u00E1lido.
+bomQuery.numProc=N\u00FAmero procesado =
+bomQuery.abort=Se anul\u00F3 la operaci\u00F3n
+bomQuery.done= ...HECHO
+bomQuery.loadVal=Cargar valor
+bomQuery.numLoaded=N\u00FAmero de elementos cargado...
+bomQuery.cancel=Cancelar
+query.Advanced=Avanzadas...
+query.object=objetos
+query.fromClipboard=Portapapeles
+query.fromPrior=B\u00FAsqueda previa
+query.fromReferencers=Referenciadores
+query.fromWorkflow=Flujos de trabajo activos
+query.fromPse=Gestor de estructuras
+query.fromAppl=Aplicaciones
+query.emptyClipboard=El Portapapeles est\u00E1 vac\u00EDo.
+query.target=Lista destino
+query.workflows=Proceso de flujo de trabajo
+query.refs=Referenciadores
+query.prior=Consultas anteriores
+query.onlist= En lista
+query.limitListExpl= Limitar la b\u00FAsqueda a objetos de...
+
+#------------------------------------------------
+# sdlc 1379 adds messages for tablePrint on query
+#------------------------------------------------
+queryTable.title=Informaci\u00F3n sobre la consulta
+queryTable.qname=Nombre de la consulta
+
+#------------------------------------------------
+# sdlc 1379 adds messages for pff
+#------------------------------------------------
+PFF.willexecute=Ejecutar\u00E1:
+PFF.RunAdHoc=Ejecutar ad hoc
+PFF.loadingPffs=cargando PFF
+
+PFF.runningPff=Ejecutando PFF
+PFF.gatheringTupleInfo=Reuniendo la informaci\u00F3n sobre los objetos
+PFF.generatingPffInfo=Generando la informaci\u00F3n PFF
+PFF.loadingTable=Cargando la tabla
+PFF.TIPON = Mostrar el panel de datos
+PFF.TIPNOTON = Mostrar el panel de datos.  \n Disponible solamente para los resultados de la consulta.
+PFF.displaydata=Mostrar datos
+PFF.select=Seleccione el formateador de propiedades
+PFF.of=  de 
+PFF.tuples=  Objetos (
+PFF.linesdip=  L\u00EDneas mostradas)
+PFF.loadError=Error al cargar los datos de visualizaci\u00F3n
+
+#------------------------------------------------
+# sdlc 1379 adds messages column copy
+#------------------------------------------------
+query.ReplaceText=Reemplazar el texto
+query.AppendText=Anexar el texto
+
+# Keys for User Preference Error Messages
+# ---------------------------------------
+#errorSavingPropTablePrefs.TITLE=Error Saving Property Table Preferences
+errorSavingTabPrefs.TITLE=Error al guardar la pesta\u00F1a Preferencias
+
+# Key for loading search edit dialog
+ChangeButton.LABEL=Cambiar...
+ChangeButton.TIP=Cambiar o gestionar la lista de b\u00FAsquedas
+LoadSearchForEdit=Cargar la b\u00FAsqueda para editar
+SaveButton.TIP=Guarde los valores del formulario y del campo en Mis b\u00FAsquedas guardadas
+SaveButton.LABEL=Guardar...
+ViewQueryDetail.TIP=Ver Detalle de la consulta
+SearchOptionMenuItem.TIP=Ver y fijar las opciones de b\u00FAsqueda
+LockMenuItem.LABEL=Bloquear la b\u00FAsqueda
+ViewSearchMenuItem.LABEL=Ver Definici\u00F3n de criterios de b\u00FAsqueda...
+EditSearchMenuItem.LABEL=Cambiar la definici\u00F3n de criterios de b\u00FAsqueda...
+OptionsMenuItem.LABEL=Opciones...
+MultiAppMenuItem.LABEL=B\u00FAsqueda extendida de aplicaciones m\u00FAltiples...
+EmptyMySavedSearchCriteria=Una b\u00FAsqueda guardada debe tener como m\u00EDnimo un criterio.
+EmptyMySavedSearchCriteria.TITLE=Mis b\u00FAsquedas guardadas no v\u00E1lidas
+FailToAddSearchHistory.MESSAGE=No se puede guardar la b\u00FAsqueda en la preferencia de historial de b\u00FAsqueda
+EmptySearchCriteria.MESSAGE=El nombre de la b\u00FAsqueda no puede estar vac\u00EDo ni puede ser nulo.
+NonExistingSearchHistory.MESSAGE=No se encuentra en el historial de b\u00FAsqueda
+PositiveHistoryLimit.MESSAGE=El l\u00EDmite del historial de b\u00FAsqueda debe ser un n\u00FAmero entero positivo.
+EmptySearchCriteria.MESSAGE=Debe especificar un criterio de b\u00FAsqueda, como m\u00EDnimo.
+UnmatchedCriteriaNamesValues.MESSAGE=El n\u00FAmero de nombres de los criterios no concuerda con el n\u00FAmero de valores de los criterios de b\u00FAsqueda.
+InvalidDefaultSearch.MESSAGE=B\u00FAsqueda predeterminada por el usuario no v\u00E1lida:
+InvalideDefaultSearch.TITLE=B\u00FAsqueda predeterminada no v\u00E1lida
+
+# Unable to load saved search messages
+# ------------------------------------------
+unableToLoadSavedSearch.TITLE=No se puede cargar la b\u00FAsqueda guardada
+unableToLoadSavedSearch.MESSAGE=No se pudo realizar la b\u00FAsqueda seleccionada porque se elimin\u00F3 la definici\u00F3n del criterio de b\u00FAsqueda o se cambi\u00F3 el nombre.
+
+##############################################################
+# Usage specific settings
+##############################################################
+lineOfUsage.NAME=L\u00EDnea de uso...
+BomSolve.TYPES=VehicleSolve,CustomSolve
+BusinessObjectSearchResultNavigator_5=no se encontr\u00F3 ning\u00FAn objeto

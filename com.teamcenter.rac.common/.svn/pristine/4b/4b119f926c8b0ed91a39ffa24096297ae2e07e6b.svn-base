@@ -1,0 +1,31 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the cancelcheckout package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: cancelcheckout_locale.properties
+#   Module  : com.teamcenter.rac.commands.cancelcheckout
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#15-Jul-2002  Rob McColl              Apply fix for PR#4587471.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#24-Feb-2006  leclaire                PR 5236276
+#16-Mar-2006  liang                   De-imanization project
+#17-Mar-2006  liang                   merge to PLM1
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=\u30C1\u30A7\u30C3\u30AF\u30A2\u30A6\u30C8\u306E\u30AD\u30E3\u30F3\u30BB\u30EB
+confirmationText=\u672C\u5F53\u306B\u30C1\u30A7\u30C3\u30AF\u30A2\u30A6\u30C8\u3092\u30AD\u30E3\u30F3\u30BB\u30EB\u3057\u307E\u3059\u304B?\n(\u6CE8\u8A18: \u30C1\u30A7\u30C3\u30AF\u30A2\u30A6\u30C8\u4EE5\u964D\u306E\u5909\u66F4\u70B9\u306F\u3059\u3079\u3066\u5931\u308F\u308C\u307E\u3059\u3002)
+cancelcheckout.STATUS=\u30C1\u30A7\u30C3\u30AF\u30A2\u30A6\u30C8\u3092\u30AD\u30E3\u30F3\u30BB\u30EB\u3057\u3066\u3044\u307E\u3059...
+cancelcheckout.TITLE=\u30C1\u30A7\u30C3\u30AF\u30A2\u30A6\u30C8\u306E\u30AD\u30E3\u30F3\u30BB\u30EB
+cancelcheckout.ERROR = \u9078\u629E\u3057\u305F\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306B\u306F\u300C\u30C1\u30A7\u30C3\u30AF\u30A2\u30A6\u30C8\u3092\u30AD\u30E3\u30F3\u30BB\u30EB\u300D\u306F\u4F7F\u7528\u3067\u304D\u307E\u305B\u3093\u3002

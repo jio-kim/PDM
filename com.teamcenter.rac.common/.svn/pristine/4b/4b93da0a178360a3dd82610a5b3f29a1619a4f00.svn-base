@@ -1,0 +1,327 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the subscrube package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#03-Aug-2000  Yan Shen                Initial Promote.
+#07-Oct-2000  shen                    for Subscription project
+#01-Nov-2000  shen                    add Text Strings
+#17-Oct-2002  shen                    Enhance Subscription
+#06-Jun-2003  shen                    V9 Global Change Notification project
+#05-Oct-2005  noolu                   GCN Enhancements
+#17-Oct-2005  noolu                   Rename "New IR Event" to "New Item Revision Event"
+#$HISTORY$
+#=================================================================================================*/
+
+create.TITLE=\u5EFA\u7ACB\u8A02\u95B1
+edit.TITLE=\u7DE8\u8F2F\u8A02\u95B1
+success.MSG=\u8A02\u95B1\u5DF2\u5EFA\u7ACB
+fail.MSG=\u672A\u80FD\u5EFA\u7ACB\u8A02\u95B1
+
+create.STATUS=\u5EFA\u7ACB\u8A02\u95B1...
+edit.STATUS=\u7DE8\u8F2F\u8A02\u95B1...
+
+createSessionSub.TITLE=\u5EFA\u7ACB\u968E\u6BB5\u4F5C\u696D\u8A02\u95B1
+editSessionSub.TITLE=\u7DE8\u8F2F\u968E\u6BB5\u4F5C\u696D\u8A02\u95B1
+
+createSessionSub.STATUS=\u5EFA\u7ACB\u968E\u6BB5\u4F5C\u696D\u8A02\u95B1...
+editSessionSub.STATUS=\u7DE8\u8F2F\u968E\u6BB5\u4F5C\u696D\u8A02\u95B1...
+
+target.LABEL=\u76EE\u6A19
+subscriberSelect.TITLE=\u9078\u53D6\u8A02\u95B1\u8005
+recipientSelect.TITLE=\u9078\u53D6\u6536\u4EF6\u4EBA
+
+fromSelect.LABEL1=\u4E8B\u4EF6
+toSelect.LABEL1=\u8A02\u95B1
+search=\u641C\u5C0B\uFF1A
+loadingMembers=\u6B63\u5728\u8F09\u5165\u6210\u54E1...
+fromSelect.LABEL=\u4F7F\u7528\u8005\u3001\u7FA4\u7D44\u3001\u5730\u5740\u6E05\u55AE
+toSelect.LABEL=\u50B3\u9001\u5230
+
+okButton.LABEL=\u78BA\u5B9A(O)
+okButton.MNEMONIC=O
+cancelButton.LABEL=\u53D6\u6D88(C)
+cancelButton.MNEMONIC=C
+applyButton.LABEL=\u5957\u7528(A)
+applyButton.MNEMONIC=A
+
+findButton.TOOLTIP=\u555F\u52D5\u6839\u64DA\u641C\u5C0B\u6587\u5B57\u7684\u641C\u5C0B
+userButton.TOOLTIP=\u641C\u5C0B\u7B26\u5408\u641C\u5C0B\u6E96\u5247\u7684\u4F7F\u7528\u8005 ID\u3002
+groupButton.TOOLTIP=\u641C\u5C0B\u7B26\u5408\u641C\u5C0B\u6E96\u5247\u7684\u7FA4\u7D44\u3002
+aliasButton.TOOLTIP=\u641C\u5C0B\u7B26\u5408\u641C\u5C0B\u6E96\u5247\u7684\u5730\u5740\u6E05\u55AE\u3002
+addButton.TOOLTIP=\u65B0\u589E\u8A02\u95B1\u8005
+removeButton.TOOLTIP=\u79FB\u9664\u8A02\u95B1\u8005
+addETButton.TOOLTIP=\u65B0\u589E\u4E8B\u4EF6\u985E\u578B
+removeETButton.TOOLTIP=\u79FB\u9664\u4E8B\u4EF6\u985E\u578B
+
+notifierListButton.TOOLTIP=\u9078\u53D6\u901A\u77E5\u8005\u6E05\u55AE
+addSelectedPropertiesButton.TOOLTIP=\u65B0\u589E\u5230\u9078\u5B9A\u5C6C\u6027
+addAllSelectedPropertiesButton.TOOLTIP=\u5168\u90E8\u65B0\u589E\u5230\u9078\u5B9A\u5C6C\u6027
+removeSelectedPropertiesButton.TOOLTIP=\u5F9E\u9078\u5B9A\u5C6C\u6027\u79FB\u9664
+removeAllSelectedPropertiesButton.TOOLTIP=\u5F9E\u9078\u5B9A\u5C6C\u6027\u5168\u90E8\u79FB\u9664
+addAttributeCriteriaButton.TOOLTIP=\u65B0\u589E\u5C6C\u6027\u6E96\u5247
+removeAttributeCriteriaButton.TOOLTIP=\u79FB\u9664\u5C6C\u6027\u6E96\u5247
+
+
+subscriber.LABEL=\u8A02\u95B1\u8005
+subscriber.TIP=\u9078\u53D6\u8A02\u95B1\u8005
+subscriber.SEARCH=*
+subscriber.NAME=\u8A02\u95B1\u8005 ID
+
+notify.LABEL=\u901A\u77E5
+notify.TIP=\u6307\u5B9A\u63A5\u6536\u8005
+
+object.LABEL=\u7269\u4EF6
+createSubscriptionforObject.LABEL = \u70BA\u7269\u4EF6\u5EFA\u7ACB\u8A02\u95B1
+createSubscriptionforObjectClass.LABEL = \u70BA\u7269\u4EF6\u985E\u5EFA\u7ACB\u8A02\u95B1
+selectTarget.TITLE=\u6B65\u9A5F {0}\uFF1A\u9078\u53D6\u76EE\u6A19
+subscriptionDescription.LABEL = \u8A02\u95B1\u6558\u8FF0
+
+entertheSearchCriteira.LABEL = \u8F38\u5165\u641C\u5C0B\u6E96\u5247
+searchCriteira.TITLE = \u641C\u5C0B\u6E96\u5247
+
+subscriptionAndNotificationWizard.TITLE=\u8A02\u95B1\u548C\u901A\u77E5\u7CBE\u9748...
+selecttheTargetforSubscription.LABEL=\u9078\u53D6\u8A02\u95B1\u76EE\u6A19
+subscriptionDetailsPage.TITLE=\u6B65\u9A5F {0}\uFF1A\u8A02\u95B1\u8A73\u7D30\u8CC7\u8A0A
+entertheDetailsfortheSubscription.LABEL=\u8F38\u5165\u8A02\u95B1\u8A73\u7D30\u8CC7\u8A0A 
+subscriptionCriteriaPage.TITLE=\u6B65\u9A5F {0}\uFF1A\u8A02\u95B1\u6E96\u5247\u6216\u689D\u4EF6
+entertheDetailsforSubscriptionCriteria.LABEL=\u8F38\u5165\u8A02\u95B1\u6E96\u5247\u8A73\u7D30\u8CC7\u8A0A\u6216\u9078\u53D6\u4E00\u500B\u689D\u4EF6
+subscribeToObjectClass.LABEL = \u8A02\u95B1\u7269\u4EF6\u985E\uFF1A
+subscribeToObject.LABEL = \u8A02\u95B1\u7269\u4EF6\uFF1A
+eventType.LABEL = \u4E8B\u4EF6\u985E\u578B\uFF1A
+subscriber.LABEL = \u8A02\u95B1\u8005\uFF1A
+handlers.LABEL= \u8655\u7406\u5E38\u5F0F\uFF1A
+attributeCriteria.LABEL=\u5C6C\u6027\u6E96\u5247
+bmideCondition.LABEL=\u689D\u4EF6
+
+subscriptionHandlerPage.TITLE=\u6B65\u9A5F {0}\uFF1A\u8A02\u95B1\u8655\u7406\u5E38\u5F0F
+entertheDetailsforSubscriptionHandler.LABEL=\u9078\u53D6\u8981\u57F7\u884C\u7684\u8655\u7406\u5E38\u5F0F
+selectedHandlerTable.LABEL=\u9078\u5B9A\u8655\u7406\u5E38\u5F0F
+availabelHandlerTable.LABEL=\u53EF\u7528\u8655\u7406\u5E38\u5F0F
+availabelConditionsTable.LABEL=\u53EF\u7528\u689D\u4EF6
+handlerID.LABEL = \u8655\u7406\u7A0B\u5F0F ID
+handlerDescription.LABEL = \u6558\u8FF0
+handlerAddButton.TOOLTIP = \u65B0\u589E\u4E8B\u4EF6\u8655\u7406\u5E38\u5F0F
+handlerRemoveButton.TOOLTIP = \u79FB\u9664\u9078\u5B9A\u7684\u8655\u7406\u5E38\u5F0F
+handlerMoveUpButton.TOOLTIP = \u4E0A\u79FB\u9078\u5B9A\u7684\u8655\u7406\u5E38\u5F0F
+handlerDownButton.TOOLTIP = \u4E0B\u79FB\u9078\u5B9A\u7684\u8655\u7406\u5E38\u5F0F
+
+clearButton.TOOLTIP = \u6E05\u9664\u641C\u5C0B\u7BE9\u9078\u5668
+
+propertiesToNotified.LABEL = \u8981\u901A\u77E5\u7684\u5C6C\u6027
+notificationDetails.TITLE = \u6B65\u9A5F {0}\uFF1A\u901A\u77E5\u8A73\u7D30\u8CC7\u8A0A
+enterNotificationDetails.LABEL = \u8F38\u5165\u901A\u77E5\u8A73\u7D30\u8CC7\u8A0A
+additionalMessage.LABEL = \u5176\u4ED6\u8A0A\u606F
+
+entertheNotificationDetails.LABEL = \u8F38\u5165\u901A\u77E5\u8A73\u7D30\u8CC7\u8A0A
+
+detailsGroup.LABEL=\u8A73\u7D30\u8CC7\u8A0A\u7FA4\u7D44
+objectType.LABEL=\u7269\u4EF6\u985E\u578B
+eventType.LABEL=\u4E8B\u4EF6\u985E\u578B
+subscriber.LABEL= \u8A02\u95B1\u8005
+expirationDate.LABEL=\u5931\u6548\u65E5\u671F
+executionTime.LABEL=\u57F7\u884C\u6642\u9593
+andOR.LABEL=AND/OR
+propertyName.LABEL=\u5C6C\u6027\u540D\u7A31
+operator.LABEL=\u904B\u7B97\u5B50
+propertyValue.LABEL=\u5C6C\u6027\u503C
+AddSymbol.LABEL=+
+RemoveSymbol.LABEL=-
+criteriaHelp.LABEL=?
+searchCriteria.LABEL=\u641C\u5C0B\u6E96\u5247
+Remove.LABEL=\u79FB\u9664
+Add.LABEL=\u65B0\u589E
+subscriptionConditionName.LABEL=\u689D\u4EF6\u540D\u7A31
+subscriptionConditionDescription.LABEL=\u6558\u8FF0
+
+//Do not translate '$' tagged strings like $eventType and $targetObj.object_name
+notificationMailSubject.TEXT = $eventType \u4E8B\u4EF6\u5DF2\u91DD\u5C0D\u7269\u4EF6 $targetObj.object_name \u89F8\u767C
+notificationMailMessage.TEXT = \u4E8B\u4EF6{0}\u5DF2\u767C\u751F\u5728 {1} \u985E\u578B\u7684\u7269\u4EF6\u4E0A
+
+notValidChar.LABEL = \u4E0D\u662F\u6709\u6548\u5B57\u5143
+notValidDateFormat.LABEL = \u4E0D\u662F\u6709\u6548\u65E5\u671F\u683C\u5F0F\u3002\u8F38\u5165 dd-MMM-yyyy HH:mm \u683C\u5F0F
+notValidDate.LABEL = \u4E0D\u662F\u6709\u6548\u65E5\u671F\u3002\u8F38\u5165 dd-MMM-yyyy \u683C\u5F0F
+notValidLogical.LABEL = \u4E0D\u662F\u6709\u6548\u908F\u8F2F\u3002\u6307\u5B9A true \u6216 false
+notValidDouble.LABEL = \u4E0D\u662F\u6709\u6548\u96D9\u7CBE\u5EA6\u578B
+notValidInt.LABEL =  \u4E0D\u662F\u6709\u6548\u6574\u6578
+notValidFloat.LABEL = \u4E0D\u662F\u6709\u6548\u6D6E\u9EDE\u578B
+notValidShort.LABEL = \u4E0D\u662F\u6709\u6548\u77ED\u578B
+notValidNote.LABEL = \u4E0D\u662F\u6709\u6548\u5B57\u4E32
+notValidString.LABEL = \u4E0D\u662F\u6709\u6548\u5B57\u4E32
+notValidDate.LABEL = \u4E0D\u662F\u6709\u6548\u65E5\u671F\u3002\u8F38\u5165 dd-MMM-yyyy HH:mm \u683C\u5F0F
+notValidMonth.LABEL = \u4E0D\u662F\u6709\u6548\u6708\u4EFD\u3002\u8F38\u5165 dd-MMM-yyyy HH:mm \u683C\u5F0F
+notValidYear.LABEL = \u4E0D\u662F\u6709\u6548\u5E74\u4EFD\u3002\u6307\u5B9A\u5927\u65BC 1900 \u7684\u5E74\u4EFD\u3002\u8F38\u5165 dd-MMM-yyyy HH:mm \u683C\u5F0F
+notValidTime.LABEL = \u4E0D\u662F\u6709\u6548\u6642\u9593\u3002\u8F38\u5165 dd-MMM-yyyy HH:mm \u683C\u5F0F
+notValidLogical.LABEL = \u4E0D\u662F\u6709\u6548\u908F\u8F2F\u3002\u6307\u5B9A true \u6216 false
+notValidDouble.LABEL = \u4E0D\u662F\u6709\u6548\u96D9\u7CBE\u5EA6\u578B
+notValidInt.LABEL =  \u4E0D\u662F\u6709\u6548\u6574\u6578
+notValidFloat.LABEL = \u4E0D\u662F\u6709\u6548\u6D6E\u9EDE\u578B
+notValidShort.LABEL = \u4E0D\u662F\u6709\u6548\u77ED\u578B
+notValidNote.LABEL = \u4E0D\u662F\u6709\u6548\u5B57\u4E32
+notValidString.LABEL = \u4E0D\u662F\u6709\u6548\u5B57\u4E32
+notValidUserId.LABEL = \u4E0D\u662F\u6709\u6548\u4F7F\u7528\u8005 ID
+notValidGroupId.LABEL = \u4E0D\u662F\u6709\u6548\u7FA4\u7D44
+
+notificationDetails.LABEL = \u901A\u77E5\u8A73\u7D30\u8CC7\u8A0A
+to.LABEL = \u6536\u4EF6\u4EBA
+AddSymbol.LABEL = + 
+RemoveSymbol.LABEL = -
+SearchAllSymbol.LABEL = *
+FindSymbol.LABEL = ?
+subject.LABEL = \u4E3B\u65E8
+summary.LABEL = \u532F\u7E3D
+RemoveSymbol.LABEL = -
+message.LABEL = \u8A0A\u606F
+propertiesToNotified.LABEL = \u8981\u901A\u77E5\u7684\u5C6C\u6027
+availableProperties.LABEL = \u53EF\u7528\u5C6C\u6027
+GreaterThanSymbol.LABEL=>
+DoubleGreaterThanSymbol.LABEL=>>
+LessThanSymbol.LABEL=<
+DoubleLessThanSymbol.LABEL=<<
+selectedProperties.LABEL = \u9078\u5B9A\u7684\u5C6C\u6027
+
+
+nullobject.TEXT=
+object.TIP=\u9078\u53D6\u7269\u4EF6
+# warning!!! If set object.SEARCH=*, the search would be extremely slow
+# because the system is going to load all work space objects
+object.SEARCH=*
+object.NAME=\u7269\u4EF6\u540D\u7A31
+# warning!!! If set object.SEARCH=*, the search would be extremely slow
+# because the system is going to load all Teamcenter types
+type.LABEL=\u985E\u578B
+type.TIP = \u9078\u53D6\u985E\u578B
+type.SEARCH=*
+type.NAME=\u985E\u578B\u540D\u7A31
+
+date.LABEL=\u5931\u6548\u65E5\u671F
+# null date means the subscription has no expiration date. It is
+# effective until it is deleted. Usually nulldate.TEXT is blank.
+# But you can also give some descriptive text like "No Expiration Date"
+# If you do so, you also need to change nullDate.TIP accordingly
+nulldate.TEXT=
+date.TIP=\u8A2D\u5B9A\u5931\u6548\u65E5\u671F
+nullDate.TIP=\u5982\u679C\u8A72\u6B04\u4F4D\u662F\u7A7A\u767D\u7684\uFF0C\u5247\u7121\u5931\u6548\u65E5\u671F
+# Default expiration date. If it is null, it means No expiration
+# If you give a default date, make sure the format is the same
+# as dateFormat. For example, if dateFormat=MM/dd/yyyy, then
+#date.DEFAULT=12/31/2005
+date.DEFAULT=
+
+timeFormat=HH:mm
+
+time.LABEL=\u57F7\u884C\u6642\u9593
+# null time means "Execute immediately". Usually nulltime.TEXT is blank.
+# But you can also give some descriptive text like "execute immediately".
+# If you do so, you also need to change nullTime.TIP accordingly
+nulltime.TEXT=
+time.TIP=\u8A2D\u5B9A\u57F7\u884C\u6642\u9593
+nullTime.TIP=\u5982\u679C\u8A72\u6B04\u4F4D\u662F\u7A7A\u767D\u7684\uFF0C\u5247\u7ACB\u5373\u57F7\u884C
+
+Date.TITLE=\u65E5\u671F
+Time.TITLE=\u6642\u9593
+
+wrongExpireDate.TEXT=\u8A02\u95B1\u5DF2\u904E\u671F\u3002\u8ACB\u91CD\u65B0\u6307\u5B9A\u5931\u6548\u65E5\u671F\u3002
+wrongExpireDate.TITLE=\u5931\u6548\u65E5\u671F\u7121\u6548
+wrongItemRevisionOption.LABEL=\u61C9\u8A72\u70BA\u65B0\u7684\u9805\u76EE\u7248\u672C\u4E8B\u4EF6\u9078\u5B9A\u9805\u76EE\u7248\u672C\u9078\u9805\u3002\u8ACB\u6307\u5B9A\u7248\u672C\u9078\u9805\u3002
+subscribeSelection.TITLE=\u8ACB\u6307\u5B9A\u7248\u672C\u9078\u9805\u3002
+
+loadingAttributes=\u6B63\u5728\u8F09\u5165\u8A02\u95B1\u985E\u7684\u5C6C\u6027...
+
+anyStatus=\u4EFB\u4F55\u72C0\u614B
+statusType=\u72C0\u614B\u985E\u578B
+
+anyRelationType=\u4EFB\u4F55\u95DC\u4FC2\u985E\u578B
+relation.LABEL=\u95DC\u4FC2\u985E\u578B
+relation.TIP=\u4EFB\u4F55\u95DC\u4FC2\uFF08\u5982\u679C\u9078\u53D6\u300C\u5168\u90E8\u300D\uFF09
+
+loadParameters=\u6B63\u5728\u8F09\u5165\u4E8B\u4EF6\u53C3\u6578...
+
+editProp.LABEL=\u8A02\u95B1\u9650\u5B9A\u8A5E
+secondaryObjectType.TIP=\u4EFB\u4F55\u9644\u4EF6\u985E\u578B\uFF08\u5982\u679C\u9078\u53D6\u300C\u5168\u90E8\u300D\uFF09
+releaseStatus.LABEL=\u767C\u4F48\u72C0\u614B
+releaseStatus.TIP=\u4EFB\u4F55\u72C0\u614B\uFF08\u5982\u679C\u9078\u53D6\u300C\u5168\u90E8\u300D\uFF09
+secondary.LABEL=\u9644\u4EF6\u985E\u578B
+secondaryObjectTypeSelectionButton.TITLE=\u9644\u4EF6\u985E\u578B\u9078\u53D6
+relation1.TIP=\u7576\u9078\u5B9A\u9805\u76EE\u7269\u4EF6\u4E0B\u7684\u4EFB\u4F55\u7248\u672C\u7684\u95DC\u4FC2\u88AB\u5EFA\u7ACB\uFF0C\u5247\u6703\u63A5\u5230\u901A\u77E5
+status.TIP=\u7576\u72C0\u614B\u88AB\u6307\u6D3E\u5230\u9078\u5B9A\u9805\u76EE\u7269\u4EF6\u4E0B\u7684\u4EFB\u4F55\u7248\u672C\uFF0C\u5247\u6703\u63A5\u5230\u901A\u77E5
+
+propName.LABEL=\u5C6C\u6027\u540D\u7A31
+propValue.LABEL=\u5C6C\u6027\u503C
+interger=\u8F38\u5165\u4E00\u500B\u6574\u6578
+number=\u8F38\u5165\u4E00\u500B\u6578\u5B57
+string=\u8F38\u5165\u4E00\u500B\u5B57\u4E32
+character=\u8F38\u5165\u4E00\u500B\u5B57\u5143
+logical=\u8F38\u5165\u4E00\u500B\u908F\u8F2F
+date=\u8F38\u5165\u4E00\u500B\u65E5\u671F
+true=\u662F
+false=\u5426
+
+allRevs.LABEL=\u6240\u6709\u7248\u672C
+allRevs.TIP=\u7576\u9078\u5B9A\u9805\u76EE\u7269\u4EF6\u7684\u4EFB\u4F55\u7248\u672C\u767C\u751F\u4E8B\u4EF6\u6642\uFF0C\u6703\u7372\u53D6\u901A\u77E5
+
+itemRevs.LABEL=\u9805\u76EE\u7248\u672C
+itemRevs.TIP=\u5728\u9078\u5B9A\u9805\u76EE\u7269\u4EF6\u4E0B\u7684\u4EFB\u4F55\u9805\u76EE\u7248\u672C\u767C\u751F\u4E8B\u4EF6\u6642\uFF0C\u6703\u7372\u53D6\u901A\u77E5
+
+baselineRevs.LABEL=\u57FA\u7DDA\u7248\u672C
+baselineRevs.TIP=\u5728\u9078\u5B9A\u9805\u76EE\u7269\u4EF6\u4E0B\u7684\u4EFB\u4F55\u57FA\u7DDA\u7248\u672C\u767C\u751F\u4E8B\u4EF6\u6642\uFF0C\u6703\u7372\u53D6\u901A\u77E5
+
+all.LABEL=\u5168\u90E8
+
+
+attrPanelHeader1=\u6307\u5B9A\u5C6C\u6027
+attrPanelHeader2=\u985E
+
+# replace yes in AbstractProgressDialog with Apply
+yes=\u78BA\u5B9A
+
+# replace no in AbstractProgressDialog with Cancel
+no=\u53D6\u6D88
+
+targets=\u76EE\u6A19\u7269\u4EF6
+
+transferNotificationWizard.TITLE= \u50B3\u905E\u901A\u77E5\u7CBE\u9748...
+transferNotificationPage.TITLE=\u50B3\u905E\u901A\u77E5
+entertheDetailsForTransferNotification.LABEL=\u8F38\u5165\u50B3\u905E\u901A\u77E5\u7684\u8A73\u7D30\u8CC7\u8A0A
+transferNotification.LABEL=\u50B3\u905E\u901A\u77E5
+permanentNotificationTransfer.LABEL=\u6C38\u4E45\u901A\u77E5\u50B3\u905E
+temporaryNotificationTransfer.LABEL=\u81E8\u6642\u901A\u77E5\u50B3\u905E
+transferTo.LABEL=\u50B3\u905E\u5230
+
+to.LABEL=\u5230\uFF1A
+startDate.LABEL=\u958B\u59CB\u65E5\u671F\uFF1A
+endDate.LABEL=\u7D50\u675F\u65E5\u671F\uFF1A
+user.TITLE=\u4F7F\u7528\u8005
+user.TOOLTIP=\u9078\u53D6\u4F7F\u7528\u8005
+dateRange.LABEL=\u65E5\u671F\u7BC4\u570D
+
+startDate.TIP=\u8A2D\u5B9A\u958B\u59CB\u65E5\u671F
+endDate.TIP=\u8A2D\u5B9A\u7D50\u675F\u65E5\u671F
+nullDate.TIP=\u82E5\u6B04\u4F4D\u70BA\u7A7A\uFF0C\u5247\u7121\u65E5\u671F
+
+invalidDate.TITLE=\u65E5\u671F\u7121\u6548
+invalidDateRange.TEXT=\u60A8\u6307\u5B9A\u4E86\u7121\u6548\u7684\u65E5\u671F
+
+subscription.LABEL = \u8A02\u95B1
+subscriptionName.LABEL = \u8A02\u95B1\u540D\u7A31
+activateSubscription.LABEL = \u4F7F\u7528\u4E2D
+frequency.LABEL=\u983B\u7387
+daysOfWeek.LABEL= \u6BCF\u9031\u6B64\u65E5
+importance.LABEL = \u91CD\u8981\u6027
+
+incorrectStartDate.TEXT=\u958B\u59CB\u65E5\u671F\u4E0D\u6B63\u78BA\u3002
+incorrectEndDate.TEXT=\u7D50\u675F\u65E5\u671F\u4E0D\u6B63\u78BA\u3002
+incorrectTransferDateRange.TEXT=\u81E8\u6642\u50B3\u905E\u7684\u65E5\u671F\u7BC4\u570D\u4E0D\u6B63\u78BA\u3002
+
+modifyAccessDenied.TITLE=\u4FEE\u6539\u5B58\u53D6\u6B0A\u9650\u88AB\u62D2\u7D55
+modifyAccessDenied.TEXT=\u60A8\u7121\u6B0A\u4FEE\u6539\u8A02\u95B1\u3002

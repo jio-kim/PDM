@@ -1,0 +1,119 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+readAccess.TIP=Se otorg\u00F3 el permiso de acceso para leer este objeto
+noReadAccess.TIP=Se deneg\u00F3 el permiso de acceso para leer este objeto
+
+writeAccess.TIP=Se otorg\u00F3 el permiso para escribir en este objeto
+noWriteAccess.TIP=Se deneg\u00F3 el permiso para escribir en este objeto
+
+changeAccess.TIP=Se otorg\u00F3 el permiso de acceso para modificar este objeto
+noChangeAccess.TIP=Se deneg\u00F3 el permiso de acceso para modificar este objeto
+
+deleteAccess.TIP=Se otorg\u00F3 el permiso de acceso para eliminar este objeto
+noDeleteAccess.TIP=Permiso de eliminaci\u00F3n denegado para este objeto
+
+inProcess.TIP=El objeto se encuentra en proceso
+notInProcess.TIP=El objeto no se encuentra en proceso
+
+checkedOut.TIP=El objeto est\u00E1 desprotegido
+notCheckedOut.TIP=El objeto no est\u00E1 desprotegido
+
+released.TIP=El objeto est\u00E1 liberado
+notReleased.TIP=El objeto no est\u00E1 liberado
+
+published.TIP=El objeto est\u00E1 publicado
+notPublished.TIP=El objeto no est\u00E1 publicado
+
+classified.TIP=El objeto est\u00E1 clasificado
+notClassified.TIP=El objeto no est\u00E1 clasificado
+
+archived.TIP=El objeto est\u00E1 archivado
+notArchived.TIP=El objeto no est\u00E1 archivado
+
+updateOptions.TITLE=Opciones de actualizaci\u00F3n
+
+whereReferenced.TIP=Cantidad de D\u00F3nde se referencia correspondiente al objeto seleccionado actualmente.
+
+whereUsed.TIP=Cantidad de D\u00F3nde se usa correspondiente al objeto seleccionado actualmente.
+
+childCount.TIP=N\u00FAmero de hijos del componente seleccionado.
+
+infoCenter.WhereUsed.TITLE=Mostrar la informaci\u00F3n D\u00F3nde se usa
+infoCenter.WhereRefed.TITLE=Mostrar la informaci\u00F3n D\u00F3nde se referencia
+infoCenter.ChildCount.TITLE=Mostrar la informaci\u00F3n sobre la cantidad de hijos
+infoCenter.Access.TITLE=Mostrar la informaci\u00F3n de permisos al objeto
+infoCenter.State.TITLE=Mostrar la informaci\u00F3n sobre el estado del objeto
+
+ok.BUTTON=Aceptar
+
+TCUtilities.EmptyItemPassed=\u00CDtem vac\u00EDo transferido.
+
+#Keys for Multiple Files Drag and Drop
+continueButton.LABEL=Continuar
+
+maxFilesLimit1.MSG=Si selecciona soltar m\u00E1s de {0} archivos por vez puede tomar un tiempo
+maxFilesLimit2.MSG2=.\n\n \u00BFDesea continuar ?
+maxFilesLimit.TITLE=Arrastrar y soltar de m\u00FAltiples archivos
+
+DocMgtService.NoDatasetToViewOrMarkup=No hay ning\u00FAn conjunto de datos para ver ni marcar.
+DocMgtService.NoDatasetToDigitalSign=No hay ning\u00FAn conjunto de datos para firmar.
+DocMgtService.AppLauncherReturnError=El programa de inicializaci\u00F3n de la aplicaci\u00F3n devolvi\u00F3 un error:
+DocMgtService.UnableToGetLaunchDefinition=Hubo un incidente al visualizar el marcado correspondiente a los objetos seleccionados.
+DocMgtService.GetLaunchDefinitionError=Error en la vista o marcado
+AppLauncherRequestHandler.SessionError=Error: la sesi\u00F3n es nula.
+AppLauncherRequestHandler.CompManagerError=Error: ComponentManager es nulo.
+AppLauncherRequestHandler.DataManagementServiceError=Error: no se encuentra el servicio DataManagement.
+AppLauncherRequestHandler.MarkupSaveError=Error: fallo en la acci\u00F3n Guardar marcado.
+AppLauncherRequestHandler.ParseError=Error: fallo al analizar sint\u00E1cticamente el mensaje XML de llamada de retorno.
+AppLauncherRequestHandler.DigitalSignSaveError=Error: fallo en la acci\u00F3n Guardar la firma.
+AppLauncherRequestHandler.CallBackAtionError=Error: acci\u00F3n de llamada de retorno no admitida.
+AppLauncherFileHandler.DownloadFilesError=Excepci\u00F3n: fallo al descargar los archivos:
+
+#remote object display string
+Remote_Object.NAME=<Objeto remoto>
+Unreadable_Object.NAME=<Objeto ilegible>
+
+TCComponentContentProvider.loadChildrenJob=Cargando los hijos...
+
+# Loading message for LOV UI - get initial LOV
+loading.TIP=Cargando los valores de la LOV
+
+# No values found message for LOV UI 
+noLOVValuesFound.MSG=No se halla disponible ning\u00FAn valor de LOV
+
+# Range LOV message for LOV UI
+rangeLOVMessage.MSG=Los valores v\u00E1lidos son de tipo "{0}" dentro de un rango de "{1}, {2}"
+
+# Message strings used for informing invalid LOV value
+invalidLOVValue.MSG=El valor introducido "{0}" en la propiedad de tipo {1} no es v\u00E1lido.
+# Data types
+type_1.MSG=Car\u00E1cter
+type_2.MSG=Fecha
+type_3.MSG=Doble
+type_4.MSG=Flotante
+type_5.MSG=Entero
+type_6.MSG=L\u00F3gica
+type_7.MSG=Corto
+type_8.MSG=Cadena
+
+wrapToolTipPosition=80
+
+# Tool-tip text for LOV UI
+lovTooltip.TIP=Introduzca las palabras clave en el campo Texto para filtrar los valores de LOV.
+
+lovDataLoadSummary.MSG={0} - {1} valores visualizados.
+lovNoMoreValues.MSG=No hay m\u00E1s valores.
+lovMoreValuesChangeFilterCriteria.MSG=Existen m\u00E1s valores. Para verlos, modifique los criterios del filtro.
+lovMoreValuesExist.MSG=Si desea ver m\u00E1s valores contin\u00FAe desplaz\u00E1ndose.
+
+errorDlgShowAllCheckbox.MSG=Mostrar todo
+
+# Messages for progress dialog abort warning
+stoppedByTheUser=El usuario detuvo la operaci\u00F3n. 
+SomeObjectsProcessedBeforeAbort=La operaci\u00F3n fue interrumpida por el usuario pero ya se procesaron algunos objetos antes de parar la operaci\u00F3n. 

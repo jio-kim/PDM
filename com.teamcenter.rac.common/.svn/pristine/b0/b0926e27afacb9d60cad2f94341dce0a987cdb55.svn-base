@@ -1,0 +1,109 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2011.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+#
+# File description: This properties file contains all locale specific keys for the revise package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: revise_locale.properties
+#   Module  : com.teamcenter.rac.commands.revise
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#06-May-2003  wangp                   initial creation
+#12-May-2003  wangp                   add saveAsOldRev
+#12-Jun-2003  wangp                   alternate id
+#25-Mar-2004  bunly                   Enable revise of GDE
+#27-Feb-2004  wangp                   fix pr 4853772: reword tooltips
+#25-Mar-2004  bunly                   Merge into project branch
+#09-May-2005  Reshma Khatib           Added gcidLabel entry.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#07-June-2008 Swetha Manchiraju       Added support for Admin and usability
+#$HISTORY$
+#=================================================================================================*/
+
+# Revise Dialog
+# ----------------------
+dialog.TITLE = Revisar
+saveAsForm.TITLE = Revisar
+
+basedOn=Basado en
+itemType=Tipo:
+
+# Revise Panel
+# -----------------------------
+createConfirm.TITLE=Revisar la revisi\u00F3n del \u00EDtem
+createConfirm.MSG=Si desea continuar, deber\u00E1 crear una  revisi\u00F3n de \u00EDtem nueva. \n\u00BFDesea crear la revisi\u00F3n de \u00EDtem nueva?
+
+# Revise Item Info Panel
+# ------------------------------
+itemInfo.LABEL=Defina la informaci\u00F3n b\u00E1sica sobre la revisi\u00F3n de \u00EDtem nueva.
+
+# Revise Attachment Panel
+# ---------------------------
+attachmentInfo.LABEL=Defina los objetos adjuntos.
+attachmentStep.NAME=Defina los datos adjuntos
+attachmentStep.TOOLTIP=Defina los objetos adjuntos.
+
+# Revise Alternate ID/ ReviseIdInfoPanel
+# ---------------------------------------
+step1=Seleccionar revisi\u00F3n o contexto:
+step3=Introduzca la informaci\u00F3n b\u00E1sica:
+
+idContext=Contexto de Id:
+idType=Tipo de Id:
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Creando una revisi\u00F3n de \u00EDtem nueva
+openingNewComponent=Abriendo una revisi\u00F3n de \u00EDtem nueva
+
+# Error Messages
+# ----------------------
+error.TITLE = Revisar ...
+failFindDialog=Fallo al buscar el cuadro de di\u00E1logo Revisar.
+
+sameAsOldRev=Se encontr\u00F3 una revisi\u00F3n. Introduzca un Id de revisi\u00F3n nuevo.
+
+unableToRevise.TITLE=No se puede revisar
+unableToRevise.MSG=Solamente se admiten para revisi\u00F3n las revisiones de \u00EDtem o los identificadores de revisi\u00F3n.  \nSeleccione Revisi\u00F3n de \u00EDtem o Id de revisi\u00F3n y vuelva a intentar.
+unableToReviseReplica.MSG= No se pudo revisar la revisi\u00F3n del \u00EDtem de r\u00E9plica.
+unableToReviseUnreadable.MSG=No se puede revisar el \u00EDtem sin permiso de lectura.
+
+failToRevise=No se pudo revisar la revisi\u00F3n del \u00EDtem.
+
+idReviseNoRuleError.MSG=No existe una regla de negocio para esta combinaci\u00F3n de tipo de identificador de revisiones, tipo identificable de revisi\u00F3n y contexto de identificaci\u00F3n.
+
+itemNoRevError.MSG=No se puede implementar esta operaci\u00F3n porque el \u00EDtem no contiene ninguna revisi\u00F3n.
+
+unableToReplaceRevised.MSG=Se revis\u00F3 la revisi\u00F3n del \u00EDtem pero no se pudo reemplazarlo en la estructura.
+
+# SaveArchitectureAs Dialog
+# ------------------------
+base.ARCHTITLE = Detalles de arquitectura
+archItemInformation = Informaci\u00F3n sobre arquitectura
+archItemType = Tipo de arquitectura:
+gcidLabel = Id de componente gen\u00E9rico
+archTitle = Revisar la arquitectura como
+
+# Warning Message
+# ------------------------
+warning.TITLE=Revisar ...
+invalidObject=Objeto seleccionado no v\u00E1lido.
+
+MasterValueChangingwarning.TITLE =Aviso: cambio en el valor maestro
+MasterValueChangingwarningList.MESSAGE=Se modific\u00F3 el valor maestro correspondiente a las propiedades listadas a continuaci\u00F3n:
+MasterValueChangingwarningExplain.MESSAGE=Una vez ejecutada la operaci\u00F3n Revisar, se marcar\u00E1n como no v\u00E1lidos todos los valores de traducci\u00F3n de los idiomas adicionales.
+MasterValueChangingwarningConfirmation.MESSAGE=Confirmar
+
+updatingBomline = Actualizando la l\u00EDnea de BOM
+
+#invalid name
+InvalidNameLength.TITLE=Nombre no v\u00E1lido
+InvalidNameLength.MSG=El nombre "{0}" sobrepasa la longitud permitida de {1}. Introduzca un nombre v\u00E1lido.

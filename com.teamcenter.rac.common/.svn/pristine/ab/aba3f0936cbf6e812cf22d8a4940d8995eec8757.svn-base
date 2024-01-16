@@ -1,0 +1,48 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the reserve package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: reserve_locale.properties
+#   Module  : com.teamcenter.rac.commands.reserve
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#24-Apr-2003  Paul Jackson            hurl on null item rev from bom line
+#16-Jul-2003  kao                     for GDELine
+#15-Sep-2003  x_monthr                Add noAttachmentError
+#16-Mar-2004  Jim Towers              PR1289937 - Checkout with export overwrites files.
+#22-Jan-2005  x_hottig                Fixing PR #5047723 - Misleading messagebox titles > Check In = Reserve, Check Out = Unreserve
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=Check-Out
+
+comments=Comments:
+changeid=Change ID:
+export=Export Dataset On Check-Out
+overwriteFiles=Overwrite existing files
+
+confirmationText=Are you sure you want to Check-Out?
+confirmationTextForImplicitCheckout=All unsaved changes will be lost. To save them, perform Save Changes instead of Check-Out.
+reserveObjects=Checking-Out...
+
+error.TITLE=Check-Out
+noSelectionError = No Objects Are Selected to be Checked-Out
+noItemRevError.MESSAGE = Check-In/Check-Out operations are not valid for the selected line(s) without an Item Revision.
+noGDEError.MESSAGE = Check-In/Check-Out operations are not valid for the selected line(s) without a GDE object.
+noAttachmentError.MESSAGE = Check-In/Check-Out operations are not valid for the selected line(s) without an attachment object.
+noAppearanceGroupError.MESSAGE = Check-In/Check-Out operations are not valid for the selected appearance group line(s) without an appearance group object.
+
+#For Cancel Checkout
+cancelCheckOut.WarningMSG=Cancel Check-out is not supported for this type. Performing Save Check-In may modify the version without input. Select 'No' in the Check-out dialog if you do not want to modify the version without input.
+cancelCheckOut.WarningTitle=Cancel Check-out Warning

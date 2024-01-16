@@ -1,0 +1,40 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the copy package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: replacecomponent_locale.properties
+#   Module  : com.teamcenter.rac.commands.replacecomponent
+#
+#===================================================================================================
+#   Date      Name                               Description of Change
+#14-Sep-2004  Ramabhadrakiran Suryadevara        Initial creation.
+#30-Sep-2004  Ramabhadrakiran Suryadevara  Added code for compartmentalizing AddComponentPanel code.
+#11-Oct-2004  Ramabhadrakiran Suryadevara  Merge
+#15-Oct-2004  Ramabhadrakiran Suryadevara  Merge
+#01-Nov-2004  S.R.Kiran               merge
+#22-Nov-2004  S.R.Kiran               Modified the value for the property replaceComp
+#10-Feb-2005  C van Dyke              New text for Replace Part in Product
+#22-Feb-2005  C van Dyke              ReplacePartCommand text
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+title = \uC81C\uD488 \uC124\uACC4 \uAD50\uCCB4
+replacePartTitle=\uC81C\uD488\uC5D0\uC11C \uD30C\uD2B8 \uAD50\uCCB4
+noBOMLinesSelected=BOM \uD589\uC744 \uC120\uD0DD\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4. BOM \uD589\uC744 \uD558\uB098\uB9CC \uC120\uD0DD\uD558\uC2ED\uC2DC\uC624.
+replaceComp=\uC81C\uD488 \uC124\uACC4 \uAD50\uCCB4
+replacePartComp=\uC81C\uD488\uC5D0\uC11C \uD30C\uD2B8 \uAD50\uCCB4
+moreBOMLinesPreString=\uC774\uBBF8 \uC120\uD0DD\uD568
+moreBOMLinesPostString=BOM \uD589. BOM \uD589\uC744 \uD558\uB098\uB9CC \uC120\uD0DD\uD558\uC2ED\uC2DC\uC624.
+notABOMLine=\uC120\uD0DD\uD55C \uD56D\uBAA9\uC774 BOM \uD589\uC774 \uC544\uB2D9\uB2C8\uB2E4. BOM \uD589\uC744 \uC120\uD0DD\uD558\uC2ED\uC2DC\uC624.
+topBOMLine=\uCD5C\uC0C1\uC704 BOM \uD589\uC744 \uC120\uD0DD\uD588\uC2B5\uB2C8\uB2E4. \uCD5C\uC0C1\uC704 BOM \uD589\uC774 \uC544\uB2CC BOM \uD589\uC744 \uC120\uD0DD\uD558\uC2ED\uC2DC\uC624.
+noReplaceWithSubstitutes=\uB300\uCCB4 \uD56D\uBAA9\uC774 \uC788\uB294 \uD30C\uD2B8\uB294 \uAD50\uCCB4\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+noReplaceWithSubstitutesTitle=\uD30C\uD2B8\uB97C \uAD50\uCCB4\uD560 \uC218 \uC5C6\uC74C
+failureInSelection=\uC120\uD0DD\uD55C \uCEF4\uD3EC\uB10C\uD2B8\uAC00 \uC720\uD6A8\uD55C \uD30C\uD2B8\uAC00 \uC544\uB2D9\uB2C8\uB2E4.

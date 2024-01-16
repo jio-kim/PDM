@@ -1,0 +1,35 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2011.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the properties package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+
+command.TITLE=Refresh Notify
+
+refreshNotifyDialog.TITLE=Refresh Notify
+
+refreshAll=Refresh All
+refreshAll.MNEMONIC=A
+refreshAll.TIP=Refresh all the objects in the notify list.
+
+refreshSelected=Refresh Selected
+refreshSelected.MNEMONIC=S
+refreshSelected.TIP=Refresh only the selected objects.
+
+objectColumnHeading=Object
+typeColumnHeading=Type
+eventColumnHeading=Event
+
+unknownType=Unknown Type
+unknownEventType=Unknown Event
+
+refreshNotifyAction.TIP=Notify the user of the objects that are out of date and need to be refreshed.

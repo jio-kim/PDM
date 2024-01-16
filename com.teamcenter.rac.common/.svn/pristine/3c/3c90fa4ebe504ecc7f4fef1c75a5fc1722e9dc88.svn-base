@@ -1,0 +1,109 @@
+# @<COPYRIGHT>@
+#==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#==================================================
+# @<COPYRIGHT>@
+
+editCalendarDialog.TITLE=Editar calend\u00E1rio de recursos: 
+deleteCalendarDialog.TITLE=Excluir calend\u00E1rio de recursos
+cannotFindEditCalendarDialog=N\u00E3o \u00E9 poss\u00EDvel localizar a caixa de di\u00E1logo Editar calend\u00E1rio
+
+resourceCalendarDialog.HEADER=Utilize esta caixa de di\u00E1logo para especificar os padr\u00F5es di\u00E1rios para um recurso (usu\u00E1rio logado atualmente), criar, atualizar a excluir exce\u00E7\u00F5es para datas espec\u00EDficas.
+
+scheduleCalendarDialog.HEADER=Utilize esta caixa de di\u00E1logo para especificar os padr\u00F5es di\u00E1rios para uma agenda, criar, atualizar a excluir exce\u00E7\u00F5es para datas espec\u00EDficas.
+
+scheduleMemberCalendarDialog.HEADER=Utilize esta caixa de di\u00E1logo para especificar os padr\u00F5es di\u00E1rios para um membro da agenda, criar, atualizar a excluir exce\u00E7\u00F5es para datas espec\u00EDficas.
+
+baseCalendarDialog.HEADER=Utilize esta caixa de di\u00E1logo para visualizar o calend\u00E1rio de base selecionado. O usu\u00E1rio n\u00E3o pode editar o calend\u00E1rio de base de refer\u00EAncia.
+
+updatingCalendar.MESSAGE=Atualizando o calend\u00E1rio de recursos para {0}
+deletingCalendar.MESSAGE=Excluindo o calend\u00E1rio de recursos para {0}
+confirmDeleteCalendar.MESSAGE=Deseja excluir o calend\u00E1rio para {0} {1}?
+resetButton=Reinicializar Calend\u00E1rio
+createResCalBT=Criar calend\u00E1rio de usu\u00E1rio
+deleteCalendar=Excluir Calend\u00E1rio 
+
+updatingScheduleCalendar.MESSAGE=Atualizando o calend\u00E1rio da agenda para {0}
+
+editScheduleCalendarDialog.TITLE=Editar Calend\u00E1rio da agenda: 
+
+editScheduleMemberCalendarDialog.TITLE=Editar Calend\u00E1rio para membro da agenda:  
+
+editBaseCalendarDialog.TITLE=Calend\u00E1rio base:
+
+
+merge=Combinar com o calend\u00E1rio padr\u00E3o.
+
+
+
+resetDlg.TITLE=Redefinir Calend\u00E1rio da agenda
+
+resetScheduleCalendarDialog.HEADER=Utilize esta caixa de di\u00E1logo para redefinir/mesclar o calend\u00E1rio da agenda ao calend\u00E1rio base de eventos. Isso ir\u00E1 desfazer as altera\u00E7\u00F5es feitas ao calend\u00E1rio.
+
+
+resetRB.MSG= Redefinir para o calend\u00E1rio de base
+
+mergeRB.MSG= Mesclar com o calend\u00E1rio de base 
+
+resetRBHelp.MSG=Isto ir\u00E1 redefinir o calend\u00E1rio da agenda para o calend\u00E1rio de base, as altera\u00E7\u00F5es feitas espec\u00EDficas a este calend\u00E1rio da agenda ser\u00E3o perdidas. 
+
+mergeRBHelp.MSG=Isto ir\u00E1 atualizar o calend\u00E1rio da agenda com as altera\u00E7\u00F5es recentes feitas no calend\u00E1rio de base.
+
+publishedCalendar.MSG=N\u00E3o \u00E9 poss\u00EDvel atualizar o calend\u00E1rio de uma agenda publicada.
+
+unPublishedCalendar.MSG=A atualiza\u00E7\u00E3o do calend\u00E1rio da agenda pode alterar a agenda.\n Por exemplo,reduzir as horas de trabalho ou criar exce\u00E7\u00F5es de dia \n pode fazer com que certas tarefas v\u00E3o al\u00E9m da agenda e da data.
+
+cannotUpdate.MSG=Voc\u00EA n\u00E3o possui privil\u00E9gios suficientes para atualizar o calend\u00E1rio da agenda.
+
+scheduleCalendar.TITLE=Informa\u00E7\u00F5es do calend\u00E1rio da Agenda 
+
+
+#DetailsOfWorkingExceptionDialog
+#----------------------------------------
+
+workingDayExceptionDetails.TITLE=Detalhes da exce\u00E7\u00E3o do dia de trabalho
+
+workingDayExceptionDetails.HEADER=Utilize esta caixa de di\u00E1logo para definir faixas de tempo espec\u00EDficas para a exce\u00E7\u00E3o do dia de trabalho.
+
+workingLabel=Definir tempo de trabalho  
+from=De
+to=Para
+1=1
+2=2
+3=3
+4=4
+5=5  
+
+#DetailsOfDailyDefaultDialog
+#----------------------------------------
+
+dailyDefaultDetails.TITLE=Detalhes dos padr\u00F5es di\u00E1rios
+
+dailyDefaultDetails.HEADER=Utilize esta caixa de di\u00E1logo para definir faixas de tempo espec\u00EDficas para o dia da semana selecionado.
+
+#dailyDefaultDetailsDataInputError.MSG=The time range(s) does not pass the validation.
+
+GeneralDataInputError.MSG=A faixa de tempo n\u00E3o passa da valida\u00E7\u00E3o.
+
+NotCompleteRangeDataError.MSG=As faixas de tempo precisam ter um valor inicial e um valor final.
+
+NotAscendingRangeDataError.MSG= As faixas de tempo devem estar em ordem ascendente.
+
+NonWorkingRangeError.MSG=N\u00E3o \u00E9 poss\u00EDvel inserir a faixa de hor\u00E1rio de folga padr\u00E3o 08:00 - 08:00
+
+DateformatError.MSG=O formato da hora est\u00E1 incorreto, o formato correto \u00E9 hh:mm.
+
+
+okButton=OK
+cancelButton=Cancelar
+resetToBaseRB=Utilize o calend\u00E1rio base de formul\u00E1rio de hor\u00E1rio para estes dias.
+setTimeRangesRB=Definir hor\u00E1rios de trabalho espec\u00EDficos para o dia
+
+nullRanges.MSG=Deseja tornar este dia um dia de folga?
+nullRanges.TITLE=Aviso
+
+schedule.NAME=agenda
+schedulemember.NAME=membro da agenda
+resource.NAME=recurso

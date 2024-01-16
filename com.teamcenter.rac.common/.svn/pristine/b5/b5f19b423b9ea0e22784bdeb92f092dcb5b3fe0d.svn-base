@@ -1,0 +1,69 @@
+
+
+exporting=Exportando...
+
+exportObjectsNoSelection.TITLE = Exportar objetos ...
+noObjectsSelected = Nada selecionado.
+
+exportSpec.ERRORMSG = Sele\u00E7\u00E3o inv\u00E1lida para exporta\u00E7\u00E3o. Selecione tamb\u00E9m uma especifica\u00E7\u00E3o \u00FAnica ou um ou mais elementos de especifica\u00E7\u00E3o.
+exportSpec.ERROR = Erro ao exportar a sele\u00E7\u00E3o
+
+
+#Export To Word dialog
+exportToWord.TITLE=Exportar para Word
+exportToWord1.HEADER=Exportar para aplicativo Word
+exportToWord2.HEADER=Selecione a especifica\u00E7\u00E3o e a substitui\u00E7\u00E3o de modelo do objeto
+exportToWord.TOOLTIP=Selecione a especifica\u00E7\u00E3o e a substitui\u00E7\u00E3o de modelo do objeto a fim de exportar para o Word.
+outputGroup.TEXT=Sa\u00EDda
+templateOverrideGroup.TEXT=Substitui\u00E7\u00E3o de modelo
+staticButton.TEXT=Retrato est\u00E1tico
+staticButton.TOOLTIP=Abrir em modo somente leitura
+copyToDatasetButton.TEXT=Copie o instant\u00E2neo para o conjunto de dados
+liveButton.TEXT=Integra\u00E7\u00E3o ao vivo com o Word
+liveButton.TOOLTIP=Abrir em modo de edi\u00E7\u00E3o
+specTemplateLabel.TEXT=Modelo de especifica\u00E7\u00E3o:
+overrideObjTempLabel.TEXT=Substituir modelo de objeto por:
+overrideConfirm.TEXT=Lista atual de substitui\u00E7\u00F5es. Deseja continuar?
+overrideConfirmTitle.TEXT=Confirmar substitui\u00E7\u00E3o
+objTemplate.TEXT=Modelo
+businessObject.TEXT=Objeto de neg\u00F3cio
+availObjTemplateLabel.TEXT=Modelos de objetos dispon\u00EDveis: 
+chooseAndSelectLabel.TEXT=(Escolha o modelo e adicione \u00E0 tabela para substituir)
+selTemplateLabel.TEXT=Modelo de objeto selecionado:
+selButton.TEXT=>>
+removeButton.TEXT=<<
+saveButton.TEXT=Salvar
+boColumnLabel.TEXT=Objeto de neg\u00F3cio
+exportUsingFN.TEXT=Usar Localizar n\u00FAmero para exporta\u00E7\u00E3o
+temOverrideColumnLabel.TEXT=Substitui\u00E7\u00E3o de modelo do objeto
+overrideObject.ERRORMSG=Selecione o tipo de objeto de neg\u00F3cio para substituir
+overrideTemplate.ERRORMSG=Selecione o modelo de objeto da lista
+removeObject.ERRORMSG=Nenhuma linha selecionada para remover da tabela
+liveOptionGroup.TEXT=Op\u00E7\u00F5es ao vivo
+offlineModeOption.TEXT=Exportar para a edi\u00E7\u00E3o da estrutura e trabalhar off-line
+checkoutOption.TEXT=Reservar os objetos antes da exporta\u00E7\u00E3o
+markupButton.TEXT=Exportar para a marca\u00E7\u00E3o
+
+#FMS error messages
+fmserror.ERROR = Erro ao recuperar dados
+fileDownloadError.ERRORMSG = O arquivo n\u00E3o foi baixado
+fileTicketError.ERRORMSG = N\u00E3o foram gerados arquivos de bilhete
+fileUploadError.ERRORMSG = N\u00E3o foi poss\u00EDvel carregar o arquivo
+fmsErrorDetails.ERRORMSG = Isso geralmente ocorre em fun\u00E7\u00E3o de um problema de configura\u00E7\u00E3o, no qual a configura\u00E7\u00E3o mestre do FMS n\u00E3o foi atualizada com a id de acesso/volume adequado (exige a reinicializa\u00E7\u00E3o do FMS).\nVerifique a vari\u00E1vel do ambiente FMS_HOME.
+
+# content compare strings
+exportToWord_ContentCompare.TITLE=Exportar para o Word: para compara\u00E7\u00E3o de conte\u00FAdo
+
+copyURL = Copiar URL
+copyURL.MNEMONIC =C
+copyURL.MESSAGE =A URL gerada foi copiada para a \u00E1rea de transfer\u00EAncia do sistema
+copyURL.TITLE =URL copiada
+copyURL.TOOLTIP=Copie a URL para a \u00E1rea de transfer\u00EAncia do sistema 
+overrideChanged.ERRORMSG =Copiar uma URL n\u00E3o obedecer\u00E1 \u00E0 substitui\u00E7\u00E3o do modelo de objeto de tempo de execu\u00E7\u00E3o, a menos que a substitui\u00E7\u00E3o do modelo seja salva em um modelo de especifica\u00E7\u00E3o. {0}.
+
+ErrorWhileRetrievingData.ERROR = Erro ao recuperar os dados de especifica\u00E7\u00E3o
+ErrorWhileRetrievingData.TITLE = Erro ao recuperar dados
+
+BlockExportError=Exportar para o Live Word n\u00E3o foi feito pois o objeto n\u00E3o est\u00E1 reservado ou est\u00E1 reservado por outro usu\u00E1rio. Reserve o objeto antes da exporta\u00E7\u00E3o.
+CheckOutError=Erro na reserva
+

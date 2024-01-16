@@ -1,0 +1,111 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the acl package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: acl_locale.properties
+#   Module  : com.teamcenter.rac.common.acl
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Mar-2000  mccollr                 Change Name ACL to Named ACL.
+#10-Mar-2000  huangz                  Add new keys for add, delete and save name ACL
+#16-Mar-2000  huangz                  Fix error message
+#16-Mar-2000  huangz                  Merge to Troy
+#11-May-2000  huangz                  Add save confirmation keys
+#28-Nov-2000  wangp                   add additional privileges (PR 4211688)
+#25-Apr-2001  Zhixin Huang            Add key loadingAccessType.MSG
+#11-Jul-2001  Zhixin Huang            Fix PR 4268012
+#26-Jul-2001  Zhixin Huang            Add key to fix 4294324 ( Complete list of Accessor IDs not displayed with RIG)
+#02-Aug-2001  Zhixin Huang            Fix PR 1107443 ( Unable to manipulate custom priviledges in Portal).
+#07-Aug-2001  Zhixin Huang            Add some comments to the key name changes.
+#01-Nov-2001  Zhixin Huang            Fix PR 4349790
+#01-Nov-2001  Zhixin Huang            Merge the changes for PR 4349790 & 4351726 from V7.0.2
+#07-Jun-2002  braun                   Added WRITE_ICOS.
+#07-Jun-2002  helmutl                 merge from AM project
+#07-Jan-2003  Zhixin Huang            Fix PR 4645935 ( Change addNameACL.TIP to be more intuitive).
+#10-Mar-2003  Zhixin Huang            Change the tooltip of create named ACL button to fix PR 4645936.
+#28-Apr-2003  x_monthr                Add WRITE_ICES attributes
+#30-Apr-2003  Zhixin Huang            Integrate from PRE_try_p9.0.0.0 to try_p9.0.0.1.
+#17-Nov-2003  helmutl                 PR#4880552 rename in-CLASS to Classification
+#17-Nov-2003  helmutl                 Merge from Helmut
+#25-Feb-2005  Zhixin Huang            Change the entry value.
+#27-Jun-2005  faming                  Implement Assign to Project privilege
+#29-Jun-2005  faming                  Merged out from P10.0.0.19
+#17-Nov-2005  rlee                    Add support for REMOTE_CICO AM priv
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#30-Jun-2009  ntl                     add support for MARKUP, BATCH_PRINT, DIGITAL_SIGN
+#$HISTORY$
+#=================================================================================================*/
+
+# Keys for the ACL Dialog
+#-----------------------------
+aclList.TITLE=Lista de controle de acesso de
+add.TIP = Adicionar entrada de controle de acesso \u00E0 ACL.
+deleteACL.TIP = Remova a entrada de controle de acesso selecionada da ACL
+acl.TITLE = Lista de controle ACL
+type.TIP=Tipo de acessador
+id.TIP=ID do acessador
+
+access.TIP = ACL nomeada
+MARKUP.TIP=Visualizar/Marcar
+BATCH_PRINT.TIP=Impress\u00E3o em lote
+DIGITAL_SIGN.TIP=Sinal digital
+Administer_ADA_Licenses.TIP=Administrar Licen\u00E7as ADA
+
+combo.TIP=Duplo clique para alterar o privil\u00E9gio.
+changeType.TIP = Duplo clique para alterar o tipo.
+changeAccessID.TIP=Duplo clique para alterar o ID de acesso.
+
+notComplete.TITLE = Edi\u00E7\u00E3o n\u00E3o conclu\u00EDda
+notCompleteMsg = Nenhum acessador selecionado na linha destacada.
+notSettingMsg = Nenhum direito est\u00E1 definido na linha destacada
+notCompleteException = Edi\u00E7\u00E3o n\u00E3o conclu\u00EDda
+noMemberMsg = Nenhum membro do acessador encontrado e associado ao tipo de acesso selecionado.
+
+nameAclList.TITLE = ACL nomeada
+aclName = Nome da ACL:
+
+loadNameACLData = Carregando dados da ACL de nomes ...
+
+nameACL.TITLE = Janela ACL de nomes
+nameACLPopupButton.TIP = Bot\u00E3o pop-up da ACL de nomes
+
+notValidSelection=Nenhum objeto v\u00E1lido foi selecionado.
+
+addNameACL.TIP = Cria uma nova ACL nomeada - insira texto no campo ACL nomeada para ativar o bot\u00E3o criar.
+deleteNameACL.TIP = Exclua a ACL selecionada do banco de dados.
+
+saveACLMsg = Salvando as altera\u00E7\u00F5es da ACL nomeada ...
+
+saveChange.TITLE = Salvar altera\u00E7\u00F5es ...
+saveChange.MSG = Deseja salvar as altera\u00E7\u00F5es?
+
+workflowNamedACL.TIP = Clique para exibir a ACL nomeada do fluxo de trabalho.
+systemNamedACL.TIP = Clique para exibir a ACL nomeada do sistema.
+save.TIP = Salve as altera\u00E7\u00F5es da ACE.
+
+loadingAccessType.MSG = Carregando tipos de acesso ...
+
+accessorChooser.TITLE = Selecionar acessador ...
+selectedRoleGoup = Clique para selecionar a fun\u00E7\u00E3o no grupo.
+
+showAllACEsRadio.LABEL=Exibir todas as entradas
+
+noReadPrivWarning.MSG = Voc\u00EA est\u00E1 recusando o privil\u00E9gio de leitura. Como pr\u00E1tica recomendada tamb\u00E9m negue outros privil\u00E9gios (tais como: "Gravar", "Alterar", "Copiar" e "Exportar").
+nonPAOWarning.MSG = O objeto da ACL pode ser adicionado somente a inst\u00E2ncias de POM_application_object. O objeto selecionado n\u00E3o \u00E9 uma inst\u00E2ncia de POM_application_object.
+
+in =em
+
+searchAccessor.TIP=Insira os crit\u00E9rios de pesquisa 
+searchButton.TIP=Localize o acessador baseado em crit\u00E9rios
+Reset.TIP=Recarregue tudo
+accessorNotFound.MSG=Nenhum acessador localizado para o nome fornecido

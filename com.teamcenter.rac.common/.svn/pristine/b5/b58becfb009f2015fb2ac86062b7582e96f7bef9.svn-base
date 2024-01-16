@@ -1,0 +1,57 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the openas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: openas_locale.properties
+#   Module  : com.teamcenter.rac.commands.openas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#21-Aug-2000  Mark Fawcett            add stuff for Item(Revision)
+#02-Jun-2003  wangp                   fix pr 4597374: change selection label
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = \uB2E4\uC74C\uC73C\uB85C \uC5F4\uAE30...
+selectDataset.TITLE = \uB370\uC774\uD130 \uC9D1\uD569 \uC120\uD0DD
+
+name = \uC774\uB984:
+description = \uC124\uBA85:
+type = \uC720\uD615:
+tool = \uC0AC\uC6A9\uB41C \uB3C4\uAD6C:
+version = \uBC84\uC804:
+select = \uB3C4\uAD6C \uB610\uB294 \uC5F4\uAE30 \uC704\uD55C \uB3C4\uAD6C \uD558\uC704\uC5D0 \uC788\uB294 \uD30C\uC77C\uC744  \uC120\uD0DD\uC744 \uD558\uC2ED\uC2DC\uC624
+
+attachments = \uCCA8\uBD80\uBB3C
+application = \uC751\uC6A9 \uD504\uB85C\uADF8\uB7A8:
+
+# Open confirmation
+# ------------------------------
+oneFileFound=\uC774\uBBF8 \uC874\uC7AC\uD55C \uD55C \uD30C\uC77C\uC744 \uBC1C\uACAC. \uC0C8\uB85C\uC6B4 \uD30C\uC77C\uC744 \uC5F4\uAE30 \uC6D0\uD558\uC2ED\uB2C8\uAE4C? \n\uC544\uB2C8\uBA74, \uC874\uC7AC\uD55C \uD30C\uC77C\uC744 \uC5F4\uAC8C\uB429\uB2C8\uB2E4.
+moreThanOneFileFound=\uD558\uB098 \uC774\uC0C1 \uC774\uBBF8 \uC874\uC7AC\uD55C \uD30C\uC77C \uBC1C\uACAC. \uC0C8\uB85C\uC6B4 \uD30C\uC77C\uC744 \uC5F4\uAE30 \uC6D0\uD558\uC2ED\uB2C8\uAE4C? \n\uC544\uB2C8\uBA74, \uC5F4\uAE30 \uC704\uD55C \uD30C\uC77C\uC744 \uC120\uD0DD\uD558\uC2ED\uC2DC\uC624.
+
+# Messages for message center
+# ------------------------------
+loadingVersions = \uBC84\uC804\uC744 \uB85C\uB4DC \uC911...
+loadingTools = \uB3C4\uAD6C\uB97C \uB85C\uB4DC \uC911...
+loadingFiles = \uD30C\uC77C\uC744 \uB85C\uB4DC \uC911...
+openingFile = \uD30C\uC77C\uC744 \uC5EC\uB294 \uC911...
+opening = \uC5EC\uB294 \uC911...
+
+# Error Messages
+# ------------------------------
+notRightType = \uC120\uD0DD\uD55C \uAC1C\uCCB4\uB97C \uCC98\uB9AC\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+error.TITLE = \uB2E4\uC74C\uC73C\uB85C \uC5F4\uAE30...
+
+noDataToFetch.MSG=\uC544\uC774\uD15C/\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC5D0 \uCCA8\uBD80\uB41C \uB370\uC774\uD130\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4.
+

@@ -1,0 +1,22 @@
+#===================================================================================================
+#
+#                   Copyright (c) 2007 Unigraphics Solutions Inc., All rights reserved
+#
+#===================================================================================================
+# File description: This properties file for IESiteDialog file.
+#
+#   Filename: exportobjects.properties
+#   Module  : com.teamcenter.rac.common.IESiteDialog
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#05-Feb-2007  pately                  Initial creation
+#$HISTORY$
+#=================================================================================================*/
+remoteCheckoutSite.LABEL=S\u00E9lectionnez un seul site vers lequel effectuer un blocage distant
+remoteTransferSite.LABEL=S\u00E9lectionnez un seul site vers lequel transf\u00E9rer le propri\u00E9taire
+remoteSites.LABEL=S\u00E9lectionner un/des sites distants cibles
+remoteSites.available=Sites disponibles
+remoteSites.selected=Sites s\u00E9lectionn\u00E9s
+site.TITLE = S\u00E9lection de site distant
+

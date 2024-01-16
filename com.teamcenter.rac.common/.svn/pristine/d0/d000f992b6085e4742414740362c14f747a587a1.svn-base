@@ -1,0 +1,98 @@
+#*==================================================================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the findwithproperties package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: findwithproperties_locale.properties
+#   Module  : com.teamcenter.rac.common.findwithproperties
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Aug-2000  huangz                  Initial creation.
+#14-Aug-2000  huangz                  Change the key name
+#31-Oct-2000  Tony Dumont             Change find with properties to find in display
+#11-Feb-2002  faming                  added inCLASSSearchButton.NAME
+#15-Feb-2002  viswanat                Promote PVlook project - P8.0.0.5
+#23-Oct-2002  Tony Dumont             PR#4561506 - Allow user to expand
+#17-Nov-2003  helmutl                 PR#4880552 rename in-CLASS to Classification
+#17-Nov-2003  helmutl                 Merge from Helmut
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#28-Feb-2008  Asya Vainer              changed the text in findInBOM.MSG (used now also in "Show line where originally assigned" command) 
+#24-Aug-2008  Yael Grovman              Fixed PR#1674114 - 'MSE- Find in Display' doesn't search in collapsed structures
+#$HISTORY$
+#=================================================================================================*/
+
+
+
+
+
+findWithProperties.TITLE = Buscar en pantalla
+findWithProperties.TIP = Buscar los componentes en la pantalla
+
+# The table column header definitions
+tableHeaderLogicOp = O
+tableHeaderLogicAndOp = Y
+tableHeaderProperty =Nombre de la propiedad
+tableHeaderPropertyValue =Valor de la propiedad
+tableHeaderValue = Valor de b\u00FAsqueda
+tableHeaderRelationOp = Operador
+
+ClassSelectionButton.Tip=Pulse para mostrar el \u00E1rbol de clasificaci\u00F3n y seleccione una clase. 
+
+# Tip definitions
+upButton.TIP=Mover hacia arriba las condiciones seleccionadas para aumentar su prioridad
+downButton.TIP=Mover hacia abajo las condiciones seleccionadas para reducir la prioridad
+removeButton.TIP=Quitar las condiciones seleccionadas
+clearButton.TIP = Quitar todas las condiciones de la tabla
+addButton.TIP=Agregar una condici\u00F3n de b\u00FAsqueda nueva
+
+logicOpColumn.TIP = Pulse dos veces para seleccionar los operadores l\u00F3gicos
+propertyColumn.TIP = Pulse dos veces para seleccionar la propiedad
+relationOpColumn.TIP = Pulse dos veces aqu\u00ED para seleccionar el operador de relaci\u00F3n.
+valueColumn.TIP = Pulse para escribir o cambiar un valor
+
+equalOperator.TIP = Utilice este operador para la b\u00FAsqueda de los caracteres comod\u00EDn
+sameOperator.TIP = Utilice este operador para buscar una coincidencia exacta con el valor de la b\u00FAsqueda.
+notEqualOperator.TIP = Utilice este operador para buscar otros valores con excepci\u00F3n del valor de la b\u00FAsqueda
+greaterThanOp.TIP = Utilice este operador para buscar valores mayores que el valor de la b\u00FAsqueda
+greaterThanEqualOp.TIP = Utilice este operador para buscar valores mayores o iguales que el valor de la b\u00FAsqueda
+lessThanOp.TIP = Utilice este operador para buscar valores menores que el valor de la b\u00FAsqueda
+lessThanEqualOp.TIP = Utilice este operador para buscar valores menores o iguales que el valor de la b\u00FAsqueda
+wildCardMessage.MSG = Introdujo un car\u00E1cter comod\u00EDn que no est\u00E1 admitido. No hay necesidad alguna de utilizar un car\u00E1cter comod\u00EDn como "=" el operador encontrar\u00E1 cualquier l\u00EDnea que contenga la cadena que introdujo.
+
+executeButton.TIP = Ejecutar consulta
+
+combo.TIP=Pulse aqu\u00ED para mostrar el cuadro combinado
+choice.TIP=Pulse la celda para mostrar una lista de selecciones
+
+# Button definitions
+closeButton = Cerrar
+nextButton.TIP=Buscar el siguiente
+previousButton.TIP=Buscar el anterior
+allButton.TIP=Buscar todos los componentes
+
+
+findWithPropertyDefaultMessage = 0 encontrados.
+found = encontrados.
+allFound = Todos encontrados.
+
+
+searchingStatus.MSG = B\u00FAsqueda en curso ...
+
+find = Buscar
+
+inCLASSSearchButton.NAME=Buscar en la jerarqu\u00EDa de clasificaci\u00F3n
+typeSearchButton.NAME=Tipo de b\u00FAsqueda
+
+findInBOM.TITLE=Buscar en BOM
+findInBOM.MSG= No se encontr\u00F3 ninguna l\u00EDnea correspondiente al \u00E1mbito actual de b\u00FAsqueda. \u00BFDesea cargar completamente la estructura y volver a buscar? \n\n(Esto puede tomar unos minutos en el caso de estructuras grandes)."
+findInBOMShouldLoadBeforeSearch.MSG= No se carg\u00F3 completamente la estructura seleccionada.\n\n"Cargar y buscar" cargar\u00E1 todos los componentes antes de realizar la b\u00FAsqueda. (Esto puede tomar un tiempo cuando las estructuras sean grandes).\n\n"Buscar ahora" buscar\u00E1 los componentes que est\u00E1n cargados actualmente.
+findInBOMSearchAndLoad.TEXT= Cargar y buscar
+findInBOMSearchNow.TEXT= Buscar ahora...
+
+

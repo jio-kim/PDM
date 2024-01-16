@@ -1,0 +1,164 @@
+
+#Properties for the Remove Part relation Dialog
+##############################################
+
+partRelation.TITLE = Teilebeziehungen entfernen.
+
+partRelation.removeButton.LABEL=Entfernen
+partRelation.removeButton.TIP=Entfernt die ausgew\u00E4hlten Teilebeziehungseintr\u00E4ge aus dem ausgew\u00E4hlten Zielteileintrag
+
+partRelation.cancelButt.LABEL=Abbrechen
+partRelation.cancelButt.TIP=Dialog "Beziehung entfernen" schlie\u00DFen
+
+partRelation.columnsShown= St\u00FCcklisteneintrag, Verbundene Rolle/ Redundante Teile,
+
+partRelation.Types=Redundantes Teil, Prozessvariable, Ziel, Quelle, Transmitter,
+
+# New part Dialog
+# ----------------------
+command.TITLE = Neues Teil
+base.TITLE=Teiledetails
+basetype = Teil
+
+# Added for Revise Project
+# -------------------------
+newPart.TITLE = Neues Teil
+saveAs.TITLE = Speichern unter
+revise.TITLE = Revisionieren
+
+basedOn=Basierend auf
+
+# Advanced copy options tab
+# ------------------------------
+advanced.TITLE=Erweitert
+fromTree=Quelle:
+toTree=Ziel:
+
+loadingTree.MSG=Baumstruktur wird geladen...
+
+# Messages for message center
+# ------------------------------
+loadingItemTypes = Teiletypen werden geladen...
+creatingNewItem = Neues Teil wird erstellt
+creatingNewItemRevision = Neuer Element\u00E4nderungsstand wird erstellt
+abort = \u00D6ffnen des neuen Teils abbrechen
+creatingNewPart = Neues Teil wird erstellt
+creatingNewPartRev = Neuer Element\u00E4nderungsstand wird erstellt
+populatingTheForm = Weiterleiten des Formulars
+advancedPanel=Tiefenkopiefenster wird geladen f\u00FCr
+mandatoryFields=Geben Sie bitte die erforderlichen benutzerdefinierten Attribute ein
+advancedText=Dieses Fenster zeigt die Baumstruktur mit den Tiefenkopierregeln und den Kopieroptionen an.
+# Error Messages
+# ----------------------
+itemTypeError = Verf\u00FCgbare Teileliste kann nicht geladen werden
+failToCreate = Teil konnte nicht erstellt werden
+failToOpen = Das Teil kann nicht ge\u00F6ffnet werden. M\u00F6glicherweise gibt es ein Problem mit Ihren Zugriffsberechtigungen.
+error.TITLE = Neues Teil...
+fillFormError = Die Weiterleitung des Master-Formulars ist fehlgeschlagen.
+createDirFailed=Tempor\u00E4res Verzeichnis konnte nicht beim Laden der benutzerdefinierten Teileattribute erstellt werden. Der Wert\n von "ExportDir" in der Datei "client_specific.properties" k\u00F6nnte nicht richtig festgelegt worden sein.
+
+
+#Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Erstellen des Teils unterbrochen...Teil erstellt und teilweise eingef\u00FCgt
+
+whitespaceerror=Erstellen nicht m\u00F6glich. Pr\u00FCfen Sie bitte die Felder ID/Ref/Name.
+sameAsoldId=Es wurde ein vorhandenes Teil gefunden. Mit "Erstellen/Speichern unter" werden nur neue Teile erstellt. \nVerwenden Sie bitte zum Erstellen eines neuen Teile\u00E4nderungsstands den Befehl "Datei->Revisionieren".
+# Not valid type keys
+# ----------------------
+notValidType.TITLE=Ung\u00FCltige Eingabedaten
+notValidChar=Der Zeicheneigenschaftswert kann nicht ge\u00E4ndert werden.
+notValidDate=Kein g\u00FCltiges Datum.
+notValidDouble=Keine g\u00FCltige Doppel- oder Flie\u00DFkommazahl.
+notValidInt=Keine g\u00FCltige Ganzzahl.
+notValidLogical=Keine g\u00FCltigen logischen Daten.
+notValidShort=Keine g\u00FCltige kurze Ganzzahl.
+notValidString=Der Zeichenfolgeneigenschaftswert kann nicht ge\u00E4ndert werden.
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = Neues Teil
+dialog.vi.TITLE=Neues Variantenteil f\u00FCr
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.TOOLTIP=Variantenteilekonfiguration pr\u00FCfen
+viConfigStep.info=Gew\u00E4hrleisten Sie, dass die Variantenteilekonfiguration richtig ist
+
+# New Item Panel
+# -----------------------------
+createConfirm.TITLE=Neues Teil
+createConfirm.MSG=Zum Fortfahren muss ein neues Teil erstellt werden. \nM\u00F6chten Sie das neue Teil erstellen?
+
+# Item Type Panel
+# ----------------------------
+itemTypeInfo.LABEL=W\u00E4hlen Sie den zu erstellenden Teiletyp aus.
+itemTypeStep.TOOLTIP=W\u00E4hlen Sie einen Teiletyp aus.
+
+# Item Info Panel
+# -----------------------------
+itemInfo.LABEL=Legen Sie grundlegende Informationen f\u00FCr ein zu erstellendes Teil fest.
+itemInfoStep.NAME=Teileinformationen eingeben
+itemInfoStep.TOOLTIP=Legt die grundlegenden Teileinformationen fest.
+
+itemId = Teilenummer
+itemInformation = Teileinformationen
+makeOrBuy = Eigenprodukt/Kaufprodukt
+make = Eigenprodukt
+buy = Kaufprodukt
+designRequired = Konstruktion erforderlich
+
+
+# Item Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=Zus\u00E4tzliche Teileinformationen definieren.
+itemMasterFormStep.NAME=Zus\u00E4tzliche Teileinformationen eingeben
+itemMasterFormStep.TOOLTIP=Zus\u00E4tzliche Teileinformationen definieren.
+
+# ItemRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=Zus\u00E4tzliche Teile\u00E4nderungsstand-Informationen definieren.
+itemRevMasterFormStep.NAME=Zus\u00E4tzliche Teile\u00E4nderungsstand-Informationen eingeben.
+itemRevMasterFormStep.TOOLTIP=Zus\u00E4tzliche Teile\u00E4nderungsstand-Informationen definieren.
+
+# Form Attr Panel
+# -----------------------
+formAttrStep.TOOLTIP=Legen sie die Formularattribute f\u00FCr den ausgew\u00E4hlten Teiletyp fest.
+formAttrStepDisabled.TOOLTIP=Keine Formularattribute f\u00FCr den ausgew\u00E4hlten Teiletyp definiert.
+
+# Item Identifier Panel
+# ----------------------------
+itemIdentifierInfo.LABEL=Alternative Teile-ID-Informationen festlegen.
+itemIdentifierStep.NAME=Alternative Informationen eingeben
+itemIdentifierStep.TOOLTIP=Alternative ID f\u00FCr Teil festlegen.
+
+# Options panel
+# -------------
+checkOutOnCreate = Teile\u00E4nderungsstand beim Erstellen auschecken
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Neues Teil wird erstellt
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Neues Teil wird erstellt
+checkingIds=Teile-ID und \u00C4nderungsstand werden \u00FCberpr\u00FCft
+pastingNewItem=Neues Teil wird eingef\u00FCgt
+openingNewComponent=Neues Teil wird ge\u00F6ffnet
+abort = \u00D6ffnen des neuen Teils abbrechen
+checkOutRevision=Teile\u00E4nderungsstand wird ausgecheckt
+
+# Error Messages
+# ----------------------
+error.TITLE = Neues Teil...
+failFindDialog=Dialog "Neues Teil" konnte nicht gefunden werden.
+sameAsOldId=Es wurde ein vorhandenes Teil gefunden. Mit "Erstellen/Speichern unter" werden nur neue Teile erstellt. \nVerwenden Sie bitte zum Erstellen eines neuen Teile\u00E4nderungsstands den Befehl "Datei->Revisionieren".
+failToCreate = Teil konnte nicht erstellt werden
+failToOpen = Das Teil kann nicht ge\u00F6ffnet werden. M\u00F6glicherweise gibt es ein Problem mit Ihren Zugriffsberechtigungen.
+failFindItemMaster=Teile-Master-Formular konnte nicht abgerufen werden.
+failFindItemRevMaster=Element\u00E4nderungsstand-Master-Formular konnte nicht abgerufen werden.
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Erstellen des Teils unterbrochen...Teil erstellt und teilweise eingef\u00FCgt

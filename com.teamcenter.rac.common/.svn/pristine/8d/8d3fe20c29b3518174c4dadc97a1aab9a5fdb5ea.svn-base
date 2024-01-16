@@ -1,0 +1,43 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the move package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: move_locale.properties
+#   Module  : com.teamcenter.rac.commands.move
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#07-Apr-2000  mccollr                 Fix spelling error.
+#24-Jan-2003  Zhixin Huang            Modify it according to the tree sorting feature added.
+#24-Jan-2003  Zhixin Huang            Merge to Troy.
+#06-Feb-2004  Hui Xiao                PR 4873134: fixed unexpected moves
+#16-Feb-2004  Hui Xiao                make message clearer
+#17-Feb-2004  Hui Xiao                modify the message to have a better look
+#19-Mar-2004  Hui Xiao                PR1309870&4873134: fixed incorrect folder move actions
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+move.Status.MSG = \uC774\uB3D9...
+moveUp.Status.MSG = \uC704\uB85C \uC774\uB3D9...
+moveDown.Status.MSG = \uC544\uB798\uB85C \uC774\uB3D9...
+moveTop.Status.MSG = \uB9E8 \uC704\uB85C \uC774\uB3D9...
+moveBottom.Status.MSG = \uB9E8 \uC544\uB798\uB85C \uC774\uB3D9...
+
+error.TITLE=\uC774\uB3D9\uD560 \uC218 \uC5C6\uC74C...
+error.MSG=\uD3F4\uB354 \uB0B4\uC5D0 \uC788\uB294 \uAC1C\uCCB4\uC5D0\uB9CC \uC791\uC5C5\uC744 \uC218\uD589\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4!
+
+sortingConfirm = \uD074\uB77C\uC774\uC5B8\uD2B8\uCABD \uC815\uB82C\uC774 \uD604\uC7AC \uD65C\uC131\uD654\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. \uADF8\uB7FC\uC73C\uB85C \uC5B4\uB5A4 \uC774\uB3D9 \n\uC791\uC5C5\uB3C4 \uD604\uC800\uD558\uAC8C \uB208\uC5D0 \uB744\uC9C0 \uC54A\uC744 \uAC83\uC785\uB2C8\uB2E4. \n\uC138\uC158\uC5D0\uC11C No Sorting\uC73C\uB85C \uBC14\uAFB8\uACE0 \uACC4\uC18D \uC774\uB3D9 \uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C? 
+sortingConfirm.TITLE=\uD074\uB77C\uC774\uC5B8\uD2B8\uCABD \uC815\uB82C \uD65C\uC131\uD654...
+
+asorderedConfirm = \uBD80\uBAA8 \uD3F4\uB354\uC758 \uC815\uB82C \uC870\uAC74 \uB610\uB294 \uC815\uB82C \uC21C\uC11C\uAC00 \uC9C0\uC815\uD55C \uC21C\uC11C\uC640 \uB2E4\uB974\uAE30 \uB54C\uBB38\uC5D0\n\uC774\uB3D9\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uC9C0\uC815\uB41C \uC21C\uC11C\uB85C\n\uBCC0\uACBD\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C? [\uC608]\uB97C \uC120\uD0DD\uD558\uBA74 \uD2B8\uB9AC\uAC00\n\uB2E4\uC2DC \uD45C\uC2DC\uB418\uACE0 \uC774\uB3D9\uD560 \uAC1C\uCCB4\uB97C \uB2E4\uC2DC \uC120\uD0DD\uD560 \uC218 \uC788\uC2B5\uB2C8\uB2E4.
+asorderedConfirm.TITLE=\uC815\uB82C \uC870\uAC74 \uBCC0\uACBD...

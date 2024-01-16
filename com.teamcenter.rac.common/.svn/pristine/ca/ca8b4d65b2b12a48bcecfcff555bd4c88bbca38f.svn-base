@@ -1,0 +1,162 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the report package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: report_locale.properties
+#   Module  : com.teamcenter.rac.commands.report
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2000  huangz                  Fix the bug and Plug in the APIs
+#16-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#31-Mar-2000  huangz                  Change the key value
+#30-Apr-2001  Endi Wu                 PR1087403 change registry value
+#14-Aug-2003  chu                     update to p9003
+#16-Sep-2003  Chu Ken                 Fixed text label
+#30-Sep-2003  chu                     Added messages
+#31-May-2005  x_hottig                Added noDatasetName.MESSAGE for PR #5193750
+#31-May-2005  x_hottig                Added error.TITLE
+#27-Jun-2005  x_hottig                Fixing PR #4884077 - Number of objects found and the number of objects in report are different
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# These old report properties are no longer used
+# error.TITLE     = Error
+# noReport = Report is not available.
+# illegalAction.MSG = Illegal Action.
+# loadData = Loading data ...
+# report.TITLE    = Report ...
+# labelSendto     = Send to:
+# radioDisplay    = Display
+# radioFile       = File
+# lableOutputName = Output File Name:
+
+# Item Summary
+# ----------------------
+# itemSummary.TITLE = Item Summary Report
+# labelReportType = Report Type:
+# radioAll        = All
+# radioAllByGroup = All By Group
+# radioNonReleased= Non-Released
+# radioReleased   = Released
+# itemSummaryStatus.MSG = Generating Item Summary Report ...
+
+# Employee Report
+# ----------------------
+# employee.TITLE    = Employee Summary Report
+# labelSelectedField= Select Maximum 3 Fields:
+# checkStreetAddress= Street Address
+# checkCity         = City
+# checkState        = State
+# checkZipCode      = Zip Code
+# checkCountryCode  = Country Code
+# checkPhoneNumber  = Phone Number
+# checkOrganization = Organization
+# checkEmployeeNumber = Employee Number
+# checkInternalMailCode = Internal Mail Code
+# checkEmailCode    = Email Code
+# employeeStatus.MSG = Generating employee Report ...
+# invalidSelection = You select more than 3 fields.\nOnly 3 fields will display on the report
+
+# Release Report
+# ----------------------
+# release.TITLE     = Release Report
+# radioReleasedProcedures = Released Procedures
+# radioReleasedObjects = Released Objects
+# labelGroupName    = Group Name:
+# releaseStatus.MSG = Generating Release Report ...
+
+# Mass Storage
+# ----------------------
+# massStorage.TITLE = Mass Storage Report
+# labelOwnerName    = Owner Name:
+# massStorageStatus.MSG = Generating Mass Storage Report ...
+
+# Items By Dataset Report
+# ----------------------
+# dataset.TITLE     = Items By Dataset Report
+# labelDatasetName  = Dataset Name:
+# labelDatasetType  = Dataset Type:
+# datasetStatus.MSG = Generating Items By Dataset Report ...
+# findDatasetButton.TITLE = Select Dataset
+# findDatasetButton.TIP = Select an dataset from database.
+# loadingTypes = Loading dataset types ...
+# datasetTypesError = Fail to get the dataset types.
+
+# Item Inquiry Report
+# ----------------------
+# itemInquiry.TITLE = Item Inquiry Report
+# labelReportType   = Report Type:
+# radioByGroup      = By Group
+# radioByItem       = By Item
+# labelItemID       = Item ID:
+# labelRevision     = Revision:
+# itemInquiryStatus.MSG = Generating Item Inquiry Report ...
+# findItemButton.TITLE = Select Item
+# findItemButton.TIP = Select an item from database.
+
+# Job Status Report
+# ----------------------
+# jobStatus.TITLE   = Job Status Report
+# labelJobName    = Job Name:
+# jobStatusStatus.MSG = Generating Job Status Report ...
+
+
+# New report wizard properties
+dialog.TITLE     = Asistente para la creaci\u00F3n de informes
+
+loadingPanels.MESSAGE=Cargando los paneles...
+creatingReport.MESSAGE=Creando informe...
+createDataset.MESSAGE=Creando un conjunto de datos para el informe...
+importingFile.MESSAGE=Importando un archivo del conjunto de datos ...
+designSelectionInfo.LABEL=Seleccionar un dise\u00F1o de informe 
+designSelectionStep.NAME=Seleccionar el dise\u00F1o 
+designSelectionStep.TOOLTIP=Selecciona un dise\u00F1o de informe para crear el informe
+designDescription.LABEL=Descripci\u00F3n
+
+criteriaSelectionInfo.LABEL=Indique los criterios para la consulta
+criteriaSelectionStep.NAME=Indicar los criterios 
+criteriaSelectionStep.TOOLTIP=Indique los criterios para la consulta asociada al informe.
+
+formatSelectionInfo.LABEL=Seleccionar un formato de informe
+formatSelectionStep.NAME=Seleccionar el formato 
+formatSelectionStep.TOOLTIP=Selecciona un formato para el informe
+
+reportOptionInfo.LABEL=Seleccionar Opciones de informe
+reportOptionStep.NAME=Seleccionar la opci\u00F3n
+reportOptionStep.TOOLTIP=Seleccione las opciones correspondientes a los informes creados
+createDataset.LABEL=Crear conjunto de datos
+cellPosition.LABEL=Posici\u00F3n de pegado en Excel:
+
+reportFinishInfo.LABEL=Creando un informe nuevo
+
+loadingPanels.MESSAGE=Cargando los paneles...
+noObjectFound.MESSAGE=No se encontr\u00F3 ning\u00FAn objeto
+objectFound.MESSAGE=objetos encontrados. Se mostrar\u00E1n m\u00E1s de
+moreRowsInReport.MESSAGE=filas si una propiedad tiene valores m\u00FAltiples. \u00BFDesea crear el informe?
+qryRetrievalFailed.MESSAGE=Fallo al recuperar la consulta.
+report.TITLE=Informe
+
+saveXMLButton.TIP=Guardar el informe en archivo XML
+reportPrintDialog.TITLE=Cuadro de di\u00E1logo Informe
+
+clearSelectionButton.TIP=Borrar selecci\u00F3n de formato
+optionButton.TIP=Opciones de consulta
+datasetName.LABEL=Nombre del conjunto de datos:
+noDatasetName.MESSAGE=Introduzca un nombre de conjunto de datos
+error.TITLE=Error
+
+# MFK related ESM report changes
+ItemListSelectionInfo.LABEL=Seleccionar de listas
+ItemListSelectionStep.NAME=Seleccionar lista de \u00EDtems
+ItemListSelectionStep.TOOLTIP=Seleccionar lista de \u00EDtems

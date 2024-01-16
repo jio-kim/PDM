@@ -1,0 +1,13 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2014
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Keys for void operation
+# ---------------------------------------
+command.TITLE=Rendre nulle la Signature num\u00E9rique
+confirmationText=Confirmez-vous de rendre nulle la Signature num\u00E9rique?
+voidDigitalSignature.STATUS=Rend nulle la Signature num\u00E9rique...

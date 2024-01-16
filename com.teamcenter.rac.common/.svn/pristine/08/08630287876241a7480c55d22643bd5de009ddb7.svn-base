@@ -1,0 +1,160 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the namedreferences package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: namedreferences_locale.properties
+#   Module  : com.teamcenter.rac.commands.namedreferences
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#03-Nov-2000  wangp                   add changeFileName.TIP
+#02-Mar-2001  wangp                   Fix PR: 4227870: Add entry for no reference found
+#10-May-2001  wangp                   fix PR 1092836: entry for file name length
+#15-May-2001  wangp                   fix PR 1092836: more
+#16-Aug-2001  Zhixin Huang            Fix PR 4310162 (let user to select file to export)
+#02-Nov-2001  Endi Wu                 Fix PR 4228662 Add entry for tool selection dialog
+#02-Nov-2001  Endi Wu                 merge to Troy
+#18-Jun-2002  wangp                   fix pr4547662: save the column length and order
+#18-Jun-2002  wangp                   merge to troy for p8102
+#02-Apr-2003  Hwey Wung               Match tools with the file selected for open
+#17-Feb-2005  Zhixin Huang            Change the TC to TC.
+#17-Feb-2005  Zhixin Huang            Merge out.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for Named Ref dialog
+# -------------------------------
+command.TITLE = Referencias definidas
+
+close = Cerrar
+close.MNEMONIC = C
+
+open = Abrir
+open.MNEMONIC = O
+open.TOOLTIP = Abre el archivo seleccionado.
+
+importbutton = Cargar...
+import.MNEMONIC = U
+import.TOOLTIP = Carga un archivo en este conjunto de datos.
+
+exportbutton = Descargar...
+export.MNEMONIC =D
+export.TOOLTIP = Descargue el tipo seleccionado de este conjunto de datos.
+
+cut.TOOLTIP = Corta la referencia seleccionada y la coloca en el Portapapeles.
+
+copy.TOOLTIP = Copia la referencia seleccionada en el Portapapeles.
+
+paste.TOOLTIP = Pega referencias desde el Portapapeles.
+
+remove.TOOLTIP = Elimina las referencias seleccionadas de este conjunto de datos.
+
+changeFileName.TIP = Pulse dos veces aqu\u00ED para cambiar el nombre del archivo.
+
+checkOutButton=Desproteger...
+
+checkInButton=Proteger...
+
+cancelCheckOutButton=Cancelar la desprotecci\u00F3n...
+
+# Table column names
+# -------------------------------
+object_name.NAME=Referencia
+original_file_name.NAME=Nombre
+file_size.NAME=Tama\u00F1o
+owning_site.NAME=Remoto
+object_type.NAME=Tipo
+last_mod_date.NAME=\u00DAltima modificaci\u00F3n
+volume_tag.NAME=Volumen
+
+# Entries for import file dialog box
+# -------------------------------
+importFile.TITLE = Cargar el archivo
+
+importFileButton = Cargar
+importFileButton.MNEMONIC = u
+
+parameter = Par\u00E1metros
+fileType = Tipo de archivo:
+tool = Herramienta utilizada:
+reference = Referencia:
+
+# Entries for export file dialog
+# -------------------------------
+## Change the title for PR 4310162
+exportFile.TITLE = Descargando el archivo
+
+# Entries for paste named ref dialog
+# -------------------------------
+pasteDlg.TITLE = Pegar referencias definidas
+pasteHeader.MSG=Seleccione la referencia y a continuaci\u00F3n oprima el bot\u00F3n ACEPTAR para pegar.
+pasteHeaderForMultiple.MSG=Pulse dos veces la celda "Referencias" en la tabla siguiente para seleccionar una referencia y a continuaci\u00F3n pulse el bot\u00F3n ACEPTAR para pegar.
+
+columnObject.NAME=Pegando el objeto
+columnRef.NAME=Referencia
+
+# Entries for message center
+# -------------------------------
+loadingNamedRef = Cargando las referencias definidas para ...
+loadingReferenceType = Cargando los tipos de referencia ...
+exportingFiles = Descargando los archivos ...
+exportDirectory = Directorio de descarga
+exportType = Tipo
+importingFiles = Cargando el archivo...
+removingNamedRef = Quitando las referencias definidas seleccionadas ...
+pastingNamedRef = Pegando las referencias definidas...
+
+# Entries for error message
+# -------------------------------
+warning.TITLE = Aviso
+invalidFile.MSG=El archivo seleccionado para la importaci\u00F3n no coincide con el tipo de conjunto de datos. \nSeleccione un archivo v\u00E1lido para importar.
+error.TITLE = Error
+noSelection = Seleccione una referencia definida
+noMultipleSelection = Seleccione solo una referencia definida
+noImportFileSelection = No se ha seleccionado ning\u00FAn archivo para cargar
+fileNameLengthTooLong=El nombre del archivo sobrepasa el l\u00EDmite de longitud
+fileNameTruncated=El nombre del archivo sobrepasa el l\u00EDmite de la longitud.\nSi opta por continuar, se truncar\u00E1 el nombre del archivo.
+noValidExportSelection=Se puede descargar solamente el archivo de TC.
+clipboardEmpty=El Portapapeles est\u00E1 vac\u00EDo.
+cannotPaste=No se pueden pegar objetos en el Portapapeles.
+incorrectClassification=La fuente y el destino IP o la clasificaci\u00F3n GOV no coinciden, no se puede pegar.
+pasteMultiple=No se pueden pegar objetos m\u00FAltiples.
+cannotCut=No se puede cortar el objeto seleccionado.
+cannotDelete=No se puede seleccionar el objeto.
+noRefTypeFound=No se encontr\u00F3 ning\u00FAn tipo de referencia, no se puede cargar.
+noToolsFound=No se encontr\u00F3 ninguna herramienta correspondiente al archivo seleccionado.
+sameReferenceAlreadyExists=No se puede cargar la referencia definida. Ya existe una referencia con el mismo nombre.
+
+## Key for fix PR 4310162
+fileExists = El archivo ya existe. \u00BFDesea sobrescribirlo?
+fileExist.TITLE = El archivo existe
+export=Descargar
+
+# Entries for tool selected dialog (For PR 4228662)
+# ---------------------------------------------------
+selectTool.TITLE = Seleccionar la herramienta
+userWizard = Seleccione la herramienta para abrir esta referencia
+nextButton=Siguiente
+next.MNEMONIC=N
+
+# <Bansalt> 04-Jul-2006 Entries for PR#2060353 fix
+# ------------------------------------------------
+exportFailure.MESSAGE=No se puede sobrescribir el archivo. Es probable que est\u00E9 bloqueado por otro proceso.\nDesbloquee el archivo o utilice un nombre de archivo diferente. 
+exportFailure.TITLE=Fallo al descargar
+
+importFailure.TITLE=Fallo al cargar
+
+delete=\u00BFDesea Aceptar para eliminar?
+delete.TITLE=Eliminar
+
+CheckoutNamedRef.INFOMESSAGE=Desproteja el conjunto de datos para actualizar las referencias definidas.

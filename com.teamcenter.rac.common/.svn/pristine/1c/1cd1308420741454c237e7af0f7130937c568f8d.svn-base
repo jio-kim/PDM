@@ -1,0 +1,43 @@
+# @<COPYRIGHT>@
+#===============================================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#===============================================================================
+# @<COPYRIGHT>@
+
+# Entries for messages
+#---------------------
+# Status message while performing Implicit Check out
+doingImplicitCO=\u6B63\u5728\u5132\u5B58\u8B8A\u66F4\uFF0C\u4E14\u6B63\u5728\u57F7\u884C\u96B1\u5F0F\u7C3D\u51FA/\u7C3D\u5165...
+
+#Entries for buttons
+#---------------------------------
+command.TITLE=\u7DE8\u8F2F\u5C6C\u6027
+
+loadingProperties=\u6B63\u5728\u8F09\u5165\u5C6C\u6027...
+savingProperties=\u6B63\u5728\u5132\u5B58\u5C6C\u6027...
+
+print.TIP = \u5217\u5370\u7269\u4EF6\u5C6C\u6027\u3002
+
+failToDisplay=\u7121\u6CD5\u986F\u793A\u5C6C\u6027\u3002
+
+saveCheckOut=\u5132\u5B58
+saveCheckOut.TIP=\u5132\u5B58\u4E26\u4FDD\u6301\u7C3D\u51FA
+saveCheckOut.MNEMONIC=S
+
+saveCheckIn=\u5132\u5B58\u4E26\u7C3D\u5165
+saveCheckIn.TIP=\u5132\u5B58\u5C6C\u6027\u4E26\u7C3D\u5165
+saveCheckIn.MNEMONIC=I
+
+cancelCheckOut=\u53D6\u6D88\u7C3D\u51FA
+cancelCheckOut.TIP=\u53D6\u6D88\u7C3D\u51FA\u4E26\u9084\u539F\u5230\u539F\u59CB\u72C0\u614B
+cancelCheckOut.MNEMONIC=O
+
+ok=\u78BA\u5B9A
+ok.TIP=\u5132\u5B58\u8B8A\u66F4
+ok.MNEMONIC=K
+
+apply=\u5957\u7528
+apply.TIP=\u5132\u5B58\u8B8A\u66F4
+apply.MNEMONIC=A

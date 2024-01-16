@@ -1,0 +1,61 @@
+##* @<COPYRIGHT_START>@
+# ===============================================
+# Copyright 2007 UGS Corp. All Rights Reserved.
+# ===============================================
+# @<COPYRIGHT_END>@
+
+# Entries for messages
+# ------------------------------
+openError.TITLE=Ouvrir...
+
+saveForm.MESSAGE=Sauvegarde le formulaire...
+loadForm.MESSAGE=Chargement du formulaire...
+
+unableToOpen.MESSAGE=Impossible d'afficher le formulaire.
+unableToSave.MESSAGE=Formulaire ne peut \u00EAtre sauvegard\u00E9, renseignez les champs obligatoires.
+
+noDataToFetch.MSG=Aucune donn\u00E9e n'est attach\u00E9e \u00E0 l'article ou la r\u00E9vision d'article.
+cannotDecideWhichDataset.MSG=Impossible de d\u00E9terminer quel jeu de donn\u00E9es utiliser pour l'action. Utilisez la pr\u00E9f\u00E9rence TC_<itemtype>_data_search_order.
+openComponent.MESSAGE=Ouverture du composant...
+
+# Status message while performing Implicit Check out
+doingImplicitCO=Sauvegarde les modifications et ex\u00E9cute un Bloquer/Lib\u00E9rer implicite...
+
+#Entries for buttons
+#---------------------------------
+
+#For the Edit button on the read only properties dialog
+edit=Bloquer et \u00E9diter
+edit.TIP=Bloquer et \u00E9diter les propri\u00E9t\u00E9s
+edit.MNEMONIC=Edit
+
+implicitCoApply=Appliquer
+implicitCoApply.TIP=Sauvegarder les modifications
+implicitCoApply.MNEMONIC=Apply
+
+implicitCoOk=OK
+implicitCoOk.TIP=Sauvegarder les modifications
+implicitCoOk.MNEMONIC=Ok
+
+saveCheckOut=Sauvegarder
+saveCheckOut.TIP=Sauvegarder et conserver bloqu\u00E9
+saveCheckOut.MNEMONIC=Save
+
+saveCheckIn=Sauvegarder et lib\u00E9rer
+saveCheckIn.TIP=Sauvegarder les propri\u00E9t\u00E9s et lib\u00E9rer
+saveCheckIn.MNEMONIC=I
+
+cancelCheckOut=Annuler le blocage
+cancelCheckOut.TIP=Annuler le blocage et revenir \u00E0 l'original
+cancelCheckOut.MNEMONIC=O
+
+saveChanges.TITLE=Il y a des modifications non sauvegard\u00E9es
+saveChanges.TEXT=Voulez-vous sauvegarder les modifications dans le formulaire?
+
+#Warning message while opening too many objects
+tooManyViewsError.MSG=Toutes les s\u00E9lections ne s''ouvriront pas car seules {0} vues peuvent \u00EAtre ouvertes simultan\u00E9ment.\nR\u00E9pondez OK pour n''ouvrir que {0} s\u00E9lections, ou bien augmentez la limite par d\u00E9faut (pr\u00E9f\u00E9rence "TCMaxOpenViewsLimit").\n\nNote: Augmenter la limite par d\u00E9faut provoquerait une surconsommation de m\u00E9moire, avec risque de fermeture automatique de Teamcenter. 
+maxViewsOpened.MSG=Vous avez atteint le nombre maxi de vues autoris\u00E9es \u00E0 ouvrir.\nFermez les vues inutilis\u00E9es et rouvrez-les.
+cannotOpen.MSG=Impossible d''ouvrir {0}. 
+tooManyViews.TITLE=Ouvrir les vues
+openViewDialog_buttonCancel=Annuler
+openViewDialog_buttonOK=OK

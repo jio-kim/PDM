@@ -1,0 +1,52 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2011.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+# URLs
+HealthHtmlTemplatePath=/html/racstatus.htm
+HealthIconBasePath=/icons
+# Status Browser Window
+RefreshNotes_label=(Od\u015Bwie\u017C okno, aby natychmiast zaktualizowa\u0107 status).
+RunningStatus_label=Status uruchamiania
+Refresh_label=Od\u015Bwie\u017C
+RefreshIconPath=icons/reload_16.png
+BrowserIconPath=icons/RAC_browser_16.png
+DBWalkerIconPath=icons/db_walker.png
+DBWalkerButton_label=Uruchom DB Walker
+DBWalker_errorTitle=B\u0142\u0105d
+DBWalkerButton_tooltip=Ta funkcja umo\u017Cliwia tworzenie pliku zip, kt\u00F3ry zawiera wszystkie niezb\u0119dne informacje\numo\u017Cliwiaj\u0105ce wykonanie bada\u0144 R&D w celu wykonania analizy problemu.\nWykonaj nast\u0119puj\u0105ce kroki:\n- Po naci\u015Bni\u0119ciu tego przycisku zostanie otwarta przegl\u0105darka internetowej, kt\u00F3ra po\u0142\u0105czy si\u0119 z serwerem aplikacji.\n- Na stronie WWW wpisz opis czynno\u015Bci, kt\u00F3r\u0105 chcesz sprawdzi\u0107 i naci\u015Bnij klawisz <ENTER>.\n- Kontynuuj taki obieg informacji a\u017C wyst\u0105pi b\u0142\u0105d.\n- Nast\u0119pnie wr\u00F3\u0107 do przegl\u0105darki internetowej i kliknij \u0142\u0105cze 'Zapisz jako Zip'.\n- Przegl\u0105darka powinna teraz pobra\u0107 plik zip, kt\u00F3ry mo\u017Cna do\u0142\u0105czy\u0107 do PR.
+# Health Status
+CommunicationWithServer_Status_label=Status serwera:
+UI_Status_label=Status klienta:
+SERVER_BUSY_TOOLTIP=Klient oczekuje na odpowied\u017A serwera.
+SERVER_IDLE_TOOLTIP=Nie wykryto \u017C\u0105dania komunikacji pomi\u0119dzy klientem a serwerem.
+SERVER_DISCONNECTED_TOOLTIP=Klient nie zosta\u0142 pod\u0142\u0105czony do serwera.
+UI_RESPONSIVE=Klient odpowiada.
+UI_NOT_RESPONSIVE=Klient nie odpowiada.
+# Staus Details Labels
+RACStatusDetails_label=Szczeg\u00F3\u0142y:
+isSwingStillResponding_label=Czy SWING nadal odpowiada?
+isSwtStillResponding_label=Czy SWT (Standard Widget Toolkit) nadal odpowiada?
+isOperationQueueEmpty_label=Czy kolejka operacji jest pusta?
+timeSinceSwtWasResponding_label=Czas od ostatniej odpowiedzi SWT:
+timeSinceSwingWasResponding_label=Czas od ostatniej odpowiedzi SWING:
+seconds_label=sekundy.
+yes_label=Tak.
+no_label=Nie.
+# Detector availability
+serverDetectorNotObtained_label=Nie mo\u017Cna wykry\u0107 serwera.
+uiDetectorNotObtained_label=Nie mo\u017Cna wykry\u0107 interfejsu u\u017Cytkownika.
+healthStatusNotObtained_label=Nie mo\u017Cna uzyska\u0107 statusu Teamcenter z nast\u0119puj\u0105cych przyczyn:
+# SysTray
+MultiDisplayNotSupported=Platforma nie obs\u0142uguje wielu aktywnych monitor\u00F3w.
+SYSTRAY_MENU_ITEM_STATUS=Status
+SYSTRAY_MENU_ITEM_DBWALKER=Uruchom DB Walker...
+SERVER_READY_AND_UI_READY_TOOLTIP=Teamcenter jest gotowy.
+SERVER_WORKING_AND_UI_READY_TOOLTIP=Serwer Teamcenter przetwarza.
+SERVER_DISCONNECTED_AND_UI_READY_TOOLTIP=Klient Teamcenter zosta\u0142 od\u0142\u0105czony od serwera.
+SERVER_READY_AND_UI_HUNG_TOOLTIP=Klient Teamcenter nie odpowiada.
+SERVER_WORKING_AND_UI_HUNG_TOOLTIP=Klient Teamcenter nie odpowiada, a serwer przetwarza.
+SERVER_DISCONNECTED_AND_UI_HUNG_TOOLTIP=Klient Teamcenter nie odpowiada i zosta\u0142 od\u0142\u0105czony od serwera.

@@ -1,0 +1,141 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the popupmenu package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: popupmenu_locale.properties
+#   Module  : com.teamcenter.rac.popupmenu
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#07-Apr-2000  mccollr                 Add the item and bvr keys.
+#23-May-2000  mccollr                 Added support for send-to.
+#04-Aug-2000  Tony Dumont             Add Open View menu
+#23-Aug-2000  wangp                   add form.POPUP_TITLE
+#01-Sep-2000  Mark Fawcett            merge
+#11-Oct-2000  shen                    add pop up for subscription
+#01-Nov-2000  shen                    add Edit menu item for Subscription
+#18-Jun-2001  mccollr                 Added support for multiple selection popupmenu. PR#4147503
+#22-Nov-2001  Bobby Ljubic            Initial Creation/promote to P8.0.0.2
+#23-Nov-2001  Bobby Ljubic            Merge to project integration branch
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#17-Jul-2002  wangp                   add bomline.POPUP_TITLE
+#07-Dec-2002  hwangb                  add updateWorkpiece
+#07-Apr-2003  hwangb                  add re-sequence process menu
+#10-Apr-2003  sacchett                New code for Change Notes
+#12-Apr-2003  x_karim                 merge out from diego_v90_ph1
+#08-May-2003  x_karim                 merge to hydcm_v8112
+#14-May-2003  x_karim                 merge to hydint_v9.0 (P9.0.0.1 promote)
+#22-May-2003  x_karim                 conflict resolution with eug_p9.0.0.1
+#18-Aug-2003  Jim Towers              PR 4815150 - CICO not on BOMView Popup menu
+#15-Sep-2003  x_monthr                popup menu for AttachmentLine
+#19-Dec-2003  Jeff Martin             made changes for Absolute Occurrence project
+#22-Mar-2004  Jeff Martin             Add 2 more properties for Abs Occ project
+#26-Mar-2004  Kaushik Amin            Remove duplicate properties.
+#16-Jun-2004  wangp                   add title for wolf object
+#27-Aug-2004  faming                  V10 Work Context Project
+#09-Sep-2004  faming                  V10 Work Context Project
+#13-Sep-2004  faming                  V10 Work Context Project
+#18-Oct-2004  Geethika Chitturi       Changing Teamcenter to Teamcenter
+#19-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#19-Oct-2004  Geethika Chitturi       Merging to project branch
+#25-Oct-2004  Jeff Martin             change absocc verbiage
+#04-Nov-2004  Jeff Martin             merge in martinj_p10.0.0.7 changes
+#08-Dec-2004  hwangb                  add property compare action
+#21-Jan-2005  huangjun                removed propertyCompareAction.NAME, use the one in actions
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#01-Feb-2005  Zhixin Huang            Resolve conflicts for p10.0.0.10
+#03-Feb-2005  Kaushik Amin            Add newAppGroupAction.NAME.
+#07-Feb-2005  Kaushik Amin            Merge to P10.0.0.10 label.
+#22-Mar-2005  Kaushik Amin            Add view mode for occGroups.
+#01-Jun-2005  Manoj K Pradhan         Merge from manoj_rdv_9127_branch
+#08-Mar-2006  Kranti Chaitanya        for TcX 2005
+#28-Dec-2005  kango                   GDE ( Item Element ) related entries
+#28-Mar-2006  x_khan                  merge from kango_esm_p10014
+#19-Jun-2006  Joseph Brant            Provided specialized menu for Part Proxy
+#26-Apr-2006  Ankush Dharmale		  Allocations related
+#15-Oct-2006  agbaria                 PR#5616907 - Provide open with process simulate in MSE/CC
+#20-Jun-2007  Andrew Samusenko        Fixed PR 5766598 - Resequence Process name change
+#20-Mar-2008  Subramonia Kishore      Added ERRORTITLE and ERRORMESSAGE for PropertiesOnRelation
+#$HISTORY$
+#=================================================================================================*/
+
+# Update Workpiece
+updateWorkpieceAction.NAME=\uC18C\uC7AC \uC5C5\uB370\uC774\uD2B8
+
+# Open with Process Simulate
+openWithProcessSimulateAction.NAME=Process Simulate\uC73C\uB85C \uC5F4\uAE30
+
+# New AppGroup
+newAppGroupAction.NAME=\uC0C8 \uC5B4\uCEE4\uB7F0\uC2A4 \uADF8\uB8F9 \uC0BD\uC785
+
+# Proerty Compare Table
+propertyCompareAction.NAME=\uC18D\uC131 \uBE44\uAD50 \uD14C\uC774\uBE14...
+
+bomchange.POPUP_TITLE=BOM \uBCC0\uACBD \uAC1C\uCCB4
+
+updateSuperseded.NAME=\uB300\uCCB4 \uD56D\uBAA9 \uC5C5\uB370\uC774\uD2B8
+
+# Edit action for form object
+# ------------------------------------
+editAction.NAME=\uD3B8\uC9D1
+editAction.MNEMONIC=E
+
+# Send To menu item.
+# ----------------------
+sendto.NAME=\uBCF4\uB0BC \uACF3
+
+# Open View menu item.
+# ----------------------
+openView.NAME=\uBDF0 \uC5F4\uAE30
+
+multiple.POPUP_TITLE=\uBCF5\uC218 \uCEF4\uD3EC\uB10C\uD2B8
+
+## ABSOLUTE OCCURRENCE PROPERTIES ##
+changeContext.NAME=\ In Context \uC124\uC815
+
+# popup menu titles for trace report
+# -----------------------------------
+internalTrace.TITLE=\uB0B4\uBD80 \uCD94\uC801 \uBCF4\uACE0\uC11C
+externalTrace.TITLE=\uC678\uBD80 \uCD94\uC801 \uBCF4\uACE0\uC11C
+
+# View Mode for appGrpBOPLine
+setViewModeToBaseAction.NAME=\uAE30\uBCF8 \uBAA8\uB4DC\uC5D0\uC11C \uC5B4\uCEE4\uB7F0\uC2A4 \uADF8\uB8F9 \uBCF4\uAE30
+setViewModeToOccGrpAction.NAME=\uC5B4\uCEE4\uB7F0\uC2A4 \uADF8\uB8F9 \uBCF4\uAE30
+
+# Remove Product from Design menu item
+# -------------------------------------
+removeDesignFromProductAction.NAME=\uC81C\uD488\uC5D0\uC11C \uC124\uACC4 \uC81C\uAC70
+removeDesignFromProductAction.TIP=\uC81C\uD488\uC5D0\uC11C \uC124\uACC4 \uC81C\uAC70
+
+# Allocations Popup Menu
+Allocation.NAME=\uD560\uB2F9
+Allocation.TITLE=\uD560\uB2F9
+Allocation.POPUP_TITLE=\uD560\uB2F9 \uAC1C\uCCB4
+# Find where allocated
+findWhereAllocatedAction.NAME =\uD560\uB2F9 \uC704\uCE58
+findWhereAllocatedAction.TIP =\uD560\uB2F9 \uC704\uCE58
+
+showAllocatedFromAction.NAME=\uD560\uB2F9 \uC6D0\uBCF8 \uD45C\uC2DC
+showAllocatedToAction.NAME=\uD560\uB2F9 \uB300\uC0C1 \uD45C\uC2DC
+
+#########################################
+# Error while sending remote objects
+#########################################
+remoteObject.SendTo.Error.MESSAGE=\uC6D0\uACA9 \uC720\uD615\uC758 \uAC1C\uCCB4\uB97C \uB85C\uB4DC\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+remoteObject.SendTo.Error.TITLE=\uAC1C\uCCB4 \uC804\uC1A1 \uC624\uB958
+
+GRBViews.TITLE=Relation Browser \uBDF0
+
+#Poperties On Relation Project SDLC ID 7460
+#------------------------------------------
+PropertyOnRelation.TITLE=\uAD00\uACC4 \uCEE8\uD14D\uC2A4\uD2B8\uB97C \uCC3E\uC744 \uC218 \uC5C6\uC74C
+PropertyOnRelation.MSG=\uD558\uB098 \uC774\uC0C1\uC758 \uC120\uD0DD\uB41C \uCEF4\uD3EC\uB10C\uD2B8, \uAD00\uACC4\uAC00 \uC5C6\uC74C

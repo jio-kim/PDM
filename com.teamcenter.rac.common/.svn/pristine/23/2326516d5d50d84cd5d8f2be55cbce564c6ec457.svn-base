@@ -1,0 +1,37 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the TC cut package.  This
+#                   is an internal file so therefore only TC PBU developers should be modifying
+#                   this file.  To make changes please modify the cut_user.properties file.  Do
+#                   NOT modify this file.  This allows properties found in this file to be
+#                   over-written but not destroyed.
+#
+#   Filename: cut.properties
+#   Module  : com.teamcenter.rac.commands.cut
+#
+#===================================================================================================
+# Date        Name                    Description of Change
+#08-Jan-1999  wangp                   default property file for cut
+#12-Jan-1999  mccollr                 initial promote
+#27-Jan-1999  wangp                   add more entries
+#22-Feb-1999  wangp                   replace tabs
+#11-Mar-1999  wangp                   add more entries
+#26-May-1999  sirdeshp                To update the Dialog Title key
+#07-Dec-1999  wangp                   add entry noConfirmationText
+#13-Jan-2000  wangp                   reformat keys
+#11-Feb-2000  mccollr                 Remove the localization keys and place within the locale file.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#21-Mar-2002  wangp                   fix pr 4466865: show confirmation if selected objects exceed limit
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+import=com.teamcenter.rac.common.common
+
+#If more than 10 objects are selected to cut, user confirmation is required.
+confirmationLimit=10

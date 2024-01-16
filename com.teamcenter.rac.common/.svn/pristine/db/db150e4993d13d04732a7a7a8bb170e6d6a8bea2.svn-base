@@ -1,0 +1,167 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the commandstree package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: commandstree_locale.properties
+#   Module  : com.teamcenter.rac.commandsuppression.commandstree
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#19-Jul-2000  Ravi Yechuri            Initial Creation
+#25-Jul-2000  Ravi Yechuri            Merged local Changes
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#11-Nov-2013  Prerna kumari           added changes for showVendorParts
+#$HISTORY$
+#=================================================================================================*/
+
+dhtmlMenu.NAME=Thin Client \uAD00\uB828
+viewPSAction.NAME=\uC81C\uD488 \uAD6C\uC870
+viewMSVAction.NAME=Manufacturing Process Planner
+whereClassifiedAction.NAME=\uBD84\uB958 \uC704\uCE58
+whereReferencedAction.NAME=\uCC38\uC870 \uC704\uCE58
+whereUsedAllAction.NAME=\uC0AC\uC6A9 \uC704\uCE58(\uBAA8\uB4E0 \uB9AC\uBE44\uC804)
+whereUsedAction.NAME=\uC0AC\uC6A9 \uC704\uCE58
+whereUsedTopAction.NAME=\uC0AC\uC6A9 \uC704\uCE58 (\uCD5C\uACE0 \uB2E8\uACC4)
+whereUsedPreciseAction.NAME=\uC0AC\uC6A9 \uC704\uCE58(Precise)
+thumbnailAction.NAME=\uCD95\uC18C\uD310 \uC774\uBBF8\uC9C0
+openInRAC.NAME=Rich Client\uC5D0\uC11C \uC5F4\uAE30
+plmxmlExportAction.NAME=PLMXML \uB0B4\uBCF4\uB0B4\uAE30
+plmxmlImportAction.NAME=PLMXML \uAC00\uC838\uC624\uAE30
+bomCompareAction.NAME=BOM \uBE44\uAD50
+viewInContextAction.NAME=\uCEE8\uD14D\uC2A4\uD2B8\uC5D0\uC11C \uBCF4\uAE30
+exportConfigNXAssemblyAction.NAME=\uAD6C\uC131\uB41C NX \uC5B4\uC148\uBE14\uB9AC \uB0B4\uBCF4\uB0B4\uAE30
+downloadFilesAction.NAME=\uD30C\uC77C \uB2E4\uC6B4\uB85C\uB4DC
+gdisViewAction.NAME=GDIS \uBDF0
+gdisEditAction.NAME=GDIS \uD3B8\uC9D1
+HTMLReportAction.NAME=HTML \uBCF4\uACE0\uC11C
+decisionsAction.NAME=\uACB0\uC815
+viewSubtaskAction.NAME=\uD558\uC704 \uD0C0\uC2A4\uD06C
+viewSubtaskParentAction.NAME=\uD558\uC704 \uD0C0\uC2A4\uD06C \uBD80\uBAA8
+viewProcessAction.NAME=\uD504\uB85C\uC138\uC2A4
+dueDateDurationAction.NAME=\uB9CC\uAE30\uC77C/\uAE30\uAC04
+assignAllTasksAction.NAME=\uBAA8\uB4E0 \uD0C0\uC2A4\uD06C \uD560\uB2F9
+viewPerChartAction.NAME=PERT \uCC28\uD2B8
+viewMSEPVAction.NAME=MSEPV
+generateMEReportAction.NAME=ME \uBCF4\uACE0\uC11C \uC0DD\uC131
+addAlternateAction.NAME=\uB300\uCCB4 \uD56D\uBAA9 \uCD94\uAC00
+removeAlternateAction.NAME=\uB300\uCCB4 \uD56D\uBAA9 \uC81C\uAC70/\uAE30\uBCF8\uC73C\uB85C \uC124\uC815
+pasteGlobalAlternateAction.NAME=\uC804\uC5ED \uAD50\uCCB4 \uD56D\uBAA9 \uBD99\uC5EC\uB123\uAE30 
+addGlobalAlternateAction.NAME=\uC804\uC5ED \uAD50\uCCB4 \uD56D\uBAA9 \uCD94\uAC00
+openBookmarkAction.NAME=NX/Mgr
+toggleViewerAction.NAME=\uBDF0\uC5B4 \uD45C\uC2DC/\uC228\uAE30\uAE30
+asTopLineAction.NAME=\uCCAB \uD589\uC73C\uB85C
+showUnconfiguredByDateAction.NAME=\uAD6C\uC131\uB418\uC9C0 \uC54A\uC740 \uD56D\uBAA9\uC744 \uB0A0\uC9DC\uBCC4\uB85C \uD45C\uC2DC
+viewSupersedureAction.NAME=\uC218\uD37C\uC2DC\uC800...
+snapshotAction.NAME=\uC2A4\uB0C5\uC0F7...
+OnDemandValidate.NAME=\uC5B4\uCEE4\uB7F0\uC2A4 \uC720\uD6A8\uC131 \uAC80\uC0AC...
+findInDisplayAction.NAME=\uB514\uC2A4\uD50C\uB808\uC774\uC5D0\uC11C \uCC3E\uAE30
+relateAlternatesAction.NAME=\uAD50\uCCB4 \uD56D\uBAA9 \uC5F0\uACB0
+optionalItemsAction.NAME=\uC120\uD0DD\uC801 \uC544\uC774\uD15C
+sendToExternalSystemAction.NAME=\uC678\uBD80 \uC2DC\uC2A4\uD15C\uC73C\uB85C \uBCF4\uB0B4\uAE30
+editClassificationObjectAction.NAME=\uBD84\uB958 \uAC1C\uCCB4 \uD3B8\uC9D1
+addImageAction.NAME=\uC774\uBBF8\uC9C0 \uCD94\uAC00
+deleteImageAction.NAME=\uC774\uBBF8\uC9C0 \uC0AD\uC81C
+viewTreeAction.NAME=\uD2B8\uB9AC
+viewQueryAction.NAME=\uC870\uD68C
+classImageAction.NAME=\uD074\uB798\uC2A4 \uC774\uBBF8\uC9C0
+instanceImageAction.NAME=\uC778\uC2A4\uD134\uC2A4 \uC774\uBBF8\uC9C0
+createBOMChangesAction.NAME=BOM \uBCC0\uACBD \uC0DD\uC131
+createSupersedureAction.NAME=\uC218\uD37C\uC2DC\uC800 \uC0DD\uC131
+createTransferSupersedureAction.NAME=\uC804\uC1A1 \uC0DD\uC131 (\uB300\uCCB4)
+viewExpandAction.NAME=\uD655\uC7A5
+viewCollapseAction.NAME=\uCD95\uC18C
+itemReportAction.NAME=\uC544\uC774\uD15C \uBCF4\uACE0\uC11C
+changePasswordAction.NAME=\uC554\uD638 \uBCC0\uACBD
+assignFSCsAction.NAME=FCS \uD560\uB2F9
+addToFavoritesAction.NAME=\uC990\uACA8\uCC3E\uAE30\uC5D0 \uCD94\uAC00
+LaunchAdhocAction.NAME=Lifecycle Visualization\uC5D0\uC11C \uC5F4\uAE30
+newVendorAction.NAME=\uD310\uB9E4\uC5C5\uCCB4...
+newBidPackageAction.NAME=\uC785\uCC30 \uD328\uD0A4\uC9C0...
+newCommercialPartAction.NAME=\uC0C1\uC5C5\uC6A9 \uD30C\uD2B8...
+newManufacturerPartAction.NAME=\uD310\uB9E4\uC5C5\uCCB4 \uD30C\uD2B8...
+propertiesAction.NAME=\uC18D\uC131
+editPropertiesAction.NAME=\uC18D\uC131
+reviseAction.NAME=\uAC1C\uC815...
+saveAsAction.NAME=\uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uC800\uC7A5...
+viewRMAction.NAME=\uC694\uAD6C \uC0AC\uD56D
+viewDCAction.NAME=\uC124\uACC4 \uCEE8\uD14D\uC2A4\uD2B8
+tcgsSearch.NAME=Global Services Monitor
+openInUGAction.NAME=NX/Manager
+openInJTEditorAction.NAME=JT \uD3B8\uC9D1\uAE30
+openInSEECAction.NAME=Solid Edge
+importSpecAction.NAME=\uC0AC\uC591 \uAC00\uC838\uC624\uAE30...
+exportExcelAction.NAME=Excel\uB85C \uB0B4\uBCF4\uB0B4\uAE30
+manageGlobalAlternatesCommand.NAME=\uC804\uC5ED \uAD50\uCCB4 \uD56D\uBAA9
+viewmarkupAction.NAME=\uBDF0/\uB9C8\uD06C\uC5C5
+digitalsignAction.NAME=\uC11C\uBA85
+cancelsignAction.NAME=\uC11C\uBA85 \uCDE8\uC18C
+addVendorRoleAction.NAME=\uD310\uB9E4\uC5C5\uCCB4 \uC5ED\uD560 \uCD94\uAC00...
+removeVendorRoleAction.NAME=\uD310\uB9E4\uC5C5\uCCB4 \uC5ED\uD560 \uC81C\uAC70...
+addBidPackageLineItemAction.NAME=\uC785\uCC30 \uD328\uD0A4\uC9C0 \uD589 \uC544\uC774\uD15C \uCD94\uAC00...
+changeVendorAction.NAME=\uD310\uB9E4\uC5C5\uCCB4 \uBCC0\uACBD...
+addBatchPrint.NAME=\uC77C\uAD04 \uCC98\uB9AC \uC778\uC1C4...
+builderReportAction.NAME=Report Builder \uBCF4\uACE0\uC11C
+exportToGMSAction.NAME=GMS\uB85C \uB0B4\uBCF4\uB0B4\uAE30
+publishODSAction.NAME=\uAE30\uBCF8 ODS\uB85C \uAC8C\uC2DC
+unpublishODSAction.NAME=\uAE30\uBCF8 ODS\uB85C\uBD80\uD130 \uAC8C\uC2DC \uCDE8\uC18C
+applicationHelpAction.NAME=Web Collection
+frameworkHelpAction.NAME=General Collection
+requestSubstanceDeclarationAction.NAME=\uBB3C\uC9C8 \uC120\uC5B8 \uC694\uCCAD...
+requestCMDAction.NAME=\uC900\uC218 \uAD11\uC11D \uC120\uC5B8 \uC694\uCCAD...
+initiateSubsCmplCheckAction.NAME=\uBB3C\uC9C8 \uC900\uC218 \uD655\uC778 \uCD08\uAE30\uD654...
+applyExemptionAction.NAME=\uC608\uC678 \uC801\uC6A9...
+showMaterialSummaryAction.NAME=\uC7AC\uB8CC \uB300\uC2DC\uBCF4\uB4DC \uD45C\uC2DC...
+showComplianceSummaryAction.NAME=\uC900\uC218 \uB300\uC2DC\uBCF4\uB4DC \uD45C\uC2DC...
+
+dhtmlNewMenu.NAME=\uC0C8\uB85C \uB9CC\uB4E4\uAE30
+dhtmlViewMenu.NAME=\uBCF4\uAE30
+dhtmlToolsMenu.NAME=\uB3C4\uAD6C
+dhtmlActionsMenu.NAME=\uC791\uC5C5
+dhtmlHelpMenu.NAME=\uB3C4\uC6C0\uB9D0
+dhtmlEditMenu.NAME=\uD3B8\uC9D1
+dhtmlRelatedAlternatesMenu.NAME=\uAD00\uB828 \uAD50\uCCB4 \uD56D\uBAA9
+dhtmlAuditMenu.NAME=\uAC10\uC0AC
+dhtmlReportsMenu.NAME=\uBCF4\uACE0\uC11C
+dhtmlglobalservicesMenu.NAME=Global Services
+
+newChangeWizardMenu.NAME=\uBCC0\uACBD
+newCreateCMAction.NAME=\uC0DD\uC131...
+newContextCMAction.NAME=\uCEE8\uD14D\uC2A4\uD2B8 \uC0DD\uC131...
+newDerivedCMAction.NAME=\uBCC0\uACBD \uD30C\uC0DD...
+
+editParamReqParams.NAME=\uD30C\uB77C\uBA54\uD2B8\uB9AD \uC694\uAD6C \uC0AC\uD56D \uB9E4\uAC1C\uBCC0\uC218
+exportObjectsAction.NAME=AIF\uB97C \uD1B5\uD574 \uB0B4\uBCF4\uB0B4\uAE30
+embeddedSwExplorerMenu.NAME=\uB0B4\uC7A5\uB41C \uC18C\uD504\uD2B8\uC6E8\uC5B4 \uD0D0\uC0C9\uAE30
+showAssociatedProcessorsMenu.NAME=\uC5F0\uACB0\uB41C \uD504\uB85C\uC138\uC11C \uD45C\uC2DC
+showAssociatedSoftwareMenu.NAME=\uC5F0\uACB0\uB41C \uC18C\uD504\uD2B8\uC6E8\uC5B4 \uD45C\uC2DC
+showAssociatedProcessorAction.NAME=\uB0B4\uC7A5\uD568
+showProcessorAccessedAction.NAME=\uC811\uADFC\uC790
+showProcessorGatewayAction.NAME=Gateway
+showAssociatedSoftwareAction.NAME=\uB0B4\uC7A5\uB428
+showUsedSoftwareAction.NAME=\uC0AC\uC6A9
+showDependentSoftwareAction.NAME=\uC0AC\uC6A9\uC790
+showMakeFromStocksAction.NAME=\uC7AC\uACE0\uC5D0\uC11C \uC791\uC131\uB41C \uB0B4\uC6A9 \uD45C\uC2DC
+configureVariantAction.NAME=\uD30C\uC0DD \uBAA8\uB378 \uAD6C\uC131
+stockSelectionRuleAction.NAME=\uC7AC\uACE0 \uC120\uD0DD \uADDC\uCE59
+embeddedSoftwareManagerMenu.NAME=Embedded Software Manager
+associateSoftwaretoMenu.NAME=\uC18C\uD504\uD2B8\uC6E8\uC5B4 \uC5F0\uACB0 \uB300\uC0C1
+associateProcessortoMenu.NAME=\uD504\uB85C\uC138\uC11C \uC5F0\uACB0 \uB300\uC0C1
+removeSoftwareAssociationMenu.NAME=\uC18C\uD504\uD2B8\uC6E8\uC5B4 \uC5F0\uACB0 \uC81C\uAC70
+removeProcessorAssociationMenu.NAME=\uD504\uB85C\uC138\uC11C \uC5F0\uACB0 \uC81C\uAC70
+associateSoftwareToProcessorAction.NAME=\uD504\uB85C\uC138\uC11C
+associateSoftwareToSoftwareAction.NAME=\uC18C\uD504\uD2B8\uC6E8\uC5B4
+associateProcessorToGatewayAction.NAME=Gateway
+removeSoftwareToSoftwareAction.NAME=\uC18C\uD504\uD2B8\uC6E8\uC5B4
+removeSoftwareToProcessorAction.NAME=\uC18C\uD504\uD2B8\uC6E8\uC5B4
+removeProcessorAction.NAME=Gateway
+
+newRaiseActionItemAction.NAME=\uC791\uC5C5 \uC544\uC774\uD15C \uC99D\uAC00...
+makeFromAction.NAME=\uC791\uC131 \uC6D0\uBCF8
+showVendorPartsAction.NAME=\uD310\uB9E4\uC5C5\uCCB4 \uD30C\uD2B8 \uD45C\uC2DC

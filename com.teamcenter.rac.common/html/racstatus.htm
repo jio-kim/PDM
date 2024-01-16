@@ -1,0 +1,91 @@
+<html>
+<head>
+<!-- This file is used by the HealthDetectorServlet to 
+display the server/client health status. -->
+<!-- Do not delete/change any of the place holders 
+marked by <%%> when customizing this file, if customization is ever needed.-->
+<title><%RunningStatus_label%></title>
+<meta http-equiv="pragma" content="no-cache"/>
+<meta http-equiv="refresh" content="20"> 
+<style type="text/css">
+BODY {
+	color: #000;
+	margin: 2px;
+	font-family: Arial;
+}
+.notes
+{
+	font-size: 11px;
+	font-style: italic;
+}
+A{
+	font-size: 12px;
+	font-weight: normal;
+}
+A:LINK { text-decoration:underline; color:#0000FF;}
+A:VISITED { text-decoration:underline; color:#0000FF;}
+A:HOVER { text-decoration:none; color:#FF0000;}
+IMG{
+	border: 0px;
+	font-size: 12px;
+	font-weight: normal;
+}
+TABLE, TR, TD,DIV{
+	font-size: 12px;
+	font-weight: normal;
+}
+.HEALTHY
+{
+   color:#000000;
+}
+.SICK
+{
+   color:#FF0000;
+}
+</style>
+</head>
+<body>
+      <p class="notes"><%RefreshNotes_label%></p>
+      <table>
+      <tr>
+      <td><b><%CommunicationWithServer_Status_label%></b></td>
+      <td><IMG SRC="<%Server_Status_icon%>"/></td>
+      <td class="<%Server_Healthy_Class%>"><%CommunicationWithServer_Status_text%></td>
+      </tr>
+      <tr>
+         <td colspan="3">&nbsp;</td>
+      </tr>
+      <tr>
+      <td><b><%UI_Status_label%></b></td>
+      <td><IMG SRC="<%UI_Status_icon%>"/></td>
+      <td class="<%UI_Healthy_Class%>"><%UI_Status_text%></td>
+      </tr>
+      </table>
+   	  <a href="#" onclick="javascript:document.getElementById('Details').style.display = 'block';">
+      <%RACStatusDetails_label%></a>
+      <div id="Details" style="display: none;">
+      <table>
+      <tr>
+      <td><b><%isSwingStillResponding_label%></b></td>
+      <td class="<%Swing_Healthy_Class%>"><%isSwingStillResponding_text%></td>
+      </tr>
+      <tr>
+      <td><b><%isSwtStillResponding_label%></b></td>
+      <td class="<%Swt_Healthy_Class%>"><%isSwtStillResponding_text%></td>
+      </tr>
+      <tr>
+      <td><b><%isOperationQueueEmpty_label%></b></td>
+      <td><%isOperationQueueEmpty_text%></td>
+      </tr>
+      <tr>
+      <td><b><%timeSinceSwingWasResponding_label%></b></td>
+      <td><%timeSinceSwingWasResponding_text%>&nbsp;<%seconds_label%></td>
+      </tr>
+      <tr>
+      <td><b><%timeSinceSwtWasResponding_label%></b></td>
+      <td><%timeSinceSwtWasResponding_text%>&nbsp;<%seconds_label%></td>
+      </tr>
+      </div>
+      </table>
+</body>
+</html>

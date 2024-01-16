@@ -1,0 +1,69 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the delete package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: delete_locale.properties
+#   Module  : com.teamcenter.rac.commands.delete
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#14-Apr-2004  Hui Xiao                PR4799296: make error message easier to understand.
+#06-Apr-2005  vkansal                 Fix PR#4333740
+#07-Apr-2005  vkansal                 Change the confirmation message
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#22-May-2008  Trupti Purohit          Fixed 5872726 (Unable to remove/add surrogate user)
+#04-Jun-2009  Ayan Bose               Added message for non-deletable TcBOM entities
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = \u522A\u9664
+
+confirmationText = \u78BA\u8A8D\u522A\u9664\uFF1F
+deleteAllSequencesConfirmationText = \u78BA\u5B9A\u8981\u522A\u9664\u55CE\uFF1F\uFF08\u5305\u542B\u9644\u52A0\u8CC7\u6599\u96C6\u3002\uFF09
+deleteAllSequencesSWTToolTipText = \u9644\u52A0\u5230\u9805\u76EE\u7248\u672C\u7684\u8CC7\u6599\u96C6\u4E5F\u5C07\u88AB\u522A\u9664\u3002
+
+deleteAllSequences = \u522A\u9664\u6240\u6709\u5E8F\u5217
+
+deletePublished = \u522A\u9664\u5DF2\u767C\u4F48\u7684\u5143\u4EF6
+published = \uFF08\u5DF2\u767C\u4F48\uFF09
+attachment = \uFF08\u9644\u4EF6\uFF09
+
+deleteObjects = \u6B63\u5728\u522A\u9664\u7269\u4EF6...
+EWO=\u8F38\u5165\u5143\u4EF6\u7684 EWO\uFF08\u6388\u6B0A\uFF09
+
+noSelection = \u672A\u9078\u5B9A\u8981\u522A\u9664\u7684\u7269\u4EF6
+rootSelection = \u4E0D\u80FD\u522A\u9664\u6839\u3002
+invalidSelection = \u4E0D\u80FD\u522A\u9664\u9078\u5B9A\u7684\u7269\u4EF6
+invalidSelectionBOMView = \u4E0D\u80FD\u5F9E\u9805\u76EE\u4E2D\u522A\u9664 BOMView\uFF0C\u56E0\u70BA\u5B83\u88AB\u8A72\u9805\u76EE\u7248\u672C\u7684 BOMViewRev \u53C3\u8003\u3002\n
+dependentSubtaskSelection = \u9078\u53D6\u4E86\u76F8\u4F9D\u6027\u5B50\u4EFB\u52D9\u9032\u884C\u522A\u9664\u3002\u522A\u9664\u8A72\u5B50\u4EFB\u52D9\u5C07\u5F9E\u76F8\u4F9D\u6027\u91CB\u653E\u7236\u7D1A\u3002\n\u78BA\u5B9A\u8981\u7E7C\u7E8C\u55CE\uFF1F
+
+
+error.TITLE = \u522A\u9664...
+confirmPublishDelText = \u4EE5\u4E0B\u7269\u4EF6\u5DF2\u767C\u4F48\u5230\u4E00\u500B\u6216\u591A\u500B\u7AD9\u9EDE\u3002\n\u5982\u679C\u522A\u9664\u9019\u7A2E\u7269\u4EF6\uFF0C\u5247\u6703\u81EA\u52D5\u53D6\u6D88\u767C\u4F48\u8A72\u7269\u4EF6\u3002
+confirmPublishDelSWTText = \u4E00\u500B\u6216\u591A\u500B\u9078\u5B9A\u7269\u4EF6\u5DF2\u767C\u4F48\u3002\n\u522A\u9664\u9019\u4E9B\u7269\u4EF6\u5C07\u81EA\u52D5\u53D6\u6D88\u767C\u4F48\u7269\u4EF6\u3002
+yes = \u662F
+no = \u5426
+dontShowAgain.MESSAGE = \u4EE5\u5F8C\u4E0D\u518D\u986F\u793A\uFF01
+cannotEditStructure.MESSAGE = \u7121\u6CD5\u5F9E\u8996\u5716\u8CC7\u6599\u593E\u522A\u9664\u9805\u76EE\n\u7121\u6CD5\u5728\u300C\u6211\u7684 Teamcenter\u300D\u4E2D\u57F7\u884C\u7D50\u69CB\u7DE8\u8F2F
+
+deleteSurrogate= \u4EE3\u7406\u4EBA\u522A\u9664
+removeSurrogate = \u4E0D\u518D\u662F\u4EE3\u7406\u4F7F\u7528\u8005\u3002\n
+confirmationmessage = \u8981\u7E7C\u7E8C\u522A\u9664\u55CE\uFF1F
+inboxDeletionConfirmation=\u4EE3\u7406\u95DC\u4FC2\uFF08\u5982\u679C\u5B58\u5728\uFF09\u5C07\u88AB\u522A\u9664\u3002\n
+ResourcePoolSubscriptionOperation.MESSAGE = \u8ACB\u4F7F\u7528\n\u300C\u8CC7\u6E90\u96C6\u5340\u8A02\u95B1\u300D\n\u5C0D\u8A71\u65B9\u584A\u4F86\u65B0\u589E/\u79FB\u9664\u8CC7\u6E90\u96C6\u5340\u8A02\u95B1
+
+usageObjectCannotBeDeleted= \u4E0D\u5F97\u5C0D\u9078\u5B9A\u7269\u4EF6\u9032\u884C\u522A\u9664\u4F5C\u696D\u3002
+
+referencedby = \u53C3\u8003\u57F7\u884C\u500B\u9AD4\u7684\u9805\u76EE
+
+

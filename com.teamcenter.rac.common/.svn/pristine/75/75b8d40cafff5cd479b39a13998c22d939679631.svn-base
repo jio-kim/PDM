@@ -1,0 +1,154 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the organization package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: organization_locale.properties
+#   Module  : com.teamcenter.rac.common.organization
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Mar-2000  mccollr                 Initial Promote.
+#14-Mar-2000  wangp                   Add key for root node.
+#04-Oct-2001  wangp                   add more entries
+#05-Oct-2001  wangp                   Move org selection dlg key from common to common/organization
+#                                     Move group/role/user panel keys from common to common/organization
+#11-Oct-2001  wangp                   Fix merge problem
+#17-Oct-2001  wangp                   Modify noMatch message
+#02-Jun-2002  Sarma Cherukupalli      Promote deactivate group member
+#03-Jul-2002  Sarma Cherukupalli      Modify the tool tip on show/supress deactivate group member button
+#11-Feb-2003  wangp                   add msg for confirming loading search result
+#17-Apr-2003  x_brahma                added searchGroupRole.TIP
+#22-May-2003  Zhixin Huang            Conflict resolutions for P9.0.0.1
+#04-Mar-2004  wangp                   fix pr 2033901 per Rob M.
+#18-Oct-2004  Hugh Stewart            Last login time project.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#26-Feb-2006  Alisa Smith             PR5410098: FIxed spelling error.  Added "i" to adminstrator.
+#16-Mar-2006  liang                   De-imanization project
+#17-Mar-2006  liang                   merge to PLM1
+#$HISTORY$
+#=================================================================================================*/
+
+loadingGroupTree.MESSAGE=Na\u010D\u00EDt\u00E1n\u00ED ko\u0159enov\u00FDch skupin... \u010Cekejte pros\u00EDm.
+
+organization.TITLE=Organizace
+
+# Entries for OrgTreePanel
+# -------------------------------------------
+search.TIP=Zadejte krit\u00E9ria hled\u00E1n\u00ED pro skupinu/role/u\u017Eivatele.
+searchText=Zadejte krit\u00E9ria hled\u00E1n\u00ED...
+emptyPanelText=Zvolte skupinu, roli nebo u\u017Eivatele ze seznamu...
+searchGroupRole.TIP=Zadejte krit\u00E9ria hled\u00E1n\u00ED pro skupinu/role.
+groupButton.TIP=Naj\u00EDt skupiny
+roleButton.TIP=Naj\u00EDt role
+userButton.TIP=Naj\u00EDt u\u017Eivatele (podle id a n\u00E1zvu u\u017Eivatele)
+searchButton.TIP=Naj\u00EDt u\u017Eivatele, pokud nen\u00ED pole u\u017Eivatele pr\u00E1zdn\u00E9, s filtrem v\u00FDsledk\u016F podle role a skupiny; Naj\u00EDt role, pokud je pole u\u017Eivatele pr\u00E1zdn\u00E9 a pole role nen\u00ED pr\u00E1zdn\u00E9; Naj\u00EDt skupiny, pokud jsou pole u\u017Eivatele a role pr\u00E1zdn\u00E1 a pole skupiny nen\u00ED pr\u00E1zdn\u00E9
+userFieldText=Zadat u\u017Eivatelsk\u00E9 jm\u00E9no nebo ID
+userField.TIP=Krit\u00E9rium u\u017Eivatelsk\u00E9ho jm\u00E9na nebo ID; nerozli\u0161uje velikost p\u00EDsmen a umo\u017E\u0148uje pou\u017Eit\u00ED z\u00E1stupn\u00FDch znak\u016F
+roleFieldText=Zadat n\u00E1zev role
+roleField.TIP=Krit\u00E9rium n\u00E1zvu role; je mo\u017En\u00E9 pou\u017E\u00EDt z\u00E1stupn\u00E9 znaky
+groupFieldText=Zadat n\u00E1zev skupiny
+groupField.TIP=Krit\u00E9rium n\u00E1zvu skupiny; je mo\u017En\u00E9 pou\u017E\u00EDt z\u00E1stupn\u00E9 znaky
+refreshButton.TIP=Znovu na\u010D\u00EDst organiza\u010Dn\u00ED strom
+supressAllGMButton.TIP=Vypnout neaktivn\u00ED \u010Dleny skupiny
+showAllGMButton.TIP=Zobrazit neaktivn\u00ED \u010Dleny skupiny
+
+localLabel=M\u00EDstn\u00ED
+localUserButton.TIP=Naj\u00EDt m\u00EDstn\u00ED u\u017Eivatele
+replicaLabel=Replika
+replicaUserButton.TIP=Naj\u00EDt u\u017Eivatele replik
+allLabel=V\u0161e
+allUserButton.TIP=Naj\u00EDt v\u0161echny u\u017Eivatele
+filterByHomeSite.TIP=Filtrovat u\u017Eivatele podle domovsk\u00E9ho serveru
+
+FilterBySite.LABEL=Filtrovat dle serveru
+FilterByHomeSite.LABEL=Filtrovat dle domovsk\u00E9ho serveru
+
+searchingFor=Hled\u00E1n\u00ED
+inOrgTree=v org. stromu.
+makeSelection=Vybrat
+
+Group=skupina
+Role=role
+User=u\u017Eivatel
+
+Local=m\u00EDstn\u00ED
+Replica=replika
+All=v\u0161e
+Users=u\u017Eivatel\u00E9
+
+noGroupFound=Nebyla nalezena \u017E\u00E1dn\u00E1 skupina se zadan\u00FDm n\u00E1zvem.
+noRoleFound=Nebyla nalezena \u017E\u00E1dn\u00E1 role se zadan\u00FDm n\u00E1zvem.
+noUserFound=Nebyl nalezen \u017E\u00E1dn\u00FD u\u017Eivatel se zadan\u00FDm jm\u00E9nem.
+
+noSearchInput=Nebyla zad\u00E1na \u017E\u00E1dn\u00E1 krit\u00E9ria hled\u00E1n\u00ED.
+
+confirmSearchWithStar=P\u0159i zad\u00E1n\u00ED * jako krit\u00E9ria hled\u00E1n\u00ED m\u016F\u017Ee hled\u00E1n\u00ED trvat dlouho.\nChcete p\u0159esto pokra\u010Dovat?
+thereAre=Je
+confirmLoad=nalezen objekt, chcete jej na\u010D\u00EDst?
+search.TITLE=Hledat
+search=Hledat:
+projects=Projekty: 
+
+#Resource Pool options panel labels
+#----------------------------------
+resourcePoolPanelLabel=Mo\u017Enosti rezervo\u00E1ru zdroj\u016F
+specificGroupRadioLabel=Ur\u010Dit\u00E1 skupina
+anyGroupRadioLabel=Libovoln\u00E1 skupina
+anyMemberRadioLabel=Libovoln\u00FD \u010Dlen
+allMemberRadioLabel=V\u0161ichni \u010Dlenov\u00E9
+
+# Entries for OrganizationSelectionDialog class
+# ---------------------------------------------
+orgSelectionDialog.TITLE=Dialogov\u00E9 okno v\u00FDb\u011Bru organizace...
+
+# Keys for the GroupPanel
+# -----------------------
+name=N\u00E1zev:
+descriptionLabel=Popis:
+privilegeLabel=Opr\u00E1vn\u011Bn\u00ED DBA:
+parentLabel=Rodi\u010Dovsk\u00E1 skupina:
+volumeLabel=Svazek:
+roleLabel=Role:
+
+# Keys for the RolePanel
+# -----------------------
+groupLabel=V\u00FDchoz\u00ED skupina:
+nameLabel=N\u00E1zev:
+descriptionLabel=Popis:
+
+#Keys for the UserPanel
+#-----------------------
+userIDLabel=ID u\u017Eivatele:
+userNameLabel=U\u017Eivatelsk\u00E9 jm\u00E9no:
+volumeLabel=V\u00FDchoz\u00ED svazek:
+localVolumeLabel=Lok\u00E1ln\u00ED svazek:
+mailBoxLabel=Po\u0161tovn\u00ED schr\u00E1nka
+homeFolderLabel=HomeFolder
+groupLabel=V\u00FDchoz\u00ED skupina:
+newStuffFolderLabel=Slo\u017Eka Nov\u00E9
+os_usernameLabel=N\u00E1zev OS:
+linkLabel=Propojen\u00ED:
+userStatusLabel=Status u\u017Eivatele:
+activeLabel=Aktivn\u00ED
+inactiveLabel=Neaktivn\u00ED
+loginTimeLabel=Posledn\u00ED p\u0159ihl\u00E1\u0161en\u00ED:
+
+user.TITLE=U\u017Eivatel
+person.TITLE=Osoba
+groupMember.TITLE=\u010Clen
+
+roleLabel=Role:
+gaLabel=Spr\u00E1vce skupiny:
+
+# citizenship
+Existing_Citizenship_MSG=Ob\u010Danstv\u00ED {0} je duplicitn\u00ED.
+Existing_Citizenship_TLE=Existuj\u00EDc\u00ED ob\u010Danstv\u00ED
+
+

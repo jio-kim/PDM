@@ -1,0 +1,92 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the print package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#04-Aug-2000  huangz                  Revise it for V7 project
+#16-Aug-2000  huangz                  Add the keys and change the key value of HTMLformat and textForm
+#17-Aug-2000  huangz                  Add the deliminator input to it.
+#24-Aug-2000  huangz                  Change the component is null error message to No object is selected.
+#30-Aug-2000  huangz                  Change the structure to content.
+#14-Sep-2000  huangz                  Add the more keys.
+#22-Sep-2000  huangz                  Modify the print format window.
+#21-Sep-2000  zheng                   add pint UG in Portal not done message
+#28-Sep-2000  Pete Windle (vobman)    Merge from int_v7.0
+#07-May-2001  wangp                   change Tc to i-Man
+#18-May-2001  wangp                   change i-Man back to Tc
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#09-May-2002  shankar                 Add the 'object count' and 'date' options
+#09-May-2002  shankar                 Merge into P8.0.0.7
+#28-Jan-2003  silvermm                sdlc1379 introduces application "extra" data
+#03-Apr-2003  Zhixin Huang            Add the key for selectPrintingColumn and hidePrintColumn.
+#22-May-2003  Zhixin Huang            Conflict resolutions for P9.0.0.1
+#13-Oct-2004  Geethika Chitturi       Changing UG to NX
+#15-Oct-2004  Geethika Chitturi       Merge from x_chittu_hyd_p10.0.0.5 to x_chittu_hyd_p10.0.0.6
+#18-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#19-Oct-2004  Geethika Chitturi       Merging to project branch
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for message center
+# ------------------------------
+printingObject = Printing ...
+
+# Entries for error message
+# ------------------------------
+notRightType = Can not print the selected objects.
+command.TITLE = Print
+
+formProperty.TITLE = Form Properties of
+objectProperty.TITLE = Object Properties of
+structurePrint.TITLE = Contents of
+currentStructure.TITLE = Current Displaying Contents of
+
+loadStatus.MSG = Loading print data ...
+noComponent = No object is selected.
+
+text = Text
+html = HTML
+#Fix for PR#6299790- for displaying localized value for "HTML Table" and "Level"
+HTMLTable=HTML Table
+levelProp=Level
+
+formatSetting.TITLE = Print Format
+formatSetting.TIP = Set result format.
+
+title = Title:
+delimit = Delimiter:
+realName = Real Name
+columnAlign = Column Alignment
+autoIndent = Auto Indent
+plusMinus = Show +/-
+revisionRule = Revision Rule
+objectCount = Object Count
+objects = objects
+date = Date
+properties = Properties
+
+selectPrintingColumn = Select Printing Columns
+hideColumnSelection = Hide Column Selection
+
+update = Update
+
+#<szheng> 15-Sept-2000 to display the msg that print NX is not done in Portal
+printUGNotDone=Print NX dataset is not available from the Rich Client. Please print from NX directly.
+level = level
+
+# sdlc1379 adds
+show=show
+extradata=Extra Data

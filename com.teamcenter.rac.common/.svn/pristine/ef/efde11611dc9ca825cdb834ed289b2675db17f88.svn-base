@@ -1,0 +1,44 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the genericselection package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: genericselection_locale.properties
+#   Module  : com.teamcenter.rac.common.genericselection
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#23-Aug-2000  wangp                   initial creation
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+
+genericSelectionButton.TITLE=\uC77C\uBC18 \uC120\uD0DD
+genericSelectionButton.TIP=\uC77C\uBC18 \uC120\uD0DD
+
+genericSelection.columnsShown=object_string,object_desc,owning_user,owning_group,
+genericSelectionQueryOp=\uC870\uD68C\uB97C \uC2E4\uD589\uD558\uB294 \uC911
+genericSelection.objectsNotFound=\uD574\uB2F9 \uAC80\uC0C9 \uC870\uAC74\uACFC \uC77C\uCE58\uD558\uB294 \uAC1C\uCCB4\uB97C \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4!
+genericSelection.objectsNotFound.TITLE=\uD56D\uBAA9\uC744 \uCC3E\uC744 \uC218 \uC5C6\uC74C!
+genericSelectionDefaultMessage=\uAC80\uC0C9 \uC870\uAC74\uC744 \uC785\uB825\uD558\uACE0 Enter\uB97C \uB204\uB974\uC2ED\uC2DC\uC624.
+genericSelectionObjectsFound=\uAC1C\uCCB4\uB97C \uCC3E\uC558\uC2B5\uB2C8\uB2E4.
+
+nextButton.TIP=\uB2E4\uC74C 5\uAC1C\uC758 \uCC3E\uC740 \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uD14C\uC774\uBE14\uB85C \uB85C\uB4DC\uD569\uB2C8\uB2E4.
+previousButton.TIP=\uC774\uC804 5\uAC1C\uC758 \uCC3E\uC740 \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uD14C\uC774\uBE14\uB85C \uB85C\uB4DC\uD569\uB2C8\uB2E4.
+allButton.TIP=\uCC3E\uC740 \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uBAA8\uB450 \uD14C\uC774\uBE14\uB85C \uB85C\uB4DC\uD569\uB2C8\uB2E4.
+appendButton.TIP=\uB2E4\uC74C 5\uAC1C\uC758 \uCC3E\uC740 \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uD14C\uC774\uBE14\uC5D0 \uCD94\uAC00\uD569\uB2C8\uB2E4.
+copyButton.TIP=\uC120\uD0DD\uD55C \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uD074\uB9BD\uBCF4\uB4DC\uB85C \uBCF5\uC0AC\uD569\uB2C8\uB2E4.
+
+shown=\uD45C\uC2DC
+loadPrevious=\uC774\uC804 \uCEF4\uD3EC\uB10C\uD2B8 \uC9D1\uD569 \uB85C\uB4DC
+loadNext=\uB2E4\uC74C \uCEF4\uD3EC\uB10C\uD2B8 \uC9D1\uD569 \uB85C\uB4DC
+loadAppend=\uB2E4\uC74C \uCEF4\uD3EC\uB10C\uD2B8 \uC9D1\uD569 \uCD94\uAC00
+loadAll=\uCC3E\uC740 \uCEF4\uD3EC\uB10C\uD2B8\uB97C \uBAA8\uB450 \uB85C\uB4DC
+

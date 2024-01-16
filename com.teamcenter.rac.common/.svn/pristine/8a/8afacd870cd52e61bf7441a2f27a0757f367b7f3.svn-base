@@ -1,0 +1,39 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2011.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the sitecheckout package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: sitecheckout_locale.properties
+#   Module  : com.teamcenter.rac.commands.sitecheckout
+#
+#===================================================================================================
+
+command.TITLE=Bloquer vers le site
+comments=Commentaires:
+changeid=ID de modification:
+targetSite=Site cible:
+
+confirmationText=Confirmez-vous de bloquer vers le site?
+checkOutToSite=Bloque vers le site
+error.TITLE=Blocage vers un site
+errorType=Blocage vers un site non autoris\u00E9 pour l'un des types d'objets s\u00E9lectionn\u00E9s.
+noSelectionError=Aucun objet n'est s\u00E9lectionn\u00E9 pour \u00EAtre bloqu\u00E9
+noItemRevError.MESSAGE=Les op\u00E9rations Lib\u00E9rer/Bloquer ne sont pas valables pour la/les lignes s\u00E9lectionn\u00E9es sans une R\u00E9vision d'article.
+noAttachmentError.MESSAGE=Les op\u00E9rations Lib\u00E9rer/Bloquer ne sont pas valables pour la/les lignes s\u00E9lectionn\u00E9es sans une pi\u00E8ce jointe.
+noPreferencesDefined=Sp\u00E9cifiez des pr\u00E9f\u00E9rences pour les types que vous voulez prendre en charge.\nV\u00E9rifiez la pr\u00E9f\u00E9rence %1$s.
+
+objectCheckedOutLocally.MESSAGE=L'objet "%1$s" est bloqu\u00E9 localement. Le blocage de site n'est pas autoris\u00E9.
+objectCheckedOutByDifferentSite.MESSAGE=L'objet "%1$s" est bloqu\u00E9 par un site diff\u00E9rent. Le blocage de site n'est pas autoris\u00E9.
+ObjectCheckedOutByDiffUser.MESSAGE=L'objet "%1$s" est bloqu\u00E9 par un utilisateur diff\u00E9rent. Le blocage de site n'est pas autoris\u00E9.
+ObjectOwnedByDiffSite.MESSAGE=L'objet "%1$s" appartient \u00E0 un site diff\u00E9rent. Le blocage de site n'est pas autoris\u00E9.
+readReservation.ERRORMESSAGE = Echec de lecture de l'autorisation pour l'objet "%1$s". L'action de blocage vers le site va \u00EAtre arr\u00EAt\u00E9e. Actualisez l'objet et r\u00E9essayez le blocage vers le site.
+objectIsReserved.ERRORMESSAGE = Cet objet est d\u00E9j\u00E0 bloqu\u00E9 par un autre site. V\u00E9rifiez les propri\u00E9t\u00E9s de l'objet.

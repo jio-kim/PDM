@@ -1,0 +1,57 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the openas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: openas_locale.properties
+#   Module  : com.teamcenter.rac.commands.openas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#21-Aug-2000  Mark Fawcett            add stuff for Item(Revision)
+#02-Jun-2003  wangp                   fix pr 4597374: change selection label
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = Otev\u0159\u00EDt v...
+selectDataset.TITLE = Vybrat dataset
+
+name = N\u00E1zev:
+description = Popis:
+type = Typ:
+tool = Pou\u017Eit\u00FD n\u00E1stroj:
+version = Verze:
+select = Vybrat n\u00E1stroj nebo soubor pod n\u00E1strojem k otev\u0159en\u00ED:
+
+attachments = P\u0159ipojen\u00ED
+application = Aplikace:
+
+# Open confirmation
+# ------------------------------
+oneFileFound=Byl nalezen jeden existuj\u00EDc\u00ED soubor. Chcete otev\u0159\u00EDt \u00FApln\u011B nov\u00FD soubor? \nPokud nechcete, bude otev\u0159en existuj\u00EDc\u00ED soubor.
+moreThanOneFileFound=Bylo nalezeno v\u00EDce existuj\u00EDc\u00EDch soubor\u016F. Chcete otev\u0159\u00EDt \u00FApln\u011B nov\u00FD soubor? \nPokud nechcete, vyberte soubor k otev\u0159en\u00ED.
+
+# Messages for message center
+# ------------------------------
+loadingVersions = Na\u010Dten\u00ED verz\u00ED...
+loadingTools = Na\u010Dten\u00ED n\u00E1stroj\u016F...
+loadingFiles = Na\u010Dten\u00ED soubor\u016F...
+openingFile = Otev\u0159en\u00ED souboru...
+opening = Otev\u00EDr\u00E1n\u00ED...
+
+# Error Messages
+# ------------------------------
+notRightType = Nelze ovl\u00E1dat vybran\u00FD objekt
+error.TITLE = Otev\u0159\u00EDt v...
+
+noDataToFetch.MSG=K polo\u017Ece nebo revizi polo\u017Eky nejsou p\u0159ipojena \u017E\u00E1dn\u00E1 data.
+

@@ -1,0 +1,39 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2011.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the sitecheckout package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: sitecheckout_locale.properties
+#   Module  : com.teamcenter.rac.commands.sitecheckout
+#
+#===================================================================================================
+
+command.TITLE=Checkout nel sito
+comments=Commenti:
+changeid=ID modifica:
+targetSite=Sito di destinazione:
+
+confirmationText=Eseguire il checkout nel sito?
+checkOutToSite=Checkout nel sito
+error.TITLE=Checkout sito
+errorType=Il checkout nel sito non \u00E8 consentito per uno dei tipi di oggetto selezionati.
+noSelectionError=Non vi sono oggetti selezionati per il checkout
+noItemRevError.MESSAGE=Le operazioni di checkin/checkout nel sito non sono valide per le linee selezionate senza un item revision.
+noAttachmentError.MESSAGE=Le operazioni di checkin/checkout non sono valide per le linee selezionate senza un oggetto allegato.
+noPreferencesDefined=Non \u00E8 stata specificata alcuna preferenza per i tipi da supportare.\nControllare la preferenza %1$s.
+
+objectCheckedOutLocally.MESSAGE=L'oggetto "%1$s" \u00E8 in checkout localmente, il checkout del sito non \u00E8 consentito. 
+objectCheckedOutByDifferentSite.MESSAGE=L'oggetto "%1$s" \u00E8 in checkout presso un altro sito, il checkout del sito non \u00E8 consentito.
+ObjectCheckedOutByDiffUser.MESSAGE=L'oggetto "%1$s" \u00E8 in checkout presso un altro utente, il checkout del sito non \u00E8 consentito.
+ObjectOwnedByDiffSite.MESSAGE=L'oggetto "%1$s" \u00E8 in checkout presso un altro sito, il checkout del sito non \u00E8 consentito.
+readReservation.ERRORMESSAGE = Errore durante la lettura della prenotazione dell'oggetto "%1$s". Interruzione dell'azione di checkout del sito. Aggiornare l'oggetto e ripetere il checkout del sito.
+objectIsReserved.ERRORMESSAGE = L'oggetto \u00E8 gi\u00E0 in checkout presso un altro sito. Per maggiori dettagli, controllare le propriet\u00E0 dell'oggetto.

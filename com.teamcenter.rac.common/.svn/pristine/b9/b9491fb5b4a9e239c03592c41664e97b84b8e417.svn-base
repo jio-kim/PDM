@@ -1,0 +1,41 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the pomclassattributetree package.  This
+#                   is an internal file so therefore only TC PBU developers should be modifying
+#                   this file.  To make changes please modify the pomclassattributetree_user.properties file.  Do
+#                   NOT modify this file.  The pomclassattributetree_user.properties file allows properties
+#                   found in this file to be over-written but not destroyed.
+#
+#   Filename: pomclassattributetree.properties
+#   Module  : com.teamcenter.rac.common.pomclassattributetree
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#05-Mar-1999  chenm                   initial implementation
+#25-Mar-1999  chenm                   change wording
+#12-Aug-1999  wangp                   icon names are changed to all lowercase
+#08-Sep-1999  wangp                   merge to cypress
+#07-Feb-2000  mccollr                 Modified the import statement.
+#11-Feb-2000  mccollr                 Remove the localization keys and place within the locale file.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#21-Nov-2001  Zhixin Huang            Add the relation icons to it.
+#25-Jul-2002  faming                  refBy icon
+#25-Jul-2002  faming                  merged from P8101
+#15-Nov-2002  israeli                 Adding extLinkDefault.gif
+#05-Nov-2004  Zhixin Huang            Ehance it in order to support LOV enhancement project.
+#05-Nov-2004  faming                  merge Zhixin's codes into lov project branch
+#18-Nov-2004  faming                  V10 LOV Enhancement Project
+#07-Jan-2005  faming                  V10 LOV Enhancement Project to Phase 8
+#24-Jan-2005  faming                  V10 LOV Enhancement Project
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#01-Feb-2005  Zhixin Huang            Resolve conflicts for p10.0.0.10
+#24-Feb-2005  Zhixin Huang            Change the icon from gif to png file and clean up the entries phase 2.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+import=com.teamcenter.rac.common.common

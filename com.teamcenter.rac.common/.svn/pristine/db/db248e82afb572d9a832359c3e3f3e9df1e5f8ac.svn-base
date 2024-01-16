@@ -1,0 +1,65 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the dialogs package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#*==================================================================================================
+
+# Change search dialog.
+DefaultSearch=V\u00FDchoz\u00ED hled\u00E1n\u00ED
+ChangeButton.Label=Zm\u011Bna...
+General=Obecn\u00FD
+instrct1=Pamatovat si moje posledn\u00ED
+instrct2=hled\u00E1n\u00ED
+FindSearch=Naj\u00EDt hled\u00E1n\u00ED
+ChangeSearchButton.Label=Zm\u011Bnit hled\u00E1n\u00ED
+ChangeSearchDialog.TITLE=Zm\u011Bnit hled\u00E1n\u00ED
+AdvancedButton.Label=Pokro\u010Dil\u00E9...
+CloseButton.Label=Zav\u0159\u00EDt
+SearchHistory=Historie hled\u00E1n\u00ED
+SystemDefinedSearches=Hled\u00E1n\u00ED definov\u00E1na syst\u00E9mem
+ShowOptions=Zobrazit mo\u017Enosti
+HideOptions=Skr\u00FDt mo\u017Enosti
+NewFolders=Nov\u00E9 slo\u017Eky...
+Delete=Odstranit
+Rename=P\u0159ejmenovat
+Paste=Vlo\u017Eit
+RenameSavedSearches.TITLE=P\u0159ejmenovat slo\u017Eku Moje ulo\u017Een\u00E9 hled\u00E1n\u00ED
+RenameSavedSearches.HEADER=P\u0159ejmenovat slo\u017Eku Moje ulo\u017Een\u00E9 hled\u00E1n\u00ED
+NewSavedSearchFolder=Nov\u00E1 slo\u017Eka ulo\u017Een\u00E9ho hled\u00E1n\u00ED
+FolderName=N\u00E1zev slo\u017Eky:
+MoreFolders=V\u00EDce slo\u017Eek
+LessFolders=M\u00E9n\u011B slo\u017Eek
+DeletingFolderWithContentsReminder=Odstran\u011Bn\u00EDm slo\u017Eky neodstran\u00EDte obsah slo\u017Eky. Chcete pokra\u010Dovat?
+DeletingFolderWithOutContentsReminder=Chcete odstranit vybranou slo\u017Eku?
+# Keys for invalid names
+# --------------------------------
+invalidName.TITLE=Neplatn\u00FD n\u00E1zev
+emptyName.MSG=N\u00E1zev nem\u016F\u017Ee b\u00FDt pr\u00E1zdn\u00FD.
+duplicateName.MSG=Bylo nalezeno syst\u00E9mem definovan\u00E9 hled\u00E1n\u00ED se stejn\u00FDm n\u00E1zvem. Zvolte jin\u00FD n\u00E1zev.
+
+NewMySavedSearchFolder=P\u0159idat novou slo\u017Eku Moje ulo\u017Een\u00E9 hled\u00E1n\u00ED
+DeleteMySavedSearchFolder=Odstranit novou slo\u017Eku Moje ulo\u017Een\u00E9 hled\u00E1n\u00ED
+DeleteMySavedSearch=Odebrat slo\u017Eku Moje ulo\u017Een\u00E9 hled\u00E1n\u00ED
+renamingSavedSearches.MESSAGE=P\u0159ejmenovat slo\u017Eku Moje ulo\u017Een\u00E9 hled\u00E1n\u00ED
+SetDefaultSearch.MESSAGE=Nastavit v\u00FDchoz\u00ED hled\u00E1n\u00ED
+SetSearchHistoryLimit.MESSAGE=Zm\u011Bnit omezen\u00ED historie hled\u00E1n\u00ED
+ClearSearchHistory.MESSAGE=Smazat historii hled\u00E1n\u00ED
+PasteToMySavedSearches.MESSAGE=Vlo\u017Eit do slo\u017Eky Moje ulo\u017Een\u00E1 hled\u00E1n\u00ED
+SearchNameFormat.MESSAGE=Maxim\u00E1ln\u00ED d\u00E9lka n\u00E1zvu ulo\u017Een\u00E9ho hled\u00E1n\u00ED je 32 znak\u016F. N\u00E1zev ulo\u017Een\u00E9ho hled\u00E1n\u00ED nesm\u00ED obsahovat levou lomenou z\u00E1vorku, pravou lomenou z\u00E1vorku a st\u0159edn\u00EDk.
+ExpandMySavedSearchFolder=Rozbalit slo\u017Eku hled\u00E1n\u00ED
+ValidatingSearchName=Ov\u011B\u0159ov\u00E1n\u00ED n\u00E1zvu hled\u00E1n\u00ED.
+
+newName.LABEL= Nov\u00FD n\u00E1zev:
+ok=OK
+apply=Pou\u017E\u00EDt
+cancel=Storno
+shared=Je sd\u00EDleno

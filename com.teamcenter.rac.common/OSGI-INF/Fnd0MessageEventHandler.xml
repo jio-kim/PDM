@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.common.services.Fnd0MessageEventHandler">
+   <implementation class="com.teamcenter.rac.commands.subscribe.Fnd0MessageEventHandler"/>
+   <service>
+      <provide interface="org.osgi.service.event.EventHandler"/>
+   </service>
+   <property name="event.topics" type="String" value="org/eclipse/ui/Selection/Changed">
+        
+    </property>
+</scr:component>

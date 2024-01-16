@@ -1,0 +1,76 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the printwizard package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#30-May-2002  Endi Wu                 Initial creation
+#17-Jun-2002  Endi Wu                 Corrent the date for header and eliminate duplicate entries
+#31-Aug-2005  Paul Jackson            add panel to select property to show in where used report
+#08-Sep-2005  Paul Jackson            where used filter selection panel
+#29-Sep-2005  Paul Jackson            include subtypes option
+#$HISTORY$
+#=================================================================================================*/
+
+# Wizard Dialog
+# ------------------------------------------------
+refsWizardDialog.TITLE=\uCC38\uC870\uAE30 \uC778\uC1C4 \uB9C8\uBC95\uC0AC
+
+## home panel
+refsHomeHeader=1\uB2E8\uACC4: \uC544\uB798\uC5D0\uC11C \uC120\uD0DD
+optionQuestion=\uB2E4\uC74C \uD56D\uBAA9\uC758 \uAD6C\uC870\uB97C \uC778\uC1C4\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+whereUsed=\uC0AC\uC6A9 \uC704\uCE58
+whereReferenced=\uCC38\uC870 \uC704\uCE58
+whereReferencedPOM=\uCC38\uC870 \uC704\uCE58(POM)
+
+## depth panel
+depthHeader=2\uB2E8\uACC4: \uAE4A\uC774 \uC120\uD0DD
+allLevelsWithInformation=\uBAA8\uB4E0 \uC218\uC900(\uAC80\uC0C9 \uC2DC\uAC04\uC774 \uC624\uB798 \uAC78\uB9B4 \uC218 \uC788\uC74C)
+
+## where-used rule panel
+ruleHeader=3\uB2E8\uACC4:
+selectRule=\uC0AC\uC6A9 \uC704\uCE58 \uADDC\uCE59\uC744 \uC120\uD0DD\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+rule=\uC0AC\uC6A9 \uC704\uCE58 \uADDC\uCE59
+
+##  Where used property selection panel.
+propHeader=\uC18D\uC131
+selectProp=\uBCF4\uACE0\uC11C\uC5D0 \uD45C\uC2DC\uD560 \uC18D\uC131 \uC120\uD0DD
+
+##  Where used filter selection panel.
+wuFilterHeader=\uC544\uC774\uD15C \uC720\uD615
+selectFilter=\uACB0\uACFC\uB97C \uD544\uD130\uB9C1\uD560 \uC544\uC774\uD15C \uC720\uD615 \uC120\uD0DD
+filterAt=\uB2E4\uC74C\uC5D0\uC11C \uD544\uD130\uB9C1:
+allLevels=\uBAA8\uB4E0 \uC218\uC900
+topLevel=\uCD5C\uC0C1\uC704 \uB2E8\uACC4\uB9CC
+includeSubtypes=\uD558\uC704 \uC720\uD615 \uD3EC\uD568
+
+## final panel
+refsFinalHeader=3\uB2E8\uACC4
+step=\uB2E8\uACC4
+confirmPrintResult=\uACB0\uACFC\uB97C \uC778\uC1C4\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+confirmGenerateReport = \uBCF4\uACE0\uC11C\uB97C \uC0DD\uC131\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+loading=\uB85C\uB4DC
+whereUsedOn=\uC0AC\uC6A9 \uC704\uCE58:
+whereReferencedOn=\uCC38\uC870 \uC704\uCE58:
+whereReferencedPomOn = \uCC38\uC870 \uC704\uCE58(POM):
+report=\uAD6C\uC870 \uBCF4\uACE0\uC11C \uC0DD\uC131
+htmlReport=HTML/\uD14D\uC2A4\uD2B8 \uBCF4\uACE0\uC11C \uC0DD\uC131
+yes=\uC608
+
+## structure report
+objectColumn=\uAC1C\uCCB4
+typeColumn=\uC720\uD615
+relationColumn=\uAD00\uACC4
+fromPse=PSE\uB85C \uBD80\uD130
+all=\uBAA8\uB450
+
+report.TITLE = \uBCF4\uACE0\uC11C

@@ -1,0 +1,10 @@
+# Default threshold for LOV combobox
+lovComboLimit=500
+group.ICON=icons/group_16.png
+user.ICON=icons/user_16.png
+
+# Keys for LOV popup button
+LOVPopupButton.TIP=Pulse aqu\u00ED para cargar la lista de valores.
+LOV.ICON=icons/lov_16.png
+
+OccTypeComboBox.OPERATION_MESSAGE=Cargando los tipos de ocurrencia

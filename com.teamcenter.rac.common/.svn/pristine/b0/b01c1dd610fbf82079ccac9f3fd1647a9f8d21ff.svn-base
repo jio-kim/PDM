@@ -1,0 +1,154 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the organization package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: organization_locale.properties
+#   Module  : com.teamcenter.rac.common.organization
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Mar-2000  mccollr                 Initial Promote.
+#14-Mar-2000  wangp                   Add key for root node.
+#04-Oct-2001  wangp                   add more entries
+#05-Oct-2001  wangp                   Move org selection dlg key from common to common/organization
+#                                     Move group/role/user panel keys from common to common/organization
+#11-Oct-2001  wangp                   Fix merge problem
+#17-Oct-2001  wangp                   Modify noMatch message
+#02-Jun-2002  Sarma Cherukupalli      Promote deactivate group member
+#03-Jul-2002  Sarma Cherukupalli      Modify the tool tip on show/supress deactivate group member button
+#11-Feb-2003  wangp                   add msg for confirming loading search result
+#17-Apr-2003  x_brahma                added searchGroupRole.TIP
+#22-May-2003  Zhixin Huang            Conflict resolutions for P9.0.0.1
+#04-Mar-2004  wangp                   fix pr 2033901 per Rob M.
+#18-Oct-2004  Hugh Stewart            Last login time project.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#26-Feb-2006  Alisa Smith             PR5410098: FIxed spelling error.  Added "i" to adminstrator.
+#16-Mar-2006  liang                   De-imanization project
+#17-Mar-2006  liang                   merge to PLM1
+#$HISTORY$
+#=================================================================================================*/
+
+loadingGroupTree.MESSAGE=Hauptgruppen werden geladen...Bitte warten
+
+organization.TITLE=Organisation
+
+# Entries for OrgTreePanel
+# -------------------------------------------
+search.TIP=Suchkriterium f\u00FCr Gruppe/Rolle/Benutzer eingeben.
+searchText=Suchkriterien eingeben...
+emptyPanelText=W\u00E4hlen Sie bitte eine Gruppe, Rolle oder einen Benutzer aus der Liste aus...
+searchGroupRole.TIP=Geben Sie Kriterien f\u00FCr Gruppe/Rolle ein.
+groupButton.TIP=Gruppen suchen
+roleButton.TIP=Rollen suchen
+userButton.TIP=Benutzer suchen (basierend auf Benutzer-ID und Benutzername)
+searchButton.TIP=Wenn das Benutzerfeld nicht leer ist, suchen Sie nach Benutzern, indem Sie die Ergebnisse mit Rolle und Gruppe filtern. Wenn das Benutzerfeld leer und das Rollenfeld nicht leer ist, suchen Sie nach Rollen. Wenn sowohl das Benutzer- als auch das Rollenfeld leer sind und das Gruppenfeld nicht leer ist, suchen Sie nach Gruppen.
+userFieldText=Geben Sie die Benutzer-ID oder den Benutzernamen ein.
+userField.TIP=Kriterien f\u00FCr Benutzer-ID oder Benutzername: Ber\u00FCcksichtigung der Gro\u00DF-/Kleinschreibung, Platzhalter sind erlaubt.
+roleFieldText=Rollennamen eingeben
+roleField.TIP=Kriterien f\u00FCr Rollennamen: Platzhalter sind erlaubt.
+groupFieldText=Gruppennamen eingeben
+groupField.TIP=Kriterien f\u00FCr Gruppennamen: Platzhalter sind erlaubt.
+refreshButton.TIP=Organisationsbaumstruktur neu laden
+supressAllGMButton.TIP=Inaktive Gruppenmitglieder unterdr\u00FCcken
+showAllGMButton.TIP=Inaktive Gruppenmitglieder anzeigen
+
+localLabel=Lokal
+localUserButton.TIP=Lokale Benutzer suchen
+replicaLabel=Replikation
+replicaUserButton.TIP=Replikationsbenutzer suchen
+allLabel=Alle
+allUserButton.TIP=Alle Benutzer suchen
+filterByHomeSite.TIP=Benutzer nach Homesite filtern
+
+FilterBySite.LABEL=Nach Standort filtern
+FilterByHomeSite.LABEL=Nach Ausgangsstandort filtern
+
+searchingFor=Suchen nach
+inOrgTree=in dem Organisationsdiagramm.
+makeSelection=Auswahl vornehmen
+
+Group=Gruppe
+Role=Rolle
+User=Benutzer
+
+Local=Lokal
+Replica=Replikation
+All=alle
+Users=Benutzer
+
+noGroupFound=Keine Gruppen mit dem angegebenen Namen gefunden.
+noRoleFound=Keine Rollen mit dem angegebenen Namen gefunden.
+noUserFound=Keine Benutzer mit dem angegebenen Namen gefunden.
+
+noSearchInput=Keine Suchkriterien eingegeben.
+
+confirmSearchWithStar=Bei Verwendung eines * als Suchkriterien kann die Suche sehr viel Zeit in Anspruch nehmen.\nM\u00F6chten Sie trotzdem fortfahren?
+thereAre=Es wurden 
+confirmLoad=Objekte gefunden, m\u00F6chten Sie diese laden?
+search.TITLE=Suchen
+search=Suchen:
+projects=Projekte: 
+
+#Resource Pool options panel labels
+#----------------------------------
+resourcePoolPanelLabel=Ressourcenpooloptionen
+specificGroupRadioLabel=Festgelegte Gruppe
+anyGroupRadioLabel=Beliebige Gruppe
+anyMemberRadioLabel=Beliebiges Mitglied
+allMemberRadioLabel=Alle Mitglieder
+
+# Entries for OrganizationSelectionDialog class
+# ---------------------------------------------
+orgSelectionDialog.TITLE=Organisation-Auswahldialog...
+
+# Keys for the GroupPanel
+# -----------------------
+name=Name:
+descriptionLabel=Beschreibung:
+privilegeLabel=DBA-Berechtigung:
+parentLabel=\u00DCbergeordnete Gruppe:
+volumeLabel=Volume:
+roleLabel=Rollen:
+
+# Keys for the RolePanel
+# -----------------------
+groupLabel=Standardgruppe:
+nameLabel=Name:
+descriptionLabel=Beschreibung:
+
+#Keys for the UserPanel
+#-----------------------
+userIDLabel=Benutzer-ID:
+userNameLabel=Benutzername:
+volumeLabel=Standard-Volume:
+localVolumeLabel=Lokales Volume:
+mailBoxLabel=Mailbox
+homeFolderLabel=Pers\u00F6nliche Ablage
+groupLabel=Standardgruppe:
+newStuffFolderLabel=Ordner "Neue Daten"
+os_usernameLabel=OS-Name:
+linkLabel=Verkn\u00FCpfung:
+userStatusLabel=Benutzerstatus:
+activeLabel=Aktiv
+inactiveLabel=Inaktiv
+loginTimeLabel=Letzte Anmeldung:
+
+user.TITLE=Benutzer
+person.TITLE=Person
+groupMember.TITLE=Mitglied
+
+roleLabel=Rolle:
+gaLabel=Gruppenadministrator:
+
+# citizenship
+Existing_Citizenship_MSG=Staatsb\u00FCrgerschaft {0} ist doppelt vorhanden.
+Existing_Citizenship_TLE=Vorhandene Staatsb\u00FCrgerschaft
+
+

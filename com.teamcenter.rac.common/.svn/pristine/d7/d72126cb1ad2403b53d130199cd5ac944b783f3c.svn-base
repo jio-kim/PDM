@@ -1,0 +1,45 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the changeownership package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: changeownership.properties
+#   Module  : com.teamcenter.rac.commands.changeownership
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#14-Feb-2000  x_subrat                initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = Zmie\u0144 w\u0142a\u015Bciciela
+
+selectUser.TIP = Wybierz nowego w\u0142a\u015Bciciela
+
+confirmationText = Czy na pewno chcesz zmieni\u0107 w\u0142a\u015Bciciela?
+
+changeOwnershipObjects = Zmie\u0144 w\u0142a\u015Bciciela obiekt\u00F3w ...
+
+noSelection = Nie wybrano \u017Cadnych obiekt\u00F3w w celu zmiany w\u0142a\u015Bciciela
+
+error.TITLE = Zmiana w\u0142a\u015Bciciela...
+selectionError.MSG =  Wybrany obiekt nie jest u\u017Cytkownikiem
+
+newOwnerLabel = Nowy w\u0142a\u015Bciciel
+
+sameUser.TITLE = Wybrano w\u0142a\u015Bciciela - u\u017Cytkownika
+sameUser.MSG = Wybrany u\u017Cytkownik jest ju\u017C w\u0142a\u015Bcicielem nast\u0119puj\u0105cych element\u00F3w:
+
+noOwningUserComponents.MSG=Z nast\u0119puj\u0105cymi wybranymi elementami nie powi\u0105zano \u017Cadnego w\u0142a\u015Bciciela - u\u017Cytkownika. Przeniesione zostan\u0105 tylko elementy z okre\u015Blon\u0105 w\u0142asno\u015Bci\u0105.
+
+#A list of items (items whose owner is already the user to be changed to) will be displayed preceding the following message.
+sameUserMoreToDisplay.MSG = i wi\u0119cej {0}.

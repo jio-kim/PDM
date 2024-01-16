@@ -1,0 +1,69 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2004 UGS, An PLM Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newworkcontext package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: workcontext_locale.properties
+#   Module  : com.teamcenter.rac.commands.workcontext
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#16-Jul-2004  Ming Fa                 Work Context Project
+#27-Aug-2004  faming                  V10 Work Context Project
+#09-Sep-2004  faming                  V10 Work Context Project
+#13-Sep-2004  faming                  V10 Work Context Project
+#16-Jun-2005  faming                  Implement paste error msg
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#06-Jun-2007  M.Ram Narsimhamurty     Added support for ADS Program Context
+#$HISTORY$
+#=================================================================================================*/
+
+newWorkcontext.TITLE=Nov\u00FD kontext pr\u00E1ce
+workcontext.TITLE=Kontext pr\u00E1ce
+assignWorkcontext.TITLE=P\u0159i\u0159adit kontext pr\u00E1ce
+
+name.LABEL = N\u00E1zev:
+desc.LABEL = Popis:
+group.LABEL = Skupina:
+role.LABEL = Role:
+user.LABEL = U\u017Eivatel:
+project.LABEL = {0}:
+
+allowSubgroups.LABEL = \u010Clenov\u00E9 podskupiny povoleni
+userSettingModifiable.LABEL = Upraviteln\u00E9 nastaven\u00ED u\u017Eivatele
+
+setCurrent.LABEL=Nastavit aktu\u00E1ln\u00ED
+setCurrent.MNEMONIC=S
+
+loadingData.MESSAGE = Na\u010D\u00EDt\u00E1n\u00ED dat
+
+creatingNewWorkContext = Vytv\u00E1\u0159en\u00ED nov\u00E9ho kontextu pr\u00E1ce
+failToCreate = Chyba p\u0159i vytv\u00E1\u0159en\u00ED kontextu pr\u00E1ce:
+newWorkContextError.TITLE = Nov\u00FD kontext pr\u00E1ce...
+
+newWorkContext_NoObjectSelected.MSG = Mus\u00ED b\u00FDt vybr\u00E1n objekt.
+
+failToPaste = Chyba p\u0159i vkl\u00E1d\u00E1n\u00ED kontextu pr\u00E1ce:
+pasteWorkContextError.TITLE = Vlo\u017Eit kontext pr\u00E1ce...
+pasteWorkContextError.MSG = Pravidla relac\u00ED neumo\u017E\u0148uj\u00ED vlo\u017Een\u00ED kontextu pr\u00E1ce do vybran\u00E9ho objektu.
+
+workContextButton.TITLE = Definice kontextu pr\u00E1ce
+workContextButton.TIP=Zobrazte definici vybran\u00E9ho kontextu pr\u00E1ce.
+
+saveWorkContext.MESSAGE=Ukl\u00E1d\u00E1n\u00ED kontextu pr\u00E1ce...
+
+inputIncompleteness.TITLE = Ukl\u00E1d\u00E1n\u00ED kontextu pr\u00E1ce...
+inputIncompleteness.MESSAGE = Zad\u00E1n\u00ED nen\u00ED dokon\u010Deno, je nutn\u00E9 nastavit hodnoty pro aspo\u0148 jednu z n\u00E1sleduj\u00EDc\u00EDch polo\u017Eek: \u201ESkupina\u201C, \u201ERole\u201C, \u201EU\u017Eivatel\u201C a \u201E{0}\u201C.
+
+# Messages and keys for the Abort Message Box 
+# ----------------------------------------------
+aborted=Vytv\u00E1\u0159en\u00ED kontextu pr\u00E1ce bylo p\u0159eru\u0161eno... Kontext pr\u00E1ce byl vytvo\u0159en a \u010D\u00E1ste\u010Dn\u011B vlo\u017Een
+aborted.TITLE=Zru\u0161eno
+
+aborting=Prob\u00EDh\u00E1 zru\u0161en\u00ED...

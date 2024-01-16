@@ -1,0 +1,167 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the commandstree package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: commandstree_locale.properties
+#   Module  : com.teamcenter.rac.commandsuppression.commandstree
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#19-Jul-2000  Ravi Yechuri            Initial Creation
+#25-Jul-2000  Ravi Yechuri            Merged local Changes
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#11-Nov-2013  Prerna kumari           added changes for showVendorParts
+#$HISTORY$
+#=================================================================================================*/
+
+dhtmlMenu.NAME=Specifick\u00FD pro tenk\u00E9ho klienta
+viewPSAction.NAME=Struktura produktu
+viewMSVAction.NAME=Pl\u00E1nova\u010D procesu v\u00FDroby
+whereClassifiedAction.NAME=Kde je klasifikov\u00E1no
+whereReferencedAction.NAME=Kde je odkazov\u00E1no
+whereUsedAllAction.NAME=Kde je pou\u017Eito (v\u0161echny revize)
+whereUsedAction.NAME=Kde je pou\u017Eito
+whereUsedTopAction.NAME=Kde je pou\u017Eito (nejvy\u0161\u0161\u00ED \u00FArove\u0148)
+whereUsedPreciseAction.NAME=Kde je pou\u017Eito (Precise)
+thumbnailAction.NAME=N\u00E1hled
+openInRAC.NAME=Otev\u0159\u00EDt v Rich Client
+plmxmlExportAction.NAME=Export PLMXML
+plmxmlImportAction.NAME=Import PLMXML
+bomCompareAction.NAME=Porovn\u00E1n\u00ED rozpisky
+viewInContextAction.NAME=Zobrazit v kontextu
+exportConfigNXAssemblyAction.NAME=Export konfigurovan\u00E9 sestavy NX
+downloadFilesAction.NAME=St\u00E1hnout soubory
+gdisViewAction.NAME=Zobrazen\u00ED GDIS
+gdisEditAction.NAME=\u00DApravy GDIS
+HTMLReportAction.NAME=HTML v\u00FDpis
+decisionsAction.NAME=Rozhodnut\u00ED
+viewSubtaskAction.NAME=D\u00EDl\u010D\u00ED \u00FAkol
+viewSubtaskParentAction.NAME=Rodi\u010D d\u00EDl\u010D\u00EDho \u00FAkolu
+viewProcessAction.NAME=Proces
+dueDateDurationAction.NAME=Datum/trv\u00E1n\u00ED splatnosti
+assignAllTasksAction.NAME=P\u0159i\u0159adit v\u0161echny \u00FAkoly
+viewPerChartAction.NAME=Graf PERT
+viewMSEPVAction.NAME=MSEPV
+generateMEReportAction.NAME=Generovat v\u00FDpis ME
+addAlternateAction.NAME=P\u0159idat nahrazen\u00ED
+removeAlternateAction.NAME=Odstranit/preferovat nahrazen\u00ED
+pasteGlobalAlternateAction.NAME=Vlo\u017Eit glob\u00E1ln\u00ED alternativu 
+addGlobalAlternateAction.NAME=P\u0159idat glob\u00E1ln\u00ED alternativu
+openBookmarkAction.NAME=NX/Mgr
+toggleViewerAction.NAME=Skr\u00FDt/zobrazit prohl\u00ED\u017Ee\u010D
+asTopLineAction.NAME=Jako horn\u00ED \u0159\u00E1dek
+showUnconfiguredByDateAction.NAME=Zobrazit nekonfigurovan\u00E9 podle data
+viewSupersedureAction.NAME=Nahrazen\u00ED...
+snapshotAction.NAME=Sn\u00EDmek...
+OnDemandValidate.NAME=Ov\u011B\u0159it v\u00FDskyty...
+findInDisplayAction.NAME=Naj\u00EDt v zobrazen\u00ED
+relateAlternatesAction.NAME=P\u0159ipojit alternativn\u00ED
+optionalItemsAction.NAME=Voliteln\u00E9 polo\u017Eky
+sendToExternalSystemAction.NAME=Odeslat extern\u00EDmu syst\u00E9mu
+editClassificationObjectAction.NAME=Upravit objekt klasifikace
+addImageAction.NAME=P\u0159idat obr\u00E1zek
+deleteImageAction.NAME=Odstranit obr\u00E1zek
+viewTreeAction.NAME=Strom
+viewQueryAction.NAME=Dotaz
+classImageAction.NAME=Obr\u00E1zek t\u0159\u00EDdy
+instanceImageAction.NAME=Obr\u00E1zek instance
+createBOMChangesAction.NAME=Vytvo\u0159it zm\u011Bny rozpisky
+createSupersedureAction.NAME=Vytvo\u0159it nahrazen\u00ED
+createTransferSupersedureAction.NAME=Vytvo\u0159it p\u0159enos (nahrazen\u00ED)
+viewExpandAction.NAME=Rozbalit
+viewCollapseAction.NAME=Sbalit
+itemReportAction.NAME=V\u00FDpisy polo\u017Eek
+changePasswordAction.NAME=Zm\u011Bnit heslo
+assignFSCsAction.NAME=P\u0159i\u0159adit FSC
+addToFavoritesAction.NAME=P\u0159idat k obl\u00EDben\u00FDm
+LaunchAdhocAction.NAME=Otev\u0159\u00EDt ve vizualizaci \u017Eivotn\u00EDho cyklu
+newVendorAction.NAME=Prodejce...
+newBidPackageAction.NAME=Bal\u00ED\u010Dek Bid...
+newCommercialPartAction.NAME=Komer\u010Dn\u00ED sou\u010D\u00E1st...
+newManufacturerPartAction.NAME=Sou\u010D\u00E1st prodejce...
+propertiesAction.NAME=Vlastnosti
+editPropertiesAction.NAME=Vlastnosti
+reviseAction.NAME=Revidovat...
+saveAsAction.NAME=Ulo\u017Eit jako...
+viewRMAction.NAME=Po\u017Eadavky
+viewDCAction.NAME=N\u00E1vrh kontextu
+tcgsSearch.NAME=Sledov\u00E1n\u00ED glob\u00E1ln\u00EDch slu\u017Eeb
+openInUGAction.NAME=NX/Mana\u017Eer
+openInJTEditorAction.NAME=Editor JT
+openInSEECAction.NAME=aplikace Solid Edge
+importSpecAction.NAME=Importovat specifikaci...
+exportExcelAction.NAME=Export do aplikace MS Excel
+manageGlobalAlternatesCommand.NAME=Glob\u00E1ln\u00ED alternativy
+viewmarkupAction.NAME=N\u00E1hled/p\u0159ipom\u00EDnky
+digitalsignAction.NAME=Podepsat
+cancelsignAction.NAME=Zru\u0161it podeps\u00E1n\u00ED
+addVendorRoleAction.NAME=P\u0159idat roli prodejce...
+removeVendorRoleAction.NAME=Odebrat pravidlo prodejce...
+addBidPackageLineItemAction.NAME=P\u0159idat polo\u017Eku \u0159\u00E1dku bal\u00ED\u010Dku Bid...
+changeVendorAction.NAME=Zm\u011Bnit prodejce...
+addBatchPrint.NAME=D\u00E1vkov\u00FD tisk...
+builderReportAction.NAME=V\u00FDpisy tvorby v\u00FDpis\u016F
+exportToGMSAction.NAME=Exportovat do GMS
+publishODSAction.NAME=Publikovat na v\u00FDchoz\u00ED ODS
+unpublishODSAction.NAME=Zru\u0161it publikov\u00E1n\u00ED z v\u00FDchoz\u00EDho ODS
+applicationHelpAction.NAME=Webov\u00FD soubor
+frameworkHelpAction.NAME=Obecn\u00FD soubor
+requestSubstanceDeclarationAction.NAME=Vy\u017E\u00E1dat deklaraci substance...
+requestCMDAction.NAME=Po\u017Eadavek deklarace shody nerost\u016F...
+initiateSubsCmplCheckAction.NAME=Inicializovat kontrolu shody substance...
+applyExemptionAction.NAME=Pou\u017E\u00EDt v\u00FDjimky...
+showMaterialSummaryAction.NAME=Zobrazit \u0159\u00EDd\u00EDc\u00ED panel materi\u00E1lu...
+showComplianceSummaryAction.NAME=Zobrazit \u0159\u00EDd\u00EDc\u00ED panel povolen\u00ED...
+
+dhtmlNewMenu.NAME=Nov\u00FD
+dhtmlViewMenu.NAME=Pohled
+dhtmlToolsMenu.NAME=N\u00E1stroje
+dhtmlActionsMenu.NAME=Akce
+dhtmlHelpMenu.NAME=N\u00E1pov\u011Bda
+dhtmlEditMenu.NAME=Upravit
+dhtmlRelatedAlternatesMenu.NAME=P\u0159ipojen\u00E9 alternativn\u00ED
+dhtmlAuditMenu.NAME=Audit
+dhtmlReportsMenu.NAME=V\u00FDpisy
+dhtmlglobalservicesMenu.NAME=Glob\u00E1ln\u00ED slu\u017Eby
+
+newChangeWizardMenu.NAME=Zm\u011Bnit
+newCreateCMAction.NAME=Vytvo\u0159it...
+newContextCMAction.NAME=Vytvo\u0159en\u00ED kontextu...
+newDerivedCMAction.NAME=Odvodit zm\u011Bnu...
+
+editParamReqParams.NAME=Parametry parametrick\u00E9ho po\u017Eadavku
+exportObjectsAction.NAME=Exportovat p\u0159es AIF
+embeddedSwExplorerMenu.NAME=Vestav\u011Bn\u00FD pr\u016Fzkumn\u00EDk softwaru
+showAssociatedProcessorsMenu.NAME=Zobrazit asociovan\u00E9 procesory
+showAssociatedSoftwareMenu.NAME=Zobrazit asociovan\u00FD software
+showAssociatedProcessorAction.NAME=Vestav\u011Bn\u00ED
+showProcessorAccessedAction.NAME=P\u0159istoupil
+showProcessorGatewayAction.NAME=Gateway
+showAssociatedSoftwareAction.NAME=Vestav\u011Bno
+showUsedSoftwareAction.NAME=Pou\u017E\u00EDv\u00E1
+showDependentSoftwareAction.NAME=Pou\u017Eil
+showMakeFromStocksAction.NAME=Zobrazit p\u016Fvod z p\u0159\u00EDdavk\u016F
+configureVariantAction.NAME=Konfigurace varianty
+stockSelectionRuleAction.NAME=Pravidlo v\u00FDb\u011Bru p\u0159\u00EDdavku
+embeddedSoftwareManagerMenu.NAME=Vestav\u011Bn\u00FD spr\u00E1vce softwaru
+associateSoftwaretoMenu.NAME=Asociovat software s
+associateProcessortoMenu.NAME=Asociovat procesor s
+removeSoftwareAssociationMenu.NAME=Odebrat asociativitu softwaru
+removeProcessorAssociationMenu.NAME=Odebrat asociativitu procesoru
+associateSoftwareToProcessorAction.NAME=Procesor
+associateSoftwareToSoftwareAction.NAME=Software
+associateProcessorToGatewayAction.NAME=Gateway
+removeSoftwareToSoftwareAction.NAME=Software
+removeSoftwareToProcessorAction.NAME=Software
+removeProcessorAction.NAME=Gateway
+
+newRaiseActionItemAction.NAME=Vyvolat polo\u017Eku akce...
+makeFromAction.NAME=Vytvo\u0159it z
+showVendorPartsAction.NAME=Zobrazit sou\u010D\u00E1sti prodejce

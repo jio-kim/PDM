@@ -1,0 +1,29 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the purge package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: purge_locale.properties
+#   Module  : com.teamcenter.rac.commands.purge
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+noObjectsSelected = \uB370\uC774\uD130 \uC9D1\uD569\uC774\uB098 \uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uC120\uD0DD\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.
+
+command.TITLE    = \uC81C\uAC70
+
+confirmationText = \uC81C\uAC70\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+
+purgeStatus.MSG = \uC81C\uAC70...

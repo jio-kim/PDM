@@ -1,0 +1,110 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the newalteranteid package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newalternateid_locale.properties
+#   Module  : com.teamcenter.rac.commands.newalternateid
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Jun-2003  wangp                   initial create
+#08-Jul-2003  Endi Wu                 Add new entry
+#08-Jul-2003  Endi Wu                 Merge to Shah branch
+#14-Oct-2003  wangp                   fix pr4855293: add selectItemRev
+#15-Oct-2003  wangp                   fix pr pr4855293
+#07-Jul-2005  Satish Katte            PR fix 1410178
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = Neue ID
+newAliasId.TITLE=Neue Alias-ID
+alternateID=Alternative Kennung
+aliasID=Alias-ID
+newAltIdFor=Neue alternative ID f\u00FCr
+newAliasId=Neue Alias-ID
+
+# Select Command Panel
+# ------------------------------
+selectCommand.LABEL=Neue alternative oder neue Alias-ID erstellen
+selectCommandStep.NAME=Befehl ausw\u00E4hlen
+selectCommandStep.TOOLTIP=Neue alternative oder neue Alias-ID erstellen
+
+createAlternateId=Neue alternative ID erstellen
+createAliasId=Neue Alias-ID erstellen
+selectItemRev.LABEL=W\u00E4hlen Sie den Element\u00E4nderungsstand aus:
+
+# New Alternate ID Info Panel
+# -----------------------------
+alternateIdInfo.LABEL=Grundlegende Informationen zum Erstellen einer Kennung festlegen. 
+alternateIdInfoStep.NAME=Grundlegende Kennungsinformationen eingeben
+alternateIdInfoStep.TOOLTIP=Grundlegende Kennungsinformationen festlegen
+
+step1=Kontext ausw\u00E4hlen:
+step2=Typ ausw\u00E4hlen:
+step3=Grundlegende Informationen eingeben:
+
+id = ID
+rev = \u00C4nderungsstand
+name = Name
+assign = Zuweisen
+description = Beschreibung:
+alternateInformation = ID-Informationen
+
+# Additional Alternate ID info panel
+# --------------------------------------
+additionalIdInfo.LABEL=Zus\u00E4tzliche Eigenschaften der Kennungsinformationen festlegen
+additionalIdInfoStep.NAME=Zus\u00E4tzliche ID-Informationen eingeben
+additionalIdInfoStep.TOOLTIP=Zus\u00E4tzliche ID-Informationen definieren.
+
+# Additional Alternate REV info panel
+# --------------------------------------
+additionalRevInfo.LABEL=Zus\u00E4tzliche Eigenschaften der \u00C4nderungsstandinformationen festlegen.
+additionalRevInfoStep.NAME=Zus\u00E4tzliche \u00C4nderungsstandinformationen eingeben
+additionalRevInfoStep.TOOLTIP=Zus\u00E4tzliche \u00C4nderungsstandinformationen definieren.
+
+# Display Option Panel
+# --------------------------
+displayOptionInfo.LABEL=Anzeigeoptionen f\u00FCr alternative ID und \u00C4nderungsstand w\u00E4hlen
+displayOptionStep.NAME=Anzeigeoptionen festlegen
+displayOptionStep.TOOLTIP=Anzeigeoptionen festlegen
+
+idDisplay=Elementkennung als Standardanzeige verwenden
+revDisplay=\u00C4nderungsstandkennung als Standardanzeige verwenden
+
+# Finish Panel
+# -----------------------------
+newAlternateIdFinishInfo.LABEL=Neue Kennung erstellen
+
+# Messages for message center
+# ------------------------------
+loadingPanels=Fenster werden geladen...
+updatingPanels=Fenster werden aktualisiert...
+creatingNewIds=Neue IDs werden erstellt
+settingIdInfo=Eigenschaften der neuen IDs werden festgelegt
+savingIds=Neue IDs werden gespeichert
+pastingIds=Neue Alias-IDs werden eingef\u00FCgt
+settingOptions=Anzeigeoptionen werden festgelegt
+
+pastingNewId=Neue Alias-IDs werden eingef\u00FCgt
+
+# Error Messages
+# ----------------------
+error.TITLE = Neue ID...
+
+failFindDialog=Neuer Kennungsdialog konnte nicht gefunden werden.
+invalidSelection.MSG=Dieser Befehl gilt nur f\u00FCr Element\u00E4nderungsst\u00E4nde und/oder Elemente.
+noRule.MSG=Keine Regeln definiert f\u00FCr 
+reviseRule.MSG=Die ID wird aufgrund von Tiefenkopierregeln automatisch revisioniert.

@@ -1,0 +1,51 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2001 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the savefolder package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: savefolder_locale.properties
+#   Module  : com.teamcenter.rac.commands.savefolder
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Mar-2001  Zhixin Huang            Initial creation.
+#04-Apr-2001  Zhixin Huang            Clean code and finish document.
+#17-Sep-2001  Zhixin Huang            Merge down
+#19-Sep-2001  Zhixin Huang            change saveLoaded key value to "Current page".
+#02-Jan-2002  Zhixin Huang            Clean the code according to Rob's comments.
+#04-Sep-2002  Zhixin Huang            Fix PR 4616048 (Exception when there's nothing found).
+#18-Mar-2003  faming                  check out if query not executed
+#20-Mar-2003  faming                  merged to P8114
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#27-Jun-2003  faming                  change nothingFound back
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=\u30D5\u30A9\u30EB\u30C0\u306B\u4FDD\u5B58
+
+name = \u540D\u524D:
+description = \u8AAC\u660E:
+type = \u30BF\u30A4\u30D7:
+saveAll = \u898B\u3064\u304B\u3063\u305F\u5168\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8
+saveLoaded = \u73FE\u5728\u306E\u30DA\u30FC\u30B8
+resultPrefix = \u6B21\u306E\u30B3\u30F3\u30DD\u30FC\u30CD\u30F3\u30C8\u304C\u4FDD\u5B58\u3055\u308C\u307E\u3057\u305F\u3002\u4FDD\u5B58\u5148:
+under = \u89AA\u30C7\u30A3\u30EC\u30AF\u30C8\u30EA
+noPasteableObjects = \u691C\u7D22\u7D50\u679C\u306B\u30EF\u30FC\u30AF\u30B9\u30DA\u30FC\u30B9\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u304C\u542B\u307E\u308C\u3066\u3044\u306A\u3044\u305F\u3081\u3001\u691C\u7D22\u7D50\u679C\u304C\u4FDD\u5B58\u3055\u308C\u307E\u305B\u3093\u3067\u3057\u305F\u3002\u30D5\u30A9\u30EB\u30C0\u306B\u4FDD\u5B58\u3067\u304D\u308B\u306E\u306F\u30EF\u30FC\u30AF\u30B9\u30DA\u30FC\u30B9\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306E\u307F\u3067\u3059\u3002
+
+# Messages for message center
+# ----------------------
+loadingTypes = \u30D5\u30A9\u30EB\u30C0\u30BF\u30A4\u30D7\u3092\u30ED\u30FC\u30C9\u3057\u3066\u3044\u307E\u3059...
+abort = \u65B0\u898F\u30D5\u30A9\u30EB\u30C0\u3092\u958B\u304F\u306E\u3092\u4E2D\u6B62
+
+# Error Messages
+# ----------------------
+folderTypeError = \u30D5\u30A9\u30EB\u30C0\u30BF\u30A4\u30D7\u306E\u53D6\u5F97\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002
+error.TITLE = \u30D5\u30A9\u30EB\u30C0\u306B\u4FDD\u5B58 ...
+nothingFound = \u3053\u306E\u30AF\u30A8\u30EA\u306F\u3001\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u8FD4\u3057\u307E\u305B\u3093\u3067\u3057\u305F\u3002\u4FDD\u5B58\u3059\u308B\u3053\u3068\u304C\u3067\u304D\u307E\u305B\u3093\u3002

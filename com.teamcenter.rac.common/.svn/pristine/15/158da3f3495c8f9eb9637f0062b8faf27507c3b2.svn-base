@@ -1,0 +1,40 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the copy package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: replacecomponent_locale.properties
+#   Module  : com.teamcenter.rac.commands.replacecomponent
+#
+#===================================================================================================
+#   Date      Name                               Description of Change
+#14-Sep-2004  Ramabhadrakiran Suryadevara        Initial creation.
+#30-Sep-2004  Ramabhadrakiran Suryadevara  Added code for compartmentalizing AddComponentPanel code.
+#11-Oct-2004  Ramabhadrakiran Suryadevara  Merge
+#15-Oct-2004  Ramabhadrakiran Suryadevara  Merge
+#01-Nov-2004  S.R.Kiran               merge
+#22-Nov-2004  S.R.Kiran               Modified the value for the property replaceComp
+#10-Feb-2005  C van Dyke              New text for Replace Part in Product
+#22-Feb-2005  C van Dyke              ReplacePartCommand text
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+title = Nahradit n\u00E1vrh v produktu
+replacePartTitle=Nahradit sou\u010D\u00E1st v produktu
+noBOMLinesSelected=Nevybrali jste \u017E\u00E1dn\u00FD BOMLine. Vyberte pouze jeden BOMLine
+replaceComp=Nahradit n\u00E1vrh v produktu
+replacePartComp=Nahradit sou\u010D\u00E1st v produktu
+moreBOMLinesPreString=Nevybrali jste
+moreBOMLinesPostString=BOMLines. Vyberte pouze jeden BOMLine
+notABOMLine=V\u00FDb\u011Br nen\u00ED BOMLine. Vyberte BOMLine
+topBOMLine=Vybrali jste horn\u00ED BOMLine. Vyberte jin\u00FD ne\u017E horn\u00ED BOMLine
+noReplaceWithSubstitutes=Sou\u010D\u00E1st s n\u00E1hradami nelze nahradit.
+noReplaceWithSubstitutesTitle=Nelze nahradit sou\u010D\u00E1st
+failureInSelection=Vybran\u00E1 komponenta nen\u00ED platnou sou\u010D\u00E1st\u00ED

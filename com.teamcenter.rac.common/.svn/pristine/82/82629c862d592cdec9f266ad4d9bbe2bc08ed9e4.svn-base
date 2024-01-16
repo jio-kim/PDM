@@ -1,0 +1,79 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2021.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# ===========================================================================
+#    Date      Name                    Description of Change
+# 06-Apr-2006  Gopal Reddy             Initial creation
+# 15-Jun-2006  sakrya                  PR Fix 5511601: Tool tip needs correction on the buttons on Select Defining Data wizard.
+# 03-Aug-2006  shahh                   added label for data set search
+# 30-Aug-2006  chitturi                item revision label added
+# 28-Nov-2006  shahh                   fix for PR# 5655551
+# 19-Jan-2007  gadhamse                Fix for PR#5522682
+# $HISTORY$
+# ===========================================================================
+
+search.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+
+CAEModel_Target.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEModel_Source.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEGeometry_Target.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEGeometry_Source.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEAnalysis_Defining.LABEL=CAE 3D \uBAA8\uB378 \uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEAnalysis_Results.LABEL=CAE 3D \uACB0\uACFC \uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEAnalysis_Include.LABEL=CAE 3D \uD574\uC11D \uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEAnalysis_Target.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEAnalysis_Source.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEAnalysis_Extract.LABEL=CAE 3D \uACBD\uACC4 \uC870\uAC74 \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEResult_Extract.LABEL=CAE 3D \uACBD\uACC4 \uC870\uAC74 \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+StructureMapRevision.LABEL=CAE \uAD6C\uC870 \uB9F5 \uB9AC\uBE44\uC804\uC5D0 \uB300\uD55C \uAC80\uC0C9 \uC218\uD589
+Dataset.LABEL=\uB370\uC774\uD130 \uC9D1\uD569 \uAC80\uC0C9 \uC218\uD589
+ItemRevision.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+Item.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEModelRevision.LABEL=CAE 3D \uBAA8\uB378 \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEAnalysisRevision.LABEL=CAE 3D \uD574\uC11D \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+CAEResultRevision.LABEL=CAE 3D \uACB0\uACFC \uB9AC\uBE44\uC804\uC744 \uAC80\uC0C9\uD569\uB2C8\uB2E4.
+Selected.LABEL=\uC120\uD0DD\uB428
+Folder.LABEL=\uD3F4\uB354 \uAC80\uC0C9 \uC218\uD589
+CAE0Tool.LABEL=CAE \uC2DC\uBBAC\uB808\uC774\uC158 \uB3C4\uAD6C \uAC80\uC0C9 \uC218\uD589
+CAE0ToolRevision.LABEL=CAE \uC2DC\uBBAC\uB808\uC774\uC158 \uB3C4\uAD6C \uB9AC\uBE44\uC804 \uAC80\uC0C9 \uC218\uD589
+
+#Error Messages
+error.TITLE=\uC798\uBABB\uB41C \uD56D\uBAA9
+invalidEntry=\uB458 \uC774\uC0C1\uC758 \uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uCD94\uAC00\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+loadingSearch.MESSAGE=\uAC80\uC0C9 \uB85C\uB4DC \uC911...
+
+search.TITLE=\uAC80\uC0C9...
+OK=\uD655\uC778
+dataset.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804 \uBC0F \uB370\uC774\uD130 \uC9D1\uD569 \uAC80\uC0C9 \uC218\uD589
+selectedDataset.LABEL=\uC120\uD0DD\uB41C \uB370\uC774\uD130 \uC9D1\uD569
+Cancel=\uCDE8\uC18C
+selectFolder.LABEL=\uD3F4\uB354 \uC120\uD0DD
+
+#---GenericSearchDialog---#
+searchDialog.TITLE={0} \uAC80\uC0C9
+searchCriteriaGroup.LABEL=\uAC80\uC0C9 \uC870\uAC74
+searchResultsGroup.LABEL=\uAC80\uC0C9 \uACB0\uACFC
+searchButton.LABEL=\uAC80\uC0C9
+noSearchCriteria.ERROR=\uC77C\uBD80 \uAC80\uC0C9 \uC870\uAC74\uC744 \uC81C\uACF5\uD558\uC2ED\uC2DC\uC624.
+invalidSearchProperty.ERROR=\uC120\uD0DD\uD55C \uAC80\uC0C9 \uC870\uAC74\uC5D0 \uB300\uD574 \uAC80\uC0C9\uC774 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4.
+searchResultCount.MSG={0} \uAC1C\uCCB4 \uCC3E\uC74C
+columnButton.LABEL=\uC5F4...
+columnButton.TOOLTIP=\uD14C\uC774\uBE14\uC5D0 \uC5F4\uC744 \uCD94\uAC00\uD558\uAC70\uB098 \uC81C\uAC70\uD569\uB2C8\uB2E4.
+searchRelation.LABEL={0} \uAC80\uC0C9\uC744 \uC2E4\uD589\uD569\uB2C8\uB2E4.
+savedQuery.LABEL=\uC800\uC7A5\uB41C \uC870\uD68C:
+rememberMe.LABEL=\uAE30\uC5B5
+matchingItems.LABEL=\uC77C\uCE58\uD558\uB294 \uAC1C\uCCB4
+noSearchResultFound.MESSAGE=\uAC80\uC0C9 \uC870\uAC74\uC5D0 \uB300\uD574 \uACB0\uACFC\uB97C \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+invalidSearchCriteria.MESSAGE=\uC798\uBABB\uB41C \uAC80\uC0C9 \uC870\uAC74
+executeSearchQuery.TOOLTIP=\uAC80\uC0C9 \uC870\uD68C \uC2E4\uD589
+clearSearchPanel.TOOLTIP=\uAC80\uC0C9 \uC870\uAC74 \uC9C0\uC6B0\uAE30
+selectIRFromList.MESSAGE=\uC77C\uCE58\uD558\uB294 \uAC1C\uCCB4\uB85C\uBD80\uD130 \uAC80\uC0C9 \uACB0\uACFC \uC120\uD0DD
+selectIR.MESSAGE=\uAC80\uC0C9 \uACB0\uACFC \uC120\uD0DD
+searchCriteria.LABEL=\uC870\uAC74 \uAC80\uC0C9
+matchingObjectsCount.MSG={0}\uAC1C\uC758 \uC77C\uCE58\uD558\uB294 \uAC1C\uCCB4\uB97C \uCC3E\uC558\uC2B5\uB2C8\uB2E4.
+queryClass.LABEL=\uC870\uD68C \uD074\uB798\uC2A4

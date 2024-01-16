@@ -1,0 +1,110 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the newalteranteid package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newalternateid_locale.properties
+#   Module  : com.teamcenter.rac.commands.newalternateid
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Jun-2003  wangp                   initial create
+#08-Jul-2003  Endi Wu                 Add new entry
+#08-Jul-2003  Endi Wu                 Merge to Shah branch
+#14-Oct-2003  wangp                   fix pr4855293: add selectItemRev
+#15-Oct-2003  wangp                   fix pr pr4855293
+#07-Jul-2005  Satish Katte            PR fix 1410178
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = Novo ID
+newAliasId.TITLE=Novo ID de alias
+alternateID=ID alternativo
+aliasID=ID do alias
+newAltIdFor=Novo Id alternativa para
+newAliasId=Novo ID de alias
+
+# Select Command Panel
+# ------------------------------
+selectCommand.LABEL=Selecione para criar id alternativo ou id de alias
+selectCommandStep.NAME=Selecionar Comando
+selectCommandStep.TOOLTIP=Selecione para criar nova id alternativa ou nova id de alias.
+
+createAlternateId=Criar nova id alternativa
+createAliasId=Criar nova id de alias
+selectItemRev.LABEL=Selecionar revis\u00E3o de item:
+
+# New Alternate ID Info Panel
+# -----------------------------
+alternateIdInfo.LABEL=Defina as informa\u00E7\u00F5es b\u00E1sicas para a cria\u00E7\u00E3o de um identificador.
+alternateIdInfoStep.NAME=Insira as informa\u00E7\u00F5es b\u00E1sicas do identificador
+alternateIdInfoStep.TOOLTIP=Defina as informa\u00E7\u00F5es b\u00E1sicas do identificador.
+
+step1=Selecionar contexto:
+step2=Selecionar tipo:
+step3=Inserir informa\u00E7\u00E3o b\u00E1sica:
+
+id = ID
+rev = Rev
+name = Nome
+assign = Atribuir
+description = Descri\u00E7\u00E3o:
+alternateInformation = Informa\u00E7\u00F5es da ID
+
+# Additional Alternate ID info panel
+# --------------------------------------
+additionalIdInfo.LABEL=Defina as propriedades adicionais das informa\u00E7\u00F5es do identificador.
+additionalIdInfoStep.NAME=Insira as informa\u00E7\u00F5es de ID adicionais
+additionalIdInfoStep.TOOLTIP=Defina as informa\u00E7\u00F5es adicionais do identificador.
+
+# Additional Alternate REV info panel
+# --------------------------------------
+additionalRevInfo.LABEL=Defina as propriedades adicionais das informa\u00E7\u00F5es de rev.
+additionalRevInfoStep.NAME=Insira as informa\u00E7\u00F5es de Rev. adicionais
+additionalRevInfoStep.TOOLTIP=Defina as informa\u00E7\u00F5es adicionais de rev.
+
+# Display Option Panel
+# --------------------------
+displayOptionInfo.LABEL=Selecione as op\u00E7\u00F5es de exibi\u00E7\u00E3o para id e rev alternativos.
+displayOptionStep.NAME=Definir op\u00E7\u00F5es de exibi\u00E7\u00E3o
+displayOptionStep.TOOLTIP=Defina as op\u00E7\u00F5es de exibi\u00E7\u00E3o.
+
+idDisplay=Utilize o identificador do item como exibi\u00E7\u00E3o padr\u00E3o
+revDisplay=Utilize o identificador de revis\u00E3o como exibi\u00E7\u00E3o padr\u00E3o
+
+# Finish Panel
+# -----------------------------
+newAlternateIdFinishInfo.LABEL=Cria\u00E7\u00E3o de novo identificador
+
+# Messages for message center
+# ------------------------------
+loadingPanels=Carregando pain\u00E9is ...
+updatingPanels=Atualizando pain\u00E9is ...
+creatingNewIds=Criando novos ids
+settingIdInfo=Configurando as propriedades de novos ids
+savingIds=Salvando novos ids
+pastingIds=Colando novos ids de alias
+settingOptions=Configurando op\u00E7\u00F5es de exibi\u00E7\u00E3o
+
+pastingNewId=Colando novos ids de alias
+
+# Error Messages
+# ----------------------
+error.TITLE = Novo ID...
+
+failFindDialog=Falha ao encontrar a caixa de di\u00E1logo do novo identificador.
+invalidSelection.MSG=Esse comando se aplica somente \u00E0s revis\u00F5es de itens e/ou itens.
+noRule.MSG=N\u00E3o h\u00E1 regras definidas para
+reviseRule.MSG=O identificador ser\u00E1 automaticamente revisado devido a regras de c\u00F3pia propagada.

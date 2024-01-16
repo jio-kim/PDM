@@ -1,0 +1,13 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+dialog.TITLE=Seleziona calendario di base
+selectBaseCalendarDialog.HEADER=Usare questa finestra di dialogo per selezionare il calendario di base per l'utente che ha eseguito il login.
+selectBaseCalendarLabel=Calendari di base:
+slectedBaseCal.MSG=Selezionare un calendario di base.
+slectedBaseCal.TITLE=Avviso di selezione del calendario di base

@@ -1,0 +1,109 @@
+# @<COPYRIGHT>@
+#==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#==================================================
+# @<COPYRIGHT>@
+
+editCalendarDialog.TITLE=Upravit kalend\u00E1\u0159 zdroje: 
+deleteCalendarDialog.TITLE=Odstranit kalend\u00E1\u0159 zdroje
+cannotFindEditCalendarDialog=Nelze naj\u00EDt dialogov\u00E9 okno Upravit kalend\u00E1\u0159
+
+resourceCalendarDialog.HEADER=Pomoc\u00ED toho dialogov\u00E9ho okna m\u016F\u017Eete ur\u010Dit denn\u00ED v\u00FDchoz\u00ED hodnoty pro zdroj (aktu\u00E1ln\u011B p\u0159ihl\u00E1\u0161en\u00FD u\u017Eivatel), vytvo\u0159it, aktualizovat a odstranit v\u00FDjimky pro ur\u010Dit\u00E1 data.
+
+scheduleCalendarDialog.HEADER=Pomoc\u00ED toho dialogov\u00E9ho okna m\u016F\u017Eete ur\u010Dit denn\u00ED v\u00FDchoz\u00ED hodnoty pro pl\u00E1n, vytvo\u0159it, aktualizovat a odstranit v\u00FDjimky pro ur\u010Dit\u00E1 data.
+
+scheduleMemberCalendarDialog.HEADER=Pomoc\u00ED toho dialogov\u00E9ho okna m\u016F\u017Eete ur\u010Dit denn\u00ED v\u00FDchoz\u00ED hodnoty pro \u010Dlena pl\u00E1nu, vytvo\u0159it, aktualizovat a odstranit v\u00FDjimky pro ur\u010Dit\u00E1 data.
+
+baseCalendarDialog.HEADER=Pomoc\u00ED toho dialogov\u00E9ho okna m\u016F\u017Eete zobrazit vybran\u00FD z\u00E1kladn\u00ED kalend\u00E1\u0159. U\u017Eivatel nem\u016F\u017Ee upravit odkazovan\u00FD z\u00E1kladn\u00ED kalend\u00E1\u0159.
+
+updatingCalendar.MESSAGE=Aktualizace kalend\u00E1\u0159e zdroje pro {0}
+deletingCalendar.MESSAGE=Odstran\u011Bn\u00ED kalend\u00E1\u0159e zdroje pro {0}
+confirmDeleteCalendar.MESSAGE=Chcete prov\u00E9st odstran\u011Bn\u00ED kalend\u00E1\u0159e pro {0} {1}?
+resetButton=Obnovit kalend\u00E1\u0159
+createResCalBT=Vytvo\u0159it u\u017Eivatelsk\u00FD kalend\u00E1\u0159
+deleteCalendar=Odstranit kalend\u00E1\u0159 
+
+updatingScheduleCalendar.MESSAGE=Aktualizace kalend\u00E1\u0159e pl\u00E1nu pro {0}
+
+editScheduleCalendarDialog.TITLE=Upravit kalend\u00E1\u0159 pl\u00E1nu: 
+
+editScheduleMemberCalendarDialog.TITLE=Upravit kalend\u00E1\u0159 pro \u010Dlena pl\u00E1nu:  
+
+editBaseCalendarDialog.TITLE=Z\u00E1kladn\u00ED kalend\u00E1\u0159:
+
+
+merge=Prove\u010Fte slou\u010Den\u00ED s v\u00FDchoz\u00EDm kalend\u00E1\u0159em.
+
+
+
+resetDlg.TITLE=Obnovit kalend\u00E1\u0159 pl\u00E1nu
+
+resetScheduleCalendarDialog.HEADER=Pomoc\u00ED tohoto dialogov\u00E9ho okna lze obnovit nebo slou\u010Dit kalend\u00E1\u0159 pl\u00E1nu s ud\u00E1lostmi z\u00E1kladn\u00EDho kalend\u00E1\u0159e.  T\u00EDm vr\u00E1t\u00EDte zp\u011Bt v\u0161echny aktu\u00E1ln\u00ED zm\u011Bny kalend\u00E1\u0159e.
+
+
+resetRB.MSG= Obnovit na z\u00E1kladn\u00ED kalend\u00E1\u0159
+
+mergeRB.MSG= Slou\u010Dit se z\u00E1kladn\u00EDm kalend\u00E1\u0159em 
+
+resetRBHelp.MSG=T\u00EDm se obnov\u00ED kalend\u00E1\u0159 pl\u00E1nu na z\u00E1kladn\u00ED kalend\u00E1\u0159 a jak\u00E9koliv zm\u011Bny tohoto kalend\u00E1\u0159e pl\u00E1nu budou ztraceny.  
+
+mergeRBHelp.MSG=T\u00EDm se aktualizuje kalend\u00E1\u0159 pl\u00E1nu o jak\u00E9koliv posledn\u00ED zm\u011Bny, kter\u00E9 jsou provedeny v z\u00E1kladn\u00EDm kalend\u00E1\u0159i.
+
+publishedCalendar.MSG=Nelze aktualizovat kalend\u00E1\u0159 publikovan\u00E9ho pl\u00E1nu.
+
+unPublishedCalendar.MSG=Aktualizace kalend\u00E1\u0159e pl\u00E1nu m\u016F\u017Ee zm\u011Bnit pl\u00E1n.\n Nap\u0159\u00EDklad sn\u00ED\u017Een\u00ED pracovn\u00EDch hodin nebo vytvo\u0159en\u00ED denn\u00EDch v\u00FDjimek\n m\u016F\u017Ee zp\u016Fsobit, \u017Ee ur\u010Dit\u00E9 \u00FAlohy budou pokra\u010Dovat po datu skon\u010Den\u00ED pl\u00E1nu.
+
+cannotUpdate.MSG=Nem\u00E1te dostate\u010Dn\u00E1 opr\u00E1vn\u011Bn\u00ED k aktualizaci kalend\u00E1\u0159e pl\u00E1nu.
+
+scheduleCalendar.TITLE=Informace kalend\u00E1\u0159e pl\u00E1nu 
+
+
+#DetailsOfWorkingExceptionDialog
+#----------------------------------------
+
+workingDayExceptionDetails.TITLE=Detaily v\u00FDjimek v pracovn\u00EDch dnech
+
+workingDayExceptionDetails.HEADER=Pomoc\u00ED tohoto dialogov\u00E9ho okna m\u016F\u017Eete nastavit ur\u010Dit\u00E9 \u010Dasov\u00E9 rozsahy pro v\u00FDjimku v pracovn\u00EDm dni.
+
+workingLabel=Nastavit pracovn\u00ED \u010Das  
+from=Od
+to=Do
+1=1
+2=2
+3=3
+4=4
+5=5  
+
+#DetailsOfDailyDefaultDialog
+#----------------------------------------
+
+dailyDefaultDetails.TITLE=Detaily denn\u00EDch v\u00FDchoz\u00EDch hodnot
+
+dailyDefaultDetails.HEADER=Pomoc\u00ED tohoto dialogov\u00E9ho okna m\u016F\u017Eete nastavit ur\u010Dit\u00E9 \u010Dasov\u00E9 rozsahy pro vybran\u00FD den v t\u00FDdnu.
+
+#dailyDefaultDetailsDataInputError.MSG=The time range(s) does not pass the validation.
+
+GeneralDataInputError.MSG=\u010Casov\u00E9 rozsahy nevyhovuj\u00ED ov\u011B\u0159en\u00ED.
+
+NotCompleteRangeDataError.MSG=\u010Casov\u00E9 rozsahy musej\u00ED m\u00EDt jak po\u010D\u00E1te\u010Dn\u00ED, tak koncovou hodnotu.
+
+NotAscendingRangeDataError.MSG= \u010Casov\u00E9 rozsahy musej\u00ED b\u00FDt ve vzestupn\u00E9m po\u0159ad\u00ED.
+
+NonWorkingRangeError.MSG=Nelze zadat v\u00FDchoz\u00ED rozsah 08:00 - 08:00
+
+DateformatError.MSG=Form\u00E1t \u010Dasu je neplatn\u00FD, platn\u00FD form\u00E1t je hh:mm.
+
+
+okButton=OK
+cancelButton=Storno
+resetToBaseRB=Pou\u017Eijte \u010Dasy ze z\u00E1kladn\u00EDho kalend\u00E1\u0159e pro tyto dny.
+setTimeRangesRB=Nastavit ur\u010Dit\u00E9 pracovn\u00ED \u010Dasy pro den
+
+nullRanges.MSG=Chcete nastavit tento den jako nepracovn\u00ED?
+nullRanges.TITLE=Upozorn\u011Bn\u00ED
+
+schedule.NAME=pl\u00E1n
+schedulemember.NAME=\u010Dlen pl\u00E1nu
+resource.NAME=zdroj

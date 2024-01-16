@@ -1,0 +1,170 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.teamcenter.rac.common" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.teamcenter.rac.common" id="workspaceProviderDelegates" name="Workspace Provider Delegates"/>
+      </appinfo>
+      <documentation>
+         The plugin is used to contribute content provider and accordingly label provider for specific component in WorkspaceTreeView and ProductDataOutline. The WorkspaceProvideDelegateService processes the extension point and delegates to desired content provider and label provider upon object type.  
+      </documentation>
+   </annotation>
+
+   <include schemaLocation="schema://org.eclipse.core.expressions/schema/expressionLanguage.exsd"/>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="providerDelegate" minOccurs="0" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="providerDelegate">
+      <complexType>
+         <sequence>
+            <element ref="usedWhen"/>
+         </sequence>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Unique id for content provider and label provider delegate
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="contentProvider" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The attribute is used to define content provide implementation
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.jface.viewers.ITreeContentProvider"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="labelProvider" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The attribute is used to define label provide implementation
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":org.eclipse.jface.viewers.ILabelProvider"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="usedWhen">
+      <annotation>
+         <documentation>
+            This attribute is used to define type of object for provider delegate
+         </documentation>
+      </annotation>
+      <complexType>
+         <choice>
+            <element ref="not"/>
+            <element ref="and"/>
+            <element ref="or"/>
+            <element ref="instanceof"/>
+            <element ref="test"/>
+            <element ref="systemTest"/>
+            <element ref="equals"/>
+            <element ref="count"/>
+            <element ref="with"/>
+            <element ref="resolve"/>
+            <element ref="adapt"/>
+            <element ref="iterate"/>
+            <element ref="reference"/>
+         </choice>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         Teamcenter 8.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;br&gt;
+&lt;u&gt;Example:&lt;/u&gt;
+&lt;p&gt;
+Add one content provider and label provider to specific tree node
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&gt;
+   &lt;extension
+         point=&quot;com.teamcenter.rac.common.workspaceProviderDelegates&quot;&gt;
+      &lt;providerDelegate
+            contentProvider=&quot;com.teamcenter.rac.providers.MoreRootNodeContentProvider&quot;
+            id=&quot;com.teamcenter.rac.providerDelegate.MoreRootNode&quot;
+            labelProvider=&quot;com.teamcenter.rac.providers.MoreRootNodeLabelProvider&quot;&gt;
+         &lt;usedWhen&gt;
+               &lt;instanceof
+                     value=&quot;com.teamcenter.rac.providers.node.MoreRootNode&quot;&gt;
+               &lt;/instanceof&gt;
+         &lt;/usedWhen&gt;
+      &lt;/providerDelegate&gt; 
+   &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiInfo"/>
+      </appinfo>
+      <documentation>
+         [Enter API information here.]
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         [Enter information about supplied implementation of this extension point.]
+      </documentation>
+   </annotation>
+
+
+</schema>

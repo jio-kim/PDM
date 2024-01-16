@@ -1,0 +1,269 @@
+# @<COPYRIGHT>@
+#===============================================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#===============================================================================
+# @<COPYRIGHT>@
+#
+# File description: This properties file contains all locale specific keys for the newitem package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newitem_locale.properties
+#   Module  : com.teamcenter.rac.commands.newitem
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#15-Sep-2000  milindm                 added Custom Attributes for the custom attributes
+#                                     panel.
+#21-Sep-2000  Subrata Sen             For Milind's Item Attr / Type Project
+#01-Nov-2000  Milind Mulay            Added the populatingTheForm message.
+#                                     Added the Not Valid key Types
+#16-Nov-2000  Subrata Sen             For Milind's Item Additional Attribute Project.
+#18-Jul-2001  x_gopala                Modify for Revise Project
+#21-Aug-2001  Tony Dumont             PR#4178691 - Add new error message
+#12-Oct-2001  wangp                   revise project (for x_gopala)
+#10-Dec-2001  Sujeeth Kamath,,,       cnewitem.properties
+#19-Mar-2002  Sujeeth Kamath,,,       Checked in after fixes
+#25-Mar-2002  Sujeeth Kamath,,,       Checked in after fixing PR 4480346
+#17-Apr-2002  Rob McColl              Change some of the error messages.
+#17-Apr-2002  Sujeeth Kamath,,,       Checked in after incorporating Rob's comments
+#08-Jul-2002  Bruce Hebbard           Add "Classify On Create" button title
+#16-Sep-2002  Bruce Hebbard           Change "Classify on Create" to "Classify Immediately" (PR 4631038)
+#29-Oct-2002  Sujeeth Kamath          "checked in after modifying the white space error"
+#23-Apr-2003  faming                  project level security
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#06-May-2003  wangp                   fix pr 4674050: new design for newitem/revise/saveasitemrev dialog
+#12-Jun-2003  wangp                   alternate id
+#23-Jun-2003  faming                  merged from P9001
+#23-Jun-2003  faming                  fixed assign project after P9001 merge
+#25-Jun-2003  Rob Baker               Variant item config
+#27-Jun-2003  faming                  add info for Assign Project step
+#27-Jun-2003  Rob Baker               Change VI config step name
+#24-Jul-2003  Endi Wu                 Conflict resolution for P9.0.0.3
+#29-Sep-2003  wangp                   add entries for save form
+#27-Feb-2004  wangp                   fix pr 4853772: reword the tooltips
+#11-Feb-2005  Neil Ross               Add text for configuration items
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#24-May-2007  M.Ram Narsimhamurty     Added support for ADS Program Context
+#$HISTORY$
+#=================================================================================================*/
+
+objectType = Element
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = Neues Element
+dialog.vi.TITLE=Neues Variantenelement f\u00FCr
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.NAME=Konfiguration pr\u00FCfen
+viConfigStep.TOOLTIP=Variantenelementkonfiguration pr\u00FCfen
+viConfigStep.info=Gew\u00E4hrleisten Sie, dass die Variantenelementkonfiguration richtig ist.
+viConfigStep.table.option=Option
+viConfigStep.table.value=Wert
+
+# New Item Panel
+# -----------------------------
+createConfirm.TITLE=Neues Element
+createConfirm.MSG=Zur Verarbeitung muss ein neues Element erstellt werden. \nM\u00F6chten Sie ein neues Element erstellen?
+
+# Item Type Panel
+# ----------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.ItemTypePanel.NAME=Select Type
+#com.teamcenter.rac.commands.newitem.ItemTypePanel.TIP=Select an item type.
+#com.teamcenter.rac.commands.newitem.ItemTypePanel.TITLE=Select the item type that you want to create.
+itemTypeInfo.LABEL=W\u00E4hlen Sie den zu erstellenden Elementtyp aus.
+itemTypeStep.NAME=Typ ausw\u00E4hlen
+itemTypeStep.TOOLTIP=W\u00E4hlen Sie einen Elementtyp aus.
+
+configurationItem.LABEL=Konfigurationselement
+configurationItem.TOOLTIP=Definiert einen Punkt in der Produktstruktur, an dem sich der G\u00FCltigkeitskontext \u00E4ndert.
+
+# Item Info Panel
+# -----------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.ItemInfoPanel.NAME=Enter Item Information
+#com.teamcenter.rac.commands.newitem.ItemInfoPanel.TIP=Define the basic item information.
+#com.teamcenter.rac.commands.newitem.ItemInfoPanel.TITLE=Define the basic information for the new item.
+itemInfo.LABEL=Legen Sie grundlegende Informationen f\u00FCr das neue Element fest.
+itemInfoStep.NAME=Elementinformationen eingeben
+itemInfoStep.TOOLTIP=Legen Sie die grundlegenden Elementinformationen fest.
+
+itemId = Element-ID
+rev = \u00C4nderungsstand-ID
+name = Name
+assign = Zuweisen
+quantity = Anzahl der Objekte:
+description = Beschreibung:
+unitOfMeasure = Ma\u00DFeinheit:
+itemInformation = Elementinformationen
+basetype = Element
+namingpattern = Benennungs- und Nummerierungsregeln
+
+name.TOOLTIP=G\u00FCltige Namen sollten den folgenden Mustern entsprechen:
+id.TOOLTIP=G\u00FCltige IDs sollten den folgenden Mustern entsprechen:
+rev.TOOLTIP=G\u00FCltige Element\u00E4nderungsstand-IDs sollten den folgenden Mustern entsprechen:
+
+namingPatternPrefix.TOOLTIP=G\u00FCltiges {0} muss den folgenden Mustern entsprechen:
+
+# Item Master Form Panel
+# ---------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.ItemMasterFormPanel.NAME=Enter Additional Item Information
+#com.teamcenter.rac.commands.newitem.ItemMasterFormPanel.TIP=Define additional item information.
+#com.teamcenter.rac.commands.newitem.ItemMasterFormPanel.TITLE=Define additional item information.
+itemMasterForm.LABEL=Zus\u00E4tzliche Elementinformationen definieren.
+itemMasterFormStep.NAME=Zus\u00E4tzliche Elementinformationen eingeben
+itemMasterFormStep.TOOLTIP=Zus\u00E4tzliche Elementinformationen definieren.
+saveFormConfirm.TITLE=Formular Speichern
+saveFormConfirm.MSG=Fehler beim Speichern des Formulars aufgetreten. Dies ist gew\u00F6hnlich der Fall, wenn \nauszuf\u00FCllende Felder nicht ausgef\u00FCllt sind,\nm\u00F6chten Sie diese Werte erneut eingeben?\n(Wenn Sie "Nein" ausw\u00E4hlen wird der Fehler ignoriert und das Formular wird nicht gespeichert.)
+saveAltIdConfirm.TITLE=Alternative ID speichern
+saveAltIdConfirm.MSG=Fehler beim Speichern der alternativen ID aufgetreten. Dies ist gew\u00F6hnlich der Fall, wenn \nauszuf\u00FCllende Felder nicht ausgef\u00FCllt sind. M\u00F6chten Sie diese Werte erneut eingeben?\n(Wenn Sie "Nein" ausw\u00E4hlen wird der Fehler ignoriert und das Formular wird nicht gespeichert.)
+
+# ItemRev Master Form Panel
+# ---------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.ItemRevMasterFormPanel.NAME=Enter Additional Item Revision Information
+#com.teamcenter.rac.commands.newitem.ItemRevMasterFormPanel.TIP=Define additional item revision information.
+#com.teamcenter.rac.commands.newitem.ItemRevMasterFormPanel.TITLE=Define additional item revision information.
+itemRevMasterForm.LABEL=Zus\u00E4tzliche Element\u00E4nderungsstandinformationen definieren.
+itemRevMasterFormStep.NAME=Zus\u00E4tzliche Element\u00E4nderungsstandinformationen eingeben
+itemRevMasterFormStep.TOOLTIP=Zus\u00E4tzliche Element\u00E4nderungsstandinformationen definieren.
+
+# Form Attr Panel
+# -----------------------
+formAttrInfo.LABEL=Master-Formularattribute festlegen. 
+formAttrStep.NAME=Master-Formularattribute eingeben
+formAttrStep.TOOLTIP=Legen Sie die Formularattribute f\u00FCr den ausgew\u00E4hlten Elementtyp fest.
+formAttrStepDisabled.TOOLTIP=Keine Formularattribute f\u00FCr den ausgew\u00E4hlten Elementtyp festgelegt.
+
+# Item Identifier Panel
+# ----------------------------
+itemIdentifierInfo.LABEL=Alternative-ID-Informationen f\u00FCr Element festlegen
+itemIdentifierStep.NAME=Alternative Informationen eingeben
+itemIdentifierStep.TOOLTIP=Alternative ID f\u00FCr Element festlegen.
+
+# Assign to projects panel
+# ------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.AssignProjectPanel.NAME=Assign to {0} objects
+#com.teamcenter.rac.commands.newitem.AssignProjectPanel.TIP=Select {0} objects to assign the new object to
+#com.teamcenter.rac.commands.newitem.AssignProjectPanel.TITLE=Select {0} objects that you want to assign the new object to
+assignProjectInfo.LABEL=W\u00E4hlen Sie {0} aus, f\u00FCr das Sie das neue Objekt zuweisen m\u00F6chten
+project.TITLE=Zuweisen f\u00FCr {0}
+projectToolTip=W\u00E4hlen Sie {0} aus, f\u00FCr das Sie das neue Objekt zuweisen m\u00F6chten
+
+# Open Option Panel
+# --------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.OpenOptionPanel.NAME=Define Options
+#com.teamcenter.rac.commands.newitem.OpenOptionPanel.TIP=Set open options and alternate id display options.
+#com.teamcenter.rac.commands.newitem.OpenOptionPanel.TITLE=Select open option and alternate id display option.
+openOptionInfo.LABEL=W\u00E4hlen Sie die Optionen "\u00D6ffnen" und "Alternative ID-Anzeige" aus.
+openOptionStep.NAME=Optionen festlegen
+openOptionStep.TOOLTIP=\u00D6ffnungsoptionen und Alternative-ID-Anzeigeoptionen festlegen.
+openOptions.LABEL=\u00D6ffnungsoptionen
+coOptions.LABEL=Auscheck-Optionen
+
+openOnCreate = Als neuen Ursprung anzeigen
+classifyOnCreate = Sofort klassifizieren
+displayOptions.LABEL=Anzeigeoptionen
+checkOutOnCreate = Element\u00E4nderungsstand beim Erstellen auschecken
+checkOutOnRevise = Element\u00E4nderungsstand bei \u00C4nderung auschecken
+
+# Finish Panel
+# -----------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.NewItemFinishPanel.TITLE=Creating new item
+newItemFinishInfo.LABEL=Neues Element wird erstellt
+
+# Messages for message center
+# ------------------------------
+loadingPanels=Fenster werden geladen...
+updatingPanels=Fenster werden aktualisiert...
+creatingNewComponent = Neues Element wird erstellt
+checkingIds=Element-ID und \u00C4nderungsstand werden gepr\u00FCft
+pastingNewItem=Neues Element wird eingef\u00FCgt
+populatingTheForm = Master-Formulare werden ausgef\u00FCllt
+processingAttachesFileInfo=Informationen der angeh\u00E4ngten Dateien werden verarbeitet
+processingSubmitToWorkflowInfo=Senden an Workflow-Informationen werden verarbeitet
+assigningProjects = Zuweisung f\u00FCr {0}
+creatingAlteranteIds=Alternative IDs werden erstellt
+openingNewComponent=Neues Element wird ge\u00F6ffnet
+checkOutRevision=Element\u00E4nderungsstand wird ausgecheckt
+abort = \u00D6ffnen des neuen Elements abbrechen
+
+# Error Messages
+# ----------------------
+error.TITLE = Neues Element...
+
+failFindDialog=Neuer Elementdialog konnte nicht gefunden werden.
+sameAsOldId=Vorhandenes Element gefunden. Durch "Erstellen/Speichern unter" werden nur neue Elemente erstellt. \nVerwenden Sie zum Erstellen eines neuen Element\u00E4nderungsstandes die Befehle "Datei->Revisionieren".
+failToCreate = Neues Element konnte nicht erstellt werden
+fillFormError = Die Weiterleitung des Master-Formulars ist fehlgeschlagen.
+failToOpen = Das Element konnte nicht ge\u00F6ffnet werden. Problem mit Zugriffsberechtigungen vorhanden.
+failFindItemMaster=Element-Master-Formular konnte nicht abgerufen werden.
+failFindItemRevMaster=Element\u00E4nderungsstand-Master-Formular konnte nicht abgerufen werden.
+failToCreateAltId=Alternative ID konnte nicht erstellt werden.
+cannotConvert=Eingabe kann nicht in den entsprechenden Typ umgewandelt werden.
+formatException=Das Attribut {0} besitzt nicht das richtige Format.
+datamodelAndUIInconsistency.TITLE=Falsche Konfiguration
+datamodelAndUIInconsistency.MESSAGE=Es wurde eine falsche Konfiguration erfasst.\nDas mit dem ausgew\u00E4hlten Elementtyp verbundene Master-Formular ({0}) besitzt \nerforderliche Attribute und den gleichen Elementtyp mit der Referenz\n{1}, mit der das Master-Formular aus dem Erstellungsassistenten entfernt wird. Die Schaltfl\u00E4che "Abschlie\u00DFen" wird in diese Situation \nnicht erstelle, dadurch kann das Erstellen nicht ausgef\u00FChrt werden. Wenden Sie sich zur Behebung \ndieses Problems an Ihren Systemadministrator und berichten Sie dieses Problem.
+
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Erstellen des Elements unterbrochen...Element erstellt und teilweise eingef\u00FCgt
+aborted.TITLE=Abgebrochen
+aborting=Abbrechen...
+
+# Not valid type keys
+# ----------------------
+#notValidType.TITLE=Invalid Input Data
+#notValidChar=Can not change character property value.
+#notValidDate=Not valid date.
+#notValidDouble=Not valid double or float.
+#notValidInt=Not valid integer.
+#notValidLogical=Not valid logical data.
+#notValidShort=Not valid short integer.
+#notValidString=Can not change string property value.
+
+# Error and warning message for processPostCreate
+failAttachLocalFiles=Einige lokale Dateien konnte nicht angeh\u00E4ngt werden. Pr\u00FCfen Sie bitte die Dateierweiterungen und gew\u00E4hrleisten Sie, dass geeignete Ausgangsdateien verwendet werden.
+failUploadLocalFiles=Einige lokale Dateien konnten nicht hochgeladen werden. FMS kann u.U. nicht richtig ausgef\u00FChrt werden. Wenden Sie sich bitte f\u00FCr weitere Informationen an Ihren Systemadministrator.
+
+# Messages for ItemAttachFilesPanel
+ItemAttachFilesPanel.browse=Durchsuchen
+ItemAttachFilesPanel.browseButton=Durchsuchen...
+ItemAttachFilesPanel.removeButton=Entfernen
+ItemAttachFilesPanel.attachFiles=Datei(en) anh\u00E4ngen
+ItemAttachFilesPanel.enterAttachFiles=Dateianhanginformationen eingeben
+
+#Submit To Workflow Panel
+SubmitToWorkflowPanel.processTemplateList=Prozessvorlagenliste
+SubmitToWorkflowPanel.processAssignmentList=Zuweisungsliste verarbeiten
+SubmitToWorkflowPanel.workflowInfoPanel=Workflow-Informationen festlegen
+SubmitToWorkflowPanel.loadingTemplateLists=Vorlagenlisten werden geladen..
+SubmitToWorkflowPanel.processFilter=Prozessvorlagenfilter:
+SubmitToWorkflowPanel.all=Alle
+SubmitToWorkflowPanel.assigned=Zugewiesen
+SubmitToWorkflowPanel.loadingDefTemplates=Prozessvorlage wird geladen...
+#Create Render
+CreateRender.DispatcherNotInstall=Die Dispatcher Management-Voreinstellungen wurden nicht installiert. Installieren Sie bitte die Voreinstellungen, die f\u00FCr die richtige Ausf\u00FChrung von Dispatcher Management erforderlich sind.
+CreateRender.NoProviderService=Es ist kein Darstellungsmanagementanbieter- oder Dienstnamenkonstanten-Setup f\u00FCr den Element\u00E4nderungsstand vorhanden.
+CreateRender.RequestCreationError=Die Aktion "Darstellung erstellen" ist aufgrund eines Fehlers beim Erstellen der Dispatcher-Anforderung fehlgeschlagen.
+CreateRender.DIALOG.TITLE=Dokumente darstellen

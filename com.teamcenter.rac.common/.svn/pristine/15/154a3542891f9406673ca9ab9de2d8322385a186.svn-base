@@ -1,0 +1,2 @@
+TCPreferenceSpinner_MESSAGE_BOX_TITLE=Entrada del valor
+TCPreferenceSpinner_NOT_IN_ALLOWED_RANGE= El valor {0} no se encuentra en el rango permitido {1} - {2}.

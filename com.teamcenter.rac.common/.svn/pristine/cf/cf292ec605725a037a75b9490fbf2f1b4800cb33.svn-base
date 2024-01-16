@@ -1,0 +1,165 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the audit package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: audit_locale.properties
+#   Module  : com.teamcenter.rac.common.commands.audit
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#07-Oct-2000  choim                   initial imlementation
+#11-Oct-2000  choim                   add error messages
+#13-Oct-2000  choim                   add messages
+#09-Nov-2000  choim                   add text
+#12-Dec-2000  choim                   add text messages.
+#23-Jan-2001  choim                   modify page buttons' tool tip messages, etc.
+#01-May-2002  shen                    Prepare for P8.0.0.8 promotion
+#02-May-2002  shen                    Merge out from P8.0.0.7
+#30-Apr-2002  faming                  change __ViewAuditLog... to __ViewAuditLog
+#02-May-2002  faming                  merged against P8.0.0.7
+#03-May-2002  faming                  merged out from cyp_p8.0.0.8
+#25-Jul-2002  shen                    P8.1.0.3
+#01-Dec-2003  shen                    merge out from P9.0.0.9
+#22-Jan-2004  shen                    WF Audit project
+#30-Jan-2004  shen                    Audit Report Project
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+dialog.TITLE=Visualizzazione dei log di audit
+loadingAudit=Caricamento audit in corso...
+startAuditOperation=Avvio dell'operazione di audit...
+
+noAuditableTypes.MESSAGE=Non \u00E8 disponibile alcun tipo di oggetto di audit dal sistema. Audit Manager verr\u00E0 chiuso.
+noObjectsFound.TITLE=Trova informazioni
+noObjectsFound.MESSAGE=Non \u00E8 stato individuato alcun oggetto in base ai criteri specificati
+objectsFound.MESSAGE=oggetti trovati in base agli attuali criteri di ricerca
+shown=visualizzati
+message.TITLE=Trova
+performLoad.MESSAGE=Caricamento oggetti in corso...
+
+findButton=Trova
+findButton.TIP=Trova log di audit
+clearButton=Cancella
+clearButton.TIP=Elimina tutti i campi
+cancelButton=Annulla
+cancelButton.TIP=Annulla l'applicazione e chiude questa finestra
+exportAuditLogButton=Esporta log di audit...
+
+printButton=Stampa
+printButton.TIP=stampa log di audit
+saveButton=Salva
+saveButton.TIP=Salva tutti i campi
+
+dialogTitle=Log di audit
+
+
+general=Generali
+advanced=Avanzate
+generalTabToolTip=Criteri di query generale
+advancedTabToolTip=Input criteri di query basati su valori di propriet\u00E0
+searchCriteria = Criteri di ricerca
+ 
+objectName=Nome oggetto:
+objectType=Tipo di oggetto:
+objectId=ID dell'oggetto:
+projectIdName=Progetto:
+projectName=Nome progetto
+eventType=Tipo di evento:
+objectRev=Revisione oggetto:
+userId=ID utente:
+createdBefore=Creata prima del:
+createdAfter=Creata dopo il:
+jobName=Nome processo:
+secObjectID=ID oggetto secondario:
+secObjectName=Nome oggetto secondario:
+secObjectRev=Revisione oggetto secondario:
+secObjectType=Tipo di oggetto secondario:
+objectSeqNo=Numero di sequenza oggetto:
+secObjectSeqNo=Numero di sequenza oggetto secondario:
+groupName=Nome gruppo:
+errorCode=Codice errore:
+numericFieldsToolTip=Inserire un numero intero oppure i caratteri jolly * o ?. 
+
+emptyFields.TITLE=Campi vuoti
+emptyFields.MESSAGE=Compilare alcuni dei campi del form.
+
+availableProperties=Propriet\u00E0 disponibili
+searchableProperties=Criteri di ricerca selezionati
+
+queryNotFound.TITLE=Query non trovata
+queryNotFound.MESSAGE=Assicurarsi che la query salvata "__ViewAuditLog" sia installata.
+
+propertyName=Nome propriet\u00E0
+oldValue=Valore precedente
+newValue=Nuovo valore
+
+# ------------------------------
+nextButton.TIP=Carica successivo
+previousButton.TIP=Carica precedente
+trailingTip= componenti trovati nella tabella.
+allButton.TIP=Carica tutti i componenti trovati nella tabella.
+legacyDataViewAuditButton.TIP=visualizza informazioni di audit originarie per l'oggetto selezionato.
+legacyDataCheckOutHistoryButton.TIP=visualizza cronistoria originale dei checkout dell'oggetto selezionato.
+
+loadPrevious=Caricamento del gruppo di componenti precedente
+loadNext=Caricamento del gruppo di componenti successivo
+loadAll=Caricamento di tutti i componenti trovati
+
+#selectedObjectsIsNotProcessMessage=Selected Object Is Not An EPM Process
+
+infoDefaultMessage=Risultati della ricerca
+objectsFound=Oggetti trovati
+
+reports=Report...
+loadReports=Caricamento dei disegni del report di audit in corso...
+
+xslNotFound=Impossibile trovare foglio di stile XSL per creare report
+queryNotFound=Impossibile trovare la query salvata
+reportDesignNotFound=Report Progetto non trovato
+notPOMobject=L'oggetto selezionato non \u00E8 un oggetto POM
+notValidObject=Selezionare un oggetto valido per eseguire l'azione
+
+searchButton.TIP=Ricerca utenti per nome o ID utente.
+
+searchResultMessage=Selezionare un utente
+searchResult.TITLE=Risultati ricerca utente
+searchNoResultMessage=Non \u00E8 stato trovato alcun utente corrispondente ai criteri di ricerca
+
+#ExportToExcelProcessDialog
+ExportToExcelProcessDialog.Title=Esporta log di audit
+ExportToExcelProcessDialog.Header=Esporta i dati del log di audit in Excel
+ExportToExcelProcessDialog.exportToExcel=Esporta in Excel
+ExportToExcelProcessDialog.ExportToExcelJob=Esporta nel processo Excel
+ExportToExcelProcessDialog.ExportToExcelUIJob=Esporta nel processo interfaccia utente Excel
+
+#ExportToCSVProcessDialog
+ExportToCSVProcessDialog.Title=Esporta log di audit
+ExportToCSVProcessDialog.Header=Esporta i dati del log di audit in un file CSV
+ExportToCSVProcessDialog.exportToCSV=Esporta in un file CSV
+ExportToCSVProcessDialog.ExportToCsvJob=Esporta nel processo CSV
+ExportToCSVProcessDialog.ExportToCsvUIJob=Esporta nel processo interfaccia utente CSV
+
+#ExportAuditLogDialog
+ExportAuditLogDialog.Title=Esporta log di audit
+ExportAuditLogDialog.Header=Esporta i dati del log di audit in un file Excel o CSV
+ExportAuditLogDialog.NoObjectsSelected=Nessun oggetto selezionato
+ExportAuditLogDialog.ExportObjects=Esporta oggetti...
+ExportAuditLogDialog.OutputFormat=Formato di output
+ExportAuditLogDialog.UseExcel=Usa Excel
+ExportAuditLogDialog.UseCSV=Usa CSV
+ExportAuditLogDialog.ObjectSelection=Selezione oggetto
+ExportAuditLogDialog.ExportSelectedObjects=Esporta oggetti selezionati
+ExportAuditLogDialog.ExportAllObjectsInView=Esporta tutti gli oggetti della vista
+fmsErrorDetails.ERRORMSG=Solitamente, il problema \u00E8 causato da una cattiva configurazione in cui il master FMS non \u00E8 stato aggiornato e non ha l'ID volume/accesso adatto (\u00E8 necessario riavviare l'FMS).\nVerificare la variabile di ambiente FMS_HOME.
+fmserror.ERROR=Errore durante l'esportazione dei dati.
+fileDownloadError.ERRORMSG=Il file non \u00E8 stato scaricato.
+FileNotDownloaded=Il file non \u00E8 stato scaricato

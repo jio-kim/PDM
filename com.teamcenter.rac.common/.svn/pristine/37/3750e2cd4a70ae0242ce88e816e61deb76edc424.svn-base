@@ -1,0 +1,30 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Keys for clipboard
+# -----------------------------
+clear.TEXT=\uD074\uB9BD\uBCF4\uB4DC \uC9C0\uC6B0\uAE30
+append=\uCD94\uAC00
+removeButton.TIP=\uD074\uB9BD\uBCF4\uB4DC\uC5D0\uC11C \uC120\uD0DD\uD55C \uAC1C\uCCB4\uB97C \uC81C\uAC70
+clearClipboardButton.TIP=\uD074\uB9BD\uBCF4\uB4DC \uB0B4\uC6A9\uC744 \uC9C0\uC6C1\uB2C8\uB2E4.
+openButton.TIP=\uC120\uD0DD\uD55C \uAC1C\uCCB4 \uC5F4\uAE30
+appendCheckBox.TIP=\uB36E\uC5B4\uC4F0\uAE30 \uBAA8\uB4DC\uC640 \uCD94\uAC00 \uBAA8\uB4DC \uC0AC\uC774\uB97C \uC804\uD658
+clipboardButton.TIP=\uD074\uB9BD\uBCF4\uB4DC
+clipboardButton.TITLE=\uD074\uB9BD\uBCF4\uB4DC \uB0B4\uC6A9
+sendToUG.TIP=\uD074\uB9BD\uBCF4\uB4DC \uB0B4\uC6A9\uC744 NX\uC5D0 \uBCF4\uB0B4\uAE30
+
+clipboardButton.ICON=icons/clipboard_16.png
+clipboardAppendButton.ICON=icons/clipboardappend_16.png
+removeButton.ICON=icons/remove_16.png
+clear.ICON=icons/clear_16.png
+open.ICON=icons/open_16.png
+sendToUG.ICON=icons/sendto_16.png
+
+defaultAction.ICON=icons/defaultactionicon_16.png
+SWTClipboardDialog.append=\uCD94\uAC00  
+SWTClipboardDialog.close=\uB2EB\uAE30

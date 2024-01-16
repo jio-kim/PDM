@@ -1,0 +1,105 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2003 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the iddisplayrule package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: iddisplayrule_locale.properties
+#   Module  : com.teamcenter.rac.commands.iddisplayrule
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#19-Jun-2003  wangp                   initial create
+#20-Jun-2003  wangp                   add more keys for msg
+#24-Jun-2003  wangp                   add more entries
+#27-Jun-2003  wangp                   add msg
+#10-Sep-2003  wangp                   fix pr4830539: add Any(No Display Rule)
+#30-Oct-2003  Endi Wu                 Add entry
+#03-Nov-2003  Shreyas Shah            Fixed anyRule string
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Id display rule dialog
+# ------------------------------------
+idDisplayRule.TITLE = ID \u663E\u793A\u89C4\u5219
+
+anyRule=\u7A7A\u767D\uFF08\u4EC5\u5BF9\u521D\u59CB ID\uFF09
+
+currentDisplayRule=\u5F53\u524D\u663E\u793A\u89C4\u5219\uFF1A
+noCurrentRule=\u4E0D\u53EF\u7528
+
+create=\u521B\u5EFA(T)
+create.MNEMONIC=t
+create.TIP=\u521B\u5EFA ID \u663E\u793A\u89C4\u5219\u3002
+
+modify=\u4FEE\u6539(M)
+modify.MNEMONIC=M
+modify.TIP=\u4FEE\u6539\u9009\u5B9A\u7684 ID \u663E\u793A\u89C4\u5219\u3002
+
+remove=\u79FB\u9664(R)
+remove.MNEMONIC=R
+remove.TIP=\u79FB\u9664\u9009\u5B9A\u7684 ID \u663E\u793A\u89C4\u5219\u3002
+
+setCurrent=\u8BBE\u4E3A\u5F53\u524D(S)
+setCurrent.MNEMONIC=S
+setCurrent.TIP=\u8BBE\u7F6E\u9009\u5B9A\u7684\u89C4\u5219\u4F5C\u4E3A\u5F53\u524D\u663E\u793A\u89C4\u5219\u6216\u4EC0\u4E48\u90FD\u4E0D\u9009\u62E9\u6765\u5378\u8F7D\u663E\u793A\u89C4\u5219\u3002
+
+add=\u6DFB\u52A0(A)
+add.MNEMONIC=A
+add.TIP=\u6DFB\u52A0\u5176\u4ED6\u7528\u6237\u7684\u663E\u793A\u89C4\u5219\u5230\u5F53\u524D\u5217\u8868\u3002
+
+asDefault=\u4F7F\u7528\u9ED8\u8BA4\u503C
+ruleContent=\u9009\u5B9A\u89C4\u5219\u7684\u5173\u8054\uFF1A
+ruleList=\u89C4\u5219\u5217\u8868\uFF1A
+
+modify.TITLE=\u4FEE\u6539\u89C4\u5219
+modify.MSG=\u8BF7\u9009\u62E9\u8981\u4FEE\u6539\u7684\u6709\u6548\u89C4\u5219\u3002
+
+remove.TITLE=\u79FB\u9664\u89C4\u5219
+remove.MSG=\u8BF7\u9009\u62E9\u8981\u79FB\u9664\u7684\u6709\u6548\u89C4\u5219\u3002
+removeConfirm.MSG=\u8981\u79FB\u9664\u9009\u5B9A\u7684\u89C4\u5219\u5417\uFF1F
+
+setCurrent.TITLE=\u8BBE\u7F6E\u5F53\u524D\u89C4\u5219
+setCurrent.MSG=\u8BF7\u9009\u62E9\u4E00\u4E2A\u89C4\u5219\u6765\u4F5C\u4E3A\u5F53\u524D\u7684\u8BBE\u7F6E\u3002
+curretRuleSet.MSG=\u5F53\u524D\u663E\u793A\u89C4\u5219\u5DF2\u88AB\u66F4\u6539\u3002\u5F53\u524D\u663E\u793A\u7684\u6570\u636E\u5C06\u88AB\u66F4\u65B0\u3002
+setCurrentConfirm.MSG=\u8981\u8BBE\u7F6E\u9009\u62E9\u89C4\u5219\u4F5C\u4E3A\u5F53\u524D\u663E\u793A\u89C4\u5219\u5417\uFF1F
+unsetCurrentConfirm.MSG=\u8981\u53D6\u6D88\u5F53\u524D\u663E\u793A\u89C4\u5219\u7684\u8BBE\u7F6E\u5417\uFF1F
+noCurrentRule.MSG=\u5F53\u524D\u6CA1\u6709\u663E\u793A\u89C4\u5219\u3002
+
+loadingRules=\u6B63\u5728\u52A0\u8F7D ID \u663E\u793A\u89C4\u5219...
+
+refresh.MSG=\u5237\u65B0...
+
+# Create/Modify Id display rule dialog
+# ------------------------------------------
+createIdDisplayRule.TITLE=\u521B\u5EFA ID \u663E\u793A\u89C4\u5219
+modifyIdDisplayRule.TITLE=\u4FEE\u6539 ID \u663E\u793A\u89C4\u5219
+ruleName=\u89C4\u5219\u540D\u79F0\uFF1A
+allContexts=\u53EF\u7528\u7684\u5173\u8054\uFF1A
+selectedContexts=\u9009\u5B9A\u7684\u5173\u8054\uFF1A
+
+# Add Id display rule dialog
+# -------------------------------------
+addIdDisplayRule.TITLE=\u6DFB\u52A0 ID \u663E\u793A\u89C4\u5219
+selectUser=\u9009\u62E9\u7528\u6237\uFF1A
+ruleListForUser=\u9009\u5B9A\u7528\u6237\u62E5\u6709\u7684\u89C4\u5219\uFF1A
+
+# Error messages
+# -----------------------------------------
+error.TITLE=ID \u663E\u793A\u89C4\u5219
+cannotGetCurrentRule=\u4E0D\u80FD\u83B7\u53D6\u5F53\u524D\u7684\u663E\u793A\u89C4\u5219\u3002
+cannotSetCurrentRule=\u672A\u80FD\u8BBE\u7F6E\u5F53\u524D\u663E\u793A\u89C4\u5219\u3002
+cannotRemoveRules=\u672A\u80FD\u79FB\u9664\u6240\u8981\u6C42\u7684\u89C4\u5219\u3002
+cannotDisplayRule=\u4E0D\u80FD\u663E\u793A\u9009\u5B9A\u7684\u89C4\u5219\u3002
+cannotGetRuleList=\u672A\u80FD\u83B7\u53D6\u89C4\u5219\u5217\u8868\u3002
+cannotSaveRule=\u672A\u80FD\u4FDD\u5B58\u4FEE\u6539\u7684\u89C4\u5219\u3002
+cannotCreateRule=\u672A\u80FD\u65B0\u5EFA\u89C4\u5219\u3002
+cannotAddRule=\u672A\u80FD\u6DFB\u52A0\u9009\u5B9A\u5219\u7684\u89C4\u5219\u3002
+cannotModify.MSG=\u65E0\u6CD5\u4FEE\u6539\u9009\u5B9A\u7684\u89C4\u5219\u3002
+addExistingRule.MSG=\u9009\u5B9A\u7684\u89C4\u5219\u5DF2\u7ECF\u88AB\u6DFB\u52A0\u3002

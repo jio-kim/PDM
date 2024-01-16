@@ -1,0 +1,170 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the saveas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: saveas_locale.properties
+#   Module  : com.teamcenter.rac.commands.saveas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2000  huangz                  Add Save BVR As command keys
+#10-Mar-2000  huangz                  Change the key values
+#16-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#06-Apr-2000  huangz                  Change the key value
+#23-Jun-2000  huangz                  Change the revId value
+#15-Sep-2000  milindm                 Added the base.TITLE and addAttr.TITLE.
+#21-Sep-2000  Subrata Sen             For Milind's Item Attr / Type Project.
+#21-Sep-2000  Subrata Sen             Merge to try_uif_v7.0
+#06-Nov-2000  Milind Mulay            Added the Not Valid key Types
+#16-Nov-2000  Subrata Sen             For Milind's Item Additional Attribute Project.
+#01-Dec-2000  huangz                  Merge the save modification.
+#04-Apr-2001  N Gopalakrishnan        Added registry keys for Revise project
+#12-Oct-2001  wangp                   revise project (for x_gopala)
+#07-Nov-2001  wangp                   add msg for save BOMView revision
+#30-Jul-2002  Bruce Hebbard           Add "Classify on Create" button title
+#16-Sep-2002  Bruce Hebbard           Change "Classify on Create" to "Classify Immediately" (PR 4631038)
+#23-Apr-2003  faming                  project level security
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#06-May-2003  wangp                   fix pr 4674050: new design for newitem/revise/saveitemas dialog
+#12-Jun-2003  wangp                   alternate id
+#23-Jun-2003  faming                  merged from P9001
+#24-Jul-2003  Sujeeth Kamath          resolved conflicts for P9003
+#27-Feb-2004  wangp                   fix pr 4853772: reword tooltips
+#14-Apr-2005  vmarrapu                to add arch modeller properties.
+#14-Apr-2005  Subrata Sen             Merging from Venkat.
+#21-Apr-2005  Reshma Khatib           SaveAs ArchitectureRevision.
+#09-Jun-2005  Manoj K Pradhan         Merge from manoj_rdv_9127_branch
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+noselection.TITLE = Salvar como...
+noselection = Nenhum objeto est\u00E1 selecionado para salvar.
+saveAs.TITLE = Salvar Como ...
+toomanyobjects = N\u00E3o \u00E9 poss\u00EDvel salvar mais de um objeto ao mesmo tempo.
+saveAsStatus.MSG = Salvar como...
+unknown.TYPE = Tipo de destino desconhecido
+copyToClipboard = Copiar p/ \u00C1rea Transf
+
+name = Nome :
+description = Descri\u00E7\u00E3o:
+openOnCreate = Abrir ao criar
+classifyOnCreate = Classificar imediatamente
+
+# SaveFolderAsDialog
+# ------------------------
+saveAsFolder.TITLE = Salvar pasta como
+
+# SaveFormAsDialog
+# ------------------------
+saveAsForm.TITLE = Salvar formul\u00E1rio como
+
+# Save ItemAsDialog
+# ------------------------
+saveAsItem.TITLE = Salvar item como
+itemId = ID do Item
+revId = ID da revis\u00E3o
+assign = Atribuir
+unitOfMeasure = Unidade de Medida:
+itemType = Tipo de Item:
+itemInformation = Informa\u00E7\u00F5es do item
+basedOn = Baseado Em
+base.TITLE=Detalhes do item
+addAttr.TITLE=Atributos personalizados
+namingPattern = Padr\u00E3o de numera\u00E7\u00E3o e nomea\u00E7\u00E3o
+
+# SaveArchitectureAs Dialog
+# ------------------------
+base.ARCHTITLE = Detalhes da arquitetura
+archItemInformation = Informa\u00E7\u00F5es da arquitetura
+archItemType = Tipo da arquitetura
+gcidLabel = ID do componente gen\u00E9rico
+archTitle = Salvar arquitetura como
+
+# SaveItemRevAsDialog is obsoleted.
+# SaveItemRevAsDialog
+# ------------------------
+#saveAsItemRevision.TITLE = Save Item Revision As
+#itemRevInformation = Item Revision Information
+
+# SaveDatasetAsDialog
+# ------------------------
+saveAsDataset.TITLE = Salvar Dataset Como
+datasetId = ID do Dataset
+basedOnVersion = Com base na vers\u00E3o:
+type = Tipo:
+tool = Ferramenta usada:
+datasetInformation = Informa\u00E7\u00F5es do Dataset
+
+# SaveBOMViewRevisionAsDialog
+# ------------------------
+command.TITLE = Salvar revis\u00E3o BOMView como
+bvrInformation = Criar nova BVR para:
+BVRId = ID do Item
+rev = ID da revis\u00E3o
+viewType = Exibir tipo:
+billDisplay = Criar como:
+precise = Fixo
+imprecise = Din\u00E2mico
+
+creatingNewBOMViewRevision=Criar revis\u00E3o BOMView ...
+failToCreate=Falha ao criar BOMView
+
+
+# SaveAsItemRevPanel
+# -----------------------
+# overwrite the dialog.TITLE in newitem_locale.properties
+dialog.TITLE=Salvar Como
+itemInfo.LABEL=Defina as informa\u00E7\u00F5es b\u00E1sicas para o item copiado.
+savingAsItemRev=Salvar como revis\u00E3o de item
+openingNewComponent=Abrir novo item
+createConfirm.TITLE=Salvar como revis\u00E3o de item
+createConfirm.MSG=Para prosseguir, novos itens precisam ser criados. \nDeseja criar o novo item?
+copyOptions.LABEL=Op\u00E7\u00F5es de c\u00F3pia
+
+# Error Messages
+# --------------
+error.TITLE = Salvar como ...
+fillFormError = Erro ao preencher o formul\u00E1rio.
+createDirFailed=Falha ao criar diret\u00F3rio tempor\u00E1rio
+failFindDialog=Falha ao localizar a caixa de di\u00E1logo salvar como revis\u00E3o de item.
+failToSaveAs=A opera\u00E7\u00E3o "Salvar como..." falhou para a revis\u00E3o de item.
+failToSaveAsItem=A opera\u00E7\u00E3o "Salvar" falhou para o item.
+noRevisionError = Salvar como necessita pelo menos uma revis\u00E3o de item.
+
+# Warning messages
+# ---------------------------------------------------
+#revise.TITLE = Revise...
+#revNotAllowed = Selected Item Revision can't be revised unless released
+
+# Not valid type keys
+# ----------------------
+notValidType.TITLE=Dados de entrada inv\u00E1lidos
+notValidChar=N\u00E3o \u00E9 poss\u00EDvel alterar o valor da propriedade caracter.
+notValidDate=Data inv\u00E1lida.
+notValidDouble=Double ou float n\u00E3o s\u00E3o v\u00E1lidos.
+notValidInt=Inteiro n\u00E3o \u00E9 v\u00E1lido.
+notValidLogical=Dados l\u00F3gicos n\u00E3o s\u00E3o v\u00E1lidos.
+notValidShort=Inteiro curto n\u00E3o \u00E9 v\u00E1lido.
+notValidString=N\u00E3o \u00E9 poss\u00EDvel alterar o valor string da propriedade.
+licenseToSaveAsSchedule = \u00C9 necess\u00E1rio possuir a licen\u00E7a de cria\u00E7\u00E3o para efetuar essa opera\u00E7\u00E3o. 
+
+project.TITLE=Atribuir ao projeto
+projectToolTip=Selecionar projetos para atribuir novo item para
+
+MasterValueChangingwarning.TITLE =Aviso de altera\u00E7\u00E3o do valor mestre
+MasterValueChangingwarningList.MESSAGE=O valor mestre \u00E9 modificado para as propriedades listadas a seguir:
+MasterValueChangingwarningExplain.MESSAGE=Se voc\u00EA prosseguir, todos os valores de convers\u00E3o para outros idiomas ser\u00E3o marcados como inv\u00E1lidos.
+MasterValueChangingwarningConfirmation.MESSAGE=Deseja realmente prosseguir?
+
+MasterValueChangingwarningExplain1.MESSAGE=Ap\u00F3s a opera\u00E7\u00E3o SaveAs, todos os valores traduzidos para outros idiomas ser\u00E3o marcados como inv\u00E1lidos.
+MasterValueChangingwarningConfirmation1.MESSAGE=Informar

@@ -1,0 +1,44 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the unreserve package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: unreserve_locale.properties
+#   Module  : com.teamcenter.rac.commands.unreserve
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#14-Jan-2005  rlee                    Background replica checkin project (for remote checkouts)
+#22-Jan-2005  x_hottig                Fixing PR #5047723 - Misleading messagebox titles > Check In = Reserve, Check Out = Unreserve
+#10-Feb-2005  rlee                    Merge out from P10.0.0.10
+#17-Nov-2005  rlee                    Support IEOptionsPanel for remote checkin
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=\u7B7E\u5165
+
+confirmationText = \u786E\u5B9A\u8981\u7B7E\u5165\u5417\uFF1F
+unreserveObjects = \u6B63\u5728\u7B7E\u5165...
+ConfirmationText = \u6B63\u5728\u7B7E\u5165...
+
+error.TITLE = \u7B7E\u5165
+
+backgroundCheckInMode = \u540E\u53F0\u7B7E\u5165
+backgroundBoxToolTip = \u4EC5\u5BF9\u8FDC\u7A0B\u7B7E\u51FA\u7684\u5BF9\u8C61\u8FDB\u884C\u540E\u53F0\u7B7E\u5165
+prefIconToolTip=\u8BBE\u7F6E\u8FDC\u7A0B\u7B7E\u5165\u5BFC\u51FA\u9009\u9879
+
+failCheckinUploadLocalFiles=\u672A\u80FD\u5728\u7B7E\u5165\u671F\u95F4\u4E0A\u4F20\u67D0\u4E9B\u672C\u5730\u6587\u4EF6
+confirmation.TITLE = \u8FDC\u7A0B\u7B7E\u5165\u9009\u9879\u8BBE\u7F6E
+confirmationMsg = \u5F53\u524D\u9009\u9879\u8BBE\u7F6E\u5982\u4E0B\u3002\n \u8981\u7EE7\u7EED\u5417\uFF1F
+localFileNotExist = \u672C\u5730\u8DEF\u5F84\u4E0D\u5B58\u5728\uFF0C\u56E0\u6B64\u65E0\u6CD5\u7EE7\u7EED\u7B7E\u5165\u3002
+
+tcxmlCheckinOperationNotSupported=\u57FA\u4E8E\u8FDC\u7A0B\u7B7E\u5165\u64CD\u4F5C\u7684 TcXML \u5C9B\u4E0D\u652F\u6301\u5BF9\u8C61\u9009\u62E9\u3002

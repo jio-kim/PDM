@@ -1,0 +1,61 @@
+##* @<COPYRIGHT_START>@
+# ===============================================
+# Copyright 2007 UGS Corp. All Rights Reserved.
+# ===============================================
+# @<COPYRIGHT_END>@
+
+# Entries for messages
+# ------------------------------
+openError.TITLE=\u00D6ffnen...
+
+saveForm.MESSAGE=Formular speichern...
+loadForm.MESSAGE=Formular wird geladen...
+
+unableToOpen.MESSAGE=Formular kann nicht angezeigt werden.
+unableToSave.MESSAGE=Formular kann nicht gespeichert werden, f\u00FCllen Sie bitte die erforderlichen Felder aus.
+
+noDataToFetch.MSG=F\u00FCr das Element/den Element\u00E4nderungsstand sind keine Daten angeh\u00E4ngt.
+cannotDecideWhichDataset.MSG=Der f\u00FCr die Aktion zu verwendende Dataset konnte nicht ermittelt werden. Verwenden Sie die Voreinstellung "TC_<itemtype>_data_search_order".
+openComponent.MESSAGE=Komponente wird ge\u00F6ffnet...
+
+# Status message while performing Implicit Check out
+doingImplicitCO=\u00C4nderungen werden gespeichert und das implizite Auschecken/Einchecken wird ausgef\u00FChrt...
+
+#Entries for buttons
+#---------------------------------
+
+#For the Edit button on the read only properties dialog
+edit=Auschecken und bearbeiten
+edit.TIP=Auschecken und Eigenschaften bearbeiten
+edit.MNEMONIC=Edit
+
+implicitCoApply=Anwenden
+implicitCoApply.TIP=\u00C4nderungen speichern
+implicitCoApply.MNEMONIC=Apply
+
+implicitCoOk=OK
+implicitCoOk.TIP=\u00C4nderungen speichern
+implicitCoOk.MNEMONIC=Ok
+
+saveCheckOut=Speichern
+saveCheckOut.TIP=Speichern und ausgecheckt beibehalten
+saveCheckOut.MNEMONIC=Save
+
+saveCheckIn=Speichern und einchecken
+saveCheckIn.TIP=Eigenschaften speichern und einchecken
+saveCheckIn.MNEMONIC=I
+
+cancelCheckOut=Auschecken abbrechen
+cancelCheckOut.TIP=Auschecken abbrechen und auf Original zur\u00FCcksetzen
+cancelCheckOut.MNEMONIC=O
+
+saveChanges.TITLE=Nicht gespeicherte \u00C4nderungen vorhanden
+saveChanges.TEXT=M\u00F6chten Sie die \u00C4nderungen im Formular speichern?
+
+#Warning message while opening too many objects
+tooManyViewsError.MSG=Es werden nicht alle ausgew\u00E4hlten Ansichten ge\u00F6ffnet, weil nur {0} Ansichten gleichzeitig ge\u00F6ffnet werden k\u00F6nnen.\nKlicken Sie auf OK, um nur {0} Ansichten zu \u00F6ffnen, oder erh\u00F6hen Sie das Standardlimit (Voreinstellung "TCMaxOpenViewsLimit").\n\nHinweis: Durch Erh\u00F6hen des Standardlimits kann mehr Speicher beansprucht werden, als verf\u00FCgbar ist. Dies f\u00FChrt dazu, dass Teamcenter automatisch geschlossen wird. 
+maxViewsOpened.MSG=Sie haben die maximale Anzahl ge\u00F6ffneter Ansichten erreicht.\nBitte schlie\u00DFen Sie die nicht verwendeten Ansichten und \u00F6ffnen Sie die Ansicht erneut.
+cannotOpen.MSG=\u00D6ffnen nicht m\u00F6glich {0}. 
+tooManyViews.TITLE=Ansichten \u00F6ffnen
+openViewDialog_buttonCancel=Abbrechen
+openViewDialog_buttonOK=OK

@@ -1,0 +1,103 @@
+#*==================================================================================================
+#
+#                    Copyright (c) 2004 UGS
+#                   Unpublished - All rights reserved
+#                   
+#                   
+# THIS PROGRAM IS AN UNPUBLISHED WORK FULLY PROTECTED BY THE UNITED STATES
+#  COPYRIGHT LAWS AND IS CONSIDERED A TRADE SECRET BELONGING TO THE COPYRIGHT
+#                                   HOLDER.
+#
+#====================================================================================================
+# File description: This properties file contains all locale specific keys for the saveas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: saveassignal_locale.properties
+#   Module  : com.teamcenter.rac.commands.saveassignal
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#04-Oct-2004  x_bhadra                Initial Version
+#08-Nov-2004  x_bhadra                Fixing the Registry Problem
+#08-Nov-2004  Narayana Murthy         Merge from P10.0.0.6
+#10-Nov-2004  x_bhadra                Merge from lbom_pse_support branch
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+dialog.TITLE=Zapisz jako
+SignalType=Typ sygna\u0142u :
+
+# Save ItemAsDialog
+# ------------------------
+saveAsItem.TITLE = Zapisz sygna\u0142 jako
+itemId = ID sygna\u0142u
+revId = ID rewizji
+itemType = Typ sygna\u0142u:
+itemInformation = Informacje o sygnale
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.NAME=Sprawd\u017A konfiguracj\u0119
+viConfigStep.TOOLTIP=Sprawd\u017A konfiguracj\u0119 wariantu sygna\u0142u
+viConfigStep.info=Upewnij si\u0119, \u017Ce konfiguracja wariantu sygna\u0142u jest prawid\u0142owa
+viConfigStep.table.option=Opcja
+viConfigStep.table.value=Warto\u015B\u0107
+
+# Signal Info Panel
+# -----------------------------
+itemInfo.LABEL=Zdefiniuj podstawowe informacje dla skopiowanego sygna\u0142u.
+itemInfoStep.NAME=Wprowad\u017A informacje dla sygna\u0142u
+itemInfoStep.TOOLTIP=Zdefiniuj podstawowe informacje dla sygna\u0142u.
+
+# Signal Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=Zdefiniuj atrybuty g\u0142\u00F3wnego formularza sygna\u0142u.
+itemMasterFormStep.NAME=Wprowad\u017A informacje dla g\u0142\u00F3wnego formularza sygna\u0142u
+itemMasterFormStep.TOOLTIP=Zdefiniuj atrybuty g\u0142\u00F3wnego formularza sygna\u0142u.
+
+# SignalRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=Zdefiniuj atrybuty g\u0142\u00F3wnego formularza zmiany sygna\u0142u.
+itemRevMasterFormStep.NAME=Wprowad\u017A informacje g\u0142\u00F3wnego formularza zmiany
+itemRevMasterFormStep.TOOLTIP=Zdefiniuj atrybuty g\u0142\u00F3wnego formularza zmiany sygna\u0142u.
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Tworzenie nowego sygna\u0142u
+
+# option panel
+# ------------
+checkOutOnCreate = Pobierz rewizj\u0119 sygna\u0142u po utworzeniu
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Tworzenie nowego sygna\u0142u
+checkingIds=Sprawdzanie identyfikatora i zmiany sygna\u0142u
+pastingNewItem=Wklejanie nowego sygna\u0142u
+openingNewComponent=Otwieranie nowego sygna\u0142u
+abort = Przerwij otwieranie nowego sygna\u0142u
+checkOutRevision=Pobieranie rewizji sygna\u0142u
+savingAsItemRev=Zapisywanie jako rewizja sygna\u0142u
+createConfirm.TITLE=Nowy sygna\u0142
+createConfirm.MSG=Aby kontynuowa\u0107, nale\u017Cy utworzy\u0107 nowy sygna\u0142. \nCzy chcesz utworzy\u0107 nowy sygna\u0142?
+
+
+# Error Messages
+# ----------------------
+error.TITLE = Nowy sygna\u0142 ...
+
+failFindDialog=Nie znaleziono okna dialogowego nowego sygna\u0142u.
+failToSaveAs=Zapisanie jako zmiany sygna\u0142u nie powiod\u0142o si\u0119.
+sameAsOldId=Znaleziono istniej\u0105cy sygna\u0142. Polecenie Utw\u00F3rz/Zapisz jako tworzy tylko nowe sygna\u0142y. \nAby utworzy\u0107 now\u0105 zmian\u0119 sygna\u0142u, prosz\u0119 u\u017Cy\u0107 polecenia Plik -> Utw\u00F3rz zmian\u0119.
+failToCreate = Utworzenie sygna\u0142u nie powiod\u0142o si\u0119
+failToOpen = Nie mo\u017Cna otworzy\u0107 sygna\u0142u. Mo\u017Ce by\u0107 to spowodowane problemem z zabezpieczeniami.
+failFindItemMaster=Pobranie g\u0142\u00F3wnego formularza sygna\u0142u nie powiod\u0142o si\u0119.
+failFindItemRevMaster=Pobranie g\u0142\u00F3wnego formularza zmiany sygna\u0142u nie powiod\u0142o si\u0119.
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Tworzenie sygna\u0142u zosta\u0142o przerwane..Sygna\u0142 zosta\u0142 utworzony i cz\u0119\u015Bciowo wstawiony
+genCompIDLabelText = ID sygna\u0142u\nrozbicia\nelementu:

@@ -1,0 +1,117 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the importremote package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: importremote_locale.properties
+#   Module  : com.teamcenter.rac.commands.importremote
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#28-Feb-2000  huangz                  Revise the import remote command
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2000  huangz                  Change the confirmationMsg key value
+#16-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#22-Mar-2000  huangz                  Plug in APIs
+#19-May-2000  wangp                   change preference to option
+#21-Sep-2000  Vic Nidoy               Add i/e report messages
+#08-Nov-2000  Vic Nidoy               Fix Import Remote titles
+#13-Dec-2000  Vic Nidoy               Add prefIconToolTip
+#11-Apr-2002  rlee                    Placate AbstracProgressDialog, requires portalCGI
+#07-Jan-2003  rlee                    Add Import Progress Strings
+#14-Jan-2003  rlee                    Add more progress strings
+#01-Apr-2003  Paul Jackson            fix typo
+#01-May-2003  Hugh Stewart            merge v81 changes to sdldev
+#28-Sep-2004  Tom McCabe              FMS/multisite integration
+#05-Oct-2004  nidoy                   Change tool tip text
+#11-Nov-2004  Vic Nidoy               Merge with Tom's FMS changes
+#09-Nov-2005  israeli                 noMultipleObjects msg.
+#17-Nov-2005  israeli                 File generation related errors
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#15-Mar-2006  x_sangun                Added MultiObj Remote import in background for On Demand Sync
+#13-Apr-2006  x_sangun                Fixed a typo
+#02-Jun-2007  faming                  PR#5760951: post warning message dialog for SST cleanup error.
+#16-Jun-2007  kao                     SST work merge
+#$HISTORY$
+#=================================================================================================*/
+
+portalCGI = factice
+command.TITLE = Importer depuis PLM
+entCommand.TITLE = Importer depuis Enterprise
+reason=Motif:
+confirmationText=Confirmez-vous l'importation?
+
+error.TITLE=Importer depuis PLM
+entError.TITLE=Importer depuis Enterprise
+
+noSelectionError = Aucun article, jeu de donn\u00E9es ou formulaire n'est s\u00E9lectionn\u00E9.
+prefButton = Param\u00E9trage des options
+
+confirmation.TITLE = Param\u00E8tres des options de la fonction Importer distant
+confirmationMsg = Les param\u00E8tres courants sont les suivants.\nSouhaitez-vous r\u00E9ellement continuer?
+
+importingMsg = Importation
+
+preference.TITLE = Options d'importation distante
+
+fileGenReportTitle=Rapport r\u00E9sum\u00E9
+fileGenTitle=G\u00E9n\u00E9ration de fichier
+fileGenError=Echec de la r\u00E9cup\u00E9ration du fichier rapport du serveur
+
+fileErrReportTitle=Journal d'erreurs
+errFileGenTitle=Erreur de g\u00E9n\u00E9ration du rapport
+errFileGenError=Echec de r\u00E9cup\u00E9ration du fichier de rapport d'erreurs du serveur
+
+prefIconToolTip=D\u00E9finir les options d'importation distante
+
+
+
+#######################
+# Progress dialog stuff
+#######################
+IRProgress.DialogTitle = Progression de Importer distant
+IRProgress.CloseTooltip = Quitte cette bo\u00EEte de dialogue sans affecter les importations distantes d\u00E9j\u00E0 lanc\u00E9es.
+progressStat.EXPORT = Exporte vers le site distant
+
+progressTableCol.Name = Nom de l'objet
+progressTableCol.Status = Op\u00E9ration
+progressTableCol.Progress = Progression (Objets/Octets/Fichiers)
+
+progressStat.PREPROCESSING = Pr\u00E9traitement
+progressStat.TRANSFER = Transf\u00E8re les fichiers
+progressStat.IMPORT = Importe localement
+progressStat.COMPLETE = Importer distant termin\u00E9
+progressStat.ERROR = Echec de Importer distant
+progressStat.THIRD_SITE = R\u00E9cup\u00E9ration du troisi\u00E8me site
+progress.NAME_UNKNOWN = Nom d'objet inconnu
+progress.Finished = Termin\u00E9
+progress.Success = Succ\u00E8s
+progress.Failure = Echec
+progress.InProgress = En cours
+
+noMultipleObjects=On ne peut importer qu'un seul objet \u00E0 la fois
+error.TITLE = Erreur
+
+multibackgroundError = Une importation est d\u00E9j\u00E0 en cours d'ex\u00E9cution en arri\u00E8re-plan.\n Veuillez s\u00E9lectionner toutes les donn\u00E9es d'un m\u00EAme dossier pour lancer l'importation en une seule fois.
+multibackgroundErrorTitle = Importer en arri\u00E8re-plan
+cleanupFailed.TITLE = Avertissement sur Op\u00E9ration de transfert de site synchrone
+
+remImpPlmDlg.TITLE = Importer \u00E0 distance depuis site PLM
+
+remImpGmsDlg.TITLE = Importation distante en utilisant Multisite global
+remImpGmsDlg.reason = Motif       :
+remImpGmsDlg.optionSet = Jeu d'options :
+remImpGmsDlg.immediate = D\u00E9marrer le transfert imm\u00E9diat
+remImpGmsDlg.progress = Afficher l'indicateur de progression
+remImpGmsDlg.email = Envoyer une notification par e-mail
+impRmtCmd.mixedObjs = Des objets des sites PLM et GMS ont \u00E9t\u00E9 s\u00E9lectionn\u00E9s
+impRmtCmd.notRemote = L'un des objets s\u00E9lectionn\u00E9s n'est ni un objet publi\u00E9 ni une duplication.
+
+optionSetListButton.Tooltip = S\u00E9lectionner le jeu d'options

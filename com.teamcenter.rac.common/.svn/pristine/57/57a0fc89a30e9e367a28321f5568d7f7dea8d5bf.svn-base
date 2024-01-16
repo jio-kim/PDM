@@ -1,0 +1,119 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+readAccess.TIP=\u5141\u8BB8\u5BF9\u6B64\u5BF9\u8C61\u5177\u6709\u8BFB\u6743\u9650
+noReadAccess.TIP=\u4E0D\u5141\u8BB8\u5BF9\u6B64\u5BF9\u8C61\u5177\u6709\u8BFB\u6743\u9650
+
+writeAccess.TIP=\u5141\u8BB8\u5BF9\u6B64\u5BF9\u8C61\u5177\u6709\u5199\u6743\u9650
+noWriteAccess.TIP=\u4E0D\u5141\u8BB8\u5BF9\u6B64\u5BF9\u8C61\u5177\u6709\u5199\u6743\u9650
+
+changeAccess.TIP=\u5141\u8BB8\u5BF9\u6B64\u5BF9\u8C61\u5177\u6709\u66F4\u6539\u6743\u9650
+noChangeAccess.TIP=\u4E0D\u5141\u8BB8\u5BF9\u6B64\u5BF9\u8C61\u5177\u6709\u66F4\u6539\u6743\u9650
+
+deleteAccess.TIP=\u5141\u8BB8\u5BF9\u6B64\u5BF9\u8C61\u5177\u6709\u5220\u9664\u6743\u9650
+noDeleteAccess.TIP=\u4E0D\u5141\u8BB8\u5BF9\u6B64\u5BF9\u8C61\u5177\u6709\u5220\u9664\u6743\u9650
+
+inProcess.TIP=\u6B63\u5728\u5904\u7406\u5BF9\u8C61
+notInProcess.TIP=\u5BF9\u8C61\u672A\u5728\u5904\u7406\u4E2D
+
+checkedOut.TIP=\u5BF9\u8C61\u5DF2\u7B7E\u51FA
+notCheckedOut.TIP=\u5BF9\u8C61\u672A\u7B7E\u51FA
+
+released.TIP=\u5BF9\u8C61\u5DF2\u53D1\u5E03
+notReleased.TIP=\u5BF9\u8C61\u672A\u53D1\u5E03
+
+published.TIP=\u5BF9\u8C61\u5DF2\u53D1\u5E03
+notPublished.TIP=\u5BF9\u8C61\u672A\u53D1\u5E03
+
+classified.TIP=\u5BF9\u8C61\u5DF2\u5206\u7C7B
+notClassified.TIP=\u5BF9\u8C61\u672A\u5206\u7C7B
+
+archived.TIP=\u5BF9\u8C61\u5DF2\u5F52\u6863
+notArchived.TIP=\u5BF9\u8C61\u672A\u5F52\u6863
+
+updateOptions.TITLE=\u66F4\u65B0\u9009\u9879
+
+whereReferenced.TIP=\u5F53\u524D\u9009\u5B9A\u5BF9\u8C61\u7684\u201C\u4F55\u5904\u5F15\u7528\u8BA1\u6570\u201D\u3002
+
+whereUsed.TIP=\u5F53\u524D\u9009\u5B9A\u5BF9\u8C61\u7684\u201C\u4F55\u5904\u4F7F\u7528\u8BA1\u6570\u201D\u3002
+
+childCount.TIP=\u9009\u5B9A\u7684\u7EC4\u4EF6\u7684\u5B50\u7EC4\u4EF6\u4E2A\u6570\u3002
+
+infoCenter.WhereUsed.TITLE=\u663E\u793A\u4F55\u5904\u4F7F\u7528\u4FE1\u606F
+infoCenter.WhereRefed.TITLE=\u663E\u793A\u4F55\u5904\u5F15\u7528\u4FE1\u606F
+infoCenter.ChildCount.TITLE=\u663E\u793A\u5B50\u4EF6\u8BA1\u6570\u4FE1\u606F
+infoCenter.Access.TITLE=\u663E\u793A\u5BF9\u8C61\u6743\u9650\u4FE1\u606F
+infoCenter.State.TITLE=\u663E\u793A\u5BF9\u8C61\u72B6\u6001\u4FE1\u606F
+
+ok.BUTTON=\u786E\u5B9A
+
+TCUtilities.EmptyItemPassed=\u5DF2\u4F20\u9012\u7A7A\u96F6\u7EC4\u4EF6\u3002
+
+#Keys for Multiple Files Drag and Drop
+continueButton.LABEL=\u7EE7\u7EED
+
+maxFilesLimit1.MSG=\u9009\u62E9\u4E00\u6B21\u62D6\u653E\u8D85\u8FC7 {0} \u4E2A\u6587\u4EF6\u53EF\u80FD\u9700\u8981\u4E00\u4E9B\u65F6\u95F4
+maxFilesLimit2.MSG2=\u3002\n\n \u8981\u7EE7\u7EED\u8FDB\u884C\u5417\uFF1F
+maxFilesLimit.TITLE=\u591A\u6587\u4EF6\u62D6\u653E
+
+DocMgtService.NoDatasetToViewOrMarkup=\u6CA1\u6709\u8981\u67E5\u770B\u6216\u6279\u6CE8\u7684\u6570\u636E\u96C6\u3002
+DocMgtService.NoDatasetToDigitalSign=\u6CA1\u6709\u8981\u7B7E\u540D\u7684\u6570\u636E\u96C6\u3002
+DocMgtService.AppLauncherReturnError=\u5E94\u7528\u7A0B\u5E8F\u542F\u52A8\u7A0B\u5E8F\u8FD4\u56DE\u9519\u8BEF\uFF1A
+DocMgtService.UnableToGetLaunchDefinition=\u663E\u793A\u9009\u5B9A\u5BF9\u8C61\u7684\u6279\u6CE8\u65F6\u51FA\u73B0\u95EE\u9898\u3002
+DocMgtService.GetLaunchDefinitionError=\u67E5\u770B/\u6279\u6CE8\u9519\u8BEF
+AppLauncherRequestHandler.SessionError=\u9519\u8BEF\uFF1A\u4F1A\u8BDD\u4E3A\u7A7A\u3002
+AppLauncherRequestHandler.CompManagerError=\u9519\u8BEF\uFF1A\u7EC4\u4EF6\u7BA1\u7406\u5668\u4E3A\u7A7A\u3002
+AppLauncherRequestHandler.DataManagementServiceError=\u9519\u8BEF\uFF1A\u65E0\u6CD5\u627E\u5230\u6570\u636E\u7BA1\u7406\u670D\u52A1\u3002
+AppLauncherRequestHandler.MarkupSaveError=\u9519\u8BEF\uFF1A\u6279\u6CE8\u4FDD\u5B58\u64CD\u4F5C\u5931\u8D25\u3002
+AppLauncherRequestHandler.ParseError=\u9519\u8BEF\uFF1A\u672A\u80FD\u89E3\u6790\u5DE5\u5177\u56DE\u8C03 XML \u6D88\u606F\u3002
+AppLauncherRequestHandler.DigitalSignSaveError=\u9519\u8BEF\uFF1A\u7B7E\u540D\u4FDD\u5B58\u64CD\u4F5C\u5931\u8D25\u3002
+AppLauncherRequestHandler.CallBackAtionError=\u9519\u8BEF\uFF1A\u4E0D\u652F\u6301\u56DE\u8C03\u64CD\u4F5C\u3002
+AppLauncherFileHandler.DownloadFilesError=\u5F02\u5E38\uFF1A\u4E0B\u8F7D\u6587\u4EF6\u5931\u8D25\uFF1A
+
+#remote object display string
+Remote_Object.NAME=<\u8FDC\u7A0B\u5BF9\u8C61>
+Unreadable_Object.NAME=<\u65E0\u6CD5\u8BFB\u53D6\u7684\u5BF9\u8C61>
+
+TCComponentContentProvider.loadChildrenJob=\u52A0\u8F7D\u5B50\u4EF6...
+
+# Loading message for LOV UI - get initial LOV
+loading.TIP=\u52A0\u8F7D LOV \u503C
+
+# No values found message for LOV UI 
+noLOVValuesFound.MSG=\u6CA1\u6709\u53EF\u7528\u7684 LOV \u503C
+
+# Range LOV message for LOV UI
+rangeLOVMessage.MSG=\u6709\u6548\u503C\u5E94\u4E3A\u7C7B\u578B\u201C{0}\u201D\u5E76\u5904\u4E8E "{1}, {2}" \u8303\u56F4\u4E4B\u5185
+
+# Message strings used for informing invalid LOV value
+invalidLOVValue.MSG=\u8F93\u5165\u7684\u503C "{0}" \u5BF9\u7C7B\u578B\u4E3A\u201C{1}\u201D\u7684\u5C5E\u6027\u65E0\u6548
+# Data types
+type_1.MSG=\u5B57\u7B26\u578B
+type_2.MSG=\u65E5\u671F\u578B
+type_3.MSG=\u53CC\u7CBE\u5EA6\u578B
+type_4.MSG=\u6D6E\u52A8\u578B
+type_5.MSG=\u6574\u578B
+type_6.MSG=\u903B\u8F91\u578B
+type_7.MSG=\u77ED\u6574\u578B
+type_8.MSG=\u5B57\u7B26\u4E32\u578B
+
+wrapToolTipPosition=80
+
+# Tool-tip text for LOV UI
+lovTooltip.TIP=\u5728\u6587\u672C\u5B57\u6BB5\u8F93\u5165\u5173\u952E\u5B57\u4EE5\u8FC7\u6EE4 LOV \u503C\u3002
+
+lovDataLoadSummary.MSG=\u663E\u793A {0} - {1} \u4E2A\u503C\u3002
+lovNoMoreValues.MSG=\u6CA1\u6709\u66F4\u591A\u7684\u503C\u3002
+lovMoreValuesChangeFilterCriteria.MSG=\u5B58\u5728\u5176\u4ED6\u503C\u3002\u8981\u67E5\u770B\u8FD9\u4E9B\u503C\uFF0C\u8BF7\u66F4\u6539\u8FC7\u6EE4\u51C6\u5219\u3002
+lovMoreValuesExist.MSG=\u8981\u83B7\u53D6\u66F4\u591A\u503C\uFF0C\u7EE7\u7EED\u6EDA\u52A8\u3002
+
+errorDlgShowAllCheckbox.MSG=\u5168\u90E8\u663E\u793A
+
+# Messages for progress dialog abort warning
+stoppedByTheUser=\u8BE5\u64CD\u4F5C\u5DF2\u88AB\u7528\u6237\u505C\u6B62\u3002
+SomeObjectsProcessedBeforeAbort=\u7528\u6237\u505C\u6B62\u4E86\u8BE5\u64CD\u4F5C\uFF0C\u4F46\u662F\u505C\u6B62\u64CD\u4F5C\u524D\u5DF2\u7ECF\u5904\u7406\u5B8C\u4E86\u4E00\u4E9B\u5BF9\u8C61\u3002

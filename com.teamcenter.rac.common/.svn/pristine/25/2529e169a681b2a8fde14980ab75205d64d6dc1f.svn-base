@@ -1,0 +1,22 @@
+#*==================================================================================================
+#
+#                               Copyright (c) 2007 UGS PLM
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the sitecheckin package.
+#                   This is an internal file so therefore only TC PBU developers
+#                   should be modifying this file. To make changes please modify
+#                   the sitecheckin_user.properties file.  Do NOT modify this file. This
+#                   allows properties found in this file to be over-written but not destroyed.
+#
+#   Filename: sitecheckin.properties
+#   Module  : com.teamcenter.rac.commands.sitecheckin
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#$HISTORY$
+#=================================================================================================*/
+import=com.teamcenter.rac.common.common
+siteCheckIn.ICON=images/site_checkin_16.png
+

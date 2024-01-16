@@ -1,0 +1,51 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2001 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the savefolder package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: savefolder_locale.properties
+#   Module  : com.teamcenter.rac.commands.savefolder
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Mar-2001  Zhixin Huang            Initial creation.
+#04-Apr-2001  Zhixin Huang            Clean code and finish document.
+#17-Sep-2001  Zhixin Huang            Merge down
+#19-Sep-2001  Zhixin Huang            change saveLoaded key value to "Current page".
+#02-Jan-2002  Zhixin Huang            Clean the code according to Rob's comments.
+#04-Sep-2002  Zhixin Huang            Fix PR 4616048 (Exception when there's nothing found).
+#18-Mar-2003  faming                  check out if query not executed
+#20-Mar-2003  faming                  merged to P8114
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#27-Jun-2003  faming                  change nothingFound back
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=Save to Folder
+
+name = Name:
+description = Description:
+type = Type:
+saveAll = All found object(s)
+saveLoaded = Current page
+resultPrefix = Following components have been saved in
+under = under
+noPasteableObjects = No search results saved because search results do not contain any workspace objects. Only workspace objects can be saved in a folder.
+
+# Messages for message center
+# ----------------------
+loadingTypes = Loading folder types ...
+abort = Abort Opening New Folder
+
+# Error Messages
+# ----------------------
+folderTypeError = Fail to get the folder types.
+error.TITLE = Save to Folder ...
+nothingFound = This query returned no objects. Can not save.

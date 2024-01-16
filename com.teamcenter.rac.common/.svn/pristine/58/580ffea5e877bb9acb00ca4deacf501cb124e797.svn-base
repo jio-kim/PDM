@@ -1,0 +1,183 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2003 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: 
+#
+#   Filename: newpsconnection_locale.properties
+#   Module  : com.teamcenter.rac.commands.newpsconnection
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+
+#13-Jun-2003  bunly                   create
+#15-Jul-2003  x_ramesh                For taking care of missing/wrong text
+#17-Jul-2003  x_ramesh                Merging to Project branch from x_ramesh_mechatronics_p92
+#17-Jul-2003  bunly                   Change PSConnection to Connection
+#17-Jul-2003  bunly                   Merge out from project branch
+#17-Jul-2003  bunly                   Merge in
+#18-Jul-2003  x_ramesh                For mergin out from mechatronics_v9
+#12-Jan-2004  x_reddyg                Add Title for Message Box
+#25-Aug-2004  x_bhadra                LBOM Nav/SA Changes
+#02-Sep-2004  x_bhadra                LBOM Nav SA changes
+#13-Sep-2004  x_bhadra                Modified for LBOM Nav/SA project
+#04-Oct-2004  x_bhadra                Updated with My Navigator changes and code cleanup
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Item Dialog
+# ----------------------
+command.TITLE = \uC0C8 \uC5F0\uACB0 
+base.TITLE=\uC5F0\uACB0 \uC0C1\uC138\uC815\uBCF4
+
+# Added for Revise Project
+# -------------------------
+newPSConnection.TITLE = \uC0C8 \uC5F0\uACB0 
+saveAs.TITLE = \uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uC800\uC7A5
+revise.TITLE = \uAC1C\uC815
+
+basedOn=\uAE30\uC900
+
+# Advanced copy options tab
+# ------------------------------
+advanced.TITLE=\uACE0\uAE09
+fromTree=\uC18C\uC2A4:
+toTree=\uB300\uC0C1:
+
+loadingTree.MSG=\uD2B8\uB9AC\uB97C \uB85C\uB4DC \uC911...
+
+# Messages for message center
+# ------------------------------
+loadingItemTypes = \uC5F0\uACB0 \uC720\uD615 \uB85C\uB4DC \uC911...
+creatingNewItem = \uC0C8 \uC5F0\uACB0 \uC0DD\uC131 
+creatingNewItemRevision = \uC0C8 \uC5F0\uACB0 \uB9AC\uBE44\uC804 \uC0DD\uC131
+abort = \uC0C8 \uC5F0\uACB0 \uC5F4\uAE30 \uC911\uB2E8 
+creatingNewPSConnection = \uC0C8 \uC5F0\uACB0 \uC0DD\uC131 
+creatingNewPSConnectionRev = \uC0C8 \uC5F0\uACB0 \uB9AC\uBE44\uC804 \uC0DD\uC131
+populatingTheForm = \uD3FC \uCC44\uC6B0\uAE30
+advancedPanel=Deep \uBCF5\uC0AC \uD328\uB110 \uB85C\uB4DC
+mandatoryFields=\uD544\uC218 \uC0AC\uC6A9\uC790 \uC9C0\uC815 \uC18D\uC131\uC744 \uCC44\uC6B0\uC2ED\uC2DC\uC624.
+advancedText=\uC774 \uD328\uB110\uC740 \uBCF5\uC0AC \uC635\uC158\uACFC \uD568\uAED8 Deep \uBCF5\uC0AC \uD2B8\uB9AC\uB97C \uD45C\uC2DC\uD569\uB2C8\uB2E4.
+# Error Messages
+# ----------------------
+itemTypeError = \uC0AC\uC6A9 \uAC00\uB2A5\uD55C \uC5F0\uACB0 \uB9AC\uC2A4\uD2B8 \uB85C\uB4DC\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+failToCreate = \uC5F0\uACB0 \uC0DD\uC131 \uC2E4\uD328 
+failToOpen = \uC5F0\uACB0\uC744 \uC5F4 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uBCF4\uD638 \uC124\uC815\uC5D0 \uBB38\uC81C\uAC00 \uC788\uC744 \uB4EF \uD569\uB2C8\uB2E4.
+error.TITLE = \uC0C8 \uC5F0\uACB0...
+newPSConnectionError.TITLE = \uC624\uB958
+fillFormError = \uB9C8\uC2A4\uD130 \uD3FC\uC744 \uCC44\uC6B0\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.
+createDirFailed=\uC5F0\uACB0 \uC0AC\uC6A9\uC790 \uC815\uC758 \uC18D\uC131\uC744 \uB85C\uB4DC\uD558\uB294 \uACFC\uC815\uC5D0\uC11C \uC784\uC2DC \uB514\uB809\uD130\uB9AC\uB97C \uC0DD\uC131\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4. \n client_specific.properties\uC758 "ExportDir" \uAC12\uC774 \uC62C\uBC14\uB974\uAC8C \uC124\uC815\uB418\uC5B4 \uC788\uB294\uC9C0 \uD655\uC778\uD558\uC2ED\uC2DC\uC624.
+#createDirFailed=Failed to create temporary directoryupon loading of the item custom attributes.Possibally the\n value of "ExportDir" found in the client_specific.properties is incorrectly set.
+
+
+#Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=\uC5F0\uACB0 \uC0DD\uC131 \uC77C\uC2DC\uC801 \uC911\uC9C0..\uC5F0\uACB0 \uB2E4\uC2DC \uC0DD\uC131 \uBC0F \uBD80\uBD84\uC801 \uC0BD\uC785
+
+whitespaceerror=\uC0DD\uC131\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. ID/\uC218\uC815/\uC774\uB984 \uD544\uB4DC\uB97C \uD655\uC778\uD558\uC2ED\uC2DC\uC624.
+sameAsoldId=\uC774\uBBF8 \uC874\uC7AC\uD558\uACE0 \uC788\uB294 \uC5F0\uACB0\uC744 \uBC1C\uACAC. \uC0DD\uC131/\uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uC800\uC7A5\uB9CC \uC0C8 \uC5F0\uACB0\uC744 \uC0DD\uC131.\n\uC0C8 \uC5F0\uACB0 \uC0DD\uC131 \uB9AC\uBE44\uC804\uC744 \uC0DD\uC131\uD558\uAE30 \uC704\uD574, \uD30C\uC77C->\uAC1C\uC815 \uBA85\uB839\uC744 \uC0AC\uC6A9\uD558\uC2ED\uC2DC\uC624.
+# Not valid type keys
+# ----------------------
+notValidType.TITLE=\uC798\uBABB\uB41C \uC785\uB825 \uB370\uC774\uD130
+notValidChar=\uBB38\uC790 \uC18D\uC131 \uAC12\uC744 \uBCC0\uACBD\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+notValidDate=\uC798\uBABB\uB41C \uB0A0\uC9DC\uC785\uB2C8\uB2E4.
+notValidDouble=\uC798\uBABB\uB41C double\uD615 \uB610\uB294 float\uD615 \uC22B\uC790\uC785\uB2C8\uB2E4.
+notValidInt=\uC798\uBABB\uB41C \uC815\uC218\uC785\uB2C8\uB2E4.
+notValidLogical=\uC798\uBABB\uB41C \uB17C\uB9AC \uB370\uC774\uD130\uC785\uB2C8\uB2E4.
+notValidShort=\uC798\uBABB\uB41C short\uD615 \uC815\uC218\uC785\uB2C8\uB2E4.
+notValidString=\uBB38\uC790\uC5F4 \uC18D\uC131 \uAC12\uC744 \uBCC0\uACBD\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+
+# New Connection Dialog
+# ----------------------
+dialog.TITLE = \uC0C8 \uC5F0\uACB0
+dialog.vi.TITLE=\uB2E4\uC74C\uC5D0 \uB300\uD55C \uC0C8 \uD30C\uC0DD \uBAA8\uB378 \uC5F0\uACB0 :
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.TOOLTIP=\uD30C\uC0DD \uBAA8\uB378 \uC5F0\uACB0 \uAD6C\uC131 \uCCB4\uD06C
+viConfigStep.info=\uD30C\uC0DD \uBAA8\uB378 \uC5F0\uACB0\uC758 \uAD6C\uC131\uC774 \uC62C\uBC14\uB978\uC9C0 \uD655\uC778\uD558\uC2ED\uC2DC\uC624.
+
+# New Connection Panel
+# -----------------------------
+createConfirm.TITLE=\uC0C8 \uC5F0\uACB0
+createConfirm.MSG=\uACC4\uC18D\uD558\uB824\uBA74, \uC0C8 \uC5F0\uACB0\uC744 \uC0DD\uC131\uD574\uC57C \uD569\uB2C8\uB2E4. \n\uC0C8 \uC5F0\uACB0\uC744 \uC0DD\uC131\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+
+# Connection Type Panel
+# ----------------------------
+itemTypeInfo.LABEL=\uB9CC\uB4E4\uB824\uB294 \uC5F0\uACB0 \uC720\uD615\uC744 \uC120\uD0DD\uD558\uC2ED\uC2DC\uC624.
+itemTypeStep.TOOLTIP=\uC5F0\uACB0 \uC720\uD615 \uC120\uD0DD
+
+# Connection Info Panel
+# -----------------------------
+itemInfo.LABEL=\uC0C8 \uC5F0\uACB0\uC5D0 \uB300\uD55C \uAE30\uBCF8 \uC815\uBCF4\uB97C \uC815\uC758\uD558\uC2ED\uC2DC\uC624.
+itemInfoStep.NAME=\uC5F0\uACB0 \uC815\uBCF4\uB97C \uC785\uB825
+itemInfoStep.TOOLTIP=\uAE30\uBCF8 \uC5F0\uACB0 \uC815\uBCF4\uB97C \uC815\uC758\uD558\uC2ED\uC2DC\uC624.
+
+itemId = \uC5F0\uACB0 ID
+itemInformation = \uC5F0\uACB0 \uC815\uBCF4
+
+# Connection Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=\uCD94\uAC00 \uC5F0\uACB0 \uC815\uBCF4 \uC815\uC758
+itemMasterFormStep.NAME=\uCD94\uAC00 \uC5F0\uACB0 \uC815\uBCF4 \uC785\uB825
+itemMasterFormStep.TOOLTIP=\uCD94\uAC00 \uC5F0\uACB0 \uC815\uBCF4 \uC815\uC758
+
+# ConnectionRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=\uCD94\uAC00 \uC5F0\uACB0 \uB9AC\uBE44\uC804 \uC815\uBCF4 \uC815\uC758
+itemRevMasterFormStep.NAME=\uCD94\uAC00 \uC5F0\uACB0 \uB9AC\uBE44\uC804 \uC815\uBCF4 \uC785\uB825
+itemRevMasterFormStep.TOOLTIP=\uCD94\uAC00 \uC5F0\uACB0 \uB9AC\uBE44\uC804 \uC815\uBCF4 \uC815\uC758
+
+# Form Attr Panel
+# -----------------------
+formAttrStep.TOOLTIP=\uC120\uD0DD\uD55C \uC5F0\uACB0 \uC720\uD615\uC5D0 \uB300\uD55C \uD3FC \uC18D\uC131\uC744 \uC815\uC758\uD558\uC2ED\uC2DC\uC624.
+formAttrStepDisabled.TOOLTIP=\uC120\uD0DD\uD55C \uC5F0\uACB0 \uC720\uD615\uC758 \uC815\uC758\uD55C \uD3FC \uC18D\uC131\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.
+
+# Connection Identifier Panel
+# ----------------------------
+itemIdentifierInfo.LABEL=\uC5F0\uACB0 \uAD50\uCCB4 ID \uC815\uBCF4\uB97C \uC815\uC758\uD558\uC2ED\uC2DC\uC624.
+itemIdentifierStep.NAME=\uAD50\uCCB4 \uC815\uBCF4 \uC785\uB825
+itemIdentifierStep.TOOLTIP=\uC5F0\uACB0\uC5D0 \uB300\uD55C \uAD50\uCCB4 ID\uB97C \uC815\uC758\uD558\uC2ED\uC2DC\uC624.
+
+# Open Option Panel
+# --------------------------
+checkOutOnCreate = \uC0DD\uC131 \uC2DC \uC5F0\uACB0 \uB9AC\uBE44\uC804 \uCCB4\uD06C\uC544\uC6C3
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=\uC0C8 \uC5F0\uACB0 \uC0DD\uC131
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = \uC0C8 \uC5F0\uACB0 \uC0DD\uC131
+checkingIds=\uC5F0\uACB0 ID \uBC0F \uB9AC\uBE44\uC804 \uAC80\uD1A0\uD558\uAE30
+pastingNewItem=\uC0C8 \uC5F0\uACB0 \uBD99\uC5EC\uB123\uAE30
+openingNewComponent=\uC0C8 \uC5F0\uACB0 \uC5F4\uAE30
+abort = \uC0C8 \uC5F0\uACB0 \uC5F4\uAE30 \uC911\uB2E8
+
+# Error Messages
+# ----------------------
+error.TITLE = \uC0C8 \uC5F0\uACB0...
+
+failFindDialog=\uC0C8 \uC5F0\uACB0 \uB2E4\uC774\uC5BC\uB85C\uADF8\uB97C \uCC3E\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4,
+sameAsOldId=\uAE30\uC874 \uC5F0\uACB0\uC774 \uBC1C\uACAC\uB418\uC5C8\uC2B5\uB2C8\uB2E4. \uC0DD\uC131/\uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uC800\uC7A5\uB9CC \uC0C8 \uC5F0\uACB0\uC744 \uC0DD\uC131\uD569\uB2C8\uB2E4. \n\uC0C8 \uC5F0\uACB0 \uB9AC\uBE44\uC804\uC744 \uB9CC\uB4E4\uAE30 \uC704\uD574\uC11C, \uD30C\uC77C->\uAC1C\uC815 \uBA85\uB839\uC744 \uC0AC\uC6A9\uD558\uC2ED\uC2DC\uC624.
+failToCreate = \uC5F0\uACB0\uC744 \uC0DD\uC131\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4
+fillFormError = \uB9C8\uC2A4\uD130 \uD3FC\uC744 \uCC44\uC6B0\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.
+failToOpen = \uC5F0\uACB0\uC744 \uC5F4 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uBCF4\uD638 \uC124\uC815\uC5D0 \uBB38\uC81C\uAC00 \uC788\uC744 \uB4EF \uD569\uB2C8\uB2E4.
+failFindPSConnectionMaster=\uC5F0\uACB0 \uB9C8\uC2A4\uD130 \uD3FC\uC744 \uAC00\uC838\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4,
+failFindPSConnectionRevMaster=\uC5F0\uACB0 \uB9AC\uBE44\uC804 \uB9C8\uC2A4\uD130 \uD3FC\uC744 \uAC00\uC838\uC624\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4,
+failToCreateAltId=\uAD50\uCCB4 ID\uB97C \uC0DD\uC131\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=\uC5F0\uACB0 \uC0DD\uC131 \uC77C\uC2DC\uC801 \uC911\uC9C0..\uC5F0\uACB0 \uB2E4\uC2DC \uC0DD\uC131 \uBC0F \uBD80\uBD84\uC801 \uC0BD\uC785
+
+genCompIDLabelText = \uC5F0\uACB0\n\uBE0C\uB808\uC774\uD06C\uB2E4\uC6B4\n\uC694\uC18C ID:
+architectureInformation = \uC5F0\uACB0 \uC815\uBCF4
+architectureInfo.LABEL=\uC0DD\uC131\uD55C \uC5F0\uACB0\uC758 \uAE30\uBCF8 \uC815\uBCF4\uB97C \uC815\uC758\uD558\uC2ED\uC2DC\uC624.
+architectureInfoStep.NAME=\uC5F0\uACB0 \uC815\uBCF4\uB97C \uC785\uB825
+architectureInfoStep.TOOLTIP=\uAE30\uBCF8 \uC5F0\uACB0 \uC815\uBCF4\uB97C \uC815\uC758\uD558\uC2ED\uC2DC\uC624.

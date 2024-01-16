@@ -1,0 +1,113 @@
+# @<COPYRIGHT>@
+#==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#==================================================
+# @<COPYRIGHT>@
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the usersetting package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+
+userSetting.TITLE=U\u017Eivatelsk\u00E9 nastaven\u00ED
+
+# Session
+# --------
+session.TITLE=Relace
+session.INFO=Nastaven\u00ED relace
+session.TIP=Zm\u011B\u0148te skupinu, roli, svazek, protokolov\u00E1n\u00ED \naplikace a \u017Eurn\u00E1lov\u00E1n\u00ED pro aktu\u00E1ln\u00ED relaci.
+group=Skupina:
+role=Role:
+volume=Svazek:
+volumelocal       = Lok\u00E1ln\u00ED svazek:
+openInUG.Current.Environment.LABEL= Prost\u0159ed\u00ED NX:
+openInUG.Current.Application.LABEL= Klientsk\u00E1 aplikace:
+applicationLogging= Protokolov\u00E1n\u00ED aplikace
+journaling=\u017Durn\u00E1lov\u00E1n\u00ED
+workContext.LABEL=Kontext pr\u00E1ce:
+project.LABEL={0}:
+organization=Organizace:
+changenotice.LABEL=Zm\u011Bnit pozn\u00E1mku:
+historyGroup.TITLE=Historie relace
+prevSessionLoginTime.LABEL=\u010Cas p\u0159edchoz\u00EDho p\u0159ihl\u00E1\u0161en\u00ED:
+prevSessionLoginIP.LABEL=P\u0159edchoz\u00ED IP adresa:
+latestSessionLoginTime.LABEL=\u010Cas posledn\u00EDho p\u0159ihl\u00E1\u0161en\u00ED:
+
+# Administrative
+# ----------
+administrative.TITLE=Administrativn\u00ED
+administrative.INFO=Administrativn\u00ED nastaven\u00ED
+administrative.TIP=Nastaven\u00ED administrativn\u00EDho a bezpe\u010Dnostn\u00EDho protokolov\u00E1n\u00ED a bypass.\nDostupn\u00E9 jen pro skupinu DBA.
+adminLogging=Protokolov\u00E1n\u00ED spr\u00E1vy
+securityLogging=Protokolov\u00E1n\u00ED zabezpe\u010Den\u00ED
+bypass=Bypass
+
+# Login
+# -------
+login.TITLE=P\u0159ihl\u00E1\u0161en\u00ED
+login.INFO=Nastaven\u00ED p\u0159ihla\u0161ov\u00E1n\u00ED
+login.TIP=Nastavte v\u00FDchoz\u00ED skupinu, svazek \na zm\u011B\u0148te heslo u\u017Eivatele.
+defaultGroup=V\u00FDchoz\u00ED skupina:
+defaultVolumn=V\u00FDchoz\u00ED svazek:
+defaultRole=V\u00FDchoz\u00ED role:
+changePassword=Zm\u011Bnit heslo...
+
+# Person
+# -----------
+person.TITLE=Osoba
+person.INFO=Profil osoby
+person.TIP=Zm\u011B\u0148te profil osoby pro u\u017Eivatele. Pro jinou relaci ne\u017E DBA jsou \u00FAdaje pouze pro \u010Dten\u00ED.
+
+
+# Change Password
+# ----------------------
+password.TITLE=Zm\u011Bnit heslo
+oldPassword=Star\u00E9 heslo:
+newPassword=Nov\u00E9 heslo:
+verification=Potvrdit nov\u00E9 heslo:
+wrongPassword.TITLE=Nespr\u00E1vn\u00E9 heslo
+wrongPassword=Nov\u00E9 heslo a potvrzen\u00ED nejsou toto\u017En\u00E9.
+error.TITLE=Chyba
+
+waiting.MESSAGE=Na\u010D\u00EDt\u00E1 se panel...
+passwordChanged.MESSAGE=Va\u0161e heslo bylo zm\u011Bn\u011Bno!
+passwordChanged.TITLE=Heslo zm\u011Bn\u011Bno
+
+samePassword.MESSAGE=Bylo zad\u00E1no heslo shodn\u00E9 se star\u00FDm heslem. Zadejte jin\u00E9 heslo!
+samePassword.TITLE=Stejn\u00E9 heslo
+
+invalidUser.MESSAGE=Nejste u\u017Eivatel ve vybran\u00E9m kontextu pr\u00E1ce, kter\u00FD nem\u016F\u017Ee b\u00FDt nastaven jako aktu\u00E1ln\u00ED!
+invalidUser.TITLE=Neplatn\u00FD u\u017Eivatel
+
+unprivilegedProject.MESSAGE=Nem\u00E1te pr\u00E1va pro p\u0159i\u0159azen\u00ED k vybran\u00E9mu {0}\n Nov\u00E9 objekty nejsou k tomuto {0} automaticky p\u0159i\u0159azov\u00E1ny!
+unprivilegedProject.TITLE=\u017D\u00E1dn\u00E1 pr\u00E1va pro p\u0159i\u0159azen\u00ED
+
+nullGroupMember.MESSAGE=Vybran\u00FD kontext pr\u00E1ce, kter\u00FD nem\u016F\u017Ee b\u00FDt nastaven jako aktu\u00E1ln\u00ED, nevy\u017Eaduje \u017E\u00E1dn\u00E9ho \u010Dlena skupiny!
+nullGroupMember.TITLE=\u017D\u00E1dn\u00FD \u010Dlen skupiny
+
+clearClientLOVCache.MESSAGE=\u010Cist\u00ED se vyrovn\u00E1vac\u00ED pam\u011B\u0165 seznamu hodnot klienta
+clearPreferenceCache.MESSAGE=\u010Cist\u00ED se vyrovn\u00E1vac\u00ED pam\u011B\u0165 preferenc\u00ED
+setCurrentGroupMember.MESSAGE=Nastavuje se aktu\u00E1ln\u00ED \u010Dlen skupiny
+setCurrentProject.MESSAGE=Nastavuje se aktu\u00E1ln\u00ED projekt
+setCurrentOrganization.MESSAGE=Nastavuje se aktu\u00E1ln\u00ED organizace
+setCurrentVolume.MESSAGE=Nastavuje se aktu\u00E1ln\u00ED svazek
+setCurrentLocalVolume.MESSAGE=Nastavuje se aktu\u00E1ln\u00ED m\u00EDstn\u00ED svazek {0}...
+
+group_column=Skupina
+role_column=Role
+selectDefautlRoleToolTip=Vybrat v\u00FDchoz\u00ED roli z rozev\u00EDrac\u00EDho seznamu
+geography.TITLE=U\u017Eivatelsky deklarovan\u00E1 geografie:
+duplicateVolumeError.MESSAGE=V\u00FDchoz\u00ED lok\u00E1ln\u00ED svazek mus\u00ED byt odli\u0161n\u00FD od v\u00FDchoz\u00EDho svazku.
+
+
+# GDPR
+# ----------
+gdpr.TITLE=GDPR
+gdpr.INFO=Nastaven\u00ED GDPR
+gdpr.TIP=Nastaven\u00ED souvisej\u00EDc\u00ED s Obecn\u00FDm na\u0159\u00EDzen\u00EDm o ochran\u011B osobn\u00EDch \u00FAdaj\u016F (GDPR)
+gdpr.revokeconsent.MESSAGE=Odvolat souhlas GDPR
+gdpr.revokeconsent.WARNING=Odvol\u00E1n\u00EDm souhlasu budete odhl\u00E1\u0161eni z Teamcenteru. Chcete pokra\u010Dovat?

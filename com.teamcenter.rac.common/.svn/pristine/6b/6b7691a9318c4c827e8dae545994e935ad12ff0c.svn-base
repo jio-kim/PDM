@@ -1,0 +1,164 @@
+
+#Properties for the Remove Part relation Dialog
+##############################################
+
+partRelation.TITLE = Remover as rela\u00E7\u00F5es da pe\u00E7a.
+
+partRelation.removeButton.LABEL=Remover
+partRelation.removeButton.TIP=Remove a(s) linha(s) de rela\u00E7\u00E3o da pe\u00E7a selecionada(s) a partir da linha da pe\u00E7a de destino selecionada
+
+partRelation.cancelButt.LABEL=Cancelar
+partRelation.cancelButt.TIP=Fechar a caixa de di\u00E1logo Remover rela\u00E7\u00E3o
+
+partRelation.columnsShown= BOMLine, Fun\u00E7\u00E3o associada/Pe\u00E7as redundantes,
+
+partRelation.Types=Redundantpart,ProcessVariable, Destino, Origem, Transmissor,
+
+# New part Dialog
+# ----------------------
+command.TITLE = Nova Pe\u00E7a
+base.TITLE=Detalhes da pe\u00E7a
+basetype = Pe\u00E7a
+
+# Added for Revise Project
+# -------------------------
+newPart.TITLE = Nova Pe\u00E7a
+saveAs.TITLE = Salvar Como
+revise.TITLE = Revisar
+
+basedOn=Baseado Em
+
+# Advanced copy options tab
+# ------------------------------
+advanced.TITLE=Avan\u00E7ado
+fromTree=Origem:
+toTree=Destino:
+
+loadingTree.MSG=Carregando \u00E1rvore...
+
+# Messages for message center
+# ------------------------------
+loadingItemTypes = Carregando tipos de pe\u00E7as ...
+creatingNewItem = Criar nova pe\u00E7a
+creatingNewItemRevision = Criar nova revis\u00E3o de pe\u00E7a
+abort = Anular a abertura da nova pe\u00E7a
+creatingNewPart = Criar nova pe\u00E7a
+creatingNewPartRev = Criar nova revis\u00E3o de pe\u00E7a
+populatingTheForm = Preenchendo os formul\u00E1rios
+advancedPanel=carregando painel de c\u00F3pia propagada para
+mandatoryFields=Preencha o campo atributos personalizados obrigat\u00F3rios
+advancedText=Este painel exibe a \u00E1rvore de c\u00F3pia propagada juntamente com as op\u00E7\u00F5es de c\u00F3pia.
+# Error Messages
+# ----------------------
+itemTypeError = N\u00E3o \u00E9 poss\u00EDvel carregar a lista de pe\u00E7as dispon\u00EDveis
+failToCreate = Ocorreu um erro ao criar a pe\u00E7a
+failToOpen = A pe\u00E7a n\u00E3o pode ser aberta. Provavelmente h\u00E1 um problema com suas prote\u00E7\u00F5es.
+error.TITLE = Nova Pe\u00E7a ...
+fillFormError = O preenchimento do formul\u00E1rio master falhou.
+createDirFailed=Ocorreu um erro ao criar um diret\u00F3rio tempor\u00E1rio ap\u00F3s o carregamento dos atributos personalizados da pe\u00E7a. Provavelmente o\n valor do "ExportDir" encontrado em client_specific.properties est\u00E1 definido incorretamente.
+
+
+#Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Interrompida a cria\u00E7\u00E3o da pe\u00E7a..Pe\u00E7a criada e parcialmente inserida
+
+whitespaceerror=N\u00E3o \u00E9 poss\u00EDvel criar.Verifique os campos ID/Rev/Nome.
+sameAsoldId=Foi encontrada uma pe\u00E7a existente. O comando Criar/Salvar como s\u00F3 cria novas pe\u00E7as. \nPara criar uma nova revis\u00E3o de pe\u00E7a, utilize o comando Arquivo->Revisar.
+# Not valid type keys
+# ----------------------
+notValidType.TITLE=Dados de entrada inv\u00E1lidos
+notValidChar=N\u00E3o \u00E9 poss\u00EDvel alterar o valor da propriedade caracter.
+notValidDate=Data inv\u00E1lida.
+notValidDouble=Double ou float n\u00E3o s\u00E3o v\u00E1lidos.
+notValidInt=Inteiro n\u00E3o \u00E9 v\u00E1lido.
+notValidLogical=Dados l\u00F3gicos n\u00E3o s\u00E3o v\u00E1lidos.
+notValidShort=Inteiro curto n\u00E3o \u00E9 v\u00E1lido.
+notValidString=N\u00E3o \u00E9 poss\u00EDvel alterar o valor string da propriedade.
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = Nova Pe\u00E7a
+dialog.vi.TITLE=Nova pe\u00E7a variante para
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.TOOLTIP=Verifique a configura\u00E7\u00E3o da pe\u00E7a de variante
+viConfigStep.info=Certifique-se de que a configura\u00E7\u00E3o da pe\u00E7a da variante esteja correta
+
+# New Item Panel
+# -----------------------------
+createConfirm.TITLE=Nova Pe\u00E7a
+createConfirm.MSG=Para prosseguir, \u00E9 necess\u00E1rio que seja criada a nova pe\u00E7a. \nDeseja criar a nova pe\u00E7a?
+
+# Item Type Panel
+# ----------------------------
+itemTypeInfo.LABEL=Selecione o tipo de pe\u00E7a que deseja criar.
+itemTypeStep.TOOLTIP=Selecione um tipo de pe\u00E7a.
+
+# Item Info Panel
+# -----------------------------
+itemInfo.LABEL=Defina as informa\u00E7\u00F5es b\u00E1sicas para a pe\u00E7a a ser criada.
+itemInfoStep.NAME=Insira informa\u00E7\u00F5es sobre a pe\u00E7a
+itemInfoStep.TOOLTIP=Defina as informa\u00E7\u00F5es b\u00E1sicas sobre a pe\u00E7a.
+
+itemId = Pe\u00E7a N\u00BA
+itemInformation = Informa\u00E7\u00F5es da pe\u00E7a
+makeOrBuy = Produzir/Comprar
+make = Produzir
+buy = Comprar
+designRequired = Design necess\u00E1rio
+
+
+# Item Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=Defina as informa\u00E7\u00F5es adicionais sobre a pe\u00E7a.
+itemMasterFormStep.NAME=Insira informa\u00E7\u00F5es adicionais sobre a pe\u00E7a
+itemMasterFormStep.TOOLTIP=Defina as informa\u00E7\u00F5es adicionais sobre a pe\u00E7a.
+
+# ItemRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=Defina as informa\u00E7\u00F5es adicionais sobre a revis\u00E3o da pe\u00E7a.
+itemRevMasterFormStep.NAME=Insira informa\u00E7\u00F5es adicionais sobre a revis\u00E3o da pe\u00E7a
+itemRevMasterFormStep.TOOLTIP=Defina as informa\u00E7\u00F5es adicionais sobre a revis\u00E3o da pe\u00E7a.
+
+# Form Attr Panel
+# -----------------------
+formAttrStep.TOOLTIP=Defina os atributos do formul\u00E1rio para o tipo de pe\u00E7a selecionada.
+formAttrStepDisabled.TOOLTIP=N\u00E3o foi definido nenhum atributo de formul\u00E1rio para o tipo de pe\u00E7a selecionada.
+
+# Item Identifier Panel
+# ----------------------------
+itemIdentifierInfo.LABEL=Defina as informa\u00E7\u00F5es sobre a id alternativa da pe\u00E7a.
+itemIdentifierStep.NAME=Insira as informa\u00E7\u00F5es alternativas
+itemIdentifierStep.TOOLTIP=Defina a ID alternativa para a pe\u00E7a.
+
+# Options panel
+# -------------
+checkOutOnCreate = Reservar revis\u00E3o da Pe\u00E7a ao criar
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Criar nova pe\u00E7a
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Criar nova pe\u00E7a
+checkingIds=Verificando ID e revis\u00E3o de pe\u00E7a
+pastingNewItem=Colando nova pe\u00E7a
+openingNewComponent=Abertura da nova pe\u00E7a
+abort = Anular a abertura da nova pe\u00E7a
+checkOutRevision=Reservando revis\u00E3o de pe\u00E7a
+
+# Error Messages
+# ----------------------
+error.TITLE = Nova Pe\u00E7a ...
+failFindDialog=Falha ao localizar a caixa de di\u00E1logo da nova pe\u00E7a.
+sameAsOldId=Foi encontrada uma pe\u00E7a existente. O comando Criar/Salvar como s\u00F3 cria novas pe\u00E7as. \nPara criar uma revis\u00E3o da nova pe\u00E7a, utilize o comando Arquivo->Revisar.
+failToCreate = Ocorreu um erro ao criar a pe\u00E7a
+failToOpen = A pe\u00E7a n\u00E3o pode ser aberta. Provavelmente h\u00E1 um problema com suas prote\u00E7\u00F5es.
+failFindItemMaster=Falha ao obter o formul\u00E1rio master da pe\u00E7a.
+failFindItemRevMaster=Falha ao obter o formul\u00E1rio master da revis\u00E3o da pe\u00E7a.
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Interrompida a cria\u00E7\u00E3o da pe\u00E7a..Pe\u00E7a criada e parcialmente inserida

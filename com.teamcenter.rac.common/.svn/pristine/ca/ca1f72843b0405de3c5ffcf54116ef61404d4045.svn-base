@@ -1,0 +1,13 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2014
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Keys for void operation
+# ---------------------------------------
+command.TITLE=\u30C7\u30B8\u30BF\u30EB\u7F72\u540D\u3092\u7121\u52B9\u5316
+confirmationText=\u30C7\u30B8\u30BF\u30EB\u7F72\u540D\u3092\u672C\u5F53\u306B\u7121\u52B9\u306B\u3057\u307E\u3059\u304B?
+voidDigitalSignature.STATUS=\u30C7\u30B8\u30BF\u30EB\u7F72\u540D\u3092\u7121\u52B9\u5316...

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.common.UserExportDirRemover">
+   <implementation class="com.teamcenter.rac.common.UserExportDirRemover"/>
+   <property name="event.topics" type="String" value="com/teamcenter/rac/aifrcp/event/Session/Logout/Post"/>
+   <service>
+      <provide interface="org.osgi.service.event.EventHandler"/>
+   </service>
+</scr:component>

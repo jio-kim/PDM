@@ -1,0 +1,56 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the publish package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: publish_locale.properties
+#   Module  : com.teamcenter.rac.commands.publish
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#04-May-2001  Vic Nidoy               Add dotDotDot
+#04-May-2001  Vic Nidoy               Added publishSuccess.STATUS
+#30-May-2001  Vic Nidoy               Fix confirmationText
+#14-Feb-2002  rlee                    Fix PR4422570 , missing commands.TITLE entry
+#28-Feb-2005  rlee                    Improve selection behaviors
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# command.TITLE not used but here to placate AbstractProgressDialog
+command.TITLE=Fittizio
+publishToDefaultOdsDotDotDot.TITLE=Pubblica nell'ODS predefinito
+publishToPublicationList.TITLE=Pubblica nell'elenco di pubblicazioni
+
+confirmationText=OK. Pubblicare in
+questionMark=?
+publish.STATUS=Pubblicazione in corso
+dotDotDot=...
+publish.TITLE=Pubblica
+publishSuccess.STATUS=Pubblicazione di oggetti selezionati riuscito
+
+noSelectionError = Non \u00E8 stato selezionato alcun oggetto da pubblicare
+notADataset = L'oggetto selezionato non \u00E8 un set di dati
+
+odsPublicationSite.LABEL=Siti di pubblicazione ODS
+sites.available=Siti disponibili
+sites.selected=Siti selezionati
+
+site.TITLE=Selezione del sito
+
+noPubSitesSelected = Non \u00E8 stato selezionato alcun sito
+noPubSiteaSelected.TITLE = Selezione sito ODS
+
+noPublicationSites = Non sono stati definiti siti ODS alternativi
+noPublicationSites.TITLE = Selezione sito ODS
+
+odsSiteUndefined = La preferenza ODS_site non \u00E8 definita
+failedReadingOdsSite = Problema durante la lettura della preferenza ODS_site

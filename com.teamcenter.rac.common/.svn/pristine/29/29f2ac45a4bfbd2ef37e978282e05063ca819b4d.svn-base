@@ -1,0 +1,69 @@
+#*==================================================================================================
+#
+#                      Copyright (c) 2006 UGS Corp.
+#                             Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the license package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: license_locale.properties
+#   Module  : com.teamcenter.rac.commands.license
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Feb-2007  Sunil Gopinath            Initial Creation
+#$HISTORY$
+#=================================================================================================*/
+
+assignToLicenseCommand.TITLE=Attacher un objet aux licences
+removeFromLicenseCommand.TITLE=D\u00E9tacher un objet venant de licences
+
+assignToLicenseCommands.TITLE=Attacher des objets \u00E0 des licences
+removeFromLicenseCommands.TITLE=D\u00E9tacher des objets venant de licences
+
+selectLicenseForAssign.TITLE=S\u00E9lectionner les licences auxquelles attacher un objet
+selectLicensesForRemove.TITLE=S\u00E9lectionner les licences d'o\u00F9 d\u00E9tacher un objet
+
+selectLicenseForAssigns.TITLE=S\u00E9lectionner les licences auxquelles attacher les objets
+selectLicensesForRemoves.TITLE=S\u00E9lectionner les licences d'o\u00F9 d\u00E9tacher des objets
+
+attachedLic.LABEL=Licences attach\u00E9es pour cet objet
+noAttachedLicenses.LABEL=Aucune licence n'est actuellement attach\u00E9e \u00E0 cet objet
+
+assignAllButton.LABEL=Tous les objets trouv\u00E9s
+assignLoadedButton.LABEL=Page courante
+
+selectedObjects.TITLE=Les objets s\u00E9lectionn\u00E9s
+
+BOMLineParentItem.LABEL=Article
+BOMLineParentItemRev.LABEL=R\u00E9vision d'article
+
+BOMPropagationLevel.LABEL=Niveaux des enfants
+BOMPropagationLevel.TIP=D\u00E9finir le nombre de niveaux d'enfants de ligne de Nomenclature \u00E0 traiter
+BOMLinePropagationAll.LABEL=Nomenclature compl\u00E8te
+
+
+nothingFound.MESSAGE=Cette requ\u00EAte n'a renvoy\u00E9 aucun objet.
+
+assignToLicenses.MESSAGE=Attache des objets \u00E0 des licences...
+removeFromLicenses.MESSAGE=D\u00E9tache des objets venant de licences...
+
+more.LABEL=...
+more.TIP=Cliquez ce lien hypertexte pour voir la liste des objets s\u00E9lectionn\u00E9s
+
+closeButton.LABEL=fermer
+
+messageBox.TITLE=Licence
+assignToLicensesSpecific.MSG=Composant non valable ou aucune licence \u00E0 laquelle attacher
+assignToLicensesErrorDialog.MSG=Des erreurs se sont produites lors de l'attache d'objets \u00E0 des licences
+removeFromLicensesSpecific.MSG=Composant non valable ou aucune licence \u00E0 supprimer
+removeFromLicensesErrorDialog.MSG=Des erreurs se sont produites lors du d\u00E9tachement d'objets venant de licences
+unknownObject.NAME=Nom d'objet inconnu
+
+
+authorizingParagraph.TITLE=Paragraphe d'autorisation
+licenseName.TITLE=Nom de licence
+

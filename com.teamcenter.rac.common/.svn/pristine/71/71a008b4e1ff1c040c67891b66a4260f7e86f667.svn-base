@@ -1,0 +1,27 @@
+#* @<COPYRIGHT_START>@
+# ===============================================
+# Copyright 2007 UGS Corp. All Rights Reserved.
+# ===============================================
+# @<COPYRIGHT_END>@
+
+command.TITLE=Propriet\u00E0
+commandReadOnly.TITLE=Propriet\u00E0 (sola lettura)
+
+loadingProperties=Caricamento propriet\u00E0...
+savingProperties=Salvataggio propriet\u00E0...
+
+print.TIP = Stampa le propriet\u00E0 dell'oggetto.
+
+failToDisplay=Impossibile visualizzare le propriet\u00E0.
+
+# For SmartEdit
+# -------------
+multipleObjects.TITLE=Propriet\u00E0 modificabili comuni
+
+#For the Edit button on the read only properties dialog
+edit=Esegui checkout e modifica
+edit.TIP=Esegui checkout e modifica le propriet\u00E0
+edit.MNEMONIC=Edit
+
+# Status message while performing Implicit Check out
+doingImplicitCO=Salvataggio delle modifiche e check-out/check-in implicito...

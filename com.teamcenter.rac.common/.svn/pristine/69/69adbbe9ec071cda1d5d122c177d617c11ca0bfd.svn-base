@@ -1,0 +1,66 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the propertyrenderer package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: propertyrenderer_locale.properties
+#   Module  : com.teamcenter.rac.common.propertyrenderer
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Mar-2001  wangp                   PR 4229235: Add tooltip for owning group/user.
+#30-May-2002  wangp                   add entries for array support
+#03-Jun-2002  Endi Wu                 Smart edit project (Chandra)
+#03-Jun-2002  wangp                   merge to troy
+#28-Jun-2002  Zhixin Huang            Promote Chandra's change.
+#18-Jul-2002  wangp                   add popupmenu.TITLE
+#22-Jul-2002  x_chandr                Add noModifiableProperty.MSG
+#30-Jul-2002  x_chandr                Change text for noWriteAccessOnSomeObjects.MESSAGE
+#05-Aug-2002  wangp                   resolve conflicts
+#28-May-2003  wangp                   add entries for ref type property's popup menu
+#12-Aug-2003  faming                  V9 Form Enhancement Project
+#13-Aug-2003  faming                  merged out from P9003
+#19-Aug-2003  faming                  add noFileFormProperties
+#09-Feb-2004  wangp                   add entries for wolf object
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+noDisplayableProperty.MESSAGE=Nie znaleziono w\u0142a\u015Bciwo\u015Bci daj\u0105cych si\u0119 wy\u015Bwietli\u0107
+noModifiableProperty.MESSAGE=Nie znaleziono og\u00F3lnych modyfikowalnych w\u0142a\u015Bciwo\u015Bci
+noComponent.MESSAGE=Nie znaleziono komponent\u00F3w
+message.TITLE=W\u0142a\u015Bciwo\u015Bci...
+
+owningGroupUser.TIP=Prosz\u0119 u\u017Cy\u0107 polecenia Zmie\u0144 w\u0142a\u015Bciciela, aby zmieni\u0107 grup\u0119/u\u017Cytkownika b\u0119d\u0105cego w\u0142a\u015Bcicielem.
+
+cannotConvert=Nie mo\u017Cna przekszta\u0142ci\u0107 danych wej\u015Bciowych na odpowiedni typ.
+objectsOnClipboard=obiekt\u00F3w w Schowku
+
+noWriteAccess.TITLE=Brak dost\u0119pu z prawem zapisu
+noWriteAccessOnSomeObjects.MESSAGE=Bie\u017C\u0105cy u\u017Cytkownik nie posiada dost\u0119pu z prawem zapisu do niekt\u00F3rych wybranych obiekt\u00F3w.
+noWriteAccessOnAllObjects.MESSAGE=Bie\u017C\u0105cy u\u017Cytkownik nie posiada dost\u0119pu z prawem zapisu do \u017Cadnego z wybranych obiekt\u00F3w.
+includeItems.TITLE=Dodaj obiekty...
+includeItems.MESSAGE=Niekt\u00F3re zmiany pozycji zosta\u0142y wydane. Czy chcesz uwzgl\u0119dni\u0107 te pozycje?
+
+popupmenu.TITLE=Typy odwo\u0142a\u0144
+
+clear.TEXT=Wyczy\u015B\u0107
+paste.TEXT=Wklej
+noValue=Brak warto\u015Bci
+
+true.LABEL=Prawda
+false.LABEL=Fa\u0142sz
+
+noPropInfo.LABEL=Ten obiekt nie posiada w\u0142a\u015Bciwo\u015Bci do wy\u015Bwietlenia.
+noFileFormPropInfo.LABEL=<html><body><p>Ten formularz przechowywany pliku nie posiada w\u0142a\u015Bciwo\u015Bci formularza do wy\u015Bwietlenia.</p><p>Prosz\u0119 skontaktowa\u0107 si\u0119 z administratorem systemu w sprawie przekszta\u0142cenia tego formularza na formularz przechowywany w obiekcie.</p></body></html>
+noClassFormPropInfo.LABEL=<html><body><p>Ten formularz nie posiada w\u0142a\u015Bciwo\u015Bci formularza do wy\u015Bwietlenia </p><p> poniewa\u017C jego typ nie ma zdefiniowanej klasy zachowywanej w obiekcie.</p></body></html>
+
+wolfObjectDelete.MSG=G\u0142\u00F3wny obiekt ju\u017C nie istnieje\n - prosz\u0119 usun\u0105\u0107 ten obiekt. 

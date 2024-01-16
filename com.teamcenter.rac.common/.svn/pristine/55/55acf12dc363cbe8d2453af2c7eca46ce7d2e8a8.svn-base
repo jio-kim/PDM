@@ -1,0 +1,1345 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# ----------------------
+# File Menu Actions
+# ----------------------
+
+fileNewMenu.NAME=New
+fileNewMenu.MNEMONIC=N
+
+
+# File -> New Menu Items
+#
+# File -> New -> Item
+# ----------------------
+newItemAction.NAME=Item...
+newItemAction.TIP=Create a new Item
+newItemAction.MNEMONIC=I
+
+# File -> New -> Form
+# ----------------------
+newFormAction.NAME=Form...
+newFormAction.TIP=Create a new Form
+newFormAction.MNEMONIC=o
+
+# File -> New -> URL
+# ----------------------
+newURLAction.NAME=URL...
+newURLAction.TIP=Create a new URL
+newURLAction.MNEMONIC=U
+
+# File -> New -> GDE
+# ----------------------
+newGeneralDesignElementAction.NAME=Item Element...
+newGeneralDesignElementAction.TIP=Create a new Item Element
+newGeneralDesignElementAction.MNEMONIC=E
+
+# File -> New -> Process Variable
+# ----------------------
+newPVariableAction.NAME=Process Variable...
+newPVariableAction.TIP=Create a new Process Variable
+newPVariableAction.MNEMONIC=V
+
+# File -> New -> Item
+# ----------------------
+newUsageComponentAction.NAME=Usage Component...
+newUsageComponentAction.TIP=Create a new Usage Component
+newUsageComponentAction.MNEMONIC=U
+
+
+# File -> New -> PSConnection
+# ----------------------
+newPSConnectionAction.NAME=Revisable...
+newPSConnectionAction.TIP=Create a new Connection
+newPSConnectionAction.MNEMONIC=P
+connection=Connection...
+
+# File -> New -> GDELink
+# ----------------------
+newGDELinkAction.NAME=Non Revisable...
+newGDELinkAction.TIP=Create a new Link
+newGDELinkAction.MNEMONIC=L
+
+# File -> New -> GDE
+# ----------------------
+newGDEAction.NAME=Item Element...
+newGDEAction.TIP=Create a new Item Element
+newGDEAction.MNEMONIC=E
+
+# File -> New -> Interface Definition
+# -----------------------------------
+newInterfaceGDEAction.NAME=Interface Definition...
+newInterfaceGDEAction.TIP=Create a new Interface Definition
+newInterfaceGDEAction.MNEMONIC=t
+InterfaceDefinition=Interface Definition...
+
+# File -> New -> Folder
+# ----------------------
+newFolderAction.NAME=Folder...
+newFolderAction.TIP=Create a new Folder
+newFolderAction.MNEMONIC=F
+
+# File -> New -> Dataset
+# ----------------------
+newDatasetAction.NAME=Dataset...
+newDatasetAction.TIP=Create a new Dataset
+newDatasetAction.MNEMONIC=D
+
+# File -> New -> Alias
+# ----------------------
+newAliasAction.NAME=Alias...
+newAliasAction.TIP=Create a new Alias for the selected Item(s)/Item Revision(s)
+newAliasAction.MNEMONIC=A
+
+# File -> New -> Alternate ID
+# ----------------------
+newAlternateIdAction.NAME=ID...
+newAlternateIdAction.TIP=Create a new Alterante or Alias ID for the selected Item Revision(s) and/or Item(s)
+newAlternateIdAction.MNEMONIC=I
+
+# File -> New -> BVR
+# ----------------------
+newBVRAction.NAME=BOMView Revision...
+newBVRAction.TIP=Create a new BVR
+newBVRAction.MNEMONIC=B
+
+# File -> New -> Classic Change
+# ----------------------
+newECMAction.NAME=Classic Change...
+newECMAction.TIP=Create a Classic Change
+newECMAction.MNEMONIC=C
+
+# File -> New -> Process
+# ----------------------
+newProcessAction.NAME=Workflow Process...
+newProcessAction.TIP=Create a new Workflow Process
+newProcessAction.MNEMONIC=P
+
+# File -> New -> Part
+# ----------------------
+newPartAction.NAME=Part...
+newPartAction.TIP=Create a new Part
+newPartAction.MNEMONIC=T
+
+# File -> New -> Design
+# ----------------------
+newDesignAction.NAME=Design...
+newDesignAction.TIP=Create a new Design
+newDesignAction.MNEMONIC=D
+# File -> New -> Envelope
+# ----------------------
+newEnvelopeAction.NAME=Envelope...
+newEnvelopeAction.TIP=Creates a new Envelope
+newEnvelopeAction.MNEMONIC=E
+
+# File -> New -> Architecture
+# ---------------------------
+newArchitectureAction.NAME=Architecture...
+newArchitectureAction.TIP=Creates a new Architecture
+newArchitectureAction.MNEMONIC=A
+
+# File -> New -> Architecture Breakdown
+# -------------------------------------
+newArchitectureBreakdownAction.NAME=Architecture Breakdown...
+newArchitectureBreakdownAction.TIP=Creates a new Architecture Breakdown
+newArchitectureBreakdownAction.MNEMONIC=B
+
+# File -> New -> Architecture Breakdown Element
+# ---------------------------------------------
+newArchitectureBreakdownElementAction.NAME=Architecture Breakdown Element...
+newArchitectureBreakdownElementAction.TIP=Creates a new Architecture Breakdown Element
+newArchitectureBreakdownElementAction.MNEMONIC=E
+
+# File -> New -> Generic Breakdown
+# -------------------------------------
+newGenericBreakdownAction.NAME=Generic Breakdown...
+newGenericBreakdownAction.TIP=Creates a new Generic Breakdown
+newGenericBreakdownAction.MNEMONIC=G
+
+# File -> New -> Generic Breakdown Element
+# ---------------------------------------------
+newGenericBreakdownElementAction.NAME=Generic Breakdown Element...
+newGenericBreakdownElementAction.TIP=Creates a new Generic Breakdown Element
+newGenericBreakdownElementAction.MNEMONIC=e
+
+# File -> New -> Generic Breakdown
+# -------------------------------------
+newGenericBreakdownAction.NAME=Generic Breakdown...
+newGenericBreakdownAction.TIP=Creates a new Generic Breakdown
+newGenericBreakdownAction.MNEMONIC=G
+
+# File -> New -> Generic Breakdown Element
+# ---------------------------------------------
+newGenericBreakdownElementAction.NAME=Generic Breakdown Element...
+newGenericBreakdownElementAction.TIP=Creates a new Generic Breakdown Element
+newGenericBreakdownElementAction.MNEMONIC=e
+
+# File -> New -> Add Design To Product
+# ----------------------------
+addComponentAction.NAME=Add Design to Product
+addComponentAction.TIP =Add Design to Product
+addComponentAction.MNEMONIC=D
+
+# File -> New -> Add Part To Product
+# ----------------------------
+addPartToProductAction.NAME=Add Part to Product
+addPartToProductAction.TIP =Add Part to Product
+addPartToProductAction.MNEMONIC=P
+
+# File -> New -> Collaboration Context
+# ----------------------
+newCCAction.NAME=Collaboration Context...
+newCCAction.TIP=Create a new Collaboration Context
+#newCCAction.MNEMONIC=C
+
+# File -> New -> Structure Context
+# ----------------------
+newSCAction.NAME=Structure Context...
+newSCAction.TIP=Create a new Structure Context
+
+# File -> New -> Work Context
+# ----------------------
+newWorkContextAction.NAME=Work Context...
+newWorkContextAction.TIP=Create a new Work Context
+
+# Added for ESM
+# File -> New -> Signal
+# ----------------------
+newSignalAction.NAME=Signal...
+newSignalAction.TIP=Create a new Signal
+newSignalAction.MNEMONIC=G
+
+# File -> Open
+# ----------------------
+openAction.NAME=Open
+openAction.TIP=Open the selected object
+openAction.MNEMONIC=O
+
+# File -> OpenAs (Now Open With...)
+# ----------------------
+openAsAction.NAME=Open With...
+openAsAction.TIP=Open the selected object with tool selection
+openAsAction.MNEMONIC=e
+
+# File -> View
+# ----------------------
+viewAction.NAME=View
+viewAction.TIP=View the selected object
+viewAction.MNEMONIC=V
+
+# File -> View With
+# ----------------------
+viewWithAction.NAME=View With...
+viewWithAction.TIP=View the selected object with tool selection
+viewWithAction.MNEMONIC=i
+
+# File -> saveAsAction
+# ----------------------
+saveAsAction.NAME=Save As...
+saveAsAction.TIP=Save As which will create a new copy of the selected object
+saveAsAction.MNEMONIC=A
+
+# File -> reviseAction
+# ----------------------
+reviseAction.NAME=Revise...
+reviseAction.TIP=Revise the selected Item Revision
+reviseAction.ERROR=Unable To Revise
+reviseAction.ERRORMSG=Only Item Revisions are valid to be Revised! Please select an Item Revision and try again.
+
+reviseConnectionAction.ERROR=Unable To Revise
+reviseConnectionAction.ERRORMSG=Only Connection Revisions are valid to be Revised! Please select a Connection Revision and try again.
+
+reviseSignalAction.ERROR=Unable To Revise
+reviseSignalAction.ERRORMSG=Only Signal Revisions are valid to be Revised! Please select a Signal Revision and try again.
+
+reviseGDELineAction.ERRORMSG=Revise is not a valid operation on the selected object
+reviseGDELineAction.ERROR=Unable to Revise
+
+#Error message for AllocationContext
+reviseAllocationContextAction.ERROR=Unable To Revise
+reviseAllocationContextAction.ERRORMSG=Only Allocation Context Revisions are valid to be Revised! Please select an Allocation Context Revision and try again.
+
+reviseAction.MNEMONIC=R
+
+# File -> printAction
+# ----------------------
+printAction.NAME=Print
+printAction.TIP=Print
+printAction.MNEMONIC=P
+
+# File -> printAsAction
+# ----------------------
+printAsAction.NAME=Print...
+printAsAction.TIP=Print with prompts for available options
+printAsAction.MNEMONIC=r
+
+# Edit Menu
+# ----------------------
+editMenu.NAME=Edit
+editMenu.MNEMONIC=E
+
+# Edit->Cut
+# ----------------------
+cutAction.NAME=Cut
+cutAction.TIP=Cut
+cutAction.MNEMONIC=t
+
+# Edit->Copy
+# ----------------------
+copyAction.NAME=Copy
+copyAction.TIP=Copy
+copyAction.MNEMONIC=c
+
+# Edit->CopyProcess
+# ----------------------
+copyProcessAction.NAME=CopyProcess
+copyProcessAction.TIP=CopyProcess
+copyProcessAction.MNEMONIC=c
+
+# Edit->Paste
+# ----------------------
+pasteAction.NAME=Paste
+pasteAction.TIP=Paste
+pasteAction.MNEMONIC=p
+
+# Edit->Paste...
+# ----------------------
+pasteAsAction.NAME=Paste...
+pasteAsAction.TIP=Paste by prompting for relation
+pasteAsAction.MNEMONIC=a
+
+# Added by Properties on Relations sdlc id 7460
+# Edit->Properties on Relations
+# ----------------------
+propertiesOnRelationAction.NAME=Properties On Relation...
+propertiesOnRelationAction.TIP=Displays properties of the selected object
+
+# Edit->Delete
+# ----------------------
+deleteAction.NAME=Delete
+deleteAction.TIP=Delete
+deleteAction.MNEMONIC=D
+
+# Edit->Purge
+# ----------------------
+purgeAction.NAME=Purge
+purgeAction.TIP=Purge
+purgeAction.MNEMONIC=g
+
+#Edit->MakeImmune
+# ----------------------
+makeImmuneAction.NAME=Make Immune ...
+makeImmuneAction.TIP=Make immune from purge
+makeImmuneAction.MNEMONIC=m
+
+#Edit->RemoveImmunity
+# ----------------------
+removeImmunityAction.NAME=Remove Immunity ...
+removeImmunityAction.TIP=Remove Immunity from purge ...
+removeImmunityAction.MNEMONIC=r
+
+# Edit->Latest
+# ----------------------
+latestAction.NAME=Latest
+latestAction.TIP=Latest
+latestAction.MNEMONIC=L
+
+# Edit->User Setting ...
+# ----------------------
+userSettingAction.NAME=User Setting...
+userSettingAction.TIP=View/Change current users authentication settings.
+userSettingAction.MNEMONIC=U
+
+# Edit->Change Ownership
+# --------------------------
+changeOwnershipAction.NAME=Change Ownership...
+changeOwnershipAction.TIP=Change ownership of selected objects
+changeOwnershipAction.MNEMONIC=h
+
+# Edit->Move
+# ----------------------
+move.NAME=Move
+move.TIP=Moves the object to the different position
+move.MNEMONIC=M
+
+# Edit->Move->Up
+# ----------------------
+moveUpAction.NAME=Up
+moveUpAction.TIP=Moves up
+moveUpAction.MNEMONIC=U
+
+# Edit->Move->Down
+# ----------------------
+moveDownAction.NAME=Down
+moveDownAction.TIP=Moves down
+moveDownAction.MNEMONIC=D
+
+# Edit->Move->Top
+# ----------------------
+moveTopAction.NAME=Top
+moveTopAction.TIP=Moves top
+moveTopAction.MNEMONIC=T
+
+# Edit->Move->Bottom
+# ----------------------
+moveBottomAction.NAME=Bottom
+moveBottomAction.TIP=Moves bottom
+moveBottomAction.MNEMONIC=B
+
+project.NAME={0}
+project.TIP=Assign objects to or remove from {0}
+project.MNEMONIC=P
+
+# Edit->Project->Assign
+# ----------------------
+assignToProjectAction.NAME=Assign
+assignToProjectAction.TIP=Assign objects to {0}
+assignToProjectAction.MNEMONIC=A
+
+# Edit->Project->Remove
+# ----------------------
+removeFromProjectAction.NAME=Remove
+removeFromProjectAction.TIP=Remove objects from {0}
+removeFromProjectAction.MNEMONIC=R
+
+
+license.NAME=License
+license.TIP=Attach objects to or detach from licenses
+license.MNEMONIC=L
+
+# Edit->License->Attach
+# ----------------------
+assignToLicenseAction.NAME=Attach
+assignToLicenseAction.TIP=Attach objects to licenses
+assignToLicenseAction.MNEMONIC=A
+
+# Edit->License->Detach
+# ----------------------
+removeFromLicenseAction.NAME=Detach
+removeFromLicenseAction.TIP=Detach objects from licenses
+removeFromLicenseAction.MNEMONIC=D
+
+# Edit -> Option
+# ----------------------
+preferencesAction.NAME=Options...
+preferencesAction.TIP=Options
+preferencesAction.MNEMONIC=O
+
+# Edit -> Assign Participants
+# ----------------------------
+assignParticipantsAction.NAME=Assign Participants...
+assignParticipantsAction.TIP=Assign Participants
+assignParticipantsAction.MNEMONIC=n
+
+assignParticipantsAction.ERRORMSG=Tools->Assign Participants... is valid for item revision and its subclass objects.
+assignParticipantsAction.ERROR=Unable to perform Assign Participants action
+
+singleRevisionAllowed.TITLE=Only one revision allowed
+singleRevisionAllowed.MESSAGE=Only one item revision or change revision allowed.
+
+# Edit -> busineseRulesAction
+# ----------------------
+busineseRulesAction.NAME=Business Rules...
+busineseRulesAction.TIP=Edit business rules in Teamcenter
+busineseRulesAction.MNEMONIC=R
+
+# Edit -> crfReportDefinitionAction
+# ----------------------
+crfReportDefinitionAction.NAME=Create Report
+
+# Edit -> crfPropertySetAction
+# ----------------------
+crfPropertySetAction.NAME=Create Property Set
+
+# Edit -> Edit Calendar
+# -----------------------
+editCalendarAction.NAME=Create Calendar
+editCalendarAction.TIP=Edit the current logged in user's calendar
+editCalendarAction.MNEMONIC=C
+# Calendar options
+#----------------
+calendarAction.NAME=Calendar
+calendarAction.MNEMONIC=L
+#createCalendarAction.NAME=Create Calendar
+showCalendarAction.NAME=Show Calendar
+showCalendarAction.MNEMONIC=S
+selectBaseCalendarAction.NAME=Select Base Calendar
+selectBaseCalendarAction.MNEMONIC=B
+# View Menu
+# ----------------------
+viewMenu.NAME=View
+viewMenu.MNEMONIC=V
+
+# View->Properties
+# ----------------------
+propertiesAction.NAME=Properties...
+propertiesAction.TIP=Displays properties of the selected object
+propertiesAction.MNEMONIC=P
+
+# View->Audit
+# ----------------------
+auditMenu.NAME=Audit
+auditMenuExpand.NAME=Audit...
+auditMenu.TIP=Allows the user to view audit logs for the selected object.
+auditMenu.MNEMONIC=d
+
+auditFileAction.NAME=File
+auditFileAction.TIP=View Legacy Workflow Audit File
+auditFileAction.MNEMONIC=F
+
+auditManagerAction.NAME=View Audit Logs
+auditManagerAction.TIP=Open Audit Manager Dialog
+auditManagerAction.MNEMONIC=M
+
+viewHTMLReportAction.NAME=Signoff Report
+viewHTMLReportAction.TIP=Displays the Signoff details in the HTML Format.
+
+oldAuditFormatMsg=This object's audit log has an old format. Would you like to view it?
+
+# View->Access
+# ----------------------
+accessAction.NAME=Access...
+accessAction.TIP = Displays accessibility of the selected object
+accessAction.MNEMONIC=A
+
+# View->Refresh
+# ----------------------
+refreshAction.NAME=Refresh
+refreshAction.TIP=Refreshes the selected object
+refreshAction.MNEMONIC=R
+refreshACTAction.NAME=Refreshing ACT Line
+refresh.MESSAGE=Refreshing {0} objects may take a long time.\nThe UI may also take time to repaint/refresh.\nDo you wish to continue?
+
+# View->Refresh Window
+# ----------------------
+refreshWindowAction.NAME=Refresh Window
+refreshWindowAction.TIP=Refreshes the Entire Window
+refreshWindowAction.MNEMONIC=W
+
+# View -> Expand
+# ----------------------
+expandAction.NAME=Expand
+expandAction.TIP=Expand
+expandAction.MNEMONIC=E
+
+# View->Expand Below
+# ----------------------
+expandBelowAction.NAME=Expand Below
+expandBelowAction.TIP=Expands Below
+expandBelowAction.MNEMONIC=B
+
+# View->Expand Below...
+expandToLevelAction.NAME=Expand Below...
+expandToLevelAction.TIP=Expand BOM to a given depth
+
+# View -> Collapse
+# ----------------------
+collapseAction.NAME=Collapse Below
+collapseAction.TIP=Collapse all children below selected object
+
+# View -> Compare 2D Images
+# ----------------------
+compare2DAction.NAME=Compare 2D Images
+compare2DAction.TIP=Compares any 2 2D Images
+compare2DAction.MNEMONIC=C
+
+# View->Organization
+# ----------------------
+organizationAction.NAME=Organization...
+organizationAction.TIP=View the i-man Organization.
+organizationAction.MNEMONIC=O
+
+# View->Named References
+# ----------------------
+namedReferencesAction.NAME=Named References...
+namedReferencesAction.TIP=View/Edit the named references of the selected dataset.
+namedReferencesAction.MNEMONIC=N
+
+# View->Relations
+# ---------------
+relationsAction.NAME=GRM Relations...
+relationsAction.TIP=Shows GRM relations of the selected object
+relationsAction.MNEMONIC=l
+
+# View->List Users
+# ----------------
+listUsersAction.NAME=Current Users...
+listUsersAction.TIP=Lists all Teamcenter users who are currently running a Teamcenter session
+listUsersAction.MNEMONIC=U
+
+# View->Named References
+# ----------------------
+visNamedReferencesAction.NAME=Visualize Named Reference
+visNamedReferencesAction.TIP=Visualize the named references of the selected dataset.
+visNamedReferencesAction.MNEMONIC=V
+
+# View->Effectivity-><...>
+# ------------------------
+revisionEffectivityAction.NAME=Revision Effectivity...
+revisionEffectivityAction.TIP=View, create and edit effectivity on an item revision or release status
+revisionEffectivityAction.MNEMONIC=E
+notPseEffectivityMappingAction.NAME=Effectivity Mapping...
+notPseEffectivityMappingAction.TIP=View, create and edit and effectivity mapping on an item revision
+notPseEffectivityMappingAction.MNEMONIC=M
+
+# Commands Menu
+# ----------------------
+commandsMenu.NAME=Commands
+commandsMenu.MNEMONIC=C
+
+# Commands -> Edit
+# ----------------------
+EditAction.NAME=Edit Properties
+EditAction.TIP=Edit the properties of the selected component
+EditAction.MNEMONIC=E
+
+# Tools Menu
+# ----------------------
+toolsMenu.NAME=Tools
+toolsMenu.MNEMONIC=T
+
+#Tools->Project
+# -----------------------
+projectGDELineAction.ERRORMSG=Tools->{0} is not a valid operation on the selected object
+projectGDELineAction.ERROR=Unable to attach to {0}
+
+# Tools->Check-in/Check-out Menu
+# ----------------------
+cicoMenu.NAME=Check-In/Out
+cicoMenu.MNEMONIC=C
+
+# Tools->Check In
+# ----------------------
+checkInAction.NAME=Check-In...
+checkInAction.TIP=Check-In
+checkInAction.MNEMONIC=I
+
+# Tools->Check In from connection
+# ----------------------
+checkInFromConnectionAction.NAME=Check-In from Connection...
+checkInFromConnectionAction.TIP=Check-In from a Connection
+
+# Tools->Check Out
+# ----------------------
+checkOutAction.NAME=Check-Out...
+checkOutAction.TIP=Check-Out
+checkOutAction.MNEMONIC=O
+
+# Tools->Check Out to connection
+# ----------------------
+checkOutToConnectionAction.NAME=Check-Out to Connection...
+checkOutToConnectionAction.TIP=Check-Out to a Connection
+
+
+# Tools->Transfer Check-Out
+# ----------------------
+transferCheckOutAction.NAME=Transfer Check-Out...
+transferCheckOutAction.TIP=Transfers the Checked-out to another user.
+transferCheckOutAction.MNEMONIC=T
+
+# Tools->Cancel Check Out
+# ----------------------
+cancelCheckOutAction.NAME=Cancel Check-Out...
+cancelCheckOutAction.TIP=Cancels the Checked-out on the selected datasets.
+cancelCheckOutAction.MNEMONIC=C
+
+# Tools->Notification List
+# ----------------------
+notifyListAction.NAME=Notification List...
+notifyListAction.TIP=Displays the notification list on the selected Checked-out objects.
+notifyListAction.MNEMONIC=N
+
+# Tools->Check-Out History
+# ----------------------
+checkOutHistoryAction.NAME=Check-Out History...
+checkOutHistoryAction.TIP=Displays the Check-Out history for the selected objects.
+checkOutHistoryAction.MNEMONIC=H
+
+# Tools->Id Display Rule
+# ---------------------------
+idDisplayRuleMenu.NAME=Id Display Rule
+idDisplayRuleMenu.MNEMONIC=D
+
+# Tools->Excel Live Open
+# ---------------------------
+excelLiveOpenAction.NAME=Open Live Excel
+excelLiveOpenAction.TIP=Open Excel-Teamcenter communication
+
+# Tools->Id Display Rule->View/Set Current
+# ----------------------
+viewIdDisplayRuleAction.NAME=View/Set Current...
+viewIdDisplayRuleAction.TIP=View and set current id display rule.
+viewIdDisplayRuleAction.MNEMONIC=V
+
+# Tools->Id Display Rule->Modify Current
+# ----------------------
+modifyIdDisplayRuleAction.NAME=Modify Current...
+modifyIdDisplayRuleAction.TIP=Modify current id display rule.
+modifyIdDisplayRuleAction.MNEMONIC=M
+
+# Tools->Id Display Rule->Create/Edit
+# ----------------------
+createIdDisplayRuleAction.NAME=Create/Edit...
+createIdDisplayRuleAction.TIP=Create, edit id display rules.
+createIdDisplayRuleAction.MNEMONIC=C
+
+# Tools->Site Check-in/Site Check-out Menu
+# ----------------------
+scicoMenu.NAME=Site Check-In/Out
+scicoMenu.MNEMONIC=S
+
+# Tools->Site Check Out
+# ----------------------
+siteCheckoutAction.NAME=Check-Out to site...
+siteCheckoutAction.TIP=Checks Out the object to site
+siteCheckoutAction.MNEMONIC=O
+siteCheckoutAction.wrongBOMLines=All the selected objects for site check-out should be BOM Lines, please verify.
+siteCheckoutAction.wrongBOMLinesTitle=Wrong Selected Objects
+
+# Tools->Site Check In
+# ----------------------
+siteCheckinAction.NAME=Check-In from site...
+siteCheckinAction.TIP=Checks In the object from site
+siteCheckinAction.MNEMONIC=I
+siteCheckinAction.wrongBOMLines=All the selected objects for site check-in should be BOM Lines, please verify.
+siteCheckinAction.wrongBOMLinesTitle=Wrong Selected Objects
+
+# Tools->Cancel Site Check Out
+# ----------------------
+cancelSiteCheckoutAction.NAME=Cancel Check-Out to site...
+cancelSiteCheckoutAction.TIP=Cancels the Check-Out to site on the selected object.
+cancelSiteCheckoutAction.MNEMONIC=C
+
+# Tools->Multi-Site Collaboration Menu
+# ----------------------
+gsMenu.NAME=Multi-Site Collaboration
+gsMenu.MNEMONIC=M
+
+# Tools->Multi-Site Collaboration->Publish->To Default ODS
+# -------------------------------------------
+publishMenu.NAME=Publish
+publishMenu.MNEMONIC=P
+publishToDefaultOdsAction.NAME=To Default ODS
+publishToDefaultOdsAction.TIP=Publishes the selected objects to the default ODS with no further prompting.
+publishToDefaultOdsAction.MNEMONIC=P
+
+# Tools->Multi-Site Collaboration->Publish->To Default ODS ...
+# -----------------------------------------------
+publishToDefaultOdsDotDotDotAction.NAME=To Default ODS ...
+publishToDefaultOdsDotDotDotAction.TIP=Publishes the selected objects to the default ODS after confirmation.
+publishToDefaultOdsDotDotDotAction.MNEMONIC=Q
+
+# Tools->Multi-Site Collaboration->Publish->To ODS Publication List ...
+# -----------------------------------------------------------
+publishToPublicationListAction.NAME=To ODS Publication List ...
+publishToPublicationListAction.TIP=Publishes the selected objects to multiple sites.
+publishToPublicationListAction.MNEMONIC=R
+
+# Tools->Multi-Site Collaboration->Unpublish->From Default ODS
+# -----------------------------------------------
+unpublishMenu.NAME=Unpublish
+unpublishMenu.MNEMONIC=U
+unpublishFromDefaultOdsAction.NAME=From Default ODS
+unpublishFromDefaultOdsAction.TIP=Unpublishes the selected objects from the default ODS.
+unpublishFromDefaultOdsAction.MNEMONIC=U
+
+# Tools->Multi-Site Collaboration->Unpublish->From Default ODS ...
+# ---------------------------------------------------
+unpublishFromDefaultOdsDotDotDotAction.NAME=From Default ODS ...
+unpublishFromDefaultOdsDotDotDotAction.TIP=Unpublishes the selected objects from the default ODS after confirmation.
+unpublishFromDefaultOdsDotDotDotAction.MNEMONIC=U
+
+# Tools->Multi-Site Collaboration->Unpublish->From All Published-To ODS Site(s)
+# ----------------------------------------------------------------
+unpublishFromPublishedToSitesAction.NAME=From All ODS Sites
+unpublishFromPublishedToSitesAction.TIP=Unpublishes the selected objects from all published ODS sites.
+unpublishFromPublishedToSitesAction.MNEMONIC=V
+unpublishFromPublishedToSitesAction.TITLE=Unpublish from All ODS Sites
+
+# Tools->Multi-Site Collaboration->Unpublish->From Specific ODS Site(s) ...
+# -------------------------------------------------------------------------
+unpublishFromSpecificSitesAction.NAME=From Specific ODS Site(s) ...
+unpublishFromSpecificSitesAction.TIP=Unpublishes the selected objects from specified site(s).
+unpublishFromSpecificSitesAction.MNEMONIC=W
+unpublishTooManySelection=This action allows only one object to be selected.
+unpublishFromSpecificSitesAction.TITLE=Unpublishes the selected objects From Specific ODS Site(s) ...
+
+# Tools->Multi-Site Collaboration->Send->Remote Export ...
+# --------------------------------------------------------
+sendMenu.NAME=Send
+sendMenu.MNEMONIC=S
+sendRemoteExportAction.NAME=Remote Export ...
+sendRemoteExportAction.TIP=Sends the selected objects to the specified remote site(s).
+sendRemoteExportAction.MNEMONIC=E
+
+# Tools->Multi-Site Collaboration->Send->Remote Checkout ...
+# --------------------------------------------------------
+sendRemoteCheckoutAction.NAME=Remote Check-Out ...
+sendRemoteCheckoutAction.TIP=Sends the selected objects to the specified remote site and then performs a remote Check-Out on the replica.
+sendRemoteCheckoutAction.MNEMONIC=C
+
+# Tools->Multi-Site Collaboration->Item Id Registry
+# -----------------------------------------------
+itemidRegistryMenu.NAME=Item Id Registry
+itemidRegistryMenu.MNEMONIC=I
+
+# Tools->Multi-Site Collaboration->Synchronize
+# --------------------------------------------
+multisiteSyncMenu.NAME=Synchronize
+multisiteSyncMenu.MNEMONIC=S
+
+multisiteSyncPopMenu.NAME=Multi-site Synchronization
+multisiteSyncPopMenu.MNEMONIC=S
+
+# Tools->Multi-Site Collaboration->Synchronize->Object
+# ----------------------------------------------------
+multisiteSyncObjectAction.NAME=Object
+multisiteSyncObjectAction.TIP=Synchronizes a single Object
+multisiteSyncObjectAction.MNEMONIC=O
+
+# Tools->Multi-Site Collaboration->Synchronize->Component...
+# ----------------------------------------------------
+multisiteSyncComponentAction.NAME=Component...
+multisiteSyncComponentAction.TIP=Synchronizes a Component
+multisiteSyncComponentAction.MNEMONIC=C
+
+# Tools->Multi-Site Collaboration->Synchronize->Assembly...
+# ----------------------------------------------------
+multisiteSyncAssemblyAction.NAME=Assembly...
+multisiteSyncAssemblyAction.TIP=Synchronizes an Assembly
+multisiteSyncAssemblyAction.MNEMONIC=A
+
+#Tools->Multi-Site Colloboration->Check Replica Sync State
+#------------------------------------------------------
+multisiteReplicaSyncMenu.NAME=Check Replica Sync State
+multisiteReplicaSyncMenu.TIP=Check Replica Sync State Object  
+multisiteReplicaSyncMenu.MNEMONIC=M
+
+# Tools->CAD-BOM Alignment
+# -----------------------------------------------
+cadBomAlignMenu.NAME=CAD-BOM Alignment
+cadBomAlignMenu.TIP=Align CAD to BOM
+cadBomAlignMenu.MNEMONIC=W
+
+makePrimaryAction.NAME=Make Primary Representation
+makePrimaryAction.TIP=Makes selected CAD item revision as primary representation of a Part
+makePrimaryAction.MNEMONIC=P
+
+splitSubUsageAction.NAME=Split SubUsage
+splitSubUsageAction.TIP=Splits Part SubUsage into 2 new SubUsages
+splitSubUsageAction.MNEMONIC=S
+
+mergeSubUsagesAction.NAME=Merge SubUsages
+mergeSubUsagesAction.TIP=Merges similar SubUsages into single SubUsage
+mergeSubUsagesAction.MNEMONIC=M
+
+fillInSubusagesAction.NAME=Fill in Subusages
+fillInSubusagesAction.TIP=Creates Subusages, as needed, to fill in range of varability for a Line of Usage
+fillInSubusagesAction.MNEMONIC=F
+
+updateUsageObjectAction.NAME=Update Usage Object
+updateUsageObjectActionMulti.TITLE=Update multiple usage object
+updateUsageObjectActionMulti.MSG=Multiple updates of usage objects at once is not allowed.
+
+#Tools->Part/Design
+partCadAssocMenu.NAME=Part/Design
+partCadAssocMenu.TIP=Associate Part to Design
+#TODO need to change this mnemonic
+partCadAssocMenu.MNEMONIC=P
+
+#Tools->Part/Design>Create Association
+createAssoication.NAME=Create Association
+createAssoication.TIP=Associate the part and design
+#TODO need to change this mnemonic
+createAssoication.MNEMONIC=v
+
+#Tools->Part/Design>Make Primary Representation
+makePrimaryRepresentation.NAME=Make Primary Representation
+makePrimaryRepresentation.TIP=Set selected Design Revision as Primary Representation for Part Revision
+#TODO need to change this mnemonic
+makePrimaryRepresentation.MNEMONIC=d
+
+resetPrimary.TITLE=Reset Primary Representation...
+resetPrimaryRepresentation.NAME=Reset Primary representation
+resetPrimaryRepresentation.TIP=Resets the selected primary representation of a Part
+resetPrimaryInvalidSelection = Please select one of Item Revisions under Part Representations
+
+
+# Tools->Multi-Site Collaboration->Item Id Registry->Register Item Id
+# -----------------------------------------------
+registerItemIdAction.NAME=Register Item Id
+registerItemIdAction.TIP=Registers selected Item to the Item Id Registry
+registerItemIdAction.MNEMONIC=R
+
+# Tools->Multi-Site Collaboration->Item Id Registry->Unregister Item Id
+# -----------------------------------------------
+unregisterItemIdAction.NAME=Unregister Item Id
+unregisterItemIdAction.TIP=Unregisters selected Item to the Item Id Registry
+unregisterItemIdAction.MNEMONIC=U
+
+#Tools->Create Subscriptions
+# ------------------------
+subscribeAction.NAME=Subscribe...
+#subscribeAction.TIP=Create Subscriptions
+subscribeAction.MNEMONIC=S
+
+#Tools->Create Session Subscriptions
+# ------------------------
+subscribeRefreshNotifyAction.NAME=Subscribe to Refresh Notification...
+subscribeRefreshNotifyAction.MNEMONIC=N
+
+#Tools->SingleFileRecovery
+# ------------------------
+recoveryAction.NAME=Recover...
+recoveryAction.TIP=Recovers the selected object into NewStuff Folder
+recoveryAction.MNEMONIC=R
+
+# Tools->Import Menu
+# ----------------------
+importMenu.NAME=Import
+importMenu.MNEMONIC=I
+
+# Tools->Import->Objects
+# ----------------------
+importObjectsAction.NAME=Objects...
+importObjectsAction.TIP=Import objects into the Teamcenter database
+importObjectsAction.MNEMONIC=O
+
+# Tools->Import->Remote
+# ----------------------
+importRemoteAction.NAME=Remote...
+importRemoteAction.TIP=Import published objects into the Teamcenter database
+importRemoteAction.MNEMONIC=R
+
+# Tools->Import->From Offline Package
+# ----------------------
+importFromOfflinePackageAction.NAME=From Briefcase...
+importFromOfflinePackageAction.TIP=Import objects from a offline package into the Teamcenter database
+importFromOfflinePackageAction.MNEMONIC=R
+
+# Tools->Import->From Connection
+# ------------------------------
+importFromConnectionAction.NAME=From Connection...
+importFromConnectionAction.TIP=Import From Connection menu selection
+importFromConnectionAction.MNEMONIC=F
+
+# Tools->Import->From TDM
+# ----------------------
+importFromTdmAction.NAME=From TDM...
+importFromTdmAction.TIP=Import from an I-DEAS TDM
+
+# Tools->Export Menu
+# ----------------------
+exportMenu.NAME=Export
+exportMenu.MNEMONIC=E
+
+# Tools->Export->Object ...
+# -------------------------
+exportObjectsAction.NAME=Objects ...
+exportObjectsAction.TIP=Exports the selected objects or step to an operating system directory.
+exportObjectsAction.MNEMONIC=O
+
+# Tools->Export->Remote PLM...
+# -------------------------
+exportRemotePLMAction.NAME=Remote...
+exportRemotePLMAction.TIP=Exports objects the selected objects and sends them to specified remote site(s).
+exportRemotePLMAction.MNEMONIC=R
+
+# Tools->Export->Remote GMS site...
+# -------------------------
+exportRemoteGmsAction.NAME=To Remote Site using Global Multi-Site...
+exportRemoteGmsAction.TIP=Exports objects the selected objects and sends them to specified remote site(s).
+exportRemoteGmsAction.MNEMONIC=E
+
+# Tools->Export->Offline GMS site...
+# -------------------------
+exportOfflineGmsAction.NAME=To Briefcase...
+exportOfflineGmsAction.TIP=Exports the selected objects and sends them to an offline package.
+exportOfflineGmsAction.MNEMONIC=F
+
+# Tools->Export->Offline PDX...
+# -------------------------
+exportOfflinePdxAction.NAME=To PDX...
+exportOfflinePdxAction.TIP=Exports the selected objects and sends them to an offline pdx package.
+exportOfflinePdxAction.MNEMONIC=F
+
+
+# Tools->Export->with Application Interface...
+# ----------------------
+exportObjectsTrackByAiAction.NAME=with Application Interface...
+exportObjectsTrackByAiAction.TIP=Export objects to be tracked by AI
+exportObjectsTrackByAiAction.MNEMONIC=O
+
+# Tools->Export->Objects To Excel
+# ----------------------
+exportToExcelAction.NAME=Objects to Excel
+exportToExcelAction.TIP=Export objects to Excel
+exportToExcelAction.MNEMONIC=E
+
+# Tools->Export->Objects To Word
+# ----------------------
+exportToWordAction.NAME=Objects to Word
+exportToWordAction.TIP=Export objects to Word
+exportToWordAction.MNEMONIC=W
+
+# Tools->Send To ...
+# ----------------------
+sendToMenu.NAME=Send Data To
+sendToMenu.MNEMONIC=S
+
+# Tools->Send Additional Data To ...
+# ----------------------
+sendAdditionalDataToMenu.NAME=Send Additional Data To
+sendAdditionalDataToMenu.MNEMONIC=A
+
+# Tools->Export->To Connection
+# ----------------------------
+exportToConnectionAction.NAME=To Connection...
+exportToConnectionAction.TIP=Export To Connection menu selection
+exportToConnectionAction.MNEMONIC=T
+
+# Tools->Export->To TDM
+# ----------------------
+exportToTdmAction.NAME=To TDM...
+exportToTdmAction.TIP=Export to an I-DEAS TDM
+
+# tools -> Connections
+# ----------------------
+connectionsAction.NAME=Connections...
+connectionsAction.TIP=Connections menu selection
+connectionsAction.MNEMONIC=C
+
+# Export To Connection From PSE
+# Tools->Export To Connection...
+BOMPSEExportAction.NAME=Export To Connection...
+BOMPSEExportAction.TIP=Export To Connection menu selection
+BOMPSEExportAction.MNEMONIC=E
+
+# Tools->Check-In/Out->Check-out To Connection...
+BOMPSECOExportAction.NAME=Check-Out To Connection...
+BOMPSECOExportAction.TIP=Check-Out To Connection menu selection
+BOMPSECOExportAction.MNEMONIC=E
+
+# New report menu
+# Tools->Reports
+# ----------------------
+reportsMenu.NAME=Reports
+
+# Tools->Reports-->Report Designer Reports
+# ----------------------
+reportAction.NAME=Report Designer Reports
+reportAction.TIP=Generates reports using Report Designer framework
+reportAction.MNEMONIC=R
+
+# Tools->Reports-->Report Builder Reports
+# ----------------------
+reportBuilderReportsAction.NAME=Report Builder Reports
+reportBuilderReportsAction.TIP=Generates reports using Report Builder framework
+
+# Tools->Reports-->Report Summary Reports
+# ----------------------
+summaryReportAction.NAME=Summary Reports
+summaryReportAction.TIP=Generates Summary reports
+
+# Tools -> Reports -> View Roll up Report
+# ----------------------
+viewRollupReportAction.NAME=View Roll up Report
+
+# Tools->Reports-->Custom Reports
+# ----------------------
+customReportAction.NAME=Custom Reports
+customReportAction.TIP=Generates Custom reports
+
+# Context Object Selection -> Generate Report
+# ----------------------
+generateReportAction.NAME=Generate Report
+generateReportAction.TIP=Generates Item/Items based reports
+generateReportAction.MNEMONIC=G
+
+# Tools->Reports Menu (obsolete)
+# ----------------------
+# reportsMenu.NAME=Reports
+# reportsMenu.MNEMONIC=R
+
+# Tools->Reports->Item Summary (obsolete)
+# ----------------------
+# itemSummaryAction.NAME=Item Summary Report...
+# itemSummaryAction.TIP=Generates the  item summary report
+# itemSummaryAction.MNEMONIC=I
+
+# Tools->Reports->Employee (obsolete)
+# ----------------------
+# employeeAction.NAME=Employee Report...
+# employeeAction.TIP=Generates the employee report
+# employeeAction.MNEMONIC=E
+
+# tools -> Address List
+# ----------------------
+addressListAction.NAME=Address List...
+addressListAction.TIP=View/Edit/Create address lists.
+addressListAction.MNEMONIC=A
+
+# Tools -> Process Assignment List
+# ------------------------------------
+assignmentList.NAME=Process Assignment List
+assignmentList.MNEMONIC=O
+
+# tools -> Process Assignment List ->Create/Edit
+# ----------------------
+createAssnListAction.NAME=Create/Edit
+createAssnListAction.TIP=View/Edit/Create Process Assignment lists.
+createAssnListAction.MNEMONIC=C
+
+# tools -> Process Assignment List -> Assign
+# ----------------------
+applyAssnListAction.NAME=Assign
+applyAssnListAction.TIP=Aplly Process Assignment List to a Job
+applyAssnListAction.MNEMONIC=A
+
+# tools -> Process Assignment List -> Replace User
+# ----------------------
+replaceInAssnListAction.NAME=Replace User
+replaceInAssnListAction.TIP=Search for a user and replace
+replaceInAssnListAction.MNEMONIC=R
+
+# tools -> Complete link...
+# -------------------------
+completeLinkAction.NAME=Create Link...
+completeLinkAction.TIP=Complete the Link...
+completeLinkAction.MNEMONIC=L
+
+# Tools->Reports->Release (obsolete)
+# ----------------------
+# releaseAction.NAME=Release Report...
+# releaseAction.TIP=Generates the release level report
+# releaseAction.MNEMONIC=R
+
+# Tools->Reports->Mass Storage (obsolete)
+# ----------------------
+# massStorageAction.NAME=Mass Storage Report...
+# massStorageAction.TIP=Generates the Mass Storage report
+# massStorageAction.MNEMONIC=M
+
+# Tools->Reports->Item Inquiry (obsolete)
+# ----------------------
+# itemInquiryAction.NAME=Item Inquiry Report...
+# itemInquiryAction.TIP=Generates the item Inquiry report
+# itemInquiryAction.MNEMONIC=q
+
+# Tools->Reports->Dataset (obsolete)
+# ----------------------
+# datasetAction.NAME=Dataset Report...
+# datasetAction.TIP=Generates the dataset report
+# datasetAction.MNEMONIC=D
+
+# Tools->Reports->Job Status (obsolete)
+# ----------------------
+# jobStatusAction.NAME=Job Status Report...
+# jobStatusAction.TIP=Generates the job status report
+# jobStatusAction.MNEMONIC=J
+
+# checkOutHistoryAction.MNEMONIC=S
+
+# Tools->Display SAP Data Menu
+# ----------------------------
+sapDisplayMenu.NAME=Display SAP Data
+sapDisplayMenu.MNEMONIC=S
+
+# Tools->Display SAP Data->Display Material
+# -----------------------------------------
+sapMaterialDisplayAction.NAME=Display Material
+sapMaterialDisplayAction.TIP=Display Material in SAP
+sapMaterialDisplayAction.MNEMONIC=M
+
+# Tools->Display SAP Data->Display BOM
+# ------------------------------------
+sapBomDisplayAction.NAME=Display BOM
+sapBomDisplayAction.TIP=Display BOM in SAP
+sapBomDisplayAction.MNEMONIC=B
+
+# Tools->Display SAP Data->Display ECO
+# ------------------------------------
+sapEcoDisplayAction.NAME=Display ECO
+sapEcoDisplayAction.TIP=Display ECO in SAP
+sapEcoDisplayAction.MNEMONIC=E
+
+# Tools->Display SAP Data->Display Document
+# -----------------------------------------
+sapDocDisplayAction.NAME=Display Document
+sapDocDisplayAction.TIP=Display Document in SAP
+sapDocDisplayAction.MNEMONIC=D
+
+# Tools->Baseline...
+# ----------------------
+BaselineAction.NAME=Baseline...
+BaselineAction.TIP=Creates a Snapshot of the selected Item Revision
+BaselineAction.MNEMONIC=B
+BaselineAction.TITLE=Baseline...
+selectItemRevision.MESSAGE=You need to select either one BOM Line or Item Revision object to use this command
+baselineRestrictedItemType.MESSAGE=Baseline creation for this Item Type is not supported
+assyBaselineFromNavigator.MESSAGE=Baselines for Item Revisions having BVRs can be created only from PSE
+releasedItemRev.MESSAGE=Baselining for released Item Revisions is not permitted
+noBaselineProceduresPrefFound.MESSAGE=No Baseline Release Procedure Found! Please Check the preference "Baseline_release_procedures"
+noBOMViewRevision.MESSAGE=No BomView Revision for topline
+
+# Tools --> Validate
+ValidationAction.NAME=Validation
+ValidationAction.TITLE=Validation
+ValidateAction.NAME=Run Validations...
+ValidateAction.TIP=Run Validations...
+ValidateAction.MNEMONIC=R
+ShowResultAction.NAME=View Results...
+ShowResultAction.TIP=View Results...
+ShowResultAction.MNEMONIC=V
+
+# Tool -> Assign Work Context
+# ----------------------
+assignWorkContextAction.NAME=Assign Work Context...
+assignWorkContextAction.TIP=Assign a work context to the selected object
+assignWorkContextAction.MNEMONIC=W
+
+# MB3->Set Current Work Context
+# ----------------------
+setWorkContextAction.NAME=Set Current Work Context...
+setWorkContextAction.TIP=Set selected work context as Current Work Context
+setWorkContextAction.MNEMONIC=S
+
+# Tools --> Process & Change Selector
+ProcessAndChangeConfiguratorAction.NAME=Process && Change Selector
+ProcessAndChangeConfiguratorAction.TIP=Process && Change Selector
+ProcessAndChangeConfiguratorAction.MNMONIC=P
+ProcessAndChangeConfiguratorAction.TITLE=Process && Change Selector
+ErrMsg.TITLE=Error
+ProcessSelectorNoSelection.MESSAGE=Selection needed for Process && Change Dialog
+ProcessSelectorInvalidSelection.MESSAGE=Invalid Selection for Process && Change Dialog
+
+
+# Tools -> Manage Global Alternates
+# ----------------------------
+manageGlobalAlternatesAction.NAME=Manage Global Alternates
+manageGlobalAlternatesAction.TIP =Manage Global Alternates
+manageGlobalAlternatesAction.MNEMONIC=G
+
+# ----------------------
+# TC's Desktop Menu Actions
+# ----------------------
+
+# Note Details item popup menu
+# ----------------------
+noteDetailsAction.NAME=Note Details
+noteDetailsAction.TIP=Note Details
+noteDetailsAction.MNEMONIC=D
+
+variantDetailsAction.NAME=Variant Condition Details
+variantDetailsAction.TIP=Variant Condition Details
+variantDetailsAction.MNEMONIC=D
+
+# ----------------------
+# TC's Help Menu Actions
+# ----------------------
+
+# Help -> About
+# ----------------------
+aboutAction.NAME=About
+aboutAction.TIP=About Teamcenter
+aboutAction.MNEMONIC=A
+
+openInUGAction.NAME=Open In NX
+openInUGAction.TIP=Start/Open In NX
+
+openInJTEditorAction.NAME=Open in JT Editor
+openInJTEditorAction.TIP=Start/Open in JT Editor
+
+openInSEECAction.NAME=Open in SEEC
+openInSEECAction.TIP=Start/Open In SEEC
+
+#openInPVAction.NAME=Open Bookmark in TcVis 
+#openInPVAction.TIP=Start/Open Bookmark In TcVis
+
+openInVMUAction.NAME=Open In Lifecycle Visualization
+openInVMUAction.TIP=Start/Open In Lifecycle Visualization
+
+#openHome
+openHome=Opening your home folder...
+openHomeAction.NAME=Open Home Folder
+openHomeAction.TIP=Open home folder
+
+# Send To -> HyperViewPlayer
+HyperViewPlayerAction.NAME=HyperViewPlayer...
+HyperViewPlayerAction.TIP=Launch HyperView Player
+
+systemObjectDelete.TITLE=Deleting A System Object...
+systemObjectDelete.MESSAGE=You are attempting to manually delete a 'system' object. A 'system'\n\
+object is one that provides information for other objects in the\n\
+system like import/export, reservation, etc.  By completing this\n\
+action you might place the dependant object in an invalid state.\n\
+There is no need to perform this action under normal working\n\
+environments and could jeopardize your data.  Do you wish to\n\
+continue?
+
+systemObjectModify.TITLE=Modifying A System Object...
+systemObjectModify.MESSAGE=You are attempting to manually modify a 'system' object. A 'system'\n\
+object is one that provides information for other objects in the\n\
+system like import/export, reservation, etc.  By completing this\n\
+action you might place the dependant object in an invalid state.\n\
+There is no need to perform this action under normal working\n\
+environments and could jeopardize your data.  Do you wish to\n\
+continue?
+
+nothingSelected.MSG=Please select an object
+onlyOneObject.MSG=Only one object should be selected.
+invalidObject.MSG=Not valid for this object
+invalidWCObject.MSG=Either work context object or task object should be selected.
+
+formCompareAction.NAME=Form Compare
+selectTwoForms=Select Two Forms of same type
+supportsOnlyForms=This operation is valid only for the objects of type Form
+
+# Error Messages for NewArchitectureBreakdownElementAction
+#-----------------------------------------------------------
+newArchitectureBreakdownElementAction.TITLE=NewArchitectureBreakdownElementAction
+selectABOMLine=Please selecte one BOMLine
+selectionNotABOMLine=Selection is not a BOMLine
+
+removePartFromIA.TITLE=Remove Design(s) from Product.
+removePartFromIAConfirm.MSG=Clicking on Yes would result in removing Design(s) from\n its parent permanently. Would you like to continue?
+removePartFromIA.DELETEMSG=Successfully removed component(s)
+moreObjectsSelected.PREMSG=Please select
+moreObjectsSelected.POSTMSG=or fewer designs to remove from product
+removeDsnMsg=Removing component from product ...
+
+#  Error messages for NotPseEffectivityMappingAction.
+revsOfConfigItemOnly.MSG=This operation is valid only for Revisions for Configuration Items
+
+# Messages for edit calendar
+editCalendar.TITLE=Resource calendar does not exist
+editCalendar.MESSAGE=Resource calendar does not exist for the user {0}. Do you want to create one?
+#For Express
+#-----------------------------------------------
+favoritesAction.NAME=Add to Favorites
+
+# Error message for Revision Effectivity
+revisionEffectivityAction.NoReleaseStatus.MSG=No release status was found for the selected item revision.
+
+AddinNotInstalled.TITLE=Export To Excel
+AddinNotInstalled.MSG=Please install Teamcenter Extensions for Microsoft Office
+
+exportToExcelNotSupported.MSG=Export to Excel is not supported from this panel
+#LicenseAction
+LicenseAction.Error = Error
+LicenseAction.InsufficientPrivilege = You need {0} privilege to detach licenses.
+LicenseAction.InvalidPrivilege = The privilege {0} specified in ADA_license_administration_privilege site preference is invalid.
+
+# Error message for BOM export
+unsavedBOMWindowEdits.MSG=The BOM Window has unsaved changes, please save changes before exporting.
+unsavedBOMWindowEdits.TITLE=BOM export error
+
+#Error message for SM Attachment Panel Delete topline
+topLineDeleteError.MSG=You cannot delete the top line of the structure.
+

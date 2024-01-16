@@ -1,0 +1,30 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Keys for clipboard
+# -----------------------------
+clear.TEXT=Zwischenablage l\u00F6schen
+append=Anh\u00E4ngen
+removeButton.TIP=Ausgew\u00E4hltes Objekt aus der Zwischenablage entfernen
+clearClipboardButton.TIP=Inhalt der Zwischenablage l\u00F6schen
+openButton.TIP=Ausgew\u00E4hltes Objekt \u00F6ffnen
+appendCheckBox.TIP=Zwischen \u00DCberschreiben und Anh\u00E4ngen wechseln.
+clipboardButton.TIP=Zwischenablage
+clipboardButton.TITLE=Inhalt der Zwischenablage
+sendToUG.TIP=Inhalt der Zwischenablage an NX senden
+
+clipboardButton.ICON=icons/clipboard_16.png
+clipboardAppendButton.ICON=icons/clipboardappend_16.png
+removeButton.ICON=icons/remove_16.png
+clear.ICON=icons/clear_16.png
+open.ICON=icons/open_16.png
+sendToUG.ICON=icons/sendto_16.png
+
+defaultAction.ICON=icons/defaultactionicon_16.png
+SWTClipboardDialog.append=Anh\u00E4ngen  
+SWTClipboardDialog.close=Schlie\u00DFen

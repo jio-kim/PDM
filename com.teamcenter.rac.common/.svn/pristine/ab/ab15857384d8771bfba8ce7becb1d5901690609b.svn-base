@@ -1,0 +1,36 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the savelayer package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: savelayer_locale.properties
+#   Module  : com.teamcenter.rac.commands.savelayer
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#05-Mar-2000  grayjk                  initial create; holds strings for localization
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New save layer
+SaveLayerDialog.TITLE=\uB808\uC774\uC5B4 \uC800\uC7A5
+name=\uC774\uB984:
+
+# Error Messages
+error.TITLE=\uB808\uC774\uC5B4 \uC800\uC7A5...
+
+#Message and keys for the layer name Message Box
+warning.TITLE=\uACBD\uACE0
+SaveLayerDialog.layer_name_inuse=\uD574\uB2F9 \uB808\uC774\uC5B4 \uC774\uB984\uC774 \uC774\uBBF8 \uC0AC\uC6A9\uB418\uACE0 \uC788\uC2B5\uB2C8\uB2E4. \uB2E4\uB978 \uC774\uB984\uC744 \uC785\uB825\uD558\uC2ED\uC2DC\uC624.
+
+#Messages and keys for the Abort Message Box
+aborted.TITLE=\uC911\uB2E8
+
+aborting=\uC911\uB2E8\uD558\uB294 \uC911...

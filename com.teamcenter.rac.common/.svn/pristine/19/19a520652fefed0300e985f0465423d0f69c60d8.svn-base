@@ -1,0 +1,92 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+#   Filename: taskpane_locale.properties
+#   Module  : src\RAC\com.teamcenter.rac.common\com\teamcenter\rac\common\taskpane
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Jul-2007  Yogesh Bhardwaj         Added support for Program  context
+#$HISTORY$
+#=================================================================================================*/
+# Loading/saving messages
+# -----------------------
+savingIWantToSection.MESSAGE=Ukl\u00E1d\u00E1n\u00ED obsahu do \u010D\u00E1sti Chci...
+loadingIWantToSection.MESSAGE=Na\u010D\u00EDt\u00E1n\u00ED \u010D\u00E1sti Chci...
+loadingWebLinks.MESSAGE=Na\u010D\u00EDt\u00E1n\u00ED objekt\u016F webov\u00FDch odkaz\u016F...
+loadingSavedSearches.MESSAGE=Na\u010D\u00EDt\u00E1n\u00ED ulo\u017Een\u00FDch objekt\u016F hled\u00E1n\u00ED...
+getDescriptionSavedSearches.MESSAGE=Na\u010D\u00EDt\u00E1n\u00ED vlastnost\u00ED SavedSearches...
+
+searchTextField.MESSAGE=Zadejte {0} k hled\u00E1n\u00ED
+
+# Quick access query details
+# --------------------------
+k_find_item_name_SearchAttributeDisplayName=ID polo\u017Eky
+k_find_general_name_SearchAttributeDisplayName=N\u00E1zev
+k_find_itemrevision_name_SearchAttributeDisplayName=N\u00E1zev
+k_find_datasetname_name_SearchAttributeDisplayName=N\u00E1zev
+k_find_fts_name_SearchAttributeDisplayName=Kl\u00ED\u010Dov\u00E9 slovo
+
+# The _DisplayName are required when we don't have a session
+k_find_item_name_DisplayName=Polo\u017Eka...
+k_find_general_name_DisplayName=Obecn\u00E9...
+k_find_itemrevision_name_DisplayName=Revize polo\u017Eky...
+k_find_datasetname_name_DisplayName=N\u00E1zev datasetu
+k_find_fts_name_DisplayName=Hled\u00E1n\u00ED kl\u00ED\u010Dov\u00E9ho slova
+
+# Name for the advanced quick access query
+advancedQuickAccessQuery=Pokro\u010Dil\u00E9
+
+# Search related messages
+# -----------------------
+searchMessage=Zadejte {0} k hled\u00E1n\u00ED
+searchResults.TITLE=V\u00FDsledky rychl\u00E9ho otev\u0159en\u00ED
+searchResults.HEADER=Hled\u00E1n\u00ED rychl\u00E9ho otev\u0159en\u00ED vr\u00E1tilo {0} objekt\u016F.
+searchResults.MESSAGE=Vyberte objekt, kter\u00FD chcete otev\u0159\u00EDt, ze seznamu n\u00ED\u017Ee a dvakr\u00E1t na n\u011Bj klikn\u011Bte nebo jej vyberte a klikn\u011Bte na tla\u010D\u00EDtko Otev\u0159\u00EDt. Jestli\u017Ee jste nenalezli objekt, kter\u00FD jste hledali, zru\u0161te toto okno a vyberte mo\u017Enost Hledat z panelu n\u00E1stroj\u016F a hledejte objekt pomoc\u00ED podrobn\u011Bj\u0161\u00EDch krit\u00E9ri\u00ED.
+executeSearch.MESSAGE=Spu\u0161t\u011Bn\u00ED {0} hled\u00E1n\u00ED {1}
+noSearchResults.TITLE=Ne byly nalezeny \u017E\u00E1dn\u00E9 p\u0159\u00EDstupn\u00E9 objekty
+noSearchResults=Hled\u00E1n\u00ED vr\u00E1tilo nula objekt\u016F, pro kter\u00E9 m\u00E1te opr\u00E1vn\u011Bn\u00ED p\u0159\u00EDstupu. Upravte krit\u00E9ria hled\u00E1n\u00ED.
+noSearchPrivilege.TITLE=Nen\u00ED \u017E\u00E1dn\u00FD p\u0159\u00EDstup
+noSearchPrivilege=Nem\u00E1te dostate\u010Dn\u00E1 opr\u00E1vn\u011Bn\u00ED k zobrazen\u00ED tohoto objektu.
+loadingSearchPanel.MESSAGE=Na\u010D\u00EDt\u00E1n\u00ED panelu hled\u00E1n\u00ED
+copySearchResults.TIP=Zkop\u00EDrujte do schr\u00E1nky objekty vybran\u00E9 v tabulce n\u00ED\u017Ee.
+openSearchResults.TIP=Otev\u0159e v aktu\u00E1ln\u00ED aplikaci objekt vybran\u00FD v tabulce n\u00ED\u017Ee. Jestli\u017Ee je vybr\u00E1no v\u00EDce objekt\u016F, je zahrnut prvn\u00ED objekt v seznamu.
+openMultipleSearchResults.TIP=Otev\u0159e v aktu\u00E1ln\u00ED aplikaci objekty vybran\u00E9 v n\u00E1sleduj\u00EDc\u00ED tabulce.
+nextPageResults.TIP=Dal\u0161\u00ED str\u00E1nka
+previousPageResults.TIP=P\u0159edchoz\u00ED str\u00E1nka
+
+# Drop messages
+# -------------
+invalidDropObject.TITLE=Neplatn\u00FD objekt
+dropObjectAlreadyPresent.TITLE=Objekt existuje
+favoritesInvalidDropObject.MESSAGE=P\u0159etahovan\u00FD objekt nen\u00ED platn\u00FD. Tento \u0159ez nem\u016F\u017Ee obsahovat pr\u016Fb\u011B\u017En\u00E9 objekty.
+quickLinksInvalidDropObject.MESSAGE=P\u0159etahovan\u00FD objekt nen\u00ED platn\u00FD. Tato sekce m\u016F\u017Ee obsahovat pouze kontejnerov\u00E9 objekty jako slo\u017Eky.
+dropObjectAlreadyPresent.MESSAGE=P\u0159etahovan\u00FD objekt ji\u017E existuje v \u010D\u00E1sti {0}.
+invalidDropTarget.TITLE=Neplatn\u00FD c\u00EDl p\u0159eta\u017Een\u00ED
+favoritesInvalidDropTarget.MESSAGE=Vybran\u00FD objekt v \u010D\u00E1sti {0} nen\u00ED slo\u017Eka obl\u00EDben\u00FDch. Vyberte slo\u017Eku obl\u00EDben\u00FDch k proveden\u00ED p\u0159eta\u017Een\u00ED.
+favoritesDropObjectAlreadyPresent.MESSAGE=P\u0159etahovan\u00FD objekt ({0}) ji\u017E existuje ve vybran\u00E9 slo\u017Ece obl\u00EDben\u00FDch ({1}).
+favoritesDropObjectHistorical.MESSAGE=P\u0159etahovan\u00FD objekt nen\u00ED platn\u00FD. Tento \u0159ez nem\u016F\u017Ee obsahovat historick\u00E9 objekty.
+
+# Add to favorites
+# ----------------
+addToFavoritesAction.NAME=P\u0159idat k obl\u00EDben\u00FDm
+
+# I want to section default actions
+# ----------------
+newItemAction.DISPLAY=Vytvo\u0159it polo\u017Eku
+newDatasetAction.DISPLAY=Vytvo\u0159it dataset
+newProcessAction.DISPLAY=Vytvo\u0159it proces pracovn\u00EDho postupu
+
+SearchProgressMonitorDialog.0=Prov\u00E1d\u011Bn\u00ED
+SearchProgressMonitorDialog.1=ulo\u017Een\u00FD dotaz
+SearchProgressMonitorDialog.2=Prov\u00E1d\u00ED se hled\u00E1n\u00ED
+SearchProgressMonitorDialog.3=Hled\u00E1n\u00ED dokon\u010Deno. Prob\u00EDh\u00E1 na\u010D\u00EDt\u00E1n\u00ED v\u00FDsledk\u016F hled\u00E1n\u00ED...
+
+#Warning message while restoring too many objects
+tooManyViewsRestoreError.MSG=Pouze pohledy {0} je mo\u017En\u00E9 obnovit a otev\u0159\u00EDt sou\u010Dasn\u011B. Proto budou v \u010D\u00E1sti Otev\u0159en\u00E9 polo\u017Eky pouze objekty {0}.Stisknut\u00EDm tla\u010D\u00EDtka OK otev\u0159ete pouze pohledy {0}, stisknut\u00EDm tla\u010D\u00EDtka Storno otev\u0159ete naposledy aktivn\u00ED pohled. Chcete-li otev\u0159\u00EDt najednou v\u00EDce pohled\u016F, navy\u0161te v\u00FDchoz\u00ED mez (p\u0159edvolba "TCMaxOpenViewsLimit").Pozn\u00E1mka: Nav\u00FD\u0161en\u00EDm v\u00FDchoz\u00ED meze m\u016F\u017Ee doj\u00EDt ke zv\u00FD\u0161en\u00E9 spot\u0159eb\u011B pam\u011Bti, kter\u00E1 m\u016F\u017Ee v\u00E9st a\u017E k automatick\u00E9mu uzav\u0159en\u00ED Teamcenteru.
+tooManyViewsRestore.TITLE=Obnovit pohledy
+restoreViewDialog_buttonCancel=Storno
+restoreViewDialog_buttonOK=OK

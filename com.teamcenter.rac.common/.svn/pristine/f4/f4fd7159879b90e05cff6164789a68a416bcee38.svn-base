@@ -1,0 +1,61 @@
+##* @<COPYRIGHT_START>@
+# ===============================================
+# Copyright 2007 UGS Corp. All Rights Reserved.
+# ===============================================
+# @<COPYRIGHT_END>@
+
+# Entries for messages
+# ------------------------------
+openError.TITLE=Abrir ...
+
+saveForm.MESSAGE=Salvando forma...
+loadForm.MESSAGE=Carregando forma...
+
+unableToOpen.MESSAGE=N\u00E3o \u00E9 poss\u00EDvel exibir formul\u00E1rio.
+unableToSave.MESSAGE=N\u00E3o se pode salvar esta forma, preencha os campos necess\u00E1rios.
+
+noDataToFetch.MSG=Nenhum dado est\u00E1 anexado a revis\u00E3o de Item/Item.
+cannotDecideWhichDataset.MSG=N\u00E3o \u00E9 poss\u00EDvel determinar qual dataset utilizar para a a\u00E7\u00E3o. Utilize a prefer\u00EAncia TC_<itemtype>_data_search_order.
+openComponent.MESSAGE=Abrindo componente...
+
+# Status message while performing Implicit Check out
+doingImplicitCO=Salvando altera\u00E7\u00F5es e realizando reserva/devolu\u00E7\u00E3o impl\u00EDcita...
+
+#Entries for buttons
+#---------------------------------
+
+#For the Edit button on the read only properties dialog
+edit=Reservar e editar
+edit.TIP=Reservar e editar propriedades
+edit.MNEMONIC=Edit
+
+implicitCoApply=Aplicar
+implicitCoApply.TIP=Salvar altera\u00E7\u00F5es
+implicitCoApply.MNEMONIC=Apply
+
+implicitCoOk=Ok
+implicitCoOk.TIP=Salvar altera\u00E7\u00F5es
+implicitCoOk.MNEMONIC=Ok
+
+saveCheckOut=Salvar
+saveCheckOut.TIP=Salvar e manter reservado
+saveCheckOut.MNEMONIC=Save
+
+saveCheckIn=Salvar e Devolver
+saveCheckIn.TIP=Salvar propriedades e Devolver
+saveCheckIn.MNEMONIC=I
+
+cancelCheckOut=Cancelar Reserva
+cancelCheckOut.TIP=Cancelar reserva e voltar para o original
+cancelCheckOut.MNEMONIC=O
+
+saveChanges.TITLE=Existem altera\u00E7\u00F5es que n\u00E3o foram salvas
+saveChanges.TEXT=Deseja salvar as altera\u00E7\u00F5es na forma?
+
+#Warning message while opening too many objects
+tooManyViewsError.MSG=Todas as sele\u00E7\u00F5es n\u00E3o abrir\u00E3o, pois apenas as visualiza\u00E7\u00F5es {0} podem ser abertas simultaneamente.\nPressione OK para abrir apenas as sele\u00E7\u00F5es {0} ou aumente o limite padr\u00E3o (prefer\u00EAncia "TCMaxOpenViewsLimit").\n\nObserva\u00E7\u00E3o: aumentar o limite padr\u00E3o resultaria em excesso de consumo de mem\u00F3ria, que pode resultar no Teamcenter fechando automaticamente. 
+maxViewsOpened.MSG=Voc\u00EA atingiu o n\u00FAmero m\u00E1ximo de visualiza\u00E7\u00F5es para abrir.\n Feche as visualiza\u00E7\u00F5es n\u00E3o utilizadas e abra novamente.
+cannotOpen.MSG=N\u00E3o \u00E9 poss\u00EDvel abrir {0}. 
+tooManyViews.TITLE=Abrir visualiza\u00E7\u00F5es
+openViewDialog_buttonCancel=Cancelar
+openViewDialog_buttonOK=OK

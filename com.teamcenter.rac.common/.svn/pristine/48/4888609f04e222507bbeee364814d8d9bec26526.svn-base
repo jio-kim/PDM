@@ -1,0 +1,27 @@
+#* @<COPYRIGHT_START>@
+# ===============================================
+# Copyright 2007 UGS Corp. All Rights Reserved.
+# ===============================================
+# @<COPYRIGHT_END>@
+
+command.TITLE=Eigenschaften
+commandReadOnly.TITLE=Eigenschaften (schreibgesch\u00FCtzt)
+
+loadingProperties=Eigenschaften werden geladen...
+savingProperties=Eigenschaften werden gespeichert...
+
+print.TIP = Objekteigenschaften drucken.
+
+failToDisplay=Eigenschaften k\u00F6nnen nicht angezeigt werden.
+
+# For SmartEdit
+# -------------
+multipleObjects.TITLE=Allgemeine, \u00E4nderbare Eigenschaften
+
+#For the Edit button on the read only properties dialog
+edit=Auschecken und bearbeiten
+edit.TIP=Auschecken und Eigenschaften bearbeiten
+edit.MNEMONIC=Edit
+
+# Status message while performing Implicit Check out
+doingImplicitCO=\u00C4nderungen werden gespeichert und das implizite Auschecken/Einchecken wird ausgef\u00FChrt...

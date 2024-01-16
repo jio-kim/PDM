@@ -1,0 +1,71 @@
+#*==================================================================================================
+#
+#                    Copyright (c) 2004 UGS
+#                   Unpublished - All rights reserved
+#                   
+#                   
+# THIS PROGRAM IS AN UNPUBLISHED WORK FULLY PROTECTED BY THE UNITED STATES
+#  COPYRIGHT LAWS AND IS CONSIDERED A TRADE SECRET BELONGING TO THE COPYRIGHT
+#                                   HOLDER.
+#
+#====================================================================================================
+# File description: This properties file contains all locale specific keys for the saveas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: revisesignal_locale.properties
+#   Module  : com.teamcenter.rac.commands.revisesignal
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#04-Oct-2004  x_bhadra                Initial Version
+#08-Nov-2004  x_bhadra                Fixing the Registry Problem
+#08-Nov-2004  Narayana Murthy         Merge from P10.0.0.6
+#10-Nov-2004  x_bhadra                Merge from lbom_pse_support branch
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+SignalType=Tipo de se\u00F1al:
+
+# Revise Panel
+# -----------------------------
+createConfirm.TITLE=Revisar la revisi\u00F3n de la se\u00F1al
+createConfirm.MSG=Si desea continuar, deber\u00E1 crear una revisi\u00F3n de se\u00F1al nueva. \n\u00BFDesea crear la revisi\u00F3n de \u00EDtem nueva?
+
+# Revise Item Info Panel
+# ------------------------------
+itemInfo.LABEL=Defina la informaci\u00F3n b\u00E1sica para la revisi\u00F3n de se\u00F1al nueva.
+itemInfoStep.NAME=Introduzca la informaci\u00F3n sobre la se\u00F1al
+itemInfoStep.TOOLTIP=Define la informaci\u00F3n b\u00E1sica de la se\u00F1al
+
+# Item Revision Master form panel (Additional Item Revision page)
+# ---------------------------------------------------------------
+itemRevMasterForm.LABEL=Defina la informaci\u00F3n adicional sobre la revisi\u00F3n de la se\u00F1al.
+itemRevMasterFormStep.NAME=Introduzca la informaci\u00F3n adicional sobre la revisi\u00F3n de la se\u00F1al
+itemRevMasterFormStep.TOOLTIP=Defina la informaci\u00F3n adicional sobre la revisi\u00F3n de la se\u00F1al.
+
+# open option panel
+# -----------------
+checkOutOnCreate = Desproteger la revisi\u00F3n de la se\u00F1al al crear
+
+# Revise Alternate ID/ ReviseIdInfoPanel
+# ---------------------------------------
+step1=1. Seleccionar revisi\u00F3n:
+step2=2. Seleccionar el tipo:
+step3=3. Introducir la informaci\u00F3n b\u00E1sica:
+
+idContext=Contexto de Id:
+idType=Tipo de Id:
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Creando una revisi\u00F3n de se\u00F1al nueva
+openingNewComponent=Abriendo una revisi\u00F3n de se\u00F1al nueva
+
+# Error Messages
+# ----------------------
+unableToRevise.MSG=Solamente son v\u00E1lidos para la revisi\u00F3n, las revisiones de se\u00F1ales y los identificadores de revisi\u00F3n.  Seleccione \nuna revisi\u00F3n de se\u00F1al o un identificador de revisi\u00F3n y vuelva a intentar.
+failToRevise=Fallo al revisar la revisi\u00F3n de se\u00F1al.

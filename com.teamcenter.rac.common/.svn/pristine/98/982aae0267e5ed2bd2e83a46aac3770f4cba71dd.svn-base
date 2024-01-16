@@ -1,0 +1,141 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the popupmenu package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: popupmenu_locale.properties
+#   Module  : com.teamcenter.rac.popupmenu
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#07-Apr-2000  mccollr                 Add the item and bvr keys.
+#23-May-2000  mccollr                 Added support for send-to.
+#04-Aug-2000  Tony Dumont             Add Open View menu
+#23-Aug-2000  wangp                   add form.POPUP_TITLE
+#01-Sep-2000  Mark Fawcett            merge
+#11-Oct-2000  shen                    add pop up for subscription
+#01-Nov-2000  shen                    add Edit menu item for Subscription
+#18-Jun-2001  mccollr                 Added support for multiple selection popupmenu. PR#4147503
+#22-Nov-2001  Bobby Ljubic            Initial Creation/promote to P8.0.0.2
+#23-Nov-2001  Bobby Ljubic            Merge to project integration branch
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#17-Jul-2002  wangp                   add bomline.POPUP_TITLE
+#07-Dec-2002  hwangb                  add updateWorkpiece
+#07-Apr-2003  hwangb                  add re-sequence process menu
+#10-Apr-2003  sacchett                New code for Change Notes
+#12-Apr-2003  x_karim                 merge out from diego_v90_ph1
+#08-May-2003  x_karim                 merge to hydcm_v8112
+#14-May-2003  x_karim                 merge to hydint_v9.0 (P9.0.0.1 promote)
+#22-May-2003  x_karim                 conflict resolution with eug_p9.0.0.1
+#18-Aug-2003  Jim Towers              PR 4815150 - CICO not on BOMView Popup menu
+#15-Sep-2003  x_monthr                popup menu for AttachmentLine
+#19-Dec-2003  Jeff Martin             made changes for Absolute Occurrence project
+#22-Mar-2004  Jeff Martin             Add 2 more properties for Abs Occ project
+#26-Mar-2004  Kaushik Amin            Remove duplicate properties.
+#16-Jun-2004  wangp                   add title for wolf object
+#27-Aug-2004  faming                  V10 Work Context Project
+#09-Sep-2004  faming                  V10 Work Context Project
+#13-Sep-2004  faming                  V10 Work Context Project
+#18-Oct-2004  Geethika Chitturi       Changing Teamcenter to Teamcenter
+#19-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#19-Oct-2004  Geethika Chitturi       Merging to project branch
+#25-Oct-2004  Jeff Martin             change absocc verbiage
+#04-Nov-2004  Jeff Martin             merge in martinj_p10.0.0.7 changes
+#08-Dec-2004  hwangb                  add property compare action
+#21-Jan-2005  huangjun                removed propertyCompareAction.NAME, use the one in actions
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#01-Feb-2005  Zhixin Huang            Resolve conflicts for p10.0.0.10
+#03-Feb-2005  Kaushik Amin            Add newAppGroupAction.NAME.
+#07-Feb-2005  Kaushik Amin            Merge to P10.0.0.10 label.
+#22-Mar-2005  Kaushik Amin            Add view mode for occGroups.
+#01-Jun-2005  Manoj K Pradhan         Merge from manoj_rdv_9127_branch
+#08-Mar-2006  Kranti Chaitanya        for TcX 2005
+#28-Dec-2005  kango                   GDE ( Item Element ) related entries
+#28-Mar-2006  x_khan                  merge from kango_esm_p10014
+#19-Jun-2006  Joseph Brant            Provided specialized menu for Part Proxy
+#26-Apr-2006  Ankush Dharmale		  Allocations related
+#15-Oct-2006  agbaria                 PR#5616907 - Provide open with process simulate in MSE/CC
+#20-Jun-2007  Andrew Samusenko        Fixed PR 5766598 - Resequence Process name change
+#20-Mar-2008  Subramonia Kishore      Added ERRORTITLE and ERRORMESSAGE for PropertiesOnRelation
+#$HISTORY$
+#=================================================================================================*/
+
+# Update Workpiece
+updateWorkpieceAction.NAME=Mettre \u00E0 jour Pi\u00E8ce de travail
+
+# Open with Process Simulate
+openWithProcessSimulateAction.NAME=Ouvrir avec Simulation de processus
+
+# New AppGroup
+newAppGroupAction.NAME=Ins\u00E9rer Nouveau groupe d'occurrences
+
+# Proerty Compare Table
+propertyCompareAction.NAME=Table de comparaison de propri\u00E9t\u00E9s...
+
+bomchange.POPUP_TITLE=Objet Modification de Nomenclature
+
+updateSuperseded.NAME=Mettre \u00E0 jour les remplac\u00E9s
+
+# Edit action for form object
+# ------------------------------------
+editAction.NAME=Editer
+editAction.MNEMONIC=E
+
+# Send To menu item.
+# ----------------------
+sendto.NAME=Envoyer vers
+
+# Open View menu item.
+# ----------------------
+openView.NAME=Ouvrir Vue
+
+multiple.POPUP_TITLE=Composants Multiples
+
+## ABSOLUTE OCCURRENCE PROPERTIES ##
+changeContext.NAME=D\u00E9finir En Contexte
+
+# popup menu titles for trace report
+# -----------------------------------
+internalTrace.TITLE=Rapport de trace interne
+externalTrace.TITLE=Rapport de trace externe
+
+# View Mode for appGrpBOPLine
+setViewModeToBaseAction.NAME=Afficher le Groupe d'occurrences en mode Base
+setViewModeToOccGrpAction.NAME=Afficher le Groupe d'occurrences
+
+# Remove Product from Design menu item
+# -------------------------------------
+removeDesignFromProductAction.NAME=Supprimer la Conception dans le produit
+removeDesignFromProductAction.TIP=Supprimer la Conception dans le produit
+
+# Allocations Popup Menu
+Allocation.NAME=Allocations
+Allocation.TITLE=Allocations
+Allocation.POPUP_TITLE=Objet d'allocation
+# Find where allocated
+findWhereAllocatedAction.NAME =O\u00F9 est Allou\u00E9
+findWhereAllocatedAction.TIP =O\u00F9 est Allou\u00E9
+
+showAllocatedFromAction.NAME=Afficher Allou\u00E9 depuis
+showAllocatedToAction.NAME=Afficher Allou\u00E9 \u00E0
+
+#########################################
+# Error while sending remote objects
+#########################################
+remoteObject.SendTo.Error.MESSAGE=Impossible de charger l'objet de type distant.
+remoteObject.SendTo.Error.TITLE=Erreur d'envoi d'objet
+
+GRBViews.TITLE=Vues de l'Explorateur de relations
+
+#Poperties On Relation Project SDLC ID 7460
+#------------------------------------------
+PropertyOnRelation.TITLE=Contexte de relation non trouv\u00E9
+PropertyOnRelation.MSG=Composant(s) s\u00E9lectionn\u00E9(s) ou relation inexistant(es)

@@ -1,0 +1,31 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the cancelcheckout package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: cancelcheckout_locale.properties
+#   Module  : com.teamcenter.rac.commands.cancelcheckout
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#15-Jul-2002  Rob McColl              Apply fix for PR#4587471.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#24-Feb-2006  leclaire                PR 5236276
+#16-Mar-2006  liang                   De-imanization project
+#17-Mar-2006  liang                   merge to PLM1
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=Cancelar desprotecci\u00F3n
+confirmationText=\u00BFEst\u00E1 seguro de que desea cancelar la desprotecci\u00F3n?\n(Nota: se perder\u00E1n todos los cambios desde la desprotecci\u00F3n).
+cancelcheckout.STATUS=Cancelando la desprotecci\u00F3n
+cancelcheckout.TITLE=Cancelar desprotecci\u00F3n
+cancelcheckout.ERROR = La acci\u00F3n Cancelar la desprotecci\u00F3n del objeto seleccionado no est\u00E1 disponible.

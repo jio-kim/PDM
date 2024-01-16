@@ -1,0 +1,58 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newbomviewrevision package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newbomviewrevision_locale.properties
+#   Module  : com.teamcenter.rac.commands.newbomviewrevision
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2000  huangz                  Revise and finish it after Scott left.
+#10-Mar-2000  huangz                  Change the key name
+#16-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#06-Apr-2000  huangz                  Change the value of key
+#18-Oct-2001  wangp                   add key for name
+#29-Mar-2004  Zhixin Huang            Fix PR 4923225 (give some infor for the view types empty in Save BVR and New BVR).
+#01-Apr-2004  Zhixin Huang            Fix bug
+#01-Apr-2004  Zhixin Huang            Merge to Troy.
+#30-Apr-2004  wangp                   fix pr 4963411: fix spelling error
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# SaveBOMViewRevisionAsDialog
+# ------------------------
+command.TITLE = Nova revis\u00E3o BOMView
+bvrInformation = Criar nova BVR para:
+BVRId = ID do Item
+rev = ID da revis\u00E3o
+viewType = Exibir tipo:
+billDisplay = Criar como:
+precise = Fixo
+imprecise = Din\u00E2mico
+openOnCreate = Abrir ao criar
+name = Nome
+
+loadingViewTypes = Carregando tipos de BOMView ...
+viewTypeError = N\u00E3o \u00E9 poss\u00EDvel carregar o tipo BOMView
+creatingNewBOMViewRevision = Criar revis\u00E3o BOMView ...
+failToCreate = Falha ao criar BOMView
+
+error.TITLE = Erro
+multipleSelectionError = Sele\u00E7\u00F5es m\u00FAltiplas n\u00E3o s\u00E3o permitidas
+
+itemSelectionError = As sele\u00E7\u00F5es devem ser item ou revis\u00E3o de item.
+
+noValidViewTypes=N\u00E3o h\u00E1 tipo de visualiza\u00E7\u00E3o v\u00E1lida para a revis\u00E3o de item inserida. Assim como,\n a revis\u00E3o n\u00E3o existe ou todos os tipos de visualiza\u00E7\u00E3o est\u00E3o utilizadas.
+noValidViewTypes.TITLE = Nenhum tipo de visualiza\u00E7\u00E3o
+
+remind.MSG = A lista de tipos de visualiza\u00E7\u00E3o est\u00E1 dispon\u00EDvel com base nos itens inseridos\n e ids da revis\u00E3o. No evento em que qualquer id \u00E9 inv\u00E1lida ou todos os tipos de visualiza\u00E7\u00E3o est\u00E3o\n utilizados, a lista de tipos de visualiza\u00E7\u00E3o estar\u00E1 em branco. O usu\u00E1rio pode entrar com id diferente e\n tipos de visualiza\u00E7\u00F5es dispon\u00EDveis ser\u00E3o determinados e exibidos.

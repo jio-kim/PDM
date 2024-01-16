@@ -1,0 +1,35 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2011.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the properties package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+
+command.TITLE=\u91CD\u65B0\u6574\u7406\u901A\u77E5
+
+refreshNotifyDialog.TITLE=\u91CD\u65B0\u6574\u7406\u901A\u77E5
+
+refreshAll=\u5168\u90E8\u91CD\u65B0\u6574\u7406(A)
+refreshAll.MNEMONIC=A
+refreshAll.TIP=\u91CD\u65B0\u6574\u7406\u901A\u77E5\u6E05\u55AE\u4E2D\u7684\u6240\u6709\u7269\u4EF6\u3002
+
+refreshSelected=\u91CD\u65B0\u6574\u7406\u9078\u5B9A\u7684(S)
+refreshSelected.MNEMONIC=S
+refreshSelected.TIP=\u53EA\u91CD\u65B0\u6574\u7406\u9078\u5B9A\u7269\u4EF6\u3002
+
+objectColumnHeading=\u7269\u4EF6
+typeColumnHeading=\u985E\u578B
+eventColumnHeading=\u4E8B\u4EF6
+
+unknownType=\u672A\u77E5\u985E\u578B
+unknownEventType=\u672A\u77E5\u4E8B\u4EF6
+
+refreshNotifyAction.TIP=\u901A\u77E5\u4F7F\u7528\u8005\u7269\u4EF6\u5DF2\u904E\u671F\uFF0C\u9700\u8981\u91CD\u65B0\u6574\u7406\u3002

@@ -1,0 +1,174 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the referencers package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#04-Aug-2000  huangz                  Add printType key
+#14-Sep-2000  Nigel Morse             add message
+#19-Feb-2001  mccollr                 Added the key to support on-demand loading the rev rules.
+#22-Feb-2001  mccollr                 Removed the (User) from the where referenced option. PR#4245422
+#23-Feb-2001  mccollr                 Merge of v8.0
+#28-Feb-2001  mccollr                 Merge up to v7.0.1
+#28-Feb-2001  mccollr                 merge to v8.0.  pr #4239288
+#25-Apr-2001  wangp                   Fix PR 4156574: change whereUsedDepth to depth
+#30-Apr-2001  Endi Wu                 PR4147444 Change value for key noUsedObjectsFound.MESSAGE
+#30-Apr-2001  Endi Wu                 Merge to Troy
+#07-Jun-2001  Zhixin Huang            Change the key Graphic to Graphics
+#07-Jun-2001  Zhixin Huang            Merge to Troy
+#12-Oct-2001  wangp                   fix merge problem
+#26-Nov-2001  wangp                   fix pr 4329160 (per Chandra)
+#21-Mar-2002  wangp                   fix pr 1152330: display abort msg if the op is aborted
+#01-Apr-2002  wangp                   fix pr 4482105: remove duplicated whereUsed keys
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#30-May-2002  Endi Wu                 Add entry for where-used/where-ref report project
+#30-May-2002  Endi Wu                 Merge to Troy
+#11-Sep-2002  Endi Wu                 Fix PR 4623389 tool tip typo
+#14-May-2003  Endi Wu                 Add circular referencers entry
+#06-Feb-2004  Rob McColl              Fix for 4911356 which changes the message when no objects found.
+#18-Feb-2004  Rob McColl              Remove the capital letters from the header.
+#22-Mar-2004  Rob McColl              Fix for PR#2033912 which enhances the find in display text field in the Referencers panel to perform find next in the display tree.  It is the same functionality as the tree find in display.
+#22-Mar-2004  Rob McColl              merge to Troy site branch.
+#18-Oct-2004  Geethika Chitturi       Changing Teamcenter to Teamcenter
+#18-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#19-Oct-2004  Geethika Chitturi       Merging to project branch
+#07-Dec-2004  Endi Wu                 Add entry for where referenced enhancement
+#22-Feb-2005  Paul Jackson            new labels for V10.0.0.4 where used enhancements
+#21-Sep-2005  Paul Jackson            include subtypes option
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#15-Oct-2008  Abhijit Bhamare         Added Error message for where used error.
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for UI
+# -------------------
+where=Dove:
+whereReferencedUser=Referenziato
+whereReferencedPOM=Riferimento (POM)
+whereUsed=Utilizzato
+
+whereUsedRule=Regola:
+
+all=Tutti
+fromPse=Da PSE
+precise=Preciso
+
+oneLevel=Un livello
+allLevels=Tutti i livelli
+topLevel=Primo livello
+
+depth=Livello:
+
+displayedPropertyLabel=Visualizza:
+
+filterLabel=Filtra per tipo di item
+atLabel=a
+includeSubtypesLabel=Includi sottotipi
+
+whereUsedOneLevel.TIP=Dove \u00E8 usato (un livello)
+whereUsedTopLevel.TIP=Dove \u00E8 usato livelli superiori
+whereUsedConfigured.TIP=Dove \u00E8 usato configurati
+whereUsedPrecise.TIP=Dove \u00E8 usato preciso
+whereUsedAll.TIP=Dove \u00E8 usato (tutto)
+whereReferencedOneLevel.TIP=Dove referenziato un livello
+whereReferencedAll.TIP=Dove referenziato tutti
+whereReferencedTopLevel.TIP=Dove referenziato livelli superiori
+displayedProperty.TIP=Selezionare la propriet\u00E0 da visualizzare per l'opzione Dove \u00E8 usato relativamente ai nodi della struttura
+
+popupLabel=Selezione funzione riferimenti
+
+loadingRevRules=Caricamento regole di revisione...
+
+# Messages
+# -------------------
+opening=Apertura
+performWhereUsed=Esecuzione ricerca Dove \u00E8 usato su
+performWhereReferenced=Esecuzione query Dove referenziato su
+loadingProperties=Caricamento propriet\u00E0 per
+performWhereUsedConfiguredParent=Esecuzione di un elemento padre configurato Dove \u00E8 usato in {0}
+
+# Error Messages
+noObjectsFound.MESSAGE=Nessun oggetto trovato in base al nome specificato
+noObjectsFound.TITLE=Oggetto non trovato
+
+noWhereUsed.TITLE=Azione non consentita
+noWhereUsed.MESSAGE=Non \u00E8 possibile eseguire la ricerca Dove \u00E8 usato su questo tipo di oggetti
+
+whereUsedError.TITLE=Impossibile eseguire
+whereUsedError.MESSAGE=Non si dispone dei diritti di lettura sull'item revision configurato
+
+noObjectsToFind.MESSAGE=Nessun oggetto trovato
+noObjectsToFind.TITLE=Nessun oggetto
+
+targetNull.MESSAGE=Impossibile eseguire l'operazione, l'oggetto selezionato \u00E8 un valore NULL.
+targetNull.TITLE=Impossibile eseguire
+
+invalidOperation.MESSAGE=\u00C8 possibile eseguire una ricerca Dove \u00E8 usato soltanto su un item revision
+invalidOperation.TITLE=Oggetto selezionato non valido
+
+noReferencingObjectsFound.MESSAGE=Non sono stati trovati oggetti di riferimento
+noUsedObjectsFound.MESSAGE=Questo oggetto non \u00E8 utilizzato in nessun assieme.
+noObjectsFound.TITLE=Nessun oggetto trovato
+
+noUsedConfiguredParentObjectsFound.MESSAGE=Questo oggetto non \u00E8 utilizzato in nessun assieme.
+
+whereUsedConfiguredParentError.MESSAGE=Non si dispone dei diritti di lettura per l'item/item revision configurato
+
+circularRefFound.TITLE=\u00C8 stato trovato un riferimento circolare.
+circularRefToItself.MESSAGE=ha un riferimento circolare a se stesso.
+cyclicRefFound.TITLE=\u00C8 stata trovata una condizione ciclica
+cyclicRefFound.MESSAGE=\u00C8 stata trovata una condizione di visualizzazione ciclica. Rivisualizzare gli oggetti?
+circularStructureFound.MESSAGE=Rilevata una struttura circolare. I dettagli dell'analisi Dove \u00E8 usato sono gi\u00E0 stati visualizzati per quest'occorrenza. Impossibile continuare.
+
+exception=Eccezione Teamcenter
+
+allLevelWarn.TITLE=Esecuzione ricerca su tutti i livelli in corso...
+allLevelWarn.MESSAGE=La ricerca pu\u00F2 richiedere un certo tempo se si \u00E8 selezionata l'opzione 'Tutti i livelli'.\nContinuare? 
+allLevelLimitWarn.MESSAGE=Trovati {0} item. La ricerca ha prodotto il numero massimo di risultati ({1}) da visualizzare, secondo quanto configurato dall''amministratore. \nAltre ricerche potrebbero causare un errore di visualizzazione dei risultati nel rich client di Teamcenter.\n\nContinuare?
+
+operationAborted.MESSAGE=Operazione \u00E8 interrotta.
+operationAborted.TITLE=Interrompi
+
+printTitle=Dove referenziato
+whereTitle=Dove
+printType.TITLE=Impostazioni di stampa...
+printType.TIP=Consente di selezionare il tipo di report di stampa.
+print.TIP=Stampa report Dove referenziato.
+print=Stampa
+graphicType=Grafica
+textType=HTML/Testo
+
+noObjectSelect.MESSAGE=Selezionare un oggetto.
+noObjectSelect.TITLE=Non \u00E8 stato selezionato alcun oggetto
+reportWizard=Avvia il wizard di creazione report Dove \u00E8 usato/Dove referenziato
+
+findInDisplayField.TIP=<html><body><font size=2><p>Usare i tasti F3, Pagina gi\u00F9 o Sposta in gi\u00F9 per trovare il successivo;</p><p>i tasti Pagina su o Sposta in su per trovare il precedente;</p><p>il tasto Home per trovare il primo;</p><p>il tasto Fine per trovare l'ultimo;</p></font></body></html>
+
+whereReferencedRelationFilter=Relazione
+whereReferencedTypeFilter=Tipo
+
+loadingObjectTypes=Caricamento tipi
+loadingRelations=Caricamento relazioni
+
+clearFilter.MESSAGE=La funzione per filtrare i risultati dei riferimenti pu\u00F2 essere utilizzata\nsolo sulle operazioni di primo livello. Pertanto i campi verranno azzerati.
+clearFilter.TITLE=Annulla selezione filtro
+
+whereReferencedForTCBOM.MESSAGE=Impossibile eseguire Dove referenziato in un %1
+Cba0PartProxy.CLASS=Parte aziendale...
+
+referencersDuplicateNodes = Nodo duplicato
+referencersDuplicateNodeClick = Fare doppio clic per espandere o comprimere. 
+semiColonChar = ; 
+
+whereReferencedForNonWorkspaceObject.MESSAGE=La ricerca Dove referenziato non pu\u00F2 essere eseguita in {0}. Usare l''operazione Dove referenziato (POM).

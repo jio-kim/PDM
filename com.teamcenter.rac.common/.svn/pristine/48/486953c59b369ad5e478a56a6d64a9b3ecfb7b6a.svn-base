@@ -1,0 +1,1485 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2021.
+# Siemens Digital Industries Software.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Entries for Preference Dialog
+#-------------------------------------
+command.TITLE=Opciones
+
+unableToDisplayPanel.TITLE=No se pueden mostrar las opciones
+unableToDisplayPanel.MESSAGE=No se pueden mostrar las opciones... No se defini\u00F3 el panel.
+plmxmlServiceNotFound.MSG=No se encontr\u00F3 el servicio PLM XML.
+
+rootPreference.TITLE=Opciones
+
+columns.available=Disponibles:
+columns.selected=Mostradas:
+
+updatingThePreferences=Actualizando las opciones....
+notImplemented=Panel no implementado
+
+#Entries for noPrivilege Seen
+#------------------------------
+noPriv.LABEL=No dispone de permisos como administrador del sistema para ver los datos
+
+#keys for the first level root
+#-------------------------------------
+general.TITLE=General
+caeSigRelPanel.TITLE=General
+designcontext.TITLE=Dise\u00F1o en contexto
+productContext.TITLE=Contexto del producto
+designContextGeneral.TITLE=General
+productItem.TITLE=\u00CDtem de producto
+variantRuleLabel.LABEL=Determinar autom\u00E1ticamente el conjunto de reglas de variante si hay un m\u00E1ximo de
+targetAppearanceTextFieldLabel.LABEL=Aspectos destino
+permutationsTextFieldLabel.LABEL=Opciones pertinentes
+maxNoOfMatchesLabel.LABEL=N\u00FAmero m\u00E1ximo de coincidencias permitidas:
+firstScreenMatchesTextFieldLabel.LABEL=B\u00FAsquedas de caracteres comod\u00EDn
+secondScreenMatchesTextFieldLabel.LABEL=B\u00FAsquedas del Gestor de estructuras
+psInteroperoperabilityLabel.LABEL=Opciones de interoperabilidad de la estructura del producto:
+cadLabel.LABEL=CAD
+visLabel.LABEL=VIS
+pruneTreeLabel.LABEL=Podar \u00E1rbol
+supprCompLabel.LABEL=Suprimir el componente
+hideCompLabel.LABEL=Ocultar el componente
+pseCommandLabel.LABEL=Mostrar el comando "Abrir en el Gestor de estructuras"
+pseCheckBoxString=S\u00ED
+pseCommandLabel_1.LABEL=Incluir las instancias del componente agregadas recientemente
+pseCommandLabel_2.LABEL=Entradas del objeto contexto estructural...
+searchEnginePreferenceLabel.LABEL=Seleccionar el motor de b\u00FAsqueda para las b\u00FAsquedas de estructura del producto...
+cachelessRefineSearch.LABEL=Mejorar la b\u00FAsqueda sin memoria cach\u00E9
+qplUGSearchEngine=Motor de b\u00FAsqueda QPL basado en UG/NX
+qplJTSearchEngine=Motor de b\u00FAsqueda QPL basado en JT
+appearanceSearchEngine=Motor de b\u00FAsqueda basado en aspecto
+cachelessSearchEngine=Motor de b\u00FAsqueda sin memoria cach\u00E9
+useTrueShapeSearch=Utilizar la b\u00FAsqueda por forma verdadera
+searchEnginePreferenceLabel.LABEL=Seleccionar el motor de b\u00FAsqueda para las b\u00FAsquedas de estructura del producto...
+structureContextObjectEntriesLabel.LABEL=Entradas del objeto contexto estructural...
+includeCompInstLabel.LABEL=Incluir las instancias del componente agregadas recientemente
+syncWithPSE.LABEL=Sincronice y pode autom\u00E1ticamente las selecciones de Dise\u00F1o en contexto usando el Editor de estructuras
+
+gs.TITLE=Colaboraci\u00F3n en multisitios
+
+siteSearch.TITLE=Buscar sitio
+groupSearch.TITLE=Buscar grupo
+userSearch.TITLE=Buscar usuario
+
+lov.TITLE=Lista de valores
+
+operationaldataconf.TITLE=Actualizaci\u00F3n en vivo
+
+logging.TITLE=Registro
+
+importExport.TITLE=Importaci\u00F3n y exportaci\u00F3n
+
+integration.TITLE=Integraci\u00F3n
+
+system.TITLE=Sistema
+
+mail.TITLE=Correo
+
+checkin/checkout.TITLE=Proteger o desproteger
+
+process.TITLE=Flujo de trabajo
+
+tcUg.TITLE=NX
+tcJTEditor.TITLE=JT Editor
+
+SEEC.TITLE=Solid Edge
+
+tcPV.TITLE=Visualizaci\u00F3n del ciclo de vida
+
+tcVMU.TITLE=Visualizaci\u00F3n del ciclo de vida con Visdis
+
+portalViewer.TITLE=Visualizaci\u00F3n del ciclo de vida
+
+productStructure.TITLE=Gestor de estructuras
+
+grm.TITLE=GRM
+
+step.TITLE=STEP
+
+dataset.TITLE=Conjunto de datos
+
+aie.TITLE=AIE
+
+nxMgrIdeas.TITLE = Integraci\u00F3n con I-deas
+
+project.TITLE={0}
+
+visualization.TITLE=Visualization
+
+#--- XLU: Fix for PR5807647, item 2
+currentProjectPref.TITLE=Proyecto actual solamente
+activeProjectPref.TITLE=Proyectos activos
+userApplyCurrentProjectPref.LABEL=Aplicar las reglas de seguridad del proyecto
+
+applicationPreference.TITLE=Opci\u00F3n de aplicaci\u00F3n
+#---Fix for PR ID: 5130321
+GraphBomComp.TITLE=Comparaci\u00F3n gr\u00E1fica de BOM
+
+refreshNotify.TITLE=Actualizar notificaciones
+Calendar.TITLE=Calendario
+
+#keys for the second level root
+#-------------------------------
+ui.TITLE=Interfaz
+
+item.TITLE=\u00CDtem
+
+itemRevision.TITLE=Revisi\u00F3n de \u00EDtem
+
+alias.TITLE=Alias
+
+identifier.TITLE=Identificador
+
+tracelink.TITLE=Ingenier\u00EDa de sistemas
+
+crossProbing.TITLE=Prueba cruzada
+
+#Second Level Children for the Integration
+#------------------------------------------
+mgc.TITLE=MGC
+
+myriad.TITLE=Millares
+
+#Second Level Children for the gs
+#-----------------------------------
+ods.TITLE=ODS
+
+idsm.TITLE=IDSM
+
+gsMiscellaneous.TITLE=Miscel\u00E1nea de Colaboraci\u00F3n en multisitios
+
+importRemote.TITLE=Importar de manera remota
+
+gsNXPartFamiliesPublish.TITLE=Familias de piezas de NX
+
+#Second Level Children for the Process
+#---------------------------------------
+inbox.TITLE=Bandeja de entrada
+
+newprocess.TITLE=Proceso nuevo
+
+workflowGeneral.TITLE=General
+
+changeman.TITLE=Gesti\u00F3n de cambios
+
+#Second Level Children for ChangeManagement
+#---------------------------------------
+cmbom.TITLE=Seguimiento de BOM
+
+cmgraph.TITLE=Historial gr\u00E1fico
+
+#Second Level Children for the Product Structure
+#------------------------------------------------
+psui.TITLE=Interfaz del Gestor de estructuras
+
+#Second Level Children for the Navigator
+#------------------------------------------------
+navigator.TITLE=Navegador
+
+#Third Level Children for the NavigatorColumnShown
+#---------------------------------------------------
+navigatorColumnShown.TITLE=NavigatorColumnShown
+
+#Second Level Children for Calendar
+#------------------------------------------
+
+calendar.TITLE=Calendario
+startOfWeek.TITLE=Inicio de semana
+defaultBaseCalendar.TITLE=Calendario base predeterminado
+startOfWeek.MSG=Seleccione la preferencia Inicio de la semana en Calendarios del usuario.
+defaultBaseCalendar.MSG=Seleccione el calendario
+
+
+#keys for the GeneralUIPanel
+#-----------------------------
+wsoInsertSelectionsPref.LABEL=Insertar con selecci\u00F3n:
+wsoInsertSelectionsPref.1=Todas las carpetas seleccionadas
+wsoInsertSelectionsPref.2=La primera carpeta seleccionada
+wsoInsertSelectionsPref.3=Carpetas Novedades
+wsoInsertSelectionsPref.4=Ninguno
+
+wsoInsertNoSelectionsPref.LABEL=Insertar sin selecci\u00F3n:
+wsoInsertNoSelectionsPref.1=Carpetas Novedades
+wsoInsertNoSelectionsPref.2=Carpeta de Inicio
+wsoInsertNoSelectionsPref.3=Ninguno
+
+
+#Tree order displaying name
+treeOrderDisplayName=Ascendente, Descendente, Sin ordenar
+treeDisplayOrder=Orden de visualizaci\u00F3n del \u00E1rbol
+
+openAfterCreatePref.LABEL=Abrir despu\u00E9s de crear:
+openAfterCreatePref.0=No abrir autom\u00E1ticamente
+openAfterCreatePref.1=Abrir autom\u00E1ticamente
+
+wsoFolderSavePref.LABEL=Guardar la carpeta:
+wsoFolderSavePref.1=Guardar con cada cambio
+wsoFolderSavePref.2=Guardar solo cuando se pregunte manualmente
+wsoFolderSavePref.3=Preguntar al usuario si desea guardarla cuando la cierre
+
+generalUI.TAB1.TITLE=General
+generalUI.TAB2.TITLE=Opci\u00F3n de columnas
+generalUI.TAB3.TITLE=Administrador del sistema
+
+columnOrderVisibility.LABEL=Orden y visualizaci\u00F3n de las columnas:
+columns.hidden=Disponibles:
+columns.shown=Mostradas:
+
+display_real_prop_name.0=Nombre visualizable
+display_real_prop_name.1=Nombre real de la propiedad
+displayName.LABEL=Opci\u00F3n del nombre de visualizaci\u00F3n:
+dataset.LABEL=L\u00EDmite de purgaci\u00F3n de las versiones del conjunto de datos:
+
+datasetID.LABEL=Uso del Id del conjunto de datos:
+datasetID.ON.LABEL=ACTIVADO
+
+audit.LABEL=Gestor de auditor\u00EDa
+audit.ON.LABEL=ACTIVADO
+
+subscribe.LABEL=Gestor de suscripciones
+subscribe.ON.LABEL=ACTIVADO
+
+#keys for the GRMPanel
+#--------------------------------
+requirementRelationPrimary.LABEL=Relaci\u00F3n requerimiento primario:
+requirementRelationPrimary.Item=\u00CDtem
+requirementRelationPrimary.ItemRevision=Revisi\u00F3n de \u00EDtem
+
+manifestationRelationPrimary.LABEL=Relaci\u00F3n manifestaci\u00F3n primaria:
+manifestationRelationPrimary.Item=\u00CDtem
+manifestationRelationPrimary.ItemRevision=Revisi\u00F3n de \u00EDtem
+
+referenceRelationPrimary.LABEL=Relaci\u00F3n referencia primaria:
+referenceRelationPrimary.Item=\u00CDtem
+referenceRelationPrimary.ItemRevision=Revisi\u00F3n de \u00EDtem
+
+masterFormRelationPrimary.LABEL=Relaci\u00F3n formulario maestro primario:
+masterFormRelationPrimary.Item=\u00CDtem
+masterFormRelationPrimary.ItemRevision=Revisi\u00F3n de \u00EDtem
+
+#keys for the GeneralItemPanel
+#--------------------------------
+flColumnCatIVFSeparatorPref.LABEL=Separador entre \u00CDtem e ItemRevision:
+itemDefaultRelation.LABEL=Relaci\u00F3n de pegado predeterminado:
+
+
+
+itemShownRelations.LABEL=Relaciones de \u00EDtems
+itemRelationsAsFolder.LABEL=Relaciones de \u00EDtem mostradas en forma de pseudocarpeta
+
+generalItem.TAB1.TITLE=General
+generalItem.TAB2.TITLE=Objetos relacionados
+
+generalItem.available=Relaciones disponibles
+generalItem.selected=Relaciones mostradas
+
+selectItemTypes.LABEL=Tipo de \u00EDtem seleccionado:
+selectItemTypesComboBox.TOOLTIP=Seleccione un tipo de \u00EDtem para ver la lista de relaciones asociadas.
+
+generalItem.TAB3.TITLE=Visualizar
+order.LABEL=Orden de visualizaci\u00F3n:
+releasedStatus=Estatus de liberaci\u00F3n
+inProcessStatus=En proceso
+workingStatus=De trabajo
+configured=Configurado por
+all=Mostrar todas las revisiones
+itemRevisionDisplay.LABEL=Filtro de visualizaci\u00F3n de revisiones
+displayable=Mostrar solamente las revisiones visualizables
+displayRule.LABEL=Especificar el orden y la regla de visualizaci\u00F3n de revisiones
+
+tableHeaderRule=Regla
+tableHeaderRelation=
+tableHeaderCondition=Condici\u00F3n
+tableHeaderLimit=L\u00EDmite
+
+ruleOpColumn.TIP=Pulse dos veces aqu\u00ED para seleccionar el nombre de la regla.
+limitColumn.TIP=Pulse dos veces aqu\u00ED para escribir o cambiar el valor del l\u00EDmite.
+choice.TIP=Pulse la celda para mostrar una lista de selecciones.
+conditionOpColumn.TIP=Pulse dos veces aqu\u00ED para seleccionar el estatus de liberaci\u00F3n.
+conditionOpRule.TIP=Pulse dos veces aqu\u00ED para seleccionar la regla de revisi\u00F3n.
+relationOpColumn.TIP=Pulse dos veces aqu\u00ED para seleccionar el operador de relaci\u00F3n.
+disabledOperatorCell.TIP=Los signos de igual y no igual no son v\u00E1lidos para la regla.
+disabledConditionCell.TIP=No existe una condici\u00F3n v\u00E1lida para la regla.
+disabledLimitCell.TIP=El m\u00E1ximo de revisiones configuradas por regla de revisi\u00F3n es uno. No se puede editar este campo.
+disabledTable.TIP=Para activar la tabla, seleccione Mostrar las revisiones visualizables
+anyStatus=* (Cualquier estatus)
+revisionRelationSelection.TITLE=Seleccione la relaci\u00F3n Revisi\u00F3n
+revisionRelationSelection.MSG={0} y  {1} son relaciones que se excluyen mutuamente y solamente una de ellas puede existir en la lista Relaciones mostradas. Seleccione la relaci\u00F3n de la lista siguiente para agregar a la lista Relaciones mostradas.
+
+#keys for the GeneralItemRevisionPanel
+#--------------------------------------
+flColumnCatObjSeparatorPref.LABEL=Separador entre el \u00EDtem o la revisi\u00F3n de \u00EDtem y el nombre:
+flColumnCatSeqSeparatorPref.LABEL=Separador entre el \u00EDtem o la revisi\u00F3n del \u00EDtem y el Id secuencial:
+itemRevisionDefaultRelation.LABEL=Relaci\u00F3n de pegado predeterminado:
+
+itemRevisionShownRelations.LABEL=Relaciones para revisiones de \u00EDtem
+itemRevisionRelationsAsFolder.LABEL=Relaciones de Revisi\u00F3n de \u00EDtem mostradas en forma de pseudocarpeta
+
+generalItemRevision.TAB1.TITLE=General
+generalItemRevision.TAB2.TITLE=Objeto relacionado
+
+generalItemRevision.available=Relaciones disponibles
+generalItemRevision.selected=Relaciones mostradas
+
+selectItemRevisionTypes.LABEL=Tipo de revisi\u00F3n de \u00EDtem seleccionado:
+selectItemRevisionTypesComboBox.TOOLTIP=Seleccione un tipo de revisi\u00F3n de \u00EDtem para ver la lista de relaciones asociadas.
+
+#Keys for the GeneralMiscellaneousPanel
+#---------------------------------------
+pomReference.LABEL=D\u00F3nde se referencia (POM):
+pomReference.ON.LABEL=S\u00ED
+
+#Keys for the GeneralAliasPanel
+#---------------------------------------
+aliasSeparator.LABEL=Separador entre el contexto y el Id de alias:
+aliasLength.LABEL=Longitud de contexto:
+
+#Keys for the GeneralTracelinkPanel
+#---------------------------------------
+tracelinkMode.LABEL=Modo de enlace por traza
+tracelinkMode.ON=ACTIVADO
+tracelinkMode.TIP=Permite o no permite al usuario realizar las operaciones relacionadas con Enlace por traza
+
+indirectTracelinkMode.LABEL=Informe sobre enlaces por traza indirectos
+indirectTracelinkMode.ON=ACTIVADO
+indirectTracelinkMode.TIP=Permite o no permite la visualizaci\u00F3n de los enlaces por traza indirectos en Informe sobre trazabilidad
+
+traceReportLayout.LABEL=Vista de la traza de izquierda a derecha
+traceReportLayout.ON=ACTIVADO
+traceReportLayout.TIP=Permite los cambios en la alineaci\u00F3n de un informe sobre trazas de izquierda a derecha.
+
+ApplyTemplates.LABEL=Aplicar las plantillas (para edici\u00F3n insertada)
+ApplyTemplates.ON=ACTIVADO
+ApplyTemplates.TIP=Aplique la plantilla de objeto predeterminada al objeto seleccionado en Vista de requisitos o Panel de edici\u00F3n
+
+brwClrTxt.LABEL=Examinar el texto en claro
+brwClrTxt.ON=ACTIVADO
+brwClrTxt.TIP=Permite o proh\u00EDbe a los usuarios ver el Texto en claro de Texto completo en Vista de requisitos o Panel de edici\u00F3n
+
+quickPanel.LABEL=Panel Creaci\u00F3n r\u00E1pida
+quickPanel.ON=ACTIVADO
+quickPanel.TIP=Muestra el panel Creaci\u00F3n r\u00E1pida en la aplicaci\u00F3n Ingenier\u00EDa de sistemas.
+
+calDefCompObject.LABEL=Calcular los objetos de definici\u00F3n/cumplimiento
+calDefCompObject.ON=ACTIVADO
+calDefCompObject.TIP=Permite o no permite al usuario ver las propiedades de los objetos de definici\u00F3n/cumplimiento correspondientes a los objetos seleccionados.
+
+importKeywords.LABEL= Palabras clave para importar
+
+#keys for the Cross probing preference panel
+#--------------------------------
+primaryComponent=Buscar las fuentes
+secondaryComponent=Buscar los destinos
+bothComponent=Ambos
+relationTraversalType.LABEL=Direcci\u00F3n de la prueba cruzada:
+relationDepthTraversal.LABEL=Recorrido de la profundidad de las relaciones:
+searchAll.LABEL=Buscar todos los niveles
+enterDepthLevel.LABEL=Profundidad especificada
+relationPanel.LABEL=Relaciones para la prueba cruzada:
+enterLevelText.TOOLTIP=Introduzca un valor de n\u00FAmero entero mayor que cero.
+indirectTracelinkMode.LABEL=Informe sobre enlaces por traza indirectos:
+addRelButton.TOOLTIP=Agrega las relaciones seleccionadas al panel "Incluir relaciones".
+addAllRelsButton.TOOLTIP=Agrega todas las relaciones al panel "Incluir relaciones".
+removeRelButton.TOOLTIP=Quita las relaciones seleccionadas del panel "Incluir relaciones".
+removeAllRelsButton.TOOLTIP=Quita todas las relaciones del panel "Incluir relaciones".
+allowedRelations=Relaciones permitidas:
+selectedRelations=Relaciones seleccionadas:
+
+#Keys for the GeneralIdentifierPanel
+#---------------------------------------
+identifierLength.LABEL=Longitud de contexto:
+identifierContext.LABEL=Modo de adjuntar el contexto:
+
+#keys for the ProcessCheckInOutPanel
+#--------------------------------
+removeFileOnCheckIn.LABEL=Quitar el archivo al proteger:
+removeFileOnCheckIn.ON=S\u00ED
+
+checkOutDir.LABEL=Directorio de desprotecci\u00F3n:
+
+autoCheckOut.LABEL=Desprotecci\u00F3n autom\u00E1tica:
+autoCheckOut.ON.LABEL=ACTIVADO
+
+checkOutAndExport.LABEL=Exportar los archivos al desproteger:
+checkOutAndExport.ON.LABEL=S\u00ED
+
+CHECKOUT.TAB1.TITLE=General
+CHECKOUT.TAB2.TITLE=Administrador del sistema
+
+#keys for the ProcessInboxPanel
+#--------------------------------
+inboxColumns.LABEL=Columnas mostradas
+inboxColumnsAvailable.LABEL=Disponibles:
+inboxColumnsShown.LABEL=Mostradas:
+
+workflowInboxInterval.LABEL=Intervalo de Bandeja de entrada para buscar las tareas nuevas
+workflowInboxInterval.0=Desactivar
+workflowInboxInterval.1=Comprobar una vez al iniciar la sesi\u00F3n
+workflowInboxInterval.2=Intervalo (min.)
+
+tcEPMTask.LABEL=Opci\u00F3n Visualizar la tarea:
+tcEPMDetailTaskFirst.0=Mostrar solo tareas de detalle
+tcEPMDetailTaskFirst.1=Mostrar todas las tareas asignadas
+
+workflowInboxSuspendedTasks.LABEL=Tareas suspendidas
+workflowInboxSuspendedTasks.0=Suspender la tarea \u00FAnica y mostrar las tareas iniciadas y suspendidas en\nTareas para realizar
+workflowInboxSuspendedTasks.1=Suspender la tarea \u00FAnica y mostrar solamente las tareas iniciadas en Tareas para realizar
+workflowInboxSuspendedTasks.2=Suspender todas las tareas iniciadas de este proceso y mostrar las tareas\niniciadas y suspendidas en Tareas para realizar
+workflowInboxSuspendedTasks.3=Suspender todas las tareas iniciadas de este proceso, y mostrar solamente las tareas\niniciadas en Tareas para realizar
+
+#keys for the WorkflowPreferenceGeneralPanel
+#-------------------------------
+workflowGeneralDefaultView.LABEL=Vista predeterminada
+workflowGeneralTaskView=Tarea
+workflowGeneralProcessView=Proceso
+showAdvancePasteInNewProcess=Mostrar Pegado avanzado en proceso nuevo
+
+#keys for the gsODSPanel
+#-------------------------------
+odsSite.LABEL=Sitio ODS:
+ods_permitted_sites.LABEL=Sitios permitidos del ODS:
+ods_restricted_sites.LABEL=Sitios restringidos del ODS:
+ods_searchable_sites.LABEL=Sitios de b\u00FAsqueda del ODS:
+ods_searchable_sites_excluded.LABEL=Sitios del ODS excluidos de la  b\u00FAsqueda:
+
+ODS.TAB1.TITLE=General
+ODS.TAB2.TITLE=Administrador del sistema
+
+#keys for the gsIDSMPanel
+#------------------------------------
+idsm_permitted_sites.LABEL=Sitios permitidos del IDSM:
+idsm_restricted_sites.LABEL=Sitios restringidos del IDSM:
+idsm_permitted_transfer_sites.LABEL=Sitios del IDSM de transferencia permitida:
+
+#keys for the gsMiscellaneousPanel
+#-------------------------------------
+directory.LABEL=Introduzca el directorio de transferencia:
+tc_publishable_classes.LABEL=Clases publicables:
+tc_defalut_export_sites.LABEL=Sitios de exportaci\u00F3n:
+tc_transfer_area.LABEL=\u00C1rea de transferencia de Teamcenter:
+
+# keys for gsImportRemotePanel
+# ----------------------------------------
+
+loadCurrentPref = Cargando las opciones actuales ...
+transfer.TITLE = Opciones de transferencia
+transferOwnership = Transferir la pertenencia
+performImportExport = Ejecutar en segundo plano
+IEOptions.generalTab.TITLE = General
+IEOptions.advancedTab.TITLE = Avanzadas
+IEOptions.partfamTab.TITLE = Familias de piezas de NX
+IEOptions.customTab.TITLE = Personalizado
+
+IEOption.saveOptions.TITLE = Guardar las opciones
+IEOption.saveOptionsBox = Guardar todas las opciones como predeterminadas
+
+relationship.TITLE = Opciones de relaci\u00F3n
+includeReference = Incluir referencia
+excludeReference = Excluir referencia
+
+itemOption.TITLE = Opciones de \u00EDtem 
+includeAllRevisitions = Incluir todas las revisiones
+latestRevisionOnly = Solamente la revisi\u00F3n m\u00E1s reciente
+latestWorkingRevisionOnly = Solamente la revisi\u00F3n m\u00E1s reciente de trabajo
+latestWorkingAnyReleaseStatus = La revisi\u00F3n m\u00E1s reciente de trabajo o con cualquier estatus
+latestAnyReleaseStatus = Revisi\u00F3n m\u00E1s reciente con cualquier estatus
+selectedRevisionOnly = Solamente las revisiones seleccionadas
+specificReleaseStatus = Solamente el estatus de liberaci\u00F3n espec\u00EDfico
+
+datasetOption.TITLE = Opciones de conjuntos de datos
+includeAllRevision = Incluir todas las versiones
+includeAllFiles = Incluir todos los archivos
+
+generalWorkspaceObject.TITLE = Opciones generales
+includesModifiedObjectOnly = Incluir solamente los objetos modificados
+excludeExportProtectedObjects = Excluir los objetos protegidos contra la exportaci\u00F3n
+excludeFolderContents = Excluir el contenido de la carpeta
+
+pse.TITLE = Opciones del gestor de estructuras
+includeEntireBOM = Incluir la lista de materiales completa
+transferTopLevelItem = Transferir solamente el \u00EDtem de nivel superior
+excludeTransferProtectedComponents = Excluir los componentes protegidos contra la transferencia
+excludeExportProctedComponents = Excluir los componentes protegidos contra la exportaci\u00F3n
+includeDistributedComponents = Incluir los componentes distribuidos
+
+ieSession.TITLE = Opciones de sesi\u00F3n
+previewMode = Vista preliminar con informe
+completionReport = Generar informe de importaci\u00F3n o exportaci\u00F3n
+continueOnError = Continuar en caso de error
+
+synchronization.TITLE = Opciones de sincronizaci\u00F3n y de notificaci\u00F3n
+synchronizeAutomatically = Sincronizar autom\u00E1ticamente
+synchronizeInBatchMode = Sincronizar en modo por lotes
+doNotSynchronize = No sincronizar
+notify = Notificar por correo electr\u00F3nico
+
+sendOptions.TITLE = Opciones de env\u00EDo
+owningUser = Usuario propietario remoto:
+owningGroup = Grupo propietario remoto:
+blankOwningUser = (Utilice las reglas de pertenencia predeterminadas por el usuario)
+blankOwningGroup = (Utilice las reglas de pertenencia predeterminadas por el grupo)
+currentSelection.LABEL = Selecci\u00F3n actual
+selectedUser = Usuario:
+selectedGroup = Grupo:
+selectUserGroup = Seleccionar Usuario propietario nuevo
+defaultOwningUserGroupRule = Utilice las Reglas de pertenencia predeterminadas por el usuario o por el grupo
+error.TITLE = Error...
+selectionError.MSG = El objeto seleccionado no es el usuario
+noSelectionError.MSG = No se ha seleccionado nada
+
+IEOption.relationExclude.TITLE = No se puede excluir la relaci\u00F3n
+IEOption.relationExclude = es una relaci\u00F3n obligatoria
+IEOption.relationExcludeXfer = es una relaci\u00F3n obligatoria al transferir la pertenencia
+
+IEOption.relationInclude.TITLE = No se puede incluir la relaci\u00F3n
+IEOption.relationIncludeXfer = es una relaci\u00F3n excluida a menos que se transfiera la pertenencia
+IEOption.relationInclude = es una relaci\u00F3n excluida
+
+none = Ninguno
+
+#keys for NXPartFamilies tab in IE Options Panel
+#------------------------------------------------
+pfWithAsy.LABEL = Ensambles con componentes de miembros de la familia de piezas
+
+pfmWithAsy = Incluir los miembros de la familia de piezas
+pftWithAsy = Incluir las plantillas de la familia de piezas en lugar de los miembros
+allPfWithAsy = Incluir los miembros de la familia de piezas y sus plantillas
+noPfWithAsy = No incluir los miembros de la familia de piezas ni las plantillas
+
+nxPartFam.TITLE = Opciones correspondientes a Familias de piezas de NX
+pfWithAsyTitle = Ensamble con miembros de la familia:
+pfmWithAsyNote = Incluir miembros
+pftWithAsyNote = Incluir plantillas
+allPfWithAsyNote = Incluir miembros y plantillas
+noPfWithAsyNote = No incluir nada
+
+pfmWithPFTPanel.LABEL = Plantillas de familia de piezas
+pfmWithPFT = Incluir los miembros de la familia de piezas
+
+pftWithPFMPanel.LABEL = Miembros de la familia de piezas
+pftWithPFM = Incluir las plantillas de familia de piezas
+
+#keys for the gsUGPartFamiliesPanel
+#----------------------------------------
+pubPFWithAsy.LABEL = Publicando los ensambles con los componentes de miembros de la familia de piezas
+pubPFWithAsy.0 = Publicar los miembros de la familia de piezas
+pubPFWithAsy.1 = Publicar las plantillas de la familia de piezas en lugar de los miembros
+pubPFWithAsy.2 = Publicar los miembros de la familia de piezas y sus plantillas
+pubPFWithAsy.3 = No publicar ni los miembros de la familia de piezas ni sus plantillas
+
+pubPFMWithPFTPanel.LABEL = Publicando las plantillas de familia de piezas
+pubPFMWithPFTCheckbox.LABEL = Publicar tambi\u00E9n los miembros de la familia de piezas
+
+pubPFTWithPFMPanel.LABEL = Publicando los miembros de la familia de piezas
+pubPFTWithPFMCheckbox.LABEL = Publicar tambi\u00E9n las plantillas de familia de piezas
+
+#keys for the IEOptionsPanel error message dialog when lost the setting
+#----------------------------------------------
+IEOptions.ExceptionDialog.ServerError.TITLE=Error al recuperar las preferencias del servidor
+IEOptions.ExceptionDialog.ServerError.MESSAGE=Se produjo un error durante la recuperaci\u00F3n de las preferencias.\nPuede que pierda los ajustes de las opciones Importar Exportar.\nVuelva a iniciar la operaci\u00F3n Importar Exportar.
+IEOptions.ExceptionDialog.ClientError.TITLE=Error en la visualizaci\u00F3n de preferencias
+IEOptions.ExceptionDialog.ClientError.MESSAGE=Se produjo un error durante la visualizaci\u00F3n de las preferencias.\nPuede que pierda los ajustes de las opciones Importar Exportar.\nRestablezca las opciones correspondientes a las preferencias Importar Exportar.
+IEOptions.ExceptionDialog.SpecificRelStatusError.MESSAGE=No se fij\u00F3 ning\u00FAn estatus de liberaci\u00F3n espec\u00EDfico.
+
+#keys for the product structure  UI Panel
+#----------------------------------------
+precise.1=Preciso
+imprecise.1=Impreciso
+
+autoPack.LABEL=Empaquetar autom\u00E1ticamente la visualizaci\u00F3n del Gestor de estructuras
+remoteApprQuery.LABEL=Permita que el Gestor de estructuras realice la b\u00FAsqueda usando el motor de b\u00FAsqueda de aspectos en los sitios remotos
+substitutes.LABEL=Mostrar autom\u00E1ticamente los sustitutos
+configName.LABEL=Regla de revisi\u00F3n predeterminada:
+
+pseui.ON.LABEL=S\u00ED
+
+productcontext.LABEL=Propiedades de contexto de producto
+properties.shown=Mostradas
+properties.hidden=Ocultas
+
+productItem.LABEL=Propiedades de \u00EDtem del producto
+
+columns.LABEL=Columnas mostradas en Gestor de estructuras
+viewType.LABEL=Tipo de vista predeterminado:
+precision.LABEL=Opci\u00F3n de precisi\u00F3n de BOM:
+titleFormat.LABEL=Formato "T\u00EDtulo de la l\u00EDnea de BOM" para \u00EDtems de tipo:
+
+redlinePendingEdits.LABEL=Visualizar los marcados de las ediciones pendientes
+
+#keys for the QueryPanel
+#-----------------------------
+searchGeneralOptions.TITLE=Opciones generales
+
+case.LABEL=Ejecutar una b\u00FAsqueda que distinga entre may\u00FAsculas y min\u00FAsculas:
+query.ON.LABEL=S\u00ED
+
+caseSensitiveButton=Distinguir may\u00FAsculas de min\u00FAsculas
+caseSensitiveButton.TIP=Activa la opci\u00F3n Distinguir entre may\u00FAsculas y min\u00FAsculas
+
+showDetailsButton=Mostrar operandos
+showDetailsButton.TIP=Mostrar los operandos l\u00F3gicos y matem\u00E1ticos en el formulario de consulta
+
+showLatestDatasetButton=Versiones m\u00E1s recientes de los conjuntos de datos
+showLatestDatasetButton.TIP=Activar o desactivar la versi\u00F3n m\u00E1s reciente de los conjuntos de datos
+
+searchClassificationHierarchyButton=Buscar en la jerarqu\u00EDa de clasificaci\u00F3n
+searchClassificationHierarchyButton.TIP=Activar la b\u00FAsqueda en la jerarqu\u00EDa de clasificaci\u00F3n
+enableHierarchicalTypeSearchButton=Activar la b\u00FAsqueda por jerarqu\u00EDa de tipos
+enableHierarchicalTypeSearchButton.TIP=Activar la b\u00FAsqueda en la jerarqu\u00EDa de tipos
+queryOptionGroup.LABEL=Opciones de consulta
+queryColumns.LABEL=Consulta favorita:
+
+searchLimit.LABEL=Fijar el tama\u00F1o de la p\u00E1gina de carga:
+
+wildcard.LABEL=Opci\u00F3n de comod\u00EDn:
+wildcard.1=Estilo de SQL
+wildcard.2=Estilo de UNIX
+wildcard.3=Estilo de Windows
+wildcard.1.TIP=<html><body><font size=2><p>&nbsp Estilo coincidente con el comod\u00EDn de Oracle.</p><p>&nbsp Utilice el signo % para representar caracteres m\u00FAltiples. </p> <p>&nbsp Utilice un signo _ para la coincidencia con un car\u00E1cter \u00FAnico.  </p></font></body></html>
+wildcard.2.TIP=<html><body><font size=2><p>&nbsp Estilo coincidente con el comod\u00EDn de UNIX.</p><p>&nbsp Utilice el signo * para representar caracteres m\u00FAltiples. </p> <p>&nbsp Utilice un signo . para la coincidencia con un car\u00E1cter \u00FAnico.  </p></font></body></html>
+wildcard.3.TIP=<html><body><font size=2><p>&nbsp Estilo coincidente con el comod\u00EDn de Windows.</p><p>&nbsp Utilice el signo * para representar caracteres m\u00FAltiples. </p> <p>&nbsp Utilice un signo ? para la coincidencia con un car\u00E1cter \u00FAnico.  </p></font></body></html>
+
+multiEntry.1=Permitir entradas m\u00FAltiples
+multiEntry.1.TIP=<html><body><font size=2> <p>&nbsp Permite utilizar una lista delimitada en el campo de entrada de consultas. </p> <p>&nbsp V\u00E1lido para dos operandos l\u00F3gicos \u00FAnicamente, = (igual que) y != (distinto que) </p> <p>&nbsp La lista acepta un m\u00E1ximo de 254 nombres delimitados.  </p> </font></body></html>
+
+multiEntry.SepLabel=Car\u00E1cter delimitador
+multiEntry.TIP=<html><body><font size=2><p>&nbsp Fija el car\u00E1cter delimitador de listas para la funci\u00F3n de entradas m\u00FAltiples.</p><p>&nbsp Debe ser un car\u00E1cter visible. </p> <p>&nbsp Si no fija un car\u00E1cter, se desactivar\u00E1n las entradas m\u00FAltiples <p></font></body></html>
+
+multiEntry.LABEL= Opciones de entradas m\u00FAltiples
+multiEntry.canuse=Entradas m\u00FAltiples activadas
+multiEntry.cannotuse=Entradas m\u00FAltiples desactivadas
+
+escapeCharPanel.TIP=<html><body><font size=2> <p>&nbsp Permite usar un car\u00E1cter como escape de caracteres comod\u00EDn. </p> </font></body></html>
+
+escapeCharEntry.LABEL=Car\u00E1cter de escape
+
+escapeCharPanel.LABEL= Car\u00E1cter de escape
+
+#Key for LOV
+lovPanel.TITLE=Visualizaci\u00F3n de la pareja valor y descripci\u00F3n
+lovSeparator.LABEL=Separador entre valor y descripci\u00F3n:
+shownHidden.TITLE=Seleccionar LOV para mostrar u ocultar la descripci\u00F3n
+shown = Mostrada
+hidden = Oculta
+
+#keys for StepPanel
+#---------------------------------
+# tab1
+stepOrgId.LABEL=Id de la organizaci\u00F3n:
+stepNameDelimiter.LABEL=Delimitador de nombre:
+stepNameSequence.LABEL=Secuencia de nombres
+stepNameSequenceAvailable.LABEL=Disponibles:
+stepNameSequenceShown.LABEL=Mostrada:
+stepPartItems.LABEL=\u00CDtems de pieza:
+stepToolItems.LABEL=\u00CDtems de herramienta:
+stepApprovedStatus.LABEL=Estatus aprobado:
+stepNotApprovedStatus.LABEL=Estatus no aprobado:
+
+# tab2
+stepMaterialSpec.LABEL=Especificaci\u00F3n de material:
+stepProcessSpec.LABEL=Especificaci\u00F3n de proceso:
+stepSurfaceSpec.LABEL=Especificaci\u00F3n de acabado de superficie:
+stepDesignSpec.LABEL=Especificaci\u00F3n de dise\u00F1o:
+stepDrawing.LABEL=Dibujo:
+stepCadFilename.LABEL=Nombre del archivo de CAD:
+
+stepMakeOrBuy.LABEL=Fabricar o comprar:
+stepImportDir.LABEL=Directorio de importaci\u00F3n:
+stepExportDir.LABEL=Directorio de exportaci\u00F3n:
+stepExportDataFormat.LABEL=Formato de los datos de exportaci\u00F3n:
+stepExportDataFormat.1=AP203
+stepExportDataFormat.2=AP214
+stepExportDlg.TITLE=Exportar
+stepImportDlg.TITLE=Importar
+
+step.TAB1.TITLE=General
+step.TAB2.TITLE=Espec
+step.TAB3.TITLE=Administrador del sistema
+
+#keys for CAEBomComparePanel
+#---------------------------------
+caeItemRevShownAttributes.LABEL=Atributos de las revisiones de \u00EDtem
+caeItemRevAttributesForBomCompare.LABEL=Mostrar las propiedades de revisi\u00F3n del \u00EDtem para la comparaci\u00F3n de la  BOM
+
+selectPreferenceLocationTypes.LABEL=Ubicaci\u00F3n
+caeItemRevision.TAB1.TITLE=Propiedades de la coincidencia parcial
+
+caeItemRevision.available=Propiedades disponibles
+caeItemRevision.selected=Propiedades seleccionadas
+
+#keys for CAEToolGeneralPanel
+#---------------------------------
+
+
+# tab1
+caeSigRelProduct.LABEL=Tipos de relaci\u00F3n significativa del producto
+caeSigRelModel.LABEL=Tipos de relaci\u00F3n significativa de Modelo 3D de CAE
+caeSigRelAnalysis.LABEL=Tipos de relaci\u00F3n significativa de An\u00E1lisis 3D de CAE
+caeSigRel1DModel.LABEL=Tipos de relaci\u00F3n significativa de Modelo 1D de CAE
+caeSigRel1DAnalysis.LABEL=Tipos de relaci\u00F3n significativa de An\u00E1lisis 1D de CAE
+
+caeToolGeneralPanel.TAB1.TITLE=Relaciones significativas desactualizadas
+caeToolGeneralPanel.TAB2.TITLE=Puntos destacados desactualizados
+
+myFavSimTools.LABEL=Mis herramientas de simulaci\u00F3n favoritas
+myToolsInToolBar.LABEL=Herramientas de simulaci\u00F3n en la barra de herramientas
+
+myFavReleasedSimTools.LABEL=Herramentas de simulaci\u00F3n liberadas de Favoritos
+myReleasedToolsInToolBar.LABEL=Herramientas de simulaci\u00F3n liberadas en la barra de herramientas
+
+caeToolRevRuleForSimulationToolbar.BORDER.LABEL=Regla de revisi\u00F3n de las herramientas de simulaci\u00F3n en la barra de herramientas
+caeToolRevRuleForSimulationToolbar.LABEL=Regla de revisi\u00F3n
+caeToolReleaseStatus.LABEL=Estatus de liberaci\u00F3n para aplicar
+
+myFavCAEPackages.LABEL=Mis paquetes favoritos de CAE
+myCAEPackagesInToolBar.LABEL=Paquetes de CAE en la barra de herramientas
+CAEPackageLogDSNameBlank.ERROR=El campo Nombre del conjunto de datos del registro de los paquetes de CAE no puede estar vac\u00EDo.
+# tab2
+caeHighColorAction.LABEL=Acci\u00F3n:
+caeHighColorCaution.LABEL=Precauci\u00F3n:
+caeHighColorNoAction.LABEL=Sin acci\u00F3n:
+caeHighColorOutOfScope.LABEL=Fuera del \u00E1mbito:
+
+# tab3
+caeToolGeneralPanel.TAB3.TITLE=Regla de revisi\u00F3n
+caeRevisionRuleForProduct.LABEL=Regla de revisi\u00F3n predeterminada de la vista del producto
+caeRevisionRuleForModel.LABEL=Regla de revisi\u00F3n predeterminada de la vista del modelo
+caeDefaultRevisionRule.BORDER.LABEL=Regla de revisi\u00F3n predeterminada
+
+# tab4
+caeToolGeneralPanel.TAB4.TITLE=Operaciones de ascendencia
+caeGenEnablePedigreeOption.LABEL=Activar las operaciones de ascendencia
+caeGenPedigreeRelationForCAEModel.LABEL=Relaciones del modelo 3D de CAE
+caeGenPedigreeRelationForCAEAnalysis.LABEL=Relaciones de an\u00E1lisis 3D de CAE
+
+# tab5
+caeToolGeneralPanel.TAB5.TITLE=Puntos destacados del modelo
+uniqueLineColor.LABEL=Modelos 3D \u00FAnicos de CAE:
+recycleLineColor.LABEL=Modelos 3D reciclados de CAE:
+reuseLineColor.LABEL=Modelos 3D reutilizados de CAE:
+
+# tab6
+caeToolGeneralPanel.TAB6.TITLE=Configuraci\u00F3n de CAE
+caeGenEnableGroupAdminBypassOption.LABEL=Desv\u00EDo para el Administrador de grupo
+
+# Keys for LoggingPanel
+#----------------------
+applicationLogging.LABEL=Registro de aplicaci\u00F3n:
+journallingLogging.LABEL=Registro de diario:
+logging.ON.LABEL=ACTIVADO
+
+# Keys for ImportExportPanel
+#----------------------
+truncateFileName.LABEL=Truncar el nombre del archivo:
+truncateFileName.YES.LABEL=S\u00ED
+
+# Keys for SystemPanel
+#--------------------
+number.LABEL=N\u00FAmero m\u00E1ximo de reintentos:
+time.LABEL=Intervalo entre reintentos (segundos):
+
+# Keys for MailPanel
+#-------------------
+mailTime.LABEL=Intervalo para averiguar si hay un correo nuevo (minutos):
+
+# Keys for newprocesspanel
+#----------------------------
+alternateProcedure.LABEL=Filtro de la plantilla de procesos:
+alternateProcedure.1=cualquiera
+alternateProcedure.2=ninguno
+
+alternateProcedure.1.LABEL=Cualquiera
+alternateProcedure.2.LABEL=Ninguno
+
+# Keys for TCUGPanel
+#---------------------
+ugMasterTool.LABEL=Herramienta maestra de NX:
+ugMasterVolume.LABEL=Volumen maestro de NX:
+ugPartTool.LABEL=Herramienta de piezas de NX:
+updateAttributes.LABEL=Sincronizar los atributos de las piezas de NX con Teamcenter:
+openInUG.LABEL=Mostrar comando "Abrir en NX":
+
+openInUG.ON.LABEL=S\u00ED
+updateAttributes.ON.LABEL=S\u00ED
+
+openInJTEditor.LABEL=Mostrar el comando "Abrir en JT Editor":
+openInJTEditor.ON.LABEL=S\u00ED
+
+# Keys for NXMgrIdeasPreferencesPanel
+#---------------------
+TcIIUnavailable.LABEL=No se encuentra disponible la integraci\u00F3n de Teamcenter con I-deas (TcII)
+
+# Keys for SEECPanel
+#---------------------
+openInSEEC.LABEL=Mostrar el comando "Abrir en Solid Edge":
+openInSEEC.ON.LABEL=S\u00ED
+
+
+# Keys for the NavigatorColumnPreferencePanel
+#-------------------------------------------
+addButton.TIP=Agrega la propiedad o el tipo seleccionado a la lista.
+removeButton.TIP=Quita la propiedad o el tipo seleccionado de la lista.
+clearButton.TIP=Borra todos los tipos o propiedades de la lista.
+upButton.TIP=Sube el valor seleccionado en la lista
+downButton.TIP=Baja el valor seleccionado en la lista
+
+preferenceList.TIP=La lista de columnas seleccionadas
+
+# Keys for DatasetPanel
+# -------------------------------------------------------
+datasetType.LABEL=Tipo de conjunto de datos:
+defaultTool.LABEL=Herramienta predeterminada:
+datasetFileExportOption.LABEL=Opciones de exportaci\u00F3n de referencia definida:
+exportLowerCase.LABEL=Min\u00FAscula
+exportUpperCase.LABEL=May\u00FAscula
+exportRetainCase.LABEL=Conservar may\u00FAsculas/min\u00FAsculas
+searchBy.BUTTON=Usar tipo MIME para buscar la aplicaci\u00F3n de la herramienta predeterminada
+
+# Keys for TCPVPanel
+#---------------------
+#openInPV.LABEL=Show "Open Bookmark in Teamcenter Visualization" command:
+#openInPV.YES.LABEL=YES
+
+# Keys for TCVMUPanel
+#---------------------
+openInVMU.LABEL=Mostrar el comando "Abrir en Visualizaci\u00F3n del ciclo de vida":
+openInVMU.YES.LABEL=S\u00ED
+
+openInVMUWrongVersion.LABEL=<html><body> La versi\u00F3n de Teamcenter Visualization configurada para Teamcenter no es la 5.0 ni otra posterior. <br> Por lo tanto, esta funcionalidad no est\u00E1 disponible. <br> Comun\u00EDquese con el administrador del sistema.</br></body></html>
+
+# Keys for PortalViewerPanel
+#---------------------
+viewAs2D.LABEL=Visualizar los archivos NX .prt como im\u00E1genes 2D:
+viewAs2D.YES.LABEL=S\u00ED
+
+# Keys for message center
+# -------------------------------------------------------
+loadingPanel.MESSAGE=Cargando el panel seleccionado...
+
+# Keys for AIEPreferencesPanel
+#-----------------------------
+exportDir.LABEL=Directorio de exportaci\u00F3n:
+exportProt.LABEL=Exportar archivos de solo lectura como solo lectura:
+saveLog.LABEL=Guardar el registro de conexiones eliminadas:
+aieYES.LABEL=S\u00ED
+ignoreFileExtensions.LABEL=Tipos de archivo para ignorar (por ejemplo ".bak .doc"):
+namedRefsToExport.LABEL=Referencias definidas para exportar
+importMaster.LABEL=Maestro de detalles de importaci\u00F3n
+masterApp.LABEL=Aplicaci\u00F3n
+masterBoth.LABEL=Ambos
+primaryRef.LABEL=Primario
+allRef.LABEL=Todo
+selectRef.LABEL=Seleccionar
+aieGeneral.TAB1.TITLE=General
+aieExport.TAB2.TITLE=Exportar
+aieImport.TAB3.TITLE=Importar
+aieUG.TAB4.TITLE=NX
+partFamilyMembers.LABEL=Miembros de la familia de piezas
+aieError.LABEL=Error
+aieLose.LABEL=Perder
+aieStripStatus.LABEL=Estatus de la franja
+autotranslateMode.LABEL=Modo de traducci\u00F3n autom\u00E1tica
+aieDefault.LABEL=Valor predeterminado
+aieLegacy.LABEL=Herencia
+aieCopyNonMaster.LABEL=Copia no maestra
+refreshAsCheckout.LABEL=Desproteger los componentes nuevos durante la actualizaci\u00F3n de la conexi\u00F3n:
+aieNotEnabled.LABEL=AIE no est\u00E1 activado. Se activar\u00E1n las preferencias solamente si se activa AIE.
+SEECNotEnabled.LABEL=No se instal\u00F3 la integraci\u00F3n con Solid Edge.
+
+# Key for: CM Color Setting
+# -------------------------------------------------------
+colors.LABEL=Pulse dos veces un color en la paleta de colores para seleccionar un color diferente
+colors.TITLE=Colores que representan diferentes tipos de cambio en la BOM:
+add.LABEL=Adici\u00F3n:
+cancel.LABEL=Cancelaci\u00F3n:
+qunatity.LABEL=Cambio de cantidad:
+# <KARIM 6thMay2003> New labels for Note Change project
+notechange.LABEL=Cambio de nota:
+move.LABEL=Movimiento:
+reshape.LABEL=Cambio de forma:
+common.LABEL=Pieza com\u00FAn:
+chooser.TITLE=Selector de colores
+
+# <Ranjit 19 Jan 2004> label for Variant Change
+variantchange.LABEL=Cambio de variante:
+
+# Key for: CM Positions Setting
+# -------------------------------------------------------
+initial_pos.TITLE=Posici\u00F3n inicial de todos los controles deslizantes en el cuadro de di\u00E1logo Historial de CM
+gh_setting.TITLE=Ajustes del historial gr\u00E1fico:
+init_Pos.LABEL=Posici\u00F3n inicial de los controles deslizantes:
+position.LABEL=Posici\u00F3n:
+common_parts.LABEL=Mostrar las piezas comunes
+
+# Project Propagation Rule Panel
+# -------------------------------------------------------
+confirmProjectRule.TITLE=Confirmar {0} Reglas de propagaci\u00F3n
+confirmProjectRule.MESSAGE=Debe utilizar una utilidad {0} para actualizar todos los {0} en su sitio \n despu\u00E9s de modificar {0} reglas de propagaci\u00F3n. \n \u00BFEst\u00E1 seguro de que desea continuar?
+userApplyCurrentProjectPref.LABEL=Aplicar {0} reglas de seguridad             
+currentProjectPref.TITLE=Solamente los {0} actuales
+activeProjectPref.TITLE=Activo {0}
+
+# Keys for Import/Export of Change Objects
+# -------------------------------------------------------
+changeObjects.TITLE=Opciones de objetos de cambio
+bomchanges.LABEL=Incluir cambios de BOM
+supercedures.LABEL=Incluir sustituciones
+
+# Keys for Analysis settings panel
+# -------------------------------------------------------
+
+defaultAnalysisTool.LABEL=         Herramienta de an\u00E1lisis actual:
+defaultSimulationTool.LABEL=       Herramienta de simulaci\u00F3n actual:  
+batchMeshingDirectory.TITLE=   Directorio ra\u00EDz del mallado por lotes:
+resultsManagerRootDirectory.TITLE=Directorio ra\u00EDz de gestores de resultados:
+analysisViewType.LABEL=         Tipo de vista de an\u00E1lisis:
+availableAnalysisTools.LABEL=      Herramientas de an\u00E1lisis disponibles:
+availableSimulationTools.LABEL=    Herramientas de simulaci\u00F3n disponibles:
+batchMeshingSizes.LABEL=           Tama\u00F1os del mallado por lotes:
+currentApplication.LABEL=Aplicaci\u00F3n actual:
+confirmSettings.LABEL=Confirmar los ajustes al iniciar
+externalTemplate.LABEL=Utilizar plantilla externa:
+templates.LABEL=Plantillas:
+simulationTemplates.TITLE=Plantillas de simulaci\u00F3n
+internalTemplatesFolder.LABEL=Carpeta de plantillas internas
+filterBVRImport.TITLE=Importar el archivo de filtro BVR
+filterBVRExport.TITLE=Exportar el archivo de filtro BVR
+filterBVRImportMsg.LABEL=Se import\u00F3 correctamente el archivo de filtro.
+filterBVRExportMsg.LABEL=Se export\u00F3 correctamente el archivo de filtro.
+
+# Keys for CAE
+# -------------------------------------------------------
+fileExtn.LABEL=Extensiones del archivo
+server.LABEL=Servidor
+startupScript.LABEL=Secuencia de comandos de iniciaci\u00F3n
+attrInfo.LABEL=Fijar los atributos del modelo de CAE
+browse.TOOLTIP=Seleccionar la ubicaci\u00F3n de la secuencia de los comandos de iniciaci\u00F3n
+search.TOOLTIP=Buscar el conjunto de datos
+toolName.NAME=Nombre de la herramienta
+server.NAME=Servidor
+datasetType.NAME=Tipo de conjunto de datos
+extension.NAME=Extensi\u00F3n
+attribute.NAME=Atributo
+value.NAME=Valor
+CAETools.TITLE=CAE
+SimToolConfigDSNameBlank.ERROR=El campo Nombre del conjunto de datos de configuraci\u00F3n de la herramienta de simulaci\u00F3n de CAE no puede estar vac\u00EDo.
+
+preProcessor.TITLE=Preprocesador
+solver.TITLE=M\u00F3dulo Solver
+postProcessor.TITLE=Postprocesador 
+caeGeneral.TITLE=Herramientas de simulaci\u00F3n
+toolsInputConfiguration.TITLE=Configuraci\u00F3n de entrada de las herramientas
+toolsOutputConfiguration.TITLE=Configuraci\u00F3n de salida de las herramientas
+inspector.TITLE=Inspector
+productStructure.TITLE=Estructura del producto
+simulationStructure.TITLE=Estructura del modelo
+position.TITLE=Posici\u00F3n
+rootNode.TITLE=Nodo ra\u00EDz
+
+# Keys for CAE Accountability Check panel
+# -------------------------------------------------------
+caeAccCheckDatasetNameBlank.ERROR=El campo Nombre del conjunto de datos de resumen para la propagaci\u00F3n de atributos no puede estar vac\u00EDo.
+
+# Keys for Package settings panel
+# -------------------------------------------------------
+packages.TITLE=Paquetes de CAE
+packages.LABEL=Paquetes de CAE
+siteLoc.LABEL=Sitio
+groupLoc.LABEL=Grupo
+userLoc.LABEL=Usuario
+
+panelFolderForOutput.LABEL=Carpeta de objetos de salida
+lblLocationFolder.LABEL=Carpeta de ubicaci\u00F3n
+useAlternateFolder.LABEL=Carpeta alterna
+lblOptions.LABEL=Crear los objetos de salida:
+btnLocationFolder.LABEL=Directamente en la carpeta de ubicaci\u00F3n
+btnSubFolder.LABEL=En una subcarpeta debajo de la carpeta de ubicaci\u00F3n
+folderNotSelected.MSG=La carpeta de salida seleccionada no es v\u00E1lida. No se guardar\u00E1 la preferencia.
+caePackageLogDatasetName.LABEL=Nombre del conjunto de datos del registro de paquetes de CAE:
+invalidFolderPrefValueError.MSG=El valor de la preferencia de la ubicaci\u00F3n de la carpeta correspondiente al paquete de CAE no es v\u00E1lido. En su lugar se utilizar\u00E1 la carpeta Novedades.
+caePackageDetailedLog.LABEL=Registro del paquete de CAE persistente
+caePackagePersistLog.LABEL=Registro del paquete de CAE
+pasteOutputOptions.LABEL=Opciones de pegar en la salida
+btnItem.Label=\u00CDtem
+btnItemRevision.Label=Revisi\u00F3n de \u00EDtem
+# Keys for Simulation Dashboard settings panel
+# -------------------------------------------------------
+simMonitor.TITLE=Cuadros de mando de Simulaci\u00F3n
+simMonitorDomains.LABEL=Dominios del cuadro de mando del modelo:
+simMonitorLocation.LABEL=Ubicaci\u00F3n:
+deleteDomainConfirm.TITLE=Confirmar la eliminaci\u00F3n del dominio
+deleteDomainConfirm.Message=\u00BFDesea eliminar los dominios seleccionados?
+simlationDashboardLocationFolder.LABEL=Carpeta de ubicaci\u00F3n del cuadro de mando de Simulaci\u00F3n
+modelDashboardTab.TITLE=Cuadro de mando del modelo
+analysisDashboardlocation.LABEL=Carpeta de objetos del cuadro de mando de an\u00E1lisis:
+analysisDashboardInvalidLocation.MSG=El valor de la preferencia que contiene la ubicaci\u00F3n de la carpeta no es v\u00E1lido. En su lugar se utilizar\u00E1 la carpeta Novedades del usuario.
+# Keys for CAE Structure Map settings panel
+# -------------------------------------------------------
+structMap.TITLE=Mapa de estructuras de CAE
+relationship.LABEL=Crear una relaci\u00F3n entre la estructura de salida y el mapa de estructuras de CAE
+persistLog.LABEL=Registro del mapa de estructuras de CAE persistente:
+ancestorMap.LABEL=Activar el mapeo de datos del antecesor
+mapLevelBox.LABEL=Niveles m\u00E1ximos del mapeo de datos del antecesor:
+fileNameField.LABEL=Ubicaci\u00F3n de los archivos de mapas de datos:
+dataMap.LABEL=Acci\u00F3n del mapeo de datos del antecesor
+fileName.LABEL=Archivo de mapas de datos
+structureMap.LABEL=Nombre del conjunto de datos del registro del mapa de estructuras de CAE:
+structureMapContentScope.LABEL=\u00C1mbito del contenido del registro de mapas de estructuras de CAE:
+structureMapContentScopeSummary.LABEL=Resumen
+structureMapContentScopeDetailed.LABEL=Detallado
+structureMapMaximumObjectInMemory.LABEL=Objetos m\u00E1ximos en la memoria del mapa de estructuras de CAE:
+structureMapMaximumObjectInMemory.ERROR=Se introdujo un valor no v\u00E1lido en el n\u00FAmero m\u00E1ximo de objetos en la memoria. Introduzca un n\u00FAmero entero positivo que no sea cero.
+structureMapMarkuptoDate.LABEL=Activar Marcar como actualizada
+structureMapApplyReuseRules.LABEL=Aplicar las reglas de reutilizaci\u00F3n a los subensambles:
+SMPanelTRUE.LABEL=VERDADERO
+SMPanelFALSE.LABEL=FALSO
+structureMapMarkuptoDateOn.LABEL=ACTIVADO
+structureMapMarkuptoDateOff.LABEL=DESACTIVADO
+structureMapLog.LABEL=Registro del mapa de estructuras de CAE
+StructureMapIR.ERROR=El componente no es v\u00E1lido. Seleccione una revisi\u00F3n de \u00EDtem.
+structuremapLogDatasetNameEmpty.MESSAGE=Se debe especificar un valor correspondiente al nombre del conjunto de datos del registro de mapas estructuras de CAE.
+folderLocForNewCAEItem.LABEL=Ubicaci\u00F3n de la carpeta de objetos de salida
+outputFolder.LABEL=Carpeta para emplazar los objetos de salida:
+useNewstuffFolder.LABEL=Novedades
+useNoneFolder.LABEL=Ninguno
+useOtherFolder.LABEL=Otra carpeta
+useOtherFolderLoc.LABEL=Utilizar otra carpeta para emplazar los objetos de salida:
+
+structureMapApplyValidation.LABEL=Activar la validaci\u00F3n autom\u00E1tica de las reglas del mapa de estructuras de CAE:
+
+CAEToolItem.ERROR=El componente no es v\u00E1lido. Seleccione un objeto de tipo herramienta de simulaci\u00F3n.
+
+#Inspector Preferences
+InspectorSummaryDSNameField.LABEL=Nombre del conjunto de datos del resumen de ejecuci\u00F3n de Inspector
+defaultRootAction.LABEL=Acci\u00F3n predeterminada del nodo ra\u00EDz
+rootBOMLineCombo.LABEL=Acci\u00F3n predeterminada de la l\u00EDnea de la BOM ra\u00EDz
+itemType.LABEL=Tipo predeterminado de \u00EDtem de acci\u00F3n del modelo nuevo
+newRootItem.TEXT=Usar el modelo nuevo
+reviseRootItem.TEXT=Usar el modelo revisado
+DoNothing.TEXT=No hacer nada
+criteriaColumnHeading.TEXT=Criterios
+defaultActionColumnHeading.TEXT=Acci\u00F3n predeterminada
+ProductWithNoCAEModel.CRITERIA=Producto sin modelo
+unequalOccurrences.CRITERIA=N\u00FAmero desigual de ocurrencias 
+missingModelBOMLines.CRITERIA=Faltan los componentes del modelo
+extraModelBOMLines.CRITERIA=Componentes adicionales del modelo
+unequalVariantConditions.CRITERIA=N\u00FAmero desigual de condiciones de variantes comunes
+CAEModelWithDifferentProductRev.CRITERIA=Modelo con un destino diferente de revisi\u00F3n del producto
+CAEModelWithNoProduct.CRITERIA=Modelo sin producto
+modelLinkedToNonActiveProduct.CRITERIA=Revisiones del modelo enlazadas con productos no activos
+createCAEModel.ACTION=Usar el modelo nuevo
+useCAEModelRelated2ProductRevision.ACTION=Usar el modelo relacionado con la revisi\u00F3n del \u00EDtem del producto
+useCAEModelRelated2ProductItem.ACTION=Usar el modelo relacionado con el \u00EDtem del producto
+reviseModelRevisionAndReplace.ACTION=Revisar la revisi\u00F3n del modelo y reemplazar la relaci\u00F3n
+useAndRevisedCAEModel.ACTION=Usar el modelo revisado
+addNewRelationship.ACTION=Agregar relaci\u00F3n
+replaceExistingRelationship.ACTION=Reemplazar relaci\u00F3n
+removeModelIR.ACTION=Quitar modelo
+copyVariantCondition.ACTION=Copiar la condici\u00F3n de la variante de la l\u00EDnea de BOM del producto a la l\u00EDnea de BOM del modelo de CAE
+doNothing.ACTION=No hacer nada
+setEqual.ACTION=Fijarlos iguales
+actionColumn.TIP=Pulse para seleccionar un nombre de acci\u00F3n
+inspectorSummaryDatasetNameEmpty.MESSAGE=El campo Nombre del conjunto de datos de resumen de la ejecuci\u00F3n de Inspector no puede estar vac\u00EDo.
+
+allToolsMsg.LABEL=Todos
+
+dataset.NAME=Conjunto de datos
+
+toolInformationOutputFiles.LABEL=Informaci\u00F3n sobre herramientas para los archivos de salida
+additionaloutputInformationl.LABEL=Informaci\u00F3n de salida adicional
+primaryInput.LABEL=Entrada primaria
+alternateInput.LABEL=Entrada alterna
+configuredTools.LABEL=Herramientas configuradas
+startupScript.LABEL=Secuencia de comandos de iniciaci\u00F3n
+startupFile.TITLE=Archivo de iniciaci\u00F3n
+onePreProcessor.MESSAGE=No se permite m\u00E1s de una entrada en la misma herramienta
+onePreProcessor.MESSAGETITLE=Aviso
+selectToolForPrimaryDatasetType.MESSAGE=Seleccionar la herramienta para determinar el tipo de conjunto de datos primarios
+selectToolForDatasetType.MESSAGETITLE=Seleccionar la herramienta
+configurePrimaryInputForPrimaryDatasetType.MESSAGE=Configurar la entrada primaria de la herramienta para determinar el tipo del conjunto de datos de salida primaria
+configurePrimaryInputForPrimaryDatasetType.MESSAGETITLE=Configurar la entrada primaria
+batchMeshOptionsWarningMsg=Faltan algunos campos obligatorios en las tablas siguientes: {0}
+StructureMapLogDSNameBlank.ERROR=El campo Nombre del conjunto de datos del registro de mapas de estructuras de CAE no puede estar vac\u00EDo.
+
+# Keys for CAE Attribute Compare
+# -------------------------------------------------------
+acccheck.TITLE=Comparaci\u00F3n de los atributos de CAE
+AttributePropagateSummaryDSNameField.LABEL=Nombre del conjunto de datos de resumen para la propagaci\u00F3n de atributos
+
+# Keys for CAE Bom Comapre
+#---------------------------------------------------------
+bomcompare.TITLE=Comparaci\u00F3n de las BOM de CAE
+
+# Keys for User Preference Error Messages
+# ---------------------------------------
+errorSavingUserOptions.TITLE=Error al guardar las opciones de usuario
+
+# For improve preference management project
+# -----------------------------------------
+loadingPreferences.MESSAGE=Cargando las preferencias
+userPreferences.NAME=Opciones
+indexPreferences.NAME=Filtros
+searchPreferences.NAME=B\u00FAsqueda
+preferencesTree.NAME=Organizaci\u00F3n
+
+userPreferences.TITLE=Opciones
+indexPreferences.TITLE=Preferencias por filtros
+searchPreferences.TITLE=Preferencias por b\u00FAsqueda
+preferencesTree.TITLE=Preferencias por organizaci\u00F3n
+
+# Remote Checkin
+sendComponentsAsReplicas=Enviar los componentes como r\u00E9plicas
+
+# Changes for Multi-site Synchronization
+# --------------------------------------
+SyncOptions.generalTab.TITLE=General
+SyncOptions.advancedTab.TITLE=Avanzadas
+sync.TITLE=Opciones de sincronizaci\u00F3n
+SyncReportOnly=Informe solamente
+SyncOnly=Ejecutar sincronizaci\u00F3n
+BackgroundSync=Ejecutar la sincronizaci\u00F3n en segundo plano
+SyncOptions.saveOptions.TITLE=Guardar las opciones
+SyncOptions.saveOptionsBox=Guardar todas las opciones como predeterminadas
+SyncOptions.revRuleOptions.TITLE=Opciones de reglas de revisi\u00F3n
+SyncOptions.revRuleOptionsBox=Regla espec\u00EDfica de revisi\u00F3n
+SyncOptions.dsOptions.TITLE=Opciones de conjuntos de datos
+SyncOptions.dsOptions.includeAllVersions=Incluir todas las versiones
+SyncOptions.dsOptions.allFiles=Incluir todos los archivos
+SyncOptions.generalWSOptions.TITLE=Opciones generales
+SyncOptions.generalWSOptions.excludeFolder=Excluir el contenido de la carpeta
+SyncOptions.generalWSOptions.excludeExpProtected=Excluir los objetos protegidos contra la exportaci\u00F3n
+SyncOptions.sessionOptions.TITLE=Opciones de sesi\u00F3n
+SyncOptions.sessionOptions.genFailRep=Generar el informe de fallos
+SyncOptions.assemblyOptions.TITLE=Opciones de ensamble
+SyncOptions.assemblyOptions.maxLevelLabel=Niveles m\u00E1ximos
+SyncOptions.assemblyOptions.excludeExpProComp=Excluir los componentes protegidos contra la exportaci\u00F3n
+SyncOptions.assemblyOptions.includeBom=Incluir la BOM completa
+SyncOption.relationExclude.TITLE = No se puede excluir la relaci\u00F3n
+# Keys for RefreshNotifyPanel
+# -------------------------------------------------------
+refreshNotifyInfo.LABEL=Defina las opciones para configurar el comportamiento de Actualizar notificaciones.
+
+refreshNotifyOptions.LABEL=Opciones de Actualizar notificaciones
+automaticRefreshOptions.LABEL=Opciones de Actualizaci\u00F3n autom\u00E1tica
+
+refreshNotify.TITLE=Actualizar notificaciones
+refreshNotify.TIP=<html><body><font size=2><p>&nbsp Active Actualizar las notificaciones de los objetos que han sido modificados por otros usuarios.</p></font></body></html>
+
+pullIntervalTextField.TITLE=Intervalo en minutos para extraer las notificaciones
+pullIntervalTextField.TIP=<html><body><font size=2><p>&nbsp Defina el intervalo de tiempo en minutos que utiliza el cliente para actualizar las notificaciones.</p><p>&nbsp Si escribe cero, se usar\u00E1 el valor predeterminado (15).</p></font></body></html>
+
+notifyListTextField.TITLE=N\u00FAmero m\u00E1ximo de objetos por extracci\u00F3n
+notifyListTextField.TIP=<html><body><font size=2><p>&nbsp Defina el n\u00FAmero m\u00E1ximo de objetos que se pueden devolver por extracci\u00F3n.</p><p>&nbsp Si escribe cero (valor predeterminado), el n\u00FAmero de objetos es ilimitado.</p></font></body></html>
+
+autoRefreshWaitingTextField.TITLE=Tiempo de espera en minutos antes de actualizar los objetos notificados
+autoRefreshWaitingTextField.TIP=<html><body><font size=2><p>&nbsp Defina el tiempo de espera que el cliente espera antes de actualizar autom\u00E1ticamente los objetos notificados.</p><p>&nbsp Si escribe cero (valor predeterminado), se inicia la actualizaci\u00F3n inmediatamente despu\u00E9s de recibir las notificaciones.</p></font></body></html>
+
+autoRefreshIntervalTextField.TITLE=Intervalo en minutos para actualizar los objetos notificados
+autoRefreshIntervalTextField.TIP=<html><body><font size=2><p>&nbsp Defina un intervalo de tiempo en minutos que utiliza el cliente para actualizar los objetos notificados.</p><p>&nbsp Si escribe cero, se usar\u00E1 el valor predeterminado (10).</p></font></body></html>
+
+autoRefreshListTextField.TITLE=N\u00FAmero m\u00E1ximo de objetos por actualizaci\u00F3n
+autoRefreshListTextField.TIP=<html><body><font size=2><p>&nbsp Defina el n\u00FAmero m\u00E1ximo de objetos que se pueden actualizar por llamada.</p><p>&nbsp Si escribe cero (valor predeterminado), el n\u00FAmero de objetos es ilimitado.</p></font></body></html>
+
+SyncOption.relationExclude = es una relaci\u00F3n obligatoria
+SyncOption.relationInclude.TITLE = No se puede incluir la relaci\u00F3n
+SyncOption.relationInclude = es una relaci\u00F3n excluida
+SyncSession.TITLE = Opciones de sesi\u00F3n
+SyncOptions.sessionOptions.genImpExpFail=Error al generar Importaci\u00F3n y Exportaci\u00F3n
+
+Add.TOOLTIP=Agregar
+Subract.TOOLTIP=Quitar
+siteSubract.TOOLTIP=Quitar el sitio
+groupSubract.TOOLTIP=Quitar grupo
+userSubract.TOOLTIP=Quitar usuario
+ClearAll.TOOLTIP=Quitar todo
+AddDataset.TOOLTIP=Agregar el conjunto de datos seleccionado
+
+deleteToolConfirm.TITLE=Confirmar Eliminaci\u00F3n de la herramienta
+deleteToolConfirm.Message=\u00BFDesea eliminar una herramienta junto con todas las configuraciones asociadas?
+
+noReference.Message=No se defini\u00F3 ninguna referencia para el conjunto de datos
+noReference.title=Sin referencias
+
+noRevSelectorSelected.Message=No se ha seleccionado ning\u00FAn selector de revisi\u00F3n. Seleccione un selector de revisi\u00F3n de las opciones del \u00EDtem.
+noRevSelectorSelected.Title=Error
+
+sitePreferencesUnlock.TITLE=Desbloquear preferencias del sitio
+sitePreferencesUnlock.MESSAGE=Se deben desbloquear las preferencias del sitio antes de salir del cuadro de di\u00E1logo.
+
+# ME Options Dialog
+# ------------------
+# Fix for PR 6151841 Options dialog -> Options tree: ME should be Manufacturing
+meEditorPanel.TITLE=Fabricaci\u00F3n
+meEditorPanel.PERT_TAB.TITLE=Pert
+meEditorPanel.TIME_TAB.TITLE=Tiempo
+meEditorPanel.GANTT_TAB.TITLE=Gantt
+meEditorPanel.GRAPHICS_TAB.TITLE=Gr\u00E1ficos
+pertAutoSizeCheckBox.LABEL=Tama\u00F1o autom\u00E1tico de los cuadros Pert
+occurrenceType.LABEL=Tipo predeterminado de ocurrencia
+sourceType=Tipo de fuente
+targetType=Tipo destino
+defOccurrenceType=Tipo predeterminado de ocurrencia
+# 'Empty' option in 'Default Occurrence Type' column
+assignCustomizedOccurrenceTypeEmpty=Vac\u00EDo
+# 'All' option in 'Default Occurrence Type'- 'Source Type' and 'Target Type' columns
+assignCustomizedOccurrenceTypeAll=Todos
+processConfigRuleType.LABEL=Configuraci\u00F3n madre en la configuraci\u00F3n hija asignada
+# columns of process configuration table
+parentType=Tipo de padre
+# 'All' option in 'Parent Configuration Upon Assigned Child Configuration'- 'Parent Type' column
+processConfigRuleTypeParentTypeAll=Todos
+configureOutRule=Configurar la regla de salida
+processConfigColFilterBy=Filtrar por
+processConfigColOccOrChildTypes=Tipos de ocurrencia/hijo
+# The options available in 'Configure Out Rule' column combo box
+configureOutRuleOne=Uno
+configureOutRuleAll=Todos
+configureOutRuleAllLoaded=TodosCargados
+configureOutRuleOneLoaded=UnoCargado
+# options for filter by column of process configuration
+filterByOccurrence=Tipos de ocurrencia
+filterByChild=Tipos de hijo
+buttonEditTypes.TOOLTIP=Pulse el bot\u00F3n para mostrar una lista de selecciones.
+#structureType=Structure Type
+#processConfigRuleCheckBox.LABEL=Allow Parent Configuration Upon Child Assignment
+currentTimeUnit.LABEL=Unidad de tiempo actual
+timeDecimalPlaces.LABEL=Cifras decimales
+timeSignificantDecimalPlaces.TEXT=Significativas
+#structureContextType.LABEL=Default Type Under Structure Context
+loadRelatedStructCheckBox.LABEL=Cargar las estructuras relacionadas para el producto, proceso o planta
+expandTreeCheckBox.LABEL=Expandir el primer nivel al cargar
+timeActivity.LABEL=Actividad de tiempo predeterminada
+colors.TITLE=Colores que representan los tipos de an\u00E1lisis horario:
+showExitCO.LABEL=Mostrar los objetos desprotegidos al salir
+expandToSelection.LABEL=Expandir hasta la selecci\u00F3n
+objType.LABEL=Tipo de objeto
+pertNodeText.LABEL=Patr\u00F3n del texto del nodo Pert
+pertNodeTable.LABEL=Configurar el texto del nodo Pert
+pertNodeTable.TOOLTIP=<html>El formato de una entrada v\u00E1lida es una serie de segmentos estructurados de la forma siguiente:<br><b>free-text[property-name]free-text</b><br><b>free-text</b> es cualquier texto con excepci\u00F3n de los corchetes ([ y ]).<br><b>nombre de la propiedad</b> es un nombre de propiedad v\u00E1lido del tipo de objeto. Debe estar entre corchetes.<br>El texto puede estar vac\u00EDo.<br><br>Ejemplo de una entrada v\u00E1lida: <br>[bl_item_item_id]/[bl_rev_item_revision_id]<br>[bl_rev_object_name]</html> 
+okButton.LABEL=Aceptar
+cancelButton.LABEL=Cancelar
+editButton.LABEL=Editar
+
+#OperationDataConfigurationPanel
+OperationalDataConfigurationPanel.TITLE=Actualizaci\u00F3n en vivo
+OperationalDataConfigurationPanel.SUBTITLE=Elementos de la actualizaci\u00F3n en vivo
+OperationalDataConfigurationPanel.AllowOpsDeploy=Permitir las actualizaciones en vivo
+OperationalDataConfigurationPanel.AllowOpsDeployText=NOTA: seleccione activar o deseleccione para desactivar las actualizaciones en vivo en este sitio.
+OperationalDataConfigurationPanel.DescriptionText=Listas de los elementos de actualizaci\u00F3n en vivo que se encuentran disponibles o seleccionados para la actualizaci\u00F3n (implementaci\u00F3n)\nen una base de datos sin cerrar el sistema mediante una actualizaci\u00F3n en vivo de BMIDE o la opci\u00F3n de implementaci\u00F3n de TEM "{0}". Los elementos de la lista "{1}" indican los elementos que pueden aparecer en la plantilla personalizada implementada en la base de datos de producci\u00F3n usando la actualizaci\u00F3n en vivo de BMIDE o la opci\u00F3n de TEM "{0}".
+OperationalDataConfigurationPanel.AvailableTitle=Disponibles
+OperationalDataConfigurationPanel.LiveUpdateFromTEMOption=Actualizar la base de datos (ejecutar actualizaciones en vivo solamente- no es necesario que el sistema est\u00E9 inactivo)
+OperationalDataConfigurationPanel.ActiveTitle=Seleccionado para las actualizaciones en vivo
+OperationalDataConfigurationPanel.AvailableText=Si mueve este elemento a la lista activa los usuarios podr\u00E1n implementar estos elementos en una plantilla personalizada. 
+OperationalDataConfigurationPanel.InvalidOpsDataTitle=Aviso de actualizaci\u00F3n en vivo
+OperationalDataConfigurationPanel.InvalidAvailableOpsDataMessage=Se quitaron los elementos siguientes de la lista de elementos de Actualizaci\u00F3n en vivo disponibles porque no son v\u00E1lidos:\n[{0}]
+OperationalDataConfigurationPanel.InvalidActiveOpsDataMessage=Se quitaron los elementos siguientes de la lista de elementos de Actualizaci\u00F3n en vivo activa porque no son v\u00E1lidos:\n[{0}]
+OperationalDataConfigurationPanel.ActiveText=El elemento en la lista activa indica que estos elementos pueden aparecer en la plantilla personalizada que se implement\u00F3 en la base de datos de producci\u00F3n con el cliente operacional BMIDE o con la opci\u00F3n Actualizar los datos operacionales de TEM.
+
+timeReportsGroup.TEXT=Informes cronol\u00F3gicos
+timeAnalysisReportDisplayName.TEXT=Informe sobre an\u00E1lisis horario
+allocatedTimeReportDisplayName.TEXT=Informe sobre tiempo asignado
+reportDefinition.LABEL=Definici\u00F3n de informe
+stylesheet.LABEL=Hoja de estilo
+reportDefinitionNotFound.TOOLTIP=No se encontr\u00F3 ninguna definici\u00F3n de informe correspondiente a esta Id.
+typeName.LABEL=Nombre del tipo
+blankDisplaybyType.LABEL=Ocultar la visualizaci\u00F3n y tipos de filtro de visualizaci\u00F3n
+addNewTypeDialog.TITLE=Agregar un tipo nuevo
+addNewTypeDialog.selectParentMsg=Seleccionar el tipo padre:
+addNewTypeDialog.selectTypeMsg=Seleccionar el nombre de tipo:
+Product=Producto
+Plant=Planta
+Occurrence=Proceso
+
+structureTypeName.LABEL=Tipo de estructura
+typeName.LABEL=Nombre del tipo
+blankDisplaybyType.LABEL=Los tipos disponibles en Ocultar/Visualizar por tipo y en los comandos de filtro de visualizaci\u00F3n
+addNewTypeDialog.TITLE=Agregar un tipo nuevo
+addNewTypeDialog.selectParentMsg=Seleccionar el tipo de estructura:
+addNewTypeDialog.selectTypeMsg=Seleccionar el nombre de tipo:
+addNewTypeDialog.selectOccMsg=Seleccionar el nombre de la ocurrencia:
+Product=Producto
+Plant=Planta
+Occurrence=Proceso
+# Keys for Sim Process settings panel
+# -------------------------------------------------------
+toolConfigRootNameField.LABEL=Ra\u00EDz de la configuraci\u00F3n de las herramientas de Simulaci\u00F3n
+systemTempLocation.LABEL=Ubicaci\u00F3n predeterminada de la carpeta temporal
+windowsTempLocation.LABEL=Plataforma Windows
+unixTempLocation.LABEL=Plataforma Unix
+browseforFolder.LABEL=Buscar la carpeta
+
+sharedStagingDirectory.LABEL=Ubicaci\u00F3n predeterminada de ensayo compartido
+userStagingDirectory.LABEL=Ubicaci\u00F3n predeterminada de ensayo de usuario
+platform.LABEL=Plataforma
+windows.LABEL=Windows
+unix.LABEL=Unix
+folderNamingPattern.LABEL=Patr\u00F3n de nomenclatura de carpetas
+folderNamePatternInvalid.MESSAGE=El patr\u00F3n de nomenclatura de la carpeta no es v\u00E1lido. Se puede especificar el patr\u00F3n como una combinaci\u00F3n de cadenas fijas entrecomilladas y palabras clave. Las palabras clave admitidas son: ITEMID, REVID, ITEMREVID, ITEMREVNAME, REVVERSION. \n Una carpeta no puede contener ninguno de los caracteres siguientes: \\/:*?"<>|  en Windows y / en Unix. \n Ejemplos de patr\u00F3n son: ITEMID"-"ITEMREVNAME, ITEMREVID"-".
+folderNamePatternInvalid.TITLE=Patr\u00F3n de nombre de carpeta no v\u00E1lido
+
+enableContextBasedSimToolLaunch.LABEL=Activar el men\u00FA basado en contexto para iniciar la herramienta de simulaci\u00F3n
+UnableToLocateCAESE_DMService.ERROR=No se pudo ubicar el servicio del modelo de datos correspondiente a la Gesti\u00F3n de procesos de simulaci\u00F3n.
+
+
+stylesheetNotFound.TOOLTIP=No se encontr\u00F3 la hoja de estilo con este nombre.
+meGantt.Behavior=Comportamiento
+meGantt.Appearance=Aspecto
+meGanttDefaultDisplayMode.Label=Mostrar la duraci\u00F3n calculada
+meGanttDefaultEditMode.Label=Modo de edici\u00F3n completa
+meGanttZoom.Label=Nivel de zoom:
+meGanttElementHeight.Label=Altura del elemento:
+meGanttDefaultElementColorButton.Label=Color del elemento:
+meGanttDefaultMarkedColorButton.Label=Color del elemento del camino cr\u00EDtico:
+meGanttDefaultSelectionColorButton.Label=Color de la selecci\u00F3n:
+meGanttDefaultCalcDurationColorButton.Label=Color de la duraci\u00F3n calculada:
+meGanttDefaultFlowColorButton.Label=Color del flujo:
+meGanttMarkedFlowColorButton.Label=Color del flujo del camino cr\u00EDtico:
+meGanttImplicitFlowColorButton.Label=Color del flujo impl\u00EDcito:
+
+loadingReportDefinitionInfo.TEXT=Cargando la informaci\u00F3n sobre la definici\u00F3n de informe...
+dataCardPreferencesPanel.TITLE=Tarjeta de datos
+dataCardLocation.LABEL=Ubicaci\u00F3n de la tarjeta de datos:
+dataCardTimeUnitFactor.LABEL=Factor de la unidad de tiempo:
+wbs.TITLE=WBS
+statusIndicator.TITLE=Indicadores de estatus
+
+#The formatting of the tooltip will add the <html> and <body> tags where needed
+preference.unformattedTOOLTIP=Nombre de la preferencia: {1}<br/>\u00C1mbito de la protecci\u00F3n: {0}<br/>Descripci\u00F3n:<br/>{2}
+
+# Keys for ProductView panel
+# -------------------------------------------------------
+productView.TITLE=Vista del producto
+productViewCreationPreference.TITLE=Preferencias de la creaci\u00F3n de vista del producto
+productViewApplyPreference.TITLE=Aplicar las preferencias de la vista del producto
+imageCapturePanel.TITLE=Captaci\u00F3n de imagen:
+thumbnailPanel.TITLE=Miniatura:
+playMotionCheckBox.LABEL=Reproducir el movimiento en la vista actual
+configurationRule.LABEL=Regla de configuraci\u00F3n para utilizar:
+showPVNameCheckBox.LABEL=Cuadro de di\u00E1logo Mostrar el nombre de la vista del producto
+imageFormat.LABEL=Formato de imagen:
+imageResolution.LABEL=Resoluci\u00F3n de la imagen:
+imageWidth.LABEL=Anchura de la imagen:
+imageHeight.LABEL=Altura de la imagen:
+thumbnailHeight.LABEL=Altura (en p\u00EDxeles):
+thumbnailWidth.LABEL=Anchura (en p\u00EDxeles):
+thumbnailQuantity.LABEL=Calidad:
+thumbnailQuantity.LOW.LABEL=Baja
+thumbnailQuantity.HIGH.LABEL=Alta
+viewToggleWarnLevel.LABEL=Selector del nivel de aviso de vista:
+viewTogglesConsider.LABEL=Selectores de vista para considerar:
+createGeometryAsset.LABEL=Activo de geometr\u00EDa:
+
+
+contMgmt.TITLE=Gesti\u00F3n de contenidos
+
+# Search Preference Pages
+newSearch.TITLE=B\u00FAsqueda
+newSearchFavorites.TITLE=Favoritos
+newSearchFavoriteBO.TITLE=Tipos de objeto de negocio favorito
+newSearchGeneral.TITLE=General
+newSearchRemote.TITLE=Remoto
+newSearchResults.TITLE=Resultados
+newSearchSavedSearches.TITLE=B\u00FAsq guardadas
+
+displayMySavedSearches.LABEL=Visualizar Mis b\u00FAsquedas guardadas
+defaultBOType.LABEL=Tipo de objeto de negocio predeterminado
+defaultSearch.LABEL=B\u00FAsqueda predeterminada
+changeBtn.TEXT=Cambiar...
+generalBorder.TEXT=General
+searchLocal.LABEL=Configuraci\u00F3n regional de b\u00FAsqueda
+searchHistory.LABEL=Configurar el tama\u00F1o del historial de b\u00FAsqueda:
+changeSearchBtn.TEXT=Borrar el historial de b\u00FAsqueda
+loadingPageSize.LABEL=Fijar el tama\u00F1o de la p\u00E1gina de carga:
+openSearchResultLimit.LABEL=Fijar el l\u00EDmite de resultados en las B\u00FAsquedas abiertas:
+loadAllLimit.LABEL=Fijar el l\u00EDmite de Cargar todo:
+ChangeSearchDialog.TITLE=Cambiar la b\u00FAsqueda
+ChangeSearchDialog.MSG=Seleccionar las b\u00FAsquedas guardadas:
+gettingSearch.MSG=Obteniendo b\u00FAsquedas
+expandFolderAction.MSG=Expandiendo la carpeta seleccionada...
+SearchTreeContentProvider.MSG=Cargando
+BusinessObjectSelectionDialog.TITLE=Seleccione el tipo de objeto de negocio
+BusinessObjectSelectionDialog.MSG=Seleccione un tipo de objeto de negocio
+addBO.TEXT=Agregar
+removeBO.TEXT=Quitar
+boColumn.Text=Tipo de objeto de negocio
+downButton.TEXT=Abajo
+upButton.TEXT=Arriba
+invalidBO.MSG=El tipo de objeto de negocio "{0}" no es v\u00E1lido.
+
+#4GD TCXML labels
+
+lowLevel.LABEL=Tc XML
+sessionOpt.TITLE=Opciones de la sesi\u00F3n de Tc XML
+overrideOption.LABEL=Valores del conjunto de opciones de sustituci\u00F3n
+exportItemWithDE.LABEL=Exportar los objetos fuente del elemento de dise\u00F1o
+importItemWithDE.LABEL=Importar los objetos fuente del elemento de dise\u00F1o
+exportDEWithWS.LABEL=Exportar el elemento de dise\u00F1o en el conjunto de trabajo
+importDEWithWS.LABEL=Importar el elemento de dise\u00F1o en el conjunto de trabajo
+includeBLContent.LABEL=Incluir el contenido de la l\u00EDnea base
+tcxmlOperationNotSupported=No se admite la selecci\u00F3n del objeto mediante la operaci\u00F3n remota Importar/Exportar.
+prefValueMustBeDefined=Deber\u00E1 proporcionar un valor v\u00E1lido correspondiente a la preferencia "TC_force_legacy_multisite". Proporcione un valor como "verdadero" correspondiente al modo OBJIO, o "falso" correspondiente al modo TCXML.
+
+# Keys for derivative rules settings panel
+# -------------------------------------------------------
+derivative.TITLE=Derivar
+derivative.LABEL=Derivar
+derivative.HEADING=Ubicaci\u00F3n de la revisi\u00F3n del \u00EDtem de reglas derivadas:
+derivativeLogDataSet.LABEL=Nombre del conjunto de datos del registro derivado
+derivativeLogPanel.LABEL=Registro derivado
+persistSummaryLog.LABEL=Registro derivado persistente
+locationSearch.TOOLTIP=B\u00FAsqueda
+locationClear.TOOLTIP=Borrar
+derivativeLogContentScope.LABEL=\u00C1mbito del contenido del registro derivado:
+derivativeLogContentScopeSummary.LABEL=Resumen
+derivativeLogContentScopeDetailed.LABEL=Detallado
+derivativeNoSimGroupAdminFound.MESSAGE=No se puede fijar la ubicaci\u00F3n de la revisi\u00F3n del \u00EDtem de las reglas derivadas porque no se defini\u00F3 al usuario actual como el administrador del grupo correspondiente al grupo "Administraci\u00F3n de la simulaci\u00F3n".
+derivativeNoSimGroupAdminFound.TITLE=No se encontr\u00F3 ning\u00FAn administrador de grupo
+derivativeLogDSNameBlank.MESSAGE=El nombre del conjunto de datos del registro derivado no puede estar en blanco.
+derivativeLogDSNameBlank.TITLE=Nombre del conjunto de datos del registro derivado en blanco
+derivativeNamePattern.LABEL=Patr\u00F3n de nombre de estructuras derivadas
+derivativeNamePatternBlank.MESSAGE=El patr\u00F3n del nombre no puede estar en blanco.
+derivativeNamePatternBlank.TITLE=Patr\u00F3n de nombre en blanco
+derivativeNamePatternInvalid.MESSAGE=El patr\u00F3n de nombre no es v\u00E1lido.
+derivativeNamePatternInvalid.TITLE=Patr\u00F3n de nombre no v\u00E1lido
+
+# Keys for file upload rules settings panel
+# -------------------------------------------------------
+fileExplorer.TITLE=Explorador de archivos
+defaultWorkingDir.LABEL=Directorios de trabajo predeterminados
+FURPanelFileUploadConflict.LABEL=Opci\u00F3n predeterminada de resoluci\u00F3n de conflictos para la carga de archivos
+FURPanelFileupload.LABEL=Cargar
+FURPanelFileRenameUpload.LABEL=Volver a cambiar de nombre y cargar
+FURPanelFileUploadSkip.LABEL=Saltar
+FURPanelFileDownloadConflict.LABEL=Opci\u00F3n predeterminada de resoluci\u00F3n de conflictos para la descarga de archivos
+FURPanelFileDownloadOverwrite.LABEL=Sobrescribir
+FURPanelFileRenameDownload.LABEL=Cambiar de nombre y descargar
+
+# Keys for IMDS panel
+# -------------------------------------------------------
+Imds.TITLE=IMDS
+CmpnyInfo.TITLE=Informaci\u00F3n sobre la empresa
+
+# Keys for subcmpl panel
+# -------------------------------------------------------
+SubsComp.TITLE=Cumplimiento con las directivas de sustancias
+SuppDec.TITLE=Declaraciones del proveedor
+prefValues.TITLE=Valores de preferencia
+
+# Keys for CAE UI Configuration settings panel
+# -------------------------------------------------------
+caeUIConfiguration.TITLE=Configuraciones de la interfaz
+caeItemRevAttributesForUIConfig.LABEL=Mostrar las propiedades de la revisi\u00F3n del \u00EDtem de {0}
+caeItemRevAttributesForMultiSaveAs.LABEL=Mostrar las propiedades de la revisi\u00F3n del \u00EDtem de {0}
+caeItemAttributesForMultiSaveAs.LABEL=Mostrar las propiedades del \u00EDtem de {0}
+caeUIConfigurationPanel.TAB1.TITLE=Reemplazar
+caeUIConfigurationPanel.TAB2.TITLE=Consulta de reemplazo m\u00FAltiple
+caeUIConfigurationPanel.TAB3.TITLE=Abrir modelo
+caeUIConfigurationPanel.TAB4.TITLE=Abrir el an\u00E1lisis
+caeUIConfigurationPanel.TAB5.TITLE=Abrir \u00EDtem

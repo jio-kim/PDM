@@ -1,0 +1,20 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2010.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Messages 
+implicitCO.TITLE=Blocage implicite
+unableimplicitCO.MESSAGE=Echec de l'op\u00E9ration Blocage implicite.
+unableToCheckOut.MESSAGE=Echec de blocage de l'objet.
+unableToSave.MESSAGE=Echec de sauvegarde des modifications de l'objet.
+unableToCheckIn.MESSAGE=Echec de lib\u00E9ration de l'objet.
+unableToCancelReservation.MESSAGE=Echec d'annulation du blocage de l'objet.
+unableToGetUnderlyingObject.MESSAGE=Echec d'obtention du composant sous-jacent.
+performedCancelCO.MESSAGE=A ex\u00E9cut\u00E9 Annuler le blocage de l'objet.
+performedCI.MESSAGE=A ex\u00E9cut\u00E9 Lib\u00E9rer l'objet.
+saveProperties.TITLE=Sauvegarder les propri\u00E9t\u00E9s...
+SaveFailed.TEXT=Echec de sauvegarde des objets s\u00E9lectionn\u00E9s de la liste ci-dessous. Toute valeur de propri\u00E9t\u00E9 modifi\u00E9e est perdue.

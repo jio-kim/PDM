@@ -1,0 +1,37 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the transfercheckout package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: transfercheckout_locale.properties
+#   Module  : com.teamcenter.rac.commands.transfercheckout
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=P\u0159en\u00E9st rezervovan\u00E9
+
+from=Od:
+to=Do:
+confirmationText=Chcete p\u0159en\u00E9st rezervaci?
+transferCheckOut=P\u0159esouv\u00E1n\u00ED rezervace...
+
+buildingUserList=\u010Cten\u00ED u\u017Eivatelsk\u00E9ho seznamu hodnot...
+currentUser=Aktu\u00E1ln\u00ED u\u017Eivatel:
+newUser=Nov\u00FD u\u017Eivatel:
+
+error=Nelze p\u0159en\u00E9st rezervaci na aktu\u00E1ln\u00EDho vlastn\u00EDka.
+error.TITLE=P\u0159en\u00E9st rezervovan\u00E9
+
+reserve.ERROR=Vybran\u00E9 objekty nebyly rezervov\u00E1ny

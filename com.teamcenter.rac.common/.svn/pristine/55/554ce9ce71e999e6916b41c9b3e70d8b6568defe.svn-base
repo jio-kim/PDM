@@ -1,0 +1,95 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the access package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: access_locale.properties
+#   Module  : com.teamcenter.rac.commands.access
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#22-Mar-2000  huangz                  Add the key changeOwnershipObjects
+#04-May-2000  huangz                  Fix PR when no component is selected.
+#01-Nov-2000  wangp                   add entries for more access
+#11-Oct-2001  Zhixin Huang            Add the AMRule Tree simulation.
+#16-Oct-2001  Zhixin Huang            Enhance it according to AMRuleTree project.
+#07-Jun-2002  braun                   Added WRITE_ICOS privilege.
+#07-Jun-2002  helmutl                 merge from AM project
+#09-Apr-2003  Jeff Martin             4704737, 4705796- Added 4 new keys.
+#14-Apr-2003  martinj                 Code review change
+#14-Apr-2003  martinj                 merge in
+#15-Sep-2003  x_monthr                For AttachmentLine
+#17-Nov-2003  helmutl                 PR#4880552 rename in-CLASS to Classification
+#17-Nov-2003  helmutl                 Merge from Helmut
+#13-Jul-2005  faming                  004259: implement new Project privileges
+#12-Oct-2005  faming                  004259: new AM Project Privileges in V10 SR1
+#17-Nov-2005  rlee                    Add support for REMOTE_CICO AM priv
+#29-Nov-2005  rlee                    Code review change
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#07-Jun-2007  M.Ram Narsimhamurty     Added support for ADS Program Context
+#30-Jun-2009  ntl                     add support for MARKUP, BATCH_PRINT, DIGITAL_SIGN
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=Permisos
+accessName = Permiso de
+
+#Keys for the Access Dialog
+#----------------------------
+role=Rol:
+group=Grupo:
+getRight.TIP = Obtiene los derechos del usuario seleccionado actualmente.
+userInfo=Propietario actual:
+userID=Usuario:
+aclCommand.TITLE = Lista de control ACL
+
+AccessDenied=Permiso denegado
+AccessPermitted=Permiso otorgado
+MARKUP.true.TIP=Se ha otorgado el permiso de ver o marcar
+BATCH_PRINT.true.TIP=Se ha otorgado el permiso de impresi\u00F3n por lotes
+DIGITAL_SIGN.true.TIP=Se ha otorgado el permiso de acceso a la se\u00F1al digital
+MARKUP.false.TIP=Se ha denegado el permiso de ver o marcar
+BATCH_PRINT.false.TIP=Se ha denegado el permiso de impresi\u00F3n por lotes
+DIGITAL_SIGN.false.TIP=Se ha denegado el permiso de acceso a la se\u00F1al digital
+MARKUP.TITLE=Ver o marcar
+BATCH_PRINT.TITLE=Impresi\u00F3n por lotes
+DIGITAL_SIGN.TITLE=Firma digital
+Administer_ADA_Licenses.true.TIP= Se otorg\u00F3 acceso a Administrar licencias ADA
+Administer_ADA_Licenses.false.TIP= Se deneg\u00F3 el acceso a Administrar licencias ADA
+
+Administer_ADA_Licenses.TITLE= Administrar licencias ADA
+
+accessControl.TIP = Obtiene la lista Control de acceso.
+accessOper=Configurando el acceso
+extraProtection.TIP = Mostrar la protecci\u00F3n extra.
+
+access.TITLE=Permisos
+noOwner.MSG=No se encontr\u00F3 un propietario en el objeto actual
+
+readingEffectiveACL=Leyendo la ACL de efectividad...
+
+getACLInfo = Obteniendo la informaci\u00F3n sobre acceso ...
+
+notValidObjectsSelected = El componente seleccionado no es v\u00E1lido para obtener accesos.
+
+noRuleApply = <No se aplica ninguna regla>
+table.HEADER = Permiso, Veredicto, ACL definida, Descriptor de permisos, Ruta de reglas
+loadingProtection = Obteniendo la protecci\u00F3n para
+extraProtection.TITLE = Protecci\u00F3n extra para
+
+loadingGroups = Cargando los grupos de
+loadingRoles = Cargando los roles de
+
+loadingUserIds = Cargando Id de usuarios...
+loadingACLDialog = Cargando el cuadro de di\u00E1logo ACL...
+loadingAccessDialog = Cargando el cuadro de di\u00E1logo de acceso...
+
+

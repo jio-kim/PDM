@@ -1,0 +1,51 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newfolder package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newfolder_locale.properties
+#   Module  : com.teamcenter.rac.commands.newfolder
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2003  wangp                   fix pr 4426554: customize portal dialogs
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Folder Dialog
+# ----------------------
+command.TITLE=Nov\u00E1 slo\u017Eka
+
+name = N\u00E1zev:
+description = Popis:
+type = Typ:
+openOnCreate = Otev\u0159\u00EDt p\u0159i vytvo\u0159en\u00ED
+
+# Messages for message center
+# ----------------------
+loadingTypes = Na\u010Dten\u00ED typ\u016F slo\u017Eek...
+creatingNewFolder = Vytvo\u0159en\u00ED nov\u00E9 slo\u017Eky
+abort = Zru\u0161it otev\u0159en\u00ED nov\u00E9 slo\u017Eky
+
+# Error Messages
+# ----------------------
+folderTypeError = Chyba p\u0159i z\u00EDsk\u00E1n\u00ED typ\u016F slo\u017Eek.
+failToCreate = Chyba p\u0159i vytvo\u0159en\u00ED slo\u017Eky
+failFindDialog=Nelze naj\u00EDt dialogov\u00E9 okno Nov\u00E1 slo\u017Eka.
+error.TITLE = Nov\u00E1 slo\u017Eka...
+
+# Messages and keys for the Abort Message Box
+# ----------------------
+aborted=Vytvo\u0159en\u00ED slo\u017Eky bylo p\u0159eru\u0161eno... Slo\u017Eka byla vytvo\u0159ena a \u010D\u00E1ste\u010Dn\u011B vlo\u017Eena.
+aborted.TITLE=Zru\u0161eno
+
+aborting=Prob\u00EDh\u00E1 zru\u0161en\u00ED...

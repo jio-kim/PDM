@@ -1,0 +1,19 @@
+// @<COPYRIGHT>@
+// ==================================================
+// Copyright 2011.
+// Siemens Product Lifecycle Management Software Inc.
+// All Rights Reserved.
+// ==================================================
+// @<COPYRIGHT>@
+
+####################################################################################################
+# Messages
+####################################################################################################
+
+inputNotNull.MESSAGE=Das f\u00FCr den Vorgang "Speichern unter" ausgew\u00E4hlte Objekt darf nicht null sein.
+
+saveAsInputMissing.MESSSAGE=Die Konfiguration von "Als Eingabe speichern" ist nicht f\u00FCr {0} vorhanden. Wenden Sie sich bitte an Ihren Administrator. 
+sessionNotAvailable.MESSAGE=Die Sitzung ist nicht verf\u00FCgbar. Der Vorgang "Als Dienst speichern"\nkann nicht fortgesetzt werden. Wenden Sie sich bitte an Ihren Administrator.
+
+deepCopyPropertyNull.MESSAGE=Tiefenkopiedaten konnten nicht erstellt werden.
+

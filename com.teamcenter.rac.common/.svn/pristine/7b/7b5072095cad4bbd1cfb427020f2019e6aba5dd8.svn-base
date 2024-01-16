@@ -1,0 +1,164 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newdataset package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newdataset_locale.properties
+#   Module  : com.teamcenter.rac.commands.newdataset
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Oct-2000  wangp                   add tooltip for import button
+#02-Mar-2001  wangp                   Fix PR: 4227870: Add entry for no reference found.
+#30-Apr-2001  x_gopala                PR #4252773 Fix
+#30-Apr-2001  x_gopala                Merge in
+#27-Jun-2003  Zhixin Huang            Add key for NewDatasetForFile dialog.
+#27-Jan-2004  wangp                   fix pr 4902579: customize command/dialog
+#06-May-2005  gezou                   fix PR5174557, put error message
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#28-Aug-2009  Pushkar Raj              Added entries for Multiple file Drag and Drop.
+#$HISTORY$
+#=================================================================================================*/
+
+# New Dataset Dialog
+# --------------------
+command.TITLE = Nuovo set di dati
+
+assign = Assegna
+
+datasetInformation = Informazioni del set di dati
+datasetId = ID set di dati
+revId = ID revisione
+
+name = Nome:
+description = Descrizione:
+type = Tipo:
+tool = Strumento usato:
+openOnCreate = Apri dopo creazione
+importLabel= Importa:
+importButton=Importa...
+importButton.TIP=Consente di selezionare un file da importare.
+
+# Messages for message center
+# -------------------------------
+loadingTypes = Caricamento tipi di set di dati...
+creatingNewDataset = Creazione nuovo set di dati
+importingFile=Importazione file nel set di dati...
+abort = Interruzione apertura nuovo set di dati
+
+# Error Messages
+# --------------------
+datasetTypesError = Caricamento set di dati non riuscito.
+failToCreate = Impossibile creare set di dati
+failFindDialog=Impossibile trovare la finestra di dialogo Nuovo set di dati.
+error.TITLE = Nuovo set di dati...
+noRefTypeFound=Nessun tipo di riferimento trovato. Impossibile importare.
+noRefTypeFound.TITLE=Avviso
+notAIEConfiguredDS = L'ambiente AIE (Application Integration Environment) \u00E8 abilitato, ma il tipo/set di dati item non \u00E8 configurato nell'ambiente. Disabilitare l'ambiente AIE (Application Integration Environment) oppure fare riferimento alla sezione AIE della guida di Teamcenter per configurare l'ambiente.
+notAIEConfiguredDS.TITLE=Errore
+
+# Messages and keys for the Abort Message Box
+# ----------------------------------------------
+aborted=Creazione set di dati interrotta... Set di dati creato e inserito parzialmente
+aborted.TITLE=Interrotto
+
+aborting=Interruzione...
+
+modifiedName.TITLE=Rinomina set di dati
+modifiedName.MSG=Sostituire questo nome set di dati con
+overrideName.TITLE=Sostituisci nome set di dati
+overrideName.MSG=Il nome set di dati verr\u00E0 sostituito
+
+# Keys for the New Dataset for File
+newFileDataset.TITLE = Nuovo set di dati per 
+type.TITLE = Seleziona tipo
+type.INFO = Selezionare il tipo di set di dati per il file.
+info.TILE = Inserire informazioni riguardanti il set di dati
+info.INFO = Inserire le informazioni riguardanti il set di dati.
+reference.TITLE = Seleziona tipi di riferimento
+reference.INFO = Seleziona il tipo di riferimento per il file.
+
+reference = Riferimento:
+fileType = Tipo di file:
+template = Template:
+noDatasetAvailable.MSG= Non c'\u00E8 alcun tipo di set di dati da creare per il file.
+noDatasetAvailable.TITLE = Nessun tipo di set di dati
+
+warning.TITLE=Nuovo set di dati
+fileDoesNotExist.MSG=Impossibile caricare il file perch\u00E9 il nome e la posizione specificati sono invalidi oppure il file non esiste.\nSelezionare un file valido per l'importazione.
+invalidFile.MSG=Il file selezionato per l'importazione non corrisponde al tipo di set di dati. \nSelezionare un file valido per l'importazione.
+noDatasetType.MSG=Selezionare innanzitutto un tipo di set di dati.
+
+fileNameWillbeTruncated.MSG=Il nome del file contiene un numero di caratteri superiore al limite di 132 e verr\u00E0 troncato.
+
+# Keys for select reference dialog (Elbit ER1409560)
+selectReference.INFO=Varie referenze corrispondono al file attualmente selezionato. Selezionare un tipo di riferimento e premere il pulsante OK per continuare.
+noReference.MSG=Impossibile trovare riferimenti.
+noRefSelected.MSG=Non \u00E8 stato selezionato alcun tipo di riferimento. Il file non pu\u00F2 quindi essere importato. \nIl file selezionato per l'importazione verr\u00E0 eliminato.
+
+#Keys for Multiple files Drag and Drop
+
+#Table Headers
+fileName=Nome file
+datasetName=Nome del set di dati
+datasetDesc=Descrizione
+datasetType=Tipo di set di dati
+templateName=Tipo di file
+referenceName=Riferimento
+toolsUsed=Strumento utilizzato 
+
+#Messages
+newDnDDialog.MSG=Nuovi set di dati per file multipli
+newDnDDialog.TITLE=Trascina e rilascia file multipli
+applySimilar.LABEL=Applica allo stesso tipo
+applySimilar.TIP=Applica valori a tutti i set di dati dello stesso tipo di file
+
+#Keys for Progress Dialog
+datasetNameRequired.MSG=Il "Nome del set di dati" \u00E8 il campo obbligatorio
+resultDialog.MSG=Avanzamento creazione set di dati
+
+file=File
+status=Stato
+
+#Status Messages
+ready.MSG=Pronto
+started.MSG=Avviato
+complete.MSG=Completato
+userCancelledAction.MSG=Azione utente annullata
+
+#Session Messages
+importingFileToDataset=Importazione file nel set di dati
+
+#Error Messages
+applySimilar.ERROR=Selezionare la linea della tabella di cui applicare le impostazioni ai file con lo stesso tipo di estensione
+importFileInfoMissing.ERROR=Mancano informazioni richieste per l'importazione del file
+pasteError.MSG=Errore durante l'operazione Incolla set di dati alla destinazione
+incompleteInfo.MSG=Il set di dati non il componente di destinazione non sono validi
+pasteCommand.ERROR=Errore durante il caricamento del comando Incolla
+pastedIntoNewStuff.MSG=Operazione Incolla richiesta non riuscita per alcuni oggetti. Il failback \u00E8 stato eseguito per incollarli nella cartella Newstuff
+pasteToNewStuffError.ERROR=L'operazione Incolla richiesta non \u00E8 riuscita. Il failback ha provato ad incollare gli elementi nella cartella Newstuff. Si sono verificati errore durante il tentativo di incollare il set di dati nella cartella Newstuff.
+
+populatingTable.MSG=Caricamento dei dati nella tabella in corso. Attendere...
+
+#Progress Dialog
+progress.TITLE=Elaborazione 
+progress.MSG=Caricamento delle informazioni richieste dai file in corso. Attendere...
+
+creatingDataset.MSG=Creazione set di dati...
+
+errorDetail.TITLE=Errore
+creatingDataset.ERROR=Creazione set di dati non riuscita. Errore:
+namingRule.ERROR=Il pattern della regola di denominazione non corrisponde. Apportare le necessarie modifiche in base alle seguenti informazioni e ripetere l'operazione. 
+
+fileNameLengthTooLong=Il nome del file eccede limite di lunghezza
+fileLengthWarning.TITLE=Avviso - i nomi dei file superano il limiti di lunghezza
+fileNameLengthTooLongMulitple=I seguenti file non saranno inclusi perch\u00E9 i loro nomi superano i limiti di lunghezza previsti:
+

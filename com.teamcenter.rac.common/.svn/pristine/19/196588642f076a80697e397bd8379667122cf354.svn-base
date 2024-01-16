@@ -1,0 +1,119 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newenvelope package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newenvelope_locale.properties
+#   Module  : com.teamcenter.rac.commands.newenvelope
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#16-Aug-2000  jordan                  V7 UI prototype
+#26-Apr-2001  x_gopala                PR Fix #4271324
+#26-Apr-2001  x_gopala                Merge in PR fix #4271324
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for new envelope dialog
+# --------------------------------
+command.TITLE1=Nowa koperta
+command.TITLE2=Koperta
+
+to=DO...
+to.MNEMONIC=T
+to.TOOLTIP=Wybierz odbiorc\u00F3w
+
+cc=DW...
+cc.TOOLTIP=Wybierz odbiorc\u00F3w
+
+send=Wy\u015Blij
+send.MNEMONIC=S
+send.TOOLTIP=Wy\u015Blij kopert\u0119
+
+subject=Temat:
+
+message=Komunikat:
+
+attachment=Za\u0142\u0105cznik:
+
+audit=Kontrola:
+yes=TAK
+
+add.TOOLTIP=Dodaj obiekty ze Schowka jako za\u0142\u0105cznik
+
+remove.TOOLTIP=Usu\u0144 obiekty z za\u0142\u0105cznika
+
+include=Uwzgl\u0119dnij
+include.TOOLTIP=Wstaw zawarto\u015B\u0107 elementu tekstowego zestawu danych, wybranego na li\u015Bcie za\u0142\u0105cznik\u00F3w, do tre\u015Bci wiadomo\u015Bci.
+includeButton.TITLE=Uwzgl\u0119dnij
+noFileFound=Nie znaleziono \u017Cadnego pliku.
+
+references=Odwo\u0142ania
+references.TOOLTIP=Wybierz powi\u0105zania, kt\u00F3re maj\u0105 zosta\u0107 wys\u0142ane
+referencesButton.TITLE=Odwo\u0142ania
+
+ok.TOOLTIP=Zapisz kopert\u0119
+
+# Entries for select recipients dialog
+# --------------------------------------
+selectRecipient.TITLE=Wybierz odbiorc\u00F3w
+
+search=Szukaj:
+
+toButton=Do ->
+toButton.MNEMONIC=T
+ccButton=DW ->
+ccButton.MNEMONIC=C
+
+userButton.TOOLTIP=Znajd\u017A identyfikatory u\u017Cytkownik\u00F3w spe\u0142niaj\u0105ce kryteria wyszukiwania.
+groupButton.TOOLTIP=Znajd\u017A grupy spe\u0142niaj\u0105ce kryteria wyszukiwania.
+aliasButton.TOOLTIP=Znajd\u017A listy adresowe spe\u0142niaj\u0105ce kryteria wyszukiwania.
+addressListButton.TOOLTIP=Uruchom okno dialogowe listy adresowej.
+find.TOOLTIP=Wprowad\u017A kryteria wyszukiwania i naci\u015Bnij jeden z przycisk\u00F3w.
+
+# Entries for message center messages
+# -------------------------------------------------------------
+creatingNewEnvelope=Tworzenie nowej koperty ...
+updatingEnvelope=Aktualizacja koperty ...
+sendingEnvelope=Wysy\u0142anie koperty ...
+loadingMembers=\u0141adowanie sk\u0142adnik\u00F3w ...
+loadingFile=Odczyt pliku ...
+abortSending=Przerwij wysy\u0142anie koperty.
+
+# Error Messages for invalid recipients
+# ---------------------------------------------------------------
+errorInvalidRecipients.TITLE=B\u0142\u0105d: nieprawid\u0142owi odbiorcy!!!
+invalidRecipients.MESSAGE=Odbiorca "{0}" jest nieprawid\u0142owy.
+
+# Error Messages
+# ---------------------------------------------------------------
+errorAddingAttach.TITLE=B\u0142\u0105d podczas dodawania za\u0142\u0105cznik\u00F3w!!!
+invalidAttach.MESSAGE=Element "{0}" jest nieprawid\u0142owym za\u0142\u0105cznikiem.
+
+# Entries for the mail send blocking panel
+# ---------------------------------------------------------------
+blockSending.TITLE=Blokada wysy\u0142ania koperty
+blockSending.MESSAGE=Nie mo\u017Cna wys\u0142a\u0107 koperty do odbiorc\u00F3w zewn\u0119trznych.\nBy\u0107 mo\u017Ce nie ustawiono preferencji "Mail_OSMail_activated" na warto\u015B\u0107 TRUE lub warto\u015B\u0107 preferencji "Mail_server_name" nie jest prawid\u0142owym adresem serwera poczty. Aby kontynuowa\u0107, usu\u0144 zewn\u0119trznych odbiorc\u00F3w wiadomo\u015Bci.
+
+# Entries for error when inserting text from a text dataset
+# ---------------------------------------------------------------
+textDatasetInsertion.TITLE=Wstawianie tekstowego zestawu danych 
+textDatasetInsertion.textLengthLimitation.MESSAGE=Ze wzgl\u0119du na ograniczenia rozmiaru tre\u015Bci umieszczanych na kopercie z elementu tekstowego zestawu danych zostanie skopiowanych tylko {0} pierwszych znak\u00F3w.
+textDatasetInsertion.noMoreCharacters.MESSAGE=Osi\u0105gni\u0119to maksymalny rozmiar tre\u015Bci umieszczanych na kopercie.
+textDatasetInsertion.MESSAGE=Nie mo\u017Cna wstawi\u0107 tekstu z wybranego zestawu danych, poniewa\u017C zawiera on niedozwolony znak:\n {0} 
+messageTextAreaInsertion.textLengthLimitation.MESSAGE=Ze wzgl\u0119du na ograniczenia rozmiaru tre\u015Bci umieszczanych na kopercie z elementu schowka zostanie skopiowanych tylko {0} pierwszych znak\u00F3w.
+messageTextAreaInsertion.TITLE=Rozmiar tre\u015Bci zosta\u0142 przekroczony
+
+# Entries for warning message displayed when the subject field is too large
+# -------------------------------------------------------------------------
+subjectFieldSizeExceeded.MESSAGE=Osi\u0105gni\u0119to maksymalny rozmiar tematu umieszczanego na kopercie.
+subjectFieldSizeExceeded.TITLE=Rozmiar tematu zosta\u0142 przekroczony

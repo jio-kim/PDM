@@ -1,0 +1,1023 @@
+# @<COPYRIGHT>@
+#===============================================================================
+# Copyright 2010.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#===============================================================================
+# @<COPYRIGHT>@
+
+#
+# File description: This properties file contains all locale specific keys for the common package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: common_locale.properties
+#   Module  : com.teamcenter.rac.common
+#
+#===============================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#14-Feb-2000  x_subrat                add entry for change ownership
+#24-Feb-2000  mccollr                 Move locale keys to the locale file.
+#29-Feb-2000  Nigel Morse             move marks changes to here
+#09-Mar-2000  James Beard             Merge from int_v6.2
+#10-Mar-2000  mccollr                 Change "Product Vision" to Viewer.
+#16-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#20-Mar-2000  Sunil Viswanathan       Change Product Vision to Viewer
+#21-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#05-Apr-2000  Chandrashekar Veerapaneni  Update for in-Class
+#07-Apr-2000  mccollr                 Add some keys for user setting changes.
+#13-Apr-2000  helmutl                 merge from phase 8
+#18-Apr-2000  wangp                   update entry noParent
+#19-Apr-2000  mccollr                 Merge out from Cypress to the Troy Project branch.
+#12-May-2000  mccollr                 Add keys when an object is not in-process for application linker.
+#18-May-2000  huangz                  Add table header popup menu key
+#19-May-2000  huangz                  Add keys for column properties.
+#23-May-2000  mccollr                 Change Customerize to Customize.
+#02-Jun-2000  huangz                  Change the insertColumn key value
+#04-Aug-2000  huangz                  add text, html keys
+#11-Aug-2000  huangz                  Add selectStatus.MSG key
+#23-Aug-2000  wangp                   add entries for ClassAttributePanel
+#                                     remove openbyname entries
+#23-Aug-2000  wangp                   merge to Troy project branch
+#28-Aug-2000  huangz                  Move the selectStatus.MSG key to AIFTreeTable.
+#28-Jul-2000  Ziv Israeli             Adding revRuleMruButton entries
+#01-Sep-2000  Mark Fawcett            merge
+#30-Mar-2000  x_karim                 Merge from P6.2.0.7
+#27-Mar-2000  sacchett                ECM viewer application added
+#31-Mar-2000  sacchett                Merge to CM project branch
+#22-May-2000  x_karim                 Merge out from P6.2.0.11a
+#18-Jul-2000  x_karim                 merge from V7 base label
+#04-Sep-2000  x_karim                 merge from CYPINT_V7.0 after Cambridge 7.0.0.3 promote
+#11-Sep-2000  x_sengup                Added Properties for SAPRFC project
+#20-Sep-2000  x_subrat                Added Explore Button Tool Tip for Deep Select Functionality.
+#20-Sep-2000  Subrata Sen             Checking In after fixing Comments
+#20-Sep-2000  Subrata Sen             Merge to try_uif_v7.0
+#21-Sep-2000  Chandra Veerapaneni     Add text for archived, notarchived
+#21-Sep-2000  Chandrashekar Veerapaneni  Merge
+#06-Oct-2000  choim                   add view->audit
+#03-Aug-2000  Yan Shen                add subscribeSelection.TITLE, submanSelection.TITLE
+#07-Oct-2000  shen                    And text strings for Subscription project
+#07-Oct-2000  x_brahma                Merge from submgr_v7 branch
+#07-Oct-2000  x_brahma                Merge from cypint_v7.0 branch
+#17-Oct-2000  wangp                   update LOV entries
+#18-Oct-2000  wangp                   Promote to Troy
+#06-Nov-2000  Ravi Yechuri            Added key to set status for User Settings command
+#01-Nov-2000  Ziv Israeli             endItemMruButton entries
+#09-Nov-2000  Ziv Israeli             Merging from sdldev_v7.0
+#26-Feb-2001  Zhixin Huang            Revision info center for the reference ant take off read icon.
+#05-Apr-2001  mccollr                 Fix for PR#4260242 which adds validate_rev_id user exit.
+#09-Apr-2001  wangp                   move entries for lov to common/lov package
+#07-May-2001  wangp                   change Tc to i-Man
+#17-May-2001  mccollr                 Add key for refresh update string for PR#4214730.
+#18-May-2001  wangp                   change i-Man back to Tc
+#09-Jul-2001  mccollr                 Apply fix for PR#4147453 which will provide modified invalid icons as well as a new popupmenu.
+#26-Jul-2001  Zhixin Huang            Fix 4130110
+#06-Aug-2001  mccollr                 merge out
+#05-Oct-2001  Tony Dumont             PR#4329163 - Allow remote import in PSE expand
+#05-Oct-2001  wangp                   move org related entries to common/organization
+#09-Oct-2001  mccollr                 merge.
+#11-Oct-2001  wangp                   Merge to troy
+#12-Oct-2001  Zhixin Huang            Enhance it for Ford's requirement.
+#15-Oct-2001  Zhixin Huang            Merge to Troy.
+#24-Oct-2001  mccollr                 Merge out from the phase 4 label.
+#22-Nov-2001  Bobby Ljubic            Initial Creation/promote to P8.0.0.2
+#23-Nov-2001  Bobby Ljubic            Merge to project integration branch
+#03-Dec-2001  wangp                   add entries for MRU popup menu
+#                                     add entries for DefaultMoreAboutDialog
+#04-Dec-2001  wangp                   Merge to troy
+#03-Dec-2001  rowlands                internationalize an OrgComboPanel operation msg
+#15-Feb-2002  Zhixin Huang            Fix the merge problem.
+#19-Feb-2002  Zhixin Huang            Add some keys for TypesPanel.
+#26-Feb-2002  Zhixin Huang            Get the selectButton keys.
+#27-Feb-2002  Zhixin Huang            Fix bug.
+#01-Mar-2002  Zhixin Huang            Change the keys for type panel.
+#05-Mar-2002  Zhixin Huang            Add loadingData key.
+#08-Mar-2002  Zhixin Huang            Fix 4400138
+#19-Mar-2002  Hwey Wung               Fix PR #4345829
+#09-Apr-2002  Tony Dumont             PR#4483338 - Need a new message
+#15-Apr-2002  Tony Dumont             Promote to phase 7
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#30-Apr-2002  Rob McColl              Merge out for rebranding changes.
+#19-Dec-2002  Zhixin Huang            Add a key for AutoFilter.
+#07-Jan-2003  shankar                 Add more options to Table Function Menu.
+#17-Jan-2003  israeli                 newObjectLinkPrefError/NumEntries
+#20-Dec-2002  faming                  V9 Project Level Security Project
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#12-Feb-2003  Rob McColl              Add the description for the cut PR#1226580.
+#25-Feb-2003  wangp                   more keys for SelectButton(for default group)
+#14-Mar-2003  Zhixin Huang            Add some key for auto filter.
+#14-Mar-2003  Zhixin Huang            Add key for auto filter.
+#19-Mar-2003  wangp                   add soldto id info
+#27-Mar-2003  shankar                 Modify options in Table Function Menu
+#27-Mar-2003  viswanat                There were 2 select.TITLE definitions, clean that up
+#06-May-2003  wangp                   fix pr 4674050: new design for newitem/revise/saveasitemrev dialog, add keys for revise
+#07-May-2003  Zhixin Huang            Fix PR 4764326. Fix the key value defined for readOnlyApplicationAccess which is wrong in two byte language.
+#02-May-2003  x_chandr                Added noTCLicense keys for "Portal Lite for UG/Mgr" project
+#06-May-2003  wangp                   fix pr 4674050: new design for newitem/revise/saveasitemrev dialog, add keys for revise
+#04-Jul-2003  bunly                   Add NewGDE
+#16-Jul-2003  kao                     cope with GDELine
+#18-Aug-2003  viswanat                Promote to P9.0.0.4
+#02-Apr-2003  rlee                    Add Item Id Registry Menu entries
+#19-Aug-2003  rlee                    Merge from P9.0.0.3
+#20-Aug-2003  rlee                    Merge from cyp_p9.0.0.4
+#20-Aug-2003  Chandra Veerapaneni     Changes to noTCLicense to pick up the mode at runtime
+#26-Aug-2003  Chandra Veerapaneni     P9.0.0.4 CCR
+#25-Sep-2003  viswanat                Move Portal Visualization version to More...
+#30-Sep-2003  martinj                 PR4848657-added keys for user preference error messages
+#03-Oct-2003  Jeff Martin             Resolve conflicts for p9.0.0.6
+#05-Dec-2003  Jeff Currier            add entries for session suspension project
+#06-May-2004  Max Ishutin             Resources should follow SendTo code to common package
+#27-Aug-2004  faming                  V10 Work Context Project
+#09-Sep-2004  faming                  V10 Work Context Project
+#13-Sep-2004  faming                  V10 Work Context Project
+#15-Oct-2004  Tony Dumont             TDM project
+#19-Oct-2004  Tony Dumont             Merge from Paul's for TDM work
+#12-Oct-2004  revankar                Changes for copyProcess
+#14-Oct-2004  Rob McColl              Add localized strings to support the enhanced AbstractProgressDialog
+#19-Oct-2004  Ranjit Saripalli        For FGP DataSyncUtility project
+#12-Oct-2004  Geethika Chitturi       Changing Tc to Teamcenter
+#13-Oct-2004  Geethika Chitturi       Changing viewer to Teamcenter Visualization
+#13-Oct-2004  Geethika Chitturi       Changing UG to NX
+#15-Oct-2004  Geethika Chitturi       Merge from x_chittu_hyd_p10.0.0.5 to x_chittu_hyd_p10.0.0.6
+#18-Oct-2004  Geethika Chitturi       Changing Teamcenter to Teamcenter
+#18-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#19-Oct-2004  Geethika Chitturi       Merging to project branch
+#20-Oct-2004  Geethika Chitturi       Changing Teamcenter Visualization to Viewer
+#20-Oct-2004  Geethika Chitturi       Changing Teamcenter Visualization to Viewer
+#20-Oct-2004  Geethika Chitturi       Merging to the project branch
+#22-Oct-2004  Ranjit Saripalli        Resolve conflicts for p10.0.0.6
+#27-Aug-2004  Vic Nidoy               Add Remote Export and Remote Checkout
+#07-Oct-2004  nidoy                   Merge with p10.0.0.4
+#03-Nov-2004  Vic Nidoy               Merge with p10.0.0.6
+#27-Oct-2004  x_iyer                  Added Tools->Check Index Status
+#05-Nov-2004  x_iyer                  Merged from P10.0.0.6
+#11-Nov-2004  Rob McColl              Add readonly flag
+#08-Nov-2004  x_bhadra                Changing GeneralDesignelement to Item Element
+#08-Nov-2004  x_bhadra                Incorporating Review Comments
+#08-Nov-2004  Narayana Murthy         Merge from P10.0.0.6
+#17-Nov-2004  x_iyer                  Resolve conflicts for p10.0.0.7
+#28-Sep-2004  Reshma Khatib           Added entries for Replace and Remove from Wizard.
+#30-Sep-2004  Ramabhadrakiran Suryadevara  Merge
+#01-Nov-2004  S.R.Kiran               merge
+#30-Nov-2004  S.R.Kiran               Merge
+#07-Dec-2004  S.R.Kiran               Merge
+#08-Nov-2004  Tony Dumont             Merge for TDM project
+#07-Dec-2004  Tony Dumont             Merge for phase 7
+#15-Dec-2004  Tony Dumont             Resolve conflicts for p10.0.0.8
+#04-Jan-2005  Max Ishutin             Add AI type incompatibilty message
+#11-Mar-2005  Zhixin Huang            Rebrand project.
+#14-Apr-2005  krishnas                Fix for PR # 5156549
+#16-May-2005  Usha Thiagarajan        To Fix PR no:4921174,Added Error Messages
+#21-Nov-2005  Venkatesh Chitnis       For PR 5437606 (Rename Properties Panel -> Details Panel)
+#19-Jan-2006  Joseph Brant            work in progress
+#17-Feb-2006  peleeson                merge out P10.0.1.7
+#13-Mar-2006  Kranti Chaitanya        for TcX 2005
+#18-Feb-2006  aparasur                Moved noDisplayableResourceTypes from com.teamcenter.rac\cme\dialogs\dialogs_locale.properties to com.teamcenter.rac\common\common_locale.properties
+#10-Mar-2006  aparasur                merge out P10.0.1.9
+#17-Mar-2006  Denny Chitwood          Resolve conflicts for p10.0.1.10
+#15-May-2006  kondragu                Added Keys for server/log information for PR 5513835
+#06-Jun-2006  Joseph Brant            Input validation and refresh
+#23-Jun-2006  Mahabooba Sulthana      Added keys for Calendars
+#19-Dec-2006  Guthrie                 Added load menu names for send data to menus
+#02-Jul-2007  Andrew Samusenko        Fix for PR#5777512
+#21-Jul-2006  akarte                  On-demand sync
+#27-Jul-2006  Chandana Lavanya K      For TcMX
+#15-Aug-2006  bhiriyan                Add text for collapse below
+#19-Aug-2006  x_ghoshs                Fix for PR#5411420 - On Demand Sync UI changes
+#23-Aug-2006  x_ghoshs                resolved merge conditions:
+#25-Jan-2007  shankarr                Added entries for TcBOM CBA
+#23-Apr-2007  kao                     SST mode changes for remote check-in, warning on secondary send error
+#16-Jun-2007  kao                     SST work merge
+#28-Apr-2008  Manuel Georis           Added common keys for Import/Export Briefcase package - BriefcaseImportExport
+#29-Jul-2008  Manuel Georis           Added .bcz extension for Briefcase package.
+#05-Feb-2009  Sofia                   Added inClass names.
+#26-Oct-2009  Matt Insko              Added GMT term
+#01-Dec-2009  Asya Vainer             Removed "AppearanceGroup.TYPE": instead the type display name will be used.
+#$HISTORY$
+#===============================================================================
+
+# Access Center Keys
+# ------------------------
+readAccess.TIP=L'accesso in lettura \u00E8 consentito per questo oggetto
+noReadAccess.TIP=L'accesso in lettura non \u00E8 consentito per questo oggetto
+
+writeAccess.TIP=L'accesso in scrittura \u00E8 consentito per questo oggetto
+noWriteAccess.TIP=L'accesso in scrittura non \u00E8 consentito per questo oggetto
+
+changeAccess.TIP=L'accesso in modifica \u00E8 consentito per questo oggetto
+noChangeAccess.TIP=L'accesso in modifica non \u00E8 consentito per questo oggetto
+
+deleteAccess.TIP=L'opzione Elimina accesso \u00E8 attiva per questo oggetto
+noDeleteAccess.TIP=L'opzione Elimina accesso non \u00E8 attiva per questo oggetto
+
+inProcess.TIP=L'oggetto \u00E8 in fase di elaborazione
+notInProcess.TIP=L'oggetto non \u00E8 in fase di elaborazione
+
+checkedOut.TIP=L'oggetto \u00E8 in checkout
+notCheckedOut.TIP=L'oggetto non \u00E8 in checkout
+
+released.TIP=L'oggetto \u00E8 stato rilasciato
+notReleased.TIP=L'oggetto non \u00E8 stato rilasciato
+
+published.TIP=L'oggetto \u00E8 pubblicato
+notPublished.TIP=L'oggetto non \u00E8 pubblicato
+
+classified.TIP=L'oggetto \u00E8 classificato
+notClassified.TIP=L'oggetto non \u00E8 classificato
+
+archived.TIP=L'oggetto \u00E8 archiviato
+notArchived.TIP=L'oggetto non \u00E8 archiviato
+
+updateOptions.TITLE=Opzioni di aggiornamento
+
+# Reference Center Keys
+# ------------------------
+whereReferenced.TIP=Conteggio Dove referenziato per l'oggetto selezionato.
+
+whereUsed.TIP=Conteggio Dove \u00E8 usato per l'oggetto selezionato.
+
+childCount.TIP=Numero di elementi figlio del componente selezionato.
+loadingReference = Caricamento informazione di riferimento in corso...
+referenceInfo.TIP = Fare clic per visualizzare informazione di riferimento.
+
+# InformationCenter Keys
+# ------------------------
+infoCenter.WhereUsed.TITLE=Visualizza dati Dove \u00E8 usato
+infoCenter.WhereRefed.TITLE=Visualizza dati Dove referenziato
+infoCenter.ChildCount.TITLE=Visualizza conteggio degli elementi figlio
+infoCenter.Access.TITLE=Visualizza dati di accesso all'oggetto
+infoCenter.State.TITLE=Visualizza dati stato oggetto
+
+# General Processing Messages
+# ------------------------
+initializeDisplayMessage=Inizializzazione schermo
+refreshDisplayMessage=Aggiornamento schermo
+deleteComponentsMessage=Elaborazione richiesta eliminazione
+updateComponentsMessage=Elaborazione richiesta aggiornamento
+noSelectionMessage=Effettuare una selezione per convalidare l'operazione
+noCommandMessage=Non \u00E8 stato definito alcun comando di azione nel registro per questa azione
+
+# Error message for unreserve
+unreserveSecondarySendFailed = Checkin remoto eseguito correttamente, ma si \u00E8 verificato un problema durante l'invio di oggetti locali secondari.
+
+# Error message for no selection
+#---------------------------------
+noObjectsSelected = Nessun oggetto selezionato.
+noWorkContextFound = Nessun WorkContext associato a questa attivit\u00E0.
+noCopyProcessObjectsSelected = Selezionare EPMTask oppure oggetto EPMJob.
+selectTwoObjects = Selezionare due immagini 2D.
+accessNoSelection.TITLE = Accedi...
+moveNoSelection.TITLE = Sposta...
+expandNoSelection.TITLE = Espandi...
+expandBelowNoSelection.TITLE = Espandi a partire da...
+collapseBelowNoSelection.TITLE = Comprimi a partire da...
+compare2DAction.TITLE = Confronta immagini 2D...
+purgeNoSelection.TITLE = Esegui purge...
+latestNoSelection.TITLE = Pi\u00F9 recenti...
+saveNoSelection.TITLE = Salva...
+saveAsNoSelection.TITLE = Salva con nome...
+reviseNoSelection.TITLE = Revisiona...
+copyNoSelection.TITLE = Copia...
+copyProcessNoSelection.TITLE = Copia processo...
+pasteNoSelection.TITLE = Incolla...
+pasteAsNoSelection.TITLE = Incolla...
+cutNoSelection.TITLE = Taglia...
+deleteNoSelection.TITLE = Elimina...
+openNoSelection.TITLE = Apri...
+openAsNoSelection.TITLE = Apri con...
+viewNoSelection.TITLE = Visualizza...
+viewWithNoSelection.TITLE = Visualizza con...
+propertiesNoSelection.TITLE = Propriet\u00E0...
+namedRefNoSelection.TITLE = Riferimenti denominati...
+reserveNoSelection.TITLE = Riserva...
+publishNoSelection.TITLE = Pubblica...
+unpublishNoSelection.TITLE = Annulla pubblicazione...
+remoteExportNoSelection.TITLE = Esportazione remota...
+remoteCheckoutNoSelection.TITLE = Checkout remoto...
+registerItemIdNoSelection.TITLE = Registra ID item...
+unregisterItemIdNoSelection.TITLE = Annulla registrazione ID item...
+unreserveNoSelection.TITLE = Annulla prenotazione...
+unreserveSecondarySendFailed.TITLE = Annulla prenotazione...
+siteCheckInNoSelection.TITLE = Checkin dal sito...
+siteCheckOutNoSelection.TITLE = Checkout nel sito...
+cancelSiteCheckOutNoSelection.TITLE = Annulla checkout nel sito...
+cancelCheckOutNoSelection.TITLE = Annulla checkout...
+transferCheckOutNoSelection.TITLE = Trasferisci checkout...
+checkOutNotificationListNoSelection.TITLE = Notifica di checkout...
+checkOutHistoryNoSelection.TITLE = Cronistoria checkout...
+archiveNoSelection.TITLE = Archivia...
+restoreNoSelection.TITLE = Ripristina...
+pendingArchiveRequestNoSelection.TITLE = Richiesta di archiviazione inevasa...
+pendingRestoreRequestNoSelection.TITLE = Richiesta ripristino inevasa...
+exportObjectsNoSelection.TITLE = Esporta oggetti...
+refreshNoSelection.TITLE = Aggiorna...
+accessNoSelection.TITLE = Accedi...
+printNoSelection.TITLE = Stampa...
+printAsNoSelection.TITLE = Stampa...
+importRemoteNoSelection.TITLE = Importa oggetti remoti...
+changeOwnershipNoSelection.TITLE = Modifica proprietario...
+newFolderError.TITLE=Nuova cartella...
+newItemError.TITLE=Nuovo item...
+newDatasetError.TITLE=Nuovo set di dati...
+newFormError.TITLE=Nuovo form...
+displaySapSelection.TITLE = Visualizza dati SAP...
+singlefilerecoveryNoSelection.TITLE = Recupero...
+projectNoSelection.TITLE = Progetto...
+assignParticipantsNoSelection.TITLE = Assegna partecipanti...
+newGDEError.TITLE=Nuova interfaccia...
+workContextErrorDialog.TITLE = Contesto di lavoro...
+removeNoSelection.TITLE = Elimina...
+removeAsNoSelection.TITLE = Elimina...
+replaceNoSelection.TITLE = Sostituisci...
+replaceAsNoSelection.TITLE = Sostituisci...
+makeimmuneNoSelection.TITLE = Rendi immune...
+removeimmunityNoSelection.TITLE = Rimuovi immunit\u00E0...
+error.TITLE = Errore
+syncNoSelection.TITLE = Sincronizza...
+syncMoreObjectsSelected.TITLE = \u00C8 stato selezionato pi\u00F9 di un oggetto
+syncMoreObjectsSelected = Selezionare un solo oggetto per iniziare la sincronizzazione
+syncNonItemSelected = Selezionare un item o item revision per iniziare la sincronizzazione dell'assieme
+syncNonItemSelected.TITLE = Sincronizzazione assieme...
+syncCompNonItemSelected.TITLE = Sincronizzazione componente...
+syncCompNonItemSelected = Selezionare un item o item revision per iniziare la sincronizzazione del componente
+useBomWindowforObjectSelection = Selezionare gli oggetti dalla finestra distinta base.
+noToplineforItemElement = L'elemento item non pu\u00F2 essere usato come linea di primo livello.
+noToplineforInterfaceDefinition = La definizione interfaccia non pu\u00F2 essere usata come linea di primo livello.
+noToplineforNonRevisableConnection = La connessione non revisionabile non pu\u00F2 essere usata come linea di primo livello.
+noToplineforProcessVariable = La variabile di processo non pu\u00F2 essere usata come linea di primo livello.
+itemResolutionDialog.TITLE = Seleziona item univoco
+selectTopLine=L'esportazione Distinta base non \u00E8 ancora supportata nel briefcase. Selezionare la linea di primo livello della distinta base.
+
+# CAD-BOM alignment
+splitSubUsage.TITLE = Dividi sottoutilizzi
+mergeSubUsages.TITLE = Unisci sottoutilizzi
+singleSelectionError = Seleziona due o pi\u00F9 sottoutilizzi 
+notFromSameParentSelection = Seleziona sottoutilizzi appartenenti alla stessa Linea di utilizzo
+makePrimaryNoSelection.TITLE = Rendi rappresentazione principale...
+addToLayoutNoSelection.TITLE = Aggiungi al layout...
+fillInSubusagesNoSelection.TITLE = Riempi sottoutilizzi...
+updateUsageObjectAction.TITLE = Aggiorna oggetto Utilizzo
+
+# message for Subscription
+subscribeSelection.TITLE = Abbonamento...
+checkingUser=Verifica privilegi utente...
+wrongObject.TEXT=Sono stati selezionati oggetti non corretti per questa operazione.
+wrongObject.TITLE=Selezione oggetto...
+notTheSameType.TEXT=Gli oggetti selezionati non sono dello stesso tipo
+
+# Error messages for too many selection
+# ---------------------------------
+tooManyObjects = \u00C8 possibile selezionare un solo oggetto.
+openAsTooManySelection.TITLE = Apri con...
+viewWithTooManySelection.TITLE = Visualizza con...
+namedRefTooManySelection.TITLE = Riferimenti denominati...
+printAsTooManySelection.TITLE = Stampa...
+pasteAsTooManySelection.TITLE = Incolla...
+newstuffRecover =Un riferimento del file del database o\nuna copia del file di backup verr\u00E0 recuperata nella cartella Newstuff.
+
+# Error messages for not right type
+# ------------------------------------
+notDatasetType = L'oggetto non \u00E8 un set di dati.
+namedRefNotDatasetType.TITLE = Riferimenti denominati...
+invalidObjects=Sono stati selezionati oggetti non validi.
+invalidSapObjects=Selezionare un item o un ItemRevision per questa operazione.
+gdeLineObjects=Gli oggetti GDELine selezionati non possono ancora essere esportati
+noParent = I componenti selezionati non contengono riferimenti ad un elemento padre.\n \nPromemoria: qualsiasi selezione di componente eseguita nelle schede Riferimento/Visualizzatore/Propriet\u00E0 \nha la precedenza sulle selezioni della struttura di navigazione. Riselezionare i componenti da eliminare dalla struttura \ndi navigazione e riprovare.
+cutNoParent.TITLE = Impossibile tagliare
+deleteNoParent.TITLE = Un'osservazione...
+deleteNoParent.MESSAGE = Almeno uno degli oggetti selezionati non ha riferimenti ad un elemento padre\nper l'eliminazione. Generalmente, questo significa che le selezioni componente\nsono state eseguite nella scheda Riferimento/Visualizzatore oppure sono il\nrisultato di una query. Notare che le schede Propriet\u00E0/Visualizzatore/Riferimento\nhanno la precedenza di selezione nella struttura di navigazione.
+multipleSelectionError = Non sono consentite selezioni multiple.
+itemSelectionError = Selezionare l'oggetto ItemRevision per utilizzare questa funzionalit\u00E0.
+noDisplayableResourceTypes = Le regole di visualizzazione tipo non consentono di creare oggetti di tipo {0}.
+icoCut = Impossibile tagliare l'oggetto di classificazione selezionato. \nUsare l'applicazione Classificazione per eliminare gli oggetti di classificazione.
+icoCopy = Impossibile copiare l'oggetto di classificazione selezionato. \nUsare l'applicazione Classificazione per creare gli oggetti di classificazione.
+copyWrongType.TITLE = Impossibile copiare 
+
+# This property will be selected when an invalid create or paste operation is carried
+# ------------------------------------------------------------------------------------
+invalidParentObject=L'oggetto selezionato non \u00E8 un elemento padre valido per questa operazione
+
+# Find in Display Keys
+# ------------------------------
+findInDisplay=Trova nello schermo
+
+# MRUButton Keys
+# ------------------------------
+mruButton.TIP=Pulsante usati di recente (MRU)
+mruButton.TITLE=Elenco ultimi usati
+mruUpdateOptions.TITLE=Opzioni MRU
+mruPurgeLimit=Limite purge:
+revRuleMruButton.TIP=Regole revisione usate di recente
+revRuleMruButton.TITLE=Elenco ultime regole revisione usate
+endItemMruButton.TIP=Item finiti usati di recente
+effGrpMruButton.TIP=Gruppo di effettivit\u00E0 usato di recente
+endItemMruButton.TITLE=Elenco ultimi item finiti usati
+
+# Properties for the Manage Global Alternates button
+# ------------------------------
+manageGlobalAlternates=Gestisci alternative globali 
+manageGlobalAlternates.TITLE=Gestisci alternative globali 
+manageGlobalAlternates.TIP=Gestisci alternative globali dell'item selezionato
+manageGlobalAlternates.INFO={0} ha le seguenti alternative globali:
+manageGlobalAlternates.preferButton.LABEL=Preferita
+manageGlobalAlternates.preferButton.TIP=Rende l'alternativa globale selezionata la preferita 
+manageGlobalAlternates.removeButton.LABEL=Rimuovi
+manageGlobalAlternates.removeButton.TIP=Elimina le alternative globali selezionate 
+manageGlobalAlternates.addButton.LABEL=Aggiungi...
+manageGlobalAlternates.addButton.TIP=Aggiunge un item come alternativa globale
+manageGlobalAlternatesDefaultMessage=Fare doppio clic su un'alternativa per sceglierla come preferita 
+manageGlobalAlternates.noAlternates=L'item selezionato non ha alternative globali 
+manageGlobalAlternates.noItemInfo.MSG=Non \u00E8 stata trovato alcun item sulla base delle informazioni fornite
+manageGlobalAlternates.noItemInfo.TITLE=Nessun item trovato
+addGlobalAlternates.TITLE=Aggiungi alternative globali
+addGlobalAlternates.cantAddItself.MSG=Impossibile aggiungere un item come alternativa globale di se stesso.
+addGlobalAlternates.cantAddGlobalAlt.TITLE=Impossibile aggiungere l'alternativa globale
+
+# Related Global Alternates
+hasRelatedGlobalAlts.TITLE = Alternative globali correlate
+listRelatedGlobalAlts.MESSAGE = L'item selezionato contiene le seguenti alternative globali correlate
+cutRelatedGlobalAlts.MESSAGE = La rimozione dell'alternativa globale comporta la rimozione delle relazioni verso le alternative globali correlate elencate di seguito.\nContinuare l'eliminazione dell'alternativa globale?
+
+# AbstractProgressDialog Keys
+# ----------------------------------
+error=Errore
+aborting=Interruzione...
+dontShow=Non mostrare pi\u00F9 la finestra di dialogo di conferma
+
+loadingAccess=Caricamento dati del centro informazioni.
+
+# Tab Icon and Name Definitions
+# -------------------------------
+browseTab=Visualizzatore
+propertiesTab=Dettagli
+referencersTab=Riferimenti
+summaryTab=Riepilogo
+compareTab=Confronta...
+browseTab.TIP=Visualizzatore
+propertiesTab.TIP=Pannello dettagliato
+referencersTab.TIP=Pannello dei riferimenti
+compareTab.TIP=Confronta
+summaryTab.TIP=Pannello riepilogativo
+
+# Status msg for load table root
+# ------------------------
+saveTablePreference = Salva opzioni tabella...
+
+saveTreeTablePreference = Salva opzioni tabelle della struttura...
+
+# Entries for inbox status and mail status and backup status
+# ------------------------------------------------------------------
+inboxStatus.TIP=\u00C8 stata trovata una nuova attivit\u00E0.
+mailStatus.TIP=\u00C8 stato trovato un nuovo messaggio.
+BackupStatus.TIP=Nuovo stato backup
+
+# Entries for TCTreeTable
+# ---------------------------
+expandMsg = Espansione nodo...
+
+# Keys for OrgComboPanel
+# -------------------------
+orgGroupLabel=Gruppo
+orgRoleLabel=Ruolo
+orgUserLabel=Utente
+orgPersonLabel=Persona
+settingMemberData.MSG = Impostazione dati dei componenti del team in corso...
+
+# Keys for GenericUserSelectionPanel
+# ----------------------------------
+organizationLabel=Organizzazione
+projectTeamsLabel=Team di progetto
+InvalidSelectionReason.INVALID_SELECTION=Selezione non valida.
+InvalidSelectionReason.DUPLICATE_SIGNOFF=Signoff duplicato.
+InvalidSelectionReason.MORE_THAN_REQUIRED=Sono stati selezionati signoff in quantit\u00E0 superiore al numero richiesto.
+InvalidSelectionReason.PROFILE_SIGNOFFS_MET=Signoff sufficienti per il profilo.
+InvalidSelectionReason.DUPLICATE_PARTICIPANT=Duplica partecipante.
+confirmSearchWithStar=Usare un * come criterio di ricerca pu\u00F2 allungare i tempi della ricerca.\nContinuare?
+search.TITLE=Ricerca
+
+# Entries for TCTypesTree
+# ------------------------------
+TCTypesTreeRootName=Tipi di Teamcenter
+loadingTypeNames=Caricamento tipi...
+loadingPropertyNames=Caricamento nomi propriet\u00E0...
+
+# Entries for the AbstractTCAdminApplication class
+# --------------------------------------------------
+notDBAPriviledged.MESSAGE=L'utente non dispone delle autorizzazioni. \u00C8 consentito solo l'accesso in lettura.
+notDBAPriviledged.TITLE=Accesso non DBA
+readOnlyApplicationAccess= (Sola lettura)
+noAccess.MESSAGE=Questa applicazione pu\u00F2 essere eseguita solo da un DBA.
+noAccess.TITLE=Accesso non autorizzato
+
+nowDBAPriviledged.MESSAGE=Poich\u00E9 il gruppo, il ruolo o lo stato di bypass sono cambiati, ora si dispone dell'accesso completo all'applicazione di amministrazione del sistema.
+nowNotDBAPriviledged.MESSAGE=Poich\u00E9 il gruppo, il ruolo o lo stato di bypass sono cambiati, l'accesso a questa applicazione di amministrazione del sistema \u00E8 ora in sola lettura.
+shouldNotDBAPriviledged.MESSAGE=Poich\u00E9 il gruppo, il ruolo o lo stato \u00E8 cambiato, \nsi sta ora visualizzando un'applicazione normalmente non visualizzabile in queste condizioni.\nDi conseguenza, l'accesso a questa applicazione sar\u00E0 di sola lettura.
+
+# Keys for tree table popup menu
+# ----------------------------------
+treeTable.POPUP_TITLE = Menu a comparsa BOMline
+
+# Keys for types panel
+types = tipi
+loading = Caricamento
+typeSelection.TIP = Premere per selezionare altri tipi...
+
+# Keys for application linker
+# ----------------------------------
+applicationLinker.notInProcess.MESSAGE=L'oggetto selezionato non fa parte di alcun processo.
+applicationLinker.notInProcess.TITLE=L'oggetto non \u00E8 in fase di elaborazione
+
+#Keys for table header popup menu
+tableHeader.POPUP_TITLE = Menu funzioni tabella
+remove = Elimina questa colonna
+insert = Inserisci colonne...
+sort.TITLE = Classifica...
+copySelection = Copia dati selezionati
+copyProcessSelection = Dati selezionati CopyProcess
+forQuery = Per query
+enableRowSelect = Abilita selezione riga
+enableColumnSelect = Abilita selezione colonna
+sortBy = Ordina per
+thenBy = Poi per
+ascending = Crescente
+descending = Decrescente
+saveColumnConfigMenu=Salva configurazione di colonna
+applyColumnConfigMenu=Applica configurazione di colonna
+
+# key for table header popup menu
+text = HTML/Testo
+graphic = Grafica
+printTable = Stampa tabella
+
+# Keys for select column shown
+selectColumnShown.TITLE = Seleziona finestra di dialogo Colonne mostrate
+columnsAvailable.LABEL = Disponibile:
+columnsSelected.LABEL = Selezionate:
+displayName = Usa nome visualizzabile
+
+# ----------------------- keys for ClassAttributePanel -------------------------
+# Entries for attribute types
+char=Carattere
+charArray=Array di caratteri
+date=Data
+dateArray=Array di data
+double=Doppio
+doubleArray=Array a doppia precisione
+float=Virgola mobile
+floatArray=Array in virgola mobile
+int=Numero intero
+intArray=Array numeri interi
+logical=Logico
+logicalArray=Array logico
+short=Breve
+shortArray=Array breve
+string=Stringa
+stringArray=Array stringa
+typedReference=Riferimento digitato
+typedReferenceArray=Array di riferimento digitato
+untypedReference=Riferimento non digitato
+untypedReferenceArray=Array di riferimento non digitato
+externalReference=Riferimento esterno
+externalReferenceArray=Array riferimenti esterni
+note=Nota
+noteArray=Array nota
+
+# Entries for attribute access selection
+readWrite=Lettura/Scrittura
+readNoWrite=Lettura/No scrittura
+noReadNoWrite=No lettura/No scrittura
+
+# Entries for attribute table header tip
+attributeName.TIP=Nome attributo
+attributeType.TIP=Tipo di attributo
+attributeSize.TIP=Dimensione massima della stringa
+attributeReferenceClass.TIP=Classe di riferimento
+attributeLOV.TIP=Elenco di valori
+attributeIniValue.TIP=Valore iniziale
+attributeLowerBound.TIP=Valore limite inferiore
+attributeUpperBound.TIP=Valore limite superiore
+attributeNullsAllowed.TIP=Il valore NULL \u00E8 consentito?
+attributeUnique.TIP=L'attributo \u00E8 univoco?
+attributeAccess.TIP=Accesso
+attributeCandidateKey.TIP=\u00C8 una possibile chiave di attributo?
+attributeIgnoreError.TIP=Ignorare gli errori?
+
+changeAttributeAccess.TIP=Fare doppio clic per modificare l'accesso all'attributo
+changeAttributeType.TIP=Fare doppio clic per modificare il tipo di attributo
+changeAttributeLOV.TIP=Fare doppio clic per modificare l'elenco di valori
+attriubteKeyCombo.TIP=Fare doppio clic per modificare
+
+# Entries for the attribute table header name
+attributeName.HEADER=Nome
+attributeType.HEADER=Tipo
+attributeSize.HEADER=Dimensioni
+attributeClass.HEADER=RefClass
+attributeLOV.HEADER=Elenco di valori
+attributeIniValue.HEADER=IniValue
+attributeLowerBound.HEADER=Inferiore
+attributeUpperBound.HEADER=Superiore
+attributeNullAllowed.HEADER=Null
+attributeIsUnique.HEADER=Univoco
+attributeAccess.HEADER=Accesso
+attributeCandidateKey.HEADER=Candidato
+attributeIgnoreErrors.HEADER=Errori
+
+# Entries for messages
+attributeInvalidFields.TITLE=Attributo classe
+attributeInvalidFields.MESSAGE=Sono stati trovati campi non validi:
+attributeNoName=Specificare nome attributo
+attributeNoStringSize=Specificare la lunghezza massima della stringa (>0) per il tipo di stringa
+attributeNoRefClass=Selezionare la classe di riferimento per il tipo di riferimento immesso
+attributeInvalidChar=Carattere non valido come valore iniziale
+attributeInvalidInt=I numeri interi non sono validi come valore iniziale, limite superiore o limite inferiore
+attributeInvalidShort=I numeri abbreviati non sono validi come valore iniziale, limite superiore o limite inferiore
+attributeInvalidFloat=I numeri con virgola mobile non sono validi come valore iniziale, limite superiore o limite inferiore
+attributeInvalidDouble=I numeri a doppia precisione non sono validi come valore iniziale, limite superiore o limite inferiore
+# ----------------------- keys for ClassAttributePanel -------------------------
+
+
+# Key for Explore Tip
+# ------------------------------
+explore.TIP=Esplora i componenti selezionati
+
+# Key for Site Tip
+# ------------------------------
+site.TIP=Seleziona sito
+
+# Key for Recursive Delete Tip
+# ------------------------------
+delete.TIP=Elimina l'item e tutti gli item dipendenti
+
+# Key for setting status when Edit->User Settings is executed
+# -----------------------------------------------------------
+usersettings.STATUS=Aggiornamento comandi per gruppo e ruolo correnti...
+
+# Keys for the Messages when the USER_validate_item_rev_id has problems
+# -----------------------------------------------------------------------
+
+invalidID.MESSAGE=Impossibile creare l'item... L'ID immesso non \u00E8 valido.
+modifiedID.TITLE=Nel caso in cui dovesse essere rinominato
+modifiedID.MESSAGE=non \u00E8 valido... Rinominare con nome 
+cancelModifiedID.MESSAGE=L'item non \u00E8 stato creato.
+
+# Key for Refresh Window
+# -----------------------------
+refreshingComponent=Aggiornamento...
+
+# Key for the page size for LOVPopupButton
+pageSize = Dimensione pagina:
+
+# Required for select dialog
+selectDialog.TITLE = Finestra di dialogo selezione
+selection = Seleziona
+
+# Key to send clipboard contents to NX
+# ------------------------------------
+sendToUG.TEXT=Invia i contenuti della clipboard a NX
+
+# Keys for DefaultMoreAboutDialog
+# -----------------------------------
+defaultMoreDialog.TITLE=Ulteriori informazioni
+more=Pi\u00F9...
+less=Meno...
+CannotGetMoreInfo=Impossibile caricare informazioni aggiuntive.
+tcdata=TC_DATA:
+tcroot=TC_ROOT:
+sid=SID:
+soldToId=ID Sold-to:
+webKey=Chiave web:
+portalViewer=Versione di Teamcenter Visualization:
+hostName=Nome host:
+logFile=Nome file di log:
+journalFile=Nome file journal:
+
+# A message when we have no parent for remove etc.
+noParent.MESSAGE=Questa operazione non \u00E8 valida per l'oggetto root
+clientVersion=Versione client:
+serverVersion=Versione server:
+
+#Keys for select button
+
+roleButton.TIP=Premere per visualizzare tutti i ruoli definiti
+role.LABEL=Elenco dei ruoli definiti
+roleButton.TITLE=Ruoli
+
+groupButton.TIP=Premere per visualizzare tutti i gruppi definiti
+group.LABEL=Elenco gruppi definiti
+groupButton.TITLE=Gruppi
+
+defaultGroupButton.TIP=Premere per visualizzare i possibili gruppi predefiniti
+defaultGroup.LABEL=Elenco dei gruppi predefiniti
+defaultGroupButton.TITLE=Gruppi predefiniti
+
+personButton.TIP=Premere per visualizzare tutte le persone definite
+person.LABEL=Elenco persone definite
+personButton.TITLE=Persone
+
+userButton.TIP=Premere per visualizzare tutti gli utenti definiti
+user.LABEL=Elenco utenti definiti
+userButton.TITLE=Utenti
+
+volumeButton.TIP=Premere per visualizzare tutti i volumi definiti
+volume.LABEL=Elenco volumi definiti
+volumeButton.TITLE=Volumi
+select.TITLE = Oggetti
+select.TIP = Premere per visualizzare tutti gli oggetti
+
+loadAllUsersButton.TOOLTIP=Carica tutti gli utenti
+
+clearButtonLabel=Cancella
+clearButton.TIP=Elimina il pannello corrente
+
+gettingRoles.MESSAGE=Si stanno chiamando tutti i ruoli del sistema...
+gettingVolumes.MESSAGE=Si stanno chiamando tutti i volumi del sistema...
+gettingGroups.MESSAGE=Si stanno chiamando tutti i gruppi del sistema...
+gettingDefaultGroups.MESSAGE=Ricerca in corso dei gruppi predefiniti nel sistema...
+gettingPersons.MESSAGE=Si stanno chiamando tutte le persone del sistema...
+gettingUsers.MESSAGE=Si stanno chiamando tutti gli utenti del sistema...
+
+# Key for loading
+loadingData = Caricamento dati in corso...
+loadingTypes = Caricamento tipi...
+
+#keys for auto filter
+filtered = Filtrato
+filter = Filtro
+notFilter = Non filtrato
+of = di
+shown = visualizzati
+
+# Keys for External Link menu entries
+newObjectLinkPrefError=Problema di preferenza 
+newObjectLinkPrefNumEntries=Il numero di valori trovati per il server Teamcenter_external_application_types e Teamcenter_external_application_names non corrisponde. Ignorare tutte le voci delle applicazioni esterne.
+
+# Keys for User Preference Error Messages
+# ---------------------------------------
+errorSavingPropTablePrefs.TITLE=Si \u00E8 verificato un errore durante il salvataggio delle preferenze della tabella di propriet\u00E0
+
+#
+# Session Suspension Messages (On MailStatus)
+suspensionConfigIssue.TITLE=Informazioni Posta/Inbox di Teamcenter
+suspensionConfigIssueMail.MSG=L'intervallo di controllo Posta \u00E8 stato automaticamente modificato \nperch\u00E9 la frequenza attualmente impostata \u00E8 in conflitto con \nl'impostazione intervallo Sospensione sessione. Per correggerla,\nmodificare l'intervallo di controllo posta nei comandi Opzioni utente.
+suspensionConfigIssueInbox.MSG=L'intervallo di controllo Inbox \u00E8 stato automaticamente modificato \nperch\u00E9 la frequenza attualmente impostata \u00E8 in conflitto con \nl'impostazione intervallo Sospensione Sessione. Per correggerla,\nmodificare l'intervallo di controllo inbox nei comandi Opzioni utente.
+suspensionConfigIssueMailAndInbox.MSG=L'intervallo di controllo Posta e Inbox \u00E8 stato automaticamente modificato \nperch\u00E9 la frequenza attualmente impostata \u00E8 in conflitto con \nl'impostazione intervallo Sospensione Sessione. Per correggerla,\nmodificare l'intervallo di controllo posta e inbox nei comandi Opzioni utente.
+
+# Send To and Send Additional Data IC errors
+# ------------------------
+sendToNoIC.TITLE=IC obbligatorio
+sendToNoIC.MSG=L'applicazione richiede il componente IC attivo
+
+sendAdditionalIncompatibleIC.TITLE=IC incompatibile 
+sendAdditionalIncompatibleIC.MSG=L'IC corrente non \u00E8 compatibile con quello utilizzato per inviare i dati originali
+
+sendToTypeAndOrViewIncompatible.TITLE=Oggetto o tipo di vista incompatibile
+sendToTypeAndOrViewIncompatible.MSG=Il tipo e/o la vista degli oggetti selezionati non sono compatibili con l'applicazione
+
+# Keys for AbstractProgressDialog
+# ---------------------------------------
+successfulCompletion=Completato
+completedWithErrors=Completato con errori
+oneOrMoreFailed=Operazione non riuscita per almeno uno degli oggetti selezionati.
+stoppedByTheUser=L'operazione \u00E8 stata interrotta dall'utente. 
+SomeObjectsProcessedBeforeAbort=L'operazione \u00E8 stata interrotta dall'utente, ma alcuni oggetti sono stati elaborati prima dell'arresto dell'operazione. 
+
+# Read Only watermark text
+# -------------------------
+readOnly=Sola lettura
+
+GeneralDesignElement.DISPLAY_NAME=Elemento item
+GeneralDesignElement.TITLE=GeneralDesignElement
+InterfaceDefinition.DISPLAY_NAME=Definizione di interfaccia
+GeneralDesignElementLink.DISPLAY_NAME=GeneralDesignElementLink
+ProcessVariable.DISPLAY_NAME=ProcessVariable
+warning.TITLE=Avviso
+
+# Transient tree pane
+# -------------------
+folders.TITLE=Cartelle
+
+# Keys for Calendars
+# -------------------
+January = Gennaio
+February = Febbraio
+March = Marzo
+April = Aprile
+May = Mag
+June = Giugno
+July = Luglio
+August = Agosto
+September = Settembre
+October = Ottobre
+November = Novembre
+December = Dicembre
+
+SUNDAY = Domenica
+MONDAY = Luned\u00EC
+TUESDAY = Marted\u00EC
+WEDNESDAY = Mercoled\u00EC
+THURSDAY = Gioved\u00EC
+FRIDAY = Venerd\u00EC
+SATURDAY = Sabato
+UNKNOWN = Sconosciuto
+
+sun=Dom.
+mon=Lun.
+tue=Mar.
+wed=Mer.
+thu=Gio.
+fri=Ven.
+sat=Sab.
+
+
+
+WORKING_DAYS = Giorni lavorativi
+HH_MM = HH:MM
+DAILY_DEFAULTS = Valori predefiniti per il giorno
+TIMESPINNER_FORMAT = hh:mm
+
+SELECTED_DATE = Per le date selezionate
+DEFAULT = Predefinito
+NON_WORKING = Non lavorativi
+WORKING = HH:MM di lavoro
+
+START_OF_WEEK = Inizio settimana:
+DELETE = Elimina
+DAILY_DEFAULTS = Valori predefiniti per il giorno
+LEGEND = Didascalia
+WORKING_LEGEND = In lavorazione
+INH_EXCEPTION = Eccezione ereditata
+EXCEPTION = Eccezione
+CAL_NOTE_HEAD = Note
+CAL_NOTE_1 = <HTML>Le modifiche apportate al calendario potrebbero influire trasversalmente sulle date di schedulazione di tutte le pianificazioni.<BR>Discutere eventuali modifiche del calendario con il responsabile prima di inserire i cambiamenti.<BR>Le modifiche apportate al calendario hanno effetto sull'aggiornamento e sul ricalcolo delle schedulazioni.</HTML>
+CAL_NOTE_2 = <HTML>Le modifiche apportate al calendario hanno effetto sull'aggiornamento e sul ricalcolo delle schedulazioni.<BR>Discutere eventuali modifiche del calendario con il responsabile (di progetto) prima di inserire i cambiamenti.</HTML>
+
+HELP_BTN = Guida
+UPD_CAL_BTN = Aggiorna calendario
+CANCEL_BTN = Annulla
+CREATE_CAL_BTN = Crea calendario
+
+DailyCalendarHoursPanel.SelectOneDayError = Il calendario deve contenere almeno un giorno lavorativo.
+DailyCalendarHoursPanel.workingDayError = L'utente non pu\u00F2 contrassegnare come non lavorativi tutti i giorni lavorativi.
+DailyCalendarHoursPanel.EnterValidInteger = Immettere numero intero valido
+DailyCalendarHoursPanel.HoursCanNotGreaterThan24 = Il numero di ore non pu\u00F2 essere superiore a 24.
+DailyCalendarHoursPanel.MinutesCanNotGreaterThan60 = Il numero di minuti non pu\u00F2 superare 60.
+DailyCalendarHoursPanel.HoursCanNotLessThan0 = Il numero di ore non pu\u00F2 essere inferiore a 0.
+DailyCalendarHoursPanel.MinutesCanNotLessThan0 = Il numero di minuti non pu\u00F2 essere inferiore a 0.
+DailyCalendarHoursPanel.Error = Errore
+
+WorkCalendarPanel.EnterValidInteger = Immettere numero intero valido
+WorkCalendarPanel.HoursCanNotGreaterThan24 = Il numero di ore non pu\u00F2 essere superiore a 24. 
+WorkCalendarPanel.MinutesCanNotGreaterThan60 = Il numero di minuti non pu\u00F2 superare 60.
+WorkCalendarPanel.HoursCanNotLessThan0 = Il numero di ore non pu\u00F2 essere inferiore a 0.
+WorkCalendarPanel.MinutesCanNotLessThan0 = Il numero di minuti non pu\u00F2 essere inferiore a 0.
+
+
+createResCal.ERROR = Impossibile creare il calendario delle risorse
+createResCal.DETAILS= Il calendario di base predefinito non esiste. Creare un calendario di base e aggiornare la preferenza del calendario di base predefinito. 
+createResCal.TITLE = Errore
+
+renameBaseCalendar.MSG = Cambiare il nome del calendario di base predefinito? In questo modo viene anche aggiornata la preferenza calendario di base predefinita.
+
+updateBaseCal.TITLE = Aggiorna calendario di base
+
+
+detailButton= Dettagli...
+selectBaseCalendarLabel=Seleziona calendario di base 
+selectTZ=Seleziona fuso orario
+deleteBaseCal.ERROR = Impossibile eliminare il calendario selezionato
+delete.ERROR = Errore 
+tzInfo={0} \u00E8 attualmente nell''area GMT {1}.
+calNoTZ=Selezionare un fuso orario.
+
+setPropertyError.MSG = Errore durante l'impostazione delle propriet\u00E0
+
+cal.TIP=<html><body><font size=2><p><b>Evento: </b>{0}</p><p><b>Tipo di evento: </b>{1}</p><p><b>Ore lavorative: </b>{2}</p><p><b>Periodi lavorativi: </b>{3}</p></font></body></html>
+exportToExcelObjectSelection.MESSAGE=Nessun oggetto selezionato nel Pannello dei dettagli
+
+# Added for TcBOM CBA
+# --------------------
+representationFolder.DISPLAY_NAME=Rappresentazione di
+HiddenRevsPopupMenu.Title=Revisioni nascoste
+
+BOMLineRequired=\u00C8 richiesta una BOMLine
+
+# Common keys for Import/Export Briefcase dialogs
+# -----------------------------------------------
+BriefcaseImport.FileFilter = File Briefcase Package (*.ugs, *.bcz)
+BriefcaseExport.FileFilter.BCZ = File Briefcase Package (*.bcz)
+BriefcaseExport.FileFilter.PDX = File PDX (*.pdx)
+BriefcaseImportExport.PackageName.LABEL = Nome Briefcase Package:
+BriefcaseImportExport.Browse.TIP = Seleziona un file pacchetto Briefcase.
+
+# Messages for DownloadDatasetDialog
+# Messages for DownloadDatasetDialog
+DownloadDatasetDialog.downloadDataset=Scarica set di dati
+DownloadDatasetDialog.launchApp=Avvia
+DownloadDatasetDialog.download=Download
+DownloadDatasetDialog.path=Percorso directory
+DownloadDatasetDialog.browse=Individua percorso directory
+DownloadDatasetDialog.browseButton=Sfoglia
+DownloadDatasetDialog.filename=Nome file
+DownloadDatasetDialog.Yes=S\u00EC
+DownloadDatasetDialog.duplicate=Duplicato?
+DownloadDatasetDialog.No=No
+DownloadDatasetDialog.ok=OK
+DownloadDatasetDialog.cancel=Annulla
+DownloadDatasetDialogDuplicates.Msg=Sono presenti file duplicati.
+DownloadDatasetDialogDuplicates.Details=Impossibile sovrascrivere i file duplicati.\nQuesta specifica locazione contiene almeno un file. Selezionare un altro percorso e riprovare il download.
+DownloadDatasetDialogDuplicates.Title=Errore durante il download dei file.
+DownloadDatasetDialogIncompleteInputs.Msg=Informazioni incomplete.
+DownloadDatasetDialogIncompleteInputs.Details=Selezionare un percorso file valido se si \u00E8 selezionata la casella di controllo Download
+DownloadDatasetDialogIncompleteInputs.Title=Errore durante il download dei file.
+DownloadDatasetDialogCannotDownload.Msg=Per scaricare i file \u00E8 necessario selezionare una casella di controllo Scarica e un percorso directory valido.
+DownloadDatasetDialogCannotDownload.Title=Scarica informazioni file
+DownloadDatasetDialogDontShowMeAgain.Msg=Non visualizzare pi\u00F9
+DownloadDatasetDialogLaunchError.Msg=Errore durante l''apertura del set di dati {0}.
+DownloadDatasetDialogLaunchError.Details=Errore durante l''apertura del set di dati. Codice errore {0}.
+DownloadDatasetDialogLaunchError.Title=Errore durante l'apertura del set di dati
+DownloadDatasetDialogReadonlyDirError.Msg=Il percorso selezionato {0} \u00E8 di sola lettura.
+DownloadDatasetDialogReadonlyDirError.Details=Il percorso selezionato {0} \u00E8 di sola lettura. Selezionare un altro percorso e ripetere l''operazione di download.
+ 
+# Added for Send (Additional) Data To menus
+
+noOpenedBOMWindows=Non \u00E8 stato trovato alcun file plmxml preparato in precedenza perch\u00E9 non ci sono strutture aperte.
+moreThanOnePLMXMLFile=\u00C8 stato trovato pi\u00F9 di un file plmxml per {0}.
+noDatasetAttached=Nessun set di dati allegato come {0} di tipo {1} per {2}.
+datasetNameNotMatching=Nessun set di dati denominato *{0}{1}{2}{3} trovato per {4}.
+noPLMXMLFile=Non \u00E8 stato trovato alcun file plmxml preparato in precedenza per {0}.
+PLMXMLFileExpired=Il file plmxml preparato in precedenza per {0} \u00E8 scaduto.
+warningDialog.TITLE=Non \u00E8 stato trovato alcun dato PLMXML preparato in precedenza
+failureReason.LABEL=Cause dell'errore:
+warningMessage.LABEL=Continuare e spedire i dati alla simulazione procedura (l'operazione potrebbe richiedere un certo tempo)?
+confirmMessage.LABEL=Continuare? L'operazione potrebbe richiedere un certo tempo.
+proceedButton.TEXT=Continua
+cancelButton.TEXT=Annulla
+revRuleNotSaved=La regola di revisione caricata per {0} non \u00E8 stata salvata. Caricare una regola di revisione salvata. In alternativa, i dati di prodotto possono essere caricati al momento o da un file non configurato.
+varRuleNotSaved=La regola variante caricata per {0} non \u00E8 stata salvata. Salvare la regola variante. In alternativa, i dati di prodotto possono essere caricati al momento o da un file non configurato.
+opNotSupported.MESSAGE=Questa operazione non \u00E8 supportata per il tipo AI {0}. Usare il menu Invia dati a.
+opNotSupported.TITLE=Operazione non supportata
+invalidSelection.MESSAGE=Impossibile inviare i dati selezionati {0}. Selezionare una linea distinta base oppure una linea BOP.
+invalidSelection.TITLE=Selezione dati non valida
+
+#Project Search
+noFound.MSG=non trovato
+search.title=Ricerca
+notFound.MSG=Non \u00E8 stato individuato alcun oggetto in base ai criteri specificati.
+
+#PR6050154 - Preferred substitute menu gray out option 
+noSubstitutesDisplayMessage=(al momento non sono disponibili elementi sostitutivi)
+
+#Term for GMT acronym( Greenwich Mean Time)
+GMT=GMT
+
+# Default title for views if no selection
+noSelection.TITLE=[Nessuna selezione]
+
+# UnitSystem Search
+# -----------------
+inClassUnitSystemSearch.NAME=Imposta sistema di misura
+inClassUnitSystemSearchMetric.TIP=<html><body><font size=2><p>&nbsp;<b>Ricerca UnitSystem</b>&nbsp;</p><p>&nbsp;Ricerca nel sistema metrico predefinito&nbsp;</p></body></html>
+inClassUnitSystemSearchNonmetric.TIP=<html><body><font size=2><p>&nbsp;<b>Ricerca UnitSystem</b>&nbsp;</p><p>&nbsp;Ricerca nel sistema non metrico predefinito&nbsp;</p></body></html>
+inClassUnitSystemSearchBoth.TIP=<html><body><font size=2><p>&nbsp;<b>Ricerca UnitSystem</b>&nbsp;</p><p>&nbsp;Ricerca nel sistema metrico e non metrico&nbsp;</p><p>&nbsp;Selezionare per cambiare&nbsp;</p></body></html>
+inClassUnitSystemSearchHeader.NAME=Cerca in...
+inClassUnitSystemSearchMetric.NAME=metrico
+inClassUnitSystemSearchNonmetric.NAME=non metrico
+inClassUnitSystemSearchBoth.NAME=entrambi (metrico/non metrico)
+inClassUnitSystemSearchChange.MESSAGE=Le modifiche apportate al sistema di unit\u00E0 di misura per la clausola corrente verranno applicate a tutte le clausole della stessa classe che si sta aggiungendo.
+
+#OperationalDataListDataRenderer
+OperationalDataListDataRendererAddToRight.Msg=I seguenti elementi vengono aggiunti agli elementi di aggiornamento dinamico attivi \nperch\u00E9 sono dipendenti dagli elementi selezionati aggiunti all''elenco Elementi di aggiornamento dinamico attivi.\n\n{0}
+OperationalDataListDataRendererInfo.Title=Informazioni sull'aggiornamento dinamico
+OperationalDataListDataRendererRemoveFromRight.Msg=I seguenti elementi vengono rimossi dagli elementi di aggiornamento dinamico attivi \nperch\u00E9 sono dipendenti dagli elementi selezionati rimossi dall''elenco Elementi di aggiornamento dinamico attivi.\n\n{0}
+OperationalDataListDataRenderer.AddToRightToolTip=Aggiungi la selezione all'elenco di elementi selezionati per gli aggiornamenti dinamici
+OperationalDataListDataRenderer.AddAllToRightToolTip=Aggiungi tutto all'elenco di elementi selezionati per gli aggiornamenti dinamici
+OperationalDataListDataRenderer.RemoveFromRightToolTip=Rimuovi la selezione dall'elenco di elementi selezionati per gli aggiornamenti dinamici
+OperationalDataListDataRenderer.RemoveAllFromRightToolTip=Rimuovi tutto dall'elenco di elementi selezionati per gli aggiornamenti dinamici
+
+SelectedObjectsNotAllowedForLocalcheckout=Gli oggetti selezionati non sono consentiti per il checkout locale.
+SelectedObjectsNotAllowedForLocalcheckin=Gli oggetti selezionati non sono consentiti per il checkin locale.
+SelectedObjectsNotAllowedForCancelLocalcheckout=Gli oggetti selezionati non sono consentiti per l'annullamento del checkout locale.
+
+SelectedObjectsNotAllowedForSitecheckout=Gli oggetti selezionati non sono consentiti per il checkout nel sito.
+SelectedObjectsNotAllowedForSitecheckin=Gli oggetti selezionati non sono consentiti per il checkout dal sito
+SelectedObjectsNotAllowedForCancelSitecheckout=Gli oggetti selezionati non sono consentiti per l'annullamento del checkout nel sito.
+SitecheckOutNotAllowed=Almeno uno degli oggetti {0} selezionati non \u00E8 consentito per il checkout dal sito poich\u00E9 \u00E8 contrassegnato per il trasferimento di propriet\u00E0. 
+
+SelectedObjectsNotAllowedForDisplayProperties=Per gli oggetti selezionati non \u00E8 consentito visualizzare le propriet\u00E0
+
+topLevelSmartFolderSelected.MESSAGE =Le cartelle associate al progetto di primo livello non supportano l'operazione.
+
+#remote import
+remoteImport.MESSAGE=Alcuni oggetti non sono ancora stati importati e quindi non possono essere copiati.\nIniziare l'operazione Importazione remota per importarli?
+
+#Entries for error Message for incorrect preference values
+correctionPrefError.MSG=Viene eseguito un tentativo di correggere i valori delle preferenze dell''utente {0}.\nL''impatto influir\u00E0 sulle prestazioni se i valori della preferenza non sono sincronizzati con i valori delle preferenze di {1}.\nRicontrollare i valori di queste preferenze oppure contattare l''amministratore del sistema per ulteriore assistenza.
+correctionPrefError.TITLE=Valori delle preferenze corrette 
+
+# Warning message for changed properties
+propertiesChanged.TITLE=Valore modificato
+propertiesChanged.MSG=L'oggetto \u00E8 stato modificato da un altro client oppure \u00E8 necessario aggiornare la vista e il pannello. Notare che l'operazione di aggiornamento elimina i dati non salvati presenti nel pannello e li sostituisce con i nuovi valori.
+propertiesChanged.DETAIL=Verranno aggiornate le seguenti propriet\u00E0:
+propertiesChanged.HEADER=Propriet\u00E0, valore locale, nuovo valore

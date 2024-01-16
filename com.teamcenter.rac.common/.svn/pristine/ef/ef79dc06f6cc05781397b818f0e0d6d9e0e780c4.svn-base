@@ -1,0 +1,65 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the dialogs package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#*==================================================================================================
+
+# Change search dialog.
+DefaultSearch=Default Search
+ChangeButton.Label=Change...
+General=General
+instrct1=Remember my last
+instrct2=searches
+FindSearch=Find Search
+ChangeSearchButton.Label=Change Search
+ChangeSearchDialog.TITLE=Change Search
+AdvancedButton.Label=Advanced...
+CloseButton.Label=Close
+SearchHistory=Search History
+SystemDefinedSearches=System Defined Searches
+ShowOptions=Show Options
+HideOptions=Hide Options
+NewFolders=New Folders...
+Delete=Delete
+Rename=Rename
+Paste=Paste
+RenameSavedSearches.TITLE=Rename My Saved Search
+RenameSavedSearches.HEADER=Rename My Saved Search
+NewSavedSearchFolder=New Saved Search Folder
+FolderName=Folder Name:
+MoreFolders=More Folders
+LessFolders=Less Folders
+DeletingFolderWithContentsReminder=Deleting the folder will not delete the contents of the folder. Do you want to continue?
+DeletingFolderWithOutContentsReminder=Do you want delete the selected folder?
+# Keys for invalid names
+# --------------------------------
+invalidName.TITLE=Invalid Name
+emptyName.MSG=Name cannot be empty.
+duplicateName.MSG=System defined search with the same name found. Please choose a different name.
+
+NewMySavedSearchFolder=Add New My Saved Search Folder
+DeleteMySavedSearchFolder=Delete New My Saved Search Folder
+DeleteMySavedSearch=Remove My Saved Search
+renamingSavedSearches.MESSAGE=Rename My Saved Search
+SetDefaultSearch.MESSAGE=Set Default Search
+SetSearchHistoryLimit.MESSAGE=Change Search History Limit
+ClearSearchHistory.MESSAGE=Clear Search History
+PasteToMySavedSearches.MESSAGE=Paste to My Saved Searches
+SearchNameFormat.MESSAGE=Maximum length of a saved search name is 32 characters. The name of a saved search should not contain left angle bracket, right angle bracket and semicolon.
+ExpandMySavedSearchFolder=Expand Search Folder
+ValidatingSearchName=Validating Search name.
+
+newName.LABEL= New name:
+ok=OK
+apply=Apply
+cancel=Cancel
+shared=Is Shared

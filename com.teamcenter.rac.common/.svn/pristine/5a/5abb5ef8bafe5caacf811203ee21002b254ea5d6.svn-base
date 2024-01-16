@@ -1,0 +1,46 @@
+#*==================================================================================================
+#
+#                           Copyright (c) 2003 EDS PLM Solutions
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the itemidregistry package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: publish_locale.properties
+#   Module  : com.teamcenter.rac.commands.publish
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#02-Apr-2003  rlee                    Initial create
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# command.TITLE not used but here to placate AbstractProgressDialog
+command.TITLE=\u30C0\u30DF\u30FC
+
+confirmationText=...\u3078\u30D1\u30D6\u30EA\u30C3\u30B7\u30E5\u3057\u307E\u3059\u304B
+questionMark=?
+publish.STATUS=\u30D1\u30D6\u30EA\u30C3\u30B7\u30E5\u4E2D
+dotDotDot=...
+registerItemId.TITLE=\u30A2\u30A4\u30C6\u30E0\u3092\u767B\u9332
+registerItemIdSuccess.INITIALSTATUS=\u9078\u629E\u3055\u308C\u305F\u30A2\u30A4\u30C6\u30E0\u306F\u767B\u9332\u3055\u308C\u3066\u3044\u307E\u3059
+registerItemIdSuccess.STATUS=\u9078\u629E\u3055\u308C\u305F\u30A2\u30A4\u30C6\u30E0\u306F\u767B\u9332\u3055\u308C\u307E\u3057\u305F
+
+unregisterItemId.TITLE=\u30A2\u30A4\u30C6\u30E0\u3092\u767B\u9332\u89E3\u9664
+unregisterItemIdSuccess.INITIALSTATUS=\u9078\u629E\u3055\u308C\u305F\u30A2\u30A4\u30C6\u30E0\u306E\u767B\u9332\u304C\u89E3\u9664\u3055\u308C\u3066\u3044\u307E\u3059
+unregisterItemIdSuccess.STATUS=\u9078\u629E\u3055\u308C\u305F\u30A2\u30A4\u30C6\u30E0\u306E\u767B\u9332\u306F\u89E3\u9664\u3055\u308C\u307E\u3057\u305F
+
+noSelectionError = \u30D1\u30D6\u30EA\u30C3\u30B7\u30E5\u3059\u308B\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u304C\u9078\u629E\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002
+notADataset = \u9078\u629E\u3055\u308C\u305F\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306F\u30C7\u30FC\u30BF\u30BB\u30C3\u30C8\u3067\u306F\u3042\u308A\u307E\u305B\u3093\u3002
+
+odsPublicationSite.LABEL=ODS\u516C\u958B\u30B5\u30A4\u30C8
+sites.available=\u4F7F\u7528\u53EF\u80FD\u30B5\u30A4\u30C8
+sites.selected=\u9078\u629E\u3055\u308C\u305F\u30B5\u30A4\u30C8
+
+site.TITLE=\u30B5\u30A4\u30C8\u9078\u629E
+
+objectNotItem="\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u306F\u30A2\u30A4\u30C6\u30E0\u3067\u306F\u3042\u308A\u307E\u305B\u3093"

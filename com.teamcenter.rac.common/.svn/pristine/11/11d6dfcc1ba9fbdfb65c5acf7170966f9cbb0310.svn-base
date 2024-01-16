@@ -1,0 +1,108 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2001 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the common package.
+#                   This is an internal file so therefore only TC PBU developers
+#                   should be modifying this file. To make changes please modify
+#                   the common_user.properties file.  Do NOT modify this file. This
+#                   allows properties found in this file to be over-written but not destroyed.
+#
+#   Filename: common.properties
+#   Module  : com.teamcenter.rac.explorer.common
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Mar-2001  Zhixin Huang            Initial creation.
+#29-Mar-2001  Zhixin Huang            Add the loading thresh hold field.
+#04-Apr-2001  Zhixin Huang            Clean code and finish the document.
+#05-Apr-2001  Zhixin Huang            Add the last diff and first diff button in compare
+#05-Apr-2001  Zhixin Huang            Add the compare icon.
+#17-Sep-2001  Zhixin Huang            Add the key for background.
+#02-Jan-2002  Zhixin Huang            Clean code according to Rob's comments.
+#18-Jan-2002  Zhixin Huang            Add loading status in the panel.
+#23-Dec-2002  Endi Wu                 Import registry
+#11-Feb-2003  Endi Wu                 Add create-in image entry
+#17-Mar-2003  Endi Wu                 Add favorites icon entry
+#07-Jan-2003  shankar                 Add an icon to facilitate query lock
+#16-May-2003  silvermm                add criterialock - we were over-using the access icon - but no more
+#22-May-2003  Zhixin Huang            Conflict resolutions for P9.0.0.1
+#09-Nov-2004  Rob McColl              Add the search background image.
+#11-Nov-2004  Rob McColl              merge
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#09-Feb-2005  Endi Wu                 Fix typo
+#24-Feb-2005  Zhixin Huang            Change the icon from gif to png file and clean up the entries phase 2.
+#29-Mar-2005  Zhixin Huang            Rebrand (Change image phase 3).
+#31-Mar-2005  Zhixin Huang            Rebrand (Phase 3).
+#01-Apr-2005  noolu                   Fix PR 1357428
+#05-Apr-2005  Zhixin Huang            Resolve conflicts for p10.0.0.14
+#13-Apr-2005  Zhixin Huang            Re-brand phase 4.
+#14-Apr-2005  Ranjit Saripalli        Add surrogate task Icon
+#15-Apr-2005  Ranjit Saripalli        Merge to try_v10.0
+#30-Jun-2005  Zhixin Huang            Rebranch phase 6.
+#15-Jul-2005  Zhixin Huang            Rebrand phase 7
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#10-Feb-2006  Venkatesh Chitnis       de-imanization (revert to iman tokens for compatibility)
+#$HISTORY$
+#=================================================================================================*/
+
+import=com.teamcenter.rac.explorer.explorer,com.teamcenter.rac.popupmenu.popupmenu,com.teamcenter.rac.common.common
+
+#### Keys for options ####
+favoriteOptions.ICON=images/favoriteoption_16.png
+sortOptions.ICON=images/sortoptions_16.png
+remoteOptions.ICON=images/remoteoptions_16.png
+
+#### Keys for search action button ####
+executionButton.ICON=images/executesearch_16.png
+lockButton.ICON=images/criterialock_16.png
+pff.ICON=images/pff_16.png
+targetQuery.ICON=images/targetquery_16.png
+
+# Query loading icons
+nextButtonForward.ICON=images/forward_16.png
+
+# FavoritesPanel
+FavoriteFolder.ICON=images/favoritefoldercollapsed_16.png
+FavoriteFolder.Open.ICON=images/favoritefolderexpand_16.png
+
+# Keys for RevisionSelectionButton
+#---------------------------------------------------------------
+
+# Keys for AddFavoritesPanel
+#----------------------------------------------------
+createIn.ICON=images/left_16.png
+
+## keys for the compare report
+compareReport.ICON = images/comparereport_16.png
+previousDiff.ICON = images/previousdiff_16.png
+nextDiff.ICON = images/nextdiff_16.png
+firstDiff.ICON = images/firstdiff_16.png
+lastDiff.ICON = images/lastdiff_16.png
+
+background.ICON=images/bg_16.png
+time.ICON =images/time_16.png
+
+attention.ICON=images/attention_16.png
+
+searchBackground.ICON=images/searchbackground.png
+
+#PFF properties
+#------------------------------------------------------------------
+PFF.TcPFF=ImanPFF
+PFF.queryClass=query_class
+PFF.pffClass=PFF_class
+
+surrogateTask.ICON=images/surrogate_task_16.png
+leaf.ICON=images/preferencepanel_16.png
+folder.ICON=images/foldertype_16.png
+defaultSearch.ICON=images/defaultsearch_16.png
+
+SavedSearchOwnedByCurrUserNotShared.ICON=images/savedsearch_own_16.png
+SavedSearchOwnedByCurrUserShared.ICON=images/savedsearch_shared_own_16.png
+SavedSearchNotOwnedByCurrUserShared.ICON=images/savedsearch_shared_16.png
+Waiting.ICON=icons/waiting_16.png
+SearchNavigatorFolder.ICON=icons/foldertype_16.png
+DefaultQuery.ICON=images/default_search_16.png

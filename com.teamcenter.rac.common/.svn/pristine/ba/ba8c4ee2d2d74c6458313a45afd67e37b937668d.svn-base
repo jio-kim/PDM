@@ -1,0 +1,60 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the paste package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: paste_locale.properties
+#   Module  : com.teamcenter.rac.commands.paste
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#23-Mar-2004  faming                  add pasteFailed.INFO
+#05-Jul-2004  Tony Dumont             PR#4986753 - Stop multiple paste of cut child
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#13-Mar-2008  Sonal Singh             Added a support for ADS Properties on Relations
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = \u7C98\u8D34
+
+confirmationText = \u786E\u5B9A\u8981\u7C98\u8D34\u5417\uFF1F
+noConfirmationText = \u6B63\u5728\u7C98\u8D34...
+
+#Added for Properties on Relations sdlc id 7460
+command.TITLERELATION = \u4E3A\u5173\u7CFB\u5C5E\u6027\u8F93\u5165\u503C
+
+# Entries for error messages
+# -----------------------------
+clipboardEmpty = \u526A\u8D34\u677F\u4E3A\u7A7A\u3002
+noPasteTarget=\u672A\u9009\u5B9A\u4F5C\u4E3A\u7C98\u8D34\u76EE\u6807\u7684\u5BF9\u8C61\u3002
+invalidPasteTarget = \u9009\u5B9A\u65E0\u6548\u7684\u5BF9\u8C61\u4F5C\u4E3A\u7C98\u8D34\u76EE\u6807\u3002
+noPastingObject=\u672A\u9009\u5B9A\u7C98\u8D34\u7684\u5BF9\u8C61\u3002
+invalidPastingObject=\u9009\u5B9A\u8981\u7C98\u8D34\u7684\u65E0\u6548\u5BF9\u8C61\u3002
+error.TITLE = \u7C98\u8D34...
+pasteError=\u5BF9\u8C61 {0} \u5DF2\u5728\u76EE\u6807\u6587\u4EF6\u5939\u4E2D\u3002
+# Entries for message center
+# -----------------------------
+pasting = \u6B63\u5728\u7C98\u8D34
+into = \u5230
+pastingInto=\u7C98\u8D34 {0} \u5230 {1}
+aborting= \u6B63\u5728\u4E2D\u6B62...
+
+pasteConfirmTitle=\u786E\u8BA4\u7C98\u8D34
+pasteConfirmText=\u786E\u5B9A\u8981\u7C98\u8D34\u5417\uFF1F
+
+pasteFailed.INFO=\u6240\u8BF7\u6C42\u7684\u7C98\u8D34\u5728\u67D0\u4E9B\u5BF9\u8C61\u4E0A\u5931\u8D25\u3002\n\u5DF2\u6267\u884C\u6545\u969C\u6062\u590D\u5E76\u5C06\u5176\u7C98\u8D34\u5230\u60A8\u7684 NewStuff \u6587\u4EF6\u5939\u3002
+
+cutPaste.MSG=\u5BF9\u526A\u5207\u884C\u7684\u591A\u6B21\u7C98\u8D34\u662F\u65E0\u6548\u7684\u3002\n\u5BF9\u4E8E\u591A\u4E2A\u7236\u884C\uFF0C\u8BF7\u4F7F\u7528\u201C\u590D\u5236\u201D\uFF0C\u7136\u540E\u6309\u9700\u8981\u201C\u79FB\u9664\u201D\u4EFB\u4F55\u591A\u4F59\u7684\u5B50\u884C\u3002
+
+#Paste Operation in Attachment Panel on CfgAttachmentLine
+formattedAttachmentPanelPasteError=\u7C98\u8D34\u64CD\u4F5C\u5728 {0} \u4E0A\u4E0D\u53D7\u652F\u6301\uFF0C\u5176\u5728\u9644\u4EF6\u9762\u677F\u4E0A\u5177\u6709\u5173\u7CFB {1}\u3002
+

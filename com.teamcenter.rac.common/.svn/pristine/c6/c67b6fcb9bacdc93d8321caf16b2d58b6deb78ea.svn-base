@@ -1,0 +1,35 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the amrule package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#$HISTORY$
+#=================================================================================================*/
+
+loadingRuleTree.MESSAGE=Chargement de l'arborescence r\u00E8gles AM...
+
+noSelection.MESSAGE=Impossible de d\u00E9velopper sous
+noSelection.TITLE=Aucun objet s\u00E9lectionn\u00E9
+
+typesTreeRootText=Types
+others.TITLE=Autres
+DatasetType.TITLE=Type de jeu de donn\u00E9es
+Folder.TITLE=Type de dossier
+Form.TITLE=Type de formulaire
+Item.TITLE=Type d'article
+ItemRevision.TITLE=Type de r\u00E9vision d'article
+
+ScheduleTask.TITLE=T\u00E2chePlanning
+Schedule.TITLE=Planning
+Combined.TITLE=Combin\u00E9

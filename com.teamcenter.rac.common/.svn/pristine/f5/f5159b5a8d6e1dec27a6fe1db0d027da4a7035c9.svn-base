@@ -1,0 +1,584 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+ReplaceStdNote=Nahradit revizi ParametricRequirement
+
+aboutText=Teamcenter RAC je platforma PLM. 
+UpdateActionSet.label=Aktualizace softwaru
+UpdateActionSet.menu.label=&Aktualizace softwaru
+UpdateActionSet.updates.label=Naj\u00EDt a instalovat
+UpdateActionSet.updates.MNEMONIC=F
+UpdateActionSet.configManager.label=Spravovat konfiguraci
+UpdateActionSet.configManager.MNEMONIC=M
+
+HelpActionSet.label=N\u00E1pov\u011Bda
+Help.menu.label=N\u00E1pov\u011Bda
+
+Help.helpAbout.label=O aplikaci
+Help.helpAbout.MNEMONIC=A
+
+Help.helpApplication.label=Aktu\u00E1ln\u00ED aplikace
+Help.helpFramework.label=Knihovna n\u00E1pov\u011Bdy
+Close.NAME=Zav\u0159\u00EDt
+Close.MNEMONIC=C
+
+tools.Signal_Manager.NAME=Spr\u00E1vce sign\u00E1lu
+Replace_Part_in_Product.TITLE=Nahradit sou\u010D\u00E1st v v\u00FDrobku
+selectBelowAll.TITLE=V\u0161echny \u0159\u00E1dky
+selectBelowLeaf.TITLE=Nejni\u017E\u0161\u00ED \u0159\u00E1dky
+ShowHide_Data_Panel.TITLE=Zobrazit/skr\u00FDt panel dat
+Show_Data_Panel.TITLE=Zobrazit panel dat
+Import_Feature_Data.TITLE=Import dat prvk\u016F...
+Unload_All.TITLE=Uvolnit v\u0161e
+Graphical_BOM_Compare.TITLE=Grafick\u00E9 porovn\u00E1n\u00ED rozpisky
+Configuration_Context.TITLE=Kontext konfigurace...
+Toggle_In_Context_Mode.TITLE=P\u0159epnout kontextov\u00FD re\u017Eim
+Mode.NAME=Re\u017Eim
+Actions.NAME=Akce
+Calendar.NAME=Kalend\u00E1\u0159
+Incontext_Mode.NAME=Kontextov\u00FD re\u017Eim
+Move.NAME=P\u0159esunout
+Select_Below.NAME=Vybrat n\u00ED\u017Ee
+Template.NAME=\u0160ablona
+new.NAME=Nov\u00FD
+Connection.NAME=Propojen\u00ED
+Open_Session.NAME=Otev\u0159\u00EDt relaci
+Save_As.NAME=Ulo\u017Eit jako...
+Search.NAME=Hledat
+Go.NAME=Prov\u00E9st
+Graphics.NAME=Obr\u00E1zek
+Program.NAME=Program
+view.NAME=pohled
+Zoom_Factor.NAME=Faktor p\u0159ibl\u00ED\u017Een\u00ED
+CriticalPath.NAME=Kritick\u00E1 cesta
+EVM.NAME=EVM
+Team.NAME=T\u00FDm
+Accountability_Check.NAME=Kontrola shody
+All_History_Lines.NAME=V\u0161echny \u0159\u00E1dky historie
+Arrangements.NAME=Uspo\u0159\u00E1d\u00E1n\u00ED
+Assembly_Tree.NAME=Strom sestavy
+Batch_Mesh.NAME=D\u00E1vkov\u00E1 s\u00ED\u0165
+CheckInOut.NAME=Uvolnit/rezervovat
+Connection_Manager.NAME=Mana\u017Eer propojen\u00ED
+Export.NAME=Export
+Id_Display_Rule.NAME=Pravidlo zobrazen\u00ED ID
+Implemented_By.NAME=Provedeno prost\u0159ednictv\u00EDm
+Import.NAME=Import
+Modify_Allocation.NAME=Upravit p\u0159id\u011Blen\u00ED
+MultiSite_Collaboration.NAME=Spolupr\u00E1ce v\u00EDce pracovi\u0161\u0165
+MultiSite_Collaboration.MNEMONIC=M
+Item_Id_Registry.NAME=Registr ID polo\u017Eky
+Publish.NAME=Publikovat
+Send.NAME=Odeslat
+Split_Occurrence.TITLE=Rozd\u011Blit v\u00FDskyt...
+Insert_Level.TITLE=Vlo\u017Eit \u00FArove\u0148...
+End_Item.TITLE=Stav sestaven\u00ED koncov\u00E9 polo\u017Eky...
+Synchronize.NAME=Synchronizovat
+Unpublish.NAME=Zru\u0161it publikov\u00E1n\u00ED
+Open_In.NAME=Otev\u0159\u00EDt v
+PartDesign.NAME=N\u00E1vrh sou\u010D\u00E1sti
+Process_Assignment_List.NAME=Seznam p\u0159i\u0159azen\u00ED proces\u016F
+Realized_By.NAME=Realizoval
+Reports.NAME=V\u00FDpisy
+Revision_Rule.NAME=Pravidlo revize
+Roll_up_Report.NAME=Souhrnn\u00FD v\u00FDpis
+Send_Additional_Data_To.NAME=Odeslat dal\u0161\u00ED data do...
+Send_Data_To.NAME=Odeslat data do...
+Show_Related_Analyses.NAME=Zobrazit souvisej\u00EDc\u00ED anal\u00FDzy
+Associate_Signal_To.NAME=Asociovat sign\u00E1l s
+Remove_Signal_Association.NAME=Odebrat asociativitu sign\u00E1lu
+Site_CheckInOut.NAME=Uvolnit/rezervovat pracovi\u0161t\u011B
+Snapshot.NAME=Sn\u00EDmek
+Structure_Alignment.NAME=Zarovn\u00E1n\u00ED struktury
+Completeness_Check.NAME=Kontrola \u00FAplnosti
+Trace_Report.NAME=\ sledov\u00E1n\u00ED
+Unattached_Lines.NAME=Nep\u0159ipojen\u00E9 \u0159\u00E1dky
+Validation.NAME=Ov\u011B\u0159en\u00ED platnosti
+Variants.NAME=Varianty
+Audit.NAME=Audit
+Audit.MNEMONIC=A
+AuditFile.TITLE=Soubor
+AttachNotes=P\u0159ipojit po\u017Eadavky/pozn\u00E1mky
+StandardNotes.TITLE=Parametrick\u00FD po\u017Eadavek
+CustomNotes.TITLE=Vlastn\u00ED pozn\u00E1mka
+AuditManager.TITLE=Zobrazit protokolov\u00E9 soubory auditu
+Effectivity.NAME=Platnost
+Expand_options.NAME=Rozbalit mo\u017Enosti
+PackUnpack.NAME=Sbalit rozbalen\u00E9
+Show_Unconfigured_Data.NAME=Zobrazit nekonfigurovan\u00E1 data
+Signal_Explorer.NAME=Pr\u016Fzkumn\u00EDk sign\u00E1lu
+Show_Signals.NAME=Zobrazit sign\u00E1ly
+Toggle_In_Allocation_Context_Mode.TITLE=P\u0159epnout v re\u017Eimu kontextu p\u0159id\u011Blen\u00ED
+Show_Allocation_Navigator_Panel.TITLE=Zobrazit panel navig\u00E1tor p\u0159id\u011Blen\u00ED
+Show_Allocations_IC_Information_Panel.TITLE=Zobrazit panel informac\u00ED o IC p\u0159id\u011Blen\u00ED
+Toggle_In_Allocation_Drag_N_Drop_Mode.TITLE=P\u0159epnout v re\u017Eimu p\u0159etahov\u00E1n\u00ED p\u0159id\u011Blen\u00ED
+Show_Only_Selected_Allocation_Types.TITLE=Zobrazit pouze vybran\u00E9 typy p\u0159id\u011Blen\u00ED
+Incremental_Change.NAME=P\u0159\u00EDr\u016Fstkov\u00E9 zm\u011Bny
+icDisplay_Icons.NAME=Zobrazit ikony
+Html_Text.NAME=HTML/Text
+sap.NAME=Zobrazit data SAP
+RelatedSubstitutes.NAME=Souvisej\u00EDc\u00ED n\u00E1hrady
+
+newMenu.NAME=Nov\u00FD
+home.title=Dom\u016F
+inbox.title=M\u016Fj seznam \u00FAkol\u016F
+myWebLinks.title=Moje odkazy
+mySavedSearches.title=Moje ulo\u017Een\u00E1 hled\u00E1n\u00ED
+myViewMarkup.title=M\u016Fj n\u00E1hled/p\u0159ipom\u00EDnky
+quickLinks.title=Rychl\u00E9 odkazy
+openItems.title=Otev\u0159en\u00E9 polo\u017Eky
+history.title=Historie
+favorites.title=Obl\u00EDben\u00E9
+iWantTo.title=Chci...
+search.title=Hledat
+searchToggle.title=Hledat
+customize.title=P\u0159izp\u016Fsobit
+organize.title=Uspo\u0159\u00E1dat
+defaultTaskPane.title=V\u00FDchoz\u00ED panel \u00FAlohy
+closeAll.title=Zav\u0159\u00EDt v\u0161e
+clear.title=Smazat
+
+foldersToggle.TITLE=Slo\u017Eky
+Open.TITLE=Otev\u0159\u00EDt
+Open_With.TITLE=Otev\u0159\u00EDt v...
+Soft_Abort.TITLE=Hladk\u00E9 ukon\u010Den\u00ED
+Send_To.TITLE=Odeslat
+Item.TITLE=Polo\u017Eka...
+POMObject.TITLE=Objekt...
+TableRow.TITLE=\u0158\u00E1dek tabulky...
+NameValue.TITLE=Hodnota n\u00E1zvu...
+Folder.TITLE=Slo\u017Eka...
+BO.TITLE=Dal\u0161\u00ED...
+Part.TITLE=Sou\u010D\u00E1st...
+Form.TITLE=Formul\u00E1\u0159...
+Item_Element.TITLE=Objekt polo\u017Eky...
+Dataset.TITLE=Dataset...
+URL.TITLE=URL...
+Workflow_Process.TITLE=Proces pracovn\u00EDho postupu...
+Signal.TITLE=Sign\u00E1l...
+Design.TITLE=N\u00E1vrh...
+Revise.TITLE=Revidovat...
+Revisable.TITLE=Revidovateln\u00E9...
+NonRevisable.TITLE=Nerevidovateln\u00E9...
+Interface_Definition.TITLE=Definice rozhran\u00ED...
+Process_Variable.TITLE=Prom\u011Bnn\u00E1 procesu...
+Objects_.TITLE=Objekty...
+To_PLMXML_.TITLE=Do PLMXML...
+To_Default_ODS_.TITLE=Do v\u00FDchoz\u00ED ODS...
+Pack_All.TITLE=Sbalit v\u0161e
+Work_Context.TITLE=Kontext pr\u00E1ce...
+Compare_2D_Images.TITLE=Porovnat 2D obr\u00E1zky
+Show_Unconfigured_Variants.TITLE=Zobrazit nekonfigurovan\u00E9 varianty
+Show_Unconfigured_Assignments.TITLE=Zobrazit nenastaven\u00E9 p\u0159i\u0159azen\u00E9 v\u00FDskyty
+Enable_Filtering_Unconfigured_due_to_Classic_Variants.TITLE=Povolit na\u010Dten\u00ED konfigurace klasick\u00E9ho varianty
+User_Setting.TITLE=U\u017Eivatelsk\u00E9 nastaven\u00ED...
+
+firstBrowseAction.TITLE=Akce proch\u00E1zet prvn\u00ED
+Latest.TITLE=Posledn\u00ED
+Summary_Reports.TITLE=Souhrnn\u00E9 v\u00FDpisy
+Report_Builder_Reports.TITLE=V\u00FDpisy tvorby v\u00FDpis\u016F
+Select_Unused.TITLE=Vybrat nepou\u017E\u00EDvan\u00E9
+Toggle_Precise_Imprecise.TITLE=P\u0159epnout Precise/Imprecise
+Revision_Effectivity.TITLE=Platnost revize...
+previousBrowseAction.TITLE=Akce proch\u00E1zet dal\u0161\u00ED
+Assign_Work_Context.TITLE=P\u0159i\u0159adit kontext pr\u00E1ce...
+Paste.TITLE=Vlo\u017Eit jinak...
+Change_Ownership.TITLE=Zm\u011Bnit vlastnictv\u00ED...
+Assign.TITLE=P\u0159i\u0159adit...
+Configure.TITLE=Konfigurovat...
+Configure_Variants.TITLE=Konfigurovat varianty...
+Address_List.TITLE=Seznam adres...
+Verify_Part_Structure.TITLE=Ov\u011B\u0159it strukturu sou\u010D\u00E1sti
+From_Briefcase.TITLE=Z aktovky...
+Bulk_Load.TITLE=Hromadn\u00E9 datov\u00E9 zat\u00ED\u017Een\u00ED...
+From_All_ODS_Sites.TITLE=Ze v\u0161ech server\u016F ODS
+Stand_In.TITLE=Z\u00E1skok
+Occurrence_Effectivity.TITLE=Platnost v\u00FDskytu...
+ReplaceInContext.TITLE=Nahradit sestavu v kontextu...
+Select_Occurrence_Type_Filters.TITLE=Vybrat filtry typ\u016F v\u00FDskyt\u016F...
+Up.TITLE=Nahoru
+Audit.TITLE=Audit
+Generate_Portfolio_.TITLE=Generovat portfolio...
+nextBrowseAction.TITLE=Akce proch\u00E1zet dal\u0161\u00ED
+Variant_Rule.TITLE=Pravidlo varianty
+Only_Configure_Root.TITLE=Pouze konfigurovat ko\u0159en
+Save_Configuration.TITLE=Ulo\u017Eit konfiguraci
+Count_Modules.TITLE=Spo\u010D\u00EDtat moduly...
+Remote_Checkout_.TITLE=Vzd\u00E1len\u00E1 rezervace...
+Check_In.TITLE=Uvolnit...
+Access.TITLE=P\u0159\u00EDstup...
+To_ODS_Publication_List_.TITLE=Do seznamu publikov\u00E1n\u00ED ODS...
+Schedule.TITLE=Pl\u00E1n
+From_Specific_ODS_Site_s__.TITLE=Z ur\u010Dit\u00FDch pracovi\u0161\u0165 ODS...
+SearchVI.TITLE=Hledat...
+Notes.TITLE=Pozn\u00E1mky...
+To_Remote_Site_Via_Global_Services.TITLE=Vzd\u00E1len\u00E9 pou\u017E\u00EDv\u00E1n\u00ED glob\u00E1ln\u00EDho Multi-Site...
+Component.TITLE=Komponenta...
+Remove.TITLE=Odebrat
+Register_Item_Id.TITLE=Registrovat ID polo\u017Eky
+archiveObjects.TITLE=Archivovat
+Modify_Current.TITLE=Upravit aktu\u00E1ln\u00ED...
+Remove_target_from_PublishLink.TITLE=Odebrat c\u00EDl z propojen\u00ED publikov\u00E1n\u00ED
+Top_Level.TITLE=Nejvy\u0161\u0161\u00ED \u00FArove\u0148
+Make_Immune_.TITLE=Imunizovat...
+Add_targets_to_PublishLink.TITLE=P\u0159idat c\u00EDl do propojen\u00ED publikov\u00E1n\u00ED
+Set_In_Context.TITLE=Nastavit v kontextu
+Remove_In_Context_Override.TITLE=Odebrat kontextov\u00E9 p\u0159edefinov\u00E1n\u00ED
+BOMView_Revision.TITLE=Revize zobrazen\u00ED rozpisky...
+Cancel_Check_Out.TITLE=Zru\u0161it rezervaci...
+Print.TITLE=Tisk
+PrintAs.TITLE=Tisk...
+Save.TITLE=Ulo\u017Eit
+Save.MNEMONIC=S
+SaveAs.TITLE=Ulo\u017Eit jako
+Save.TIP=Ulo\u017Eit aktu\u00E1ln\u00ED obsah
+Exit.TITLE=Konec 
+Remote_Export_.TITLE=Vzd\u00E1len\u00FD export...
+Clear_Display.TITLE=Smazat zobrazen\u00ED
+Paste_Substitute.TITLE=Vlo\u017Eit nahrazen\u00ED
+Envelope.TITLE=Ob\u00E1lka...
+Show_Part_Solutions.TITLE=Zobrazit v\u00FDsledky sou\u010D\u00E1sti
+Create_Edit.TITLE=Vytvo\u0159it/upravit...
+Bottom.TITLE=Dole
+Publish_Data.TITLE=Publikovat data
+Report_Designer_Reports.TITLE=V\u00FDpisy konstrukt\u00E9ra v\u00FDpis\u016F
+Notification_List.TITLE=Seznam upozorn\u011Bn\u00ED...
+Objects_to_Excel.TITLE=Objekty do aplikace MS Excel
+Objects_to_CSV.TITLE=Objekty do CSV
+Objects_to_Word.TITLE=Objekty do aplikace MS Word
+Purge.TITLE=\u010Cistit
+Prune.TITLE=Zkr\u00E1tit
+Expand_Below.TITLE=Rozbalit n\u00ED\u017Ee
+Expand_To_Level.TITLE=Rozbalit n\u00ED\u017Ee...
+#x_reddyb SDLC-10270
+#Expand to Type
+Expand_To_Type.TITLE=Rozbalit do typu
+RevertAction.NAME=Vr\u00E1tit \u00FApravu
+Resume.TITLE=Pokra\u010Dovat
+Down_a_Level.TITLE=Dol\u016F o jednu \u00FArove\u0148
+Process___Change_Selector.TITLE=V\u00FDb\u011Br procesu a zm\u011Bny
+Check_Out_History.TITLE=Historie rezervace...
+Disconnect.TITLE=Odpojit...
+View_With.TITLE=Zobrazit s...
+ID.TITLE=ID...
+Select_Completely_Used.TITLE=Vybrat zcela pou\u017Eit\u00E9
+Perform.TITLE=Prov\u00E9st
+Show_Hide_In_Context_Bomline.TITLE=Zobrazit/skr\u00FDt kontextov\u00FD \u0159\u00E1dek rozpisky
+Select_Over_used.TITLE=Vybrat nadm\u011Brn\u011B pou\u017E\u00EDvan\u00E9
+Promote.TITLE=Postoupit
+Abort.TITLE=Zru\u0161it
+Find_lines_with_same_logical_identity.TITLE=Naj\u00EDt \u0159\u00E1dky se stejnou logickou identitou
+Show_Unconfigured_Changes.TITLE=Zobrazit nekofigurovan\u00E9 zm\u011Bny
+Refresh_Window.TITLE=Obnovit okno
+Run_Validations.TITLE=Spustit ov\u011B\u0159en\u00ED platnosti...
+Replace_User.TITLE=Nahradit u\u017Eivatele
+Open_PublishLink_source_structure.TITLE=Otev\u0159\u00EDt zdrojovou strukturu propojen\u00ED publikov\u00E1n\u00ED
+Find_Clipboard_Items.TITLE=Naj\u00EDt polo\u017Eky schr\u00E1nky
+Current_Users.TITLE=Aktu\u00E1ln\u00ED u\u017Eivatel\u00E9...
+Find_PublishLink_targets.TITLE=Naj\u00EDt c\u00EDle propojen\u00ED publikov\u00E1n\u00ED
+To_Default_ODS.TITLE=Do v\u00FDchoz\u00ED ODS
+Top.TITLE=Naho\u0159e
+Organization.TITLE=Organizace...
+Down.TITLE=Dol\u016F
+Change.TITLE=Klasick\u00E1 zm\u011Bna...
+From_Default_ODS_.TITLE=Z v\u00FDchoz\u00ED ODS...
+Unregister_Item_Id.TITLE=Zru\u0161it registraci ID polo\u017Eky
+restoreObjects.TITLE=Obnovit
+Effectivity_Mapping.TITLE=Mapov\u00E1n\u00ED platnosti...
+Remote.TITLE=Vzd\u00E1len\u00FD...
+Unpack.TITLE=Rozbalit
+Unpack_All.TITLE=Rozbalit v\u0161e
+Create_PublishLink.TITLE=Vytvo\u0159it propojen\u00ED publikov\u00E1n\u00ED
+Remove_Immunity_.TITLE=Odstranit imunitu...
+Structure_Context.TITLE=Kontext struktury...
+View_Set_Current.TITLE=Zobrazit/nastavit aktu\u00E1ln\u00ED...
+Replace_From_Clipboard.TITLE=Nahradit
+Replace.TITLE=Nahradit...
+Rename.TITLE=P\u0159ejmenovat
+Copy_Workflow_Process.TITLE=Kop\u00EDrovat proces pracovn\u00EDho postupu
+Start.TITLE=Po\u010D\u00E1tek
+Assembly.TITLE=Sestava...
+Set_Date_Unit_End_Item.TITLE=Nastavit datum/jednotku/posledn\u00ED polo\u017Eku...
+View_Results.TITLE=Zobrazit v\u00FDsledky...
+Baseline.TITLE=Z\u00E1kladna...
+Copy_Item_of_Line.TITLE=Kop\u00EDrovat polo\u017Eku \u0159\u00E1dku
+Find_PublishLink_source.TITLE=Naj\u00EDt zdroje propojen\u00ED publikov\u00E1n\u00ED
+Occurrence_Group.TITLE=Skupina v\u00FDskyt\u016F...
+External.TITLE=Vn\u011Bj\u0161\u00ED...
+Connect.TITLE=Propojit...
+Show_GCS_Connection_Points.TITLE=Zobrazit body propojen\u00ED GCS
+Guided_Component_Search.TITLE=\u0158\u00EDzen\u00E9 hled\u00E1n\u00ED komponenty...
+Guided_Component_Search.TIP=P\u0159idat klasifikovanou komponentu pomoc\u00ED \u0159\u00EDzen\u00E9ho hled\u00E1n\u00ED komponenty...
+Collapse_Below.TITLE=Sbalit n\u00ED\u017Ee
+Variant_Condition.TITLE=Podm\u00EDnka varianty...
+Up_a_Level.TITLE=Nahoru o jednu \u00FArove\u0148
+Objects.TITLE=Objekty...
+From_PLMXML.TITLE=Z PLMXML
+Save_Bookmark.TITLE=Ulo\u017Eit z\u00E1lo\u017Eku...
+Show_Unconfigured_By_Occurrence_Effectivity.TITLE=Zobrazit nekonfigurovan\u00E9 podle platnosti v\u00FDskytu
+List_Substitutes.TITLE=Seznam n\u00E1hrad
+Manage_Global_Alternates.TITLE=Spravovat glob\u00E1ln\u00ED alternativy
+Check_Out.TITLE=Rezervovat...
+Save_and_Keep_Check_Out.TITLE=Ulo\u017Eit a zachovat rezervovan\u00E9
+Implicit_Check_Out_Save_Changes.TITLE=Ulo\u017Eit zm\u011Bny
+Apply_Occurrence_Type_Filter.TITLE=Pou\u017E\u00EDt filtr typ\u016F v\u00FDskyt\u016F
+CAE_Item.TITLE=Polo\u017Eka CAE...
+Set_Override_folder.TITLE=Nastavit slo\u017Eku p\u0159edefinov\u00E1n\u00ED...
+Remove_Design_from_Product.TITLE=Odebrat komponentu z rozpisky
+Item_Revision.TITLE=Polo\u017Eka (revize)...
+Delete_PublishLink_for_source.TITLE=Odstranit propojen\u00ED publikov\u00E1n\u00ED pro zdroj
+Named_References.TITLE=Pojmenovan\u00E9 reference...
+Task_Properties.TITLE=Vlastnosti \u00FAlohy...
+Open_Live_Excel.TITLE=Spustit aplikaci Live Excel
+Suspend.TITLE=Odlo\u017Eeno
+Pack.TITLE=Sbalit
+Store_Occurrence_Paths.TITLE=Ulo\u017Eit cesty v\u00FDskyt\u016F
+Store_Occurrence_Paths_With_ID.TITLE=Ulo\u017Eit cesty v\u00FDskyt\u016F s ID
+Options.TITLE=Mo\u017Enosti...
+View___Set_Current.TITLE=Zobrazit/nastavit aktu\u00E1ln\u00ED
+latestBrowseAction.TITLE=Posledn\u00ED akce proch\u00E1zen\u00ED
+Save_as_CC.TITLE=Ulo\u017Eit jako nov\u00FD kontext spolupr\u00E1ce...
+Transfer_Check_Out.TITLE=P\u0159en\u00E9st rezervaci...
+Signoff_Report.TITLE=V\u00FDpis fin\u00E1ln\u00EDho potvrzen\u00ED
+Import_Remote.TITLE=Importovat vzd\u00E1len\u00FD...
+Update_Variant_Item.TITLE=Aktualizovat polo\u017Eku varianty...
+From_Default_ODS.TITLE=Z v\u00FDchoz\u00ED ODS
+Add_Remove_View_Tabs_.TITLE=Zobrazit/skr\u00FDt skupiny v\u00FDskyt\u016F...
+Replace_Design_in_Product.TITLE=Nahradit n\u00E1vrh v v\u00FDrobku
+Object.TITLE=Objekt
+Assign_Resource.TITLE=P\u0159i\u0159adit zdroj
+Expand.TITLE=Rozbalit
+View.TITLE=Pohled
+Custom_Reports.TITLE=Vlastn\u00ED v\u00FDpisy
+View_Rollup_Reports.TITLE=Zobrazit v\u00FDpisy souhrnu
+Show_Collaboration_Panel.TITLE=Zobrazit/skr\u00FDt panel spolupr\u00E1ce
+Collaboration_Context.TITLE=Kontext spolupr\u00E1ce...
+Add.TITLE=P\u0159idat...
+Show_Lower_Structure_Panel.TITLE=Zobrazit/skr\u00FDt druh\u00FD panel struktury
+To_Briefcase.TITLE=Do aktovky...
+Bulk_Extract.TITLE=Hromadn\u011B extrahovat...
+To_Pdx.TITLE=Do PDX...
+Unlink_Variant_Item.TITLE=Odpojit polo\u017Eku varianty...
+Add_Design_to_Product.TITLE=P\u0159idat n\u00E1vrh do v\u00FDrobku
+Complete.TITLE=Dokon\u010Deno
+Item_From_Template.TITLE=Polo\u017Eka ze \u0161ablony...
+
+makePrimaryRepresentation.TITLE=Nastavit prim\u00E1rn\u00ED reprezentaci
+makePrimaryRepresentation.TIP=Nastavit vybranou revizi n\u00E1vrhu jako prim\u00E1rn\u00ED reprezentaci revize sou\u010D\u00E1sti.
+makePrimaryRepresentation.MNEMONIC=d
+resetPrimary.TITLE=Obnovit prim\u00E1rn\u00ED reprezentaci...
+resetPrimaryRepresentation.TITLE=Obnovit prim\u00E1rn\u00ED reprezentaci
+resetPrimaryRepresentation.TIP=Obnovit vybranou prim\u00E1rn\u00ED reprezentaci sou\u010D\u00E1sti.
+resetPrimaryInvalidSelection=Vyberte jednu z reviz\u00ED polo\u017Eek pod reprezentacemi sou\u010D\u00E1sti
+
+multisiteReplicaSyncMenu.TITLE=Zkontrolovat status synchronizace repliky
+multisiteReplicaSyncMenu.TIP=Zkontrolovat objekt stavu synchronizace repliky
+multisiteReplicaSyncMenu.MNEMONIC=M
+
+#File->View/MarkUp
+viewMarkUpAction.MNEMONIC=R
+ViewMarkUp.TITLE=N\u00E1hled/p\u0159ipom\u00EDnky
+viewMarkUpAction.TIP=N\u00E1hled/p\u0159ipom\u00EDnky
+
+#File->Sign
+digitalSigningAction.MNEMONIC=D
+DigitalSigning.TITLE=Podepsat dokument
+digitalSigning.TIP=Podepsat dokument
+
+#File->Cancel Sign
+#cancelSigningAction.MNEMONIC=
+CancelSigning.TITLE=Zru\u0161it podeps\u00E1n\u00ED
+cancelSigning.TIP=Zru\u0161it podeps\u00E1n\u00ED
+
+# Edit->User Setting ...
+# ----------------------
+userSettingAction.NAME=U\u017Eivatelsk\u00E9 nastaven\u00ED...
+userSettingAction.TIP=Zobrazit/zm\u011Bnit aktu\u00E1ln\u00ED nastaven\u00ED ov\u011B\u0159ov\u00E1n\u00ED u\u017Eivatele
+userSettingAction.MNEMONIC=U
+
+# Edit -> Option
+# ----------------------
+preferencesAction.NAME=Mo\u017Enosti...
+preferencesAction.TIP=Mo\u017Enosti
+preferencesAction.MNEMONIC=O
+
+cutAction.NAME=Vyjmout
+cutAction.TIP=Vyjme v\u00FDb\u011Br a um\u00EDst\u00ED jej do schr\u00E1nky
+cutAction.MNEMONIC=T
+
+traceReport.NAME=\ sledov\u00E1n\u00ED
+checkOutAction.NAME=Rezervovat...
+pasteAction.NAME=Vlo\u017Eit
+pasteAction.TIP=Vlo\u017E\u00ED referenci na objekt, kter\u00FD se nach\u00E1z\u00ED ve schr\u00E1nce
+subscribeAction.NAME=Podepsat...
+cancelCheckOutAction.NAME=Zru\u0161it rezervaci...
+copyAction.NAME=Kop\u00EDrovat
+copyAction.TIP=Zkop\u00EDruje v\u00FDb\u011Br a um\u00EDst\u00ED jej do schr\u00E1nky
+copyAppendAction.NAME=Kop\u00EDrovat p\u0159\u00EDlohu
+copyAppendAction.TITLE=Kop\u00EDrovat p\u0159\u00EDlohu
+generateReportAction.NAME=Generovat v\u00FDpis
+noteDetailsAction.NAME=Detaily pozn\u00E1mky
+findWhereAllocatedAction.NAME=P\u0159id\u011Blen\u00E9 m\u00EDsto
+findWhereAllocatedAction.TIP=P\u0159id\u011Blen\u00E9 m\u00EDsto
+setWorkContextAction.NAME=Nastavit aktu\u00E1ln\u00ED kontext pr\u00E1ce...
+accessAction.NAME=P\u0159\u00EDstup...
+removeFromProjectAction.NAME=Odebrat
+subscribeRefreshNotifyAction.NAME=Podeps\u00E1n\u00EDm obnovit upozorn\u011Bn\u00ED...
+purgeAction.NAME=\u010Cistit
+assignToLicenseAction.NAME=P\u0159ipojit
+addToFavoritesAction.NAME=P\u0159idat k obl\u00EDben\u00FDm
+removeFromLicenseAction.NAME=Odpojit
+refreshAction.NAME=Obnovit
+refreshAction.MNEMONIC=R
+editAction.NAME=Upravit
+addPartToProductAction.NAME=P\u0159idat sou\u010D\u00E1st do v\u00FDrobku
+deleteAction.NAME=Odstranit
+deleteAction.TIP=Trvale odstran\u00ED vybran\u00FD objekt
+transferCheckOutAction.NAME=P\u0159en\u00E9st rezervaci...
+variantDetailsAction.NAME=Detaily podm\u00EDnky varianty
+CCRemoveACTAlignmentAction.NAME=Zobrazit propojen\u00E9 linky
+checkOutHistoryAction.NAME=Historie rezervace...
+manageGlobalAlternatesAction.NAME=Spravovat glob\u00E1ln\u00ED alternativy
+checkInAction.NAME=Uvolnit...
+propertiesAction.NAME=Vlastnosti zobrazen\u00ED
+addNew.NAME=P\u0159idat nov\u00FD...
+
+
+cicoMenu.NAME=Uvolnit/rezervovat
+cicoMenu.MNEMONIC=C
+
+project.NAME=Projekt
+project.TIP=P\u0159i\u0159adit objekty k projekt\u016Fm nebo odebrat z projekt\u016F
+project.MNEMONIC=P
+
+license.NAME=Licence
+license.TIP=P\u0159ipojit objekty k licenc\u00EDm nebo odpojit od licenc\u00ED
+license.MNEMONIC=L
+
+multisiteSyncPopMenu.NAME=Synchronizace v\u00EDce pracovi\u0161\u0165
+multisiteSyncPopMenu.MNEMONIC=S
+
+Configure_Variants.NAME=Konfigurovat varianty...
+editProperties.NAME=Vlastnosti
+viewProperties.NAME=Vlastnosti zobrazen\u00ED
+
+# Tracelink commands
+# --------------------
+tracelinkMenu.NAME=Aktivn\u00ED propojen\u00ED
+
+# open in xxx commands
+# --------------------
+openInNX.NAME=Otev\u0159\u00EDt v aplikaci NX
+openInTCJTEditor.NAME= Otev\u0159\u00EDt v Editoru JT
+#openInPV.NAME=Open Bookmark In Lifecycle Visualization
+openInVMU.NAME=Otev\u0159\u00EDt ve vizualizaci \u017Eivotn\u00EDho cyklu
+openInSEEC.NAME=Otev\u0159\u00EDt v aplikaci Solid Edge
+
+# Incremental Change commands
+# --------------------
+incrementalChangeMenu.NAME=P\u0159\u00EDr\u016Fstkov\u00E9 zm\u011Bny
+incrementalCreateIC.NAME=Vytvo\u0159it kontext...
+incrementalAdd.NAME=P\u0159idat
+incrementalRemove.NAME=Odebrat
+incrementalCreate.NAME=Vytvo\u0159it u objektu
+incrementalDelete.NAME=Odstranit na objektu
+removeIncrementalChanges.NAME=Odebrat zm\u011Bny...
+icBaseline.NAME=P\u0159\u00EDr\u016Fstkov\u00E1 zm\u011Bna z\u00E1kladny...
+icChange.NAME=Upravit p\u0159\u00EDlohu...
+icSplit.NAME=Rozd\u011Blit...
+icIntent.NAME=Z\u00E1m\u011Br
+icNoIcons.NAME=Nic
+icCurrentIcIcons.NAME=Aktu\u00E1ln\u00ED kontext
+icAllIcIcons.NAME=V\u0161echny kontexty
+icHideRemoveIcons.NAME=Skr\u00FDt/odebrat ikony 
+
+# Import Templates commands
+Templates.NAME=\u0160ablony
+SpecTemplate.NAME=\u0160ablona specifikace
+ObjTemplate.NAME=\u0160ablona objektu
+ExcelTemplate.NAME=\u0160ablona aplikace MS Excel
+Fnd0HTMLObjTmpl.NAME=\u0160ablona HTML
+
+# AIE related common commands
+# ---------------------------
+importFromConnection.NAME=Z propojen\u00ED...
+exportToConnection.NAME=Pro propojen\u00ED...
+checkOutToConnection.NAME=Rezervovat pro propojen\u00ED...
+checkInFromConnection.NAME=Uvolnit z propojen\u00ED...
+connectionsAction.NAME=Propojen\u00ED...
+
+ShowJTProperties.TITLE=Vlastnosti JT...
+ShowSubComponents.TITLE=Zobrazit d\u00EDl\u010D\u00ED komponenty
+HideSubComponents.TITLE=Skr\u00FDt d\u00EDl\u010D\u00ED komponenty
+
+command.name.AdvancedSearch=Pokro\u010Dil\u00E9 hled\u00E1n\u00ED
+command.name.Null=P\u0159\u00EDkaz Null
+command.name.Search=Hledat
+command.label.General=Obecn\u00E9...
+command.label.Item=Polo\u017Eka...
+command.label.ItemRevision=Revize polo\u017Eky...
+command.label.DatasetName=N\u00E1zev datasetu
+command.label.KeywordSearch=Hled\u00E1n\u00ED kl\u00ED\u010Dov\u00E9ho slova
+menu.mnemonic.HelpUpdate=Ne
+
+Check_Out_to_site.TITLE=Rezervovat na pracovi\u0161ti...
+Check_In_from_site.TITLE=Uvolnit z pracovi\u0161t\u011B...
+#Update Thumbnail related
+updateThumbnail.NAME=Aktualizovat n\u00E1hled...
+updateThumbnail.TIP=Aktualizovat n\u00E1hled
+Cancel_Check_Out_to_site.TITLE=Zru\u0161it rezervaci na pracovi\u0161ti...
+Local_Check_Out.TITLE=M\u00EDstn\u00ED rezervace...
+Local_Check_In.TITLE=M\u00EDstn\u00ED uvoln\u011Bn\u00ED...
+Cancel_Local_Check_Out.TITLE=Zru\u0161it m\u00EDstn\u00ED rezervaci...
+siteLocalCheckoutAction.MNEMONIC=R
+siteLocalCheckinAction.MNEMONIC=U
+siteLocalCancelCheckoutAction.MNEMONIC=X
+
+ApplyConfigContext.TITLE=Pou\u017E\u00EDt kontext konfigurace...
+# Fix In-Structure Associations command
+# -----------------------------
+fixAssociations.NAME=Opravit asociace ve struktu\u0159e
+
+Markup.TITLE=P\u0159ipom\u00EDnka
+Markup_Mode.TITLE=Re\u017Eim p\u0159ipom\u00EDnek
+Markup_View.TITLE=Zobrazit pohled p\u0159ipom\u00EDnek
+Markup_Delete.TITLE=Odstranit p\u0159ipom\u00EDnku (tato \u00FArove\u0148)
+Markup_Apply.TITLE=Pou\u017E\u00EDt p\u0159ipom\u00EDnku (tato \u00FArove\u0148)
+Markup_Apply_All.TITLE=Pou\u017E\u00EDt p\u0159ipom\u00EDnky (v\u0161echny \u00FArovn\u011B)
+Markup_Evaluate.TITLE=Ov\u011B\u0159it platnost p\u0159\u00EDstupu k pou\u017Eit\u00ED p\u0159ipom\u00EDnek (v\u0161echny \u00FArovn\u011B)
+
+# Localization
+#-------------------------------------------------
+Export_Translations.TITLE=Export p\u0159evod\u016F
+Import_Translations.TITLE=Import p\u0159evod\u016F
+Filter_Objects.TITLE=Filtrovat objekty
+
+Export_Translations.TIP=Export p\u0159evod\u016F do souboru XML
+Import_Translations.TIP=Import p\u0159evod\u016F do datab\u00E1ze
+Filter_Objects.TIP=Filtrovat objekty podle krit\u00E9ri\u00ED L10N
+
+L10N.NAME=Lokalizace
+
+Change_Locale.TITLE=Zm\u011Bnit n\u00E1rodn\u00ED prost\u0159ed\u00ED
+
+TCInfoCenter.LABEL=InfoCenter
+OpenMailBox.LABEL=Po\u0161tovn\u00ED schr\u00E1nka
+
+bf_category_name=P\u0159enos vlastnictv\u00ED aktovky
+bfOwnershipCart.NAME=Aktovka
+bfTransfeOwnership.NAME=Ozna\u010Dit pro p\u0159enos vlastnictv\u00ED
+addPartToOwnershipCart.MNEMONIC=A
+bfOwnershipView.TITLE=P\u0159enos vlastnictv\u00ED aktovky
+
+# Digital signature related commands
+Apply_DigitalSign.TITLE=Zna\u010Dka PKI
+Void_DigitalSign.TITLE=Pr\u00E1zdn\u00FD
+
+
+# Choose Save As Service Mode
+SaveAsMode.NAME=Vybrat re\u017Eim ulo\u017Een\u00ED jako slu\u017Eby

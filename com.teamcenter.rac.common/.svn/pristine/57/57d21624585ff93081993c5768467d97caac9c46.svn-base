@@ -1,0 +1,45 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the pasteas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: pasteas_locale.properties
+#   Module  : com.teamcenter.rac.commands.pasteas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = \u5F62\u5F0F\u3092\u9078\u629E\u3057\u3066\u8CBC\u4ED8\u3051
+addAs = \u8FFD\u52A0:
+confirmationText = \u8CBC\u4ED8\u3051\u307E\u3059\u304B?
+
+# Entries for error message
+clipboardEmpty = \u30AF\u30EA\u30C3\u30D7\u30DC\u30FC\u30C9\u304C\u7A7A\u3067\u3059\u3002
+error.TITLE = \u5F62\u5F0F\u3092\u9078\u629E\u3057\u3066\u8CBC\u4ED8\u3051
+
+#PasteBOMAsDialog
+componentOfSelectedAssembly = \u9078\u629E\u3055\u308C\u305F\u30A2\u30BB\u30F3\u30D6\u30EA\u306E\u30B3\u30F3\u30DD\u30FC\u30CD\u30F3\u30C8
+substituteOfSelectedAssembly = \u9078\u629E\u3057\u305F\u30A2\u30BB\u30F3\u30D6\u30EA\u306E\u4EE3\u66FF
+numberOfOccurrences = \u30AA\u30AB\u30EC\u30F3\u30B9\u6570:
+quantityPerOccurrence = \u30AA\u30AB\u30EC\u30F3\u30B9\u3042\u305F\u308A\u306E\u6570\u91CF:
+ar = A/R
+sequenceNumber = \u901A\u756A:
+viewType = \u30D3\u30E5\u30FC\u30BF\u30A4\u30D7:
+
+# Entries for message center
+loadingRelations=\u30EA\u30EC\u30FC\u30B7\u30E7\u30F3\u3092\u30ED\u30FC\u30C9\u3057\u3066\u3044\u307E\u3059... 
+
+# Entries for displaying error messages when wrong relation is used
+captureRelation = \u30AD\u30E3\u30D7\u30C1\u30E3\u30EA\u30EC\u30FC\u30B7\u30E7\u30F3\u306E\u307F\u3092\u4F7F\u7528\u3057\u307E\u3059\u3002
+relation.TITLE = \u4E0D\u6B63\u306A\u30EA\u30EC\u30FC\u30B7\u30E7\u30F3

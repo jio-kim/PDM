@@ -1,0 +1,164 @@
+
+#Properties for the Remove Part relation Dialog
+##############################################
+
+partRelation.TITLE = Supprimer les relations de pi\u00E8ces.
+
+partRelation.removeButton.LABEL=Supprimer
+partRelation.removeButton.TIP=Supprime la ou les lignes de Relation de pi\u00E8ce s\u00E9lectionn\u00E9es dans la ligne de Pi\u00E8ce cible s\u00E9lectionn\u00E9e
+
+partRelation.cancelButt.LABEL=Annuler
+partRelation.cancelButt.TIP=Fermer la bo\u00EEte de dialogue Supprimer relation
+
+partRelation.columnsShown= LigneNomenclature, R\u00F4le associ\u00E9/Pi\u00E8ces redondantes,
+
+partRelation.Types=Pi\u00E8ceRedondante,VariableProcessus, Cible, Source, Emetteur,
+
+# New part Dialog
+# ----------------------
+command.TITLE = Nouvelle pi\u00E8ce
+base.TITLE=D\u00E9tails de pi\u00E8ce
+basetype = Pi\u00E8ce
+
+# Added for Revise Project
+# -------------------------
+newPart.TITLE = Nouvelle pi\u00E8ce
+saveAs.TITLE = Sauvegarder sous
+revise.TITLE = R\u00E9viser
+
+basedOn=Bas\u00E9 sur
+
+# Advanced copy options tab
+# ------------------------------
+advanced.TITLE=Avanc\u00E9
+fromTree=Source:
+toTree=Destination:
+
+loadingTree.MSG=Charge l'arborescence...
+
+# Messages for message center
+# ------------------------------
+loadingItemTypes = Chargement des types de pi\u00E8ce...
+creatingNewItem = Cr\u00E9ation d'une nouvelle pi\u00E8ce
+creatingNewItemRevision = Cr\u00E9ation d'une nouvelle R\u00E9vision de pi\u00E8ce
+abort = Abandonner l'ouverture de Nouvelle pi\u00E8ce
+creatingNewPart = Cr\u00E9ation d'une nouvelle pi\u00E8ce
+creatingNewPartRev = Cr\u00E9ation d'une nouvelle R\u00E9vision de pi\u00E8ce
+populatingTheForm = Renseignement des formulaires
+advancedPanel=Chargement du panneau Copie R\u00E9cursive pour
+mandatoryFields=Remplissez les Attributs personnalis\u00E9s obligatoires
+advancedText=Ce panneau affiche l'Arborescence CopieR\u00E9cursive ainsi que les options de Copie.
+# Error Messages
+# ----------------------
+itemTypeError = Impossible de changer la liste disponible des pi\u00E8ces
+failToCreate = Echec de cr\u00E9ation de la pi\u00E8ce
+failToOpen = Impossible d'ouvrir la pi\u00E8ce. Probl\u00E8me de protection.
+error.TITLE = Nouvelle pi\u00E8ce...
+fillFormError = Echec de renseignement du formulaire master.
+createDirFailed=Echec de cr\u00E9ation du r\u00E9pertoire temporaire au chargement des attributs personnalis\u00E9s de pi\u00E8ce. \n Valeur de "ExportDir" probablement erron\u00E9e dans client_specific.properties.
+
+
+#Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Cr\u00E9ation de pi\u00E8ce interrompue. Pi\u00E8ce cr\u00E9\u00E9e et partiellement ins\u00E9r\u00E9e
+
+whitespaceerror=Cr\u00E9ation impossible. V\u00E9rifiez les champs ID/R\u00E9v/Nom.
+sameAsoldId=Une pi\u00E8ce existante a \u00E9t\u00E9 trouv\u00E9e. Cr\u00E9er/Sauvegarder Sous ne cr\u00E9e que des nouvelles pi\u00E8ces. \nPour cr\u00E9er une nouvelle r\u00E9vision de pi\u00E8ce, utilisez la commande Fichier -> R\u00E9viser.
+# Not valid type keys
+# ----------------------
+notValidType.TITLE=Donn\u00E9es d'entr\u00E9e incorrectes
+notValidChar=Impossible de changer la valeur de propri\u00E9t\u00E9 du caract\u00E8re.
+notValidDate=Date incorrecte.
+notValidDouble=Nombre r\u00E9el ou r\u00E9el double pr\u00E9cision incorrect.
+notValidInt=Nombre entier incorrect.
+notValidLogical=Donn\u00E9es logiques incorrectes.
+notValidShort=Nombre entier court incorrect.
+notValidString=Impossible de changer la valeur de propri\u00E9t\u00E9 de la cha\u00EEne de caract\u00E8res.
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = Nouvelle pi\u00E8ce
+dialog.vi.TITLE=Nouvelle pi\u00E8ce variante pour
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.TOOLTIP=V\u00E9rifier la configuration de pi\u00E8ce variante
+viConfigStep.info=V\u00E9rifiez que la configuration de pi\u00E8ce variante est correcte
+
+# New Item Panel
+# -----------------------------
+createConfirm.TITLE=Nouvelle pi\u00E8ce
+createConfirm.MSG=Pour poursuivre, il faut cr\u00E9er une nouvelle pi\u00E8ce. \nVoulez-vous cr\u00E9er la nouvelle pi\u00E8ce?
+
+# Item Type Panel
+# ----------------------------
+itemTypeInfo.LABEL=S\u00E9lectionnez le type de pi\u00E8ce \u00E0 cr\u00E9er.
+itemTypeStep.TOOLTIP=S\u00E9lectionner un type de pi\u00E8ce.
+
+# Item Info Panel
+# -----------------------------
+itemInfo.LABEL=D\u00E9finir les informations de base pour une pi\u00E8ce \u00E0 cr\u00E9er.
+itemInfoStep.NAME=Saisir les informations sur la pi\u00E8ce
+itemInfoStep.TOOLTIP=D\u00E9finir les informations de base de la pi\u00E8ce.
+
+itemId = No de pi\u00E8ce
+itemInformation = Informations sur la pi\u00E8ce
+makeOrBuy = Fabriquer/Acheter
+make = Fabriquer
+buy = Acheter
+designRequired = Conception obligatoire
+
+
+# Item Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=D\u00E9finir des informations de pi\u00E8ce suppl\u00E9mentaires.
+itemMasterFormStep.NAME=Saisir des informations de pi\u00E8ce suppl\u00E9mentaires
+itemMasterFormStep.TOOLTIP=D\u00E9finir des informations de pi\u00E8ce suppl\u00E9mentaires.
+
+# ItemRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=D\u00E9finir des informations de r\u00E9vision de pi\u00E8ce suppl\u00E9mentaires.
+itemRevMasterFormStep.NAME=Saisir des informations de r\u00E9vision de pi\u00E8ce suppl\u00E9mentaires
+itemRevMasterFormStep.TOOLTIP=D\u00E9finir des informations de r\u00E9vision de pi\u00E8ce suppl\u00E9mentaires.
+
+# Form Attr Panel
+# -----------------------
+formAttrStep.TOOLTIP=D\u00E9finir les attributs de formulaire pour le type de pi\u00E8ce s\u00E9lectionn\u00E9.
+formAttrStepDisabled.TOOLTIP=Aucun attribut de formulaire n'est d\u00E9fini pour le type de pi\u00E8ce s\u00E9lectionn\u00E9.
+
+# Item Identifier Panel
+# ----------------------------
+itemIdentifierInfo.LABEL=D\u00E9finir les informations d'ID d'alternance de pi\u00E8ce.
+itemIdentifierStep.NAME=Entrez les informations d'alternance
+itemIdentifierStep.TOOLTIP=D\u00E9finir l'ID d'alternance pour la pi\u00E8ce.
+
+# Options panel
+# -------------
+checkOutOnCreate = Bloquer la r\u00E9vision de pi\u00E8ce \u00E0 la cr\u00E9ation
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Cr\u00E9ation d'une nouvelle pi\u00E8ce
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Cr\u00E9ation d'une nouvelle pi\u00E8ce
+checkingIds=V\u00E9rification d'ID et de r\u00E9v. de pi\u00E8ce
+pastingNewItem=Collage de la nouvelle pi\u00E8ce
+openingNewComponent=Ouverture de la nouvelle pi\u00E8ce
+abort = Abandonner l'ouverture de Nouvelle pi\u00E8ce
+checkOutRevision=Bloque la r\u00E9vision de pi\u00E8ce
+
+# Error Messages
+# ----------------------
+error.TITLE = Nouvelle pi\u00E8ce...
+failFindDialog=Echec de recherche de dialogue Nouvelle pi\u00E8ce.
+sameAsOldId=Une pi\u00E8ce existante a \u00E9t\u00E9 trouv\u00E9e. Cr\u00E9er/Sauvegarder Sous ne cr\u00E9e que des nouvelles pi\u00E8ces. \nPour cr\u00E9er une nouvelle r\u00E9vision de pi\u00E8ce, utilisez la commande Fichier -> R\u00E9viser.
+failToCreate = Echec de cr\u00E9ation de la pi\u00E8ce
+failToOpen = Impossible d'ouvrir la pi\u00E8ce. Probl\u00E8me de protection.
+failFindItemMaster=Echec d'obtention du formulaire master de Pi\u00E8ce.
+failFindItemRevMaster=Echec d'obtention du formulaire master de r\u00E9vision de pi\u00E8ce.
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Cr\u00E9ation de pi\u00E8ce interrompue. Pi\u00E8ce cr\u00E9\u00E9e et partiellement ins\u00E9r\u00E9e

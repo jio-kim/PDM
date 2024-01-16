@@ -1,0 +1,56 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the publish package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: publish_locale.properties
+#   Module  : com.teamcenter.rac.commands.publish
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#04-May-2001  Vic Nidoy               Add dotDotDot
+#04-May-2001  Vic Nidoy               Added publishSuccess.STATUS
+#30-May-2001  Vic Nidoy               Fix confirmationText
+#14-Feb-2002  rlee                    Fix PR4422570 , missing commands.TITLE entry
+#28-Feb-2005  rlee                    Improve selection behaviors
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# command.TITLE not used but here to placate AbstractProgressDialog
+command.TITLE=\uB354\uBBF8
+publishToDefaultOdsDotDotDot.TITLE=\uAE30\uBCF8 ODS\uC5D0 \uAC8C\uC2DC
+publishToPublicationList.TITLE=\uAC8C\uC2DC\uBB3C \uB9AC\uC2A4\uD2B8\uC5D0 \uAC8C\uC2DC
+
+confirmationText=\uB2E4\uC74C\uC73C\uB85C \uAC8C\uC2DC\uD558\uB824\uBA74 [\uD655\uC778]\uC744 \uC120\uD0DD\uD558\uC2ED\uC2DC\uC624:
+questionMark=?
+publish.STATUS=\uAC8C\uC2DC\uD558\uB294 \uC911...
+dotDotDot=...
+publish.TITLE=\uAC8C\uC2DC
+publishSuccess.STATUS=\uC120\uD0DD\uD55C \uAC1C\uCCB4\uB97C \uC131\uACF5\uC801\uC73C\uB85C \uAC8C\uC2DC\uD588\uC2B5\uB2C8\uB2E4.
+
+noSelectionError = \uAC8C\uC2DC\uD560 \uAC1C\uCCB4\uB97C \uC120\uD0DD\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4.
+notADataset = \uC120\uD0DD\uD55C \uAC1C\uCCB4\uAC00 \uB370\uC774\uD130 \uC9D1\uD569\uC774 \uC544\uB2D9\uB2C8\uB2E4.
+
+odsPublicationSite.LABEL=ODS \uAC8C\uC2DC \uC0AC\uC774\uD2B8
+sites.available=\uC0AC\uC6A9 \uAC00\uB2A5\uD55C \uC0AC\uC774\uD2B8
+sites.selected=\uC120\uD0DD\uB41C \uC0AC\uC774\uD2B8
+
+site.TITLE=\uC0AC\uC774\uD2B8 \uC120\uD0DD
+
+noPubSitesSelected = \uC120\uD0DD\uD55C \uC0AC\uC774\uD2B8\uAC00 \uC5C6\uC2B5\uB2C8\uB2E4
+noPubSiteaSelected.TITLE = ODS \uC0AC\uC774\uD2B8 \uC120\uD0DD
+
+noPublicationSites = \uAD50\uCCB4 ODS \uC0AC\uC774\uD2B8\uB97C \uC815\uC758\uD558\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4
+noPublicationSites.TITLE = ODS \uC0AC\uC774\uD2B8 \uC120\uD0DD
+
+odsSiteUndefined = ODS_site \uD658\uACBD\uC124\uC815\uC774 \uC815\uC758\uB418\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4
+failedReadingOdsSite = ODS_site \uD658\uACBD\uC124\uC815\uC744 \uC77D\uB294\uB370 \uC2E4\uD328\uD588\uC2B5\uB2C8\uB2E4

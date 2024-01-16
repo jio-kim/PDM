@@ -1,0 +1,22 @@
+// @<COPYRIGHT>@
+// ==================================================
+// Copyright 2011.
+// Siemens Product Lifecycle Management Software Inc.
+// All Rights Reserved.
+// ==================================================
+// @<COPYRIGHT>@
+
+####################################################################################################
+# Messages
+####################################################################################################
+
+rootObjectCreationFailed.MESSAGE=Cannot proceed with Save As operation for {0}. 
+invalidInput.MESSAGE=Input object to service is null. setInput() needs to be \n done before method getSaveAsInfo() is invoked from the SaveAsService.
+
+dataManagementServiceNotAvailable.MESSAGE=Data Management service is not available. For more details please contact your Administrator.
+saveAsOperationFailed.MESSAGE=Save As Objects operation failed. For more details please contact your Administrator.
+
+saveAsServiceNotAvailable.MESSAGE=Save As Service is not available for save operation. Please contact your Administrator.
+renderingFalied.MESSAGE=Save As Rendering is incomplete hence Save As operation will not succeed. Please contact your Administrator.
+
+

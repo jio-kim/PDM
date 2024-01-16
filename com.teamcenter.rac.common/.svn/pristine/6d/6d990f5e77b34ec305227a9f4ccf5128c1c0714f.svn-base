@@ -1,0 +1,48 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the reserve package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: reserve_locale.properties
+#   Module  : com.teamcenter.rac.commands.reserve
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#24-Apr-2003  Paul Jackson            hurl on null item rev from bom line
+#16-Jul-2003  kao                     for GDELine
+#15-Sep-2003  x_monthr                Add noAttachmentError
+#16-Mar-2004  Jim Towers              PR1289937 - Checkout with export overwrites files.
+#22-Jan-2005  x_hottig                Fixing PR #5047723 - Misleading messagebox titles > Check In = Reserve, Check Out = Unreserve
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=\u7B7E\u51FA
+
+comments=\u6CE8\u91CA\uFF1A
+changeid=\u66F4\u6539 ID\uFF1A
+export=\u7B7E\u51FA\u65F6\u5BFC\u51FA\u6570\u636E\u96C6
+overwriteFiles=\u8986\u76D6\u73B0\u6709\u7684\u6587\u4EF6
+
+confirmationText=\u786E\u5B9A\u8981\u7B7E\u51FA\u5417\uFF1F
+confirmationTextForImplicitCheckout=\u6240\u6709\u672A\u4FDD\u5B58\u7684\u66F4\u6539\u90FD\u5C06\u4E22\u5931\u3002\u8981\u4FDD\u5B58\u5B83\u4EEC\uFF0C\u8BF7\u6267\u884C\u201C\u4FDD\u5B58\u66F4\u6539\u201D\u64CD\u4F5C\u800C\u975E\u201C\u7B7E\u51FA\u201D\u64CD\u4F5C\u3002
+reserveObjects=\u6B63\u5728\u7B7E\u51FA...
+
+error.TITLE=\u7B7E\u51FA
+noSelectionError = \u672A\u9009\u5B9A\u8981\u7B7E\u51FA\u7684\u5BF9\u8C61
+noItemRevError.MESSAGE = \u7B7E\u5165/\u7B7E\u51FA\u64CD\u4F5C\u5BF9\u4E8E\u6CA1\u6709\u96F6\u7EC4\u4EF6\u7248\u672C\u7684\u9009\u5B9A\u884C\u65E0\u6548\u3002
+noGDEError.MESSAGE = \u7B7E\u5165/\u7B7E\u51FA\u64CD\u4F5C\u5BF9\u4E8E\u6CA1\u6709 GDE \u5BF9\u8C61\u7684\u9009\u5B9A\u884C\u65E0\u6548\u3002
+noAttachmentError.MESSAGE = \u7B7E\u5165/\u7B7E\u51FA\u64CD\u4F5C\u5BF9\u4E8E\u6CA1\u6709\u9644\u4EF6\u5BF9\u8C61\u7684\u9009\u5B9A\u884C\u65E0\u6548\u3002
+noAppearanceGroupError.MESSAGE = \u7B7E\u5165/\u7B7E\u51FA\u64CD\u4F5C\u5BF9\u4E8E\u6CA1\u6709\u5916\u89C2\u7EC4\u5BF9\u8C61\u7684\u9009\u5B9A\u5916\u89C2\u7EC4\u884C\u65E0\u6548\u3002
+
+#For Cancel Checkout
+cancelCheckOut.WarningMSG=\u6B64\u7C7B\u578B\u4E0D\u652F\u6301\u53D6\u6D88\u7B7E\u51FA\u3002\u6267\u884C\u4FDD\u5B58\u7B7E\u5165\u53EF\u80FD\u4FEE\u6539\u672A\u8F93\u5165\u5185\u5BB9\u7684\u7248\u672C\u3002\u5982\u679C\u4E0D\u60F3\u4FEE\u6539\u672A\u8F93\u5165\u5185\u5BB9\u7684\u7248\u672C\uFF0C\u5728\u7B7E\u51FA\u5BF9\u8BDD\u6846\u4E2D\u9009\u62E9\u201C\u5426\u201D\u3002
+cancelCheckOut.WarningTitle=\u53D6\u6D88\u7B7E\u51FA\u8B66\u544A

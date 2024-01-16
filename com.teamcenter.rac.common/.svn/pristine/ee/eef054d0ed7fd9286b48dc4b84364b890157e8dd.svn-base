@@ -1,0 +1,17 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# ===========================================================================
+#    Date      Name                    Description of Change
+# 16-Apr-2008  Sivaram Chandra         Initial creation
+# $HISTORY$
+# ===========================================================================
+participantsTreeRootNodeName=\u53C2\u4E0E\u8005
+loadingParticipantsTree.MSG=\u6B63\u5728\u52A0\u8F7D\u53C2\u4E0E\u8005\u6811...
+addParticipantsError.TITLE=\u6DFB\u52A0\u53C2\u4E0E\u8005\u9519\u8BEF
+removeParticipantsError.TITLE=\u79FB\u9664\u53C2\u4E0E\u8005\u9519\u8BEF

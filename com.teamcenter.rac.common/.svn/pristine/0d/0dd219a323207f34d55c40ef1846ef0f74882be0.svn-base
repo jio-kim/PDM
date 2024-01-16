@@ -1,0 +1,80 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the TC
+#                   New Dataset package.  This is an internal file so therefore
+#                   only TC PBU developers should be modifying this file.  To
+#                   make changes please modify the newdataset_user.properties file.
+#                   Do NOT modify this file.  This allows properties found in
+#                   this file to be over-written but not destroyed.
+#
+#   Filename: newdataset.properties
+#   Module  : com.teamcenter.rac.commands.newdataset
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#11-Jan-1999  wangp                   default property file for New Dataset
+#12-Jan-1999  mccollr                 initial promote
+#22-Jan-1999  wangp                   add abort entry
+#19-Feb-1999  wangp                   replace com.teamcenter.rac.aif.aif_user by com.teamcenter.rac.aif.aif
+#22-Feb-1999  wangp                   replace tabs
+#14-Mar-1999  pracilio                Changed the impoerted registry to include TCs common registry.
+#04-May-1999  wangp                   Code Review Update
+#25-May-1999  wangp                   change the key for dialog title
+#21-Jul-1999  sirdeshp                Implement soft abort and window closing event
+#26-Jul-1999  wangp                   add failToCreate
+#12-Aug-1999  wangp                   icon names are changed to all lowercase
+#08-Sep-1999  wangp                   merge to cypress
+#28-Oct-1999  huangz                  Add Dataset Id keys
+#11-Nov-1999  wangp                   add import entry
+#11-Feb-2000  mccollr                 Remove the localization keys and place within the locale file.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Oct-2000  wangp                   use icon for import button
+#27-Jan-2004  wangp                   fix pr 4902579: customize command/dialog
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#24-Feb-2005  Zhixin Huang            Change the icon from gif to png file and clean up the entries phase 2.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#28-Aug-2009  Pushkar Raj	          Added entries for Multiple file Drag and Drop.
+#$HISTORY$
+#=================================================================================================*/
+
+import=com.teamcenter.rac.common.common
+
+# New Dataset Dialog icon
+# -----------------------
+importButton.ICON=images/browse_16.png
+
+newDatasetDialog=com.teamcenter.rac.commands.newdataset.NewDatasetDialog
+newDatasetOperation=com.teamcenter.rac.commands.newdataset.NewDatasetOperation
+
+#preference for default dataset type based on the extension of the file
+dataset_default_type=DRAG_AND_DROP_default_dataset_type
+
+#Width of the MultipleFilesNewDatset table column
+fileName.WIDTH=100
+datasetName.WIDTH=100
+datasetDesc.WIDTH=80
+datasetType.WIDTH=100
+templateName.WIDTH=60
+referenceName.WIDTH=100
+toolsUsed.WIDTH=100
+
+#Width of the MultipleDatsetProgress table column
+file.WIDTH=250
+status.WIDTH=250
+
+
+#Status Icon for Result Dialog(Dataset Progress Dialog)
+#READY
+READY.ICON=images/thumbnail/inprogress_32.png
+#STARTED
+STARTED.ICON=images/thumbnail/inprogress_32.png
+#COMPLETED
+COMPLETED.ICON=images/thumbnail/approved_32.png
+#ERROR
+ERROR.ICON=images/thumbnail/errorsmall_32.png
+#PASTE ERROR
+PASTE_ERROR.ICON=images/thumbnail/errorsmall_32.png

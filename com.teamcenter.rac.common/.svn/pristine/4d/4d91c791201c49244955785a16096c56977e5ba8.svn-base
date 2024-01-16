@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+	<implementation class="com.teamcenter.rac.common.services.CoreConstantService"/>
+	<service>
+		<provide interface="com.teamcenter.rac.services.ICoreConstantService"/>
+        <provide interface="org.osgi.service.event.EventHandler"/>
+    </service>
+    <property name="event.topics" type="String">
+        com/teamcenter/rac/aifrcp/event/Session/Login/Pre
+        com/teamcenter/rac/aifrcp/event/Session/Logout/Post
+    </property>
+</scr:component>

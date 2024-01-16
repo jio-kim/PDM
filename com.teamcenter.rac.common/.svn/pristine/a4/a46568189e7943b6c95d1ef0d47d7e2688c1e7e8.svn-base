@@ -1,0 +1,58 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newbomviewrevision package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newbomviewrevision_locale.properties
+#   Module  : com.teamcenter.rac.commands.newbomviewrevision
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2000  huangz                  Revise and finish it after Scott left.
+#10-Mar-2000  huangz                  Change the key name
+#16-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#06-Apr-2000  huangz                  Change the value of key
+#18-Oct-2001  wangp                   add key for name
+#29-Mar-2004  Zhixin Huang            Fix PR 4923225 (give some infor for the view types empty in Save BVR and New BVR).
+#01-Apr-2004  Zhixin Huang            Fix bug
+#01-Apr-2004  Zhixin Huang            Merge to Troy.
+#30-Apr-2004  wangp                   fix pr 4963411: fix spelling error
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# SaveBOMViewRevisionAsDialog
+# ------------------------
+command.TITLE = \uC0C8 BOM \uBDF0 \uB9AC\uBE44\uC804
+bvrInformation = \uC0C8 BOM \uBDF0 \uB9AC\uBE44\uC804 \uC0DD\uC131:
+BVRId = \uC544\uC774\uD15C ID
+rev = \uB9AC\uBE44\uC804 ID
+viewType = \uBDF0 \uC720\uD615:
+billDisplay = \uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uC0DD\uC131:
+precise = Precise
+imprecise = Imprecise
+openOnCreate = \uC0DD\uC131 \uC2DC \uC5F4\uAE30
+name = \uC774\uB984
+
+loadingViewTypes = BOM \uBDF0 \uC720\uD615\uC744 \uB85C\uB4DC \uC911...
+viewTypeError = BOM \uBDF0 \uC720\uD615\uC744 \uB85C\uB4DC\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+creatingNewBOMViewRevision = BOM \uBDF0 \uB9AC\uBE44\uC804 \uC0DD\uC131...
+failToCreate = BOMVeiw\uB97C \uC0DD\uC131\uD558\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.
+
+error.TITLE = \uC624\uB958
+multipleSelectionError = \uBCF5\uC218 \uD56D\uBAA9\uC744 \uC120\uD0DD\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+
+itemSelectionError = \uC544\uC774\uD15C \uB610\uB294 \uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC744 \uC120\uD0DD\uD574\uC57C \uD569\uB2C8\uB2E4.
+
+noValidViewTypes=\uC785\uB825\uD55C \uC544\uC774\uD15C \uB9AC\uBE44\uC804\uC5D0 \uB300\uD574 \uC720\uD6A8\uD55C \uBDF0 \uC720\uD615\uC774 \uC5C6\uC2B5\uB2C8\uB2E4.\n \uB9AC\uBE44\uC804\uC774 \uC5C6\uAC70\uB098 \uBAA8\uB4E0 \uBDF0 \uC720\uD615\uC774 \uC0AC\uC6A9 \uC911\uC785\uB2C8\uB2E4.
+noValidViewTypes.TITLE = \uBDF0 \uC720\uD615 \uC5C6\uC74C
+
+remind.MSG = \uBDF0 \uC720\uD615\uC758 \uB9AC\uC2A4\uD2B8\uB294 \uC785\uB825\uD55C \uC544\uC774\uD15C \uBC0F \uB9AC\uBE44\uC804 ID\uC5D0 \uAE30\uCD08\uB97C \uB450\uACE0 \uC0AC\uC6A9\uAC00\uB2A5\uD55C \n\uAC83 \uB4E4\uC785\uB2C8\uB2E4. ID\uAC00 \uC798\uBABB\uB418\uC5C8\uAC70\uB098, \uB610\uB294 \uBAA8\uB4E0 \uBDF0 \uC720\uD615\uC774 \n \uC0AC\uC6A9\uB418\uC5C8\uC744 \uACBD\uC6B0, \uBDF0 \uC720\uD615\uC758 \uB9AC\uC2A4\uD2B8\uC740 \uACF5\uBC31\uC774 \uB429\uB2C8\uB2E4. \uC0AC\uC6A9\uC790\uB294 \uB2E4\uB978 ID\uB97C \uC785\uB825\uD560 \uC218 \uC788\uC73C\uBA70 \n \uC0AC\uC6A9 \uAC00\uB2A5 \uBDF0 \uC720\uD615\uC774 \uACB0\uC815\uB418\uACE0 \uD45C\uC2DC\uB429\uB2C8\uB2E4. 

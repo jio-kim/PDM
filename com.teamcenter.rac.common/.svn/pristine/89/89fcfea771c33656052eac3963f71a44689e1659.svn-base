@@ -1,0 +1,32 @@
+#/*==================================================================================================
+#
+#Copyright (c) 2005 UGSPLM Inc.
+#         Unpublished - All rights reserved
+#
+#====================================================================================================
+# File description:  This properties file serves as the static http resource registry for 
+#                    com.teamcenter.rac.form.gdt.GdtRenderer, which is used to display generated html
+#                    content by GD&T symbol encoder. All directly or indirectly referenced static http
+#                    resources should be put in this package and registered here.
+#
+#                    Notice this file is different from the .properties files serve as TC registries, 
+#                    you can ONLY list file names placed in this package, registry keys for configuration
+#                    or other purposes should never appear here.
+#
+#Filename:   resources.properties
+#Module  :   com.teamcenter.rac.stylesheet.gdt.res
+#
+#====================================================================================================
+#Date      Name                    Description of Change
+#01-Jan-2005  compl                  Initial Version
+#26-Jan-2005  huangjun                GDT
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#17-Mar-2011  Vikrant Bawankule       gdt package moved to common.stylesheet from common.form
+#$HISTORY$
+#==================================================================================================*/
+
+# Format:   file-name=mime-type
+
+blank.html=text/html
+error.gif=image/gif
+

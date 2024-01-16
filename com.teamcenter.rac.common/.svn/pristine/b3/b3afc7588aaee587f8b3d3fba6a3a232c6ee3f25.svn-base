@@ -1,0 +1,160 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the namedreferences package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: namedreferences_locale.properties
+#   Module  : com.teamcenter.rac.commands.namedreferences
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#03-Nov-2000  wangp                   add changeFileName.TIP
+#02-Mar-2001  wangp                   Fix PR: 4227870: Add entry for no reference found
+#10-May-2001  wangp                   fix PR 1092836: entry for file name length
+#15-May-2001  wangp                   fix PR 1092836: more
+#16-Aug-2001  Zhixin Huang            Fix PR 4310162 (let user to select file to export)
+#02-Nov-2001  Endi Wu                 Fix PR 4228662 Add entry for tool selection dialog
+#02-Nov-2001  Endi Wu                 merge to Troy
+#18-Jun-2002  wangp                   fix pr4547662: save the column length and order
+#18-Jun-2002  wangp                   merge to troy for p8102
+#02-Apr-2003  Hwey Wung               Match tools with the file selected for open
+#17-Feb-2005  Zhixin Huang            Change the TC to TC.
+#17-Feb-2005  Zhixin Huang            Merge out.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for Named Ref dialog
+# -------------------------------
+command.TITLE = Pojmenovan\u00E9 reference
+
+close = Zav\u0159\u00EDt
+close.MNEMONIC = C
+
+open = Otev\u0159\u00EDt
+open.MNEMONIC = O
+open.TOOLTIP = Otev\u0159ete vybran\u00FD soubor.
+
+importbutton = P\u0159idat...
+import.MNEMONIC = U
+import.TOOLTIP = P\u0159id\u00E1 soubor do tohoto datasetu.
+
+exportbutton = St\u00E1hnout...
+export.MNEMONIC =D
+export.TOOLTIP = St\u00E1hne vybran\u00FD typ z tohoto datasetu.
+
+cut.TOOLTIP = Vyjm\u011Bte vybranou referenci do schr\u00E1nky.
+
+copy.TOOLTIP = Zkop\u00EDrujte vybranou referenci do schr\u00E1nky.
+
+paste.TOOLTIP = Vlo\u017Ete reference ze schr\u00E1nky.
+
+remove.TOOLTIP = Odstra\u0148te vybran\u00E9 reference z tohoto datasetu.
+
+changeFileName.TIP = Dvojit\u00FDm kliknut\u00EDm zm\u011Bn\u00EDte n\u00E1zev souboru.
+
+checkOutButton=Rezervovat...
+
+checkInButton=Uvolnit...
+
+cancelCheckOutButton=Zru\u0161it rezervaci...
+
+# Table column names
+# -------------------------------
+object_name.NAME=Reference
+original_file_name.NAME=N\u00E1zev
+file_size.NAME=Velikost
+owning_site.NAME=Vzd\u00E1len\u00FD
+object_type.NAME=Typ
+last_mod_date.NAME=Naposledy upraveno
+volume_tag.NAME=Svazek
+
+# Entries for import file dialog box
+# -------------------------------
+importFile.TITLE = Odeslat soubor
+
+importFileButton = Odeslat
+importFileButton.MNEMONIC = u
+
+parameter = Parametry
+fileType = Typ souboru:
+tool = Pou\u017Eit\u00FD n\u00E1stroj:
+reference = Reference:
+
+# Entries for export file dialog
+# -------------------------------
+## Change the title for PR 4310162
+exportFile.TITLE = Stahov\u00E1n\u00ED souboru
+
+# Entries for paste named ref dialog
+# -------------------------------
+pasteDlg.TITLE = Vlo\u017Eit pojmenovan\u00E9 reference
+pasteHeader.MSG=Vyberte referenci a stiskn\u011Bte tla\u010D\u00EDtko OK k vlo\u017Een\u00ED.
+pasteHeaderForMultiple.MSG=Dvakr\u00E1t klikn\u011Bte na bu\u0148ku "Reference" v tabulce n\u00ED\u017Ee a t\u00EDm vyberte referenci. Potom klikn\u011Bte na tla\u010D\u00EDtko OK.
+
+columnObject.NAME=Prob\u00EDh\u00E1 vlo\u017Een\u00ED objektu
+columnRef.NAME=Reference
+
+# Entries for message center
+# -------------------------------
+loadingNamedRef = Na\u010Dten\u00ED pojmenovan\u00FDch referenc\u00ED pro...
+loadingReferenceType = Na\u010Dten\u00ED typ\u016F referenc\u00ED...
+exportingFiles = Stahov\u00E1n\u00ED soubor\u016F...
+exportDirectory = Adres\u00E1\u0159 pro stahov\u00E1n\u00ED
+exportType = Typ
+importingFiles = Odes\u00EDl\u00E1n\u00ED souboru ...
+removingNamedRef = Odebr\u00E1n\u00ED vybran\u00FDch pojmenovan\u00FDch referenc\u00ED...
+pastingNamedRef = Vlo\u017Een\u00ED pojmenovan\u00FDch referenc\u00ED...
+
+# Entries for error message
+# -------------------------------
+warning.TITLE = Upozorn\u011Bn\u00ED
+invalidFile.MSG=Vybran\u00FD soubor pro import neodpov\u00EDd\u00E1 typu datasetu. \nVyberte platn\u00FD soubor pro import.
+error.TITLE = Chyba
+noSelection = Vyberte pojmenovanou referenci
+noMultipleSelection = Vyberte pouze jednu pojmenovanou referenci
+noImportFileSelection = Soubor pro odesl\u00E1n\u00ED nen\u00ED vybr\u00E1n
+fileNameLengthTooLong=N\u00E1zev souboru p\u0159ekra\u010Duje limit d\u00E9lky
+fileNameTruncated=N\u00E1zev souboru p\u0159ekra\u010Duje limit d\u00E9lky.\nBudete-li pokra\u010Dovat ve zpracov\u00E1n\u00ED, n\u00E1zev souboru se zkr\u00E1t\u00ED.
+noValidExportSelection=Pouze soubor TC m\u016F\u017Ee b\u00FDt sta\u017Een.
+clipboardEmpty=Schr\u00E1nka je pr\u00E1zdn\u00E1.
+cannotPaste=Nelze vlo\u017Eit objekty do schr\u00E1nky.
+incorrectClassification=Zdrojov\u00E1 a c\u00EDlov\u00E1 klasifikace IP nebo GOV se neshoduj\u00ED, nelze prov\u00E9st vlo\u017Een\u00ED.
+pasteMultiple=Nelze vlo\u017Eit v\u00EDce objekt\u016F.
+cannotCut=Nelze vyjmout vybran\u00FD objekt.
+cannotDelete=Nelze odstranit vybran\u00FD objekt.
+noRefTypeFound=Nen\u00ED nalezen \u017E\u00E1dn\u00FD typ reference, nelze prov\u00E9st odesl\u00E1n\u00ED.
+noToolsFound=Pro vybran\u00FD soubor nebyly nalezeny \u017E\u00E1dn\u00E9 n\u00E1stroje.
+sameReferenceAlreadyExists=Nelze odeslat pojmenovanou referenci. Ji\u017E existuje reference se stejn\u00FDm n\u00E1zvem.
+
+## Key for fix PR 4310162
+fileExists = Soubor ji\u017E existuje. Chcete jej p\u0159epsat?
+fileExist.TITLE = Soubor existuje
+export=St\u00E1hnout
+
+# Entries for tool selected dialog (For PR 4228662)
+# ---------------------------------------------------
+selectTool.TITLE = Vybrat n\u00E1stroj
+userWizard = Vyberte n\u00E1stroj pro otev\u0159en\u00ED t\u00E9to reference?
+nextButton=Dal\u0161\u00ED
+next.MNEMONIC=N
+
+# <Bansalt> 04-Jul-2006 Entries for PR#2060353 fix
+# ------------------------------------------------
+exportFailure.MESSAGE=Nelze p\u0159epsat existuj\u00EDc\u00ED soubor. M\u016F\u017Ee b\u00FDt uzam\u010Den jin\u00FDm procesem.\nOdemkn\u011Bte soubor nebo pou\u017Eijte jin\u00FD n\u00E1zev souboru.
+exportFailure.TITLE=Chyba stahov\u00E1n\u00ED
+
+importFailure.TITLE=Chyba odesl\u00E1n\u00ED
+
+delete=Chcete opravdu prov\u00E9st odstran\u011Bn\u00ED?
+delete.TITLE=Odstranit
+
+CheckoutNamedRef.INFOMESSAGE=Rezervovat dataset pro aktualizaci pojmenovan\u00FDch referenc\u00ED.

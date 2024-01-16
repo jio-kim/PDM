@@ -1,0 +1,14 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2014
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+
+# Common Keys in apply sign.
+#---------------------------------------------
+command.TITLE=Aplicar la firma digital
+applyDigitalSignature.STATUS=Aplicando la firma digital...
+confirmationText=\u00BFEst\u00E1 seguro de que desea aplicar la firma digital?

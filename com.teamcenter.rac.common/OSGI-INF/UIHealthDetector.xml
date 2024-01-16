@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+   <implementation class="com.teamcenter.rac.common.health.UIHealthDetector"/>
+   <service>
+      <provide interface="com.teamcenter.rac.aifrcp.health.IUIHealthDetector"/>
+      <provide interface="org.osgi.service.event.EventHandler"/>
+   </service>
+   <property name="event.topics" type="String">
+        org/eclipse/ui/Workbench/PostStartup
+        org/eclipse/ui/Workbench/PreShutdown
+    </property>
+</scr:component>

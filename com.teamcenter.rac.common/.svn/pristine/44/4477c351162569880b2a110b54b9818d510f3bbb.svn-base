@@ -1,0 +1,51 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newfolder package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newfolder_locale.properties
+#   Module  : com.teamcenter.rac.commands.newfolder
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2003  wangp                   fix pr 4426554: customize portal dialogs
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Folder Dialog
+# ----------------------
+command.TITLE=Neuer Ordner
+
+name = Name:
+description = Beschreibung:
+type = Typ:
+openOnCreate = Beim Erstellen \u00F6ffnen
+
+# Messages for message center
+# ----------------------
+loadingTypes = Ordnertypen werden geladen...
+creatingNewFolder = Neuer Ordner wird erstellt
+abort = \u00D6ffnen eines neuen Ordners abbrechen
+
+# Error Messages
+# ----------------------
+folderTypeError = Abrufen der Ordnertypen fehlgeschlagen.
+failToCreate = Erstellen des Ordners fehlgeschlagen
+failFindDialog=Dialog "Neuer Ordner" konnte nicht gefunden werden.
+error.TITLE = Neuer Ordner...
+
+# Messages and keys for the Abort Message Box
+# ----------------------
+aborted=Erstellen des Ordners unterbrochen...Ordner erstellt und teilweise eingef\u00FCgt
+aborted.TITLE=Abgebrochen
+
+aborting=Abbrechen...

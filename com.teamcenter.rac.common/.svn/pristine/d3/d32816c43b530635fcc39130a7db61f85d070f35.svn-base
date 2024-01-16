@@ -1,0 +1,19 @@
+// @<COPYRIGHT>@
+// ==================================================
+// Copyright 2018.
+// Siemens Product Lifecycle Management Software Inc.
+// All Rights Reserved.
+// ==================================================
+// @<COPYRIGHT>@
+
+####################################################################################################
+# Messages
+####################################################################################################
+
+rootObjectCreationFailed.MESSAGE=Nie mo\u017Cna kontynuowa\u0107 operacji tworzenia rewizji dla {0}. 
+invalidInput.MESSAGE=Element wej\u015Bciowy us\u0142ugi ma warto\u015B\u0107 null. setInput() musi by\u0107 zako\u0144czone\nprzed wywo\u0142aniem metody getReviseInfo() z ReviseService.
+
+dataManagementServiceNotAvailable.MESSAGE=Us\u0142uga zarz\u0105dzania danymi nie jest dost\u0119pna. Aby uzyska\u0107 wi\u0119cej informacji, skontaktuj si\u0119 z administratorem systemu.
+reviseOperationFailed.MESSAGE=Operacja Utw\u00F3rz rewizje element\u00F3w nie powiod\u0142a si\u0119. Aby uzyska\u0107 wi\u0119cej informacji, skontaktuj si\u0119 z administratorem systemu.
+
+renderingFalied.MESSAGE=Operacja Utw\u00F3rz rewizj\u0119 renderingu jest niekompletna, wi\u0119c operacja Utw\u00F3rz rewizj\u0119 nie powiedzie si\u0119. Skontaktuj si\u0119 z administratorem systemu.

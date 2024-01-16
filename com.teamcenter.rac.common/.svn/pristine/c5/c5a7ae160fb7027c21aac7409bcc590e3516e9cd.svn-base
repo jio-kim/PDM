@@ -1,0 +1,327 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the subscrube package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#03-Aug-2000  Yan Shen                Initial Promote.
+#07-Oct-2000  shen                    for Subscription project
+#01-Nov-2000  shen                    add Text Strings
+#17-Oct-2002  shen                    Enhance Subscription
+#06-Jun-2003  shen                    V9 Global Change Notification project
+#05-Oct-2005  noolu                   GCN Enhancements
+#17-Oct-2005  noolu                   Rename "New IR Event" to "New Item Revision Event"
+#$HISTORY$
+#=================================================================================================*/
+
+create.TITLE=Vytvo\u0159it p\u0159edplatn\u00E9
+edit.TITLE=Upravit p\u0159edplatn\u00E9
+success.MSG=p\u0159edplatn\u00E1 vytvo\u0159ena
+fail.MSG=tvorba p\u0159edplatn\u00E9ho se nezda\u0159ila
+
+create.STATUS=Vytvo\u0159it p\u0159edplatn\u00E9...
+edit.STATUS=Upravit p\u0159edplatn\u00E9...
+
+createSessionSub.TITLE=Vytvo\u0159it p\u0159edplatn\u00E9 relace
+editSessionSub.TITLE=Upravit p\u0159edplatn\u00E9 relace
+
+createSessionSub.STATUS=Vytvo\u0159it p\u0159edplatn\u00E9 relace...
+editSessionSub.STATUS=Upravit p\u0159edplatn\u00E9 relace...
+
+target.LABEL=C\u00EDl
+subscriberSelect.TITLE=Vybrat p\u0159edplatitele
+recipientSelect.TITLE=Vybrat p\u0159\u00EDjemce
+
+fromSelect.LABEL1=Ud\u00E1losti
+toSelect.LABEL1=P\u0159edplatit pro
+search=Hledat:
+loadingMembers=Na\u010Dten\u00ED \u010Dlen\u016F...
+fromSelect.LABEL=U\u017Eivatel\u00E9, skupiny, seznamy adres
+toSelect.LABEL=Odeslat
+
+okButton.LABEL=OK
+okButton.MNEMONIC=O
+cancelButton.LABEL=Storno
+cancelButton.MNEMONIC=C
+applyButton.LABEL=Pou\u017E\u00EDt
+applyButton.MNEMONIC=A
+
+findButton.TOOLTIP=Iniciuje hled\u00E1n\u00ED podle hledan\u00E9ho textu
+userButton.TOOLTIP=Najd\u011Bte u\u017Eivatelsk\u00E9 ID, kter\u00E9 spl\u0148uj\u00ED krit\u00E9ria.
+groupButton.TOOLTIP=Najd\u011Bte skupiny, kter\u00E9 spl\u0148uj\u00ED krit\u00E9ria.
+aliasButton.TOOLTIP=Najd\u011Bte seznamy adres, kter\u00E9 spl\u0148uj\u00ED krit\u00E9ria.
+addButton.TOOLTIP=P\u0159idat p\u0159edplatitele
+removeButton.TOOLTIP=Odstranit p\u0159edplatitele
+addETButton.TOOLTIP=P\u0159idat typy ud\u00E1lost\u00ED
+removeETButton.TOOLTIP=Odstranit typy ud\u00E1lost\u00ED
+
+notifierListButton.TOOLTIP=Vybrat oznamovac\u00ED seznam
+addSelectedPropertiesButton.TOOLTIP=P\u0159idat k vybran\u00FDm vlastnostem
+addAllSelectedPropertiesButton.TOOLTIP=P\u0159idat v\u0161e k vybran\u00FDm vlastnostem
+removeSelectedPropertiesButton.TOOLTIP=Odebrat z vybran\u00FDch vlastnost\u00ED
+removeAllSelectedPropertiesButton.TOOLTIP=Odebrat v\u0161e z vybran\u00FDch vlastnost\u00ED
+addAttributeCriteriaButton.TOOLTIP=P\u0159idat krit\u00E9ria atributu
+removeAttributeCriteriaButton.TOOLTIP=Odebrat krit\u00E9ria atributu
+
+
+subscriber.LABEL=P\u0159edplatitel
+subscriber.TIP=Vybrat p\u0159edplatitele
+subscriber.SEARCH=*
+subscriber.NAME=ID p\u0159edplatitele
+
+notify.LABEL=Ov\u011B\u0159it
+notify.TIP=Ur\u010Dit p\u0159\u00EDjemce
+
+object.LABEL=Objekt
+createSubscriptionforObject.LABEL = Vytvo\u0159it p\u0159edplatn\u00E9 pro objekt
+createSubscriptionforObjectClass.LABEL = Vytvo\u0159it p\u0159edplatn\u00E9 pro t\u0159\u00EDdu objektu
+selectTarget.TITLE=Krok {0}: Vyberte c\u00EDl
+subscriptionDescription.LABEL = Popis p\u0159edplatn\u00E9ho
+
+entertheSearchCriteira.LABEL = Zadejte krit\u00E9ria hled\u00E1n\u00ED
+searchCriteira.TITLE = Krit\u00E9ria hled\u00E1n\u00ED
+
+subscriptionAndNotificationWizard.TITLE=Pr\u016Fvodce upozorn\u011Bn\u00EDm a p\u0159edplatn\u00FDm... 
+selecttheTargetforSubscription.LABEL=Vyberte c\u00EDl pro p\u0159edplatn\u00E9
+subscriptionDetailsPage.TITLE=Krok {0}: Detaily p\u0159edplatn\u00E9ho
+entertheDetailsfortheSubscription.LABEL=Zadejte detaily p\u0159edplatn\u00E9ho 
+subscriptionCriteriaPage.TITLE=Krok {0}: Kriteria nebo podm\u00EDnka p\u0159edplatn\u00E9ho
+entertheDetailsforSubscriptionCriteria.LABEL=Zadejte detaily krit\u00E9ri\u00ED p\u0159edplatn\u00E9ho nebo vyberte podm\u00EDnku
+subscribeToObjectClass.LABEL = P\u0159edplatit pro t\u0159\u00EDdu objektu:
+subscribeToObject.LABEL = P\u0159edplatit pro objekt:
+eventType.LABEL = Typ ud\u00E1losti:
+subscriber.LABEL = P\u0159edplatitel:
+handlers.LABEL= Ovlada\u010De:
+attributeCriteria.LABEL=Krit\u00E9ria atributu
+bmideCondition.LABEL=Podm\u00EDnka
+
+subscriptionHandlerPage.TITLE=Krok {0}: Ovlada\u010De p\u0159edplatn\u00E9ho
+entertheDetailsforSubscriptionHandler.LABEL=Vyberte ovlada\u010De, kter\u00E9 chcete spustit
+selectedHandlerTable.LABEL=Vybran\u00E9 ovlada\u010De
+availabelHandlerTable.LABEL=Dostupn\u00E9 ovlada\u010De
+availabelConditionsTable.LABEL=Dostupn\u00E9 podm\u00EDnky
+handlerID.LABEL = ID ovlada\u010De
+handlerDescription.LABEL = Popis
+handlerAddButton.TOOLTIP = P\u0159idat ovlada\u010D ud\u00E1losti
+handlerRemoveButton.TOOLTIP = Odstranit vybran\u00FD ovlada\u010D
+handlerMoveUpButton.TOOLTIP = P\u0159esunout vybran\u00FD ovlada\u010D nahoru
+handlerDownButton.TOOLTIP = P\u0159esunout vybran\u00FD ovlada\u010D dol\u016F
+
+clearButton.TOOLTIP = Vy\u010Distit filtr hled\u00E1n\u00ED
+
+propertiesToNotified.LABEL = Vlastnosti k ozn\u00E1men\u00ED
+notificationDetails.TITLE = Krok {0}: Detaily upozorn\u011Bn\u00ED
+enterNotificationDetails.LABEL = Zadejte detaily upozorn\u011Bn\u00ED
+additionalMessage.LABEL = Dal\u0161\u00ED zpr\u00E1va
+
+entertheNotificationDetails.LABEL = Zadejte detaily upozorn\u011Bn\u00ED
+
+detailsGroup.LABEL=Skupina detail\u016F
+objectType.LABEL=Typ objektu
+eventType.LABEL=Typ ud\u00E1losti
+subscriber.LABEL= P\u0159edplatitel
+expirationDate.LABEL=Datum konce platnosti
+executionTime.LABEL=\u010Cas spu\u0161t\u011Bn\u00ED
+andOR.LABEL=A/NEBO
+propertyName.LABEL=N\u00E1zev vlastnosti
+operator.LABEL=Oper\u00E1tor
+propertyValue.LABEL=Hodnota vlastnosti
+AddSymbol.LABEL=+
+RemoveSymbol.LABEL=-
+criteriaHelp.LABEL=?
+searchCriteria.LABEL=Krit\u00E9ria hled\u00E1n\u00ED
+Remove.LABEL=Odebrat
+Add.LABEL=P\u0159idat
+subscriptionConditionName.LABEL=N\u00E1zev podm\u00EDnky
+subscriptionConditionDescription.LABEL=Popis
+
+//Do not translate '$' tagged strings like $eventType and $targetObj.object_name
+notificationMailSubject.TEXT = Ud\u00E1lost $eventType byla spu\u0161t\u011Bna u objektu $targetObj.object_name
+notificationMailMessage.TEXT = Vyskytla se ud\u00E1lost {0} na objektu typu {1}
+
+notValidChar.LABEL = Neplatn\u00FD typ dat Character
+notValidDateFormat.LABEL = Neplatn\u00FD form\u00E1t data. Zadejte datum a \u010Das ve form\u00E1tu dd-MMM-rrrr HH:mm.
+notValidDate.LABEL = Neplatn\u00FD form\u00E1t data. Zadejte datum ve form\u00E1tu dd-MMM-rrrr.
+notValidLogical.LABEL = Neplatn\u00FD logick\u00FD blok. Ur\u010Dete hodnotu true nebo false.
+notValidDouble.LABEL = Neplatn\u00FD typ dat Double
+notValidInt.LABEL =  Neplatn\u00FD typ dat Integer
+notValidFloat.LABEL = Neplatn\u00FD typ dat Float
+notValidShort.LABEL = Neplatn\u00FD typ dat Short
+notValidNote.LABEL = Neplatn\u00FD typ dat String
+notValidString.LABEL = Neplatn\u00FD typ dat String 
+notValidDate.LABEL = Neplatn\u00E9 datum. Zadejte datum ve form\u00E1tu dd-MMM-rrrr HH:mm
+notValidMonth.LABEL = Neplatn\u00FD m\u011Bs\u00EDc. Zadejte datum ve form\u00E1tu dd-MMM-rrrr HH:mm
+notValidYear.LABEL = Neplatn\u00FD rok. Ur\u010Dete rok v\u011Bt\u0161\u00ED ne\u017E 1900 a datum ve form\u00E1tu dd-MMM-rrrr HH:mm
+notValidTime.LABEL = Neplatn\u00FD \u010Das. Zadejte \u010Das ve form\u00E1tu dd-MMM-rrrr HH:mm
+notValidLogical.LABEL = Neplatn\u00FD logick\u00FD blok. Ur\u010Dete hodnotu true nebo false.
+notValidDouble.LABEL = Neplatn\u00FD typ dat Double
+notValidInt.LABEL =  Neplatn\u00FD typ dat Integer
+notValidFloat.LABEL = Neplatn\u00FD typ dat Float
+notValidShort.LABEL = Neplatn\u00FD typ dat Short
+notValidNote.LABEL = Neplatn\u00FD typ dat String
+notValidString.LABEL = Neplatn\u00FD typ dat String 
+notValidUserId.LABEL = Neplatn\u00FD typ dat UserId
+notValidGroupId.LABEL = Neplatn\u00FD typ dat Group
+
+notificationDetails.LABEL = Detaily upozorn\u011Bn\u00ED
+to.LABEL = Do...
+AddSymbol.LABEL = + 
+RemoveSymbol.LABEL = -
+SearchAllSymbol.LABEL = *
+FindSymbol.LABEL = ?
+subject.LABEL = P\u0159edm\u011Bt
+summary.LABEL = Souhrn
+RemoveSymbol.LABEL = -
+message.LABEL = Zpr\u00E1va
+propertiesToNotified.LABEL = Vlastnosti k ozn\u00E1men\u00ED
+availableProperties.LABEL = Dostupn\u00E9 vlastnosti
+GreaterThanSymbol.LABEL=>
+DoubleGreaterThanSymbol.LABEL=>>
+LessThanSymbol.LABEL=<
+DoubleLessThanSymbol.LABEL=<<
+selectedProperties.LABEL = Vybran\u00E9 vlastnosti
+
+
+nullobject.TEXT=
+object.TIP=Vybrat objekt
+# warning!!! If set object.SEARCH=*, the search would be extremely slow
+# because the system is going to load all work space objects
+object.SEARCH=*
+object.NAME=N\u00E1zev objektu
+# warning!!! If set object.SEARCH=*, the search would be extremely slow
+# because the system is going to load all Teamcenter types
+type.LABEL=Typ
+type.TIP = Vybrat typ
+type.SEARCH=*
+type.NAME=N\u00E1zev typu
+
+date.LABEL=Datum konce platnosti
+# null date means the subscription has no expiration date. It is
+# effective until it is deleted. Usually nulldate.TEXT is blank.
+# But you can also give some descriptive text like "No Expiration Date"
+# If you do so, you also need to change nullDate.TIP accordingly
+nulldate.TEXT=
+date.TIP=Nastavit datum konce platnosti
+nullDate.TIP=\u017D\u00E1dn\u00E9 datum konce platnosti, pokud je polo\u017Eka pr\u00E1zdn\u00E1
+# Default expiration date. If it is null, it means No expiration
+# If you give a default date, make sure the format is the same
+# as dateFormat. For example, if dateFormat=MM/dd/yyyy, then
+#date.DEFAULT=12/31/2005
+date.DEFAULT=
+
+timeFormat=HH:mm
+
+time.LABEL=\u010Cas spu\u0161t\u011Bn\u00ED
+# null time means "Execute immediately". Usually nulltime.TEXT is blank.
+# But you can also give some descriptive text like "execute immediately".
+# If you do so, you also need to change nullTime.TIP accordingly
+nulltime.TEXT=
+time.TIP=Nastavit \u010Das spu\u0161t\u011Bn\u00ED
+nullTime.TIP=Spustit ihned, pokud je polo\u017Eka pr\u00E1zdn\u00E1
+
+Date.TITLE=Datum
+Time.TITLE=\u010Cas
+
+wrongExpireDate.TEXT=P\u0159edplatn\u00E9 ji\u017E vypr\u0161elo. Ur\u010Dete znovu datum konce platnosti.
+wrongExpireDate.TITLE=Neplatn\u00E9 datum konce platnosti 
+wrongItemRevisionOption.LABEL=Mo\u017Enost revize polo\u017Eky mus\u00ED b\u00FDt vybr\u00E1na pro novou ud\u00E1lost revize polo\u017Eky. Ur\u010Dete mo\u017Enost revize.
+subscribeSelection.TITLE=Ur\u010Dete mo\u017Enost revize.
+
+loadingAttributes=Na\u010D\u00EDt\u00E1n\u00ED atribut\u016F pro t\u0159\u00EDdu p\u0159edplatn\u00E9ho...
+
+anyStatus=Jak\u00FDkoliv status
+statusType=Typ statusu
+
+anyRelationType=Jak\u00FDkoliv typ relace
+relation.LABEL=Typ relace
+relation.TIP=Jak\u00E1koliv relace, pokud je vybr\u00E1no V\u0160E
+
+loadParameters=Na\u010D\u00EDt\u00E1n\u00ED parametr\u016F ud\u00E1losti...
+
+editProp.LABEL=Kvalifik\u00E1tory p\u0159edplatn\u00E9ho
+secondaryObjectType.TIP=Libovoln\u00E9 typ p\u0159\u00EDlohy, pokud je vybr\u00E1no V\u0160E
+releaseStatus.LABEL=Status schv\u00E1len\u00ED
+releaseStatus.TIP=Jak\u00FDkoliv status, pokud je vybr\u00E1no V\u0160E
+secondary.LABEL=Typ p\u0159\u00EDlohy
+secondaryObjectTypeSelectionButton.TITLE=V\u00FDb\u011Br typu p\u0159\u00EDlohy
+relation1.TIP=Upozornit, kdy\u017E je vytvo\u0159ena relace pro jakoukoliv revizi pod objektem vybran\u00E9 polo\u017Eky
+status.TIP=Upozornit, kdy\u017E je p\u0159i\u0159azen status jak\u00E9koliv revizi pod vybran\u00FDm objektem polo\u017Eky
+
+propName.LABEL=N\u00E1zev atributu
+propValue.LABEL=Hodnota atributu
+interger=Vlo\u017Eit cel\u00E9 \u010D\u00EDslo
+number=Vlo\u017Eit \u010D\u00EDslo
+string=Vlo\u017Eit \u0159et\u011Bzec
+character=Vlo\u017Eit znak
+logical=Vlo\u017Eit logick\u00FD blok
+date=Vlo\u017Eit datum
+true=true
+false=false
+
+allRevs.LABEL=V\u0161echny revize
+allRevs.TIP=Upozornit, kdy\u017E se vyskytne ud\u00E1lost k jak\u00E9koliv revizi pod vybran\u00FDm objektem polo\u017Eky.
+
+itemRevs.LABEL=Revize polo\u017Eky
+itemRevs.TIP=Upozornit, kdy\u017E se vyskytne ud\u00E1lost k jak\u00E9koliv revizi polo\u017Eky pod vybran\u00FDm objektem polo\u017Eky.
+
+baselineRevs.LABEL=Revize z\u00E1kladny
+baselineRevs.TIP=Upozornit, kdy\u017E se vyskytne ud\u00E1lost k jak\u00E9koliv revizi z\u00E1kladny pod vybran\u00FDm objektem polo\u017Eky.
+
+all.LABEL=V\u0160E
+
+
+attrPanelHeader1=Ur\u010Dit atribut pro
+attrPanelHeader2=t\u0159\u00EDda
+
+# replace yes in AbstractProgressDialog with Apply
+yes=OK
+
+# replace no in AbstractProgressDialog with Cancel
+no=Storno
+
+targets=Objekty c\u00EDl\u016F
+
+transferNotificationWizard.TITLE= Pr\u016Fvodce p\u0159evodem ozn\u00E1men\u00ED...
+transferNotificationPage.TITLE=P\u0159evod ozn\u00E1men\u00ED
+entertheDetailsForTransferNotification.LABEL=Zadejte detaily pro p\u0159evodem ozn\u00E1men\u00ED
+transferNotification.LABEL=P\u0159evod ozn\u00E1men\u00ED
+permanentNotificationTransfer.LABEL=Trval\u00FD p\u0159evod ozn\u00E1men\u00ED
+temporaryNotificationTransfer.LABEL=Do\u010Dasn\u00FD p\u0159evod ozn\u00E1men\u00ED
+transferTo.LABEL=P\u0159ev\u00E9st na
+
+to.LABEL=Do: 
+startDate.LABEL=Po\u010D\u00E1te\u010Dn\u00ED datum: 
+endDate.LABEL=Koncov\u00E9 datum: 
+user.TITLE=U\u017Eivatel
+user.TOOLTIP=Vybrat u\u017Eivatele
+dateRange.LABEL=Rozsah dn\u00ED
+
+startDate.TIP=Nastavit datum zah\u00E1jen\u00ED
+endDate.TIP=Nastavit datum ukon\u010Den\u00ED
+nullDate.TIP=\u017D\u00E1dn\u00E9 datum, pokud je polo\u017Eka pr\u00E1zdn\u00E1
+
+invalidDate.TITLE=Neplatn\u00E9 datum
+invalidDateRange.TEXT=Ur\u010Dili jste neplatn\u00E9 datum
+
+subscription.LABEL = P\u0159edplatn\u00E9
+subscriptionName.LABEL = N\u00E1zev p\u0159edplatn\u00E9ho
+activateSubscription.LABEL = Aktivn\u00ED
+frequency.LABEL=Frekvence
+daysOfWeek.LABEL= Den v t\u00FDdnu
+importance.LABEL = D\u016Fle\u017Eitost 
+
+incorrectStartDate.TEXT=Datum zah\u00E1jen\u00ED nen\u00ED korektn\u00ED.
+incorrectEndDate.TEXT=Datum dokon\u010Den\u00ED nen\u00ED korektn\u00ED.
+incorrectTransferDateRange.TEXT=Rozsah dn\u00ED do\u010Dasn\u00E9ho p\u0159eveden\u00ED nen\u00ED platn\u00FD.
+
+modifyAccessDenied.TITLE=P\u0159\u00EDstup k \u00FAprav\u00E1m byl odep\u0159en
+modifyAccessDenied.TEXT=Nem\u00E1te p\u0159\u00EDstup k \u00FAprav\u011B p\u0159edplatn\u00E9ho.

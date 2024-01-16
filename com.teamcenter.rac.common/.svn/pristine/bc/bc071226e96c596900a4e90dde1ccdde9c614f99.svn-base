@@ -1,0 +1,19 @@
+# @<COPYRIGHT>@
+# ===================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+Dialog_dialog_title=Exporter vers CSV
+Dialog_dialog_message=Exporte les donn\u00E9es Teamcenter au format CSV.
+Dialog_shell_title=Exporter vers CSV
+ExportToCSVTask_name=Obtenir une r\u00E9ponse au ticket...
+exportAll_CSV= Exporter tous les objets de la vue
+objectSelection_CSV= S\u00E9lection d'objet
+exportSelected_CSV= Exporter les objets s\u00E9lectionn\u00E9s
+AbstractBindingDialog_buttonCancel=Annuler
+AbstractBindingDialog_buttonOpen=Ouvrir
+AbstractBindingDialog_buttonSave=Sauvegarder
+ValidationMessage_CSV=Aucun objet n'est s\u00E9lectionn\u00E9.
+

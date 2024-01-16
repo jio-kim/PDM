@@ -1,0 +1,110 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the newalteranteid package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newalternateid_locale.properties
+#   Module  : com.teamcenter.rac.commands.newalternateid
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#12-Jun-2003  wangp                   initial create
+#08-Jul-2003  Endi Wu                 Add new entry
+#08-Jul-2003  Endi Wu                 Merge to Shah branch
+#14-Oct-2003  wangp                   fix pr4855293: add selectItemRev
+#15-Oct-2003  wangp                   fix pr pr4855293
+#07-Jul-2005  Satish Katte            PR fix 1410178
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = \u65B0\u5EFA ID
+newAliasId.TITLE=\u65B0\u5EFA\u522B\u540D ID
+alternateID=\u5907\u9009 ID
+aliasID=\u522B\u540D ID
+newAltIdFor=\u65B0\u5EFA\u5907\u9009 ID\uFF0C\u7528\u4E8E
+newAliasId=\u65B0\u5EFA\u522B\u540D ID
+
+# Select Command Panel
+# ------------------------------
+selectCommand.LABEL=\u9009\u62E9\u6765\u521B\u5EFA\u5907\u9009 ID \u6216\u522B\u540D ID
+selectCommandStep.NAME=\u9009\u62E9\u547D\u4EE4
+selectCommandStep.TOOLTIP=\u9009\u62E9\u6765\u65B0\u5EFA\u5907\u9009 ID \u6216\u65B0\u522B\u540D ID\u3002
+
+createAlternateId=\u65B0\u5EFA\u5907\u9009 ID
+createAliasId=\u65B0\u5EFA\u522B\u540D ID
+selectItemRev.LABEL=\u9009\u62E9\u96F6\u7EC4\u4EF6\u7248\u672C\uFF1A
+
+# New Alternate ID Info Panel
+# -----------------------------
+alternateIdInfo.LABEL=\u5B9A\u4E49\u521B\u5EFA\u6807\u8BC6\u7B26\u7684\u57FA\u672C\u4FE1\u606F\u3002
+alternateIdInfoStep.NAME=\u8F93\u5165\u6807\u8BC6\u7B26\u57FA\u672C\u4FE1\u606F
+alternateIdInfoStep.TOOLTIP=\u5B9A\u4E49\u57FA\u672C\u6807\u8BC6\u7B26\u4FE1\u606F\u3002
+
+step1=\u9009\u62E9\u5173\u8054\uFF1A
+step2=\u9009\u62E9\u7C7B\u578B\uFF1A
+step3=\u8F93\u5165\u57FA\u672C\u4FE1\u606F\uFF1A
+
+id = ID
+rev = \u7248\u672C
+name = \u540D\u79F0
+assign = \u6307\u6D3E
+description = \u63CF\u8FF0\uFF1A
+alternateInformation = ID \u4FE1\u606F
+
+# Additional Alternate ID info panel
+# --------------------------------------
+additionalIdInfo.LABEL=\u5B9A\u4E49\u6807\u8BC6\u7B26\u4FE1\u606F\u7684\u9644\u52A0\u5C5E\u6027\u3002
+additionalIdInfoStep.NAME=\u8F93\u5165\u9644\u52A0\u7684 ID \u4FE1\u606F
+additionalIdInfoStep.TOOLTIP=\u5B9A\u4E49\u9644\u52A0\u7684\u6807\u8BC6\u7B26\u4FE1\u606F\u3002
+
+# Additional Alternate REV info panel
+# --------------------------------------
+additionalRevInfo.LABEL=\u5B9A\u4E49\u9644\u52A0\u7684\u7248\u672C\u4FE1\u606F\u7684\u5C5E\u6027\u3002
+additionalRevInfoStep.NAME=\u8F93\u5165\u9644\u52A0\u7684\u7248\u672C\u4FE1\u606F
+additionalRevInfoStep.TOOLTIP=\u5B9A\u4E49\u9644\u52A0\u7684\u7248\u672C\u4FE1\u606F\u3002
+
+# Display Option Panel
+# --------------------------
+displayOptionInfo.LABEL=\u9009\u62E9\u663E\u793A\u5907\u9009 ID \u548C\u7248\u672C\u7684\u9009\u9879\u3002
+displayOptionStep.NAME=\u5B9A\u4E49\u663E\u793A\u9009\u9879
+displayOptionStep.TOOLTIP=\u8BBE\u7F6E\u663E\u793A\u9009\u9879\u3002
+
+idDisplay=\u4F7F\u7528\u96F6\u7EC4\u4EF6\u6807\u8BC6\u7B26\u4F5C\u4E3A\u9ED8\u8BA4\u663E\u793A
+revDisplay=\u4F7F\u7528\u7248\u672C\u6807\u8BC6\u7B26\u4F5C\u4E3A\u9ED8\u8BA4\u663E\u793A
+
+# Finish Panel
+# -----------------------------
+newAlternateIdFinishInfo.LABEL=\u6B63\u5728\u65B0\u5EFA\u6807\u8BC6\u7B26
+
+# Messages for message center
+# ------------------------------
+loadingPanels=\u6B63\u5728\u52A0\u8F7D\u9762\u677F...
+updatingPanels=\u6B63\u5728\u66F4\u65B0\u9762\u677F...
+creatingNewIds=\u6B63\u5728\u65B0\u5EFA ID
+settingIdInfo=\u6B63\u5728\u8BBE\u7F6E\u65B0 ID \u7684\u5C5E\u6027
+savingIds=\u6B63\u5728\u4FDD\u5B58\u65B0 ID
+pastingIds=\u6B63\u5728\u7C98\u8D34\u65B0\u522B\u540D ID
+settingOptions=\u6B63\u5728\u8BBE\u7F6E\u663E\u793A\u9009\u9879
+
+pastingNewId=\u6B63\u5728\u7C98\u8D34\u65B0\u522B\u540D ID
+
+# Error Messages
+# ----------------------
+error.TITLE = \u65B0\u5EFA ID...
+
+failFindDialog=\u627E\u4E0D\u5230\u65B0\u7684\u6807\u8BC6\u7B26\u5BF9\u8BDD\u6846\u3002
+invalidSelection.MSG=\u672C\u547D\u4EE4\u4EC5\u5E94\u7528\u4E8E\u96F6\u7EC4\u4EF6\u7248\u672C\u548C/\u6216\u96F6\u7EC4\u4EF6\u3002
+noRule.MSG=\u6CA1\u6709\u4E3A\u4EE5\u4E0B\u5BF9\u8C61\u5B9A\u4E49\u89C4\u5219\uFF1A
+reviseRule.MSG=\u7531\u4E8E\u6DF1\u5C42\u590D\u5236\u89C4\u5219\uFF0C\u6807\u8BC6\u7B26\u5C06\u88AB\u81EA\u52A8\u4FEE\u8BA2\u3002

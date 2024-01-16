@@ -1,0 +1,21 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2010.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@ 
+
+multipleSelCustomNote=Impossibile allegare Note personalizzate multiple ad un item/item revision con una sola operazione
+mulSelect.TITLE=Selezione multipla
+
+
+sourceComp=Copiare le note personalizzate nella clipboard e selezionare l'item/item revision a cui associare la nota personalizzata
+source.TITLE=Nessuna origine
+
+mulItems=Impossibile allegare una nota personalizzata ad item/item revision multipli con una sola operazione
+
+NotItem=Per eseguire l'operazione, l'oggetto selezionato deve essere un item/item revision 
+
+noObjectSelected.TITLE = Non \u00E8 stato selezionato alcun oggetto
+noObjectSelected = Nessun oggetto selezionato per l'esecuzione dell'operazione

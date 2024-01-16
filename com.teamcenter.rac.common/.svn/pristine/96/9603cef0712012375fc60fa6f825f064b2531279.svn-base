@@ -1,0 +1,105 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the acl
+#                   package.  This is an internal file so therefore only
+#                   TC PBU developers should be modifying this file.  To make
+#                   changes please modify the access_user.properties file.  Do
+#                   NOT modify this file.  This allows properties found in this
+#                   file to be over-written but not destroyed.
+#
+#   Filename: acl.properties
+#   Module  : com.teamcenter.rac.common.acl
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#25-Jan-2000  huangz                  Initial creation
+#04-Feb-2000  huangz                  Add notComplete entries
+#08-Feb-2000  huangz                  Add the keys for ACLPopupButton
+#11-Feb-2000  mccollr                 Remove the localization keys and place within the locale file.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#11-May-2000  huangz                  Add workflow name ACL
+#28-Nov-2000  wangp                   add additional privileges (PR 4211688)
+#11-Jul-2001  Zhixin Huang            Add the create button key
+#26-Jul-2001  Zhixin Huang            Add key to fix 4294324 ( Complete list of Accessor IDs not displayed with RIG)
+#02-Aug-2001  Zhixin Huang            Fix PR 1107443 ( Unable to manipulate custom priviledges in Portal).
+#07-Aug-2001  Zhixin Huang            Add some comments to the key name changes.
+#08-Aug-2001  Zhixin Huang            Fix the delete icon not display problem.
+#08-Aug-2001  Zhixin Huang            Merge to Troy
+#01-Nov-2001  Zhixin Huang            Fix PR 4349790
+#01-Nov-2001  Zhixin Huang            Merge the changes for PR 4349790 & 4351726 from V7.0.2
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#24-Feb-2005  Zhixin Huang            Change the icon from gif to png file and clean up the entries phase 2.
+#29-Mar-2005  Zhixin Huang            Rebrank phase 3.
+#31-Mar-2005  Zhixin Huang            Rebranch phase 2.
+#30-Jun-2005  Zhixin Huang            Rebranch phase 6.
+#12-Oct-2005  faming                  004259: new AM Project Privileges in V10 SR1
+#17-Nov-2005  rlee                    Add support for REMOTE_CICO AM priv
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#30-Jun-2009  ntl                     add support for MARKUP, BATCH_PRINT, DIGITAL_SIGN
+#$HISTORY$
+#=================================================================================================*/
+
+import=com.teamcenter.rac.common.common
+
+# Icons for the ACL Dialog
+# -----------------------------
+unset.ICON=images/unset_16.png
+
+id.ICON=images/user_16.png
+
+# User the capital letter in the code because the right names come from Tc
+
+READ.ICON=images/readaccess_16.png
+WRITE.ICON=images/writeaccess_16.png
+DELETE.ICON=images/deleteaccess_16.png
+CHANGE.ICON=images/changeaccess_16.png
+PROMOTE.ICON=images/promoteaccess_16.png
+DEMOTE.ICON=images/demoteaccess_16.png
+COPY.ICON=images/copy_16.png
+EXPORT.ICON=images/exportaccess_16.png
+IMPORT.ICON=images/importaccess_16.png
+TRANSFER_IN.ICON=icons/unreserve_16.png
+TRANSFER_OUT.ICON=images/reserve_16.png
+CHANGE_OWNER.ICON=images/changeownership_16.png
+PUBLISH.ICON=images/published_16.png
+SUBSCRIBE.ICON=images/subscribe_16.png
+nameACL.ICON = images/access_16.png
+
+workflowNamedACL.ICON = images/workflownamedacl_16.png
+systemNamedACL.ICON = images/systemnamedacl_16.png
+
+ASSIGN_TO_PROJECT.ICON=images/assign_to_project_16.png
+REMOVE_FROM_PROJECT.ICON=images/remove_from_project_16.png
+ASSIGN_TO_LICENSE.ICON=images/license_16.png
+REMOVE_FROM_LICENSE.ICON=images/license_16.png
+REMOTE_CICO.ICON=images/remote_cico_16.png
+
+IP_ADMIN.ICON=images/Intellectual_property_16.png
+ITAR_ADMIN.ICON=images/ITAR_admin_16.png
+ITAR_Classifier.ICON=images/itar_classifier_16.png
+IP_Classifier.ICON=images/ip_classifier_16.png
+UNMANAGE.ICON=images/unmanaged_16.png
+CICO.ICON=images/cico_16.png
+TRANSLATION.ICON=images/localization_values_16.png
+Administer_ADA_Licenses.ICON=images/license_16.png
+
+LocalizationButton.ICON=icons/localization_values_16.png
+MARKUP.ICON=images/am_priviledge_markup_16.png
+BATCH_PRINT.ICON=images/am_batchprint_access_16.png
+DIGITAL_SIGN.ICON=images/am_digital_sign16.png
+ADD_CONTENT.ICON=images/add_content_16.png
+REMOVE_CONTENT.ICON=images/remove_content_16.png
+VOID_DIGITAL_SIGN.ICON=images/void_digital_sign_16.png
+MANAGE_VARIABILITY.ICON=images/variabilityaccess_16.png
+PDF_CONTROL.ICON=images/pdf_control_16.png
+CREATE.ICON=icons/create_16.png
+EFFECTIVITY.ICON=images/effectivity_16.png
+
+AccessorSearch.ICON=images/search_user_16.png
+Reset.ICON=images/reset_16.png
+
+

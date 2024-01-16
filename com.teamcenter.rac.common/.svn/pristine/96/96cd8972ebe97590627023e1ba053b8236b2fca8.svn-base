@@ -1,0 +1,164 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newdataset package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newdataset_locale.properties
+#   Module  : com.teamcenter.rac.commands.newdataset
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Oct-2000  wangp                   add tooltip for import button
+#02-Mar-2001  wangp                   Fix PR: 4227870: Add entry for no reference found.
+#30-Apr-2001  x_gopala                PR #4252773 Fix
+#30-Apr-2001  x_gopala                Merge in
+#27-Jun-2003  Zhixin Huang            Add key for NewDatasetForFile dialog.
+#27-Jan-2004  wangp                   fix pr 4902579: customize command/dialog
+#06-May-2005  gezou                   fix PR5174557, put error message
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#28-Aug-2009  Pushkar Raj              Added entries for Multiple file Drag and Drop.
+#$HISTORY$
+#=================================================================================================*/
+
+# New Dataset Dialog
+# --------------------
+command.TITLE = New Dataset
+
+assign = Assign
+
+datasetInformation = Dataset Information
+datasetId = Dataset ID
+revId = Revision ID
+
+name = Name:
+description = Description:
+type = Type:
+tool = Tool Used:
+openOnCreate = Open On Create
+importLabel= Import:
+importButton=Import...
+importButton.TIP=Select an import file.
+
+# Messages for message center
+# -------------------------------
+loadingTypes = Loading dataset types ...
+creatingNewDataset = Creating new dataset
+importingFile=Importing files to the dataset ...
+abort = Abort opening new dataset
+
+# Error Messages
+# --------------------
+datasetTypesError = Fail to get the dataset types.
+failToCreate = Fail to create dataset
+failFindDialog=Cannot find New Dataset Dialog.
+error.TITLE = New Dataset ...
+noRefTypeFound=No reference type is found, cannot import.
+noRefTypeFound.TITLE=Warning
+notAIEConfiguredDS = AIE is enabled, however the item type/dataset is not configured with AIE. Please either disable AIE or refer to Application Integration Environment (AIE) section of Teamcenter Help to configure AIE.
+notAIEConfiguredDS.TITLE=Error
+
+# Messages and keys for the Abort Message Box
+# ----------------------------------------------
+aborted=Dataset Creation Interrupted...Dataset created and partially inserted
+aborted.TITLE=Aborted
+
+aborting=Aborting...
+
+modifiedName.TITLE=Rename Dataset
+modifiedName.MSG=Do you want to replace dataset name with
+overrideName.TITLE=Override Dataset Name
+overrideName.MSG=Dataset name will be Overridden
+
+# Keys for the New Dataset for File
+newFileDataset.TITLE = New Dataset for 
+type.TITLE = Select Type
+type.INFO = Please select the dataset type for the file.
+info.TILE = Enter Dataset Information
+info.INFO = Enter the dataset information.
+reference.TITLE = Select Reference Type
+reference.INFO = Select the reference type for the file.
+
+reference = Reference:
+fileType = File Type:
+template = Template:
+noDatasetAvailable.MSG= There is no dataset type to create for the file.
+noDatasetAvailable.TITLE = No Dataset Type
+
+warning.TITLE=New Dataset
+fileDoesNotExist.MSG=The file cannot be uploaded because either the specified file name and location is invalid or the file does not exist.\nPlease select a valid file for importing.
+invalidFile.MSG=The selected file for importing doesn't match with the dataset type. \nPlease select a valid file for importing.
+noDatasetType.MSG=Please first select a dataset type.
+
+fileNameWillbeTruncated.MSG=The file name exceeds the length limit of 132 characters. It will be truncated.
+
+# Keys for select reference dialog (Elbit ER1409560)
+selectReference.INFO=More than one references match with currently selected file.  Please select a reference type and press Ok button to continue.
+noReference.MSG=No references found.
+noRefSelected.MSG=No reference type is selected, thus file can not be imported. \nThe selected import file will be cleared.
+
+#Keys for Multiple files Drag and Drop
+
+#Table Headers
+fileName=File Name
+datasetName=Dataset Name
+datasetDesc=Description
+datasetType=Dataset Type
+templateName=File Type
+referenceName=Reference
+toolsUsed=Tool Used
+
+#Messages
+newDnDDialog.MSG=New Datasets for Multiple Files
+newDnDDialog.TITLE=Drag and Drop of Multiple Files
+applySimilar.LABEL=Apply To Same Type
+applySimilar.TIP=Apply values to all datasets of the same file type
+
+#Keys for Progress Dialog
+datasetNameRequired.MSG=The "Dataset Name" is the required field
+resultDialog.MSG=Dataset Creation Progress
+
+file=File
+status=Status
+
+#Status Messages
+ready.MSG=Ready
+started.MSG=Started
+complete.MSG=Completed
+userCancelledAction.MSG=User Action cancelled
+
+#Session Messages
+importingFileToDataset=Importing files to the dataset
+
+#Error Messages
+applySimilar.ERROR=Please select a line in table to apply similar setting on the files of same extension type
+importFileInfoMissing.ERROR=Required information to import the file is missing
+pasteError.MSG=Error while pasting the dataset to the target
+incompleteInfo.MSG=Either the Dataset or the Target Component is invalid
+pasteCommand.ERROR=Error getting the paste command
+pastedIntoNewStuff.MSG=The Requested paste has failed, so the fail back has been performed to paste them to your NewStuff Folder
+pasteToNewStuffError.ERROR=The Requested paste has failed, so the fail back tried to paste them to your NewStuff Folder, some Error occured while pasting the dataset to NewStuff Folder
+
+populatingTable.MSG=Please wait while populating table...
+
+#Progress Dialog
+progress.TITLE=Processing
+progress.MSG=Please wait while getting the required information from files...
+
+creatingDataset.MSG=Creating dataset...
+
+errorDetail.TITLE=Error
+creatingDataset.ERROR=Create Dataset failed with the following error:
+namingRule.ERROR=Naming rule pattern does not match. Please make the necessary change(s) based on the following information and try again. 
+
+fileNameLengthTooLong=Filename exceeds the length limit
+fileLengthWarning.TITLE=Warning - file names exceed the length limit
+fileNameLengthTooLongMulitple=The following files will not be included because their names exceed the length limit:
+

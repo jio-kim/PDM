@@ -1,0 +1,21 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2010.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@ 
+
+multipleSelCustomNote=No se pueden adjuntar notas personalizadas m\u00FAltiples a un \u00EDtem/revisi\u00F3n de \u00EDtem en una sola operaci\u00F3n
+mulSelect.TITLE=Selecci\u00F3n m\u00FAltiple
+
+
+sourceComp=Copie la nota personalizada en el portapapeles y seleccione \u00CDtem/Revisi\u00F3n de \u00EDtem con el cual asociar\u00E1 la nota personalizada
+source.TITLE=Sin fuente
+
+mulItems=No se puede adjuntar una nota personalizada a \u00EDtems/revisiones de \u00EDtem m\u00FAltiples en una sola operaci\u00F3n
+
+NotItem=El objeto seleccionado deber ser un \u00EDtem o una revisi\u00F3n de \u00EDtem para realizar esta operaci\u00F3n
+
+noObjectSelected.TITLE = No se ha seleccionado ning\u00FAn objeto
+noObjectSelected = No se ha seleccionado ning\u00FAn objeto para realizar esta operaci\u00F3n

@@ -1,0 +1,175 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the navigator package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: interop_locale.properties
+#   Module  : com.teamcenter.rac.interop
+#
+#===================================================================================================
+#  Date      Name                    Description of Change
+#31-Aug-2000  Alexandra Wagner        Initial version
+#04-Sep-2000  Alexandra Wagner        Add bkmgenFailed
+#10-Dec-2002  Neeraj Kavuru           For Supporting VMU Launch using VVI files
+#10-Dec-2002  Sanjay Patel            Merge in
+#13-Dec-2002  Sanjay Patel            Merge in
+#15-Jan-2003  <Neeraj Kavuru>         Made corrections to error messages related to Launch of VMU using vvi files
+#16-Jan-2003  <Neeraj Kavuru>         Added noSecondaryDirectModel, noJTPARTNamedReference, noRenderingDirectModelFound
+#13-Oct-2004  Geethika Chitturi       Changing VMU to Teamcenter Visualization
+#13-Oct-2004  Geethika Chitturi       Changing VisMockup to Teamcenter Visualization
+#14-Oct-2004  Geethika Chitturi       Changing UG to NX
+#15-Oct-2004  Geethika Chitturi       Merge from x_chittu_hyd_p10.0.0.5 to x_chittu_hyd_p10.0.0.6
+#19-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#19-Oct-2004  Geethika Chitturi       Merging to project branch
+#18-Jan-2005  Devesh Jainer           PR 5047727 - Visualisation spelling correction
+#14-Mar-2005  novak                   Make sure interop.properties file is valid.
+#11-Oct-2005  kao                     block double-click for NXSimulation
+#26-Oct-2005  kao                     merge for P10.0.1.2
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#28-Nov-2008  x_akella                Fix for PR 6060121 
+#$HISTORY$
+#=================================================================================================*/
+
+# -----------
+# Button Text
+# -----------
+Cancel=Cancelar
+Cancel.MNEMONIC=C
+
+####################################################################################################
+# Messages
+#
+
+InvalidSelectionDescription.MESSAGE=Os seguintes objetos n\u00E3o ser\u00E3o iniciados na Visualiza\u00E7\u00E3o do Centro de equipe.
+InvalidSelectionDescription.TITLE=Objeto inv\u00E1lido para iniciar na Visualiza\u00E7\u00E3o do Centro de equipe
+
+invalidComponentType.MESSAGE=Tipo de componente inv\u00E1lido para este aplicativo
+invalidComponentType.TITLE=Componente inv\u00E1lido
+
+openFailed.MESSAGE=Falha ao iniciar o aplicativo com ferramenta, no componente
+openFailed.TITLE=Falha ao iniciar
+
+openScenario.MESSAGE=Esta opera\u00E7\u00E3o n\u00E3o \u00E9 suportada para NXSCENARIOS
+openScenario.TITLE=Opera\u00E7\u00E3o n\u00E3o suportada
+
+openSimulation.MESSAGE=Esta opera\u00E7\u00E3o n\u00E3o \u00E9 suportada para NXSIMULATIONS
+openSimulation.TITLE=Opera\u00E7\u00E3o n\u00E3o suportada
+
+restartFailed.MESSAGE=Falha ao reiniciar o aplicativo com ferramenta
+restartFailed.TITLE=Falha ao iniciar
+
+startFailed.MESSAGE=Falha ao iniciar o aplicativo com ferramenta
+startFailed.TITLE=Falha ao iniciar
+
+#Message to display in the status line if we failed to contact the application
+statusStartFailed.MESSAGE=ERRO: Falha ao contactar o aplicativo
+statusStarting.MESSAGE=Iniciando aplicativo
+
+noMoreSessions.MESSAGE=N\u00E3o \u00E9 poss\u00EDvel iniciar uma segunda sess\u00E3o NXManagerLegacy.
+noMoreSessions.TITLE=NXManagerLegacy j\u00E1 est\u00E1 em execu\u00E7\u00E3o
+
+ugRunning.MESSAGE=N\u00E3o \u00E9 poss\u00EDvel fechar com NX em execu\u00E7\u00E3o.
+ugRunning.TITLE=N\u00E3o \u00E9 poss\u00EDvel fechar
+
+multipleSelection.MESSAGE=N\u00E3o \u00E9 suportada a sele\u00E7\u00E3o m\u00FAltipla. \nSomente um componente ser\u00E1 aberto:
+multipleSelection.TITLE=N\u00E3o \u00E9 suportada a sele\u00E7\u00E3o m\u00FAltipla
+
+missingType.MESSAGE=Informa\u00E7\u00E3o ausente para tipo
+
+remoteServer.MESSAGE=O servidor n\u00E3o est\u00E1 em execu\u00E7\u00E3o no host local. \nEsta configura\u00E7\u00E3o n\u00E3o \u00E9 suportada.
+
+bkmgenFailed.MESSAGE=O servidor falhou ao gerar o arquivo de marca\u00E7\u00F5es.\nAssegure-se de que o dataset que deseja abrir n\u00E3o seja um dataset independente.
+bkmgenFailed.TITLE=Nenhum arquivo favorito
+
+invalidBOMView.MESSAGE=O ItemRevision correspondente \u00E0 visualiza\u00E7\u00E3o de BOM selecionada n\u00E3o tem uma \nBOMViewRevision do mesmo tipo que o tipo de Visualiza\u00E7\u00E3o de LDM selecionada
+invalidBOMView.TITLE=Tipo da vis\u00E3o BOM n\u00E3o confere
+
+#Fix for PR 6060121 -We need a fix that will deem the TCVis(Lifecycle Visualization) icon when a BOP line is selected. It should be active when a BOM line is selected or attachment.
+# x_akella 28 Nov 2008
+bopTreeTableNotSupported.MESSAGE=A funcionalidade de enviar a estrutura do processo para a visualiza\u00E7\u00E3o de ciclo de vida n\u00E3o \u00E9 totalmente suportada. \nUse o Escritor BOM CC para esta funcionalidade.
+bopTreeTableNotSupported.TITLE=Estruturas de processo n\u00E3o suportadas
+
+invalidMultipleBOMViewRevs.MESSAGE=O ItemRevision configurado correspondente \u00E0 visualiza\u00E7\u00E3o de BOM selecionada t\u00EAm v\u00E1rias BomViewRevisions,\nmas n\u00E3o tem uma BOMViewRevision do tipo de visualiza\u00E7\u00E3o padr\u00E3o.
+invalidMultipleBOMViewRevs.TITLE=V\u00E1rias revis\u00F5es de vis\u00E3o BOM, mas os tipos n\u00E3o coincidem
+
+invalidItemRevision.MESSAGE=A ItemRevision selecionada n\u00E3o representa uma montagem\nnem tem um dataset DirectModel anexado com a rela\u00E7\u00E3o Renderiza\u00E7\u00E3o.
+invalidItemRevision.TITLE=Sem BOMViewRevision ou DirectModelDataset
+
+noConfiguredItemRevision.MESSAGE=N\u00E3o h\u00E1 nenhuma revis\u00E3o configurada para o Item. \u00C9 poss\u00EDvel alterar sua regra de revis\u00E3o padr\u00E3o ou escolher uma revis\u00E3o espec\u00EDfica.
+noConfiguredItemRevision.TITLE=Nenhuma revis\u00E3o configurada para o Item
+
+invalidItem.MESSAGE=A ItemRevision configurada correspondente do item selecionado\nn\u00E3o representa uma Montagem\nnem tem um dataset DirectModel anexado com a rela\u00E7\u00E3o Renderiza\u00E7\u00E3o.
+invalidItem.TITLE=Sem BOMViewRevision ou DirectModelDataset
+
+invalidMultipleDMD.MESSAGE=ItemRevision tem v\u00E1rios DirectModelDatasets anexados.
+invalidMultipleDMD.TITLE=V\u00E1rios DirectModelDatasets anexados
+
+invalidDatasetType.MESSAGE=O dataset selecionado n\u00E3o ser\u00E1 iniciado\npois ele n\u00E3o \u00E9 do tipo especificado para\nDatasets do Teamcenter Visualization no arquivo de prefer\u00EAncias do site.
+invalidDatasetType.TITLE=Dataset selecionado n\u00E3o \u00E9 da Visualiza\u00E7\u00E3o do Teamcenter
+
+invalidWorkspaceObject.MESSAGE=Os objetos selecionados n\u00E3o ser\u00E3o iniciados pois o\ndataset DirectModel com rela\u00E7\u00E3o de renderiza\u00E7\u00E3o n\u00E3o foi encontrado.
+invalidWorkspaceObject.TITLE=Nenhum dado de visualiza\u00E7\u00E3o anexado
+
+invalidObject.MESSAGE=Os objetos selecionados n\u00E3o ser\u00E3o iniciados pois o\ndataset DirectModel com rela\u00E7\u00E3o de renderiza\u00E7\u00E3o n\u00E3o foi encontrado.
+invalidObject.TITLE=Nenhum dado de visualiza\u00E7\u00E3o anexado
+
+noSelectionOrNoValid.MESSAGE=Nenhum objeto a iniciar na Visualiza\u00E7\u00E3o do Centro de equipe.\nAssegure-se de que um objeto a ser iniciado na Visualiza\u00E7\u00E3o do Centro de equipe esteja selecionado.
+noSelectionOrNoValid.TITLE=Nenhuma sele\u00E7\u00E3o ou nenhuma sele\u00E7\u00E3o inv\u00E1lida
+
+noNamedReference.MESSAGE=O dataset selecionado ou o dataset anexado ao componente\nselecionado n\u00E3o tem conte\u00FAdo
+noNamedReference.TITLE=Nenhum conte\u00FAdo
+
+noRenderingDirectModelFound.MESSAGE=O componente selecionado n\u00E3o tem DirectModelDataset \ncom rela\u00E7\u00E3o de renderiza\u00E7\u00E3o anexado a ele.
+noRenderingDirectModelFound.TITLE=Nenhum dataset DirectModel com rela\u00E7\u00E3o de Renderiza\u00E7\u00E3o
+
+noJTPARTNamedReference.MESSAGE=O dataset DirectModel que est\u00E1 anexado ao \ncomponente selecionado ou que \u00E9 o componente selecionado\nn\u00E3o tem JTPART em seu conte\u00FAdo.
+noJTPARTNamedReference.TITLE=Sem conte\u00FAdo JTPART
+
+noSecondaryDirectModel.MESSAGE=O componente selecionado n\u00E3o tem DirectModelDataset \ncom rela\u00E7\u00E3o de renderiza\u00E7\u00E3o secund\u00E1ria anexado a ele.
+noSecondaryDirectModel.TITLE=Nenhum DirectModelDataset com rela\u00E7\u00E3o secund\u00E1ria
+
+noInteropPropsFile.MESSAGE=Arquivo interop.properties ausente ou inv\u00E1lido.
+
+# For PR# 5838706
+statusStartFailed=ERRO: Falha ao iniciar o aplicativo
+
+INTEROP_LAUNCH_ERROR=N\u00E3o foi poss\u00EDvel criar arquivo de inicializa\u00E7\u00E3o.
+
+# For PR#6035456
+invalidNXOperation.MESSAGE=Existe um dataset NX nesta Revis\u00E3o, \u00E9 preciso selecion\u00E1-lo para envi\u00E1-lo para NX
+invalidNXOperation.TITLE=Opera\u00E7\u00E3o n\u00E3o suportada
+
+hasMultiFieldKeyItem.MESSAGE=O item %1$ selecionado pertence a um tipo de item que n\u00E3o pertence ao dom\u00EDnio padr\u00E3o.
+hasMultiFieldKeyItem.MESSAGE.missingitemid=O item %1$ selecionado pertence a um tipo de item que n\u00E3o tem item_id como um dos campos principais.
+
+hasMultiFieldKeyRev.MESSAGE=A revis\u00E3o de item %1$ selecionada pertence a um tipo de item que n\u00E3o pertence ao dom\u00EDnio padr\u00E3o. 
+hasMultiFieldKeyRev.MESSAGE.missingitemid=A revis\u00E3o de item %1$ selecionada pertence a um tipo de item que n\u00E3o tem item_id como um dos campos principais.
+
+hasMultiFieldKeyDataset.MESSAGE=O dataset %1$ selecionado pertence a um tipo de item que n\u00E3o pertence ao dom\u00EDnio padr\u00E3o.
+hasMultiFieldKeyDataset.MESSAGE.missingitemid=O dataset %1$ selecionado est\u00E1 presente em um tipo de item que n\u00E3o tem item_id como um dos campos principais.
+
+hasMultiFieldKeyUnsupported.MESSAGE=No momento, este item n\u00E3o \u00E9 suportado pelo NX e n\u00E3o pode ser enviado para o NX.
+hasMultiFieldKey.TITLE=Opera\u00E7\u00E3o n\u00E3o suportada
+
+hasMultiFieldKeyBomlineSkipContinue.Message=Algumas linhas BOM selecionadas pertencem a um tipo de item que n\u00E3o pertence ao dom\u00EDnio padr\u00E3o. \nAtualmente esta solicita\u00E7\u00E3o n\u00E3o \u00E9 suportada pelo NX.\n Estas linhas BOM ser\u00E3o ignoradas ao serem enviadas para o NX. Deseja continuar?
+hasMultiFieldKeyBomlineSkipContinue.Message.missingitemid=Algumas linhas BOM selecionadas pertencem a um tipo de item que n\u00E3o tem item_id como um dos campos principais. \nAtualmente isso n\u00E3o \u00E9 aceito pelo NX.\nEssas linhas BOM ser\u00E3o ignoradas durante o envio para o NX.\n Deseja continuar?
+
+hasMultiFieldKeyBomlineSkip.Title=Sele\u00E7\u00E3o n\u00E3o suportada
+
+hasMultiFieldKeyBomlineError.MESSAGE=A linha BOM %1$ selecionada pertence a um tipo de item que n\u00E3o pertence ao dom\u00EDnio padr\u00E3o.
+hasMultiFieldKeyBomlineError.MESSAGE.missingitemid=A linha BOM %1$ selecionada pertence a um tipo de item que n\u00E3o tem item_id como um dos campos principais.
+
+hasMultiFieldKeyBomlineSkipDetails.MESSAGE=As seguintes linhas BOM ser\u00E3o ignoradas:
+
+hasUnsavedChanges.MESSAGE=A BOMWindow apresenta altera\u00E7\u00F5es n\u00E3o salvas. Salve as altera\u00E7\u00F5es antes de abrir a estrutura em NX.
+hasUnsavedChanges.TITLE=Altera\u00E7\u00F5es n\u00E3o salvas
+
+structureHasBeenModified.MESSAGE=Uma ou mais das linhas de BOM que voc\u00EA est\u00E1 enviando para o NX teve sua estrutura modificada desde que foi expandida.\n Essas linhas s\u00E3o indicadas abaixo.\u00C9 recomendado cancelar essa opera\u00E7\u00E3o e atualizar sua janela.\n Se voc\u00EA continuar a abrir essa estrutura no NX, a opera\u00E7\u00E3o pode levar mais tempo do que o normal. Deseja continuar?
+structureHasBeenModified.TITLE=A estrutura foi modificada
+

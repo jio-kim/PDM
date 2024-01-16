@@ -1,0 +1,112 @@
+#*==================================================================================================
+#
+#                    Copyright (c) 2004 UGS
+#                   Unpublished - All rights reserved
+#                   
+#                   
+# THIS PROGRAM IS AN UNPUBLISHED WORK FULLY PROTECTED BY THE UNITED STATES
+#  COPYRIGHT LAWS AND IS CONSIDERED A TRADE SECRET BELONGING TO THE COPYRIGHT
+#                                   HOLDER.
+#
+#====================================================================================================
+# File description: This properties file contains all locale specific keys for the saveas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: saveasconnection_locale.properties
+#   Module  : com.teamcenter.rac.commands.saveasconnection
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#04-Oct-2004  x_bhadra                Initial Version
+#08-Nov-2004  x_bhadra                Fixing the Registry Problem
+#08-Nov-2004  Narayana Murthy         Merge from P10.0.0.6
+#10-Nov-2004  x_bhadra                Merge from lbom_pse_support branch
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+dialog.TITLE=Salvar Como
+ConnectionType=Tipo de Conex\u00E3o :
+
+# Save ItemAsDialog
+# ------------------------
+saveAsItem.TITLE = Salvar conex\u00E3o como
+itemId = ID da conex\u00E3o
+revId = ID da revis\u00E3o
+itemType = Tipo de conex\u00E3o :
+itemInformation = Informa\u00E7\u00F5es de conex\u00E3o
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.NAME=Verificar configura\u00E7\u00E3o
+viConfigStep.TOOLTIP=Verifique a configura\u00E7\u00E3o da conex\u00E3o de variante
+viConfigStep.info=Assegure-se de que a configura\u00E7\u00E3o de conex\u00E3o variante est\u00E1 correta
+viConfigStep.table.option=Op\u00E7\u00E3o
+viConfigStep.table.value=Valor
+
+# New Connection Panel
+# -----------------------------
+createConfirm.TITLE=Nova conex\u00E3o
+createConfirm.MSG=Para prosseguir, uma nova conex\u00E3o deve ser criada. \nDeseja criar a nova conex\u00E3o?
+
+# Connection Info Panel
+# -----------------------------
+itemInfo.LABEL=Definir as informa\u00E7\u00F5es b\u00E1sicas para a conex\u00E3o copiada.
+itemInfoStep.NAME=Entre com a informa\u00E7\u00E3o de conex\u00E3o
+itemInfoStep.TOOLTIP=Defina a informa\u00E7\u00E3o b\u00E1sica de conex\u00E3o.
+
+# Connection Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=Definir os atributos do formul\u00E1rio master de conex\u00E3o.
+itemMasterFormStep.NAME=Inserir informa\u00E7\u00F5es do formul\u00E1rio master de conex\u00E3o
+itemMasterFormStep.TOOLTIP=Definir os atributos do formul\u00E1rio master de conex\u00E3o.
+
+# ConnectionRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=Definir os atributos do formul\u00E1rio master de revis\u00E3o de conex\u00E3o.
+itemRevMasterFormStep.NAME=Insira as informa\u00E7\u00F5es do formul\u00E1rio master da rev
+itemRevMasterFormStep.TOOLTIP=Definir os atributos do formul\u00E1rio master da revis\u00E3o de conex\u00E3o.
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Criar nova conex\u00E3o
+
+# option panel
+# ------------
+checkOutOnCreate = Reservar revis\u00E3o de conex\u00E3o ao criar
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Criar nova conex\u00E3o
+checkingIds=Verificando id e rev de conex\u00E3o
+openingNewComponent=Abrindo nova conex\u00E3o
+abort = Abortar abrindo Nova Conex\u00E3o
+loadingItemTypes = Carregando tipos de conex\u00E3o ...
+creatingNewItem = Criar nova conex\u00E3o 
+pastingNewItem=Colando nova conex\u00E3o
+creatingNewItemRevision = Criar nova revis\u00E3o de conex\u00E3o
+savingAsItemRev=Salvamento como revis\u00E3o do sinal
+
+# Error Messages
+# ----------------------
+error.TITLE = Nova conex\u00E3o ...
+itemTypeError = N\u00E3o \u00E9 poss\u00EDvel carregar a lista dispon\u00EDvel de conex\u00F5es
+failFindDialog=Falha ao localizar a nova caixa de di\u00E1logo de conex\u00E3o.
+sameAsOldId=Uma conex\u00E3o existente foi localizada. Criar/Salvar como apenas cria novas conex\u00F5es. \nPara criar uma nova revis\u00E3o de conex\u00E3o, utilize o comando Arquivo->Revisar.
+failToCreate = Ocorreu um erro ao criar conex\u00E3o
+failToOpen = A conex\u00E3o est\u00E1 impossibilitada de abrir. Possivelmente um problema com suas prote\u00E7\u00F5es.
+failFindItemMaster=Falha ao obter formul\u00E1rio master de conex\u00E3o.
+failFindItemRevMaster=Falha ao obter formul\u00E1rio master de revis\u00E3o da conex\u00E3o.
+sameAsoldId=Uma conex\u00E3o existente foi localizada. Criar/Salvar como apenas cria novas conex\u00F5es. \nPara criar uma nova revis\u00E3o de conex\u00E3o, utilize o comando Arquivo->Revisar.
+failToSaveAs=Falha ao salvar como revis\u00E3o de conex\u00E3o.
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Cria\u00E7\u00E3o de conex\u00E3o interrompida..Conex\u00E3o criada e parcialmente inserida
+createConfirm.TITLE=Salvar como revis\u00E3o de conex\u00E3o
+createConfirm.MSG=Para prosseguir, uma nova conex\u00E3o deve ser criada. \nDeseja criar a nova conex\u00E3o?
+
+genCompIDLabelText = Conex\u00E3o\ndetalhe\nID do elemento:

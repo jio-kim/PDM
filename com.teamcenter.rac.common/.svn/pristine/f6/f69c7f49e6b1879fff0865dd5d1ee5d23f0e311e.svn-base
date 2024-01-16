@@ -1,0 +1,56 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the deepcopy package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#18-Jul-2001  x_gopala                Initial Creation
+#12-Oct-2001  wangp                   revise project (for x_gopala)
+#27-Jan-2006  narayasu                Fix for PR 5371739
+#$HISTORY$
+#=================================================================================================*/
+
+# Advanced copy options tab
+# --------------------------------------------------
+advanced.TITLE=Avanzadas
+fromTree=Fuente:
+sourceGeneric=Revisi\u00F3n de \u00EDtem gen\u00E9rico fuente:
+sourceVariant=Revisi\u00F3n de \u00EDtem de variante fuente:
+toTree=Destino:
+useCopyPref= Activar las opciones de copia de usuario
+copyPreferences=Preferencias de copia:
+userPref=Usuario
+sitePref=Sitio
+
+loadingTree.MSG=Cargando el \u00E1rbol...
+
+error.TITLE=Entrada duplicada
+errormsg=Valores de preferencia duplicados/err\u00F3neos presentes en la verificaci\u00F3n del archivo de preferencia del sitio
+
+# Popupmenu
+# --------------------------------------------------
+copy_as_object.POPUP_TITLE=Opciones de copia
+
+copy_as_reference.NAME=Copiar como referencia
+copy_as_NoCopyOrReferenceNewCopy.NAME=No copiar ni relacionar con la m\u00E1s reciente
+copy_as_object.NAME=Copiar como objeto
+no_copy.NAME=No copiar
+relate_to_latest.NAME=Relacionar con M\u00E1s reciente
+revise_and_relate_to_latest.NAME= Revisar y relacionar con M\u00E1s reciente
+copy_as_object.TIP=Opci\u00F3n: Copiar como objeto
+copy_as_reference.TIP=Opci\u00F3n: Copiar como referencia
+copy_as_NoCopyOrReferenceNewCopy.TIP=No copiar ni relacionar con el \u00FAltimo conjunto
+no_copy.TIP=Opci\u00F3n: No copiar
+relate_to_latest.TIP=Relacionar con el conjunto de opciones M\u00E1s reciente
+revise_and_relate_to_latest.TIP= Revisar y relacionar con el conjunto de opciones M\u00E1s reciente
+
+download=Creando \u00E1rboles de copia profunda...

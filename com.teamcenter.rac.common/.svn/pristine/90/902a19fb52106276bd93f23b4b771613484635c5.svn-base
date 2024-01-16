@@ -1,0 +1,40 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description:
+#
+#   Filename: recursivedelete_user.properties
+#   Module  : com.teamcenter.rac.common.recursivedelete
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#15-Oct-2004  Tony Dumont             Add new element
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+dialog.TITLE=Excluir abaixo
+
+#----Rule table entries
+type=Tipo
+relation=Rela\u00E7\u00E3o
+ruleTitle=Regras de sele\u00E7\u00E3o
+
+refreshTree.TIP=Atualizar a sele\u00E7\u00E3o na \u00E1rvore com base nas regras
+addRule.TIP=Adicionar uma regra
+removeRule.TIP=Remover regras selecionadas
+
+#----Recursive Delete tree entries
+root.TITLE=Excluir abaixo
+selectAll.TIP=Selecionar todos os componentes
+
+#----Messages
+loadTypeRelation=Carregando todos os tipos e rela\u00E7\u00F5es...
+loadRules=Carregando regras de tipo/rela\u00E7\u00E3o...
+expandAll=Expandindo componente(s)...
+updatingTree=Atualizando sele\u00E7\u00E3o de \u00E1rvore...
+selectingAll=Selecionar todos os componentes da \u00E1rvore...
+gettingSelection=Obtendo as sele\u00E7\u00F5es a partir da \u00E1rvore...

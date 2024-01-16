@@ -1,0 +1,40 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description:
+#
+#   Filename: recursivedelete_user.properties
+#   Module  : com.teamcenter.rac.common.recursivedelete
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#15-Oct-2004  Tony Dumont             Add new element
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+dialog.TITLE=\uC544\uB798 \uD56D\uBAA9 \uC0AD\uC81C
+
+#----Rule table entries
+type=\uC720\uD615
+relation=\uAD00\uACC4
+ruleTitle=\uC120\uD0DD \uADDC\uCE59
+
+refreshTree.TIP=\uADDC\uCE59\uC744 \uAE30\uC900\uC73C\uB85C \uD2B8\uB9AC\uC5D0\uC11C \uC120\uD0DD \uC5C5\uB370\uC774\uD2B8
+addRule.TIP=\uADDC\uCE59 \uCD94\uAC00
+removeRule.TIP=\uC120\uD0DD\uD55C \uADDC\uCE59 \uC81C\uAC70
+
+#----Recursive Delete tree entries
+root.TITLE=\uC544\uB798 \uD56D\uBAA9 \uC0AD\uC81C
+selectAll.TIP=\uBAA8\uB4E0 \uCEF4\uD3EC\uB10C\uD2B8 \uC120\uD0DD
+
+#----Messages
+loadTypeRelation=\uBAA8\uB4E0 \uC720\uD615\uACFC \uAD00\uACC4\uB97C \uB85C\uB4DC \uC911...
+loadRules=\uC720\uD615/\uAD00\uACC4 \uADDC\uCE59 \uB85C\uB4DC \uC911...
+expandAll=\uCEF4\uD3EC\uB10C\uD2B8 \uD655\uC7A5 \uC911...
+updatingTree=\uD2B8\uB9AC \uC120\uD0DD \uC5C5\uB370\uC774\uD2B8 \uC911...
+selectingAll=\uD2B8\uB9AC\uC5D0\uC11C \uBAA8\uB4E0 \uCEF4\uD3EC\uB10C\uD2B8 \uC120\uD0DD \uC911...
+gettingSelection=\uD2B8\uB9AC\uC5D0\uC11C \uC120\uD0DD\uC744 \uAC00\uC838\uC624\uB294 \uC911...

@@ -1,0 +1,29 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the importfromconnection
+#                   package. It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: importremote_locale.properties
+#   Module  : com.teamcenter.rac.commands.importfromconnection
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#20-Sep-2000  larson                  Initial creation
+#29-Nov-2000  larson                  adding for import->from connection ... support
+#15-Jan-2001  larson                  cleaning up
+#06-Feb-2001  bakerm                  add handling of imports when no connections exist
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+importFromConnectionCommand.TITLE=Commande Importer depuis Connexion
+
+noActiveEncapsulationsExist.MESSAGE=Pas d'encapsulation ACTIVE pour cette session utilisateur
+
+noEncapsulationsExist.MESSAGE=Aucune encapsulation \u00E0 importer pour cette session utilisateur

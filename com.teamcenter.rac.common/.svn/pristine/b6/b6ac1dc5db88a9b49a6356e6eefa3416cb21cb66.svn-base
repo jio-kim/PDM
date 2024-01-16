@@ -1,0 +1,35 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#=================================================================================================
+#  Date       Name                    Description of Change
+# 27-May-2009  kabra                   initial creation
+# $HISTORY$
+# =================================================================================================
+
+# Entries for AddNewHandler
+#-----------------------------
+AddNewHandler.NoSourceFound=No se configur\u00F3 el atributo fuente ni el par\u00E1metro correspondiente a este comando
+AddNewHandler.NoObjectType=No se encuentra el tipo de objeto para iniciar el asistente.
+ViewMarkupHandler.Title=Ver o marcar
+ViewMarkupHandler.CreateJob=Tarea de carga de los archivos de ver o marcar...
+ViewMarkupHandler.AppLaunchError=Fallo al iniciar la herramienta asociada
+ViewMarkupHandler.PopulateMyViewMarkup=Enlace r\u00E1pido Poblando Mi vista/marcado
+DigitalSigningHandler.Title=Firmar
+DigitalSigningHandler.CreateJob=Firmar la tarea Cargar los archivos
+DigitalSigningHandler.AppLaunchError=Fallo al iniciar la herramienta asociada
+CancelSigningHandler.Title=Cancelar firma
+CancelSigningHandler.CreateJob=Cancelar la firma de la tarea Cargar los archivos...
+CancelSigningHandler.SessionError=Fallo al inicializar la sesi\u00F3n
+CancelSigningHandler.ServiceError=Fallo al buscar el servicio de firma digital
+setPreference.MSG=Fijar la preferencia
+TaskStatusActionHandler.Title=Error
+
+warning=Aviso
+InvalidObjectToSendTo.TITLE=Operaci\u00F3n no v\u00E1lida
+InvalidObjectToSendTo.MESSAGE=Uno o m\u00E1s objetos de entrada no son v\u00E1lidos para enviar al destino.

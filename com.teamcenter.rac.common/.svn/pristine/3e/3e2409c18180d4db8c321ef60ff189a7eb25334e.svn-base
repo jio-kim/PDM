@@ -1,0 +1,40 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description:
+#
+#   Filename: recursivedelete_user.properties
+#   Module  : com.teamcenter.rac.common.recursivedelete
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#15-Oct-2004  Tony Dumont             Add new element
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+dialog.TITLE=Unterhalb l\u00F6schen
+
+#----Rule table entries
+type=Typ
+relation=Beziehung
+ruleTitle=Auswahlregeln
+
+refreshTree.TIP=Die Auswahl in der Baumstruktur regelbasiert aktualisieren
+addRule.TIP=Eine Regel hinzuf\u00FCgen
+removeRule.TIP=Ausgew\u00E4hlte Regeln entfernen
+
+#----Recursive Delete tree entries
+root.TITLE=Unterhalb l\u00F6schen
+selectAll.TIP=Alle Komponenten ausw\u00E4hlen
+
+#----Messages
+loadTypeRelation=Alle Typen und Beziehungen werden geladen...
+loadRules=Typ-/Beziehungsregeln werden geladen...
+expandAll=Komponente(n) einblenden...
+updatingTree=Baumstrukturauswahl wird aktualisiert...
+selectingAll=Alle Komponenten in Baumstruktur werden ausgew\u00E4hlt...
+gettingSelection=Auswahl wird aus Baumstruktur abgerufen...

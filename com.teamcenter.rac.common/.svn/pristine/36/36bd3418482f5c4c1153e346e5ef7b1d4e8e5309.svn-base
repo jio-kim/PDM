@@ -1,0 +1,35 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#=================================================================================================
+#  Date       Name                    Description of Change
+# 27-May-2009  kabra                   initial creation
+# $HISTORY$
+# =================================================================================================
+
+# Entries for AddNewHandler
+#-----------------------------
+AddNewHandler.NoSourceFound=Per questo comando non sono stati configurati l'attributo sorgente n\u00E9 il parametro
+AddNewHandler.NoObjectType=Impossibile trovare il tipo di oggetto necessario per riavviare il wizard.
+ViewMarkupHandler.Title=Vista/Markup
+ViewMarkupHandler.CreateJob=Vista/Markup caricamento dei file di processo...
+ViewMarkupHandler.AppLaunchError=Errore durante l'avvio dello strumento associato
+ViewMarkupHandler.PopulateMyViewMarkup=Popolazione collegamento rapido MyView/Markup
+DigitalSigningHandler.Title=Firma
+DigitalSigningHandler.CreateJob=Firma processo di caricamento file... 
+DigitalSigningHandler.AppLaunchError=Errore durante l'avvio dello strumento associato
+CancelSigningHandler.Title=Annulla firma
+CancelSigningHandler.CreateJob=Annulla firma processo caricamento file...
+CancelSigningHandler.SessionError=Errore durante l'inizializzazione della sessione
+CancelSigningHandler.ServiceError=Errore durante la ricerca del servizio DigitalSignature
+setPreference.MSG=Imposta preferenza
+TaskStatusActionHandler.Title=Errore
+
+warning=Avviso
+InvalidObjectToSendTo.TITLE=Operazione non valida
+InvalidObjectToSendTo.MESSAGE=Uno o pi\u00F9 oggetti di input non sono validi per l'invio alla destinazione.

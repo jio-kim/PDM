@@ -1,0 +1,21 @@
+// @<COPYRIGHT>@
+// ==================================================
+// Copyright 2018.
+// Siemens Product Lifecycle Management Software Inc.
+// All Rights Reserved.
+// ==================================================
+// @<COPYRIGHT>@
+
+####################################################################################################
+# Messages
+####################################################################################################
+
+saveAsInputNotNull.MESSAGE=Vybran\u00FD objekt pro operaci Ulo\u017Eit jako nem\u016F\u017Ee b\u00FDt null.
+
+saveAsInputMissing.MESSSAGE=Konfigurace operace Ulo\u017Eit jako vstup pro {0} chyb\u00ED.  Kontaktujte spr\u00E1vce syst\u00E9mu.  
+sessionNotAvailable.MESSAGE=Relace nen\u00ED dostupn\u00E1. Operace Ulo\u017Eit jako nem\u016F\u017Ee pokra\u010Dovat. \nKontaktujte spr\u00E1vce syst\u00E9mu.
+
+deepCopyPropertyNull.MESSAGE=Data hloubkov\u00E9 kopie se nepoda\u0159ilo vytvo\u0159it.
+
+reviseInputNotNull.MESSAGE=Vybran\u00FD objekt pro operaci revize nem\u016F\u017Ee b\u00FDt null.
+reviseInputMissing.MESSSAGE=Pro {0} chyb\u00ED vstupn\u00ED konfigurace revize. Kontaktujte spr\u00E1vce syst\u00E9mu.

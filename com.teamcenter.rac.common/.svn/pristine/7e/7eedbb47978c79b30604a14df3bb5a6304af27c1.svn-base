@@ -1,0 +1,105 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2003 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the iddisplayrule package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: iddisplayrule_locale.properties
+#   Module  : com.teamcenter.rac.commands.iddisplayrule
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#19-Jun-2003  wangp                   initial create
+#20-Jun-2003  wangp                   add more keys for msg
+#24-Jun-2003  wangp                   add more entries
+#27-Jun-2003  wangp                   add msg
+#10-Sep-2003  wangp                   fix pr4830539: add Any(No Display Rule)
+#30-Oct-2003  Endi Wu                 Add entry
+#03-Nov-2003  Shreyas Shah            Fixed anyRule string
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Id display rule dialog
+# ------------------------------------
+idDisplayRule.TITLE = Regole di visualizzazione dell'ID
+
+anyRule=Vuoto (solo ID iniziale)
+
+currentDisplayRule=Regola di visualizzazione corrente:
+noCurrentRule=N/A
+
+create=Crea
+create.MNEMONIC=t
+create.TIP=Crea una regola di visualizzazione dell'id.
+
+modify=Modifica
+modify.MNEMONIC=M
+modify.TIP=Modifica la regola di visualizzazione dell'ID selezionata.
+
+remove=Rimuovi
+remove.MNEMONIC=R
+remove.TIP=Elimina le regole di visualizzazione dell'ID selezionate.
+
+setCurrent=Imposta corrente
+setCurrent.MNEMONIC=S
+setCurrent.TIP=Imposta la regola selezionata come regola di visualizzazione corrente oppure non selezionare niente per annullare l'impostazione della regola di visualizzazione.
+
+add=Aggiungi
+add.MNEMONIC=A
+add.TIP=Aggiungi regole di visualizzazione di altri utenti all'elenco corrente.
+
+asDefault=Usa impostazioni predefinite
+ruleContent=Contesto della regola selezionata:
+ruleList=Elenco regola:
+
+modify.TITLE=Modifica regola
+modify.MSG=Selezionare una regola valida da modificare.
+
+remove.TITLE=Elimina regola
+remove.MSG=Selezionare regole valide da eliminare.
+removeConfirm.MSG=Eliminare le regole selezionate?
+
+setCurrent.TITLE=Imposta regola corrente
+setCurrent.MSG=Selezionare una regola per impostarla come corrente.
+curretRuleSet.MSG=\u00C8 stata modificata la regola di visualizzazione corrente. Verranno aggiornati i dati di visualizzazione correnti.
+setCurrentConfirm.MSG=Impostare la regola selezionata come regola di visualizzazione corrente?
+unsetCurrentConfirm.MSG=Annullare l'impostazione della regola di visualizzazione corrente?
+noCurrentRule.MSG=Non esiste alcuna regola di visualizzazione corrente.
+
+loadingRules=Caricamento regole di visualizzazione dell'ID in corso...
+
+refresh.MSG=Aggiorna...
+
+# Create/Modify Id display rule dialog
+# ------------------------------------------
+createIdDisplayRule.TITLE=Crea regola di visualizzazione dell'ID
+modifyIdDisplayRule.TITLE=Modifica regola di visualizzazione dell'ID
+ruleName=Nome regola:
+allContexts=Contesti disponibili:
+selectedContexts=Contesti selezionati:
+
+# Add Id display rule dialog
+# -------------------------------------
+addIdDisplayRule.TITLE=Aggiungi regola di visualizzazione dell'ID
+selectUser=Seleziona utente:
+ruleListForUser=Regole possedute dall'utente selezionato:
+
+# Error messages
+# -----------------------------------------
+error.TITLE=Regole di visualizzazione dell'ID
+cannotGetCurrentRule=Impossibile ottenere regola di visualizzazione corrente.
+cannotSetCurrentRule=Impossibile impostare regola di visualizzazione corrente.
+cannotRemoveRules=Impossibile rimuovere regole richieste.
+cannotDisplayRule=Impossibile visualizzare la regola selezionata.
+cannotGetRuleList=Impossibile ottenere l'elenco della regola.
+cannotSaveRule=Impossibile salvare la regola modificata.
+cannotCreateRule=Impossibile creare nuova regola.
+cannotAddRule=Impossibile aggiungere le regole selezionate.
+cannotModify.MSG=Impossibile modificare la regola selezionata.
+addExistingRule.MSG=La regola selezionata \u00E8 gi\u00E0 stata aggiunta.

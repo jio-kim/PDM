@@ -1,0 +1,39 @@
+
+#*==============================================================================
+#
+#             Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                        Unpublished - All rights reserved
+#
+#===============================================================================
+# File description: This properties file contains all locale specific keys for 
+#                   the erp package.
+#                   It is the intent that this file is to be localized based 
+#                   upon the Java localization resource bundle naming 
+#                   conventions.  For further information please refer to the 
+#                   Java doc on this subject.
+#
+#   Filename: erp_locale.properties
+#   Module  : com.teamcenter.rac.commands.erp
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#08-Sep-2000  x_sengup                SAPRFC Display Project. Initial creation.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Item Dialog
+# ----------------------
+command.TITLE = SAP\u30C7\u30FC\u30BF\u306E\u8868\u793A
+
+# Messages for message center
+# ------------------------------
+displayingMaterial = RFC\u6750\u6599\u8868\u793A\u753B\u9762\u3092\u958B\u3044\u3066\u3044\u307E\u3059\u3002
+displayingBom = RFC BOM\u8868\u793A\u753B\u9762\u3092\u958B\u3044\u3066\u3044\u307E\u3059\u3002
+displayingEco = RFC ECO\u8868\u793A\u753B\u9762\u3092\u958B\u3044\u3066\u3044\u307E\u3059\u3002
+displayingDoc = RFC\u30C9\u30AD\u30E5\u30E1\u30F3\u30C8\u8868\u793A\u753B\u9762\u3092\u958B\u3044\u3066\u3044\u307E\u3059\u3002
+
+# Error Messages
+# ----------------------
+dispExeNotFound = tc_sap_rfc_disp\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3002 \u30A4\u30F3\u30B9\u30C8\u30FC\u30EB\u304C\u5B9F\u884C\u3055\u308C\u3066\u3044\u308B\u304B\u3069\u3046\u304B\u3001\u5B9F\u884C\u30D5\u30A1\u30A4\u30EB\u304C\u6B63\u3057\u3044\u30C7\u30A3\u30EC\u30AF\u30C8\u30EA\u306B\u3042\u308B\u304B\u3069\u3046\u304B\u3092\u78BA\u8A8D\u3057\u3066\u304F\u3060\u3055\u3044\u3002
+

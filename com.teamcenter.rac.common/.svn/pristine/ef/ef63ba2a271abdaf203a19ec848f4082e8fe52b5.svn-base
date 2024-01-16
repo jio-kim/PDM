@@ -1,0 +1,291 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the lov package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#09-Apr-2001  wangp                   Move entries from common to common/lov
+#24-Oct-2001  wangp                   add sort button
+#15-Jun-2003  Bruce Hebbard           Add multipick button
+#12-Nov-2004  x_suje                  Added file element "RowObject.java".
+#18-Nov-2004  x_suje                  for attribute sharing project
+#07-Jan-2005  faming                  V10 LOV Enhancement Project to Phase 8
+#24-Jan-2005  faming                  V10 LOV Enhancement Project
+#29-Apr-2005  hoangh                  PR#5178172
+#31-May-2005  bhamidip                Fix PR 5182338 (Attribute Sharing values found message incorrect)
+#$HISTORY$
+#=================================================================================================*/
+
+# LOVComboBox Keys
+# ------------------------
+LOVComboLoad=\u6B63\u5728\u8F09\u5165\u503C\u6E05\u55AE
+
+# Interdependent LOV panel
+#--------------------------
+LOVInterdependentButton.TIP=<html><body>{0}</body></html>
+
+# LOVPopupButton Keys
+# ------------------------------
+LOVPopupWindow.TITLE=\u503C\u6E05\u55AE
+LOVComponentInvalid=\u4E0D\u80FD\u8F09\u5165\u503C\u6E05\u55AE\u3002
+LOVPopupButton.TIP=\u9EDE\u64CA\u4EE5\u8F09\u5165\u503C\u6E05\u55AE\u3002
+
+valueLabel.NAME=\u503C\uFF1A
+searchLabel.NAME=\u641C\u5C0B\uFF1A
+inputLabel.NAME=\u8F38\u5165\uFF1A
+rangeLabel.NAME=\u7BC4\u570D\uFF1A
+
+valueText.TIP=\u8F38\u5165\u8A72\u503C\uFF0C\u7136\u5F8C\u6309 ENTER
+findText.TIP=\u8F38\u5165\u641C\u5C0B\u6E96\u5247\uFF0C\u7136\u5F8C\u6309 ENTER \u6216\u641C\u5C0B\u6309\u9215\u3002
+valueTextRange.TIP=\u8F38\u5165\u5728\u7BC4\u570D\u5167\u7684\u503C\u3002
+filterButton.TIP=\u6309\u4E0B\u4EE5\u958B\u59CB\u641C\u5C0B
+addButton.TIP =\u958B\u59CB\u4F5C\u696D\u4EE5\u5F9E\u5916\u90E8\u8CC7\u6599\u4F86\u6E90\u4E2D\u7372\u53D6 LOV \u503C\u3002
+allButton.TIP=\u8F09\u5165\u5168\u90E8\u627E\u5230\u7684\u503C\u3002
+nextButton.TIP=\u8F09\u5165\u4E0B\u4E00\u7D44\u627E\u5230\u7684\u503C\u3002
+prevButton.TIP=\u8F09\u5165\u524D\u4E00\u7D44\u627E\u5230\u7684\u503C\u3002
+sortButton.TIP=\u5C07\u503C\u6309\u6607\u51AA\u6392\u5E8F\u3002
+sqlButton.TIP=\u5728\u5C0D\u8A71\u65B9\u584A\u4E2D\u986F\u793A\u67E5\u8A62\u5B50\u53E5
+multipickButton.TIP=\u5F9E\u6E05\u55AE\u4E2D\u9078\u53D6\u591A\u500B\u503C\u3002
+multicolumnButton.TIP=\u5F9E\u8868\u4E2D\u9078\u53D6\u4E00\u5217\u8CC7\u6599\u3002
+HierarchyLOVPopupButton.TIP=\u5728\u5C64\u6B21\u7D50\u69CB\u4E2D\u9078\u53D6\u503C\u3002
+selectValue=\u9078\u53D6\u4E00\u500B\u503C\u7528\u65BC\uFF1A
+search.TIP=\u67E5\u8A62\u8F38\u5165\u503C
+search=\u641C\u5C0B
+
+LOVDefaultMessage=\u8F38\u5165\u641C\u5C0B\u6E96\u5247\u4E26\u6309 Enter\u3002
+LOVDefaultMessageForRange=\u8F38\u5165\u5728\u7BC4\u570D\u5167\u7684\u503C\u3002
+LOVFound=\u500B\u503C\u5DF2\u627E\u5230
+LOVFound1=\u500B\u503C\u5DF2\u627E\u5230
+LOVShown=\u5DF2\u986F\u793A
+LOVNoFound.TIP=\u627E\u4E0D\u5230\u503C\u3002
+LOVLoadFirst=\u6B63\u5728\u8F09\u5165\u7B2C\u4E00\u7D44\u503C
+loadPrevious=\u6B63\u5728\u8F09\u5165\u524D\u4E00\u7D44\u503C
+loadNext=\u6B63\u5728\u8F09\u5165\u4E0B\u4E00\u7D44\u503C
+loadAll=\u6B63\u5728\u8F09\u5165\u5168\u90E8\u627E\u5230\u7684\u503C
+loadByPart=\u6B63\u5728\u8F09\u5165\u4E00\u7D44\u503C\u3002
+LOVPopupMsgFailToLoad=\u8F09\u5165\u503C\u6E05\u55AE\u5931\u6557\u3002
+LOVPopupMsgTitle=\u8F09\u5165\u503C\u6E05\u55AE
+LOVCannotConvertMessage=\u4E0D\u80FD\u5C07\u8F38\u5165\u8F49\u63DB\u70BA\u6240\u8981\u6C42\u7684\u985E\u578B\u3002
+LOVAllValuesNotFound=\u4E0D\u80FD\u8F09\u5165 LOV \u503C\u3002
+
+invalidRangeInput.MESSAGE=\u8F38\u5165\u7684\u503C\u4E0D\u5728\u6B64 LOV \u7684\u5B9A\u7FA9\u7BC4\u570D\u5167\u3002\n \u8ACB\u8F38\u5165\u4E00\u500B\u4ECB\u65BC {0}{1} \u5230  \u7BC4\u570D\u5167\u7684\u503C\u3002
+invalidInput.TITLE=\u8F38\u5165\u7121\u6548
+
+LOVMultiColumnPopupButton.Tip=\u9EDE\u64CA\u6AA2\u8996\u591A\u5C64\u67F1 LOV \u986F\u793A
+LOVMultiColumnNoMapping=\u9644\u52A0\u5230 LOV \u7684\u5C6C\u6027\u6C92\u6709\u6620\u5C04\u5230\u4EFB\u4F55\u5916\u90E8\u5C6C\u6027\u3002
+MultiColumnPanel.ERROR=\u932F\u8AA4
+MultiColumnTable.TIP=\u6B64\u8868\u986F\u793A\u6620\u5C04\u5C6C\u6027\u7684\u5916\u90E8\u8CC7\u6599\u4F86\u6E90\u503C
+MultiColumnFoundRows=\u627E\u5230\u5217\u3002\u8981\u5168\u90E8\u8F09\u5165\u5B83\u5011\u55CE\uFF1F
+MultiColumnFoundRows.TITLE=\u5217\u8F09\u5165\u554F\u984C
+andCondition=AND
+orCondition=\u6216
+SqlDialog.TITLE=\u4FEE\u6539\u67E5\u8A62\u5B50\u53E5
+SqlDialog.header=\u8ACB\u6307\u5B9A\u6620\u5C04\u5C6C\u6027\u7684\u7BE9\u9078\u503C\u3002
+saveButton.TITLE=\u5132\u5B58
+saveButton.TIP=\u5132\u5B58\u4F7F\u7528\u8005\u5B9A\u7FA9\u7BE9\u9078\u5B50\u53E5\u3002
+colsaveButton.TIP=\u5132\u5B58\u4F7F\u7528\u8005\u5B9A\u7FA9\u7684\u96B1\u85CF\u6B04\u8CC7\u6599
+startLoading=\u6B63\u5728\u958B\u59CB\u586B\u5145\u591A\u6E05\u55AE..
+getValues=\u5F9E\u5916\u90E8\u8CC7\u6599\u4F86\u6E90\u4E2D\u91CD\u65B0\u8981\u6C42 LOV \u503C...
+fetchValues=FetchValues
+Ascending=\u300C\u6B04\u300D\u503C\u6309\u6607\u51AA\u6392\u5E8F
+Descending=\u300C\u6B04\u300D\u503C\u4EE5\u964D\u51AA\u6392\u5E8F
+displayDialog.TITLE=\u6B04\u986F\u793A\u63A7\u5236
+displayDialog.Header=\u8ACB\u9078\u53D6\u60A8\u8981\u986F\u793A/\u96B1\u85CF\u7684\u8868\u6B04
+lovTableshownColumns.LABEL=LOV \u8868\u7684\u6B04
+generalColumn.available=\u986F\u793A\u7684\u6B04
+generalColumn.selected=\u96B1\u85CF\u7684\u6B04
+addToHidden.TIP=\u8ACB\u9EDE\u64CA\u5F9E\u300C\u986F\u793A\u7684\u6B04\u300D\u4E2D\u9078\u5B9A\u7684\u503C\uFF0C\u5C07\u5B83\u65B0\u589E\u5230\u96B1\u85CF\u7684\u6B04
+removeFromHidden.TIP=\u8ACB\u9EDE\u64CA\u5C07\u300C\u96B1\u85CF\u7684\u6B04\u300D\u4E2D\u9078\u5B9A\u7684\u503C\u65B0\u589E\u5230\u300C\u986F\u793A\u7684\u6B04\u300D\u4E2D
+isPrimaryColumn=\u60A8\u4E0D\u80FD\u96B1\u85CF\u8868\u7684\u4E3B\u6B04\u3002
+primary.ERROR=\u4E3B\u6B04\u932F\u8AA4
+refresh.TIP=\u9019\u5C07\u91CD\u8F09\u6B64\u8868\u7684\u6B04\u503C\u3002
+userDialog.TITLE=\u4F7F\u7528\u8005\u9078\u53D6\u5C0D\u8A71\u65B9\u584A
+userDialog.Header=\u8ACB\u9078\u53D6\u9078\u5B9A\u5167\u5BB9\u4E2D\u7684\u4E00\u500B\u503C\u6307\u6D3E\u7D66\u5C6C\u6027
+okButton.TITLE=\u78BA\u5B9A
+okButton.TIP=\u6309\u300C\u78BA\u5B9A\u300D\u4EE5\u5132\u5B58\u9078\u5B9A\u7684\u689D\u76EE\u3002
+noSelection.TITLE=\u932F\u8AA4
+noSelection.ERROR=\u5F9E\u6E05\u55AE\u4E2D\u6C92\u6709\u9078\u53D6\u5230\u4EFB\u4F55\u5167\u5BB9
+andCondition=AND
+orCondition=\u6216
+noMappingExists=\u6C92\u6709\u627E\u5230\u6B64\u5C6C\u6027\u7684\u5C6C\u6027\u6620\u5C04\u3002\u8ACB\u8207\u7BA1\u7406\u54E1\u806F\u7D61
+logicalOpTip=\u5728\u6B64\u6B04\u4E0B\u9762\u9078\u53D6\u5132\u5B58\u683C\u4EE5\u6307\u5B9A\u908F\u8F2F\u904B\u7B97\u5B50
+attributeTip=\u6B64\u6B04\u8868\u793A\u300C\u5916\u90E8\u300D\u5C6C\u6027
+mathTip=\u5728\u6B64\u6B04\u4E0B\u9762\u9078\u53D6\u5132\u5B58\u683C\u4EE5\u6307\u5B9A\u6578\u5B78\u904B\u7B97\u5B50
+UserTip=\u5728\u6B64\u6B04\u4E0B\u9762\u9078\u53D6\u5132\u5B58\u683C\u4EE5\u6307\u5B9A\u7BE9\u9078\u5668\u503C\u3002
+
+defineFilter.TIP=\u5B9A\u7FA9\u8207\u9078\u5B9A\u7684\u503C\u95DC\u806F\u7684\u7BE9\u9078\u5668\u3002
+cutFilter.TIP=\u5F9E\u9078\u5B9A\u7684\u503C\u526A\u4E0B\u95DC\u806F\u7BE9\u9078\u5668\u3002
+refreshLOV.TIP=\u91CD\u65B0\u6574\u7406 LOV \u986F\u793A\u3002
+deleteFilter.TIP=\u522A\u9664\u9078\u5B9A\u7684 LOV \u7BE9\u9078\u5668\u3002
+selectLevel.TIP=\u9078\u53D6\u6A39\u4E0A\u7684\u6240\u6709\u540C\u7D1A\u7BC0\u9EDE\u3002
+validateTree.TIP=\u9078\u53D6\u8981\u6AA2\u67E5\u8449\u503C\u4E0D\u5747\u8861\u7684\u7D1A\u3002
+
+
+# Entries for the LOVTree
+#------------------------------------------
+lovTreeRootText=\u503C\u6E05\u55AE
+
+# Entries for the LOV Panel
+#------------------------------------------
+createLOV=\u5EFA\u7ACB(C)
+createLOV.TIP=\u65B0\u5EFA LOV \u7269\u4EF6
+createLOV.MNEMONIC=C
+
+modifyLOV=\u4FEE\u6539(M)
+modifyLOV.TIP=\u4FEE\u6539 LOV \u7269\u4EF6
+modifyLOV.MNEMONIC=M
+
+deleteLOV=\u522A\u9664(D)
+deleteLOV.TIP=\u522A\u9664 LOV \u7269\u4EF6
+deleteLOV.MNEMONIC=D
+
+clearLOV=\u6E05\u9664(R)
+clearLOV.TIP=\u6E05\u9664\u6240\u6709\u503C\u3002
+clearLOV.MNEMONIC=R
+
+LOVPropertyAttachment.TITLE=\u9644\u52A0\u503C\u6E05\u55AE\u5C6C\u6027
+LOVDependentPropertyAttachment.TITLE=\u9644\u52A0\u503C\u6E05\u55AE\u76F8\u95DC\u5C6C\u6027
+
+addButton.TIP=\u5C07\u9078\u5B9A\u7684\u300C\u985E\u578B/\u5C6C\u6027\u300D\u65B0\u589E\u5230\u6E05\u55AE\u4E2D\u3002
+removeButton.TIP=\u5F9E\u6E05\u55AE\u4E2D\u79FB\u9664\u9078\u5B9A\u7684\u300C\u985E\u578B/\u5C6C\u6027\u300D\u3002
+clearButton.TIP=\u5F9E\u6E05\u55AE\u4E2D\u6E05\u9664\u6240\u6709\u7684\u300C\u985E\u578B/\u5C6C\u6027\u300D\u3002
+
+attachmentList.TIP=\u9644\u52A0\u5230\u6B64 LOV \u4E2D\u7684\u95DC\u806F\u5C6C\u6027\u6E05\u55AE\u3002
+
+integer=\u6574\u6578
+double=\u96D9\u7CBE\u5EA6\u578B
+char=\u5B57\u5143\u578B
+string=\u5B57\u4E32\u578B
+date=\u65E5\u671F\u578B
+reference=\u53C3\u8003\u578B
+
+ListOfValuesTag=\u6A19\u8A18
+ListOfValuesTagExtent=\u6A19\u8A18\u7BC4\u570D
+
+ListOfValuesString=\u5B57\u4E32\u578B
+ListOfValuesStringExtent=\u5B57\u4E32\u578B\u7BC4\u570D
+ListOfValuesTagRDVSearchRevRule=RDV \u641C\u5C0B\u7248\u672C\u898F\u5247
+ListOfValuesStringExtentGrName=\u7FA4\u7D44\u540D\u7A31
+ListOfValuesStringExtentPubrType=\u51FA\u7248\u8A18\u9304\u985E\u578B
+ListOfValuesStringExtentStatus=\u72C0\u614B
+ListOfValuesStringExtentUsName=\u4F7F\u7528\u8005\u540D\u7A31
+ListOfValuesStringExtentUserId=\u4F7F\u7528\u8005 ID
+ListOfValuesStringExtentWSOClass=\u985E
+ListOfValuesInteger=\u6574\u6578
+ListOfValuesIntegerExtentSite=\u7AD9\u9EDE
+ListOfValuesFilter=\u7BE9\u9078\u5668
+ListOfValuesDouble=\u96D9\u7CBE\u5EA6\u578B
+ListOfValuesDate=\u65E5\u671F\u578B
+ListOfValuesChar=\u5B57\u5143\u578B
+
+exhaustive=\u7AAE\u8209
+suggestive=\u63D0\u793A
+range=\u7BC4\u570D
+
+addValue.TIP=\u5C07\u8F38\u5165\u7684\u503C\u65B0\u589E\u5230\u6E05\u55AE\u4E2D\u3002
+removeValue.TIP=\u5F9E\u6E05\u55AE\u4E2D\u79FB\u9664\u9078\u5B9A\u7684\u503C\u3002
+upValue.TIP=\u5C07\u9078\u5B9A\u7684\u503C\u4E0A\u79FB\u3002
+downValue.TIP=\u5C07\u9078\u5B9A\u7684\u503C\u4E0B\u79FB\u3002
+
+loadValues.TIP=\u5C07\u9078\u5B9A\u7684\u53C3\u7167\u985E\u4E2D\u6240\u6709\u7684\u503C\u8F09\u5165\u5230\u6E05\u55AE\u4E2D\u3002
+
+name=\u540D\u7A31\uFF1A
+filterName=\u7BE9\u9078\u5668\u540D\u7A31\uFF1A
+description=\u6558\u8FF0\uFF1A
+valueType=\u503C\u985E\u578B\uFF1A
+usage=\u7528\u6CD5\uFF1A
+valueName=\u503C
+descriptionName=\u6558\u8FF0
+shownValue=\u986F\u793A\u7684\u503C
+hiddenValue=\u96B1\u85CF\u7684\u503C
+hierarchy=\u5C64\u6B21\u7D50\u69CB
+attach=\u9644\u52A0\uFF1A
+addDesc.TIP=\u65B0\u589E\u5230\u5C6C\u6027\u6558\u8FF0\u9644\u4EF6\u3002
+removeDesc.TIP=\u79FB\u9664\u5C6C\u6027\u6558\u8FF0\u9644\u4EF6\u3002
+referenceClass.TIP=\u53C3\u8003\u985E\u548C\u5C6C\u6027
+basedOnLOV=\u6839\u64DA LOV\uFF1A
+listOfValuesFilter=\u7BE9\u9078\u503C\u6E05\u55AE
+noAttachment=\u7121\u9644\u52A0\u7269\u4EF6
+selectLevel.TITLE=\u9078\u53D6\u8981\u9078\u4E2D\u7684\u7B49\u7D1A
+found=\u627E\u5230
+
+values=\u503C
+value=\u503C\uFF1A
+
+upperLimit=\u4E0A\u9650\uFF1A
+lowerLimit=\u4E0B\u9650\uFF1A
+
+# Entries for message center
+#------------------------------------------
+deletingLOV=\u6B63\u5728\u522A\u9664 LOV...
+creatingLOV=\u6B63\u5728\u5EFA\u7ACB LOV...
+savingLOV=\u6B63\u5728\u5132\u5B58 LOV...
+fetchingValues=\u6B63\u5728\u70BA\u9078\u5B9A\u7684\u985E\u548C\u5C6C\u6027\u8F09\u5165\u503C...
+
+# Entries for confirmation message
+#------------------------------------------
+confirmDelete.TITLE=\u522A\u9664\u78BA\u8A8D
+confirmDelete.MESSAGE=\u78BA\u5BE6\u8981\u522A\u9664\u55CE\uFF1F
+
+# Entries for error messages
+#------------------------------------------
+cannotConvert=\u4E0D\u80FD\u5C07\u8F38\u5165\u8F49\u63DB\u70BA\u76F8\u61C9\u7684\u985E\u578B\u3002
+noLOVFound=\u672A\u627E\u5230\u503C\u6E05\u55AE\u3002
+noComponentsToFetch=\u627E\u4E0D\u5230\u9078\u5B9A\u7684\u985E\u548C\u5C6C\u6027\u7684\u503C\u3002
+error.TITLE=\u932F\u8AA4
+information.TITLE=\u503C\u6E05\u55AE
+warning.TITLE=\u8B66\u544A
+invalidNullValue=\u7A7A\u503C\u7121\u6548\uFF0C\u4E0D\u80FD\u5132\u5B58\u3002
+duplicatedValue=\u662F\u91CD\u8907\u503C\uFF0C\u4E0D\u80FD\u5132\u5B58\u3002
+
+# PR# 4282192 (lov_type not supported in SA module) - Entries for lov type combobox
+#----------------------------------------------------------------------------------
+loadingLOVTypes=\u6B63\u5728\u8F09\u5165\u503C\u985E\u578B\u6E05\u55AE....
+lovType=LOV \u985E\u578B\uFF1A
+listOfValuesChar=\u5B57\u5143\u503C\u6E05\u55AE
+listOfValuesDate=\u65E5\u671F\u503C\u6E05\u55AE
+listOfValuesDouble=\u96D9\u7CBE\u5EA6\u578B\u503C\u6E05\u55AE
+listOfValuesInteger=\u6574\u6578\u503C\u6E05\u55AE
+listOfValuesString=\u5B57\u4E32\u503C\u6E05\u55AE
+listOfValuesTag=\u6A19\u8A18\u503C\u6E05\u55AE
+lsitOfValuesFilter=\u503C\u6E05\u55AE\u7BE9\u9078\u5668
+
+nextFound.TIP=\u9078\u53D6\u4E0B\u6B21\u627E\u5230\u7684\u3002
+previousFound.TIP=\u9078\u53D6\u4E0A\u6B21\u627E\u5230\u7684\u3002
+for=\u91DD\u5C0D
+attachDependencyButton.TIP=\u9644\u52A0\u5F9E\u5C6C\u5C6C\u6027\u3002
+lovDependencyWizard.TITLE=LOV \u76F8\u4F9D\u6027\u7CBE\u9748
+selectLOV=\u9078\u53D6 LOV
+selectLOV.INFO=\u9078\u53D6\u60A8\u8981\u95DC\u806F\u7684 LOV
+defineFilter.TITLE=\u5B9A\u7FA9\u7BE9\u9078\u5668
+defineFilter.INFO=\u5B9A\u7FA9\u60A8\u60F3\u8981\u95DC\u806F\u7684\u7BE9\u9078\u5668
+defineFilter.TIP=\u5B9A\u7FA9\u8207\u9078\u5B9A\u7684\u503C\u95DC\u806F\u7684\u7BE9\u9078\u5668\u3002
+directDependencyCheckbox=\u6839\u64DA LOV \u7684\u76F4\u63A5\u76F8\u4F9D\u6027
+findStatus=\u767C\u73FE Teamcenter \u985E\u540D\u7684\u958B\u982D\u70BA
+classificationName=\u5206\u985E\u540D\u7A31\uFF1A
+defineClassification.TITLE=\u5B9A\u7FA9\u5206\u985E
+defineClassification.TIP=\u5B9A\u7FA9\u5206\u985E\u3002
+selectLevelOrClassification.TITLE=\u9078\u53D6\u7D1A\u6216\u5206\u985E
+selectIncludeParentLevel=\u9078\u53D6\u5305\u62EC\u7236\u7CFB
+level=\u5C64\u7D1A
+allLevel=\u6240\u6709\u5C64\u7D1A
+
+cutFilter.TIP=\u5F9E\u9078\u5B9A\u7684\u503C\u526A\u4E0B\u95DC\u806F\u7BE9\u9078\u5668\u3002
+refreshLOV.TIP=\u91CD\u65B0\u6574\u7406 LOV \u986F\u793A\u3002
+deleteFilter.TIP=\u79FB\u9664\u4E26\u522A\u9664\u9078\u5B9A\u7684 LOV \u7BE9\u9078\u5668\u3002
+selectLevel.TIP=\u9078\u53D6\u6A39\u4E0A\u7684\u6240\u6709\u540C\u7D1A\u7BC0\u9EDE\u3002
+validateTree.TIP=\u9078\u53D6\u8981\u6AA2\u67E5\u8449\u503C\u4E0D\u5747\u8861\u7684\u7D1A\u3002
+
+selectFilter.TITLE=\u9078\u53D6\u7BE9\u9078\u5668
+createFilter.TITLE=\u5EFA\u7ACB\u7BE9\u9078\u5668
+
+loadHierarchy.TIP=\u8F09\u5165\u6240\u6709\u5C64\u6B21\u7D50\u69CB\u3002

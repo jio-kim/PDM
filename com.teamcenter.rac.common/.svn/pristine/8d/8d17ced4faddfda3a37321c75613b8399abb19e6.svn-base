@@ -1,0 +1,103 @@
+#*==================================================================================================
+#
+#                    Copyright (c) 2004 UGS
+#                   Unpublished - All rights reserved
+#                   
+#                   
+# THIS PROGRAM IS AN UNPUBLISHED WORK FULLY PROTECTED BY THE UNITED STATES
+#  COPYRIGHT LAWS AND IS CONSIDERED A TRADE SECRET BELONGING TO THE COPYRIGHT
+#                                   HOLDER.
+#
+#====================================================================================================
+# File description: This properties file contains all locale specific keys for the saveas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: saveassignal_locale.properties
+#   Module  : com.teamcenter.rac.commands.saveassignal
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#04-Oct-2004  x_bhadra                Initial Version
+#08-Nov-2004  x_bhadra                Fixing the Registry Problem
+#08-Nov-2004  Narayana Murthy         Merge from P10.0.0.6
+#10-Nov-2004  x_bhadra                Merge from lbom_pse_support branch
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+dialog.TITLE=Salva con nome
+SignalType=Tipo di segnale:
+
+# Save ItemAsDialog
+# ------------------------
+saveAsItem.TITLE = Salva segnale come
+itemId = ID del segnale
+revId = ID revisione
+itemType = Tipo di segnale:
+itemInformation = Informazioni di segnale
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.NAME=Controlla configurazione
+viConfigStep.TOOLTIP=Controlla la configurazione del segnale di variante
+viConfigStep.info=Assicurarsi che la configurazione del segnale di variante sia corretta
+viConfigStep.table.option=Opzione
+viConfigStep.table.value=Valore
+
+# Signal Info Panel
+# -----------------------------
+itemInfo.LABEL=Definisci l'informazione di base per il segnale copiato.
+itemInfoStep.NAME=Inserisci informazioni di segnale
+itemInfoStep.TOOLTIP=Definire l'informazione di base del segnale.
+
+# Signal Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=Definire gli attributi del form master del segnale.
+itemMasterFormStep.NAME=Inserire le informazioni del form master del segnale
+itemMasterFormStep.TOOLTIP=Definire gli attributi del form master del segnale.
+
+# SignalRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=Definire gli attributi del form master di revisione del segnale.
+itemRevMasterFormStep.NAME=Inserire le informazioni della revisione del form master
+itemRevMasterFormStep.TOOLTIP=Definire gli attributi del form master di revisione del segnale.
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Creazione del nuovo segnale
+
+# option panel
+# ------------
+checkOutOnCreate = Checkout della revisione segnale alla creazione. 
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Creazione del nuovo segnale
+checkingIds=Verifica dell'ID segnale e rev.
+pastingNewItem=Incolla nuovo segnale
+openingNewComponent=Apertura nuovo segnale
+abort = Interruzione apertura del nuovo segnale
+checkOutRevision=Checkout in corso revisione segnale
+savingAsItemRev=Salvataggio come revisione segnale
+createConfirm.TITLE=Nuovo segnale
+createConfirm.MSG=Per procedere, \u00E8 necessario creare un nuovo segnale. \nCreare il nuovo segnale?
+
+
+# Error Messages
+# ----------------------
+error.TITLE = Nuovo segnale...
+
+failFindDialog=Impossibile trovare la nuova finestra di dialogo del segnale.
+failToSaveAs=Impossibile salvare come la revisione segnale.
+sameAsOldId=\u00C8 stato trovato un segnale gi\u00E0 esistente. Crea/Salva con nome, crea solo nuovi segnali.\nPer creare una nuova revisione del segnale, usare il comando File->Revisiona.
+failToCreate = Creazione segnale non riuscita
+failToOpen = Impossibile avviare il segnale. Possibile problema con le protezioni.
+failFindItemMaster=Impossibile ottenere il form master del segnale.
+failFindItemRevMaster=Impossibile ottenere il form master del segnale di revisione.
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Creazione segnale interrotta. Segnale creato e parzialmente inserito
+genCompIDLabelText = Segnale\ninterruzione\nID elemento:

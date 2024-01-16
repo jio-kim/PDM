@@ -1,0 +1,14 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2014
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+
+# Common Keys in apply sign.
+#---------------------------------------------
+command.TITLE=\uB514\uC9C0\uD138 \uC11C\uBA85 \uC801\uC6A9
+applyDigitalSignature.STATUS=\uB514\uC9C0\uD138 \uC11C\uBA85\uC744 \uC801\uC6A9\uD558\uB294 \uC911...
+confirmationText=\uB514\uC9C0\uD138 \uC11C\uBA85\uC744 \uC801\uC6A9\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?

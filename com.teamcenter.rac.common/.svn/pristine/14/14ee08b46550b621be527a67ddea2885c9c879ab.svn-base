@@ -1,0 +1,52 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2002 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the selectcolumnwizard package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: selectcolumnwizard_locale.properties
+#   Module  : com.teamcenter.rac.common.selectcolumnwizard
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#30-Jul-2002  wangp                   initial creation
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+selectColumnWizardDialog.TITLE=Insert Columns
+
+# entries for the home panel
+homeHeader=Step 1 of 3
+selectCategory=Which category's properties do you want to insert?
+
+form=Form
+folder=Folder
+item=Item
+itemRevision=ItemRevision
+dataset=Dataset
+others=Others
+
+# entries for the type panel
+typeHeader=Step 2 of 3
+selectType=Which type of
+propertiesToInsert='s properties do you want to insert?
+
+loadingType=Loading types ...
+
+# entries for the property panel
+propertyHeader=Step 3 of 3
+selectProperty=Which properties of
+wantToInsert=do you want to insert?
+othersProperty=Which properties do you want to insert?
+
+availableProperties.LABEL=Available
+selectedProperties.LABEL=Selected
+displayName=Use displayable name
+
+loadingProperty=Loading properties ...

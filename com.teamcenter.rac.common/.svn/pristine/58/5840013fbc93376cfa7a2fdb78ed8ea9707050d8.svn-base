@@ -1,0 +1,61 @@
+#*==================================================================================================
+#
+#                               Copyright (c) 2004 UGS PLM
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the send package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: importoffline_locale.properties
+#   Module  : com.teamcenter.rac.commands.importoffline
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#06-Jun-2008  Manuel Georis           Moved some keys in common_local
+#$HISTORY$
+#=================================================================================================*/
+
+importFromOfflinePackage.TITLE=Importa briefcase
+importFromOfflinePackageNonGS.TITLE=Importa briefcase
+importFromOfflinePackageError.TITLE=Importa da briefcase
+importFromOfflinePackageConfirmation.TITLE=Impostazioni opzioni per l'importazione del briefcase
+optionSet=Opzioni:
+optionSetListButton.Tooltip=Seleziona gruppo di opzioni 
+immediate=Avvio immediato trasferimento
+progressIndicator=Mostra indicatore avanzamento
+emailNotification=Invia notifica via email
+importPrefIconToolTip=Visualizza/Imposta le opzioni di importazione
+confirmationMsg=Le attuali impostazioni delle opzioni sono le seguenti.\n Continuare?
+importingMsg=Importazione dal briefcase in corso...
+siteCheckIn=Checkin nel sito dopo l'importazione
+
+BriefcaseImportExport.PackageName.LABEL = File briefcase:
+noFCC = La cache del client di file non \u00E8 attivata. Rivolgersi all'amministratore del sistema.
+importCompleted.TILE=Importazione completata
+importCompletedSuccess.MSG=Operazione di importazione completata. Aprire il file di log per ulteriori dettagli?
+importFailed.MSG=Errore durante l'operazione di importazione. Aprire il file di log per ulteriori dettagli?
+importCompletedHtmlSuccess.MSG=Importazione completata correttamente. Visualizzare il report html per ulteriori dettagli? 
+importCompletedDryRunHtmlSuccess.MSG=Verifica preliminare completata. Visualizzare il report html? 
+importFailedHtml.MSG=Importazione non completata a causa di errori. Visualizzare il report html per ulteriori dettagli? 
+importFailedDryRunHtml.MSG=Verifica preliminare non completata a causa di errori. Visualizzare il report html per ulteriori dettagli? 
+importCompletedNoHTML.MSG=Importazione completata, ma non \u00E8 disponibile alcun file di report html. Visualizzare il file di log per ulteriori dettagli?
+importFailedNoHTML.MSG=Importazione non completata, ma non \u00E8 disponibile alcun file di report html. Visualizzare il file di log per ulteriori dettagli?
+
+importFailed.TILE=Importazione non riuscita
+importCompletedNoLog.MSG=Importazione completata. Non \u00E8 stato fornito alcun file di log.
+importFailedNoLog.MSG=Errore durante l'operazione. Nessun file di log disponibile. 
+
+#For Bulk Load Dialog
+BulkLoadDialog.TITLE=Caricamento in blocco dal briefcase
+BulkLoadDialog.PackageName.LABEL=File briefcase:
+BulkLoadDialog.OptionSet.LABEL=Opzioni:
+BulkLoadDialog.FILE_MISSING=Il file briefcase non esiste. Ricontrollare.
+
+#For dryRun/validate import 
+additionalOptPanelLabel=Ulteriori opzioni:
+dryRunButton=Verifica preliminare
+validateButton=Convalida
+noAdditionalOptButton=Nessuno

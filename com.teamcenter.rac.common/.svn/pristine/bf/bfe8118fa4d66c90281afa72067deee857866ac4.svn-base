@@ -1,0 +1,46 @@
+#*==================================================================================================
+#
+#                           Copyright (c) 2003 EDS PLM Solutions
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the itemidregistry package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: publish_locale.properties
+#   Module  : com.teamcenter.rac.commands.publish
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#02-Apr-2003  rlee                    Initial create
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# command.TITLE not used but here to placate AbstractProgressDialog
+command.TITLE=Pr\u00E1zdn\u00FD
+
+confirmationText=Chcete publikovat na
+questionMark=?
+publish.STATUS=Prob\u00EDh\u00E1 publikov\u00E1n\u00ED
+dotDotDot=...
+registerItemId.TITLE=Registrovat polo\u017Eku
+registerItemIdSuccess.INITIALSTATUS=Prob\u00EDh\u00E1 registrace vybran\u00FDch polo\u017Eek
+registerItemIdSuccess.STATUS=Vybran\u00E9 polo\u017Eky byly \u00FAsp\u011B\u0161n\u011B registrov\u00E1ny
+
+unregisterItemId.TITLE=Zru\u0161it registraci polo\u017Eky
+unregisterItemIdSuccess.INITIALSTATUS=Prob\u00EDh\u00E1 zru\u0161en\u00ED registrace vybran\u00FDch polo\u017Eek
+unregisterItemIdSuccess.STATUS=Registrace vybran\u00FDch polo\u017Eek byla \u00FAsp\u011B\u0161n\u011B zru\u0161ena
+
+noSelectionError = Nejsou vybr\u00E1ny objekty k publikov\u00E1n\u00ED
+notADataset = Vybran\u00FD objekt nen\u00ED dataset
+
+odsPublicationSite.LABEL=Publika\u010Dn\u00ED servery ODS
+sites.available=Dostupn\u00E9 servery
+sites.selected=Vybran\u00E9 servery
+
+site.TITLE=V\u00FDb\u011Br serveru
+
+objectNotItem="Objekt nen\u00ED polo\u017Ekou"

@@ -1,0 +1,269 @@
+# @<COPYRIGHT>@
+#===============================================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#===============================================================================
+# @<COPYRIGHT>@
+#
+# File description: This properties file contains all locale specific keys for the newitem package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newitem_locale.properties
+#   Module  : com.teamcenter.rac.commands.newitem
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#15-Sep-2000  milindm                 added Custom Attributes for the custom attributes
+#                                     panel.
+#21-Sep-2000  Subrata Sen             For Milind's Item Attr / Type Project
+#01-Nov-2000  Milind Mulay            Added the populatingTheForm message.
+#                                     Added the Not Valid key Types
+#16-Nov-2000  Subrata Sen             For Milind's Item Additional Attribute Project.
+#18-Jul-2001  x_gopala                Modify for Revise Project
+#21-Aug-2001  Tony Dumont             PR#4178691 - Add new error message
+#12-Oct-2001  wangp                   revise project (for x_gopala)
+#10-Dec-2001  Sujeeth Kamath,,,       cnewitem.properties
+#19-Mar-2002  Sujeeth Kamath,,,       Checked in after fixes
+#25-Mar-2002  Sujeeth Kamath,,,       Checked in after fixing PR 4480346
+#17-Apr-2002  Rob McColl              Change some of the error messages.
+#17-Apr-2002  Sujeeth Kamath,,,       Checked in after incorporating Rob's comments
+#08-Jul-2002  Bruce Hebbard           Add "Classify On Create" button title
+#16-Sep-2002  Bruce Hebbard           Change "Classify on Create" to "Classify Immediately" (PR 4631038)
+#29-Oct-2002  Sujeeth Kamath          "checked in after modifying the white space error"
+#23-Apr-2003  faming                  project level security
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#06-May-2003  wangp                   fix pr 4674050: new design for newitem/revise/saveasitemrev dialog
+#12-Jun-2003  wangp                   alternate id
+#23-Jun-2003  faming                  merged from P9001
+#23-Jun-2003  faming                  fixed assign project after P9001 merge
+#25-Jun-2003  Rob Baker               Variant item config
+#27-Jun-2003  faming                  add info for Assign Project step
+#27-Jun-2003  Rob Baker               Change VI config step name
+#24-Jul-2003  Endi Wu                 Conflict resolution for P9.0.0.3
+#29-Sep-2003  wangp                   add entries for save form
+#27-Feb-2004  wangp                   fix pr 4853772: reword the tooltips
+#11-Feb-2005  Neil Ross               Add text for configuration items
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#24-May-2007  M.Ram Narsimhamurty     Added support for ADS Program Context
+#$HISTORY$
+#=================================================================================================*/
+
+objectType = \u9805\u76EE
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = \u65B0\u5EFA\u9805\u76EE
+dialog.vi.TITLE=\u65B0\u5EFA\u8B8A\u578B\u9805\u76EE\uFF0C\u7528\u65BC\uFF1A
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.NAME=\u6AA2\u67E5\u7D44\u614B
+viConfigStep.TOOLTIP=\u6AA2\u67E5\u8B8A\u578B\u9805\u76EE\u7D44\u614B
+viConfigStep.info=\u78BA\u4FDD\u8B8A\u578B\u9805\u76EE\u7D44\u614B\u6B63\u78BA
+viConfigStep.table.option=\u9078\u9805
+viConfigStep.table.value=\u503C
+
+# New Item Panel
+# -----------------------------
+createConfirm.TITLE=\u65B0\u5EFA\u9805\u76EE
+createConfirm.MSG=\u8981\u7E7C\u7E8C\uFF0C\u5FC5\u9808\u65B0\u5EFA\u9805\u76EE\u3002\n\u8981\u65B0\u5EFA\u9805\u76EE\u55CE\uFF1F
+
+# Item Type Panel
+# ----------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.ItemTypePanel.NAME=Select Type
+#com.teamcenter.rac.commands.newitem.ItemTypePanel.TIP=Select an item type.
+#com.teamcenter.rac.commands.newitem.ItemTypePanel.TITLE=Select the item type that you want to create.
+itemTypeInfo.LABEL=\u9078\u53D6\u60A8\u60F3\u5EFA\u7ACB\u7684\u9805\u76EE\u985E\u578B\u3002
+itemTypeStep.NAME=\u9078\u53D6\u985E\u578B
+itemTypeStep.TOOLTIP=\u9078\u53D6\u9805\u76EE\u985E\u578B\u3002
+
+configurationItem.LABEL=\u7D44\u614B\u9805\u76EE
+configurationItem.TOOLTIP=\u5728\u6709\u6548\u6027\u95DC\u806F\u767C\u751F\u8B8A\u66F4\u7684\u7522\u54C1\u7D50\u69CB\u4E2D\u5B9A\u7FA9\u4E00\u500B\u9EDE\u3002
+
+# Item Info Panel
+# -----------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.ItemInfoPanel.NAME=Enter Item Information
+#com.teamcenter.rac.commands.newitem.ItemInfoPanel.TIP=Define the basic item information.
+#com.teamcenter.rac.commands.newitem.ItemInfoPanel.TITLE=Define the basic information for the new item.
+itemInfo.LABEL=\u5B9A\u7FA9\u65B0\u9805\u76EE\u7684\u57FA\u672C\u8CC7\u8A0A\u3002
+itemInfoStep.NAME=\u8F38\u5165\u9805\u76EE\u8CC7\u8A0A
+itemInfoStep.TOOLTIP=\u5B9A\u7FA9\u57FA\u672C\u7684\u9805\u76EE\u8CC7\u8A0A\u3002
+
+itemId = \u9805\u76EE ID
+rev = \u7248\u672C ID
+name = \u540D\u7A31
+assign = \u6307\u6D3E
+quantity = \u7269\u4EF6\u6578\uFF1A
+description = \u6558\u8FF0\uFF1A
+unitOfMeasure = \u5EA6\u91CF\u55AE\u4F4D\uFF1A
+itemInformation = \u9805\u76EE\u8CC7\u8A0A
+basetype = \u9805\u76EE
+namingpattern = \u547D\u540D\u6A23\u5F0F\u548C\u7DE8\u865F\u6A23\u5F0F
+
+name.TOOLTIP=\u6709\u6548\u540D\u7A31\u61C9\u8207\u4EE5\u4E0B\u6A23\u5F0F\u76F8\u7B26\u5408\uFF1A
+id.TOOLTIP=\u6709\u6548\u7684 ID \u61C9\u8207\u4EE5\u4E0B\u6A23\u5F0F\u76F8\u7B26\u5408\uFF1A
+rev.TOOLTIP=\u6709\u6548\u7684\u7248\u672C ID \u61C9\u8207\u4EE5\u4E0B\u6A23\u5F0F\u76F8\u7B26\u5408\uFF1A
+
+namingPatternPrefix.TOOLTIP=\u6709\u6548\u7684 {0} \u61C9\u7B26\u5408\u4EE5\u4E0B\u6A21\u5F0F\uFF1A
+
+# Item Master Form Panel
+# ---------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.ItemMasterFormPanel.NAME=Enter Additional Item Information
+#com.teamcenter.rac.commands.newitem.ItemMasterFormPanel.TIP=Define additional item information.
+#com.teamcenter.rac.commands.newitem.ItemMasterFormPanel.TITLE=Define additional item information.
+itemMasterForm.LABEL=\u5B9A\u7FA9\u9644\u52A0\u7684\u9805\u76EE\u8CC7\u8A0A\u3002
+itemMasterFormStep.NAME=\u8F38\u5165\u9644\u52A0\u7684\u9805\u76EE\u8CC7\u8A0A
+itemMasterFormStep.TOOLTIP=\u5B9A\u7FA9\u9644\u52A0\u7684\u9805\u76EE\u8CC7\u8A0A\u3002
+saveFormConfirm.TITLE=\u5132\u5B58\u8868\u55AE
+saveFormConfirm.MSG=\u5132\u5B58\u8868\u55AE\u6642\u767C\u751F\u932F\u8AA4\u3002\u9019\u901A\u5E38\u662F\u7531\u65BC\n\u672A\u586B\u5BEB\u5F37\u5236\u6B04\u4F4D\u800C\u5C0E\u81F4\u7684\uFF0C\n\u8981\u91CD\u65B0\u8F38\u5165\u9019\u4E9B\u503C\u55CE\uFF1F\n\uFF08\u9078\u53D6\u300C\u5426\u300D\u5C07\u5FFD\u7565\u6B64\u932F\u8AA4\uFF0C\u4E26\u4E14\u8868\u55AE\u5C07\u4E0D\u88AB\u5132\u5B58\u3002\uFF09
+saveAltIdConfirm.TITLE=\u5132\u5B58\u5099\u9078 ID
+saveAltIdConfirm.MSG=\u5132\u5B58\u5099\u9078 ID \u6642\u767C\u751F\u932F\u8AA4\u3002\u901A\u5E38\uFF0C\u9019\u662F\u7531\u65BC\n\u672A\u586B\u5BEB\u5F37\u5236\u6B04\u4F4D\u3002\u8981\u91CD\u65B0\u8F38\u5165\u9019\u4E9B\u503C\u55CE\uFF1F\n\uFF08\u9078\u53D6\u300C\u5426\u300D\u5C07\u5FFD\u7565\u8A72\u932F\u8AA4\uFF0C\u4E14\u4E0D\u6703\u5132\u5B58 ID\u3002\uFF09
+
+# ItemRev Master Form Panel
+# ---------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.ItemRevMasterFormPanel.NAME=Enter Additional Item Revision Information
+#com.teamcenter.rac.commands.newitem.ItemRevMasterFormPanel.TIP=Define additional item revision information.
+#com.teamcenter.rac.commands.newitem.ItemRevMasterFormPanel.TITLE=Define additional item revision information.
+itemRevMasterForm.LABEL=\u5B9A\u7FA9\u9644\u52A0\u7684\u9805\u76EE\u7248\u672C\u8CC7\u8A0A\u3002
+itemRevMasterFormStep.NAME=\u8F38\u5165\u9644\u52A0\u7684\u9805\u76EE\u7248\u672C\u8CC7\u8A0A
+itemRevMasterFormStep.TOOLTIP=\u5B9A\u7FA9\u9644\u52A0\u7684\u9805\u76EE\u7248\u672C\u8CC7\u8A0A\u3002
+
+# Form Attr Panel
+# -----------------------
+formAttrInfo.LABEL=\u5B9A\u7FA9\u4E3B\u5C6C\u6027\u8868\u55AE\u5C6C\u6027\u3002
+formAttrStep.NAME=\u8F38\u5165\u4E3B\u5C6C\u6027\u8868\u55AE\u8CC7\u8A0A
+formAttrStep.TOOLTIP=\u5B9A\u7FA9\u9078\u5B9A\u9805\u76EE\u985E\u578B\u7684\u8868\u55AE\u5C6C\u6027\u3002
+formAttrStepDisabled.TOOLTIP=\u6C92\u6709\u5B9A\u7FA9\u9078\u5B9A\u9805\u76EE\u985E\u578B\u7684\u8868\u55AE\u5C6C\u6027\u3002
+
+# Item Identifier Panel
+# ----------------------------
+itemIdentifierInfo.LABEL=\u5B9A\u7FA9\u9805\u76EE\u5099\u9078 ID \u8CC7\u8A0A\u3002
+itemIdentifierStep.NAME=\u8F38\u5165\u5099\u9078\u8CC7\u8A0A
+itemIdentifierStep.TOOLTIP=\u5B9A\u7FA9\u9805\u76EE\u7684\u5099\u9078 ID\u3002
+
+# Assign to projects panel
+# ------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.AssignProjectPanel.NAME=Assign to {0} objects
+#com.teamcenter.rac.commands.newitem.AssignProjectPanel.TIP=Select {0} objects to assign the new object to
+#com.teamcenter.rac.commands.newitem.AssignProjectPanel.TITLE=Select {0} objects that you want to assign the new object to
+assignProjectInfo.LABEL=\u9078\u53D6{0}\u4EE5\u5411\u5176\u6307\u6D3E\u65B0\u7269\u4EF6
+project.TITLE=\u6307\u6D3E\u7D66 {0}
+projectToolTip=\u9078\u53D6{0}\u4EE5\u5411\u5176\u6307\u6D3E\u65B0\u7269\u4EF6
+
+# Open Option Panel
+# --------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.OpenOptionPanel.NAME=Define Options
+#com.teamcenter.rac.commands.newitem.OpenOptionPanel.TIP=Set open options and alternate id display options.
+#com.teamcenter.rac.commands.newitem.OpenOptionPanel.TITLE=Select open option and alternate id display option.
+openOptionInfo.LABEL=\u9078\u53D6\u958B\u555F\u9078\u9805\u548C\u5099\u9078 ID \u986F\u793A\u9078\u9805\u3002
+openOptionStep.NAME=\u5B9A\u7FA9\u9078\u9805
+openOptionStep.TOOLTIP=\u8A2D\u5B9A\u958B\u555F\u9078\u9805\u548C\u5099\u9078 ID \u986F\u793A\u9078\u9805\u3002
+openOptions.LABEL=\u958B\u555F\u9078\u9805
+coOptions.LABEL=\u7C3D\u51FA\u9078\u9805
+
+openOnCreate = \u4F5C\u70BA\u65B0\u6839\u7BC0\u9EDE\u986F\u793A
+classifyOnCreate = \u7ACB\u5373\u5206\u985E
+displayOptions.LABEL=\u986F\u793A\u9078\u9805
+checkOutOnCreate = \u5EFA\u7ACB\u5F8C\u7C3D\u51FA\u9805\u76EE\u7248\u672C
+checkOutOnRevise = \u4FEE\u8A02\u6642\u7C3D\u51FA\u9805\u76EE\u7248\u672C
+
+# Finish Panel
+# -----------------------------
+# Alternative way of providing custom name for the link, page title and tooltip
+# for the page
+#com.teamcenter.rac.commands.newitem.NewItemFinishPanel.TITLE=Creating new item
+newItemFinishInfo.LABEL=\u6B63\u5728\u65B0\u5EFA\u9805\u76EE
+
+# Messages for message center
+# ------------------------------
+loadingPanels=\u6B63\u5728\u8F09\u5165\u9762\u677F...
+updatingPanels=\u6B63\u5728\u66F4\u65B0\u9762\u677F...
+creatingNewComponent = \u6B63\u5728\u65B0\u5EFA\u9805\u76EE
+checkingIds=\u6B63\u5728\u6AA2\u67E5\u9805\u76EE ID \u548C\u7248\u672C
+pastingNewItem=\u6B63\u5728\u8CBC\u4E0A\u65B0\u9805\u76EE
+populatingTheForm = \u6B63\u5728\u586B\u5145\u4E3B\u5C6C\u6027\u8868\u55AE
+processingAttachesFileInfo=\u6B63\u5728\u8655\u7406\u9644\u52A0\u6A94\u6848\u8CC7\u8A0A
+processingSubmitToWorkflowInfo=\u6B63\u5728\u63D0\u4EA4\u5230\u5DE5\u4F5C\u6D41\u7A0B\u8CC7\u8A0A
+assigningProjects = \u6307\u6D3E\u7D66 {0}
+creatingAlteranteIds=\u6B63\u5728\u5EFA\u7ACB\u5099\u9078 ID
+openingNewComponent=\u6B63\u5728\u958B\u555F\u65B0\u9805\u76EE
+checkOutRevision=\u6B63\u5728\u7C3D\u51FA\u9805\u76EE\u7248\u672C
+abort = \u958B\u555F\u65B0\u9805\u76EE\u6642\u4E2D\u6B62
+
+# Error Messages
+# ----------------------
+error.TITLE = \u65B0\u5EFA\u9805\u76EE...
+
+failFindDialog=\u641C\u5C0B\u300C\u65B0\u5EFA\u9805\u76EE\u300D\u5C0D\u8A71\u65B9\u584A\u5931\u6557\u3002
+sameAsOldId=\u627E\u5230\u73FE\u6709\u7684\u9805\u76EE\u3002\u300C\u5EFA\u7ACB/\u53E6\u5B58\u65B0\u6A94\u300D\u50C5\u65B0\u5EFA\u9805\u76EE\u3002\n\u8981\u65B0\u5EFA\u9805\u76EE\u7248\u672C\uFF0C\u8ACB\u4F7F\u7528\u300C\u6A94\u6848\u2192\u4FEE\u8A02\u300D\u6307\u4EE4\u3002
+failToCreate = \u672A\u80FD\u5EFA\u7ACB\u9805\u76EE
+fillFormError = \u586B\u5145\u4E3B\u5C6C\u6027\u8868\u55AE\u5931\u6557\u3002
+failToOpen = \u7121\u6CD5\u958B\u555F\u6B64\u9805\u76EE\u3002\u53EF\u80FD\u662F\u4FDD\u8B77\u65B9\u9762\u7684\u554F\u984C\u3002
+failFindItemMaster=\u7372\u53D6\u9805\u76EE\u4E3B\u5C6C\u6027\u8868\u55AE\u5931\u6557\u3002
+failFindItemRevMaster=\u7372\u53D6\u9805\u76EE\u7248\u672C\u4E3B\u5C6C\u6027\u8868\u55AE\u5931\u6557\u3002
+failToCreateAltId=\u672A\u80FD\u5EFA\u7ACB\u5099\u9078 ID
+cannotConvert=\u4E0D\u80FD\u5C07\u8F38\u5165\u8F49\u63DB\u70BA\u76F8\u61C9\u7684\u985E\u578B\u3002
+formatException={0} \u5C6C\u6027\u7684\u683C\u5F0F\u932F\u8AA4\u3002
+datamodelAndUIInconsistency.TITLE=\u7D44\u614B\u4E0D\u6B63\u78BA
+datamodelAndUIInconsistency.MESSAGE=\u5075\u6E2C\u5230\u4E0D\u6B63\u78BA\u7684\u7D44\u614B\u3002\n\u8207\u9078\u5B9A\u9805\u76EE\u985E\u578B ({0}) \u95DC\u806F\u7684\u4E3B\u5C6C\u6027\u8868\u55AE\u5177\u6709\n\u5FC5\u9700\u5C6C\u6027\uFF0C\u4E14\u76F8\u540C\u9805\u76EE\u985E\u578B\u5DF2\u8A2D\u5B9A\u559C\u597D\u8A2D\u5B9A \n{1}\uFF0C\u6B64\u559C\u597D\u8A2D\u5B9A\u6703\u4F7F\u4E3B\u5C6C\u6027\u8868\u55AE\n\u4E0D\u51FA\u73FE\u5728\u5EFA\u7ACB\u7CBE\u9748\u4E2D\u3002\u5728\u9019\u7A2E\u60C5\u6CC1\u4E0B\uFF0C\u300C\u5B8C\u6210\u300D\u6309\u9215\u5C07\u88AB\u505C\u7528\uFF0C \n\u56E0\u6B64\u4E5F\u5C31\u4E0D\u5141\u8A31\u767C\u751F\u5EFA\u7ACB\u4F5C\u696D\u3002\u70BA\u7CFE\u6B63\n\u6B64\u554F\u984C\uFF0C\u8ACB\u8207\u7CFB\u7D71\u7BA1\u7406\u54E1\u806F\u7D61\u4E26\u5831\u544A\u6B64\u60C5\u6CC1\u3002
+
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=\u9805\u76EE\u5EFA\u7ACB\u4E2D\u65B7\u3002\u9805\u76EE\u5DF2\u5EFA\u7ACB\u4E26\u5DF2\u90E8\u5206\u63D2\u5165
+aborted.TITLE=\u5DF2\u4E2D\u6B62
+aborting=\u6B63\u5728\u4E2D\u6B62...
+
+# Not valid type keys
+# ----------------------
+#notValidType.TITLE=Invalid Input Data
+#notValidChar=Can not change character property value.
+#notValidDate=Not valid date.
+#notValidDouble=Not valid double or float.
+#notValidInt=Not valid integer.
+#notValidLogical=Not valid logical data.
+#notValidShort=Not valid short integer.
+#notValidString=Can not change string property value.
+
+# Error and warning message for processPostCreate
+failAttachLocalFiles=\u672A\u80FD\u9644\u52A0\u67D0\u4E9B\u672C\u5730\u6A94\u6848\uFF0C\u8ACB\u6AA2\u67E5\u526F\u6A94\u540D\u4EE5\u78BA\u4FDD\u5B83\u5011\u662F\u5408\u9069\u7684\u4F86\u6E90\u6A94\u6848\u3002
+failUploadLocalFiles=\u672A\u80FD\u4E0A\u50B3\u67D0\u4E9B\u672C\u5730\u6A94\u6848\uFF0C\u53EF\u80FD\u7684\u539F\u56E0\u662F FMS \u6C92\u6709\u6B63\u78BA\u5DE5\u4F5C\u3002\u8ACB\u8AEE\u8A62\u7BA1\u7406\u54E1\u4EE5\u7372\u53D6\u8A73\u7D30\u8CC7\u8A0A\u3002
+
+# Messages for ItemAttachFilesPanel
+ItemAttachFilesPanel.browse=\u700F\u89BD
+ItemAttachFilesPanel.browseButton=\u700F\u89BD...
+ItemAttachFilesPanel.removeButton=\u79FB\u9664
+ItemAttachFilesPanel.attachFiles=\u9644\u52A0\u6A94\u6848
+ItemAttachFilesPanel.enterAttachFiles=\u8F38\u5165\u9644\u4EF6\u6A94\u6848\u8CC7\u8A0A
+
+#Submit To Workflow Panel
+SubmitToWorkflowPanel.processTemplateList=\u6D41\u7A0B\u7BC4\u672C\u6E05\u55AE
+SubmitToWorkflowPanel.processAssignmentList=\u6D41\u7A0B\u6307\u6D3E\u6E05\u55AE
+SubmitToWorkflowPanel.workflowInfoPanel=\u5B9A\u7FA9\u5DE5\u4F5C\u6D41\u7A0B\u8CC7\u8A0A
+SubmitToWorkflowPanel.loadingTemplateLists=\u8F09\u5165\u7BC4\u672C\u6E05\u55AE...
+SubmitToWorkflowPanel.processFilter=\u6D41\u7A0B\u7BC4\u672C\u7BE9\u9078\u5668\uFF1A
+SubmitToWorkflowPanel.all=\u5168\u90E8
+SubmitToWorkflowPanel.assigned=\u6307\u6D3E\u7684
+SubmitToWorkflowPanel.loadingDefTemplates=\u6B63\u5728\u8F09\u5165\u6D41\u7A0B\u7BC4\u672C...
+#Create Render
+CreateRender.DispatcherNotInstall=\u8ABF\u5EA6\u7A0B\u5F0F\u7BA1\u7406\u559C\u597D\u8A2D\u5B9A\u5C1A\u672A\u5B89\u88DD\u3002\u8ACB\u5B89\u88DD\u8ABF\u5EA6\u7A0B\u5F0F\u7BA1\u7406\u6240\u9700\u7684\u559C\u597D\u8A2D\u5B9A\u4EE5\u9032\u884C\u6B63\u78BA\u4F5C\u696D\u3002
+CreateRender.NoProviderService=\u9805\u76EE\u7248\u672C\u672A\u8A2D\u5B9A\u6E32\u67D3\u7BA1\u7406\u63D0\u4F9B\u8005\u6216\u670D\u52D9\u540D\u7A31\u5E38\u6578\u3002
+CreateRender.RequestCreationError=\u7531\u65BC\u5EFA\u7ACB\u8ABF\u5EA6\u7A0B\u5F0F\u8981\u6C42\u6642\u51FA\u932F\uFF0C\u5EFA\u7ACB\u6E32\u67D3\u52D5\u4F5C\u5931\u6557\u3002
+CreateRender.DIALOG.TITLE=\u6E32\u67D3\u6587\u4EF6

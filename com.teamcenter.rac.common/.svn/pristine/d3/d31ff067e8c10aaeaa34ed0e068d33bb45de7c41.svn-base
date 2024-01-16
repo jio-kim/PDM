@@ -1,0 +1,52 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2002 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the selectcolumnwizard package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: selectcolumnwizard_locale.properties
+#   Module  : com.teamcenter.rac.common.selectcolumnwizard
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#30-Jul-2002  wangp                   initial creation
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+selectColumnWizardDialog.TITLE=Wstaw kolumny
+
+# entries for the home panel
+homeHeader=Krok 1 z 3
+selectCategory=Kt\u00F3re w\u0142a\u015Bciwo\u015Bci kategorii chcesz wstawi\u0107?
+
+form=Formularz
+folder=Folder
+item=Obiekt
+itemRevision=RewizjaObiektu
+dataset=Zestaw danych
+others=Inne
+
+# entries for the type panel
+typeHeader=Krok 2 z 3
+selectType=Kt\u00F3ry typ w\u0142a\u015Bciwo\u015Bci
+propertiesToInsert=chcesz wstawi\u0107?
+
+loadingType=\u0141adowanie typ\u00F3w ...
+
+# entries for the property panel
+propertyHeader=Krok 3 z 3
+selectProperty=Kt\u00F3re w\u0142a\u015Bciwo\u015Bci
+wantToInsert=chcesz wstawi\u0107?
+othersProperty=Kt\u00F3re w\u0142a\u015Bciwo\u015Bci chcesz wstawi\u0107?
+
+availableProperties.LABEL=Dost\u0119pne
+selectedProperties.LABEL=Wybrane
+displayName=U\u017Cyj nazwy daj\u0105cej si\u0119 wy\u015Bwietli\u0107
+
+loadingProperty=\u0141adowanie w\u0142a\u015Bciwo\u015Bci ...

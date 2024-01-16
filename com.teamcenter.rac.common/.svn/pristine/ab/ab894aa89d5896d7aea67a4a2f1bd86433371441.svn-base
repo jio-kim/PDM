@@ -1,0 +1,43 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the move package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: move_locale.properties
+#   Module  : com.teamcenter.rac.commands.move
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#07-Apr-2000  mccollr                 Fix spelling error.
+#24-Jan-2003  Zhixin Huang            Modify it according to the tree sorting feature added.
+#24-Jan-2003  Zhixin Huang            Merge to Troy.
+#06-Feb-2004  Hui Xiao                PR 4873134: fixed unexpected moves
+#16-Feb-2004  Hui Xiao                make message clearer
+#17-Feb-2004  Hui Xiao                modify the message to have a better look
+#19-Mar-2004  Hui Xiao                PR1309870&4873134: fixed incorrect folder move actions
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+move.Status.MSG = \u79FB\u52D5...
+moveUp.Status.MSG = \u4E0A\u79FB...
+moveDown.Status.MSG = \u4E0B\u79FB...
+moveTop.Status.MSG = \u79FB\u5230\u6700\u4E0A\u9762...
+moveBottom.Status.MSG = \u79FB\u5230\u6700\u4E0B\u9762...
+
+error.TITLE=\u4E0D\u80FD\u79FB\u52D5...
+error.MSG=\u4F5C\u696D\u50C5\u5C0D\u8CC7\u6599\u593E\u4E2D\u5305\u542B\u7684\u7269\u4EF6\u6709\u6548\uFF01
+
+sortingConfirm = \u76EE\u524D\u7528\u6236\u7AEF\u6392\u5E8F\u88AB\u555F\u7528\u3002\u56E0\u6B64\u4EFB\u4F55\u79FB\u52D5\n\u4F5C\u696D\u90FD\u5C07\u88AB\u767C\u73FE\u3002\u60A8\u60F3\u8981\u5C07\u968E\u6BB5\u4F5C\u696D\n\u53CD\u8F49\u70BA\u7121\u6392\u5E8F\u4E26\u7E7C\u7E8C\u79FB\u52D5\u55CE\uFF1F
+sortingConfirm.TITLE=\u7528\u6236\u7AEF\u6392\u5E8F\u88AB\u555F\u7528...
+
+asorderedConfirm = \u7121\u6CD5\u57F7\u884C\u79FB\u52D5\u4F5C\u696D\uFF0C\u56E0\u70BA\u6392\u5E8F\u6A19\u6E96\u6216\u7236\u8CC7\u6599\u593E\u7684\u6392\u5E8F\u6A19\u6E96\u4E0D\u662F\u6240\u6392\u5E8F\u7684\u3002\u60A8\u60F3\n\u5C07\u5B83\u5011\u6539\u70BA\u6240\u6392\u5E8F\u7684\u55CE\uFF1F\u5982\u679C\u60A8\u9078\u53D6\u300C\u662F\u300D\uFF0C\u6A39\u5C07\u88AB\n\u91CD\u65B0\u986F\u793A\uFF0C\u60A8\u53EF\u4EE5\u91CD\u65B0\u9078\u53D6\u60A8\u60F3\u8981\u79FB\u52D5\u7684\u7269\u4EF6\u3002
+asorderedConfirm.TITLE=\u8B8A\u66F4\u6392\u5E8F\u6A19\u6E96...

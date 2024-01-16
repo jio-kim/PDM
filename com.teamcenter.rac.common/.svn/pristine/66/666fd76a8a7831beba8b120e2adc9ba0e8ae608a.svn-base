@@ -1,0 +1,15 @@
+#* @<COPYRIGHT_START>@
+# ===============================================
+# Copyright 2007 UGS Corp. All Rights Reserved.
+# ===============================================
+# @<COPYRIGHT_END>@==============================================================================================*/
+
+command.TITLE=Vlastnosti
+commandReadOnly.TITLE=Vlastnosti (pouze ke \u010Dten\u00ED)
+
+loadingProperties=Na\u010Dten\u00ED vlastnost\u00ED...
+savingProperties=Ulo\u017Een\u00ED vlastnost\u00ED...
+
+print.TIP = Vytiskn\u011Bte vlastnosti objektu.
+
+failToDisplay=Vlastnosti nelze zobrazit.

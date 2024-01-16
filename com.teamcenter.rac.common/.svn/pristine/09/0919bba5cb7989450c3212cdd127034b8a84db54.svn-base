@@ -1,0 +1,79 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2002 Electronic Data Systems Corporation
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the project package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: project_locale.properties
+#   Module  : com.teamcenter.rac.commands.project
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#07-Nov-2002  Ming Fa                 Initial Promote.
+#20-Dec-2002  faming                  V9 Project Level Security Project
+#23-Dec-2002  faming                  merged to P8110
+#19-Mar-2003  faming                  Project Level Security
+#20-Mar-2003  faming                  merged to P8114
+#01-Apr-2003  faming                  Project Level Security
+#21-May-2003  faming                  Project Level Security
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#27-Jun-2003  faming                  change nothingFound back
+#30-Jun-2003  faming                  add unknownObject.NAME"
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#24-May-2007  M.Ram Narsimhamurty     Added support for ADS Program Context
+#$HISTORY$
+#=================================================================================================*/
+
+assignToProjectCommand.TITLE={0}\uC5D0 \uAC1C\uCCB4 \uD560\uB2F9
+removeFromProjectCommand.TITLE={0}\uC5D0\uC11C \uAC1C\uCCB4 \uC81C\uAC70
+
+assignToProjectCommands.TITLE={0}\uC5D0 \uAC1C\uCCB4 \uD560\uB2F9
+removeFromProjectCommands.TITLE={0}\uC5D0\uC11C \uAC1C\uCCB4 \uC81C\uAC70
+
+selectProjectForAssign.TITLE=\uAC1C\uCCB4\uB97C \uD560\uB2F9\uD560 {0} \uC120\uD0DD
+selectProjectsForRemove.TITLE=\uAC1C\uCCB4\uB97C \uC81C\uAC70\uD560 {0} \uC120\uD0DD
+
+selectProjectForAssigns.TITLE=\uAC1C\uCCB4\uB97C \uD560\uB2F9\uD560 {0} \uC120\uD0DD
+selectProjectsForRemoves.TITLE=\uAC1C\uCCB4\uB97C \uC81C\uAC70\uD560 {0} \uC120\uD0DD 
+
+assignAllButton.LABEL=\uBC1C\uACAC\uB41C \uBAA8\uB4E0 \uAC1C\uCCB4
+assignLoadedButton.LABEL=\uD604\uC7AC \uD398\uC774\uC9C0
+
+selectedObjects.TITLE=\uC120\uD0DD\uB41C \uAC1C\uCCB4
+
+nothingFound.MESSAGE=\uC774 \uC870\uD68C\uAC00 \uAC1C\uCCB4\uB97C \uCC3E\uC9C0 \uBABB\uD588\uC2B5\uB2C8\uB2E4.
+
+assignToProjects.MESSAGE={0}\uC5D0 \uAC1C\uCCB4 \uD560\uB2F9 \uC911...
+removeFromProjects.MESSAGE={0}\uC5D0\uC11C \uAC1C\uCCB4 \uC81C\uAC70 \uC911...
+
+more.LABEL=...
+more.TIP=\uC120\uD0DD\uD55C \uAC1C\uCCB4\uC758 \uB9AC\uC2A4\uD2B8\uB97C \uBCF4\uB824\uBA74 \uC774 \uD558\uC774\uD37C \uB9C1\uD06C\uB97C \uD074\uB9AD 
+
+closeButton.LABEL=\uB2EB\uAE30
+
+folderContents.LABEL=\uB0B4\uC6A9
+folderContents.TIP={0}\uC5D0 \uB0B4\uC6A9 \uAC1C\uCCB4 \uD560\uB2F9
+folderObject.LABEL=\uD3F4\uB354
+folderObject.TIP={0}\uC5D0 \uD3F4\uB354 \uD560\uB2F9
+
+parentToAssign.LABEL=\uD560\uB2F9 \uBD80\uBAA8
+parentToAssign.TIP={0}\uC5D0 \uD560\uB2F9\uD560 \uC720\uD615\uC774 \uC788\uB294 BOM \uD589 \uBD80\uBAA8 \uC120\uD0DD
+BOMLineParentItem.LABEL=\uC544\uC774\uD15C
+BOMLineParentItemRev.LABEL=\uC544\uC774\uD15C \uB9AC\uBE44\uC804
+
+BOMPropagationLevel.LABEL=\uC790\uC2DD \uB2E8\uACC4
+BOMPropagationLevel.TIP=BOM \uD589 \uC790\uC2DD \uB2E8\uACC4\uC758 \uC22B\uC790\uB97C \uD504\uB85C\uC138\uC2A4\uC5D0 \uC815\uC758
+BOMLinePropagationAll.LABEL=\uC804\uCCB4 BOM
+
+messageBox.TITLE={0}
+assignToProjectsErrorDialog.MSG={0}\uC5D0\uAC8C \uAC1C\uCCB4\uB97C \uD560\uB2F9\uD558\uB294 \uB3D9\uC548 \uC624\uB958 \uBC1C\uC0DD
+removeFromProjectsErrorDialog.MSG={0}\uC5D0\uC11C \uAC1C\uCCB4\uB97C \uC81C\uAC70\uD558\uB294 \uB3D9\uC548 \uC624\uB958 \uBC1C\uC0DD
+unknownObject.NAME=\uC54C \uC218 \uC5C6\uB294 \uAC1C\uCCB4 \uC774\uB984
+
+noSessionProgram=\uC5C4\uACA9\uD55C \uACC4\uCE35 \uBAA8\uB4DC\uB97C \uC704\uD574 \uC138\uC158 \uD504\uB85C\uADF8\uB7A8\uC744 \uC120\uD0DD\uD574\uC57C \uD569\uB2C8\uB2E4.
+noSessionProgram.TITLE=\uC798\uBABB\uB41C \uC138\uC158 \uD504\uB85C\uADF8\uB7A8

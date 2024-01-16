@@ -1,0 +1,164 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newdataset package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newdataset_locale.properties
+#   Module  : com.teamcenter.rac.commands.newdataset
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Oct-2000  wangp                   add tooltip for import button
+#02-Mar-2001  wangp                   Fix PR: 4227870: Add entry for no reference found.
+#30-Apr-2001  x_gopala                PR #4252773 Fix
+#30-Apr-2001  x_gopala                Merge in
+#27-Jun-2003  Zhixin Huang            Add key for NewDatasetForFile dialog.
+#27-Jan-2004  wangp                   fix pr 4902579: customize command/dialog
+#06-May-2005  gezou                   fix PR5174557, put error message
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#28-Aug-2009  Pushkar Raj              Added entries for Multiple file Drag and Drop.
+#$HISTORY$
+#=================================================================================================*/
+
+# New Dataset Dialog
+# --------------------
+command.TITLE = Nowy zestaw danych
+
+assign = Przypisz
+
+datasetInformation = Zestaw danych - informacje
+datasetId = ID zestawu danych
+revId = ID rewizji
+
+name = Nazwa:
+description = Opis:
+type = Typ:
+tool = U\u017Cyte narz\u0119dzie:
+openOnCreate = Otw\u00F3rz po utworzeniu
+importLabel= Importuj:
+importButton=Importuj...
+importButton.TIP=Wybierz plik do importu.
+
+# Messages for message center
+# -------------------------------
+loadingTypes = \u0141adowanie typ\u00F3w zestaw\u00F3w dokument\u00F3w ...
+creatingNewDataset = Tworzenie nowego zestawu danych
+importingFile=Import plik\u00F3w do zestawu danych...
+abort = Przerwij otwieranie nowego zestawu danych
+
+# Error Messages
+# --------------------
+datasetTypesError = Pobranie typ\u00F3w zestaw\u00F3w dokument\u00F3w nie powiod\u0142o si\u0119.
+failToCreate = Utworzenie zestawu danych nie powiod\u0142o si\u0119
+failFindDialog=Nie mo\u017Cna odnale\u017A\u0107 okna dialogowego Nowy Zestaw danych.
+error.TITLE = Nowy zestaw danych ...
+noRefTypeFound=Nie znaleziono typu powi\u0105zania - nie mo\u017Cna importowa\u0107.
+noRefTypeFound.TITLE=Ostrze\u017Cenie
+notAIEConfiguredDS = \u015Arodowisko AIE jest aktywne, jednak\u017C\u0119 typ obiektu/Zestaw danych nie jest skonfigurowany w AIE. Prosz\u0119 albo wy\u0142\u0105czy\u0107 AIE, albo zapozna\u0107 si\u0119 z tematem pomocy Teamcenter odnosz\u0105cym si\u0119 do \u015Arodowiska Integracji Aplikacji (AIE), aby skonfigurowa\u0107 AIE.
+notAIEConfiguredDS.TITLE=B\u0142\u0105d
+
+# Messages and keys for the Abort Message Box
+# ----------------------------------------------
+aborted=Tworzenie zestawu danych zosta\u0142o przerwane...Zestaw danych zosta\u0142 utworzony i cz\u0119\u015Bciowo wstawiony
+aborted.TITLE=Przerwane
+
+aborting=Przerywanie...
+
+modifiedName.TITLE=Zmie\u0144 nazw\u0119 zestawu danych
+modifiedName.MSG=Czy chcesz zmieni\u0107 nazw\u0119 zestawu danych na
+overrideName.TITLE=Zast\u0105p nazw\u0119 zestawu danych
+overrideName.MSG=Nazwa zestawu danych zostanie zast\u0105piona
+
+# Keys for the New Dataset for File
+newFileDataset.TITLE = Nowy zestaw danych dla 
+type.TITLE = Wybierz typ
+type.INFO = Prosz\u0119 wybra\u0107 typ zestawu danych dla pliku.
+info.TILE = Wprowad\u017A informacje o zestawie danych
+info.INFO = Wprowad\u017A informacje o zestawie danych.
+reference.TITLE = Wybierz typ powi\u0105zania
+reference.INFO = Wybierz typ powi\u0105zania dla pliku.
+
+reference = Odwo\u0142anie:
+fileType = Typ pliku:
+template = Szablon:
+noDatasetAvailable.MSG= Brak typu zestawu danych do utworzenia dla pliku.
+noDatasetAvailable.TITLE = Brak typu zestawu danych
+
+warning.TITLE=Nowy zestaw danych
+fileDoesNotExist.MSG=Nie mo\u017Cna zaktualizowa\u0107 pliku, poniewa\u017C nieprawid\u0142owe s\u0105 nazwa i lokalizacja pliku albo plik nie istnieje.\nWybierz prawid\u0142owy plik do zaimportowania.
+invalidFile.MSG=Wybrany plik importu nie pasuje do typu zestawu danych.\n Wybierz prawid\u0142owy plik do zaimportowania.
+noDatasetType.MSG=Najpierw wybierz typ zestawu danych.
+
+fileNameWillbeTruncated.MSG=D\u0142ugo\u015B\u0107 nazwy pliku przekracza ustalony limit 132 znak\u00F3w. Nale\u017Cy j\u0105 skr\u00F3ci\u0107.
+
+# Keys for select reference dialog (Elbit ER1409560)
+selectReference.INFO=Do wybranego pliku pasuje wi\u0119cej ni\u017C jedno odwo\u0142anie. Wybierz typ odwo\u0142ania i naci\u015Bnij przycisk OK, aby kontynuowa\u0107.
+noReference.MSG=Nie znaleziono \u017Cadnych odwo\u0142a\u0144.
+noRefSelected.MSG=Nie wybrano typu odwo\u0142ania, przez co nie mo\u017Cna zaimportowa\u0107 pliku. \nWybrany plik importu zostanie usuni\u0119ty.
+
+#Keys for Multiple files Drag and Drop
+
+#Table Headers
+fileName=Nazwa pliku
+datasetName=Nazwa zestawu danych
+datasetDesc=Opis
+datasetType=Typ zestawu danych
+templateName=Typ pliku
+referenceName=Odwo\u0142anie
+toolsUsed=U\u017Cyte narz\u0119dzie
+
+#Messages
+newDnDDialog.MSG=Nowe zestawy danych dla wielu plik\u00F3w
+newDnDDialog.TITLE=Przeci\u0105gnij i upu\u015B\u0107 wiele plik\u00F3w
+applySimilar.LABEL=Zastosuj do tego samego typu
+applySimilar.TIP=Zastosuj warto\u015Bci do wszystkich zestaw\u00F3w danych tego samego typu pliku
+
+#Keys for Progress Dialog
+datasetNameRequired.MSG=Pole "Nazwa zestawu danych" jest wymagane.
+resultDialog.MSG=Post\u0119p tworzenia zestawu danych
+
+file=Plik
+status=Status
+
+#Status Messages
+ready.MSG=Gotowe
+started.MSG=Rozpocz\u0119te
+complete.MSG=Uko\u0144czone
+userCancelledAction.MSG=Anulowano czynno\u015B\u0107 u\u017Cytkownika
+
+#Session Messages
+importingFileToDataset=Importowanie plik\u00F3w do zestawu danych
+
+#Error Messages
+applySimilar.ERROR=Wybierz lini\u0119 w tabeli, aby zastosowa\u0107 podobne ustawienia do plik\u00F3w z tym samym rozszerzeniem
+importFileInfoMissing.ERROR=Brak niezb\u0119dnych informacji do importowania pliku
+pasteError.MSG=Wyst\u0105pi\u0142 b\u0142\u0105d podczas wklejania zestawu danych do elementu docelowego
+incompleteInfo.MSG=Nieprawid\u0142owy zestaw danych lub komponent docelowy
+pasteCommand.ERROR=B\u0142\u0105d pobierania polecenia wklejania
+pastedIntoNewStuff.MSG=\u017B\u0105dana operacja wklejania nie powiod\u0142a si\u0119, dlatego przeprowadzono przekazanie zwrotne w celu wklejenia ich do folderu Nowe obiekty
+pasteToNewStuffError.ERROR=\u017B\u0105dana operacja wklejania nie powiod\u0142a si\u0119, dlatego przeprowadzono pr\u00F3b\u0119 wklejenia ich do folderu Nowe obiekty. Podczas wklejania zestawu danych do folderu Nowe obiekty wyst\u0105pi\u0142 b\u0142\u0105d.
+
+populatingTable.MSG=Poczekaj chwil\u0119, trwa wype\u0142nianie tabeli...
+
+#Progress Dialog
+progress.TITLE=Przetwarzanie
+progress.MSG=Prosz\u0119 czeka\u0107. Trwa pobieranie niezb\u0119dnych informacji z plik\u00F3w....
+
+creatingDataset.MSG=Tworzenie zestawu danych...
+
+errorDetail.TITLE=B\u0142\u0105d
+creatingDataset.ERROR=Utworzenie zestawu danych nie powiod\u0142o si\u0119, poniewa\u017C wyst\u0105pi\u0142 nast\u0119puj\u0105cy b\u0142\u0105d:
+namingRule.ERROR=Szyk regu\u0142y nadawania nazw nie jest zgodny. Dokonaj niezb\u0119dnych zmian na podstawie nast\u0119puj\u0105cych informacji i spr\u00F3buj ponownie. 
+
+fileNameLengthTooLong=Nazwa pliku przekracza limit d\u0142ugo\u015Bci
+fileLengthWarning.TITLE=Ostrze\u017Cenie - d\u0142ugo\u015B\u0107 nazw plik\u00F3w przekracza ustalony limit
+fileNameLengthTooLongMulitple=Nast\u0119puj\u0105ce pliki nie zostan\u0105 uwzgl\u0119dnione, poniewa\u017C d\u0142ugo\u015B\u0107 ich nazw przekracza ustalony limit:
+

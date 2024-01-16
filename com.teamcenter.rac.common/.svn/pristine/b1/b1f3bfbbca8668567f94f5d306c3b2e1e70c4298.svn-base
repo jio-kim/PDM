@@ -1,0 +1,370 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the form package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#28-Sep-2004  wangp                   initial creation
+#11-Nov-2004  Rob McColl              Add keys for the Help dialog
+#24-Feb-2005  Zhixin Huang            Change the icon from gif to png file and clean up the entries phase 2.
+#25-Oct-2005  shankarg                chitturi's fix for PR # 5160825
+#30-Nov-2005  wangp                   add error msg
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#13-Aug-2019  Mahesh Mahindrakar      Added keys for UGPartMassPropsForm extra properties.
+#$HISTORY$
+#=================================================================================================*/
+
+# Not valid type keys
+# ----------------------
+notValidType.TITLE=\u8F93\u5165\u6570\u636E\u65E0\u6548
+notValidChar=\u4E0D\u80FD\u66F4\u6539\u5B57\u7B26\u5C5E\u6027\u503C\u3002
+notValidDate=\u65E0\u6548\u7684\u65E5\u671F\u578B\u3002
+notValidDouble=\u65E0\u6548\u7684\u53CC\u7CBE\u5EA6\u578B\u6216\u6D6E\u70B9\u578B\u3002
+notValidInt=\u65E0\u6548\u7684\u6574\u578B\u3002
+notValidLogical=\u65E0\u6548\u7684\u903B\u8F91\u578B\u6570\u636E\u3002
+notValidShort=\u65E0\u6548\u7684\u77ED\u6574\u578B\u3002
+notValidString=\u4E0D\u80FD\u66F4\u6539\u5B57\u7B26\u4E32\u578B\u5C5E\u6027\u503C\u3002
+
+failedLoadingFormProperties=\u65E0\u6CD5\u52A0\u8F7D\u8868\u5355\u5C5E\u6027
+
+notValidInput.MSG=\u8BF7\u5728\u5FC5\u586B\u5B57\u6BB5\u4E2D\u8F93\u5165\u503C\u3002
+notValidInput.TITLE=\u65E0\u6548\u8F93\u5165
+
+missingReqAttr.MSG=\u8868\u5355\u672A\u4FDD\u5B58\u3002\u4EE5\u4E0B\u5FC5\u586B\u5B57\u6BB5\u672A\u586B\u5199\u3002
+
+# Entries for Form Java Beans
+# ------------------------------------
+booleanCharacter.YES=true, yes, y, 1
+true.LABEL=\u662F
+false.LABEL=\u5426
+
+cannotRead=\u65E0\u6CD5\u8BFB\u53D6...\u503C\u53EF\u80FD\u65E0\u6548
+cannotSave=\u65E0\u6CD5\u4FDD\u5B58...\u9009\u5B9A/\u64A4\u6D88\u9009\u5B9A\u7684\u503C\u53EF\u80FD\u65E0\u6548
+cannotSaveUserInput=\u65E0\u6CD5\u4FDD\u5B58...\u7528\u6237\u8F93\u5165\u53EF\u80FD\u65E0\u6548
+
+propertiesError.TITLE=\u5C5E\u6027...
+
+# Entries for ExceptionsDialog
+# --------------------------------------------
+exceptionsDialog.TITLE=\u5F02\u5E38
+noExceptions=\u65E0\u5F02\u5E38\u6D88\u606F\u3002
+exceptionsOccurred=\u51FA\u73B0\u4EE5\u4E0B\u9519\u8BEF\uFF1A
+
+
+# Item Master & Item Revision Master Form Keys
+# ---------------------------------
+projectID=\u9879\u76EE ID\uFF1A
+itemID=\u96F6\u7EC4\u4EF6 ID\uFF1A
+revisionID=\u7248\u672C ID\uFF1A
+unitNumber=\u5355\u5143\u7F16\u53F7\uFF1A
+comments=\u6CE8\u91CA\uFF1A
+userData1=\u7528\u6237\u6570\u636E 1\uFF1A
+userData2=\u7528\u6237\u6570\u636E 2\uFF1A
+userData3=\u7528\u6237\u6570\u636E 3\uFF1A
+
+# Checklist Form
+# ---------------------------------
+eco_prep=ECO \u51C6\u5907
+cost_calc=\u6210\u672C\u8BA1\u7B97
+weight_calc=\u91CD\u91CF\u8BA1\u7B97
+eng_esti=\u5DE5\u7A0B\u8BBE\u8BA1\u9884\u8BA1
+
+# ECO Sample Form
+# ---------------------------------
+charge_number=\u8D39\u7528\u6570
+models_affected=\u53D7\u5F71\u54CD\u7684\u673A\u578B
+stability=\u7A33\u5B9A\u6027
+durability=\u8010\u4E45\u6027
+
+# Document Master & Document Revision Master Form Keys
+# ---------------------------------
+title=\u6807\u9898\uFF1A
+author=\u4F5C\u8005\uFF1A
+subject=\u4E3B\u9898\uFF1A
+
+# Read Only watermark text
+# -------------------------
+readOnly=\u53EA\u8BFB
+
+# CM Base Configuration Form
+# ---------------------------------
+unit_no=\u5355\u5143\u7F16\u53F7
+end_item=\u9876\u5C42\u96F6\u7EC4\u4EF6
+from_date=\u65E5\u671F
+useToday= \u4F7F\u7528\u201C\u4ECA\u5929\u201D
+
+# CMII CR Form
+# ---------------------------------
+form.TITLE=CR - \u66F4\u6539\u8BF7\u6C42
+crnumb.LABEL=CR \u53F7\uFF1A
+requestor.LABEL=\u8BF7\u6C42\u8005\uFF1A
+phone.LABEL=\u7535\u8BDD\uFF1A
+date.LABEL=\u65E5\u671F\uFF1A
+description.TITLE=\u63CF\u8FF0\uFF1A
+cost_estimate.TITLE=\u6210\u672C\u9884\u8BA1\uFF1A
+tech_review.TITLE=\u6280\u672F\u5BA1\u6838\uFF1A
+
+# CMII CN Form
+# ---------------------------------
+cn_form.TITLE=CN - \u66F4\u6539\u901A\u77E5
+cn_numb.LABEL=CN \u53F7\uFF1A
+creator.LABEL=\u521B\u5EFA\u8005\uFF1A
+rel_cr_list.LABEL=\u8BE5 CN \u7684\u57FA\u7840\uFF1A
+
+
+#UGPartMassPropsForm
+#---------------------
+Property = \u5C5E\u6027
+Value =\u503C
+Source = \u6E90
+Error_Estimate = \u9519\u8BEF\uFF08\u9884\u8BA1\uFF09
+Accuracy_Used = \u4F7F\u7528\u7684\u7CBE\u5EA6\uFF1A
+Density = \u5BC6\u5EA6\uFF1A
+Weight = \u6743\u503C\uFF1A
+Mass = \u8D28\u91CF
+Area =  \u8868\u9762\u79EF\uFF1A
+Volume = \u4F53\u79EF\uFF1A
+Center_of_Mass_X =  \u8D28\u5FC3\uFF1AX\uFF1A
+Center_of_Mass_Y = Y\uFF1A
+Center_of_Mass_Z = Z\uFF1A
+First_Moment_X = \u7B2C\u4E00\u529B\u77E9\uFF1AX\uFF1A
+First_Moment_Y = Y\uFF1A 
+First_Moment_Z = Z\uFF1A
+Moments_of_Inertia_XX= \u60EF\u6027\u77E9\uFF1AXX\uFF1A
+Moments_of_Inertia_YY=YY\uFF1A
+Moments_of_Inertia_ZZ=ZZ\uFF1A
+Moments_of_Inertia_Spherical= \u60EF\u6027\u77E9\uFF08\u7403\u5750\u6807\uFF09\uFF1A
+Products_of_Inertia_XZ = \u60EF\u6027\u79EF\uFF1AXZ\uFF1A
+Products_of_Inertia_YZ=YZ\uFF1A
+Products_of_Inertia_XY=XY\uFF1A
+Principal_Moments_of_Inertia_X = \u4E3B\u60EF\u6027\u77E9\uFF1AX\uFF1A
+Principal_Moments_of_Inertia_Y = Y\uFF1A 
+Principal_Moments_of_Inertia_Z = Z\uFF1A
+Radius_of_Gyration_CX = \u56DE\u8F6C\u534A\u5F84\uFF08\u8D28\u5FC3\uFF09\uFF1ACX\uFF1A
+Radius_of_Gyration_CY = CY\uFF1A
+Radius_of_Gyration_CZ = CZ\uFF1A
+Radius_of_Gyration_Spherical = \u56DE\u8F6C\u534A\u5F84\uFF08\u7403\u5750\u6807\uFF09\uFF1A
+Principal_Axes_XPX = \u4E3B\u8F74\uFF1AXp (X)\uFF1A
+Principal_Axes_XPY = Xp (Y)\uFF1A
+Principal_Axes_XPZ = Xp (Z)\uFF1A
+Principal_Axes_YPX = Yp (X)\uFF1A
+Principal_Axes_YPY = Yp (Y)\uFF1A
+Principal_Axes_YPZ = Yp (Z)\uFF1A
+Principal_Axes_ZPX = Zp (X)\uFF1A
+Principal_Axes_ZPY = Zp (Y)\uFF1A
+Principal_Axes_ZPZ = Zp (Z)\uFF1A
+Units=\u6240\u7ED9\u7684\u503C\u7528\u56FD\u9645\u5355\u4F4D\u5236\uFF08\u7C73/\u5343\u514B\uFF09
+
+# LoadPropertiesProgressPanel
+# -----------------------------------
+step1=\u6B63\u5728\u4E0B\u8F7D\u6837\u5F0F\u8868...
+step2=\u6B63\u5728\u89E3\u6790\u6837\u5F0F\u8868
+step3=\u6B63\u5728\u52A0\u8F7D\u5C5E\u6027...
+step4=\u6B63\u5728\u663E\u793A\u6837\u5F0F\u8868...
+
+# ValidationMaster Form
+#------------------------------------
+compoundResult = \u590D\u5408\u7ED3\u679C
+validations    = \u9A8C\u8BC1
+validationsLabel = \u9A8C\u8BC1\uFF1A
+openButtonLabel = \u6253\u5F00
+deleteButtonLabel = \u5220\u9664
+refreshButtonLabel = \u5237\u65B0
+noResultObjectSelected.MSG=\u201C\u672A\u9009\u62E9\u9A8C\u8BC1\u7ED3\u679C\u201D
+noResultObjectSelected.TITLE=\u201C\u9A8C\u8BC1\u7ED3\u679C\u201D
+noReports.MSG=\u9009\u5B9A\u7684\u7ED3\u679C\u4E0D\u542B\u6709\u4EFB\u4F55\u62A5\u544A
+noReports.TITLE=\u672A\u627E\u5230\u62A5\u544A
+ReportDatasets.MSG=\u9A8C\u8BC1\u62A5\u544A
+deleteValidationResultConfirmMsg=\u786E\u5B9A\u8981\u5220\u9664\u9009\u5B9A\u7684\u201C\u9A8C\u8BC1\u7ED3\u679C\u201D\u5417\uFF1F
+confirmDeleteValidationResultMsg=\u786E\u8BA4\u9A8C\u8BC1\u7ED3\u679C\u5220\u9664
+
+# these keys are used by PropertyObjectLink
+clear.TEXT=\u6E05\u9664
+paste.TEXT=\u7C98\u8D34
+noValue=\u6CA1\u6709\u503C
+
+# this key is used by PropertyArray
+popupmenu.TITLE=\u5F15\u7528\u7C7B\u578B
+exceedMaxArraySize=\u5DF2\u8FBE\u5230\u6700\u5927\u6570\u7EC4\u5927\u5C0F\uFF0C\u65E0\u6CD5\u6DFB\u52A0\u503C\u3002
+stringMaxArraySize=\u7531\u4E8E\u5DF2\u8FBE\u5230\u6700\u5927\u5B57\u7B26\u4E32\u6570\u7EC4\u5927\u5C0F\uFF0C\u56E0\u6B64\u65E0\u6CD5\u6DFB\u52A0\u5B57\u7B26\u4E32\u3002
+warning=\u8B66\u544A
+confirm=\u786E\u8BA4
+notEqualToFixedSize=\u65E0\u6CD5\u5220\u9664\u56FA\u5B9A\u5927\u5C0F\u6570\u7EC4\u4E2D\u7684\u96F6\u7EC4\u4EF6\u3002\u53EF\u4EE5\u4F7F\u7528\u66FF\u6362\u6309\u94AE\u6765\u66FF\u6362\u8BE5\u96F6\u7EC4\u4EF6\u6216\u5B9A\u4E49\u5176\u4ED6\u9700\u8981\u7684\u56FA\u5B9A\u6570\u7EC4\u5927\u5C0F\u3002
+addFromClipboardConfirmation.MSG=\u5728\u526A\u8D34\u677F\u627E\u5230\u5BF9\u8C61\u3002\u8981\u6DFB\u52A0\u5B83\u4EEC\u5417\uFF1F
+cannotConvertToRefType.MSG=\u65E0\u6CD5\u5C06\u8BE5\u5B57\u7B26\u4E32\u8F6C\u6362\u4E3A\u6307\u5B9A\u7684\u7C7B\u578B\u3002
+
+# keys for XMLRendering
+# ----------------------------
+failToParse=\u672A\u80FD\u89E3\u6790 xml \u5B9A\u4E49\uFF1A
+noPanelFoundException=\u672A\u6784\u5EFA\u4EFB\u4F55\u6E32\u67D3\u3002\nxml \u5B9A\u4E49\u65E0\u6548\uFF0C\u6216\u8005\u5B83\u4E0D\u5305\u542B\u4EFB\u4F55\u5C5E\u6027\u3002
+
+viewList=\u90E8\u5206\u5217\u8868
+properties=\u5C5E\u6027
+viewer=\u67E5\u770B\u5668
+impactanalysis=\u5F71\u54CD\u5206\u6790
+
+# keys for RenderingLoader
+# -----------------------------
+error.TITLE=\u6E32\u67D3\u52A0\u8F7D\u5668
+failToLoadCustomRendering=\u65E0\u6CD5\u663E\u793A\u5B9A\u5236\u6E32\u67D3\uFF0C\u5C06\u4F7F\u7528\u81EA\u52A8\u6E32\u67D3\u3002
+failToLoadXMLRendering=\u65E0\u6CD5\u4F7F\u7528 xml \u8FDB\u884C\u6E32\u67D3\uFF0C\u5C06\u4F7F\u7528\u81EA\u52A8\u6E32\u67D3\u3002
+failToFindXMLFile=\u5728\u6570\u636E\u96C6\u4E2D\u627E\u4E0D\u5230 xml \u6587\u4EF6
+failToFindXMLDataset=\u627E\u4E0D\u5230\u7528\u4E8E xml \u6E32\u67D3\u7684\u6570\u636E\u96C6
+
+# Keys for PropertyObjectLink
+# ------------------------------
+clear.TEXT=\u6E05\u9664
+paste.TEXT=\u7C98\u8D34
+copy.TEXT=\u590D\u5236
+open.TEXT=\u6253\u5F00
+noValue=\u6CA1\u6709\u503C
+
+# Keys for PropertyImage
+# ------------------------------
+preview=\u9884\u89C8
+
+# Keys for XMLRendering
+# ------------------------------
+page=\u9875\u53F7
+
+# Keys for the HelpDialog
+# ------------------------------
+generalDescription.TXT=\u6837\u5F0F\u8868\u662F\u4E00\u4E2A XML \u5B9A\u4E49\uFF0C\u63CF\u8FF0\u4E86\u5C5E\u6027\u6216\u8868\u5355\u9762\u677F\u5728\u663E\u793A\u65F6\n\u5C06\u5982\u4F55\u88AB\u5E94\u7528\u548C\u6392\u5E8F\u3002\u8BE5\u5B9A\u4E49\u662F\u5728\u4E00\u4E2A\u540D\u4E3A "XMLRenderingStyleSheet" \u7684\u6570\u636E\u96C6\u4E2D\n\u5B9A\u4E49\u7684\uFF0C\u5E76\u4E14\u901A\u8FC7\u9996\u9009\u9879\u6765\u6CE8\u518C\u3002\u6837\u5F0F\u8868\u4E00\u7ECF\u521B\u5EFA\uFF0C\u5B83\u5FC5\u987B\u6CE8\u518C\uFF0C\u7CFB\u7EDF\u624D\u80FD\u4F7F\u7528\u5B83\u6765\u8FDB\u884C\u663E\u793A\u3002\n\u6240\u6709\u7BA1\u7406\u90FD\u5C06\u5728\u8BE5\u67E5\u770B\u5668\u4E2D\u6267\u884C\u3002\u5BF9\u4E8E\u90A3\u4E9B\u8F83\u5927\u80C6\u7684\u7528\u6237\uFF0C\u4ED6\u4EEC\u53EF\u4EE5\u5728\u67E5\u770B\u5668\u5916\u9762\u624B\u5DE5\u7F16\u8F91\u548C\n\u6CE8\u518C\u6837\u5F0F\u8868\u3002
+exampleDescription.TXT=\u4EE5\u4E0B\u663E\u793A\u7684\u793A\u4F8B\u662F\u9488\u5BF9\u6587\u4EF6\u5939\u5B9A\u4E49\u7684\u6807\u51C6\u6837\u5F0F\u8868\u3002\n\u5BF9\u4E8E\u91C7\u7528\u73B0\u6709\u6837\u5F0F\u8868\u5E76\u6267\u884C\u201C\u53E6\u5B58\u4E3A\u201D\u64CD\u4F5C\u975E\u5E38\u6709\u7528\uFF0C\u800C\u65E0\u987B\n\u4ECE\u5934\u5F00\u59CB\u521B\u5EFA\u6837\u5F0F\u8868\u3002\u8FD9\u4E3A\u7BA1\u7406\u5458\u63D0\u4F9B\u4E86\u5F00\u59CB\u64CD\u4F5C\u7684\u57FA\u7840\u77E5\u8BC6\u3002
+synopsisDescription.TXT=\u4EE5\u4E0B\u662F\u8981\u5728\u6837\u5F0F\u8868\u5185\u5B9A\u4E49\u7684\u6BCF\u4E2A\u5143\u7D20\u53CA\u5176\n\u6709\u6548\u53C2\u6570\u7684\u6982\u8981\u3002
+
+general=\u5E38\u89C4
+example=\u793A\u4F8B
+synopsis=\u6982\u8981
+help=\u5E2E\u52A9
+
+#For the Edit button on the read only properties dialog
+edit=\u7B7E\u51FA\u5E76\u7F16\u8F91
+edit.TIP=\u7B7E\u51FA\u5E76\u7F16\u8F91\u5C5E\u6027
+edit.MNEMONIC=Edit
+
+#For the Implicit Check out- Apply button on the Summary Panel
+implicitCoApply=\u5E94\u7528
+implicitCoApply.TIP=\u4FDD\u5B58\u66F4\u6539
+implicitCoApply.MNEMONIC=Apply
+
+saveCheckOut=\u4FDD\u5B58
+saveCheckOut.TIP=\u4FDD\u5B58\u5E76\u4FDD\u6301\u7B7E\u51FA
+saveCheckOut.MNEMONIC=Save
+
+saveCheckIn=\u4FDD\u5B58\u5E76\u7B7E\u5165
+saveCheckIn.TIP=\u4FDD\u5B58\u5C5E\u6027\u5E76\u7B7E\u5165
+saveCheckIn.MNEMONIC=Check-In
+
+cancelCheckOut=\u53D6\u6D88\u7B7E\u51FA
+cancelCheckOut.TIP=\u53D6\u6D88\u7B7E\u51FA\u5E76\u8FD8\u539F\u5230\u539F\u59CB\u72B6\u6001
+cancelCheckOut.MNEMONIC=Revert
+
+#Hover text for root structures panel
+#------------------------------------
+expandButton.TIP=\u5C55\u5F00\u4EE5\u8FDB\u884C\u4FEE\u6539
+
+addButton.TIP=\u6DFB\u52A0\u526A\u8D34\u677F\u4E0A\u7684\u5BF9\u8C61
+addButtonLOV.TIP=\u6DFB\u52A0\u5BF9\u8C61
+
+modifyButton.TIP=\u66FF\u6362\u9009\u5B9A\u7684\u5BF9\u8C61
+
+removeButton.TIP=\u79FB\u9664\u9009\u5B9A\u7684\u5BF9\u8C61
+
+upButton.TIP=\u4E0A\u79FB\u9009\u5B9A\u7684\u5BF9\u8C61
+
+downButton.TIP=\u4E0B\u79FB\u9009\u5B9A\u7684\u5BF9\u8C61
+
+ascSortButton.TIP=\u5C06\u5BF9\u8C61\u6309\u5347\u5E8F\u6392\u5E8F
+
+# Entries for QuerySummaryPanel
+# -----------------------------------------
+queryName=\u67E5\u8BE2\u540D\u79F0\uFF1A
+unknown={\u672A\u77E5}
+objects=\u4E2A\u5BF9\u8C61
+wereFound= \u5DF2\u7528\u6B64\u67E5\u8BE2\u627E\u5230\u3002
+searchCriteria.MSG=\u4F7F\u7528\u7684\u641C\u7D22\u51C6\u5219\u5982\u4E0B...
+
+# Messages for Save Feature in General
+# ------------------------------------
+genSaveChanges.TITLE=\u5B58\u5728\u672A\u4FDD\u5B58\u7684\u66F4\u6539
+genSaveChanges.TEXT=\u8981\u4FDD\u5B58\u66F4\u6539\u5417\uFF1F
+
+# Messages for Save Feature in Summary
+# ------------------------------------
+saveSummaryChanges.TITLE=\u5B58\u5728\u672A\u4FDD\u5B58\u7684\u66F4\u6539
+saveSummaryChanges.TEXT=\u8981\u5728\u6C47\u603B\u4E2D\u4FDD\u5B58\u66F4\u6539\u5417\uFF1F
+saveError.TITLE=\u4FDD\u5B58\u51FA\u9519
+unableToSave.MESSAGE=\u672A\u80FD\u4FDD\u5B58\u4E3A\u5BF9\u8C61\u6240\u4F5C\u7684\u66F4\u6539\u3002
+
+# titleKeys in Stylesheet
+# ---------------------------------
+Summary=\u6C47\u603B
+impactanalysis=\u5F71\u54CD\u5206\u6790
+General=\u5E38\u89C4
+All=\u5168\u90E8
+Reservation=\u9884\u7559
+Project=\u9879\u76EE
+Workflow=\u5DE5\u4F5C\u6D41\u7A0B
+Shadow=\u9634\u5F71
+OverrideInformation=\u66FF\u4EE3\u4FE1\u606F
+
+# keys for AutomaticRendering
+# -----------------------------
+detailsCollapsed=\u663E\u793A\u7A7A\u5C5E\u6027...
+detailsExpanded=\u9690\u85CF\u7A7A\u5C5E\u6027...
+
+#Localization
+#-----------------------------------
+Localizaion.Title={0}\u7684\u8BED\u8A00\u7FFB\u8BD1
+Localizaion.MasterLocale=\u4E3B\u8BED\u8A00\u73AF\u5883\uFF1A
+Localizaion.MasterValue=\u4E3B\u503C\uFF1A
+Localization.LocalizationData = \u672C\u5730\u5316\u6570\u636E
+Localization.Value=\u503C
+Localization.Status=\u72B6\u6001
+Localization.Locale=\u8BED\u8A00\u73AF\u5883
+Localization.okButton=\u786E\u5B9A
+Localization.cancelButton=\u53D6\u6D88
+Localization.applyButton=\u5E94\u7528
+LocalizationNothingSelected.MESSAGE=\u9009\u62E9\u8981\u79FB\u9664\u7684\u884C
+LocalizationBlankValue.MESSAGE= {0} \u4E0D\u80FD\u4E3A\u7A7A
+LocalizationNonCustom.MESSAGE=\u53EA\u80FD\u5C06\u5B9A\u5236\u503C\u672C\u5730\u5316
+Localization.MESSAGE.TITLE=\u672C\u5730\u5316\u9519\u8BEF
+noMasterValue.MESSAGE=\u4E3B\u503C\u4E3A\u7A7A
+noMasterValueWithLOVs.MESSAGE=\u65E0\u6CD5\u663E\u793A\u7FFB\u8BD1\u5BF9\u8BDD\u6846\uFF0C\u56E0\u4E3A\u6B64\u5C5E\u6027\u5DF2\u6807\u8BB0\u4E3A\n\u53EF\u672C\u5730\u5316\uFF0C\u5E76\u5177\u6709\u5176\u6761\u4EF6\u672A\u8BC4\u4F30\u4E3A true \n\u7684 LOV \u9644\u4EF6\u3002\u56E0\u6B64\uFF0C\u7CFB\u7EDF\u4E0D\u80FD\u51B3\u5B9A\u5C06\u54EA\u4E2A LOV \u503C\n\u4E0E\u6570\u636E\u8F93\u5165\u5173\u8054\u3002\u8981\u6B63\u786E\u914D\u7F6E\u6B64\u5C5E\u6027\uFF0C\n\u8BF7\u8BA9\u4E1A\u52A1\u5EFA\u6A21\u5668 IDE \u7BA1\u7406\u5458\u786E\u4FDD\u5DF2\u9644\u52A0\u5230\n\u6B64\u5C5E\u6027\u7684\u81F3\u5C11\u4E00\u4E2A\u6761\u4EF6 LOV \u5C06\u5BF9\u6240\u6709\n\u7528\u4F8B\u8BC4\u4F30\u4E3A true\u3002\u8981\u5B9E\u73B0\u6B64\u76EE\u6807\uFF0C\u7BA1\u7406\u5458\u53EF\u4EE5\u4F7F\u7528 isTrue \n\u6761\u4EF6\u6765\u521B\u5EFA\u9ED8\u8BA4 LOV \u9644\u4EF6\u3002\u6B64\u64CD\u4F5C\u53EF\u4EE5\u786E\u4FDD\n\u5728\u4E0D\u6EE1\u8DB3\u4EFB\u4F55\u5176\u4ED6\u6761\u4EF6\u9644\u4EF6\u65F6\uFF0C\u5C06\u663E\u793A\u9ED8\u8BA4\u7684\n\u7528\u4F8B LOV\u3002
+Localization.removeButton.TIP=\u79FB\u9664\u9009\u5B9A\u884C
+Localization.addButton.TIP=\u6DFB\u52A0\u65B0\u884C
+Localization.DuplicateEntry=\u60A8\u4E3A {0} \u8BED\u8A00\u73AF\u5883\u751F\u6210\u4E86\u91CD\u590D\u8F6C\u6362\u6761\u76EE
+Localization.NoLocaleSlected=\u9009\u62E9\u6709\u6548\u8BED\u8A00\u73AF\u5883
+LocalizationTooLong.MESSAGE=\u5BF9 {0} \u8BED\u8A00\u73AF\u5883\u7684\u8F6C\u6362\u8FC7\u957F
+Localization.Copy=\u590D\u5236
+Localization.Paste=\u7C98\u8D34
+MasterLocaleChangingwarning.TITLE =\u4E3B\u8BED\u8A00\u73AF\u5883\u66F4\u6539\u8B66\u544A
+MasterLocaleChangingwarningList.MESSAGE=\u4EE5\u4E0B\u5C5E\u6027\u7684\u4E3B\u8BED\u8A00\u73AF\u5883\u4E0D\u540C\u4E8E\u60A8\u7684\u6761\u76EE\u8BED\u8A00\u73AF\u5883\u3002
+MasterLocaleChangingwarningExplain.MESSAGE=\u5982\u679C\u8FD9\u6837\u64CD\u4F5C\uFF0C\u6240\u6709\u7FFB\u8BD1\u90FD\u5C06\u4E22\u5931
+MasterLocaleChangingwarningConfirmation.MESSAGE=\u786E\u5B9A\u8981\u6267\u884C\u6B64\u64CD\u4F5C\u5417\uFF1F
+MasterValueChangingwarning.TITLE =\u4E3B\u503C\u66F4\u6539\u8B66\u544A
+MasterValueChangingwarningList.MESSAGE=\u4E3B\u503C\u5DF2\u9488\u5BF9\u4EE5\u4E0B\u5217\u51FA\u7684\u5C5E\u6027\u8FDB\u884C\u4FEE\u6539\uFF1A
+MasterValueChangingwarningExplain.MESSAGE=\u5982\u679C\u7EE7\u7EED\uFF0C\u5219\u4F1A\u4E22\u5931\u5176\u4ED6\u8BED\u8A00\u7684\u6240\u6709\u7FFB\u8BD1\u503C\u3002
+MasterValueChangingwarningConfirmation.MESSAGE=\u60A8\u786E\u5B9E\u8981\u7EE7\u7EED\u5417\uFF1F
+
+SourceValidation.MESSAGE=\u62A5\u544A\u7684\u6709\u6548\u6E90\u662F {0}\u3002
+SourceValidation.TITLE=\u65E0\u6548\u7684\u6E90
+
+# Master value edit entries
+# -----------------------------------
+masterEditButton.TIP=\u7F16\u8F91\u4E3B\u503C
+
+MasterValueEdit.okButton=\u786E\u5B9A
+MasterValueEdit.cancelButton=\u53D6\u6D88
+MasterValueEdit.Title=\u7F16\u8F91\u4E3B\u503C
+

@@ -1,0 +1,19 @@
+// @<COPYRIGHT>@
+// ==================================================
+// Copyright 2018.
+// Siemens Product Lifecycle Management Software Inc.
+// All Rights Reserved.
+// ==================================================
+// @<COPYRIGHT>@
+
+####################################################################################################
+# Messages
+####################################################################################################
+
+rootObjectCreationFailed.MESSAGE=No se puede continuar con la operaci\u00F3n Revisar en {0}. 
+invalidInput.MESSAGE=La relaci\u00F3n entre el objeto de entrada y el servicio es nula. Se debe completar setInput() \n antes de llamar al m\u00E9todo getReviseInfo() a partir de ReviseService.
+
+dataManagementServiceNotAvailable.MESSAGE=El servicio Gesti\u00F3n de datos no se halla disponible. Si desea obtener m\u00E1s detalles comun\u00EDquese con el administrador.
+reviseOperationFailed.MESSAGE=Fallo al ejecutar la operaci\u00F3n Revisar los objetos. Si desea obtener m\u00E1s detalles, comun\u00EDquese con el administrador. 
+
+renderingFalied.MESSAGE=Revisar el renderizado no est\u00E1 completo porque no se implement\u00F3 la operaci\u00F3n Revisar. Comun\u00EDquese con el administrador del sistema.

@@ -1,0 +1,79 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2002 Electronic Data Systems Corporation
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the project package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: project_locale.properties
+#   Module  : com.teamcenter.rac.commands.project
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#07-Nov-2002  Ming Fa                 Initial Promote.
+#20-Dec-2002  faming                  V9 Project Level Security Project
+#23-Dec-2002  faming                  merged to P8110
+#19-Mar-2003  faming                  Project Level Security
+#20-Mar-2003  faming                  merged to P8114
+#01-Apr-2003  faming                  Project Level Security
+#21-May-2003  faming                  Project Level Security
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#27-Jun-2003  faming                  change nothingFound back
+#30-Jun-2003  faming                  add unknownObject.NAME"
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#24-May-2007  M.Ram Narsimhamurty     Added support for ADS Program Context
+#$HISTORY$
+#=================================================================================================*/
+
+assignToProjectCommand.TITLE=P\u0159i\u0159adit objekt k {0}
+removeFromProjectCommand.TITLE=Odebrat objekt z {0}
+
+assignToProjectCommands.TITLE=P\u0159i\u0159adit objekty k {0}
+removeFromProjectCommands.TITLE=Odebrat objekty z {0}
+
+selectProjectForAssign.TITLE=Vybrat {0} pro p\u0159i\u0159azen\u00ED nov\u00E9ho objektu
+selectProjectsForRemove.TITLE=Vybrat {0}, ze kter\u00FDch se m\u00E1 odebrat objekt
+
+selectProjectForAssigns.TITLE=Vybrat {0} pro p\u0159i\u0159azen\u00ED objekt\u016F
+selectProjectsForRemoves.TITLE=Vybrat {0}, ze kter\u00FDch se maj\u00ED odebrat objekty
+
+assignAllButton.LABEL=V\u0161echny nalezen\u00E9 objekty
+assignLoadedButton.LABEL=Aktu\u00E1ln\u00ED str\u00E1nka
+
+selectedObjects.TITLE=Vybr\u00E1no objekt\u016F: 
+
+nothingFound.MESSAGE=Na tento dotaz nebyly vr\u00E1ceny \u017E\u00E1dn\u00E9 objekty.
+
+assignToProjects.MESSAGE=P\u0159i\u0159azen\u00ED objekt\u016F k {0} ...
+removeFromProjects.MESSAGE=Odebr\u00E1n\u00ED objekt\u016F z {0} ...
+
+more.LABEL=...
+more.TIP=Klepnut\u00EDm na tento odkaz zobraz\u00EDte seznam objekt\u016F
+
+closeButton.LABEL=zav\u0159\u00EDt
+
+folderContents.LABEL=Obsah
+folderContents.TIP=P\u0159i\u0159adit objekty obsahu k {0}
+folderObject.LABEL=Slo\u017Eka
+folderObject.TIP=P\u0159i\u0159adit samotnou slo\u017Eku k {0}
+
+parentToAssign.LABEL=Nad\u0159azen\u00E1 polo\u017Eka k p\u0159i\u0159azen\u00ED
+parentToAssign.TIP=Vybrat, kter\u00FD typ nad\u0159azen\u00E9 polo\u017Eky BOMLine p\u0159i\u0159adit k {0}
+BOMLineParentItem.LABEL=Polo\u017Eka
+BOMLineParentItemRev.LABEL=Revize polo\u017Eky
+
+BOMPropagationLevel.LABEL=\u00DArovn\u011B pod\u0159azen\u00FDch polo\u017Eek
+BOMPropagationLevel.TIP=Definovat, kolik \u00FArovn\u00ED pod\u0159azen\u00FDch polo\u017Eek BOMLine zpracovat
+BOMLinePropagationAll.LABEL=Cel\u00E1 rozpiska
+
+messageBox.TITLE={0}
+assignToProjectsErrorDialog.MSG=P\u0159i p\u0159i\u0159azov\u00E1n\u00ED objekt\u016F k {0} se vyskytly chyby
+removeFromProjectsErrorDialog.MSG=P\u0159i odebr\u00E1n\u00ED objekt\u016F z {0} se vyskytly chyby
+unknownObject.NAME=Nezn\u00E1m\u00FD n\u00E1zev objektu
+
+noSessionProgram=Program relace je nutn\u00E9 vybrat ve striktn\u00EDm hierarchick\u00E9m re\u017Eimu.
+noSessionProgram.TITLE=Neplatn\u00FD program relace

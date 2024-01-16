@@ -1,0 +1,46 @@
+#*==================================================================================================
+#
+#                           Copyright (c) 2003 EDS PLM Solutions
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the itemidregistry package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: publish_locale.properties
+#   Module  : com.teamcenter.rac.commands.publish
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#02-Apr-2003  rlee                    Initial create
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# command.TITLE not used but here to placate AbstractProgressDialog
+command.TITLE=Test
+
+confirmationText=Ver\u00F6ffentlichen an
+questionMark=?
+publish.STATUS=Ver\u00F6ffentlichen
+dotDotDot=...
+registerItemId.TITLE=Element registrieren
+registerItemIdSuccess.INITIALSTATUS=Ausgew\u00E4hlte Elemente werden registriert
+registerItemIdSuccess.STATUS=Ausgew\u00E4hlte Elemente wurden erfolgreich registriert
+
+unregisterItemId.TITLE=Elementregistrierung aufheben
+unregisterItemIdSuccess.INITIALSTATUS=Ausgew\u00E4hlte Elemente werden entregistriert
+unregisterItemIdSuccess.STATUS=Ausgew\u00E4hlte Elemente wurden erfolgreich entregistriert
+
+noSelectionError = Keine Objekte zum Ver\u00F6ffentlichen ausgew\u00E4hlt
+notADataset = Ausgew\u00E4hltes Objekt ist kein Dataset
+
+odsPublicationSite.LABEL=ODS-Ver\u00F6ffentlichungsstandorte
+sites.available=Verf\u00FCgbare Standorte
+sites.selected=Ausgew\u00E4hlte Standorte
+
+site.TITLE=Standortauswahl
+
+objectNotItem="Objekt ist kein Element"

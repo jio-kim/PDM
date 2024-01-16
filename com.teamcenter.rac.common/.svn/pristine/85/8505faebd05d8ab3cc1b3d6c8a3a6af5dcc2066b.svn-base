@@ -1,0 +1,59 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the addresslist package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: addresslist_locale.properties
+#   Module  : com.teamcenter.rac.commands.addresslist
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#05-Apr-2000  wangp                   add entry for include sub-groups check box
+#24-Apr-2000  wangp                   add entry addingMembers
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for new address list dialog
+# -------------------------------------------------------------
+command.TITLE=Address List
+
+root = Address List
+
+addList.TIP = Add the input name to the address list.
+removeList.TIP = Remove the selected from address list.
+addMember.TIP = Add the input name to the current selected alias list.
+removeMember.TIP = remove the selected member from current selected alias list.
+organization.TIP = Launch organization chart.
+
+closeButton = Close
+
+loadAliasList.MSG = Loading Alias List Members ...
+
+emptyTitle = Member List
+memberList = Member(s) of
+
+removeMember.TITLE    = Remove Member
+removeMember.MESSAGE  = Do you want to remove {0} from the address list?
+
+deleteAddressList.TITLE    = Delete Address List
+deleteAddressList.MESSAGE  = Do you want to delete the {0} address list?
+
+
+includeSubGroup = Include Sub-Groups
+
+selectGroupOrUser = Add a group or user to the member list
+selectionError.MESSAGE=Invalid component is selected
+selectionError.TITLE=Invalid Selection
+
+addingMembers.MESSAGE=Adding selected groups/users to the member list ...
+ 

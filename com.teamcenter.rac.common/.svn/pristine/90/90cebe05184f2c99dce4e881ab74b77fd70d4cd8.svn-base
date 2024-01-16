@@ -1,0 +1,111 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the acl package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: acl_locale.properties
+#   Module  : com.teamcenter.rac.common.acl
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Feb-2000  mccollr                 initial create
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Mar-2000  mccollr                 Change Name ACL to Named ACL.
+#10-Mar-2000  huangz                  Add new keys for add, delete and save name ACL
+#16-Mar-2000  huangz                  Fix error message
+#16-Mar-2000  huangz                  Merge to Troy
+#11-May-2000  huangz                  Add save confirmation keys
+#28-Nov-2000  wangp                   add additional privileges (PR 4211688)
+#25-Apr-2001  Zhixin Huang            Add key loadingAccessType.MSG
+#11-Jul-2001  Zhixin Huang            Fix PR 4268012
+#26-Jul-2001  Zhixin Huang            Add key to fix 4294324 ( Complete list of Accessor IDs not displayed with RIG)
+#02-Aug-2001  Zhixin Huang            Fix PR 1107443 ( Unable to manipulate custom priviledges in Portal).
+#07-Aug-2001  Zhixin Huang            Add some comments to the key name changes.
+#01-Nov-2001  Zhixin Huang            Fix PR 4349790
+#01-Nov-2001  Zhixin Huang            Merge the changes for PR 4349790 & 4351726 from V7.0.2
+#07-Jun-2002  braun                   Added WRITE_ICOS.
+#07-Jun-2002  helmutl                 merge from AM project
+#07-Jan-2003  Zhixin Huang            Fix PR 4645935 ( Change addNameACL.TIP to be more intuitive).
+#10-Mar-2003  Zhixin Huang            Change the tooltip of create named ACL button to fix PR 4645936.
+#28-Apr-2003  x_monthr                Add WRITE_ICES attributes
+#30-Apr-2003  Zhixin Huang            Integrate from PRE_try_p9.0.0.0 to try_p9.0.0.1.
+#17-Nov-2003  helmutl                 PR#4880552 rename in-CLASS to Classification
+#17-Nov-2003  helmutl                 Merge from Helmut
+#25-Feb-2005  Zhixin Huang            Change the entry value.
+#27-Jun-2005  faming                  Implement Assign to Project privilege
+#29-Jun-2005  faming                  Merged out from P10.0.0.19
+#17-Nov-2005  rlee                    Add support for REMOTE_CICO AM priv
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#30-Jun-2009  ntl                     add support for MARKUP, BATCH_PRINT, DIGITAL_SIGN
+#$HISTORY$
+#=================================================================================================*/
+
+# Keys for the ACL Dialog
+#-----------------------------
+aclList.TITLE=Liste des contr\u00F4les d'acc\u00E8s de
+add.TIP = Ajouter une entr\u00E9e de contr\u00F4le d'acc\u00E8s \u00E0 la liste ACL.
+deleteACL.TIP = Retrait d'une entr\u00E9e de contr\u00F4le d'acc\u00E8s de la liste ACL
+acl.TITLE = Liste de contr\u00F4le des acc\u00E8s (ACL)
+type.TIP=Type Niveau Acc\u00E8s
+id.TIP=ID Niveau Acc\u00E8s
+
+access.TIP = ACL nomm\u00E9e
+MARKUP.TIP=Affichage/Annotation
+BATCH_PRINT.TIP=Impression en batch
+DIGITAL_SIGN.TIP=Signature num\u00E9rique
+Administer_ADA_Licenses.TIP=Administration des licences ADA
+
+combo.TIP=Cliquez deux fois pour modifier le droit.
+changeType.TIP = Cliquez deux fois \u00E0 cet emplacement pour modifier le type.
+changeAccessID.TIP=Cliquez deux fois \u00E0 cet emplacement pour modifier l'ID acc\u00E8s.
+
+notComplete.TITLE = Edition non termin\u00E9e
+notCompleteMsg = Donn\u00E9es incorrectes dans la ligne en surbrillance.
+notSettingMsg = Pas de droit d\u00E9fini dans la ligne en surbrillance
+notCompleteException = Edition non termin\u00E9e
+noMemberMsg = Pas de membre de Niveau d'acc\u00E8s associ\u00E9 au type d'acc\u00E8s que vous s\u00E9lectionnez.
+
+nameAclList.TITLE = ACL nomm\u00E9e
+aclName = Nom de l'ACL :
+
+loadNameACLData = Chargement des donn\u00E9es de nom d'ACL ...
+
+nameACL.TITLE = Fen\u00EAtre d'attribution de noms aux ACL
+nameACLPopupButton.TIP = Bouton permettant d'acc\u00E9der \u00E0 la fen\u00EAtre d'attribution des noms aux ACL
+
+notValidSelection=Aucun objet correct s\u00E9lectionn\u00E9.
+
+addNameACL.TIP = Cr\u00E9e une nouvelle ACL nomm\u00E9e - entrez le texte dans le champ ACL Nomm\u00E9e pour activer le bouton Cr\u00E9er.
+deleteNameACL.TIP = Supprime la liste de contr\u00F4le d'acc\u00E8s s\u00E9lectionn\u00E9e dans la base de donn\u00E9e.
+
+saveACLMsg = Enregistrement des modifications de l'ACL nomm\u00E9e...
+
+saveChange.TITLE = Sauvegarder les modifications ...
+saveChange.MSG = Souhaitez-vous sauvegarder les modifications?
+
+workflowNamedACL.TIP = Permet d'afficher l'ACL nomm\u00E9e du Traitement.
+systemNamedACL.TIP = Permet d'afficher l'ACL syst\u00E8me nomm\u00E9e.
+save.TIP = Sauvegarder les modifications ACE.
+
+loadingAccessType.MSG = Chargement des types de droits d'acc\u00E8s ...
+
+accessorChooser.TITLE = S\u00E9lection du niveau d'acc\u00E8s ...
+selectedRoleGoup = Cliquez pour s\u00E9lectionner le r\u00F4le dans le groupe.
+
+showAllACEsRadio.LABEL=Afficher toutes les entr\u00E9es
+
+noReadPrivWarning.MSG = Vous refusez le droit de Lecture. C'est une bonne pratique de refuser \u00E9galement d'autres droits (tels que: "Ecrire", "Modifier", "Copier" et "Exporter").
+nonPAOWarning.MSG = Une ACL d'objet peut \u00EAtre ajout\u00E9e \u00E0 des instances POM_application_object seulement. L'objet s\u00E9lectionn\u00E9 n'est pas une instance POM_application_object.
+
+in =dans
+
+searchAccessor.TIP=Saisir les crit\u00E8res de recherche 
+searchButton.TIP=Trouver l'accesseur sur la base de crit\u00E8res
+Reset.TIP=Tout recharger
+accessorNotFound.MSG=Aucun accesseur de ce nom n'a \u00E9t\u00E9 trouv\u00E9

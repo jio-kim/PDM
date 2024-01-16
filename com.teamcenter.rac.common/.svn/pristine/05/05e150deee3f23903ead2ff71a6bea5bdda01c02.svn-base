@@ -1,0 +1,291 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the lov package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#09-Apr-2001  wangp                   Move entries from common to common/lov
+#24-Oct-2001  wangp                   add sort button
+#15-Jun-2003  Bruce Hebbard           Add multipick button
+#12-Nov-2004  x_suje                  Added file element "RowObject.java".
+#18-Nov-2004  x_suje                  for attribute sharing project
+#07-Jan-2005  faming                  V10 LOV Enhancement Project to Phase 8
+#24-Jan-2005  faming                  V10 LOV Enhancement Project
+#29-Apr-2005  hoangh                  PR#5178172
+#31-May-2005  bhamidip                Fix PR 5182338 (Attribute Sharing values found message incorrect)
+#$HISTORY$
+#=================================================================================================*/
+
+# LOVComboBox Keys
+# ------------------------
+LOVComboLoad=Loading list of values
+
+# Interdependent LOV panel
+#--------------------------
+LOVInterdependentButton.TIP=<html><body>{0}</body></html>
+
+# LOVPopupButton Keys
+# ------------------------------
+LOVPopupWindow.TITLE=List of Values
+LOVComponentInvalid=Can not load list of values.
+LOVPopupButton.TIP=Click to load list of values.
+
+valueLabel.NAME=Value:
+searchLabel.NAME=Search:
+inputLabel.NAME=Input:
+rangeLabel.NAME=Range:
+
+valueText.TIP=Enter the value, then press ENTER
+findText.TIP=Enter search criteria, then press ENTER or search button.
+valueTextRange.TIP=Enter value that is between the range.
+filterButton.TIP=Press to start searching
+addButton.TIP =Starts the operation to get LOV values from external datasource.
+allButton.TIP=Load all found values.
+nextButton.TIP=Load the next set of found values.
+prevButton.TIP=Load the previous set of found values.
+sortButton.TIP=Sort values in ascending order.
+sqlButton.TIP=Show the query clauses in dialog
+multipickButton.TIP=Select multiple values from a list.
+multicolumnButton.TIP=Select a row of data from the table.
+HierarchyLOVPopupButton.TIP=Select the value in the hierarchy.
+selectValue=Select value for
+search.TIP=Query the input value for the
+search=Search
+
+LOVDefaultMessage=Enter search criteria and press enter.
+LOVDefaultMessageForRange=Enter value that is between the range.
+LOVFound=values found
+LOVFound1=value found
+LOVShown=shown
+LOVNoFound.TIP=No value found.
+LOVLoadFirst=Loading first set of values
+loadPrevious=Loading previous set of values
+loadNext=Loading next set of values
+loadAll=Loading all found values
+loadByPart=Loading a set of values.
+LOVPopupMsgFailToLoad=Failt to load the list of values.
+LOVPopupMsgTitle=Load the list of values
+LOVCannotConvertMessage=Can not convert input to required type.
+LOVAllValuesNotFound=Can not load LOV values.
+
+invalidRangeInput.MESSAGE=The entered value falls outside the range defined for this LOV.\nPlease enter a value between the range of {0} to {1}.
+invalidInput.TITLE=Invalid Input
+
+LOVMultiColumnPopupButton.Tip=Click to see the Multicolumn LOV display
+LOVMultiColumnNoMapping=The property attached to LOV is not mapped to any external attributes.
+MultiColumnPanel.ERROR=ERROR
+MultiColumnTable.TIP=This table shows the external datasource values of mapped attributes
+MultiColumnFoundRows=rows are found. Do you want to load all of them?
+MultiColumnFoundRows.TITLE=Rows loading question
+andCondition=AND
+orCondition=OR
+SqlDialog.TITLE=Modify Query Clauses
+SqlDialog.header=Please specify the filter values for the mapped attributes.
+saveButton.TITLE=Save
+saveButton.TIP=Saves the user defined filter clauses.
+colsaveButton.TIP=Saves the user defined hidden column data
+startLoading=Starting populating the Multicolumn tables..
+getValues=Requesting the LOV values from external datasource...
+fetchValues=FetchValues
+Ascending=The Column values are sorted in ascending order
+Descending=The Column values are sorted in descending order
+displayDialog.TITLE=Column Display Control
+displayDialog.Header=Please choose the Table columns you want to display/Hide
+lovTableshownColumns.LABEL=Columns for the LOV Table
+generalColumn.available=Shown Columns
+generalColumn.selected=Hidden Columns
+addToHidden.TIP=Please click to add the selected value from Shown Column to hidden column
+removeFromHidden.TIP=Please click to add selected value in Hidden Column to shown Column
+isPrimaryColumn=You cannot hide the primary columns of the table. 
+primary.ERROR=Primary Column Error
+refresh.TIP=This reloads the table column values.
+userDialog.TITLE=User Selection Dialog
+userDialog.Header=Please select One value of your choice to assign to the property
+okButton.TITLE=OK
+okButton.TIP=Press Ok to save the selected entry.
+noSelection.TITLE=Error
+noSelection.ERROR=Nothing selected from the list
+andCondition=AND
+orCondition=OR
+noMappingExists=No attribute mapping found for this Property.Please contact Admin
+logicalOpTip=Select the cells below this column to specify logical operators
+attributeTip=This column represents the External attributes
+mathTip=Select the cells below this column to specify mathematical operators
+UserTip=Select the cells below this column to specify filter values.
+
+defineFilter.TIP=Define the filter that associates to the selected value.
+cutFilter.TIP=Cut the associated Filter from the selected value.
+refreshLOV.TIP=Refresh LOV display.
+deleteFilter.TIP=delete selected LOV Filter.
+selectLevel.TIP=Select all nodes on the tree with the same level.
+validateTree.TIP=Select level to check for un-balanced leaf values.
+
+
+# Entries for the LOVTree
+#------------------------------------------
+lovTreeRootText=List of Values
+
+# Entries for the LOV Panel
+#------------------------------------------
+createLOV=Create
+createLOV.TIP=Creates a New LOV Object
+createLOV.MNEMONIC=C
+
+modifyLOV=Modify
+modifyLOV.TIP=Modifies a LOV Object
+modifyLOV.MNEMONIC=M
+
+deleteLOV=Delete
+deleteLOV.TIP=Deletes a LOV Object
+deleteLOV.MNEMONIC=D
+
+clearLOV=Clear
+clearLOV.TIP=Clears all of the values.
+clearLOV.MNEMONIC=R
+
+LOVPropertyAttachment.TITLE=List Of Values Property Attachment
+LOVDependentPropertyAttachment.TITLE=List Of Values Dependent Property Attachment
+
+addButton.TIP=Adds the selected Type/Property to the list.
+removeButton.TIP=Removes the selected Type/Property from the list.
+clearButton.TIP=Clears all Type/Properties from the list.
+
+attachmentList.TIP=The list of associated properties attached to this LOV.
+
+integer=Integer
+double=Double
+char=Char
+string=String
+date=Date
+reference=Reference
+
+ListOfValuesTag=Tag
+ListOfValuesTagExtent=Tag Extent
+
+ListOfValuesString=String
+ListOfValuesStringExtent=String Extent
+ListOfValuesTagRDVSearchRevRule=RDV Search Rev Rule
+ListOfValuesStringExtentGrName=Group Name
+ListOfValuesStringExtentPubrType=Publication Record Type
+ListOfValuesStringExtentStatus=Status
+ListOfValuesStringExtentUsName=User Name
+ListOfValuesStringExtentUserId=User ID
+ListOfValuesStringExtentWSOClass=Class
+ListOfValuesInteger=Integer
+ListOfValuesIntegerExtentSite=Site
+ListOfValuesFilter=Filter
+ListOfValuesDouble=Double
+ListOfValuesDate=Date
+ListOfValuesChar=Char
+
+exhaustive=Exhaustive
+suggestive=Suggestive
+range=Range
+
+addValue.TIP=Adds the entered values into the list.
+removeValue.TIP=Removes the selected values from the list.
+upValue.TIP=Moves the selected value up.
+downValue.TIP=Moves the selected value down.
+
+loadValues.TIP=Loads all of the values from the selected reference class into the list.
+
+name=Name:
+filterName=Filter Name:
+description=Description:
+valueType=Value Type:
+usage=Usage:
+valueName=Value
+descriptionName=Description
+shownValue=Shown Values
+hiddenValue=Hidden Values
+hierarchy=Hierarchy
+attach=Attach:
+addDesc.TIP=Add to the property description attachment.
+removeDesc.TIP=Remove the property description attachment.
+referenceClass.TIP=Reference class and attribute
+basedOnLOV=Based On LOV:
+listOfValuesFilter=List Of Values Filter
+noAttachment=No Attachment
+selectLevel.TITLE=Choose The Level To Select
+found=found
+
+values=Values
+value=Value:
+
+upperLimit=Upper limit:
+lowerLimit=Lower limit:
+
+# Entries for message center
+#------------------------------------------
+deletingLOV=Deleting LOV ...
+creatingLOV=Creating LOV ...
+savingLOV=Saving LOV ...
+fetchingValues=Loading values for selected class and attribute ...
+
+# Entries for confirmation message
+#------------------------------------------
+confirmDelete.TITLE=Delete Confirmation
+confirmDelete.MESSAGE=Do you really want to delete
+
+# Entries for error messages
+#------------------------------------------
+cannotConvert=Can not convert the input to the corresponding type.
+noLOVFound=No List of Values are found.
+noComponentsToFetch=No values are found for selected class and attribute.
+error.TITLE=Error
+information.TITLE=List of Values
+warning.TITLE=Warning
+invalidNullValue=Null value is invalid and can not be saved.
+duplicatedValue=is duplicated value and can not be saved.
+
+# PR# 4282192 (lov_type not supported in SA module) - Entries for lov type combobox
+#----------------------------------------------------------------------------------
+loadingLOVTypes=Loading List Of Value Types ....
+lovType=LOV Type:
+listOfValuesChar=List Of Values Char
+listOfValuesDate=List Of Values Date
+listOfValuesDouble=List Of Values Double
+listOfValuesInteger=List Of Values Integer
+listOfValuesString=List Of Values String
+listOfValuesTag=List Of Values Tag
+lsitOfValuesFilter=Lit Of Values Filter
+
+nextFound.TIP=Select the next found.
+previousFound.TIP=Select the previous found.
+for=for
+attachDependencyButton.TIP=Attach the dependent property.
+lovDependencyWizard.TITLE=LOV Dependencies Wizard
+selectLOV=Select LOV
+selectLOV.INFO=Select the LOV that you want to associate to
+defineFilter.TITLE=Define Filter
+defineFilter.INFO=Define the filter that you want to associate to
+defineFilter.TIP=Define the filter that associates to the selected value.
+directDependencyCheckbox=Direct Dependency on based on LOV
+findStatus=Finding Teamcenter class name begin with
+classificationName=Classification Name:
+defineClassification.TITLE=Define Classifications
+defineClassification.TIP=Define classisifications.
+selectLevelOrClassification.TITLE=Select Level Or Classification
+selectIncludeParentLevel=Select Include Parent Level
+level=Level
+allLevel=All Levels
+
+cutFilter.TIP=Cut the associated Filter from the selected value.
+refreshLOV.TIP=Refresh LOV display.
+deleteFilter.TIP=Remove and delete selected LOV Filter.
+selectLevel.TIP=Select all nodes on the tree with the same level.
+validateTree.TIP=Select the level to check for un-balanced leaf values.
+
+selectFilter.TITLE=Select Filter
+createFilter.TITLE=Create Filter
+
+loadHierarchy.TIP=Load all hierarchy.

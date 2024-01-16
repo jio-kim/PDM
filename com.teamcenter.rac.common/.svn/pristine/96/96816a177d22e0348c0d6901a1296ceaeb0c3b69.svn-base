@@ -1,0 +1,165 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the audit package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: audit_locale.properties
+#   Module  : com.teamcenter.rac.common.commands.audit
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#07-Oct-2000  choim                   initial imlementation
+#11-Oct-2000  choim                   add error messages
+#13-Oct-2000  choim                   add messages
+#09-Nov-2000  choim                   add text
+#12-Dec-2000  choim                   add text messages.
+#23-Jan-2001  choim                   modify page buttons' tool tip messages, etc.
+#01-May-2002  shen                    Prepare for P8.0.0.8 promotion
+#02-May-2002  shen                    Merge out from P8.0.0.7
+#30-Apr-2002  faming                  change __ViewAuditLog... to __ViewAuditLog
+#02-May-2002  faming                  merged against P8.0.0.7
+#03-May-2002  faming                  merged out from cyp_p8.0.0.8
+#25-Jul-2002  shen                    P8.1.0.3
+#01-Dec-2003  shen                    merge out from P9.0.0.9
+#22-Jan-2004  shen                    WF Audit project
+#30-Jan-2004  shen                    Audit Report Project
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+dialog.TITLE=\u6AA2\u8996\u5BE9\u6838\u65E5\u8A8C
+loadingAudit=\u6B63\u5728\u8F09\u5165\u5BE9\u6838...
+startAuditOperation=\u6B63\u5728\u555F\u52D5\u5BE9\u6838\u4F5C\u696D...
+
+noAuditableTypes.MESSAGE=\u7CFB\u7D71\u4E2D\u6C92\u6709\u53EF\u5BE9\u6838\u7684\u7269\u4EF6\u985E\u578B\u3002\u5BE9\u6838\u7BA1\u7406\u5668\u5373\u5C07\u96E2\u958B\u3002
+noObjectsFound.TITLE=\u641C\u5C0B\u8CC7\u8A0A
+noObjectsFound.MESSAGE=\u4F7F\u7528\u300C\u6307\u5B9A\u7684\u6E96\u5247\u300D\u672A\u627E\u5230\u4EFB\u4F55\u7269\u4EF6
+objectsFound.MESSAGE=\u4F7F\u7528\u76EE\u524D\u641C\u5C0B\u6E96\u5247\u627E\u5230\u7684\u7269\u4EF6
+shown=\u5DF2\u986F\u793A
+message.TITLE=\u641C\u5C0B
+performLoad.MESSAGE=\u6B63\u5728\u8F09\u5165\u7269\u4EF6...
+
+findButton=\u641C\u5C0B
+findButton.TIP=\u641C\u5C0B\u5BE9\u6838\u65E5\u8A8C
+clearButton=\u6E05\u9664
+clearButton.TIP=\u6E05\u9664\u6240\u6709\u6B04\u4F4D
+cancelButton=\u53D6\u6D88
+cancelButton.TIP=\u53D6\u6D88\u61C9\u7528\u7A0B\u5F0F\u4E26\u95DC\u9589\u6B64\u8996\u7A97
+exportAuditLogButton=\u532F\u51FA\u5BE9\u6838\u65E5\u8A8C...
+
+printButton=\u5217\u5370
+printButton.TIP=\u5217\u5370\u5BE9\u6838\u65E5\u8A8C
+saveButton=\u5132\u5B58
+saveButton.TIP=\u5132\u5B58\u6240\u6709\u6B04\u4F4D
+
+dialogTitle=\u5BE9\u6838\u65E5\u8A8C
+
+
+general=\u5E38\u898F
+advanced=\u9032\u968E
+generalTabToolTip=\u5E38\u898F\u67E5\u8A62\u6E96\u5247
+advancedTabToolTip=\u6839\u64DA\u5C6C\u6027\u503C\u8F38\u5165\u67E5\u8A62\u6E96\u5247
+searchCriteria = \u641C\u5C0B\u6E96\u5247
+ 
+objectName=\u7269\u4EF6\u540D\u7A31\uFF1A
+objectType=\u7269\u4EF6\u985E\u578B\uFF1A
+objectId=\u7269\u4EF6 ID\uFF1A
+projectIdName=\u5C08\u6848\uFF1A
+projectName=\u5C08\u6848\u540D\u7A31
+eventType=\u4E8B\u4EF6\u985E\u578B\uFF1A
+objectRev=\u7269\u4EF6\u7248\u672C\uFF1A
+userId=\u4F7F\u7528\u8005 ID\uFF1A
+createdBefore=\u5EFA\u7ACB\u6642\u9593\u65E9\u65BC\uFF1A
+createdAfter=\u5EFA\u7ACB\u6642\u9593\u665A\u65BC\uFF1A
+jobName=\u4F5C\u696D\u540D\uFF1A
+secObjectID=\u6B21\u7269\u4EF6 ID\uFF1A
+secObjectName=\u6B21\u7269\u4EF6\u540D\u7A31\uFF1A
+secObjectRev=\u6B21\u7269\u4EF6\u7248\u672C\uFF1A
+secObjectType=\u6B21\u7269\u4EF6\u985E\u578B\uFF1A
+objectSeqNo=\u7269\u4EF6\u5E8F\u865F\uFF1A
+secObjectSeqNo=\u6B21\u7269\u4EF6\u5E8F\u865F\uFF1A
+groupName=\u7FA4\u7D44\u540D\u7A31\uFF1A
+errorCode=\u932F\u8AA4\u7A0B\u5F0F\u78BC\uFF1A
+numericFieldsToolTip=\u8F38\u5165\u4E00\u500B\u6578\u5B57\u6574\u6578\u503C\u3002\u4E5F\u53EF\u4EE5\u4F7F\u7528\u842C\u7528\u5B57\u5143 * \u548C ?\u3002
+
+emptyFields.TITLE=\u7A7A\u6B04\u4F4D
+emptyFields.MESSAGE=\u8ACB\u5728\u8868\u55AE\u4E2D\u586B\u5BEB\u4E00\u4E9B\u6B04\u4F4D\u3002
+
+availableProperties=\u53EF\u7528\u5C6C\u6027
+searchableProperties=\u9078\u5B9A\u7684\u641C\u5C0B\u6E96\u5247
+
+queryNotFound.TITLE=\u672A\u627E\u5230\u67E5\u8A62
+queryNotFound.MESSAGE=\u78BA\u4FDD\u5B89\u88DD\u4E86\u5132\u5B58\u7684\u67E5\u8A62 "__ViewAuditLog"\u3002
+
+propertyName=\u5C6C\u6027\u540D\u7A31
+oldValue=\u820A\u503C
+newValue=\u65B0\u503C
+
+# ------------------------------
+nextButton.TIP=\u8F09\u5165\u5F8C
+previousButton.TIP=\u8F09\u5165\u524D
+trailingTip= \u500B\u627E\u5230\u7684\u5143\u4EF6\u5230\u8868\u4E2D\u3002
+allButton.TIP=\u5C07\u627E\u5230\u7684\u6240\u6709\u5143\u4EF6\u8F09\u5165\u5230\u8868\u4E2D\u3002
+legacyDataViewAuditButton.TIP=\u986F\u793A\u9078\u5B9A\u7269\u4EF6\u7684\u539F\u59CB\u5BE9\u6838\u8CC7\u8A0A\u3002
+legacyDataCheckOutHistoryButton.TIP=\u986F\u793A\u9078\u5B9A\u7269\u4EF6\u7684\u539F\u59CB\u7C3D\u51FA\u6B77\u7A0B\u8A18\u9304\u3002
+
+loadPrevious=\u6B63\u5728\u8F09\u5165\u4E0A\u4E00\u7D44\u5143\u4EF6
+loadNext=\u6B63\u5728\u8F09\u5165\u4E0B\u4E00\u7D44\u5143\u4EF6
+loadAll=\u6B63\u5728\u8F09\u5165\u627E\u5230\u7684\u6240\u6709\u5143\u4EF6
+
+#selectedObjectsIsNotProcessMessage=Selected Object Is Not An EPM Process
+
+infoDefaultMessage=\u641C\u5C0B\u7D50\u679C
+objectsFound=\u500B\u7269\u4EF6\u5DF2\u627E\u5230
+
+reports=\u5831\u544A...
+loadReports=\u6B63\u5728\u8F09\u5165\u5BE9\u6838\u5831\u544A\u8A2D\u8A08...
+
+xslNotFound=\u7121\u6CD5\u627E\u5230 XSL \u6A23\u5F0F\u8868\u4F86\u7522\u751F\u5831\u544A
+queryNotFound=\u7121\u6CD5\u5132\u5B58\u7684\u67E5\u8A62
+reportDesignNotFound=\u672A\u627E\u5230\u5831\u544A\u8A2D\u8A08
+notPOMobject=\u9078\u5B9A\u7269\u4EF6\u4E0D\u662F POM \u7269\u4EF6
+notValidObject=\u9700\u8981\u9078\u53D6\u6709\u6548\u7269\u4EF6\u4EE5\u57F7\u884C\u8A72\u52D5\u4F5C
+
+searchButton.TIP=\u6309\u4F7F\u7528\u8005\u540D\u7A31\u6216\u4F7F\u7528\u8005 ID \u641C\u5C0B\u4F7F\u7528\u8005
+
+searchResultMessage=\u9078\u53D6\u4E00\u500B\u4F7F\u7528\u8005
+searchResult.TITLE=\u4F7F\u7528\u8005\u641C\u5C0B\u7D50\u679C
+searchNoResultMessage=\u672A\u627E\u5230\u7B26\u5408\u641C\u5C0B\u6E96\u5247\u7684\u4F7F\u7528\u8005
+
+#ExportToExcelProcessDialog
+ExportToExcelProcessDialog.Title=\u532F\u51FA\u5BE9\u6838\u65E5\u8A8C
+ExportToExcelProcessDialog.Header=\u5C07\u5BE9\u6838\u65E5\u8A8C\u8CC7\u6599\u532F\u51FA\u81F3 Excel 
+ExportToExcelProcessDialog.exportToExcel=\u532F\u51FA\u81F3 Excel
+ExportToExcelProcessDialog.ExportToExcelJob=\u532F\u51FA\u81F3 Excel \u4F5C\u696D
+ExportToExcelProcessDialog.ExportToExcelUIJob=\u532F\u51FA\u81F3 Excel UI \u4F5C\u696D
+
+#ExportToCSVProcessDialog
+ExportToCSVProcessDialog.Title=\u532F\u51FA\u5BE9\u6838\u65E5\u8A8C
+ExportToCSVProcessDialog.Header=\u5C07\u5BE9\u6838\u65E5\u8A8C\u8CC7\u6599\u532F\u51FA\u81F3 CSV
+ExportToCSVProcessDialog.exportToCSV=\u532F\u51FA\u81F3 CSV
+ExportToCSVProcessDialog.ExportToCsvJob=\u532F\u51FA\u81F3 CSV \u4F5C\u696D
+ExportToCSVProcessDialog.ExportToCsvUIJob=\u532F\u51FA\u81F3 CSV UI \u4F5C\u696D
+
+#ExportAuditLogDialog
+ExportAuditLogDialog.Title=\u532F\u51FA\u5BE9\u6838\u65E5\u8A8C
+ExportAuditLogDialog.Header=\u5C07\u5BE9\u6838\u65E5\u8A8C\u8CC7\u6599\u532F\u51FA\u81F3 Excel \u6216 CSV
+ExportAuditLogDialog.NoObjectsSelected=\u672A\u9078\u53D6\u7269\u4EF6
+ExportAuditLogDialog.ExportObjects=\u532F\u51FA\u7269\u4EF6...
+ExportAuditLogDialog.OutputFormat=\u8F38\u51FA\u683C\u5F0F
+ExportAuditLogDialog.UseExcel=\u4F7F\u7528 Excel
+ExportAuditLogDialog.UseCSV=\u4F7F\u7528 CSV
+ExportAuditLogDialog.ObjectSelection=\u7269\u4EF6\u9078\u53D6
+ExportAuditLogDialog.ExportSelectedObjects=\u532F\u51FA\u9078\u5B9A\u7684\u7269\u4EF6
+ExportAuditLogDialog.ExportAllObjectsInView=\u532F\u51FA\u8996\u5716\u4E2D\u7684\u6240\u6709\u7269\u4EF6
+fmsErrorDetails.ERRORMSG=\u9019\u901A\u5E38\u662F\u7531\u65BC\u7D44\u614B\u554F\u984C\uFF0CFMS \u4E3B\u7D44\u614B\u672A\u4F7F\u7528\u5408\u9069\u7684\u78C1\u789F\u5340/\u5B58\u53D6 ID \u66F4\u65B0\uFF08\u9700\u8981 FMS \u91CD\u65B0\u555F\u52D5\uFF09\u3002\n\u6AA2\u67E5 FMS_HOME \u74B0\u5883\u8B8A\u6578\u3002
+fmserror.ERROR=\u532F\u51FA\u8CC7\u6599\u904E\u7A0B\u4E2D\u51FA\u932F\u3002
+fileDownloadError.ERRORMSG=\u6A94\u6848\u672A\u88AB\u4E0B\u8F09\u3002
+FileNotDownloaded=\u6A94\u6848\u672A\u4E0B\u8F09

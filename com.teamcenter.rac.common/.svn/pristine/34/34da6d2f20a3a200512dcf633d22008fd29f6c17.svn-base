@@ -1,0 +1,137 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the table package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: table_locale.properties
+#   Module  : com.teamcenter.rac.common.table
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#31-Jan-2001  huangz                  Initial creation
+#23-Feb-2001  huangz                  Merge from Try_uif_v7.0 branch to Zhixin's branch to fix the clearcase shif problem.
+#06-Mar-2001  Zhixin Huang            Add the yes.VALUE and no.VALUE key
+#14-Jan-2002  Zhixin Huang            Add auto filter feature.
+#28-Jan-2002  Zhixin Huang            Fix PR 4155683 & Add the copy selection with headers menu.
+#29-Jan-2002  Zhixin Huang            Enhance the auto filter feature.
+#09-May-2002  Zhixin Huang            Add the key for auto filter.
+#13-Dec-2002  Zhixin Huang            Revise according to Rob's comments.
+#27-Dec-2002  Zhixin Huang            Add the key for tool tip.
+#06-Feb-2003  wangp                   fix pr 4639098: add checkout with export value
+#11-Mar-2003  wangp                   fix pr 4724205: show icon for check out with export
+#30-Apr-2003  Zhixin Huang            Integrate from PRE_try_p9.0.0.0 to try_p9.0.0.1.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#19-Oct-2008  Medha Thakur            appended a '.' at the end of generalInstruction2. 
+#$HISTORY$
+#=================================================================================================*/
+
+yes.VALUE=ano
+no.VALUE=ne
+checkedExport.VALUE=Y/E
+checkedExport.VALUE=Y/E
+
+all = V\u0160E
+autoFilter.TITLE = Automatick\u00FD filtr
+negative.TIP=P\u0159epnut\u00EDm dol\u016F filtrujte v\u00FDsledek, kter\u00FD neodpov\u00EDd\u00E1 podm\u00EDnk\u00E1m.
+
+removeColumn.MSG = Chcete odebrat sloupec -
+removeColumn.TITLE = Odebrat sloupec
+
+copySelectionWithHeader = Se z\u00E1hlav\u00EDmi
+copySelectionWithoutHeader Bez z\u00E1hlav\u00ED
+
+add.TIP = P\u0159idejte novou podm\u00EDnku.
+remove.TIP = Odeberte vybranou podm\u00EDnku.
+
+addFilter.TIP = P\u0159idejte novou podm\u00EDnku filtrace.
+
+filter.TIP = Vyberte podm\u00EDnku k filtraci nebo V\u0160E k obnoven\u00ED tabulky
+
+autoFilterHistory.TIP = Stisknut\u00EDm provedete automatickou filtraci.
+filterConditionEditor.TITLE = Editor podm\u00EDnek filtrace
+composeCondition.TITLE = Vytvo\u0159it podm\u00EDnku
+clear.TIP = Vy\u010Dist\u011Bte v\u0161echny podm\u00EDnky.
+
+# Entries for InsertColumnDialog
+# -----------------------------------
+availableProperties.LABEL=Dostupn\u00FD
+selectedProperties.LABEL=Vybran\u00FD
+displayName=Zobrazit vnit\u0159n\u00ED n\u00E1zvy vlastnost\u00ED 
+
+loadingProperty=Na\u010Dten\u00ED vlastnost\u00ED...
+
+changeColumnDialog.TITLE=Zm\u011Bnit sloupce
+generalInstruction1=Ve stromu vyberte typ objekt\u016F, jejich\u017E vlastnosti chcete zobrazit. 
+generalInstruction2=Pomoc\u00ED tla\u010D\u00EDtek navigace vyberte sloupce, kter\u00E9 budou zobrazeny, a ulo\u017Ete zm\u011Bn\u011Bn\u00FD seznam jako novou konfiguraci sloupce nebo jej pou\u017Eijte na aktu\u00E1ln\u00ED pohled.
+generalInstruction3=V\u0161imn\u011Bte si, \u017Ee p\u0159i prvn\u00EDm rozbalen\u00ED uzl\u016F kategori\u00ED v relaci Teamcenteru m\u016F\u017Ee na\u010Dten\u00ED typ\u016F ve strom\u011B a zobrazen\u00ED jejich n\u00E1zv\u016F trvat dlouho, v z\u00E1vislosti na po\u010Dtu typ\u016F v datab\u00E1zi. Op\u011Btovn\u00E9 rozbalen\u00ED bude rychl\u00E9, proto\u017Ee typy se ukl\u00E1daj\u00ED do vyrovn\u00E1vac\u00ED pam\u011Bti.
+
+others=Ostatn\u00ED
+
+categoryAndType=Kategorie a typ
+availableColumns=Dostupn\u00E9 sloupce
+displayedColumns=Zobrazen\u00E9 sloupce
+
+saveColumnConfig=Ulo\u017Eit...
+applyColumnConfig=Pou\u017E\u00EDt
+
+duplicateColumnWarn.MSG=Jeden nebo v\u00EDce vybran\u00FDch sloupc\u016F je ji\u017E v tabulce a nebude p\u0159id\u00E1n.
+duplicateColumnWarn.TITLE=Duplicitn\u00ED sloupce
+
+
+overwriteConfigurationWarn.MSG=Ji\u017E existuje konfigurace sloupce se stejn\u00FDm n\u00E1zvem. Chcete ji p\u0159epsat?
+overwriteConfigurationWarn.TITLE=P\u0159epsat konfiguraci sloupce
+
+AdminConfigurationError.TITLE=Chyba konfigurace sloupce
+AdminConfigurationError.MSG=Konfigurace sloupce se stejn\u00FDm n\u00E1zvem ji\u017E byla vytvo\u0159ena spr\u00E1vcem.
+
+# Tooltips
+# --------
+saveColumnConfig.TIP=Ulo\u017Eit aktu\u00E1ln\u00ED v\u00FDb\u011Bry jako konfiguraci sloupce
+applyCurrentSelections.TIP=Pou\u017E\u00EDt vybran\u00E9 sloupce na aktu\u00E1ln\u00ED pohled
+addColumns.TIP=P\u0159idat vybran\u00E9 sloupce z dostupn\u00FDch sloupc\u016F do zobrazen\u00FDch sloupc\u016F
+removeColumns.TIP=Odebrat vybran\u00E9 sloupce ze zobrazen\u00FDch sloupc\u016F do dostupn\u00FDch sloupc\u016F
+moveColumnsUp.TIP=P\u0159esunout vybran\u00E9 sloupce o \u00FArove\u0148 v\u00FD\u0161e
+moveColumnsDown.TIP=P\u0159esunout vybran\u00E9 sloupce o \u00FArove\u0148 n\u00ED\u017Ee
+
+# Save/Copy Column Config dlg
+# --------------------------
+saveColumnConfigurationDialog.TITLE=Ulo\u017Eit konfiguraci sloupc\u016F
+saveColumnConfigurationDialog.HEADER=Ulo\u017Eit zobrazen\u00E9 sloupce jako konfiguraci sloupce. Tyto ulo\u017Een\u00E9 konfigurace sloupce lze pozd\u011Bji pou\u017E\u00EDt pomoc\u00ED p\u0159\u00EDkazu Pou\u017E\u00EDt konfiguraci sloupce.
+columnConfigurationName=N\u00E1zev
+columnConfigurationDesc=Popis
+save=Ulo\u017Eit
+
+copyColumnConfigurationDialog.TITLE=Kop\u00EDrovat konfiguraci sloupce
+copyColumnConfigurationDialog.HEADER=Kop\u00EDrovat existuj\u00EDc\u00ED konfiguraci sloupce do nov\u00E9 konfigurace sloupce.
+ScopeLabel=Rozsah
+copyOf=Kopie
+
+
+# Apply Column Config dlg
+# --------------------------
+applyColumnConfigurationDialog.TITLE=Pou\u017E\u00EDt konfiguraci sloupce
+applyColumnConfigurationDialog.HEADER=Pou\u017E\u00EDt d\u0159\u00EDve ulo\u017Eenou konfiguraci sloupce na aktu\u00E1ln\u00ED pohled nebo vytvo\u0159it, odstranit nebo upravit ulo\u017Een\u00E9 konfigurace sloupce.
+columnViews=Pohledy sloupc\u016F
+loadingColumnViews=Na\u010D\u00EDt\u00E1n\u00ED pohled\u016F sloupc\u016F...
+deleteColumnConfiguration.MSG = Chcete odstranit konfiguraci sloupce -
+deleteColumnConfiguration.TITLE = Odstranit konfiguraci sloupce
+addConfiguration.TIP=P\u0159idat novou konfiguraci sloupce
+editConfiguration.TIP=Zm\u011Bnit existuj\u00EDc\u00ED konfiguraci sloupce a pou\u017E\u00EDt ji na aktu\u00E1ln\u00ED pohled
+copyConfiguration.TIP=Kop\u00EDrovat vybranou konfiguraci sloupce do nov\u00E9 konfigurace
+deleteConfiguration.TIP=Odstranit vybranou konfiguraci sloupce
+applyColumnConfig.TIP=Pou\u017Eije konfiguraci vybran\u00E9ho sloupce na aktu\u00E1ln\u00ED pohled
+
+# Logging messages
+# --------------------------
+noValueForPreference=\u017D\u00E1dn\u00E1 hodnota pro preferenci: 
+User.configNamePattern=(U\u017Eivatel)%1
+Group.configNamePattern=(Skupina)%1
+Site.configNamePattern=(Pracovi\u0161t\u011B)%1
+Role.configNamePattern=(Role)%1
+

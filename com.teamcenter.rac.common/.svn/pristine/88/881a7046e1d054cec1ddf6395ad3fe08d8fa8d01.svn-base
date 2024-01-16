@@ -1,0 +1,45 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the pasteas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: pasteas_locale.properties
+#   Module  : com.teamcenter.rac.commands.pasteas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = Paste Special
+addAs = Add As:
+confirmationText = Ok to Paste?
+
+# Entries for error message
+clipboardEmpty = Clipboard is empty.
+error.TITLE = Paste Special
+
+#PasteBOMAsDialog
+componentOfSelectedAssembly = Component of Selected Assembly
+substituteOfSelectedAssembly = Substitute of Selected Assembly
+numberOfOccurrences = Number of Occurrences:
+quantityPerOccurrence = Quantity Per Occurrence:
+ar = A/R
+sequenceNumber = Find Number:
+viewType = View Type:
+
+# Entries for message center
+loadingRelations=Loading relations ... 
+
+# Entries for displaying error messages when wrong relation is used
+captureRelation = Only capture relation should be used.
+relation.TITLE = Bad relation

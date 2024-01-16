@@ -1,0 +1,125 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.teamcenter.rac.common" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.teamcenter.rac.common" id="IPropertySourceComparator" name="IPropertySource Comparator"/>
+      </appinfo>
+      <documentation>
+         The purpose of this extension point is to allow user to specify a custom comparator for a give property.The Comparator will be dealing with IPropertySource instance.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <choice minOccurs="1" maxOccurs="unbounded">
+            <element ref="IPropertySourceComparator" minOccurs="1" maxOccurs="unbounded"/>
+         </choice>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="IPropertySourceComparator">
+      <annotation>
+         <documentation>
+            This Element contains information of property name and its corresponing comparator class.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="propertyName" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The property name which needs custom comparator.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The Comparator class for a give property name.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn=":java.util.Comparator&lt;org.eclipse.ui.views.properties.IPropertySource&gt;"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The unique id representing this extension
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         The Extension Point is introduced in Teamcenter 10.0.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         This extension point can be used when one has to provide implementaion for Comparator&amp;lt;IPropertySource&amp;gt;
+&lt;br&gt;Example Use case: Provide custom sorting mechanism for &apos;bl_intended_title&apos; in Structure Manager&lt;/br&gt;
+&lt;br&gt;Steps to implement:&lt;/br&gt;
+&lt;br&gt;1.Add entry in extension point IPropertySourceComparator.
+&lt;br&gt;2.Specify propertyName as &apos;bl_intended_title&apos; and class as &apos;path to your custom comparator class&apos;.
+&lt;br&gt;3.Provide implementation for your custom comparator.
+&lt;br&gt;4.Framework will automatically invoke the comparator for the specified property.
+      </documentation>
+   </annotation>
+
+
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         &lt;br&gt;// @&lt;COPYRIGHT&gt;@
+&lt;br&gt;// ==================================================
+&lt;br&gt;// Copyright 2012.
+&lt;br&gt;// Siemens Product Lifecycle Management Software Inc.
+&lt;br&gt;// All Rights Reserved.
+&lt;br&gt;// ==================================================
+&lt;br&gt;// @&lt;COPYRIGHT&gt;@
+      </documentation>
+   </annotation>
+
+</schema>

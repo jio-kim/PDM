@@ -1,0 +1,273 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the exportobjects package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: exportobjects_locale.properties
+#   Module  : com.teamcenter.rac.commands.exportobjects
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#18-Sep-2000  Chandra Veerapaneni     Add new messages
+#18-Sep-2000  Chandra Veerapaneni     Add messages related to STEP
+#20-Sep-2000  Chandra Veerapaneni     correction for viewLogFile.MSG
+#11-Oct-2000  Chandra Veerapaneni     Add exportsettings.TIP
+#04-Dec-2000  Chandra Veerapaneni     Fix label truncation
+#07-May-2001  wangp                   change Tc to i-Man
+#18-May-2001  wangp                   change i-Man back to Tc
+#06-Mar-2002  rlee                    Fix PR 4466325, null ptr exception when no sites defined
+#08-Mar-2002  rlee                    Add report file generation errors
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#02-Oct-2002  Chandra Veerapaneni     Fix PR# 4626426 (Portal hangs executing export when referencers expanded in Referencers tab)
+#08-Oct-2002  Chandra Veerapaneni     Incorporate review comments from Mahendra for PR# 4626426
+#16-Dec-2002  Zhixin Huang            Add PLM XML export function.
+#16-Dec-2002  Zhixin Huang            Merge from V7.0.3
+#14-Jan-2003  Zhixin Huang            Remove two keys bWriteOwingSite, bWriteOwner/
+#08-Mar-2003  Murali Chamarthy        Added for BOMExchange UI
+#30-Apr-2003  Zhixin Huang            Integrate from PRE_try_p9.0.0.0 to try_p9.0.0.1.
+#13-Aug-2003  x_brahma                added exportContext
+#19-Aug-2003  Brahmanandam Somanchi   Merge from secunderabad
+#12-Sep-2003  Ramesh Kumar            Update from CVR.
+#30-Sep-2003  luf                     Add AI related
+#23-Oct-2003  luf                     Allow select AI
+#30-Oct-2003  luf                     Add find button
+#19-Feb-2004  x_bodduk                Add AI create button
+#02-Mar-2004  x_bodduk                Added create AI button related
+#11-Mar-2004  Ranjit Saripalli        p9.1.0.3 conflict resolutions
+#25-Mar-2004  Hwey Wung               Make necessary changes to new export object dialog
+#14-Apr-2004  x_bodduk                Add AI related entries
+#28-Jun-2004  Milind Mulay            For 002557:TcLink Enhancements II.I
+#18-Oct-2004  Geethika Chitturi       Changing Teamcenter to Teamcenter
+#18-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#18-Oct-2004  Geethika Chitturi       Merging to project branch
+#02-Sep-2004  nidoy                   Add site selection entries
+#07-Oct-2004  nidoy                   Add site selection entries
+#03-Nov-2004  Vic Nidoy               Merge with p10.0.0.6
+#07-Dec-2004  Paul Richards           User Log Popup
+#09-Dec-2004  Paul Richards           UserLogPopup
+#10-Dec-2004  Paul Richards           UserLogPopUp
+#23-Mar-2005  kotadiya                Added exportOptionConfirm.MSG entries for PR# 4957393
+#09-Jun-2005  vkansal                 Fix PR#5198465, Add new error message
+#10-Jun-2005  vkansal                 change the error text
+#24-Oct-2005  x_milind                merge from milind_v10sr1
+#07-Nov-2005  x_milind                Fix for PR#5248028
+#09-Nov-2005  Punnaiah Gottipati      Port PR#5248028 fix
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#05-Aug-2010  Warren Laube            Add Generate URL button
+#15-Nov-2010  Warren Laube            Add Checkout on Export
+#$HISTORY$
+#=================================================================================================*/
+
+tcExportObjects.TITLE = Esporta...
+stepExportObjects.TITLE = Esporta STEP...
+plmXMLExportObjects.TITLE = Esportazione PLM XML...
+appInterfaceExportObjects.TITLE = Esportazione interfaccia applicazione...
+
+objectList = Elenco oggetti:
+
+site.TITLE = Selezione sito remoto
+
+#Error msg for PLM XML Export
+noItemSelected = Solo un item/item revision pu\u00F2 essere esportato in PLM XML. Selezionare un item/item revision.
+onlyItemSelected = Solo il primo oggetto selezionato () pu\u00F2 essere esportato. Continuare?
+
+errorType = Gli oggetti da esportare devono essere cartelle, form, item o set di dati.
+
+exportRoot        = Esporta
+exportParentDirectory = Directory padre:
+exportDirectory   = Directory di esportazione:
+exportFileName    = Nome file di esportazione:
+targetSites       = Siti di destinazione:
+comments          = Commenti:
+reason            = Motivo:
+viewLogFile       = Visualizza file di log:
+exportContext     = Nome modalit\u00E0 di trasferimento:
+transferOwnership = Trasferisci propriet\u00E0  
+transferCAD       = Esporta CAD
+transferJT        = Esporta JT
+transferO&V       = Esporta O&V
+transferImprecise   = Esporta Imprecisa 
+
+aiName            = Nome
+aiDesc            = Descrizione
+usingAi           = Tieni traccia in interfaccia applicazione
+selAi             = Interfaccia dell'applicazione
+newAi             = Nuova interfaccia
+openAiByName.TITLE= Trova interfaccia applicazione per nome
+openAiByName.TOOLTIP = Trova un'interfaccia di applicazione per nome
+
+# New AppInterface Dialog
+# --------------------
+createAi.TITLE = Crea interfaccia applicazione
+createAi.TOOLTIP = Crea un'interfaccia applicazione
+name = Nome:
+description = Descrizione:
+
+
+transferOwnership = Trasferisci propriet\u00E0
+entireBOM         = Intera distinta base dell'item
+allVersionDataset = Tutte le versioni del set di dati
+allFileDataset     = Tutti i file del set di dati
+
+browse            =Sfoglia...
+browse.MNEMONIC   =B
+browse.TIP        =Seleziona Esporta directory dal sistema
+
+add               =Aggiungi
+add.MNEMONIC      =A
+add.TIP           =Aggiungi oggetto dalla clipboard
+addSite.TIP       =Aggiungi sito
+
+remove = Rimuovi
+remove.MNEMONIC   =R
+removeObject.TIP  =Rimuovi l'oggetto dall'elenco
+removeSite.TIP    =Rimuovi il sito dall'elenco
+
+exportSettings     =Impostazioni di esportazione
+exportSettings.MNEMONIC =S
+exportSettings.TIP =Visualizza/Imposta le opzioni di esportazione
+
+exportStatusMsg   = Esportazione in corso...
+
+exportFormat = Formato esportazione:
+formatTc = Teamcenter
+formatAP203 = AP 203
+formatAP214 = AP 214
+formatXML = PLM XML
+
+siteList = Aggiungi sito
+siteSelection.TIP = Seleziona siti remoti di destinazione
+
+fileChooser.TITLE = Seleziona directory...
+fileChooserConfirmButton = Seleziona
+
+exportOption.TITLE = Conferma...
+exportOptionConfirm.MSG = L'oggetto \u00E8 gi\u00E0 stato esportato. Sostituirlo?
+
+exportOptionError.TITLE = Errore...
+exportOptionError.MSG = La directory specificata contiene gi\u00E0 un oggetto esportato. \nSelezionare un'altra cartella.
+
+errorInSettings.TITLE=Errore...
+errorInSettings=Impossibile trasferire la propriet\u00E0 a pi\u00F9 di un sito remoto
+
+errorNoSites.TITLE=Errore...
+errorNoSites = Non \u00E8 stato definito un sito. Impossibile esportare.
+
+errorOneSiteOnRemoteCheckout.TITLE=Errore...
+errorOneSiteOnRemoteCheckout = Impossibile eseguire il checkout in pi\u00F9 di un sito remoto
+
+errorNoSites = Non \u00E8 stato definito un sito. Impossibile esportare.
+
+# keys for ExportSettingsPanel
+# ----------------------------------------
+
+loadCurrentPref = Caricamento opzioni correnti in corso...
+transfer.TITLE = Trasferisci opzioni
+transferOwnership = Trasferisci propriet\u00E0
+performImportExport = Esegui importazione/esportazione in background
+
+relationship.TITLE = Opzioni relazionali
+includeReference = Includi riferimento
+excludeReference = Escludi riferimento
+
+itemOption.TITLE = Opzioni dell'item
+includeAllRevisitions = Includi tutte le revisioni
+latestRevisionOnly = Solo revisione pi\u00F9 recente
+latestWorkingRevisionOnly = Solo revisione pi\u00F9 recente in lavorazione
+latestWorkingAnyReleaseStatus = Pi\u00F9 recente in lavorazione/qualunque stato di rilascio
+latestAnyReleaseStatus = Pi\u00F9 recenti in qualunque stato di rilascio
+selectedRevisionOnly = Solo revisioni selezionate
+
+dataset.TITLE = Opzioni set di dati
+includeAllRevision = Includi tutte le versioni
+includeAllFiles = Includi tutti i file
+
+generalWorkspaceObject.TITLE = Opzioni generali
+includesModifiedObjectOnly = Includi solo oggetti modificati
+excludeExportProtectedObjects = Escludi oggetti protetti dall'esportazione
+
+pse.TITLE = Opzioni struttura di prodotto
+includeEntireBOM = Includi intera distinta base
+transferTopLevelItem = Trasferisci solo item di primo livello
+excludeTransferProtectedComponents = Escludi componenti protetti dal trasferimento
+excludeExportProctedComponents = Escludi componenti protetti dall'esportazione
+
+none = Nessuno
+
+viewLogFile.TITLE = Esporta
+viewLogFile.MSG = Esportazione riuscita. Visualizzare il file di log?
+
+viewPlmxmlFile.TITLE = Esporta
+viewPlmxmlFile.MSG = Esportazione riuscita. Visualizzare il file PLM XML?
+
+preference.TITLE = Preferenze di esportazione
+
+fileGenTitle=Generazione del file
+fileGenError=Impossibile recuperare il file di report dal server
+
+invalidFileName.MSG=L'opzione Esporta nome file non pu\u00F2 contenere / n\u00E9 \\ 
+# PLM XML export keys
+plmXML = PLM XML
+Export.SENDMSG=Invio messaggio di esportazione all'integratore
+Export.ERRMSG=Errore durante l'invio del messaggio all'integratore
+Export.MSG=Messaggio inviato all'integratore
+Export.STGMSG=Non \u00E8 stata definita la preferenza PLMXML_staging_dir
+Export.UNCFGMSG=L'assieme ha linee distinta base non configurate. L'esportazione \u00E8 stata interrotta. 
+viewPlmxmlFile=Apri file PLM XML:
+plmxmlButton=PLM XML
+plmxml=PLM XML
+exportButton=Teamcenter
+export=Teamcenter
+stepButton=STEP
+stepexp=STEP
+appInterface = AppInterface
+aiIsPartialExport = Esportazione parziale
+aiOpenOnExport = Apri sull'esportazione
+
+remoteCheckoutSite.LABEL=Selezionare solo un sito su cui eseguire il checkout remoto
+remoteTransferSite.LABEL=Selezionare solo un sito a cui trasferire la propriet\u00E0
+remoteSites.LABEL=Seleziona siti remoti di destinazione
+remoteSites.available=Siti disponibili
+remoteSites.selected=Siti selezionati
+
+#================================================
+exportToExcel = Esporta in Excel
+objectSelection = Selezione oggetto
+exportSelected = Esporta oggetti selezionati
+exportAll = Esporta tutti gli oggetti della vista
+contentSelection = Selezione contenuti
+exportVisibleColumns = Esporta tutte le colonne visibili
+useExcelTemplate = Usa template di Excel
+outputTemplate = Template di output
+workOffline = Lavoro non in linea e importazione
+exportOptions= Opzioni di esportazione Live
+
+exportOutput = Output
+exportStatic = Istantanea statica
+exportLive = Integrazione dinamica con Excel (interattiva)
+exportLivebulkmode = Integrazione dinamica con Excel (modalit\u00E0 bulk)
+FileNotDownloaded = Il file non \u00E8 stato scaricato
+
+attachmentsTab.TITLE=Selezione non valida
+attachmentsTab.MESSAGE=L'operazione Esporta in Excel non \u00E8 supportata per le linee degli allegati.
+fmsErrorDetails.ERRORMSG = Solitamente, il problema \u00E8 causato da una cattiva configurazione in cui il master FMS non \u00E8 stato aggiornato e non ha l'ID volume/accesso adatto (\u00E8 necessario riavviare l'FMS).\nVerificare la variabile di ambiente FMS_HOME.
+fmserror.ERROR = Errore durante l'esportazione dei dati.
+fileDownloadError.ERRORMSG = Il file non \u00E8 stato scaricato.
+checkoutOption.TEXT=Eseguire checkout prima di esportare
+
+BlockExportError=L'operazione Esporta in Live Excel non \u00E8 stata eseguita perch\u00E9 il checkout dell'oggetto non \u00E8 stato effettuato oppure \u00E8 stato effettuato da un altro utente. Eseguire il checkout dell'oggetto prima dell'esportazione.
+CheckOutError=Errore durante il checkout
+
+copyURL = Copia URL
+copyURL.MNEMONIC =C
+copyURL.MESSAGE =L'URL generato \u00E8 stato copiato nella clipboard del sistema.
+copyURL.TITLE = URL copiato
+copyURL.TOOLTIP=Copia URL nella clipboard sistema

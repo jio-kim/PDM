@@ -1,0 +1,25 @@
+#*==================================================================================================
+#
+#                               Copyright (c) 2007 UGS PLM
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the cancelsitecheckout package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: cancelsitecheckout_locale.properties
+#   Module  : com.teamcenter.rac.commands.cancelsitecheckout
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#$HISTORY$
+#27-Jan-2008  x_edhara                Added the new error if the selected object type is not valid for cancel site check-out.
+#=================================================================================================*/
+
+command.TITLE=\uC0AC\uC774\uD2B8\uB85C \uCCB4\uD06C\uC544\uC6C3 \uCDE8\uC18C
+confirmationText=\uC0AC\uC774\uD2B8\uB85C \uCCB4\uD06C\uC544\uC6C3\uC744 \uCDE8\uC18C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?
+cancelCheckoutToSite.STATUS=\uC0AC\uC774\uD2B8 \uCCB4\uD06C\uC544\uC6C3\uC744 \uCDE8\uC18C\uD569\uB2C8\uB2E4...
+errorType=\uC120\uD0DD\uD55C \uAC1C\uCCB4 \uC720\uD615 \uC911 \uD558\uB098\uB294 \uC0AC\uC774\uD2B8 \uCCB4\uD06C\uC544\uC6C3 \uCDE8\uC18C\uAC00 \uD5C8\uC6A9\uB418\uC9C0 \uC54A\uC2B5\uB2C8\uB2E4.
+

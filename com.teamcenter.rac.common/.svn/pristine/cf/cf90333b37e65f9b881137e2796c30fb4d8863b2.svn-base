@@ -1,0 +1,183 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2003 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: 
+#
+#   Filename: newpsconnection_locale.properties
+#   Module  : com.teamcenter.rac.commands.newpsconnection
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+
+#13-Jun-2003  bunly                   create
+#15-Jul-2003  x_ramesh                For taking care of missing/wrong text
+#17-Jul-2003  x_ramesh                Merging to Project branch from x_ramesh_mechatronics_p92
+#17-Jul-2003  bunly                   Change PSConnection to Connection
+#17-Jul-2003  bunly                   Merge out from project branch
+#17-Jul-2003  bunly                   Merge in
+#18-Jul-2003  x_ramesh                For mergin out from mechatronics_v9
+#12-Jan-2004  x_reddyg                Add Title for Message Box
+#25-Aug-2004  x_bhadra                LBOM Nav/SA Changes
+#02-Sep-2004  x_bhadra                LBOM Nav SA changes
+#13-Sep-2004  x_bhadra                Modified for LBOM Nav/SA project
+#04-Oct-2004  x_bhadra                Updated with My Navigator changes and code cleanup
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Item Dialog
+# ----------------------
+command.TITLE = Neue Verbindung 
+base.TITLE=Verbindungsdetails
+
+# Added for Revise Project
+# -------------------------
+newPSConnection.TITLE = Neue Verbindung 
+saveAs.TITLE = Speichern unter
+revise.TITLE = Revisionieren
+
+basedOn=Basierend auf
+
+# Advanced copy options tab
+# ------------------------------
+advanced.TITLE=Erweitert
+fromTree=Quelle:
+toTree=Ziel:
+
+loadingTree.MSG=Baumstruktur wird geladen...
+
+# Messages for message center
+# ------------------------------
+loadingItemTypes = Verbindungstypen werden geladen...
+creatingNewItem = Neue Verbindung wird erstellt 
+creatingNewItemRevision = Neuen Verbindungs\u00E4nderungsstand erstellen
+abort = \u00D6ffnen der neuen Verbindung abbrechen 
+creatingNewPSConnection = Neue Verbindung wird erstellt 
+creatingNewPSConnectionRev = Neuen Verbindungs\u00E4nderungsstand erstellen
+populatingTheForm = Weiterleiten des Formulars
+advancedPanel=Tiefenkopiefenster wird geladen f\u00FCr
+mandatoryFields=Geben Sie bitte die erforderlichen benutzerdefinierten Attribute ein
+advancedText=Dieses Fenster zeigt die Baumstruktur mit den Tiefenkopierregeln und den Kopieroptionen an.
+# Error Messages
+# ----------------------
+itemTypeError = Liste der verf\u00FCgbaren Verbindungen konnte nicht geladen werden
+failToCreate = Verbindung konnte nicht erstellt werden 
+failToOpen = Die Verbindung konnte nicht ge\u00F6ffnet werden. Problem mit Zugriffsberechtigungen vorhanden.
+error.TITLE = Neue Verbindung...
+newPSConnectionError.TITLE = Fehler
+fillFormError = Die Weiterleitung des Master-Formulars ist fehlgeschlagen.
+createDirFailed=Erstellen eines tempor\u00E4ren Verzeichnisses w\u00E4hrend des Ladens der benutzerdefinierten \n Attribute des Elements fehlgeschlagen. M\u00F6glicherweise ist der Wert von "ExportDir", der in den "client_specific.properties" gefunden wurde, nicht richtig festgelegt. 
+#createDirFailed=Failed to create temporary directoryupon loading of the item custom attributes.Possibally the\n value of "ExportDir" found in the client_specific.properties is incorrectly set.
+
+
+#Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Erstellen der Verbindung unterbrochen ... Verbindung erstellt und teilweise eingef\u00FCgt
+
+whitespaceerror=Erstellen nicht m\u00F6glich. Pr\u00FCfen Sie bitte die Felder ID/Ref/Name.
+sameAsoldId=Es wurde eine vorhandene Verbindung gefunden. Durch "Erstellen/Speichern unter" werden nur neue Verbindungen erstellt. \nVerwenden Sie zum Erstellen eines neuen Verbindungs\u00E4nderungsstandes die Befehle "Datei->\u00C4nderungsstand".
+# Not valid type keys
+# ----------------------
+notValidType.TITLE=Ung\u00FCltige Eingabedaten
+notValidChar=Der Zeicheneigenschaftswert kann nicht ge\u00E4ndert werden.
+notValidDate=Kein g\u00FCltiges Datum.
+notValidDouble=Keine g\u00FCltige Doppel- oder Flie\u00DFkommazahl.
+notValidInt=Keine g\u00FCltige Ganzzahl.
+notValidLogical=Keine g\u00FCltigen logischen Daten.
+notValidShort=Keine g\u00FCltige kurze Ganzzahl.
+notValidString=Der Zeichenfolgeneigenschaftswert kann nicht ge\u00E4ndert werden.
+
+# New Connection Dialog
+# ----------------------
+dialog.TITLE = Neue Verbindung
+dialog.vi.TITLE=Neue Variantenverbindung f\u00FCr
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.TOOLTIP=Variantenverbindungskonfiguration pr\u00FCfen
+viConfigStep.info=Gew\u00E4hrleisten Sie, dass die Konfiguration der Variantenverbindung richtig festgelegt wurde
+
+# New Connection Panel
+# -----------------------------
+createConfirm.TITLE=Neue Verbindung
+createConfirm.MSG=Zum Fortfahren m\u00FCssen Sie eine neue Verbindung erstellen. \nM\u00F6chten Sie die neue Verbindung erstellen?
+
+# Connection Type Panel
+# ----------------------------
+itemTypeInfo.LABEL=W\u00E4hlen Sie den zu erstellenden Verbindungstyp aus.
+itemTypeStep.TOOLTIP=W\u00E4hlen Sie einen Verbindungstyp aus.
+
+# Connection Info Panel
+# -----------------------------
+itemInfo.LABEL=Legen Sie grundlegende Informationen f\u00FCr die neue Verbindung fest.
+itemInfoStep.NAME=Geben Sie die Verbindungsinformationen ein.
+itemInfoStep.TOOLTIP=Legen Sie die grundlegenden Verbindungsinformationen fest.
+
+itemId = Verbindungs-ID
+itemInformation = Verbindunginformationen
+
+# Connection Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=Zus\u00E4tzliche Verbindungsinformationen definieren.
+itemMasterFormStep.NAME=Zus\u00E4tzliche Verbindungsinformationen eingeben
+itemMasterFormStep.TOOLTIP=Zus\u00E4tzliche Verbindungsinformationen definieren.
+
+# ConnectionRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=Zus\u00E4tzliche Verbindungs\u00E4nderungsstand-Informationen definieren.
+itemRevMasterFormStep.NAME=Zus\u00E4tzliche Verbindungs\u00E4nderungsstand-Informationen eingeben.
+itemRevMasterFormStep.TOOLTIP=Zus\u00E4tzliche Verbindungs\u00E4nderungsstand-Informationen definieren.
+
+# Form Attr Panel
+# -----------------------
+formAttrStep.TOOLTIP=Legen Sie die Formularattribute f\u00FCr den ausgew\u00E4hlten Verbindungstyp fest.
+formAttrStepDisabled.TOOLTIP=Keine Formularattribute f\u00FCr den ausgew\u00E4hlten Verbindungstyp festgelegt.
+
+# Connection Identifier Panel
+# ----------------------------
+itemIdentifierInfo.LABEL=Legen Sie die alternativen ID-Informationen f\u00FCr die Verbindung fest.
+itemIdentifierStep.NAME=Alternative Informationen eingeben
+itemIdentifierStep.TOOLTIP=Legen Sie eine alternative ID f\u00FCr die Verbindung fest.
+
+# Open Option Panel
+# --------------------------
+checkOutOnCreate = Verbindungs\u00E4nderungsstand beim Erstellen auschecken
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Neue Verbindung erstellen
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Neue Verbindung erstellen
+checkingIds=Verbindungs-ID und -\u00C4nderungsstand pr\u00FCfen
+pastingNewItem=Neue Verbindung einf\u00FCgen
+openingNewComponent=Neue Verbindung \u00F6ffnen
+abort = \u00D6ffnen der neuen Verbindung abbrechen
+
+# Error Messages
+# ----------------------
+error.TITLE = Neue Verbindung...
+
+failFindDialog=Dialog "Neue Verbindung" konnte nicht gefunden werden.
+sameAsOldId=Es wurde eine vorhandene Verbindung gefunden. Durch "Erstellen/Speichern unter" werden nur neue Verbindungen erstellt. \nVerwenden Sie zum Erstellen eines neuen Verbindungs\u00E4nderungsstands den Befehl "Datei -> Revisionieren".
+failToCreate = Verbindung konnte nicht erstellt werden
+fillFormError = Die Weiterleitung des Master-Formulars ist fehlgeschlagen.
+failToOpen = Die Verbindung konnte nicht ge\u00F6ffnet werden. Problem mit Zugriffsberechtigungen vorhanden.
+failFindPSConnectionMaster=Abrufen des Verbindung-Master-Formulars fehlgeschlagen.
+failFindPSConnectionRevMaster=Abfrage des Verbindungs\u00E4nderungs-Master-Formulars fehlgeschlagen.
+failToCreateAltId=Alternative ID konnte nicht erstellt werden.
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Erstellen der Verbindung unterbrochen ... Verbindung erstellt und teilweise eingef\u00FCgt
+
+genCompIDLabelText = Verbindungs-\nverzweigungs-\nelement-ID:
+architectureInformation = Verbindunginformationen
+architectureInfo.LABEL=Legen Sie die grundlegenden Informationen f\u00FCr die zu erstellende Verbindung fest.
+architectureInfoStep.NAME=Geben Sie die Verbindungsinformationen ein.
+architectureInfoStep.TOOLTIP=Legen Sie die grundlegenden Verbindungsinformationen fest.

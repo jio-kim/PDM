@@ -1,0 +1,61 @@
+##* @<COPYRIGHT_START>@
+# ===============================================
+# Copyright 2007 UGS Corp. All Rights Reserved.
+# ===============================================
+# @<COPYRIGHT_END>@
+
+# Entries for messages
+# ------------------------------
+openError.TITLE=Abrir...
+
+saveForm.MESSAGE=Guardando formulario...
+loadForm.MESSAGE=Cargando el formulario...
+
+unableToOpen.MESSAGE=No se puede mostrar el formulario.
+unableToSave.MESSAGE=No se puede guardar el formulario; rellene los campos obligatorios.
+
+noDataToFetch.MSG=No se adjunt\u00F3 ning\u00FAn dato al \u00EDtem/Revisi\u00F3n de \u00EDtem.
+cannotDecideWhichDataset.MSG=No se puede determinar cual es el conjunto de datos que se deber\u00E1 usar para la acci\u00F3n. Utilice la preferencia TC_<itemtype>_data_search_order.
+openComponent.MESSAGE=Abriendo el componente...
+
+# Status message while performing Implicit Check out
+doingImplicitCO=Guardando los cambios y realizando las desprotecciones y protecciones impl\u00EDcitas...
+
+#Entries for buttons
+#---------------------------------
+
+#For the Edit button on the read only properties dialog
+edit=Desproteger y editar
+edit.TIP=Desproteger y Editar las propiedades
+edit.MNEMONIC=Edit
+
+implicitCoApply=Aplicar
+implicitCoApply.TIP=Guardar los cambios
+implicitCoApply.MNEMONIC=Apply
+
+implicitCoOk=Aceptar
+implicitCoOk.TIP=Guardar los cambios
+implicitCoOk.MNEMONIC=Ok
+
+saveCheckOut=Guardar
+saveCheckOut.TIP=Guardar y mantener desprotegido
+saveCheckOut.MNEMONIC=Save
+
+saveCheckIn=Guardar y proteger
+saveCheckIn.TIP=Guardar las propiedades y proteger
+saveCheckIn.MNEMONIC=I
+
+cancelCheckOut=Cancelar desprotecci\u00F3n
+cancelCheckOut.TIP=Cancelar la desprotecci\u00F3n y revertir al original
+cancelCheckOut.MNEMONIC=O
+
+saveChanges.TITLE=Hay cambios sin guardar.
+saveChanges.TEXT=\u00BFDesea guardar los cambios en el formulario?
+
+#Warning message while opening too many objects
+tooManyViewsError.MSG=No se abrir\u00E1n todas las selecciones porque se pueden abrir solamente las vistas {0} en forma simult\u00E1nea.\nOprima Aceptar para abrir solamente las selecciones {0} o aumente el l\u00EDmite predeterminado (con la preferencia "TCMaxOpenViewsLimit").\n\nNota: si aumenta el l\u00EDmite predeterminado habr\u00E1 un consumo mayor de la memoria, y esto puede resultar en el cierre autom\u00E1tico de Teamcenter. 
+maxViewsOpened.MSG=Ha alcanzado el n\u00FAmero m\u00E1ximo de vistas que se pueden abrir.\nCierre las vistas sin utilizar y vu\u00E9lvalas a abrir.
+cannotOpen.MSG=No se puede abrir {0}. 
+tooManyViews.TITLE=Abrir vistas
+openViewDialog_buttonCancel=Cancelar
+openViewDialog_buttonOK=Aceptar

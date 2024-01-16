@@ -1,0 +1,57 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the openas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: openas_locale.properties
+#   Module  : com.teamcenter.rac.commands.openas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#21-Aug-2000  Mark Fawcett            add stuff for Item(Revision)
+#02-Jun-2003  wangp                   fix pr 4597374: change selection label
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = Open With...
+selectDataset.TITLE = Select a dataset
+
+name = Name:
+description = Description:
+type = Type:
+tool = Tool Used:
+version = Version:
+select = Select a tool or a file under tool to open:
+
+attachments = Attachments
+application = Application:
+
+# Open confirmation
+# ------------------------------
+oneFileFound=One existing file found. Do you want to open a brand new file? \nIf no, the existing file will be opened.
+moreThanOneFileFound=More than one existing file found. Do you want to open a brand new file? \nIf no, please select a file to open.
+
+# Messages for message center
+# ------------------------------
+loadingVersions = Loading versions ...
+loadingTools = Loading tools ...
+loadingFiles = Loading files ...
+openingFile = Opening file ...
+opening = Opening ...
+
+# Error Messages
+# ------------------------------
+notRightType = Can not handle the selected object
+error.TITLE = Open With...
+
+noDataToFetch.MSG=No data is attached to the Item/Item Revision.
+

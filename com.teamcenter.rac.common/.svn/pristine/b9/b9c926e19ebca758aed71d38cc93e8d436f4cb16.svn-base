@@ -1,0 +1,48 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2003 EDS PLM Solutions, An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newenvelope package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: relations_locale.properties
+#   Module  : com.teamcenter.rac.commands.relations
+#
+#===================================================================================================
+#11-Jul-2003  Endi Wu                 Initial creation
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for relations dialog
+# --------------------------------
+command.TITLE=\uAD00\uACC4
+relations=\uAD00\uACC4
+close=\uB2EB\uAE30
+close.MNEMONIC=C
+
+# Entries for warning message
+# --------------------------------
+noRelatingObjectsFound.MESSAGE=2\uCC28 \uAD00\uB828 \uAC1C\uCCB4\uB97C \uBABB \uCC3E\uC558\uC2B5\uB2C8\uB2E4!
+noObjectsFound.TITLE=\uAC1C\uCCB4\uB97C \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4!
+noSelection = \uAC1C\uCCB4\uAC00 \uC120\uD0DD\uB418\uC9C0 \uC54A\uC558\uC2B5\uB2C8\uB2E4
+clipboardEmpty=\uD074\uB9BD\uBCF4\uB4DC\uAC00 \uBE44\uC5B4 \uC788\uC2B5\uB2C8\uB2E4.
+warning.TITLE = \uACBD\uACE0
+
+# Entries for relation list dialog
+# ----------------------------------
+selectRelation.TITLE = \uAD00\uACC4 \uC120\uD0DD
+userWizard = \uAD00\uACC4 \uC720\uD615\uC744 \uC120\uD0DD\uD558\uC2ED\uC2DC\uC624?
+nextButton=\uB2E4\uC74C
+next.MNEMONIC=N
+cancelButton=\uCDE8\uC18C
+
+# Entries for message center
+# --------------------------------
+loadingData=\uB370\uC774\uD130 \uB85C\uB4DC \uC911...
+loadingRelations=\uAD00\uACC4\uB97C \uB85C\uB4DC \uC911...
+removing=\uC81C\uAC70\uD558\uB294 \uC911...

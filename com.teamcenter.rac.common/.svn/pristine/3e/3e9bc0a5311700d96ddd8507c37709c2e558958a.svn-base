@@ -1,0 +1,162 @@
+
+#Properties for the  Design Dialog
+##############################################
+
+designRelation.TITLE = Odeberte vztahy n\u00E1vrh\u016F.
+
+designRelation.removeButton.LABEL=Odebrat
+designRelation.removeButton.TIP=Odstran\u00ED vybran\u00E9 \u0159\u00E1dky relace Design z vybran\u00E9ho \u0159\u00E1dku c\u00EDlov\u00E9ho n\u00E1vrhu
+
+designRelation.cancelButt.LABEL=Storno
+designRelation.cancelButt.TIP=Zav\u0159\u00EDt dialogov\u00E9 okno Odebrat relaci
+
+designRelation.columnsShown= \u0158\u00E1dek rozpisky, P\u0159i\u0159azen\u00E1 role nebo Nadbyte\u010Dn\u00E9 n\u00E1vrhy,
+
+designRelation.Types=Nadbyte\u010Dn\u00E9 n\u00E1vrhy,Prom\u011Bnn\u00E1 procesu, C\u00EDl, Zdroj, P\u0159ena\u0161e\u010D,
+
+# New design Dialog
+# ----------------------
+command.TITLE = Nov\u00FD n\u00E1vrh
+base.TITLE=Detaily n\u00E1vrhu
+basetype = N\u00E1vrh
+
+# Added for Revise Project
+# -------------------------
+newDesign.TITLE = Nov\u00FD n\u00E1vrh
+saveAs.TITLE = Ulo\u017Eit jako
+revise.TITLE = Revidovat
+
+basedOn=Podle
+
+# Advanced copy options tab
+# ------------------------------
+advanced.TITLE=Pokro\u010Dil\u00E9
+fromTree=Zdroj:
+toTree=C\u00EDl:
+
+loadingTree.MSG=Na\u010Dten\u00ED stromu...
+
+# Messages for message center
+# ------------------------------
+loadingItemTypes = Na\u010Dten\u00ED typ\u016F n\u00E1vrh\u016F...
+creatingNewItem = Vytvo\u0159en\u00ED nov\u00E9ho n\u00E1vrhu
+creatingNewItemRevision = Vytvo\u0159en\u00ED revize nov\u00E9ho n\u00E1vrhu
+abort = Zru\u0161it otev\u0159en\u00ED nov\u00E9ho n\u00E1vrhu
+creatingNewDesign = Vytvo\u0159en\u00ED nov\u00E9ho n\u00E1vrhu
+creatingNewDesignRev = Vytvo\u0159en\u00ED revize nov\u00E9ho n\u00E1vrhu
+populatingTheForm = Na\u010Dten\u00ED formul\u00E1\u0159\u016F
+advancedPanel=na\u010Dten\u00ED panelu hloubkov\u00E9 kopie pro
+mandatoryFields=Vypl\u0148te povinn\u00E9 u\u017Eivatelsk\u00E9 atributy
+advancedText=Tento panel zobrazuje strom hloubkov\u00E9 kopie spole\u010Dn\u011B s mo\u017Enostmi kopie.
+# Error Messages
+# ----------------------
+itemTypeError = Nelze na\u010D\u00EDst dostupn\u00FD seznam n\u00E1vrh\u016F
+failToCreate = Chyba p\u0159i vytvo\u0159en\u00ED n\u00E1vrhu
+failToOpen = N\u00E1vrh nelze otev\u0159\u00EDt. Pravd\u011Bpodobn\u011B nastal probl\u00E9m s va\u0161\u00EDm zabezpe\u010Den\u00EDm.
+error.TITLE = Nov\u00FD n\u00E1vrh...
+fillFormError = Chyba p\u0159i rozm\u00EDst\u011Bn\u00ED hlavn\u00EDho formul\u00E1\u0159e.
+createDirFailed=Chyba p\u0159i vytvo\u0159en\u00ED do\u010Dasn\u00E9ho adres\u00E1\u0159e po na\u010Dten\u00ED u\u017Eivatelsk\u00FDch atribut\u016F n\u00E1vrhu. Hodnota\n \u201EExportDir\u201C v souboru client_specific.properties je pravd\u011Bpodobn\u011B nespr\u00E1vn\u011B nastavena.
+
+
+#Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Vytvo\u0159en\u00ED n\u00E1vrhu bylo p\u0159eru\u0161eno. N\u00E1vrh byl vytvo\u0159en a \u010D\u00E1ste\u010Dn\u011B vlo\u017Een
+
+whitespaceerror=Nelze vytvo\u0159it. Zkontrolujte polo\u017Eky ID, Rev, n\u00E1zev.
+sameAsoldId=Byl nalezen existuj\u00EDc\u00ED n\u00E1vrh. P\u0159\u00EDkaz Vytvo\u0159it nebo Ulo\u017Eit jako pouze vytvo\u0159\u00ED nov\u00FD n\u00E1vrh. \nK vytvo\u0159en\u00ED nov\u00E9 revize n\u00E1vrhu pou\u017Eijte p\u0159\u00EDkaz Soubor -> Revidovat.
+# Not valid type keys
+# ----------------------
+notValidType.TITLE=Neplatn\u00E1 vstupn\u00ED data
+notValidChar=Hodnotu vlastnosti znaku nelze zm\u011Bnit.
+notValidDate=Neplatn\u00E9 datum.
+notValidDouble=Neplatn\u00E9 desetinn\u00E9 \u010D\u00EDslo typu Double nebo Float.
+notValidInt=Neplatn\u00E9 \u010D\u00EDslo typu Integer.
+notValidLogical=Neplatn\u00E1 logick\u00E1 data.
+notValidShort=Neplatn\u00E9 \u010D\u00EDslo typu Short Integer.
+notValidString=Hodnotu vlastnosti \u0159et\u011Bzce nelze zm\u011Bnit.
+
+
+# New Item Dialog
+# ----------------------
+dialog.TITLE = Nov\u00FD n\u00E1vrh
+dialog.vi.TITLE=Nov\u00FD n\u00E1vrh varianty pro
+
+# VI Config Panel
+# ----------------------------
+viConfigStep.TOOLTIP=Zkontrolovat konfiguraci n\u00E1vrhu varianty
+viConfigStep.info=Ujistit se, \u017Ee konfigurace n\u00E1vrhu varianty je spr\u00E1vn\u00E1
+
+# New Item Panel
+# -----------------------------
+createConfirm.TITLE=Nov\u00FD n\u00E1vrh
+createConfirm.MSG=Chcete-li pokra\u010Dovat, mus\u00ED b\u00FDt vytvo\u0159en nov\u00FD n\u00E1vrh. \nChcete vytvo\u0159it nov\u00FD n\u00E1vrh?
+
+# Item Type Panel
+# ----------------------------
+itemTypeInfo.LABEL=Vyberte typ n\u00E1vrhu, kter\u00FD chcete vytvo\u0159it.
+itemTypeStep.NAME=Vybrat typ
+itemTypeStep.TOOLTIP=Vyberte typ n\u00E1vrhu.
+
+# Item Info Panel
+# -----------------------------
+itemInfo.LABEL=Definujte z\u00E1kladn\u00ED informace k vytvo\u0159en\u00ED n\u00E1vrhu.
+itemInfoStep.NAME=Zadat informace n\u00E1vrhu
+itemInfoStep.TOOLTIP=Definujte z\u00E1kladn\u00ED informace n\u00E1vrhu.
+
+itemId = ID n\u00E1vrhu
+itemInformation = Informace n\u00E1vrhu
+
+# Item Master Form Panel
+# ---------------------------
+itemMasterForm.LABEL=Definujte dal\u0161\u00ED informace n\u00E1vrhu.
+itemMasterFormStep.NAME=Zadat dal\u0161\u00ED informace n\u00E1vrhu
+itemMasterFormStep.TOOLTIP=Definujte dal\u0161\u00ED informace n\u00E1vrhu.
+
+# ItemRev Master Form Panel
+# ---------------------------
+itemRevMasterForm.LABEL=Definujte dal\u0161\u00ED informace revize n\u00E1vrhu.
+itemRevMasterFormStep.NAME=Zadat dal\u0161\u00ED informace revize n\u00E1vrhu
+itemRevMasterFormStep.TOOLTIP=Definujte dal\u0161\u00ED informace revize n\u00E1vrhu.
+
+# Form Attr Panel
+# -----------------------
+formAttrStep.TOOLTIP=Definujte atributy formul\u00E1\u0159e pro vybran\u00FD typ n\u00E1vrhu.
+formAttrStepDisabled.TOOLTIP=Nejsou definov\u00E1ny atributy formul\u00E1\u0159e pro vybran\u00FD typ n\u00E1vrhu.
+
+# Item Identifier Panel
+# ----------------------------
+itemIdentifierInfo.LABEL=Definujte informace alternativn\u00EDho ID n\u00E1vrhu.
+itemIdentifierStep.NAME=Zadat alternativn\u00ED informace
+itemIdentifierStep.TOOLTIP=Definujte alternativn\u00ED ID pro n\u00E1vrh.
+
+# Open Option Panel
+# --------------------------
+checkOutOnCreate = Rezervovat revizi n\u00E1vrhu p\u0159i vytvo\u0159en\u00ED
+
+# Finish Panel
+# -----------------------------
+newItemFinishInfo.LABEL=Vytvo\u0159en\u00ED nov\u00E9ho n\u00E1vrhu
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Vytvo\u0159en\u00ED nov\u00E9ho n\u00E1vrhu
+checkingIds=Kontrola ID a rev n\u00E1vrhu
+pastingNewItem=Vlo\u017Een\u00ED nov\u00E9ho n\u00E1vrhu
+openingNewComponent=Otev\u0159en\u00ED nov\u00E9ho n\u00E1vrhu
+abort = Zru\u0161it otev\u0159en\u00ED nov\u00E9ho n\u00E1vrhu
+
+# Error Messages
+# ----------------------
+error.TITLE = Nov\u00FD n\u00E1vrh...
+
+failFindDialog=Chyba p\u0159i hled\u00E1n\u00ED dialogov\u00E9ho okna nov\u00E9ho n\u00E1vrhu.
+sameAsOldId=Nalezen existuj\u00EDc\u00ED n\u00E1vrh. P\u0159\u00EDkaz Vytvo\u0159it nebo Ulo\u017Eit jako pouze vytvo\u0159\u00ED nov\u00FD n\u00E1vrh. \nK vytvo\u0159en\u00ED nov\u00E9 revize n\u00E1vrhu pou\u017Eijte p\u0159\u00EDkaz Soubor -> Revidovat.
+failToCreate = Chyba p\u0159i vytvo\u0159en\u00ED n\u00E1vrhu
+failToOpen = N\u00E1vrh nelze otev\u0159\u00EDt. Pravd\u011Bpodobn\u011B probl\u00E9m s va\u0161\u00EDm zabezpe\u010Den\u00EDm.
+failFindItemMaster=Chyba p\u0159i z\u00EDsk\u00E1n\u00ED hlavn\u00EDho formul\u00E1\u0159e n\u00E1vrhu.
+failFindItemRevMaster=Chyba p\u0159i z\u00EDsk\u00E1n\u00ED hlavn\u00EDho formul\u00E1\u0159e revize n\u00E1vrhu.
+failToCreateAltId=Chyba p\u0159i vytvo\u0159en\u00ED alternativn\u00ED ID
+
+# Messages and keys for the Abort Message Box
+# ---------------------------------------------
+aborted=Vytvo\u0159en\u00ED n\u00E1vrhu bylo p\u0159eru\u0161eno. N\u00E1vrh byl vytvo\u0159en a \u010D\u00E1ste\u010Dn\u011B vlo\u017Een

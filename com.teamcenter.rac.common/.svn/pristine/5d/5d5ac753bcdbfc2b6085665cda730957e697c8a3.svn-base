@@ -1,0 +1,10 @@
+# Default threshold for LOV combobox
+lovComboLimit=500
+group.ICON=icons/group_16.png
+user.ICON=icons/user_16.png
+
+# Keys for LOV popup button
+LOVPopupButton.TIP=Klepnut\u00EDm na\u010Dt\u011Bte seznam hodnot.
+LOV.ICON=icons/lov_16.png
+
+OccTypeComboBox.OPERATION_MESSAGE=Na\u010D\u00EDt\u00E1n\u00ED typ\u016F v\u00FDskyt\u016F

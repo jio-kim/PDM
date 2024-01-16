@@ -1,0 +1,79 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2021.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# ===========================================================================
+#    Date      Name                    Description of Change
+# 06-Apr-2006  Gopal Reddy             Initial creation
+# 15-Jun-2006  sakrya                  PR Fix 5511601: Tool tip needs correction on the buttons on Select Defining Data wizard.
+# 03-Aug-2006  shahh                   added label for data set search
+# 30-Aug-2006  chitturi                item revision label added
+# 28-Nov-2006  shahh                   fix for PR# 5655551
+# 19-Jan-2007  gadhamse                Fix for PR#5522682
+# $HISTORY$
+# ===========================================================================
+
+search.LABEL=Effectuer recherche de R\u00E9vision d'article
+
+CAEModel_Target.LABEL=Effectuer recherche de R\u00E9vision d'article
+CAEModel_Source.LABEL=Effectuer recherche de R\u00E9vision d'article
+CAEGeometry_Target.LABEL=Effectuer recherche de R\u00E9vision d'article
+CAEGeometry_Source.LABEL=Effectuer recherche de R\u00E9vision d'article
+CAEAnalysis_Defining.LABEL=Effectuer recherche de R\u00E9vision d'article de mod\u00E8le IAO 3D
+CAEAnalysis_Results.LABEL=Effectuer recherche de R\u00E9vision d'article de r\u00E9sultat IAO 3D
+CAEAnalysis_Include.LABEL=Effectuer recherche de R\u00E9vision d'article d'analyse IAO 3D
+CAEAnalysis_Target.LABEL=Effectuer recherche de R\u00E9vision d'article
+CAEAnalysis_Source.LABEL=Effectuer recherche de R\u00E9vision d'article
+CAEAnalysis_Extract.LABEL=Effectuer recherche de R\u00E9vision de Conditions aux Limites IAO 3D
+CAEResult_Extract.LABEL=Effectuer recherche de R\u00E9vision de Conditions aux Limites IAO 3D
+StructureMapRevision.LABEL=Effectuer recherche de R\u00E9vision de correspondance de structure IAO
+Dataset.LABEL=Effectuer recherche de jeu de donn\u00E9es
+ItemRevision.LABEL=Effectuer recherche de R\u00E9vision d'article
+Item.LABEL=Effectuer recherche de R\u00E9vision d'article
+CAEModelRevision.LABEL=Effectuer recherche de R\u00E9vision de mod\u00E8le IAO 3D
+CAEAnalysisRevision.LABEL=Effectuer recherche de R\u00E9vision d'analyse IAO 3D
+CAEResultRevision.LABEL=Effectuer recherche de R\u00E9vision de r\u00E9sultat IAO 3D
+Selected.LABEL=S\u00E9lectionn\u00E9(e)
+Folder.LABEL=Effectuer une recherche de dossier
+CAE0Tool.LABEL=Ex\u00E9cuter une recherche d'outil de Simulation IAO
+CAE0ToolRevision.LABEL=Ex\u00E9cuter une recherche de r\u00E9vision d'outil de Simulation IAO
+
+#Error Messages
+error.TITLE=Entr\u00E9e non valable
+invalidEntry=Impossible d'ajouter plus d'une R\u00E9vision d'article
+loadingSearch.MESSAGE=Chargement de la recherche...
+
+search.TITLE=Rechercher...
+OK=OK
+dataset.LABEL=Effectuer recherche de r\u00E9vision d'article et de jeu de donn\u00E9es
+selectedDataset.LABEL=Jeu de donn\u00E9es s\u00E9lectionn\u00E9
+Cancel=Annuler
+selectFolder.LABEL=S\u00E9lectionner le dossier
+
+#---GenericSearchDialog---#
+searchDialog.TITLE=Rechercher {0}
+searchCriteriaGroup.LABEL=Crit\u00E8res de recherche
+searchResultsGroup.LABEL=R\u00E9sultats de la recherche
+searchButton.LABEL=Rechercher
+noSearchCriteria.ERROR=Indiquez quelques crit\u00E8res de recherche.
+invalidSearchProperty.ERROR=Echec de la recherche \u00E0 partir des crit\u00E8res de recherche s\u00E9lectionn\u00E9.
+searchResultCount.MSG={0} objet(s) trouv\u00E9(s)
+columnButton.LABEL=Colonne...
+columnButton.TOOLTIP=Ajouter ou supprimer des colonnes \u00E0 la table.
+searchRelation.LABEL=Effectuer une recherche pour {0}
+savedQuery.LABEL=Requ\u00EAte sauvegard\u00E9e:
+rememberMe.LABEL=Se souvenir de moi
+matchingItems.LABEL=Objets en correspondance
+noSearchResultFound.MESSAGE=Aucun r\u00E9sultat trouv\u00E9 pour le crit\u00E8re de recherche.
+invalidSearchCriteria.MESSAGE=Crit\u00E8re de recherche non valable
+executeSearchQuery.TOOLTIP=Ex\u00E9cute la requ\u00EAte de recherche
+clearSearchPanel.TOOLTIP=Efface le crit\u00E8re de recherche
+selectIRFromList.MESSAGE=S\u00E9lectionner le r\u00E9sultat de recherche parmi les objets en correspondance.
+selectIR.MESSAGE=S\u00E9lectionner le r\u00E9sultat de recherche
+searchCriteria.LABEL=Crit\u00E8re de recherche
+matchingObjectsCount.MSG={0} objet(s) en correspondance trouv\u00E9s
+queryClass.LABEL=Classe de requ\u00EAte

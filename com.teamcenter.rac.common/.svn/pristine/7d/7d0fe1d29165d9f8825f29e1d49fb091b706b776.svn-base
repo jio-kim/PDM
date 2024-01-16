@@ -1,0 +1,19 @@
+// @<COPYRIGHT>@
+// ==================================================
+// Copyright 2011.
+// Siemens Product Lifecycle Management Software Inc.
+// All Rights Reserved.
+// ==================================================
+// @<COPYRIGHT>@
+
+####################################################################################################
+# Messages
+####################################################################################################
+
+inputNotNull.MESSAGE=\u540D\u524D\u3092\u5909\u3048\u3066\u4FDD\u5B58\u30AA\u30DA\u30EC\u30FC\u30B7\u30E7\u30F3\u306E\u9078\u629E\u3055\u308C\u305F\u9805\u76EE\u306FNULL\u306B\u3067\u304D\u307E\u305B\u3093\u3002
+
+saveAsInputMissing.MESSSAGE=\u540D\u524D\u3092\u5909\u3048\u3066\u4FDD\u5B58\u5165\u529B\u30B3\u30F3\u30D5\u30A3\u30B0\u30EC\u30FC\u30B7\u30E7\u30F3\u304C{0}\u306B\u3042\u308A\u307E\u305B\u3093\u3002\u7BA1\u7406\u8005\u306B\u554F\u3044\u5408\u308F\u305B\u3066\u304F\u3060\u3055\u3044\u3002
+sessionNotAvailable.MESSAGE=\u30BB\u30C3\u30B7\u30E7\u30F3\u304C\u4F7F\u7528\u3067\u304D\u307E\u305B\u3093\u3002\u540D\u524D\u3092\u5909\u3048\u3066\u4FDD\u5B58\u30AA\u30DA\u30EC\u30FC\u30B7\u30E7\u30F3\u3092\u7D9A\u884C\u3067\u304D\u307E\u305B\u3093\u3002\n\u7BA1\u7406\u8005\u306B\u554F\u3044\u5408\u308F\u305B\u3066\u304F\u3060\u3055\u3044\u3002
+
+deepCopyPropertyNull.MESSAGE=\u30C7\u30A3\u30FC\u30D7\u30B3\u30D4\u30FC\u30C7\u30FC\u30BF\u306E\u4F5C\u6210\u306B\u5931\u6557\u3057\u307E\u3057\u305F\u3002
+

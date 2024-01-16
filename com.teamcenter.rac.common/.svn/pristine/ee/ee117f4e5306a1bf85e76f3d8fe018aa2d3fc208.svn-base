@@ -1,0 +1,43 @@
+# @<COPYRIGHT>@
+#===============================================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+#===============================================================================
+# @<COPYRIGHT>@
+
+# Entries for messages
+#---------------------
+# Status message while performing Implicit Check out
+doingImplicitCO=Ukl\u00E1d\u00E1n\u00ED zm\u011Bn a prov\u00E1d\u011Bn\u00ED implicitn\u00ED rezervace \u010Di uvoln\u011Bn\u00ED...
+
+#Entries for buttons
+#---------------------------------
+command.TITLE=Upravit vlastnosti
+
+loadingProperties=Na\u010Dten\u00ED vlastnost\u00ED...
+savingProperties=Ulo\u017Een\u00ED vlastnost\u00ED...
+
+print.TIP = Vytiskn\u011Bte vlastnosti objektu.
+
+failToDisplay=Vlastnosti nelze zobrazit.
+
+saveCheckOut=Ulo\u017Eit
+saveCheckOut.TIP=Ulo\u017Eit a zachovat rezervovan\u00E9
+saveCheckOut.MNEMONIC=S
+
+saveCheckIn=Ulo\u017Eit a uvolnit
+saveCheckIn.TIP=Ulo\u017Eit vlastnosti a uvolnit
+saveCheckIn.MNEMONIC=I
+
+cancelCheckOut=Zru\u0161it rezervaci
+cancelCheckOut.TIP=Zru\u0161it rezervaci a vr\u00E1tit do p\u016Fvodn\u00EDho stavu
+cancelCheckOut.MNEMONIC=O
+
+ok=OK
+ok.TIP=Ulo\u017Eit zm\u011Bny
+ok.MNEMONIC=K
+
+apply=Pou\u017E\u00EDt
+apply.TIP=Ulo\u017Eit zm\u011Bny
+apply.MNEMONIC=A

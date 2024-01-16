@@ -1,0 +1,92 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the print package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#04-Aug-2000  huangz                  Revise it for V7 project
+#16-Aug-2000  huangz                  Add the keys and change the key value of HTMLformat and textForm
+#17-Aug-2000  huangz                  Add the deliminator input to it.
+#24-Aug-2000  huangz                  Change the component is null error message to No object is selected.
+#30-Aug-2000  huangz                  Change the structure to content.
+#14-Sep-2000  huangz                  Add the more keys.
+#22-Sep-2000  huangz                  Modify the print format window.
+#21-Sep-2000  zheng                   add pint UG in Portal not done message
+#28-Sep-2000  Pete Windle (vobman)    Merge from int_v7.0
+#07-May-2001  wangp                   change Tc to i-Man
+#18-May-2001  wangp                   change i-Man back to Tc
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#09-May-2002  shankar                 Add the 'object count' and 'date' options
+#09-May-2002  shankar                 Merge into P8.0.0.7
+#28-Jan-2003  silvermm                sdlc1379 introduces application "extra" data
+#03-Apr-2003  Zhixin Huang            Add the key for selectPrintingColumn and hidePrintColumn.
+#22-May-2003  Zhixin Huang            Conflict resolutions for P9.0.0.1
+#13-Oct-2004  Geethika Chitturi       Changing UG to NX
+#15-Oct-2004  Geethika Chitturi       Merge from x_chittu_hyd_p10.0.0.5 to x_chittu_hyd_p10.0.0.6
+#18-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#19-Oct-2004  Geethika Chitturi       Merging to project branch
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for message center
+# ------------------------------
+printingObject = Tisk...
+
+# Entries for error message
+# ------------------------------
+notRightType = Nen\u00ED mo\u017En\u00E9 vytisknout vybran\u00E9 objekty.
+command.TITLE = Tisk
+
+formProperty.TITLE = Vlastnosti formul\u00E1\u0159e
+objectProperty.TITLE = Vlastnosti objektu 
+structurePrint.TITLE = Obsah
+currentStructure.TITLE = Aktu\u00E1ln\u011B se zobrazuje obsah
+
+loadStatus.MSG = Na\u010Dten\u00ED dat tisku...
+noComponent = Nen\u00ED vybr\u00E1n \u017E\u00E1dn\u00FD objekt.
+
+text = Text
+html = HTML
+#Fix for PR#6299790- for displaying localized value for "HTML Table" and "Level"
+HTMLTable=Tabulka HTML
+levelProp=\u00DArove\u0148
+
+formatSetting.TITLE = Form\u00E1t tisku
+formatSetting.TIP = Nastavte v\u00FDsledn\u00FD form\u00E1t.
+
+title = N\u00E1zev:
+delimit = Odd\u011Blova\u010D:
+realName = Skute\u010Dn\u00FD n\u00E1zev
+columnAlign = Zarovn\u00E1n\u00ED sloupc\u016F
+autoIndent = Automaticky odsadit
+plusMinus = Zobrazit +/-
+revisionRule = Pravidlo revize
+objectCount = Po\u010Det objekt\u016F
+objects = objekty
+date = Datum
+properties = Vlastnosti
+
+selectPrintingColumn = Vybrat sloupce pro tisk
+hideColumnSelection = Skr\u00FDt v\u00FDb\u011Br sloupc\u016F
+
+update = Aktualizovat
+
+#<szheng> 15-Sept-2000 to display the msg that print NX is not done in Portal
+printUGNotDone=Tisk datasetu NX nen\u00ED dostupn\u00FD z pln\u00E9ho klienta. Tiskn\u011Bte p\u0159\u00EDmo z NX.
+level = \u00FArove\u0148
+
+# sdlc1379 adds
+show=zobrazit
+extradata=Speci\u00E1ln\u00ED data

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0">
+   <implementation class="com.teamcenter.rac.common.services.impl.BasicRenderIconObjectService"/>
+   <service>
+      <provide interface="com.teamcenter.rac.common.services.IRenderIconObjectService"/>
+   </service>
+   <reference bind="setPropertyIconService" cardinality="1..1" interface="com.teamcenter.rac.common.propertyicon.IPropertyIconService" name="IPropertyIconService" policy="static"/>
+   <reference bind="setRenderIconAttributeService" cardinality="1..1" interface="com.teamcenter.rac.common.services.IRenderIconAttributeService" name="IRenderIconAttributeService" policy="static"/>
+   <reference bind="setRenderIconClassService" cardinality="1..1" interface="com.teamcenter.rac.common.services.IRenderIconClassService" name="IRenderIconClassService" policy="static"/>
+   <reference bind="setRenderIconTypeService" cardinality="1..1" interface="com.teamcenter.rac.common.services.IRenderIconTypeService" name="IRenderIconTypeService" policy="static"/>
+   <reference bind="setTCTypeService" cardinality="1..1" interface="com.teamcenter.rac.kernel.TCTypeService" name="TCTypeService" policy="static"/>
+   <reference bind="setTCPreferenceService" cardinality="1..1" interface="com.teamcenter.rac.kernel.TCPreferenceService" name="TCPreferenceService" policy="static"/>
+</scr:component>

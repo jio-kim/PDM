@@ -1,0 +1,291 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the lov package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#09-Apr-2001  wangp                   Move entries from common to common/lov
+#24-Oct-2001  wangp                   add sort button
+#15-Jun-2003  Bruce Hebbard           Add multipick button
+#12-Nov-2004  x_suje                  Added file element "RowObject.java".
+#18-Nov-2004  x_suje                  for attribute sharing project
+#07-Jan-2005  faming                  V10 LOV Enhancement Project to Phase 8
+#24-Jan-2005  faming                  V10 LOV Enhancement Project
+#29-Apr-2005  hoangh                  PR#5178172
+#31-May-2005  bhamidip                Fix PR 5182338 (Attribute Sharing values found message incorrect)
+#$HISTORY$
+#=================================================================================================*/
+
+# LOVComboBox Keys
+# ------------------------
+LOVComboLoad=Na\u010Dten\u00ED seznamu hodnot
+
+# Interdependent LOV panel
+#--------------------------
+LOVInterdependentButton.TIP=<html><body>{0}</body></html>
+
+# LOVPopupButton Keys
+# ------------------------------
+LOVPopupWindow.TITLE=Seznam hodnot
+LOVComponentInvalid=Nelze na\u010D\u00EDst seznam hodnot.
+LOVPopupButton.TIP=Klepnut\u00EDm na\u010Dt\u011Bte seznam hodnot.
+
+valueLabel.NAME=Hodnota:
+searchLabel.NAME=Hledat:
+inputLabel.NAME=Vstup:
+rangeLabel.NAME=Rozsah:
+
+valueText.TIP=Zadejte hodnotu a stiskn\u011Bte ENTER
+findText.TIP=Zadejte krit\u00E9ria hled\u00E1n\u00ED a stiskn\u011Bte kl\u00E1vesu ENTER nebo klepn\u011Bte na tla\u010D\u00EDtko hledat.
+valueTextRange.TIP=Zadejte hodnotu v rozsahu.
+filterButton.TIP=Stiskem spus\u0165te hled\u00E1n\u00ED
+addButton.TIP =Spust\u00ED operaci k z\u00EDsk\u00E1n\u00ED hodnot seznamu hodnot z extern\u00EDho zdroje dat.
+allButton.TIP=Na\u010D\u00EDst v\u0161echny nalezen\u00E9 hodnoty.
+nextButton.TIP=Na\u010D\u00EDst n\u00E1sleduj\u00EDc\u00ED sadu nalezen\u00FDch hodnot.
+prevButton.TIP=Na\u010D\u00EDst p\u0159edchoz\u00ED sadu nalezen\u00FDch hodnot.
+sortButton.TIP=Se\u0159adit hodnoty vzestupn\u011B.
+sqlButton.TIP=Zobrazit dotaz uveden\u00FD v dialogov\u00E9m okn\u011B
+multipickButton.TIP=Vybrat v\u00EDce hodnot ze seznamu.
+multicolumnButton.TIP=Vybrat \u0159\u00E1dek dat z tabulky.
+HierarchyLOVPopupButton.TIP=Vyberte hodnotu v hierarchii.
+selectValue=Vybrat hodnotu pro
+search.TIP=Dotaz na vstupn\u00ED hodnotu pro
+search=Hledat
+
+LOVDefaultMessage=Zadejte krit\u00E9rium hled\u00E1n\u00ED a stiskn\u011Bte kl\u00E1vesu Enter.
+LOVDefaultMessageForRange=Zadejte hodnotu v rozsahu.
+LOVFound=nalezen\u00E9 hodnoty
+LOVFound1=nalezen\u00E1 hodnota
+LOVShown=zobrazen\u00FD
+LOVNoFound.TIP=Nebyla nalezena \u017E\u00E1dn\u00E1 hodnota.
+LOVLoadFirst=Na\u010D\u00EDt\u00E1n\u00ED prvn\u00ED sady hodnot
+loadPrevious=Na\u010D\u00EDt\u00E1n\u00ED p\u0159edchoz\u00ED sady hodnot
+loadNext=Na\u010D\u00EDt\u00E1n\u00ED n\u00E1sleduj\u00EDc\u00ED sady hodnot
+loadAll=Na\u010D\u00EDt\u00E1n\u00ED v\u0161ech nalezen\u00FDch hodnot
+loadByPart=Na\u010D\u00EDt\u00E1n\u00ED sady hodnot.
+LOVPopupMsgFailToLoad=Chyba p\u0159i na\u010D\u00EDt\u00E1n\u00ED seznamu hodnot.
+LOVPopupMsgTitle=Na\u010D\u00EDst seznam hodnot
+LOVCannotConvertMessage=Vstup nelze p\u0159ev\u00E9st na po\u017Eadovan\u00FD typ.
+LOVAllValuesNotFound=Nelze na\u010D\u00EDst hodnoty seznamu hodnot.
+
+invalidRangeInput.MESSAGE=Zadan\u00E9 hodnoty jsou mimo rozsah definovan\u00FD pro tento seznam hodnot.\nZadejte hodnoty v rozsahu od {0} do {1}.
+invalidInput.TITLE=Neplatn\u00FD vstup
+
+LOVMultiColumnPopupButton.Tip=Klepnut\u00EDm zobraz\u00EDte seznam hodnot s v\u00EDce sloupci
+LOVMultiColumnNoMapping=Vlastnost p\u0159i\u0159azen\u00E1 k seznamu hodnot nen\u00ED p\u0159i\u0159azena k \u017E\u00E1dn\u00FDm extern\u00EDm atribut\u016Fm.
+MultiColumnPanel.ERROR=CHYBA
+MultiColumnTable.TIP=Tato tabulka zobrazuje hodnoty extern\u00EDch zdroj\u016F dat p\u0159i\u0159azen\u00FDch atribut\u016F
+MultiColumnFoundRows=\u0159\u00E1dk\u016F nalezeno. Chcete je v\u0161echny na\u010D\u00EDst?
+MultiColumnFoundRows.TITLE=Dotaz na na\u010D\u00EDt\u00E1n\u00ED \u0159\u00E1dk\u016F
+andCondition=AND
+orCondition=OR
+SqlDialog.TITLE=Zm\u011Bnit uveden\u00E9 dotazy
+SqlDialog.header=Zadejte hodnoty filtru p\u0159i\u0159azen\u00FDch atribut\u016F.
+saveButton.TITLE=Ulo\u017Eit
+saveButton.TIP=Ulo\u017E\u00ED v\u00FDrazy filtru definovan\u00E9 u\u017Eivatelem.
+colsaveButton.TIP=Ulo\u017E\u00ED data v skryt\u00E9m sloupci definovan\u00E1 u\u017Eivatelem.
+startLoading=Spou\u0161t\u011Bn\u00ED tvorby tabulek s v\u00EDce sloupci..
+getValues=Po\u017Eadavek hodnot seznamu hodnot z extern\u00EDho zdroje dat...
+fetchValues=FetchValues
+Ascending=Hodnoty ve sloupci jsou se\u0159azeny vzestupn\u011B
+Descending=Hodnoty ve sloupci jsou se\u0159azeny sestupn\u011B
+displayDialog.TITLE=Nastaven\u00ED zobrazen\u00ED sloupc\u016F
+displayDialog.Header=Vyberte sloupce tabulky, kter\u00E9 chcete zobrazit nebo skr\u00FDt
+lovTableshownColumns.LABEL=Sloupce pro tabulku seznamu hodnot
+generalColumn.available=Zobrazen\u00E9 sloupce
+generalColumn.selected=Skryt\u00E9 sloupce
+addToHidden.TIP=Klepnut\u00EDm p\u0159idejte vybranou hodnotu ze zobrazen\u00E9ho sloupce do skryt\u00E9ho sloupce
+removeFromHidden.TIP=Klepnut\u00EDm p\u0159idejte vybranou hodnotu ze skryt\u00E9ho sloupce do zobrazen\u00E9ho sloupce
+isPrimaryColumn=Prim\u00E1rn\u00ED sloupce tabulky nelze skr\u00FDt. 
+primary.ERROR=Chyba prim\u00E1rn\u00EDho sloupce
+refresh.TIP=T\u00EDm se znovu na\u010Dtou hodnoty sloupce tabulky.
+userDialog.TITLE=Dialogov\u00E9 okno u\u017Eivatelsk\u00E9ho v\u00FDb\u011Bru
+userDialog.Header=Vyberte jednu hodnotu, kter\u00E1 bude p\u0159i\u0159azena k vlastnosti
+okButton.TITLE=OK
+okButton.TIP=Klepnut\u00EDm na tla\u010D\u00EDtko OK ulo\u017E\u00EDte vybranou polo\u017Eku.
+noSelection.TITLE=Chyba
+noSelection.ERROR=V seznamu nebyl proveden \u017E\u00E1dn\u00FD v\u00FDb\u011Br
+andCondition=AND
+orCondition=OR
+noMappingExists=Nebylo nalezeno \u017E\u00E1dn\u00E9 p\u0159i\u0159azen\u00ED atributu pro tuto vlastnost. Kontaktujte spr\u00E1vce
+logicalOpTip=Vyberte bu\u0148ky pod t\u00EDmto sloupcem k zad\u00E1n\u00ED logick\u00FDch oper\u00E1tor\u016F
+attributeTip=Tento sloupec p\u0159edstavuje extern\u00ED atributy
+mathTip=Vyberte bu\u0148ky pod t\u00EDmto sloupcem k zad\u00E1n\u00ED matematick\u00FDch oper\u00E1tor\u016F
+UserTip=Vyberte bu\u0148ky pod t\u00EDmto sloupcem k ur\u010Den\u00ED hodnot filtru.
+
+defineFilter.TIP=Definujte filtr, kter\u00FD se asociuje s vybranou hodnotou.
+cutFilter.TIP=Vyjm\u011Bte asociovan\u00FD filtr z vybran\u00E9 hodnoty.
+refreshLOV.TIP=Obnovte zobrazen\u00ED seznamu hodnot.
+deleteFilter.TIP=odstranit vybran\u00FD filtr seznamu hodnot.
+selectLevel.TIP=Vyberte v\u0161echny uzly stromu na stejn\u00E9 \u00FArovni.
+validateTree.TIP=Vyberte \u00FArove\u0148 pro hled\u00E1n\u00ED nevyv\u00E1\u017Een\u00FDch hodnot.
+
+
+# Entries for the LOVTree
+#------------------------------------------
+lovTreeRootText=Seznam hodnot
+
+# Entries for the LOV Panel
+#------------------------------------------
+createLOV=Vytvo\u0159it
+createLOV.TIP=Vytvo\u0159\u00ED nov\u00FD objekt seznamu hodnot
+createLOV.MNEMONIC=C
+
+modifyLOV=Zm\u011Bnit
+modifyLOV.TIP=Zm\u011Bn\u00ED objekt seznamu hodnot
+modifyLOV.MNEMONIC=M
+
+deleteLOV=Odstranit
+deleteLOV.TIP=Odstran\u00ED objekt seznamu hodnot
+deleteLOV.MNEMONIC=D
+
+clearLOV=Smazat
+clearLOV.TIP=Odstran\u00ED v\u0161echny hodnoty.
+clearLOV.MNEMONIC=R
+
+LOVPropertyAttachment.TITLE=P\u0159ipojen\u00ED vlastnost\u00ED seznamu hodnot
+LOVDependentPropertyAttachment.TITLE=P\u0159ipojen\u00ED vlastnost\u00ED z\u00E1visl\u00E9ho seznamu hodnot
+
+addButton.TIP=P\u0159id\u00E1 vybran\u00FD typ/vlastnost do seznamu.
+removeButton.TIP=Odstran\u00ED vybran\u00FD typ/vlastnost ze seznamu.
+clearButton.TIP=Vyma\u017Ee v\u0161echny typy/vlastnosti ze seznamu.
+
+attachmentList.TIP=Seznam asociovan\u00FDch vlastnost\u00ED p\u0159ipojen\u00FDch k tomuto seznamu hodnot.
+
+integer=Cel\u00E9 \u010D\u00EDslo
+double=Re\u00E1ln\u00E9 \u010D\u00EDslo
+char=Znak
+string=\u0158et\u011Bzec
+date=Datum
+reference=Reference
+
+ListOfValuesTag=Zna\u010Dka
+ListOfValuesTagExtent=Roz\u0161\u00ED\u0159en\u00ED zna\u010Dky
+
+ListOfValuesString=\u0158et\u011Bzec
+ListOfValuesStringExtent=Roz\u0161\u00ED\u0159en\u00ED \u0159et\u011Bzce
+ListOfValuesTagRDVSearchRevRule=Pravidlo Rev hled\u00E1n\u00ED RDV
+ListOfValuesStringExtentGrName=N\u00E1zev skupiny
+ListOfValuesStringExtentPubrType=Typ z\u00E1znamu publikace
+ListOfValuesStringExtentStatus=Status
+ListOfValuesStringExtentUsName=U\u017Eivatelsk\u00E9 jm\u00E9no
+ListOfValuesStringExtentUserId=ID u\u017Eivatele
+ListOfValuesStringExtentWSOClass=T\u0159\u00EDda
+ListOfValuesInteger=Cel\u00E9 \u010D\u00EDslo
+ListOfValuesIntegerExtentSite=Server
+ListOfValuesFilter=Filtr
+ListOfValuesDouble=Re\u00E1ln\u00E9 \u010D\u00EDslo
+ListOfValuesDate=Datum
+ListOfValuesChar=Znak
+
+exhaustive=\u00DApln\u00E9
+suggestive=Navr\u017Een\u00E9
+range=Rozsah
+
+addValue.TIP=P\u0159id\u00E1 zadan\u00E9 hodnoty do seznamu.
+removeValue.TIP=Odebere vybran\u00E9 hodnoty ze seznamu.
+upValue.TIP=Posune vybranou hodnotu nahoru.
+downValue.TIP=Posune vybranou hodnotu dol\u016F.
+
+loadValues.TIP=Na\u010Dte v\u0161echny hodnoty z vybran\u00E9 t\u0159\u00EDdy reference do seznamu.
+
+name=N\u00E1zev:
+filterName=N\u00E1zev filtru:
+description=Popis:
+valueType=Typ hodnoty:
+usage=Pou\u017Eit\u00ED:
+valueName=Hodnota
+descriptionName=Popis
+shownValue=Zobrazen\u00E9 hodnoty
+hiddenValue=Skryt\u00E9 hodnoty
+hierarchy=Hierarchie
+attach=P\u0159ipojit:
+addDesc.TIP=P\u0159id\u00E1n\u00ED k p\u0159ipojen\u00ED popisu vlastnosti.
+removeDesc.TIP=Odebr\u00E1n\u00ED od p\u0159ipojen\u00ED popisu vlastnosti.
+referenceClass.TIP=T\u0159\u00EDda reference a atribut
+basedOnLOV=Dle seznamu hodnot:
+listOfValuesFilter=Filtr seznamu hodnot
+noAttachment=\u017D\u00E1dn\u00E9 p\u0159ipojen\u00ED
+selectLevel.TITLE=Vyberte \u00FArove\u0148 k v\u00FDb\u011Bru
+found=nalezen
+
+values=Hodnoty
+value=Hodnota:
+
+upperLimit=Horn\u00ED limit:
+lowerLimit=Doln\u00ED limit:
+
+# Entries for message center
+#------------------------------------------
+deletingLOV=Prob\u00EDh\u00E1 odstran\u011Bn\u00ED seznamu hodnot...
+creatingLOV=Tvorba seznamu hodnot...
+savingLOV=Prob\u00EDh\u00E1 ukl\u00E1d\u00E1n\u00ED seznamu hodnot...
+fetchingValues=Na\u010D\u00EDt\u00E1n\u00ED hodnot vybran\u00E9 t\u0159\u00EDdy a atributu...
+
+# Entries for confirmation message
+#------------------------------------------
+confirmDelete.TITLE=Potvrzen\u00ED odstran\u011Bn\u00ED
+confirmDelete.MESSAGE=Opravdu chcete odstranit
+
+# Entries for error messages
+#------------------------------------------
+cannotConvert=Vstup nelze p\u0159ev\u00E9st na odpov\u00EDdaj\u00EDc\u00ED typ.
+noLOVFound=Nebyl nalezen \u017E\u00E1dn\u00FD seznam hodnot.
+noComponentsToFetch=Nebyly nalezeny \u017E\u00E1dn\u00E9 hodnoty vybran\u00E9 t\u0159\u00EDdy a atributu.
+error.TITLE=Chyba
+information.TITLE=Seznam hodnot
+warning.TITLE=Upozorn\u011Bn\u00ED
+invalidNullValue=pr\u00E1zdn\u00E1 hodnota je neplatn\u00E1 a nelze ji ulo\u017Eit.
+duplicatedValue=je duplicitn\u00ED hodnota a nelze ji ulo\u017Eit.
+
+# PR# 4282192 (lov_type not supported in SA module) - Entries for lov type combobox
+#----------------------------------------------------------------------------------
+loadingLOVTypes=Na\u010D\u00EDt\u00E1n\u00ED typ\u016F seznam\u016F hodnot...
+lovType=Typ seznamu hodnot:
+listOfValuesChar=Seznam hodnot - znaky
+listOfValuesDate=Seznam hodnot - datum
+listOfValuesDouble=Seznam hodnot - desetinn\u00E9
+listOfValuesInteger=Seznam hodnot - cel\u00E9
+listOfValuesString=Seznam hodnot - \u0159et\u011Bzce
+listOfValuesTag=Seznam hodnot - zna\u010Dky
+lsitOfValuesFilter=Seznam hodnot - filtr
+
+nextFound.TIP=Vyberte n\u00E1sleduj\u00EDc\u00ED nalezen\u00FD.
+previousFound.TIP=Vyberte p\u0159edchoz\u00ED nalezen\u00FD.
+for=pro
+attachDependencyButton.TIP=P\u0159ipojte z\u00E1vislou vlastnost.
+lovDependencyWizard.TITLE=Pr\u016Fvodce z\u00E1vislostmi seznamu hodnot
+selectLOV=V\u00FDb\u011Br seznamu hodnot
+selectLOV.INFO=Vyberte seznam hodnot kter\u00FD chcete asociovat s
+defineFilter.TITLE=Definovat filtr
+defineFilter.INFO=Definujte filtr, kter\u00FD chcete asociovat s
+defineFilter.TIP=Definujte filtr, kter\u00FD se asociuje s vybranou hodnotou.
+directDependencyCheckbox=P\u0159\u00EDm\u00E1 z\u00E1vislost podle seznamu hodnot
+findStatus=Hled\u00E1n\u00ED t\u0159\u00EDdy Teamcenteru s n\u00E1zvem za\u010D\u00EDnaj\u00EDc\u00EDm na
+classificationName=N\u00E1zev klasifikace:
+defineClassification.TITLE=Definovat klasifikace
+defineClassification.TIP=Definujte klasifikace.
+selectLevelOrClassification.TITLE=Vybrat \u00FArove\u0148 nebo klasifikaci
+selectIncludeParentLevel=Vybrat \u00FArove\u0148 zahrnut\u00E9ho rodi\u010De
+level=\u00DArove\u0148
+allLevel=v\u0161echny \u00FArovn\u011B
+
+cutFilter.TIP=Vyjm\u011Bte asociovan\u00FD filtr z vybran\u00E9 hodnoty.
+refreshLOV.TIP=Obnovte zobrazen\u00ED seznamu hodnot.
+deleteFilter.TIP=Odeberte a odstra\u0148te vybran\u00FD filtr seznamu hodnot.
+selectLevel.TIP=Vyberte v\u0161echny uzly stromu na stejn\u00E9 \u00FArovni.
+validateTree.TIP=Vyberte \u00FArove\u0148 hled\u00E1n\u00ED nevyv\u00E1\u017Een\u00FDch hodnot prvku.
+
+selectFilter.TITLE=Vybrat filtr
+createFilter.TITLE=Vytvo\u0159it filtr
+
+loadHierarchy.TIP=Na\u010Dt\u011Bte celou hierarchii.

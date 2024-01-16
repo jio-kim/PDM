@@ -1,0 +1,44 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the genericselection package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: genericselection_locale.properties
+#   Module  : com.teamcenter.rac.common.genericselection
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#23-Aug-2000  wangp                   initial creation
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+
+genericSelectionButton.TITLE=Allgemeine Auswahl
+genericSelectionButton.TIP=Allgemeine Auswahl
+
+genericSelection.columnsShown=object_string,object_desc,owning_user,owning_group,
+genericSelectionQueryOp=Abfrage wird ausgef\u00FChrt
+genericSelection.objectsNotFound=Es wurden keine Objekte entsprechend den angegebenen Suchkriterien gefunden.
+genericSelection.objectsNotFound.TITLE=Nichts gefunden.
+genericSelectionDefaultMessage=Geben Sie die Suchkriterien ein und dr\u00FCcken Sie die Eingabetaste.
+genericSelectionObjectsFound=Objekt(e) gefunden
+
+nextButton.TIP=L\u00E4dt die n\u00E4chsten 5 gefundenen Komponenten in die Tabelle.
+previousButton.TIP=L\u00E4dt die vorherigen 5 gefundenen Komponenten in die Tabelle.
+allButton.TIP=L\u00E4dt alle gefundenen Komponenten in die Tabelle.
+appendButton.TIP=F\u00FCgt die n\u00E4chsten 5 gefundenen Komponenten der Tabelle an.
+copyButton.TIP=Kopiert die ausgew\u00E4hlten Komponenten in die Zwischenablage.
+
+shown=angezeigt
+loadPrevious=Vorherige Komponentengruppe wird geladen
+loadNext=N\u00E4chste Komponentengruppe wird geladen
+loadAppend=N\u00E4chste Komponentengruppe anh\u00E4ngen
+loadAll=Alle gefundenen Komponenten werden geladen
+

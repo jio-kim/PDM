@@ -1,0 +1,38 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the listusers package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#29-May-2002  Endi Wu                 initial creation
+#17-Jun-2002  Endi Wu                 Correct the date on the header
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=Usu\u00E1rios de logon atual
+
+close.TOOLTIP=Fechar a caixa de di\u00E1logo.
+
+refresh.TOOLTIP=Atualizar a lista de usu\u00E1rio.
+
+userColumn=ID do usu\u00E1rio
+personColumn=Nome da pessoa
+nodeColumn=Nome da M\u00E1quina
+dateColumn=Data de login
+
+loadingUsersList= Carregando a lista de usu\u00E1rios de logon...
+noUsersFound=Nenhum usu\u00E1rio encontrado.
+
+confirmPurge.TITLE = Limpar se\u00E7\u00F5es inativas
+confirmPurge.MESSAGE = Se\u00E7\u00F5es inativas encontradas! Deseja limp\u00E1-las?
+
+sortingStatus=Coluna de ordena\u00E7\u00E3o:

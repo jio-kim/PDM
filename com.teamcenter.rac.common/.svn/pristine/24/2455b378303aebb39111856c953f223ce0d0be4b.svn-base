@@ -1,0 +1,25 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+import=com.teamcenter.rac.explorer.common.common,com.teamcenter.rac.common.common
+
+genericSelection.columnsShown=object_string,object_type,object_desc,owning_user,owning_group,
+
+addToFavoritesAction.ICON=images/favoriteoption_16.png
+addToFavoritesAction.MNEMONIC=F
+
+# Quick access query details
+# --------------------------
+quickAccessQueries=k_find_general_name,k_find_item_name,k_find_itemrevision_name,k_find_datasetname_name,k_find_fts_name
+defaultQuickAccessQuery=Item...
+
+k_find_item_name_SearchAttribute=item_id
+k_find_general_name_SearchAttribute=object_name
+k_find_itemrevision_name_SearchAttribute=object_name
+k_find_datasetname_name_SearchAttribute=object_name
+k_find_fts_name_SearchAttribute=object_name

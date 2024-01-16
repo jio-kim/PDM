@@ -1,0 +1,51 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newfolder package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newfolder_locale.properties
+#   Module  : com.teamcenter.rac.commands.newfolder
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2003  wangp                   fix pr 4426554: customize portal dialogs
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# New Folder Dialog
+# ----------------------
+command.TITLE=Nuova cartella
+
+name = Nome:
+description = Descrizione:
+type = Tipo:
+openOnCreate = Apri dopo creazione
+
+# Messages for message center
+# ----------------------
+loadingTypes = Caricamento tipi di cartella...
+creatingNewFolder = Creazione nuova cartella
+abort = Interruzione apertura nuova cartella
+
+# Error Messages
+# ----------------------
+folderTypeError = Impossibile ottenere i tipi di cartella.
+failToCreate = Impossibile creare cartella
+failFindDialog=Impossibile trovare la finestra di dialogo Nuova cartella.
+error.TITLE = Nuova cartella...
+
+# Messages and keys for the Abort Message Box
+# ----------------------
+aborted=Interruzione operazione di creazione cartella... Cartella creata e inserita parzialmente
+aborted.TITLE=Interrotto
+
+aborting=Interruzione...

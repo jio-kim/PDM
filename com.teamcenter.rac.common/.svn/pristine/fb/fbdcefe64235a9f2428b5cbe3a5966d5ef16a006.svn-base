@@ -1,0 +1,38 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the listusers package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#29-May-2002  Endi Wu                 initial creation
+#17-Jun-2002  Endi Wu                 Correct the date on the header
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=Aktualnie zalogowani u\u017Cytkownicy
+
+close.TOOLTIP=Zamknij okno dialogowe.
+
+refresh.TOOLTIP=Od\u015Bwie\u017C list\u0119 u\u017Cytkownik\u00F3w.
+
+userColumn=ID u\u017Cytkownika
+personColumn=Nazwisko
+nodeColumn=Nazwa w\u0119z\u0142a
+dateColumn=Data logowania
+
+loadingUsersList= Wczytywanie listy zalogowanych u\u017Cytkownik\u00F3w...
+noUsersFound=Nie znaleziono \u017Cadnych u\u017Cytkownik\u00F3w.
+
+confirmPurge.TITLE = Usu\u0144 wygas\u0142e sesje
+confirmPurge.MESSAGE = Znaleziono wygas\u0142e sesje! Czy chcesz je usun\u0105\u0107?
+
+sortingStatus=Kolumna sortowania:

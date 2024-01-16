@@ -1,0 +1,11 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@ 
+
+# Compare and Save
+datasetCreateError.TITLE=Errore durante la creazione del set di dati 
+creatingWordDataset=Creazione set di dati...

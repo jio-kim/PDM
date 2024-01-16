@@ -1,0 +1,56 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the deepcopy package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#18-Jul-2001  x_gopala                Initial Creation
+#12-Oct-2001  wangp                   revise project (for x_gopala)
+#27-Jan-2006  narayasu                Fix for PR 5371739
+#$HISTORY$
+#=================================================================================================*/
+
+# Advanced copy options tab
+# --------------------------------------------------
+advanced.TITLE=Pokro\u010Dil\u00E9
+fromTree=Zdroj:
+sourceGeneric=Obecn\u00E1 revize polo\u017Eky zdroje:
+sourceVariant=Revize polo\u017Eky varianty zdroje:
+toTree=C\u00EDl:
+useCopyPref= Povolit mo\u017Enosti kop\u00EDrov\u00E1n\u00ED u\u017Eivatele
+copyPreferences=preference kop\u00EDrov\u00E1n\u00ED:
+userPref=U\u017Eivatel
+sitePref=Pracovi\u0161t\u011B
+
+loadingTree.MSG=Na\u010Dten\u00ED stromu...
+
+error.TITLE=Duplicitn\u00ED polo\u017Eka
+errormsg=Kontrola duplicitn\u00EDch/nespr\u00E1vn\u00FDch hodnot preferenc\u00ED v souboru preferenc\u00ED pracovi\u0161t\u011B
+
+# Popupmenu
+# --------------------------------------------------
+copy_as_object.POPUP_TITLE=Mo\u017Enosti kop\u00EDrov\u00E1n\u00ED
+
+copy_as_reference.NAME=Kop\u00EDrovat jako referenci
+copy_as_NoCopyOrReferenceNewCopy.NAME=Nekop\u00EDrovat ani nep\u0159ipojovat k posledn\u00ED
+copy_as_object.NAME=Kop\u00EDrovat jako objekt
+no_copy.NAME=Nekop\u00EDrovat
+relate_to_latest.NAME=P\u0159ipojit k posledn\u00ED
+revise_and_relate_to_latest.NAME= Revidovat a p\u0159ipojit k posled\u00ED
+copy_as_object.TIP=Nastavena mo\u017Enost Kop\u00EDrovat jako objekt
+copy_as_reference.TIP=Nastavena mo\u017Enost Kop\u00EDrovat jako referenci
+copy_as_NoCopyOrReferenceNewCopy.TIP=Nekop\u00EDrovat ani nep\u0159ipojovat k posledn\u00ED sad\u011B mo\u017Enost\u00ED
+no_copy.TIP=Nastavena mo\u017Enost Nekop\u00EDrovat.
+relate_to_latest.TIP=P\u0159ipojit k posledn\u00ED sad\u011B mo\u017Enost\u00ED
+revise_and_relate_to_latest.TIP= Revidovat a p\u0159ipojit k nejaktu\u00E1ln\u011Bj\u0161\u00ED sad\u011B mo\u017Enost\u00ED
+
+download=Tvorba strom\u016F DeepCopy...

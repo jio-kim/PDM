@@ -1,0 +1,33 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the queryselection package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#29-Mar-2001  mccollr                 Cleanup for promote.
+#12-Jun-2001  Zhixin Huang            Change the "All" to "Remaining"
+#17-Apr-2002  Rob McColl              Add the 'Next' keyword.
+#15-may-2002  silvermm                sdlc1254 adds DEADQUERY below
+#15-May-2002  silvermm                sdlc1254 Adds message for tool bar when the query was updated.
+#10-Jul-2002  Max Ishutin             Item Revision PSE Search UI
+#05-Sep-2002  faming                  PR#4619808: add QueryNameFont.NAME
+#05-Sep-2002  faming                  use physical font name for English environments
+#$HISTORY$
+#=================================================================================================*/
+
+button.TITLE=\u9009\u62E9\u67E5\u8BE2
+loadingQueries.MESSAGE=\u6B63\u5728\u52A0\u8F7D\u67E5\u8BE2...\uFF0C\u8BF7\u7A0D\u7B49
+all=\u5176\u4F59
+next=\u4E0B\u4E00\u4E2A
+button.DEADQUERY= \u5DF2\u88AB\u5220\u9664\u3002\u8BF7\u9009\u62E9\u53E6\u4E00\u4E2A\u3002
+Item=\u5DF2\u4FDD\u5B58\u96F6\u7EC4\u4EF6\u67E5\u8BE2
+ItemRevision=\u5DF2\u4FDD\u5B58\u96F6\u7EC4\u4EF6\u7248\u672C\u67E5\u8BE2

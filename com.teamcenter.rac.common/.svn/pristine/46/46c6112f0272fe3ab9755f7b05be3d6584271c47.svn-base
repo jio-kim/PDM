@@ -1,0 +1,35 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#=================================================================================================
+#  Date       Name                    Description of Change
+# 27-May-2009  kabra                   initial creation
+# $HISTORY$
+# =================================================================================================
+
+# Entries for AddNewHandler
+#-----------------------------
+AddNewHandler.NoSourceFound=\u6B64\u6307\u4EE4\u672A\u914D\u7F6E\u4F86\u6E90\u5C6C\u6027\u6216\u53C3\u6578
+AddNewHandler.NoObjectType=\u627E\u4E0D\u5230\u7269\u4EF6\u985E\u578B\u4EE5\u555F\u52D5\u7CBE\u9748\u3002
+ViewMarkupHandler.Title=\u6AA2\u8996/\u8A3B\u8A18
+ViewMarkupHandler.CreateJob=\u8F09\u5165\u6A94\u6848\u4F5C\u696D\u6642\u6AA2\u8996/\u8A3B\u8A18...
+ViewMarkupHandler.AppLaunchError=\u672A\u80FD\u555F\u52D5\u95DC\u806F\u7684\u5DE5\u5177
+ViewMarkupHandler.PopulateMyViewMarkup=\u586B\u5145\u6211\u7684\u8996\u5716/\u8A3B\u8A18\u5FEB\u901F\u9023\u7D50
+DigitalSigningHandler.Title=\u7C3D\u7AE0
+DigitalSigningHandler.CreateJob=\u8F09\u5165\u6A94\u6848\u4F5C\u696D\u6642\u7C3D\u7AE0...
+DigitalSigningHandler.AppLaunchError=\u672A\u80FD\u555F\u52D5\u95DC\u806F\u7684\u5DE5\u5177
+CancelSigningHandler.Title=\u53D6\u6D88\u7C3D\u7AE0
+CancelSigningHandler.CreateJob=\u8F09\u5165\u6A94\u6848\u4F5C\u696D\u6642\u53D6\u6D88\u7C3D\u7AE0...
+CancelSigningHandler.SessionError=\u672A\u80FD\u521D\u59CB\u5316\u968E\u6BB5\u4F5C\u696D
+CancelSigningHandler.ServiceError=\u627E\u4E0D\u5230 DigitalSignature \u670D\u52D9
+setPreference.MSG=\u8A2D\u5B9A\u559C\u597D\u8A2D\u5B9A
+TaskStatusActionHandler.Title=\u932F\u8AA4
+
+warning=\u8B66\u544A
+InvalidObjectToSendTo.TITLE=\u4F5C\u696D\u7121\u6548
+InvalidObjectToSendTo.MESSAGE=\u4E00\u500B\u6216\u591A\u500B\u8F38\u5165\u7269\u4EF6\u662F\u7121\u6CD5\u50B3\u9001\u5230\u76EE\u6A19\u7684\u7121\u6548\u7269\u4EF6\u3002

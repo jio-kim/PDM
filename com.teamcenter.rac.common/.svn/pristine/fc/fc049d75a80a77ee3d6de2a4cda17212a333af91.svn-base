@@ -1,0 +1,113 @@
+invalidComponentsSelected.TITLE=Ung\u00FCltige Komponenten
+iWantToCustomizeDialog.TITLE="Ich m\u00F6chte..." anpassen
+iWantToCustomizeDialog.HEADER=W\u00E4hlen Sie die Aktionen aus, die im Abschnitt "Ich m\u00F6chte" im Aufgabenfenster der Anwendung zur Verf\u00FCgung gestellt werden sollen. Verwenden Sie die Navigationsschaltfl\u00E4chen, um Aktionen hinzuzuf\u00FCgen, zu entfernen und anders anzuordnen. \nW\u00E4hlen Sie die Aktion in der Liste "Ausgew\u00E4hlte Eintr\u00E4ge" aus, wenn Sie den Anzeigenamen einer Aktion \u00E4ndern m\u00F6chten, und doppelklicken Sie darauf, um das Dialogfenster "Umbenennen" zu \u00F6ffnen.\nDie Standardbefehle ("Ein Element erstellen", "Einen Dataset erstellen" und "Einen Workflow-Prozess erstellen") k\u00F6nnen in diesem Abschnitt nicht umbenannt oder entfernt werden.  
+availableEntries.TITLE=Verf\u00FCgbare Eintr\u00E4ge
+selectedEntries.TITLE=Ausgew\u00E4hlte Eintr\u00E4ge
+selectedEntriesPresent.TITLE=Aktionen bereits vorhanden
+commandsPresent.MESSAGE=Die ausgew\u00E4hlten Aktionen sind bereits in der Liste "{0}" vorhanden.
+commandsDetails.MESSAGE=Aktion "{0}" -> "{1}"
+
+OrganizeFavoritesDialog.HEADER=Klicken Sie zum Erstellen eines neuen Favoritenordners auf die Schaltfl\u00E4che "Erstellen ". W\u00E4hlen Sie zum Umbenennen oder L\u00F6schen eines Favoritenelements das Element aus und klicken Sie auf die Schaltfl\u00E4che "Umbenennen" oder "L\u00F6schen". W\u00E4hlen Sie zum Einf\u00FCgen eines Teamcenter-Objekts entweder die Objekte in der Anwendung aus oder kopieren Sie die Objekte in die Zwischenablage und klicken Sie auf die Schaltfl\u00E4che "Einf\u00FCgen".
+createFavoriteFolder.TITLE=Neuer Favoritenordner
+createFavoriteFolder.HEADER=Erstellen Sie einen neuen Favoritenordner, indem Sie den Namen im nachfolgenden Feld angeben.
+createFavoriteFolder.TIP=Einen Favoritenordner erstellen
+moveFavoriteFolder.TIP=Den ausgew\u00E4hlten Favoritenordner verschieben
+addFavoriteFolder.TIP=Teamcenter-Objekte in den Favoritenordner einf\u00FCgen, die in der aktuellen Anwendung oder der Zwischenablage ausgew\u00E4hlt wurden
+saveFavorites.MESSAGE=Favoriten werden gespeichert...
+loadingFavorites.MESSAGE=Favoriten werden geladen...
+favoriteFolderExists.ERROR=Favoritenobjekt mit dem Namen {0} ist bereits unter {1} vorhanden
+favoriteObjectExists.TITLE=Objekt ist bereits vorhanden
+pasteComponentExists.ERROR=Einige oder alle der einzuf\u00FCgenden Elemente sind bereits unter {0} vorhanden. Diese Objekte werden ignoriert.
+newFavoriteFolder.NAME=Name:
+editValue.TIP=Die ausgew\u00E4hlten Werte bearbeiten 
+
+# Add Favorites related entries 
+AddFavoritesDialog.HEADER=F\u00FCgen Sie die ausgew\u00E4hlten Objekte zu den Favoriten durch Auswahl des \u00FCbergeordneten Favoritenordners in der nachfolgenden Baumstruktur hinzu.
+AddFavoritesDialog.TITLE=Favoriten hinzuf\u00FCgen
+
+QuickLinksCustomizeDialog.TITLE=Quick-Links anpassen
+QuickLinksCustomizeDialog.HEADER=Neue Container einf\u00FCgen oder die Container im Abschnitt "Quick-Links" entfernen, umbenennen oder anders anordnen. Die Standardcontainer (Home, Meine Arbeitsliste, Meine Projekte, Meine Weblinks, Meine gespeicherten Suchen, Mein(e) Ansicht/Markup) k\u00F6nnen nicht aus diesem Abschnitt entfernt oder umbenannt werden.
+renameQuickLink.TOOLTIP=Einen Quick-Link umbenennen
+pasteQuickLinks.MESSAGE=Nur Ordnerobjekte (Container) k\u00F6nnen in diesen Dialog eingef\u00FCgt werden. Objekte, die keine Ordner (Container) sind, werden ignoriert.
+pasteQuickLinks.TIP=<html><body>Verwenden Sie diese Schaltfl\u00E4che zum Einf\u00FCgen von Ordnerobjekten (Containern), die in die Zwischenablage kopiert<br>oder in der aktuellen Anwendung ausgew\u00E4hlt wurden</body></html> 
+
+MySavedSearchesCustomizeDialog.TITLE=Meine gespeicherten Suchen anpassen
+MySavedSearchesCustomizeDialog.HEADER=Verwenden Sie die Navigationsschaltfl\u00E4chen in der nachfolgenden Symbolleiste zum L\u00F6schen, Umbenennen oder Ausf\u00FChren gespeicherter Suchen.
+addSavedSearch.TIP=Ein gespeichertes Suchobjekt der Liste "Meine gespeicherten Suchen" hinzuf\u00FCgen
+savingSavedSearches.MESSAGE=Liste "Meine gespeicherten Suchen" wird gespeichert...
+loadingSavedSearches.MESSAGE=Liste "Meine gespeicherten Suchen" wird geladen...
+
+MyViewMarkupCustomizeDialog.Title=Mein Anzeige-Markup
+MyViewMarkupCustomizeDialog.Header=Liste "Meine Markup-Komponente" anpassen
+
+clearSelection.TOOLTIP=Das ausgew\u00E4hlte Objekt aus der Liste entfernen
+removeObject.TOOLTIP=Das ausgew\u00E4hlte Objekt l\u00F6schen
+renameSavedSearch.TOOLTIP=Das ausgew\u00E4hlte Objekt umbenennen
+executeSavedSearch.TOOLTIP=Ausgew\u00E4hlte gespeicherte Suche ausf\u00FChren
+refreshSavedSearchFolder.TOOLTIP=Ordner "Meine gespeicherten Suchen" aktualisieren
+
+MyWebLinksCustomizeDialog.TITLE=Meine Links anpassen
+MyWebLinksCustomizeDialog.HEADER=Sie k\u00F6nnen neue Weblink (URL)-Objekte hinzuf\u00FCgen, entfernen, umbenennen oder die Reihenfolge der Weblinks mit den nachfolgenden Navigationsschaltfl\u00E4chen \u00E4ndern. 
+addURL.TIP=Ein neues Weblink (URL)-Objekt erstellen und der Liste "Meine Links" hinzuf\u00FCgen
+newWeblink.TITLE=Ein neues Weblink-Objekt (URL) erstellen
+newWeblink.HEADER=Geben Sie zum Erstellen eines neuen Weblink-Objekts (URL) den Weblink-Namen und die URL in den nachfolgenden Feldern ein und klicken Sie auf die Schaltfl\u00E4che "OK".
+weblinkExists.MESSAGE=Ein Weblink-Objekt mit dem gleichen Namen und URL ist bereits vorhanden.
+weblinkExists.TITLE=Weblink-Objekt ist bereits vorhanden
+savingWebLinks.MESSAGE=Weblinks werden gespeichert...
+pasteWebLinks.MESSAGE=Nur Weblink (URL)-Objekte k\u00F6nnen in diesen Dialog eingef\u00FCgt werden. Objekt, die keine Weblink (URL)-Objekte sind, werden ignoriert.
+pasteWebLinks.TIP=<html><body>Verwenden Sie diese Schaltfl\u00E4che zum Einf\u00FCgen von Weblink-Objekten (URL), die in die Zwischenablage kopiert<br>oder in der aktuellen Anwendung ausgew\u00E4hlt wurden</body></html>
+weblink.NAME=Name:
+weblinkURL.NAME=URL:
+
+# Entries for rename dialogs
+# --------------------------
+newName.LABEL= Neuer Name:
+newURL.LABEL= Neuer URL:
+renameWebLinks.TITLE=Weblink (URL)-Objekt umbenennen
+renameWebLinks.HEADER=Das ausgew\u00E4hlte Weblink (URL)-Objekt umbenennen.
+renameSavedSearches.TITLE=Gespeichertes Suchobjekt umbenennen
+renameSavedSearches.HEADER=Das ausgew\u00E4hlte gespeicherte Suchobjekt umbenennen.
+renameQuickLinks.TITLE=Quick-Link-Objekt umbenennen
+renameQuickLinks.HEADER=Das ausgew\u00E4hlte QuickLink-Containerobjekt umbenennen. Die Namen der Standardcontainer (Pers\u00F6nliche Ablage, Meine Arbeitsliste, Meine Links, Meine gespeicherten Suchen) k\u00F6nnen nicht ge\u00E4ndert werden.
+renameFavoritesFolder.TITLE=Favoritenordner umbenennen
+renameFavoritesFolder.HEADER=Den ausgew\u00E4hlten Favoritenordner umbenennen.
+renameFavoritesFolder.ERROR=Der f\u00FCr den Favoritenordner angegebene Name ist bereits vorhanden.
+renameFavoritesFolderError.TITLE=Fehler beim Umbenennen des Ordners
+renameIWantTo.TITLE=Befehl umbenennen
+renameIWantTo.HEADER=Den ausgew\u00E4hlten Teamcenter-Befehl umbenennen.
+renameNotPossible.MSG=Die Standardbefehle ("Ein Element erstellen", "Einen Dataset erstellen" und "Einen Workflow-Prozess erstellen") k\u00F6nnen in diesem Abschnitt nicht umbenannt oder entfernt werden.
+renameNotPossible.TITLE=Warnung
+
+moveFavoritesFolder.TITLE=Zielordner ausw\u00E4hlen
+moveFavoritesFolder.HEADER=W\u00E4hlen Sie die Zielfavoriten aus, f\u00FCr die das Verschieben ausgef\u00FChrt werden soll.
+moveFavoritesSameDestination.ERROR=Zielordner ist identisch mit Ausgangsordner.
+moveFavoritesSubFolder.ERROR=Zielordner ist ein Unterordner des Zielordners.
+moveFavoritesFolderError.TITLE=Fehler beim Verschieben von Objekt oder Ordner
+
+#SearchTree Content Provider
+SearchTreeContentProvider.0=Laden...
+
+#Rename folder/saved search dialog
+RenameDialog.0=Umbenennen
+RenameDialog.1=Name
+RenameDialog.2=Ordnername
+RenameDialog.3=Eine systemdefinierte Abfrage mit demselben Namen ist bereits vorhanden oder der Name ist l\u00E4nger als 128 Zeichen. W\u00E4hlen Sie bitte einen anderen Namen aus.
+RenameDialog.4=Ung\u00FCltiger Name
+RenameDialog.5=Ausgew\u00E4hltes Objekt wird umbenannt...
+#Delete folder/saved search dialog
+DeleteDialog.0=L\u00F6schen
+DeleteDialog.1=Durch das L\u00F6schen des Ordners wird nicht der gesamte Ordnerinhalt gel\u00F6scht. M\u00F6chten Sie fortfahren?
+DeleteDialog.2=Warnung
+DeleteDialog.3= M\u00F6chten Sie das L\u00F6schen wirklich ausf\u00FChren?
+DeleteDialog.4=Ausgew\u00E4hltes Objekt wird gel\u00F6scht...
+executeSavedSearch.MESSAGE= Gespeicherte Suche wird ausgef\u00FChrt...
+
+#Up/Down arrows for my saved searches dialog
+moveValueUp.TOOLTIP=Die ausgew\u00E4hlten Werte eine Ebene nach oben verschieben
+moveValueDown.TOOLTIP=Die ausgew\u00E4hlten Werte eine Ebene nach unten verschieben
+
+IWantToCustomizeShell.INVALID_MENUITEM_TITLE=Ung\u00FCltiges Men\u00FCelement
+IWantToCustomizeShell.INVALID_MENUITEM_MSG=Der Men\u00FCelementtyp ist ung\u00FCltig.
+
+TooManyObjects.title=Info
+TooManyObjects.message=Zu viele Objekte zum Laden. Erh\u00F6hen Sie die Voreinstellung f\u00FCr den Grenzwert f\u00FCr "Alle laden".

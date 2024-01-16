@@ -1,0 +1,370 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the form package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#28-Sep-2004  wangp                   initial creation
+#11-Nov-2004  Rob McColl              Add keys for the Help dialog
+#24-Feb-2005  Zhixin Huang            Change the icon from gif to png file and clean up the entries phase 2.
+#25-Oct-2005  shankarg                chitturi's fix for PR # 5160825
+#30-Nov-2005  wangp                   add error msg
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#13-Aug-2019  Mahesh Mahindrakar      Added keys for UGPartMassPropsForm extra properties.
+#$HISTORY$
+#=================================================================================================*/
+
+# Not valid type keys
+# ----------------------
+notValidType.TITLE=Dati immessi non validi
+notValidChar=Impossibile modificare il valore propriet\u00E0 del carattere.
+notValidDate=Data non valida.
+notValidDouble=Doppia o mobile non valida.
+notValidInt=Numero intero non valido.
+notValidLogical=Dati logici non validi.
+notValidShort=Numero breve intero non valido.
+notValidString=Impossibile modificare il valore propriet\u00E0 della stringa.
+
+failedLoadingFormProperties=Errore durante il caricamento propriet\u00E0 form
+
+notValidInput.MSG=Immettere un valore nei campi obbligatori.
+notValidInput.TITLE=Input non validi
+
+missingReqAttr.MSG=Il form non \u00E8 stato salvato. I seguenti campi obbligatori non sono stati compilati. 
+
+# Entries for Form Java Beans
+# ------------------------------------
+booleanCharacter.YES=vero, s\u00EC, y, 1
+true.LABEL=Vero
+false.LABEL=Falso
+
+cannotRead=illeggibile... Il valore potrebbe non essere valido
+cannotSave=non si pu\u00F2 salvare... L'input dell'utente potrebbe non essere valido
+cannotSaveUserInput=non si pu\u00F2 salvare... L'input dell'utente potrebbe non essere valido
+
+propertiesError.TITLE=Propriet\u00E0...
+
+# Entries for ExceptionsDialog
+# --------------------------------------------
+exceptionsDialog.TITLE=Eccezioni
+noExceptions=Nessun messaggio di eccezione.
+exceptionsOccurred=Si sono verificati i seguenti errori:
+
+
+# Item Master & Item Revision Master Form Keys
+# ---------------------------------
+projectID=ID progetto:
+itemID=ID item:
+revisionID=ID revisione:
+unitNumber=Numero unit\u00E0:
+comments=Commenti:
+userData1=Dati utente 1:
+userData2=Dati utente 2:
+userData3=Dati utente 3:
+
+# Checklist Form
+# ---------------------------------
+eco_prep=Preparazione ECO
+cost_calc=Calcolo costi
+weight_calc=Calcolo peso
+eng_esti=Preventivo del progetto
+
+# ECO Sample Form
+# ---------------------------------
+charge_number=Numero addebito
+models_affected=Modelli interessati
+stability=Stabilit\u00E0
+durability=Durata
+
+# Document Master & Document Revision Master Form Keys
+# ---------------------------------
+title=Titolo:
+author=Autore:
+subject=Oggetto:
+
+# Read Only watermark text
+# -------------------------
+readOnly=Sola lettura
+
+# CM Base Configuration Form
+# ---------------------------------
+unit_no=Numero unit\u00E0
+end_item=Item finale
+from_date=Data
+useToday= Da usare oggi
+
+# CMII CR Form
+# ---------------------------------
+form.TITLE=CR - richiesta di modifica
+crnumb.LABEL=CR n.:
+requestor.LABEL=Richiedente:
+phone.LABEL=Telefono:
+date.LABEL=Data:
+description.TITLE=Descrizione:
+cost_estimate.TITLE=Preventivo costi:
+tech_review.TITLE=Revisione tecnica:
+
+# CMII CN Form
+# ---------------------------------
+cn_form.TITLE=CN - avviso di modifica
+cn_numb.LABEL=CN n.:
+creator.LABEL=Creatore:
+rel_cr_list.LABEL=Base per questo CN:
+
+
+#UGPartMassPropsForm
+#---------------------
+Property = Propriet\u00E0
+Value =Valore
+Source = Origine
+Error_Estimate = Errore (stima)
+Accuracy_Used = Precisione utilizzata:
+Density = Densit\u00E0:
+Weight = Peso:
+Mass = Massa:
+Area =  Area di superficie:
+Volume = Volume:
+Center_of_Mass_X =  Centro di massa: X:
+Center_of_Mass_Y = Y:
+Center_of_Mass_Z = Z:
+First_Moment_X = Primi momenti:   X:
+First_Moment_Y = Y: 
+First_Moment_Z = Z:
+Moments_of_Inertia_XX= Momenti di inerzia: XX:
+Moments_of_Inertia_YY=YY:
+Moments_of_Inertia_ZZ=ZZ:
+Moments_of_Inertia_Spherical= Momenti di inerzia (sferico):
+Products_of_Inertia_XZ = Prodotti di inerzia: XZ:
+Products_of_Inertia_YZ=YZ:
+Products_of_Inertia_XY=XY:
+Principal_Moments_of_Inertia_X = Momenti principali di inerzia:   X:
+Principal_Moments_of_Inertia_Y = Y: 
+Principal_Moments_of_Inertia_Z = Z:
+Radius_of_Gyration_CX = Raggi di inerzia (baricentro):   CX:
+Radius_of_Gyration_CY = CY:
+Radius_of_Gyration_CZ = CZ:
+Radius_of_Gyration_Spherical = Raggi di inerzia (sferico):
+Principal_Axes_XPX = Assi principali:   Xp (X):
+Principal_Axes_XPY = Xp (Y):
+Principal_Axes_XPZ = Xp (Z):
+Principal_Axes_YPX = Yp (X):
+Principal_Axes_YPY = Yp (Y):
+Principal_Axes_YPZ = Yp (Z):
+Principal_Axes_ZPX = Zp (X):
+Principal_Axes_ZPY = Zp (Y):
+Principal_Axes_ZPZ = Zp (Z):
+Units=Valori dati sono espressi in unit\u00E0 SI (m/kg)
+
+# LoadPropertiesProgressPanel
+# -----------------------------------
+step1=Download foglio di stile...
+step2=Analisi foglio di stile...
+step3=Caricamento propriet\u00E0...
+step4=Visualizzazione foglio di stile in corso...
+
+# ValidationMaster Form
+#------------------------------------
+compoundResult = Risultato composto 
+validations    = Convalide
+validationsLabel = Convalide:
+openButtonLabel = Apri
+deleteButtonLabel = Elimina
+refreshButtonLabel = Aggiorna
+noResultObjectSelected.MSG="Non \u00E8 stato selezionato alcun risultato di convalida"
+noResultObjectSelected.TITLE="Risultato della convalida"
+noReports.MSG=Il risultato selezionato non contiene report.
+noReports.TITLE=Non \u00E8 stato trovato alcun report
+ReportDatasets.MSG=Convalida report
+deleteValidationResultConfirmMsg=Eliminare i risultati di convalida selezionati?
+confirmDeleteValidationResultMsg=Confermare l'eliminazione dei risultati di convalida
+
+# these keys are used by PropertyObjectLink
+clear.TEXT=Cancella
+paste.TEXT=Incolla
+noValue=Nessun valore
+
+# this key is used by PropertyArray
+popupmenu.TITLE=Tipi di riferimento
+exceedMaxArraySize=Impossibile aggiungere il valore perch\u00E9 sono state raggiunte le dimensioni massime dell'array.
+stringMaxArraySize=Impossibile aggiungere la stringa perch\u00E9 sono state raggiunte le dimensioni massime dell'array.
+warning=Avviso
+confirm=Conferma
+notEqualToFixedSize=Impossibile eliminare gli item dall'array di dimensioni fisse. Usare il pulsante di sostituzione per sostituire l'item oppure definire un array con le dimensioni fisse volute.
+addFromClipboardConfirmation.MSG=Non sono stati trovati oggetti negli appunti. Aggiungerli? 
+cannotConvertToRefType.MSG=Impossibile convertire la stringa nel tipo specificato.
+
+# keys for XMLRendering
+# ----------------------------
+failToParse=Problema durante l'analisi della definizione xml:
+noPanelFoundException=Nessun rendering \u00E8 costruito. \nLa definizione xml non \u00E8 valida oppure non include alcuna propriet\u00E0.
+
+viewList=Elenco di sezioni
+properties=Propriet\u00E0
+viewer=Visualizzatore
+impactanalysis=Analisi dell'impatto
+
+# keys for RenderingLoader
+# -----------------------------
+error.TITLE=Caricatore di rendering
+failToLoadCustomRendering=Impossibile visualizzare rendering personalizzata, verr\u00E0 usata la rendering automatica.
+failToLoadXMLRendering=Impossibile usare xml per il rendering, verr\u00E0 usato il rendering automatico.
+failToFindXMLFile=Problema durante la ricerca del file xml nel set di dati
+failToFindXMLDataset=Problema durante la ricerca del set di dati per la resa in xml
+
+# Keys for PropertyObjectLink
+# ------------------------------
+clear.TEXT=Cancella
+paste.TEXT=Incolla
+copy.TEXT=Copia
+open.TEXT=Apri
+noValue=Nessun valore
+
+# Keys for PropertyImage
+# ------------------------------
+preview=Anteprima
+
+# Keys for XMLRendering
+# ------------------------------
+page=Pagina
+
+# Keys for the HelpDialog
+# ------------------------------
+generalDescription.TXT=Un foglio di stile \u00E8 una definizione XML che descrive il modo in cui le propriet\u00E0 o il pannello del form verranno\nvisualizzati e disposti sullo schermo. La definizione \u00E8 definita nel set di dati "XMLRenderingStyleSheet" e viene registrata tramite le\npreferenze. Una volta creato, il foglio di stile deve essere registrato in modo che il sistema possa utilizzarlo nella visualizzazione.\nQuesto foglio verr\u00E0 gestito tramite il visualizzatore. Gli utenti pi\u00F9 esperti possono modificare e registrare manualmente\nun foglio di stile al di fuori del visualizzatore.
+exampleDescription.TXT=L'esempio riportato in basso rappresenta il foglio di stile standard definito per una cartella. \u00C8\npreferibile utilizzare la funzione "Salva con nome" su un foglio esistente piuttosto\nche creare un nuovo foglio di stile. In questo modo, l'amministratore dispone di una base da cui iniziare.
+synopsisDescription.TXT=In basso sono indicati gli elementi che \u00E8 necessario definire in un foglio di stile\n con i relativi parametri.
+
+general=Generale
+example=Esempio
+synopsis=Riepilogo
+help=Guida
+
+#For the Edit button on the read only properties dialog
+edit=Esegui checkout e modifica
+edit.TIP=Esegui checkout e modifica le propriet\u00E0
+edit.MNEMONIC=Edit
+
+#For the Implicit Check out- Apply button on the Summary Panel
+implicitCoApply=Applica
+implicitCoApply.TIP=Salva modifiche
+implicitCoApply.MNEMONIC=Apply
+
+saveCheckOut=Salva
+saveCheckOut.TIP=Salva e mantieni in checkout
+saveCheckOut.MNEMONIC=Save
+
+saveCheckIn=Salva ed esegui il checkin
+saveCheckIn.TIP=Salva le propriet\u00E0 ed esegui il checkin
+saveCheckIn.MNEMONIC=Check-In
+
+cancelCheckOut=Annulla il checkout
+cancelCheckOut.TIP=Annulla il checkout e ripristina l'originale
+cancelCheckOut.MNEMONIC=Revert
+
+#Hover text for root structures panel
+#------------------------------------
+expandButton.TIP=Espandere per modificare
+
+addButton.TIP=Aggiungi oggetti dalla clipboard
+addButtonLOV.TIP=Aggiungi oggetti
+
+modifyButton.TIP=Sostituisci gli oggetti selezionati
+
+removeButton.TIP=Rimuovi gli oggetti selezionati
+
+upButton.TIP=Sposta in su gli oggetti selezionati
+
+downButton.TIP=Sposta in gi\u00F9 gli oggetti selezionati
+
+ascSortButton.TIP=Disponi gli oggetti in ordine crescente
+
+# Entries for QuerySummaryPanel
+# -----------------------------------------
+queryName=Nome query: 
+unknown={unknown}
+objects=oggetto/i
+wereFound= trovati in questa query.
+searchCriteria.MSG=I criteri di ricerca vengono usati come segue...
+
+# Messages for Save Feature in General
+# ------------------------------------
+genSaveChanges.TITLE=Sono presenti modifiche non salvate
+genSaveChanges.TEXT=Salvare le modifiche?
+
+# Messages for Save Feature in Summary
+# ------------------------------------
+saveSummaryChanges.TITLE=Sono presenti modifiche non salvate
+saveSummaryChanges.TEXT=Salvare le modifiche nel riepilogo?
+saveError.TITLE=Errore durante il salvataggio
+unableToSave.MESSAGE=Errore durante il salvataggio delle modifiche all'oggetto.
+
+# titleKeys in Stylesheet
+# ---------------------------------
+Summary=Riepilogo
+impactanalysis=Analisi dell'impatto
+General=Generale
+All=Tutti
+Reservation=Richiesto da
+Project=Progetto
+Workflow=Workflow
+Shadow=Ombra
+OverrideInformation=Informazioni sulla ridefinizione
+
+# keys for AutomaticRendering
+# -----------------------------
+detailsCollapsed=Mostra propriet\u00E0 vuote...
+detailsExpanded=Nascondi propriet\u00E0 vuote...
+
+#Localization
+#-----------------------------------
+Localizaion.Title=Traduzione in lingua per {0}
+Localizaion.MasterLocale=Lingua principale:
+Localizaion.MasterValue=Valore principale:
+Localization.LocalizationData = Dati sulla localizzazione
+Localization.Value=Valore
+Localization.Status=Stato
+Localization.Locale=Lingua
+Localization.okButton=OK
+Localization.cancelButton=Annulla
+Localization.applyButton=Applica
+LocalizationNothingSelected.MESSAGE=Selezionare la riga da rimuovere
+LocalizationBlankValue.MESSAGE= {0} non pu\u00F2 essere lasciato vuoto
+LocalizationNonCustom.MESSAGE=Solo i valori personalizzati possono essere localizzati
+Localization.MESSAGE.TITLE=Errore di localizzazione
+noMasterValue.MESSAGE=Valore principale vuoto 
+noMasterValueWithLOVs.MESSAGE=Impossibile visualizzare la finestra di dialogo Traduzione perch\u00E9 la propriet\u00E0 \u00E8 contrassegnata come \n localizzabile e presenta alcuni allegati dell'elenco di valori le cui condizioni non sono \n valutate come vere. Il sistema non pu\u00F2 quindi decidere quale valore Elenco di valori \n associare alle voci dei dati. Per configurare la propriet\u00E0 adeguatamente, \n chiedere all'amministratore del Business Modeler IDE di verificare che almeno \n uno degli elenchi di valori condizionali allegati alla propriet\u00E0 venga valutato come vero \n in tutti i casi d'uso. Per ottenere questo obiettivo, l'amministratore pu\u00F2 creare un \n allegato Elenco di valori predefinito usando la condizione isTrue. In questo modo si assicura che\n in mancanza di altri allegati condizionali venga visualizzato \n l'elenco di valori predefinito. 
+Localization.removeButton.TIP=Rimuovi righe selezionate
+Localization.addButton.TIP=Aggiungi una riga
+Localization.DuplicateEntry=Voce di traduzione duplicata per le impostazioni locali {0}
+Localization.NoLocaleSlected=Seleziona un'impostazione locale valida 
+LocalizationTooLong.MESSAGE=La traduzione \u00E8 troppo lunga per le impostazioni locali {0}
+Localization.Copy=Copia
+Localization.Paste=Incolla
+MasterLocaleChangingwarning.TITLE =Avviso di modifica impostazioni locali principali
+MasterLocaleChangingwarningList.MESSAGE=Le impostazioni locali principali delle seguenti propriet\u00E0 sono diverse dalle impostazioni locali immesse. 
+MasterLocaleChangingwarningExplain.MESSAGE=Se si continua, tutte le traduzioni verranno perse
+MasterLocaleChangingwarningConfirmation.MESSAGE=Proseguire?
+MasterValueChangingwarning.TITLE =Avviso di modifica modifiche valore master
+MasterValueChangingwarningList.MESSAGE=Il valore master viene modificato per le propriet\u00E0 elencate di seguito:
+MasterValueChangingwarningExplain.MESSAGE=Se si continua, tutti i valori della traduzione nelle altre lingue verranno persi.
+MasterValueChangingwarningConfirmation.MESSAGE=Continuare?
+
+SourceValidation.MESSAGE=Le seguenti origini sono valide per il report: {0}.
+SourceValidation.TITLE=Origine non valida
+
+# Master value edit entries
+# -----------------------------------
+masterEditButton.TIP=Modificare il valore principale
+
+MasterValueEdit.okButton=OK
+MasterValueEdit.cancelButton=Annulla
+MasterValueEdit.Title=Modifica valore principale
+

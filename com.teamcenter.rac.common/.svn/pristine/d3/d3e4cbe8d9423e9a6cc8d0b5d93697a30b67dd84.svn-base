@@ -1,0 +1,117 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the
+#                   TC Open package.  This is an internal file so therefore
+#                   only TC PBU developers should be modifying this file.  To
+#                   make changes please modify the open_user.properties file. Do
+#                   NOT modify this file.  This allows properties found in this
+#                   file to be over-written but not destroyed.
+#
+#   Filename: open.properties
+#   Module  : com.teamcenter.rac.commands.open
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#08-Jan-1999  wangp                   default property file for open
+#11-Jan-1999  wangp                   add entries for open error
+#12-Jan-1999  mccollr                 initial promote
+#15-Jan-1999  wangp                   Add entries for application
+#19-Feb-1999  wangp                   replace com.teamcenter.rac.aif.aif_user by com.teamcenter.rac.aif.aif
+#22-Feb-1999  wangp                   replace tabs
+#14-Mar-1999  pracilio                Imported the TC common registry, instead of the base AIF registry.
+#05-May-1999  wangp                   add open form
+#06-May-1999  currier                 Troy -> Cypress Merge
+#26-May-1999  mccollr                 Replaced Workspace with Navigator
+#28-May-1999  currier                 merge Troy->Cypress
+#17-Jun-1999  pracilio                Imports the AIF's open command's registry.
+#29-Jun-1999  wangp                   remove the space in import statement
+#21-Jul-1999  mccollr                 Merge to Cypress
+#19-Aug-1999  ROWLANDS                update workflow entries
+#19-Aug-1999  ROWLANDS                merge from lee_cs_18Jul99 branch to tc_v60_cs
+#02-Sep-1999  rowlands                correct entries for workflow components
+#02-Sep-1999  rowlands                merge from branch lee_cs_23Aug99 to tc_v60_cs
+#26-Oct-1999  wangp                   add entry Envelope.WINDOW
+#11-Feb-2000  mccollr                 Remove the localization keys and place within the locale file.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#30-Jul-2000  x_karim                 Use ECM Viewr application for opening EC
+#19-May-2000  varanasi                add mfg. planner application
+#08-Sep-2000  varanasi                merge from P7.0.0.3
+#08-Sep-2000  varanasi                merge from P7.0.0.3
+#21-Sep-2001  Zhixin Huang            Merge to Explorer branch to finish the explorer
+#25-Oct-2001  wangp                   add alias open definition
+#02-Dec-2001  x_monthr                Merged from P8.0.0.1
+#06-Feb-2002  guthrie                 Fixed MEProcess and MEProcessRevision settings, added workareas and operations
+#11-Feb-2002  guthrie                 Merged from cme_p8.0.0.4
+#17-Jul-2002  wangp                   define openFormDialog key
+#06-Dec-2002  Rob McColl              Fix for PR#2013291 which makes this dialog modeless.
+#02-Jan-2003  Rob McColl              Merge v8.1.1 p1 fixes to v9.0
+#12-Jun-2003  wangp                   add keys for Identifier
+#27-Aug-2003  guthrie                 Added entries for opening CCObject, StructureContext
+#29-Aug-2003  guthrie                 Merge from tcm_p9.0.1.1
+#16-Feb-2004  Ziv Israeli             WolfObject
+#16-Feb-2003  Phani V.                Added Simulation Process Studio Application
+#16-Feb-2004  Phanindranath Vedula    SPS Project
+#23-Feb-2004  Andrew Perry            Resolve conflicts for p9.1.0.2
+#25-Feb-2004  rowlands                change EPMTaskDefinition to EPMTaskTemplate
+#29-Feb-2004  rowlands                merge P9.1.0.2 to wkf_v9_proj
+#05-Mar-2004  x_tatara                registered configuration context
+#18-Mar-2004  rowlands                merge from P9.1.0.3 to wkf_v9_proj branch
+#18-Mar-2004  x_bodduk                Add Open On Export for AI
+#25-Mar-2004  x_bodduk                Add show properties of selected request object
+#25-Mar-2004  x_bodduk                Add show properties of selected request object
+#26-Mar-2004  x_tatara                merge
+#17-Jun-2004  Ziv Israeli             Adding ExportedProxyLink
+#27-Aug-2004  faming                  V10 Work Context Project
+#09-Sep-2004  faming                  V10 Work Context Project
+#13-Sep-2004  faming                  V10 Work Context Project
+#29-Oct-2004  chius                   Add entry for ASE application
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#15-Dec-2005  scottb                  allow open action on assembly arrangement
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#09-Feb-2006  Venkatesh Chitnis       Revert to tceng tokens for integrations support
+#$HISTORY$
+#=================================================================================================*/
+
+import=com.teamcenter.rac.aif.commands.open.open,com.teamcenter.rac.common.common,com.teamcenter.rac.util.util
+
+
+
+#
+# Entries for Windows Open, e.g. a Dialog or a Frame is considered to be a Window
+#
+# The window entries are registered based on the type of the component,
+# e.g. A "File" type of component may be registered with a com.mycompany.MyFileDialog class
+#      so this entry will look like the following...
+#
+#    WINDOWS = File, Form
+#    File.WINDOW = com.mycompany.MyFileDialog
+#    Form.WINDOW = com.mycompany.MyFormDialog
+#
+
+WINDOWS=Form,Envelope,Alias,Identifier,WolfObject,RequestObject,ExportedProxyLink,TC_WorkContext
+
+#Form.WINDOW=com.teamcenter.rac.commands.open.OpenFormDialog
+Form.WINDOW=com.teamcenter.rac.ui.commands.openform.OpenFormSWTDialog
+Envelope.WINDOW=com.teamcenter.rac.commands.newenvelope.NewEnvelopeDialog
+Alias.WINDOW=com.teamcenter.rac.commands.open.OpenAliasDialog
+Identifier.WINDOW=com.teamcenter.rac.commands.open.OpenIdentifierDialog
+RequestObject.WINDOW=com.teamcenter.rac.commands.open.OpenRequestObjectDialog
+TC_WorkContext.WINDOW=com.teamcenter.rac.commands.workcontext.WorkContextDialog
+
+
+# Entries for Open Form dialog
+open.ICON=images/form_16.png
+openFormDialog=com.teamcenter.rac.commands.open.OpenFormDialog
+openFormSWTDialog=com.teamcenter.rac.ui.commands.openform.OpenFormSWTDialog
+
+# If refreshFormBeforeOpen is true, but nothing is defined in refreshFormTypes,
+# all forms will be refreshed before opening.
+# To only refresh certain types of forms, set refreshFormBeforeOpen to be true and
+# define the types in refreshFormTypes.
+# The default is not refreshing forms before opening.
+refreshFormBeforeOpen=false
+#refreshFormTypes=<form type list>

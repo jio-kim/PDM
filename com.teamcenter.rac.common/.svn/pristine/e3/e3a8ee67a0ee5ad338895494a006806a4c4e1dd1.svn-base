@@ -1,0 +1,61 @@
+#*==================================================================================================
+#
+#                               Copyright (c) 2004 UGS PLM
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the send package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: importoffline_locale.properties
+#   Module  : com.teamcenter.rac.commands.importoffline
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#06-Jun-2008  Manuel Georis           Moved some keys in common_local
+#$HISTORY$
+#=================================================================================================*/
+
+importFromOfflinePackage.TITLE=\u532F\u5165\u516C\u4E8B\u5305
+importFromOfflinePackageNonGS.TITLE=\u532F\u5165\u516C\u4E8B\u5305
+importFromOfflinePackageError.TITLE=\u5F9E\u516C\u4E8B\u5305\u532F\u5165
+importFromOfflinePackageConfirmation.TITLE=\u516C\u4E8B\u5305\u532F\u5165\u9078\u9805\u8A2D\u5B9A
+optionSet=\u9078\u9805\u96C6\uFF1A
+optionSetListButton.Tooltip=\u9078\u53D6\u9078\u9805\u96C6
+immediate=\u958B\u59CB\u7ACB\u5373\u50B3\u905E
+progressIndicator=\u986F\u793A\u9032\u5EA6\u6307\u793A\u5668
+emailNotification=\u50B3\u9001\u96FB\u5B50\u90F5\u4EF6\u901A\u77E5
+importPrefIconToolTip=\u986F\u793A/\u8A2D\u5B9A\u532F\u5165\u9078\u9805
+confirmationMsg=\u76EE\u524D\u9078\u9805\u8A2D\u5B9A\u5982\u4E0B\u3002\n \u8981\u7E7C\u7E8C\u55CE\uFF1F
+importingMsg=\u6B63\u5728\u5F9E\u516C\u4E8B\u5305\u532F\u5165...
+siteCheckIn=\u532F\u5165\u5F8C\u9032\u884C\u7AD9\u9EDE\u7C3D\u5165
+
+BriefcaseImportExport.PackageName.LABEL = \u516C\u4E8B\u5305\u6A94\u6848\uFF1A
+noFCC = \u6A94\u6848\u7528\u6236\u7AEF\u5FEB\u53D6\u672A\u555F\u7528\u3002\u8ACB\u8207\u7CFB\u7D71\u7BA1\u7406\u54E1\u806F\u7D61\u3002
+importCompleted.TILE=\u532F\u5165\u5B8C\u6210
+importCompletedSuccess.MSG=\u532F\u5165\u5DF2\u6210\u529F\u5B8C\u6210\u3002\u8981\u6AA2\u8996\u65E5\u8A8C\u6A94\u6848\u4EE5\u7372\u53D6\u66F4\u591A\u8A73\u7D30\u8CC7\u8A0A\u55CE\uFF1F
+importFailed.MSG=\u532F\u5165\u5931\u6557\u3002\u8981\u6AA2\u8996\u65E5\u8A8C\u6A94\u6848\u4EE5\u7372\u53D6\u66F4\u591A\u8A73\u7D30\u8CC7\u8A0A\u55CE\uFF1F
+importCompletedHtmlSuccess.MSG=\u532F\u5165\u5DF2\u6210\u529F\u5B8C\u6210\u3002\u8981\u67E5\u770B HTML \u5831\u544A\u4EE5\u7372\u53D6\u66F4\u591A\u8A73\u7D30\u8CC7\u8A0A\u55CE\uFF1F
+importCompletedDryRunHtmlSuccess.MSG=\u6E2C\u8A66\u57F7\u884C\u5DF2\u5B8C\u6210\u3002\u8981\u6AA2\u8996 HTML \u5831\u544A\u55CE\uFF1F
+importFailedHtml.MSG=\u532F\u5165\u5931\u6557\uFF0C\u51FA\u73FE\u932F\u8AA4\u3002\u8981\u67E5\u770B HTML \u5831\u544A\u4EE5\u7372\u53D6\u66F4\u591A\u8A73\u7D30\u8CC7\u8A0A\u55CE\uFF1F
+importFailedDryRunHtml.MSG=\u6E2C\u8A66\u57F7\u884C\u5931\u6557\uFF0C\u51FA\u73FE\u932F\u8AA4\u3002\u8981\u67E5\u770B HTML \u5831\u544A\u4EE5\u7372\u53D6\u66F4\u591A\u8A73\u7D30\u8CC7\u8A0A\u55CE\uFF1F
+importCompletedNoHTML.MSG=\u532F\u5165\u5DF2\u5B8C\u6210\uFF0C\u4F46\u6C92\u6709\u53EF\u7528\u7684 HTML \u5831\u544A\u6A94\u6848\u3002\u8981\u67E5\u770B\u65E5\u8A8C\u6A94\u6848\u4EE5\u7372\u53D6\u66F4\u591A\u8A73\u7D30\u8CC7\u8A0A\u55CE\uFF1F
+importFailedNoHTML.MSG=\u532F\u5165\u5931\u6557\uFF0C\u4F46\u6C92\u6709\u53EF\u7528\u7684 HTML \u5831\u544A\u6A94\u6848\u3002\u8981\u67E5\u770B\u65E5\u8A8C\u6A94\u6848\u4EE5\u7372\u53D6\u66F4\u591A\u8A73\u7D30\u8CC7\u8A0A\u55CE\uFF1F
+
+importFailed.TILE=\u532F\u5165\u5931\u6557
+importCompletedNoLog.MSG=\u532F\u5165\u5B8C\u6210\u3002\u672A\u63D0\u4F9B\u4EFB\u4F55\u65E5\u8A8C\u6A94\u6848\u3002
+importFailedNoLog.MSG=\u532F\u5165\u5931\u6557\uFF0C\u4F46\u672A\u751F\u6210\u65E5\u8A8C\u6A94\u6848\u3002
+
+#For Bulk Load Dialog
+BulkLoadDialog.TITLE=\u5F9E\u516C\u4E8B\u5305\u6279\u91CF\u8F09\u5165
+BulkLoadDialog.PackageName.LABEL=\u516C\u4E8B\u5305\u6A94\u6848\uFF1A
+BulkLoadDialog.OptionSet.LABEL=\u9078\u9805\u96C6\uFF1A
+BulkLoadDialog.FILE_MISSING=\u516C\u4E8B\u5305\u6A94\u6848\u4E0D\u5B58\u5728\u3002\u8ACB\u91CD\u65B0\u6AA2\u67E5\u3002
+
+#For dryRun/validate import 
+additionalOptPanelLabel=\u5176\u4ED6\u9078\u9805\uFF1A
+dryRunButton=\u6E2C\u8A66\u57F7\u884C
+validateButton=\u9A57\u8B49
+noAdditionalOptButton=\u7121

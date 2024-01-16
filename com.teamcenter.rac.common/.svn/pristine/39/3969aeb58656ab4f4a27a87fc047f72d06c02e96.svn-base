@@ -1,0 +1,19 @@
+# @<COPYRIGHT>@
+# ===================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+Dialog_dialog_title=CSV\u306B\u30A8\u30AF\u30B9\u30DD\u30FC\u30C8
+Dialog_dialog_message=Teamcenter\u30C7\u30FC\u30BF\u3092CSV\u30D5\u30A9\u30FC\u30DE\u30C3\u30C8\u3067\u30A8\u30AF\u30B9\u30DD\u30FC\u30C8\u3057\u307E\u3059\u3002
+Dialog_shell_title=CSV\u306B\u30A8\u30AF\u30B9\u30DD\u30FC\u30C8
+ExportToCSVTask_name=\u30C1\u30B1\u30C3\u30C8\u5FDC\u7B54\u3092\u53D6\u5F97...
+exportAll_CSV= \u30D3\u30E5\u30FC\u5185\u306E\u3059\u3079\u3066\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u30A8\u30AF\u30B9\u30DD\u30FC\u30C8
+objectSelection_CSV= \u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u9078\u629E
+exportSelected_CSV= \u9078\u629E\u3057\u305F\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u30A8\u30AF\u30B9\u30DD\u30FC\u30C8
+AbstractBindingDialog_buttonCancel=\u30AD\u30E3\u30F3\u30BB\u30EB
+AbstractBindingDialog_buttonOpen=\u958B\u304F
+AbstractBindingDialog_buttonSave=\u4FDD\u5B58
+ValidationMessage_CSV=\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u304C\u9078\u629E\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002
+

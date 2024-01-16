@@ -1,0 +1,323 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2018.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+#*==================================================================================================
+# File description: This properties file contains all keys pertaining to the TC
+#                   userpreferences package.  This is an internal file so therefore
+#                   only TC developers should be modifying this file.  To make
+#                   changes please modify the userpreferences_user.properties file.
+#                   Do NOT modify this file. This allows properties found in this
+#                   file to be over-written but not destroyed.
+#
+#   Filename: userpreferences.properties
+#   Module  : com.teamcenter.rac.commands.userpreferences
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#15-Sep-1999  Shri Sirdeshpande       Initial Promote
+#15-Sep-1999  sirdeshp                update the code to reflect name change
+#16-Sep-1999  sirdeshp                add entry for the tabbed pane in the  GeneralUIPanel
+#21-Sep-1999  sirdeshp                Add keys for the GSODSPanel
+#24-Sep-1999  sirdeshp                Update the UI
+#27-Sep-1999  mccollr                 Merge to Cypress project branch.
+#05-Oct-1999  sirdeshp                update some of the keys in the properties file
+#05-Oct-1999  sirdeshp                merge to the troy branch
+#10-Oct-1999  pracilio                Merge from tcv60_uif_try to tc_v60_cs
+#18-Nov-1999  sirdeshp                add entry for the application column shown and column width preference
+
+#07-Dec-1999  sirdeshp                change the key for the IDSM_permitted_transfer_sites entry
+#07-Dec-1999  sirdeshp                change the key for the IDSM_permitted_transfer_sites entry
+#14-Jan-2000  mccollr                 Initial Promote
+#14-Jan-2000  sirdeshp                add the leaf icon
+#01-Feb-2000  sirdeshp                change the name of the NavigatorColumnPreferencePanel to NavigatorColumnShownPreferencePanel
+#03-Feb-2000  sirdeshp                add an entry for noPrivilege message and Icon
+#11-Feb-2000  mccollr                 Remove the localization keys and place within the locale file.
+#25-Feb-2000  Mark Fawcett            make PSE a top-level panel
+#28-Feb-2000  huangz                  Add the importRemotePanel keys
+#29-Feb-2000  Nigel Morse             merge out from int_v6.2
+#07-Mar-2000  Mark Fawcett            add leftButton and rightButton
+#09-Mar-2000  James Beard             Merge from int_v6.2
+#16-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#23-Mar-2000  mccollr                 Fixed some key problems.
+#04-Apr-2000  mccollr                 Change the key storage strategy.
+#10-Apr-2000  kao                     process template filter
+#19-Apr-2000  mccollr                 Merge out from Cypress to the Troy Project branch.
+#01-May-2000  mccollr                 Add the Check-In/Out panel.
+#19-May-2000  wangp                   change stepBrowseButton.ICON to browseButton.ICON
+#25-Sep-2000  montis                  add import/export option
+#28-Sep-2000  montis                  merge
+#29-Sep-2000  wangp                   add dataset panel (default tool)
+#01-Nov-2000  wangp                   add TCPVPanel
+#02-Nov-2000  mccollr                 Merge out from phase 7.
+#06-Oct-2000  scobel                  Added preferences for AIE
+#15-Nov-2000  scottb                  merge from P7.0.0.8c
+#12-Dec-2000  shen                    Remove import/export panel
+#09-Jan-2001  jiho                    PR4204814 Edit->Options UI needs updating to handle new workflow preferences
+#21-Feb-2001  jiho                    PR4204814 Edit->Options UI needs updating to handle new workflow preferences
+#26-Feb-2001  jiho                    from jiho_snap_v7.0.0.0
+#30-Mar-2001  scottb                  merge from P7.0.1.4
+#01-Oct-2001  Shreyas Shah            Added Alias support.
+#03-Oct-2001  Endi Wu                 Fix PR 4275989 Add entry showUgSynAttrCheckbox
+#03-Oct-2001  Endi Wu                 Merge to Troy
+#16-Oct-2001  Subrata Sen             For Commercial Design In Context - Tc V8.0
+#16-Oct-2001  Subrata Sen             Checking in to x_subrat_uif_V703_view Branch
+#16-Oct-2001  Subrata Sen             Checking in.
+#17-Oct-2001  Shreyas Shah            Merged from 7.0.3 branch
+#17-Oct-2001  mccollr                 Added directory element "newalias".
+#02-Nov-2001  Endi Wu                 Set entry showUgSynAttrCheckbox to false
+#02-Nov-2001  Endi Wu                 merge to Troy
+#29-Jun-2001  sacchett                Added CM Preferences
+#06-Jul-2001  x_karim                 Use new CM preferences for rendering
+#15-Jan-2002  faming                  added eIntegratorPanel
+#16-Jan-2002  x_ramak                 merge from v80_eint
+#15-Jan-2002  faming                  added eIntegratorPanel
+#10-Dec-2002  Neeraj Kavuru           For Supporting VMU Launch using VVI files
+#19-Mar-2003  faming                  Project Level Security
+#27-May-2003  faming                  Merged Project Level Security to P9000
+#04-Jun-2003  wangp                   add Identifier Panel
+#03-Jun-2003  ppalania                Added the NX Mgr IDEAS preference panel.
+#20-Aug-2003  Chandra Veerapaneni     Merge from V8.1.1.3 for "Portal Lite for I-deas Manager"
+#26-Aug-2003  viswanat                Added Portal Viewer Panel
+#04-Sep-2003  viswanat                Merge out from P9.0.0.4
+#26-Feb-2004  hoangh                  Add clear and selectall icons
+#25-Jun-2004  hebbard                 Edit->Options->Analysis Panel - initial PROTOTYPE version
+#07-Dec-2004  S.V.Srikiran            Multisite part families project
+#07-Jan-2005  faming                  V10 LOV Enhancement Project to Phase 8
+#24-Jan-2005  faming                  V10 LOV Enhancement Project
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#01-Feb-2005  Zhixin Huang            Resolve conflicts for p10.0.0.10
+#30-Jan-2005  veerapan                Changes for Improve Preference Management project
+#07-Feb-2005  Chandra Veerapaneni     Merge from veerapan_pnq_p10.0.0.11 branch
+#24-Feb-2005  Zhixin Huang            Change the icon from gif to png file and clean up the entries phase 2.
+#29-Mar-2005  Zhixin Huang            Rebrand phase 3.
+#30-Jun-2005  Zhixin Huang            Rebranch phase 6.
+#15-Jul-2005  Rejaul Karim            Fix for PR ID:5130321.
+#22-Nov-2005  Narayana Yalla          Merge from sulthana_v10_maint branch
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#10-Feb-2006  Venkatesh Chitnis       de-imanization (bug fix)
+#30-Jan-2014  Basavaraj Kanavi        Removed Project option for Propagation rule (Project-023479)
+#$HISTORY$
+#=================================================================================================*/
+
+import=com.teamcenter.rac.common.common
+
+# Entries for Preference Dialog
+#-------------------------------------
+userpreferences.ICON = images/userpreferences_16.png
+
+#remove importExport from rootPreference.CHILDREN
+rootPreference.CHILDREN=newSearch,visualization,general,calendar,gs,lov,operationaldataconf,logging,system,mail,process,changeman,tcUg,tcJTEditor,SEEC,productStructure,meEditorPanel,tracelink,crossProbing,grm,step,dataset,designcontext,aie,nxMgrIdeas,CAETools,GraphBomComp,wbs,refreshNotify,statusIndicator,contMgmt,SubsComp,Imds
+roolPreference.PANEL=none
+
+#Entries for noPrivilege Seen
+#------------------------------
+noPriv.ICON=images/no_16.png
+
+# Entries shared across the panels
+#--------------------------------------
+leaf.ICON=images/preferencepanel_16.png
+
+#keys for the first level root
+#-------------------------------------
+designcontext.CHILDREN=productContext,designContextGeneral,productItem
+general.CHILDREN=ui,item,itemRevision,checkin/checkout,identifier
+
+gs.CHILDREN=ods,idsm,gsMiscellaneous,gsNXPartFamiliesPublish
+
+search.PANEL=com.teamcenter.rac.commands.userpreferences.QueryPanel
+
+lov.PANEL=com.teamcenter.rac.commands.userpreferences.LOVPanel
+
+logging.PANEL=com.teamcenter.rac.commands.userpreferences.LoggingPanel
+
+importExport.PANEL=com.teamcenter.rac.commands.userpreferences.ImportExportPanel
+
+#integration.CHILDREN=mgc,myriad
+
+system.PANEL=com.teamcenter.rac.commands.userpreferences.SystemPanel
+
+mail.PANEL=com.teamcenter.rac.commands.userpreferences.MailPanel
+
+checkin/checkout.PANEL=com.teamcenter.rac.commands.userpreferences.ProcessCheckInOutPanel
+
+#<MHJ> Jan. 8, 2001 removed "newprocess" because it only has site preferences
+# Site preferences UI will be implemented in near future
+#process.CHILDREN=inbox,newprocess,workflowGeneral
+process.CHILDREN=inbox,workflowGeneral
+
+productContext.PANEL=com.teamcenter.rac.commands.userpreferences.ProductContextPreferencesPanel
+designContextGeneral.PANEL=com.teamcenter.rac.commands.userpreferences.DesignContextPreferencesGeneral
+productItem.PANEL=com.teamcenter.rac.commands.userpreferences.ProductItemPreferencesPanel
+tcUg.PANEL=com.teamcenter.rac.commands.userpreferences.TCUGPanel
+tcJTEditor.PANEL=com.teamcenter.rac.commands.userpreferences.TCJTEditorPanel
+SEEC.PANEL=com.teamcenter.rac.commands.userpreferences.SEECPanel
+productStructure.PANEL=com.teamcenter.rac.commands.userpreferences.ProductStructurePanel
+
+grm.PANEL=com.teamcenter.rac.commands.userpreferences.GRMPanel
+
+step.PANEL=com.teamcenter.rac.commands.userpreferences.StepPanel
+
+dataset.PANEL=com.teamcenter.rac.commands.userpreferences.DatasetPanel
+
+aie.PANEL=com.teamcenter.rac.commands.userpreferences.AIEPreferencesPanel
+
+nxMgrIdeas.PANEL=com.teamcenter.rac.commands.userpreferences.NXMgrIdeasPreferencesPanel
+
+applicationPreference.CHILDREN=navigator
+
+batchMesh.PANEL=com.teamcenter.rac.commands.userpreferences.BatchMeshPanel
+
+wbs.PANEL=com.teamcenter.rac.schedule.commands.wbs.WBSPanel
+statusIndicator.PANEL=com.teamcenter.rac.schedule.commands.status.StatusIndicatorPanel
+
+refreshNotify.PANEL=com.teamcenter.rac.commands.userpreferences.RefreshNotifyPanel
+
+# Keys for the second level root
+#-------------------------------
+ui.PANEL=com.teamcenter.rac.commands.userpreferences.GeneralUIPanel
+
+item.PANEL=com.teamcenter.rac.commands.userpreferences.GeneralItemPanel
+
+itemRevision.PANEL=com.teamcenter.rac.commands.userpreferences.GeneralItemRevisionPanel
+
+identifier.PANEL=com.teamcenter.rac.commands.userpreferences.GeneralIdentifierPanel
+
+tracelink.PANEL=com.teamcenter.rac.commands.userpreferences.GeneralTracelinkPanel
+
+crossProbing.PANEL=com.teamcenter.rac.commands.userpreferences.CrossProbingPreferencePanel
+
+# Second Level Children for the Integration
+#------------------------------------------
+mgc.PANEL=com.teamcenter.rac.commands.userpreferences.IntegrationMGCPanel
+
+myriad.PANEL=com.teamcenter.rac.commands.userpreferences.IntegrationMyriadPanel
+
+#Second Level Children for the GS
+#-----------------------------------
+ods.PANEL=com.teamcenter.rac.commands.userpreferences.GSODSPanel
+
+idsm.PANEL=com.teamcenter.rac.commands.userpreferences.GSIDSMPanel
+
+gsMiscellaneous.PANEL=com.teamcenter.rac.commands.userpreferences.GSMiscellaneousPanel
+
+gsNXPartFamiliesPublish.PANEL=com.teamcenter.rac.commands.userpreferences.GSNXPartFamiliesPublishPanel
+
+#Second Level Children for the Process
+#---------------------------------------
+inbox.PANEL=com.teamcenter.rac.commands.userpreferences.ProcessInboxPanel
+
+newprocess.PANEL=com.teamcenter.rac.commands.userpreferences.ProcessViewerPanel
+
+workflowGeneral.PANEL=com.teamcenter.rac.commands.userpreferences.WorkflowPreferencesGeneralPanel
+
+#Second Level Children for ChangeManagement
+#---------------------------------------
+changeman.CHILDREN=cmbom
+cmbom.PANEL=com.teamcenter.rac.commands.userpreferences.ChangeManagementColorsPanel
+
+#Second Level Children for the Navigator
+#------------------------------------------------
+navigator.CHILDREN=navigatorColumnShown
+
+#<sulthana> 15 Jul, 2005 Fix for PR ID: 5130321 : Graphical BOM Compare option is added to root level
+# and added ChangeManagementPositionPanel as its child.
+
+#Second Level Children for the Graphical BOM Compare
+#--------------------------------------------------
+GraphBomComp.CHILDREN=cmgraph
+cmgraph.PANEL=com.teamcenter.rac.commands.userpreferences.ChangeManagementPositionPanel
+
+#Third Level Children for the NavigatorColumnShown
+#---------------------------------------------------
+navigatorColumnShown.PANEL=com.teamcenter.rac.commands.userpreferences.NavigatorColumnShownPanel
+
+#Second Level Children for Calendar
+#---------------------------------------
+calendar.CHILDREN=startOfWeek,defaultBaseCalendar
+
+startOfWeek.PANEL=com.teamcenter.rac.commands.userpreferences.StartOfWeekPanel
+defaultBaseCalendar.PANEL=com.teamcenter.rac.commands.userpreferences.DefaultBaseCalendarPanel
+
+
+
+# Keys for the NavigatorColumnPreferencePanel
+#-------------------------------------------
+
+# Keys for showing UG Syn Attr checkbox
+#--------------------------------------
+showUgSynAttrCheckbox=false
+
+# Improve Preference Management project
+# -------------------------------------
+search.ICON=images/search_16.png
+
+changeownership.ICON = images/changeownership_16.png
+
+# Search for Batch Mesh
+#----------------------------------------
+#openSearchCommand=com.ugsolutions.iman.caese.search.CAESearchCommand
+openSearchCommand=com.teamcenter.rac.common.search.CAESearchCommand
+
+#Second Level Children for CAE
+#----------------------------------------
+CAETools.CHILDREN=caeSigRelPanel,caeGeneral,inspector,structMap,packages,acccheck,bomcompare,derivative,fileExplorer,caeUIConfiguration
+
+caeSigRelPanel.PANEL=com.teamcenter.rac.commands.userpreferences.CAEGeneralPanel
+caeGeneral.PANEL=com.teamcenter.rac.commands.userpreferences.CAEGeneralSetupPanel
+inspector.PANEL=com.teamcenter.rac.commands.userpreferences.InspectorSetupPanel
+structMap.PANEL=com.teamcenter.rac.commands.userpreferences.StructureMapPanel
+packages.PANEL=com.teamcenter.rac.commands.userpreferences.CAEPackagesPanel
+acccheck.PANEL=com.teamcenter.rac.commands.userpreferences.CAEAccountabilityCheckPanel
+derivative.PANEL=com.teamcenter.rac.commands.userpreferences.CAEDerivativeRulePanel
+bomcompare.PANEL=com.teamcenter.rac.commands.userpreferences.CAEBomComparePanel
+fileExplorer.PANEL=com.teamcenter.rac.commands.userpreferences.CAEFileUploadRulesPanel
+caeUIConfiguration.PANEL=com.teamcenter.rac.commands.userpreferences.CAEUIConfigurationPanel
+
+# Icons for CAE Authoring tools
+#----------------------------------------
+Subract.ICON=images/REMOVE_16.png
+ClearAll.ICON=images/clear_16.png
+
+# ME Options Panel
+#-----------------
+meEditorPanel.PANEL=com.teamcenter.rac.commands.userpreferences.MEEditorPanel
+
+# Operational Data Panel
+#-----------------------
+operationaldataconf.PANEL=com.teamcenter.rac.commands.userpreferences.OperationalDataConfigurationPanel
+
+
+#Second Level Children for Visualization
+#---------------------------------------
+visualization.CHILDREN=tcPV,productView
+tcPV.PANEL=com.teamcenter.rac.commands.userpreferences.TCPVPanel
+productView.PANEL=com.teamcenter.rac.commands.userpreferences.ProductViewPreferencePanel
+
+# Content Management Panel
+#---------------------------------------------
+contMgmt.PANEL=com.teamcenter.rac.contmgmtbase.userpreferences.ContentManagementPreferencePanel
+
+#Second Level Children for Search
+#---------------------------------------
+newSearch.CHILDREN=newSearchFavorites,newSearchFavoriteBO,newSearchGeneral,newSearchRemote,newSearchResults,newSearchSavedSearches
+newSearchFavorites.PANEL=com.teamcenter.rac.commands.userpreferences.SearchFavoritesPanel
+newSearchFavoriteBO.PANEL=com.teamcenter.rac.commands.userpreferences.SearchFavoriteBOPanel
+newSearchGeneral.PANEL=com.teamcenter.rac.commands.userpreferences.SearchGeneralPanel
+newSearchRemote.PANEL=com.teamcenter.rac.commands.userpreferences.SearchRemotePanel
+newSearchResults.PANEL=com.teamcenter.rac.commands.userpreferences.SearchResultsPanel
+newSearchSavedSearches.PANEL=com.teamcenter.rac.commands.userpreferences.SearchSavedSearchPanel
+
+# Substance Compliance Panel
+#---------------------------------------------
+SubsComp.CHILDREN=SuppDec
+SuppDec.PANEL=com.teamcenter.rac.commands.userpreferences.SupplierDeclarationsPreferencesPanel
+
+# IMDS Integration Panel
+#---------------------------------------------
+Imds.CHILDREN=CmpnyInfo
+CmpnyInfo.PANEL=com.teamcenter.rac.commands.userpreferences.CompanyInformationPreferencesPanel
+

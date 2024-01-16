@@ -1,0 +1,2 @@
+TCPreferenceSpinner_MESSAGE_BOX_TITLE=Saisie de valeur
+TCPreferenceSpinner_NOT_IN_ALLOWED_RANGE= La valeur {0} n''est pas dans la plage autoris\u00E9e {1} - {2}.

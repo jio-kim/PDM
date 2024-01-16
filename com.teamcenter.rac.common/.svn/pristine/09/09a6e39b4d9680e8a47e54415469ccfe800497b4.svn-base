@@ -1,0 +1,30 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Keys for clipboard
+# -----------------------------
+clear.TEXT=Effacer le contenu du presse-papiers
+append=Ajouter
+removeButton.TIP=Supprimer les objets s\u00E9lectionn\u00E9s du presse-papiers
+clearClipboardButton.TIP=Effacer le contenu du presse-papiers
+openButton.TIP=Ouvrir l'objet s\u00E9lectionn\u00E9
+appendCheckBox.TIP=Basculer entre modes \u00E9craser et ajouter
+clipboardButton.TIP=Presse-papiers
+clipboardButton.TITLE=Contenu du presse-papiers
+sendToUG.TIP=Envoyer le contenu du presse-papier vers NX
+
+clipboardButton.ICON=icons/clipboard_16.png
+clipboardAppendButton.ICON=icons/clipboardappend_16.png
+removeButton.ICON=icons/remove_16.png
+clear.ICON=icons/clear_16.png
+open.ICON=icons/open_16.png
+sendToUG.ICON=icons/sendto_16.png
+
+defaultAction.ICON=icons/defaultactionicon_16.png
+SWTClipboardDialog.append=ajouter  
+SWTClipboardDialog.close=Fermer

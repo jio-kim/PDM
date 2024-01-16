@@ -1,0 +1,42 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the cut package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: cut_locale.properties
+#   Module  : com.teamcenter.rac.commands.cut
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#09-Apr-2001  Endi Wu                 Define new entry for PR1074807
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#14-Oct-2003  scottb                  Add message for invalid arrangement cut
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = Recortar
+
+confirmationText = Ok para cortar?
+noConfirmationText = Cortando ...
+
+noSelection = N\u00E3o h\u00E1 objetos selecionados para cortar.
+rootSelection = N\u00E3o \u00E9 poss\u00EDvel cortar a raiz.
+invalidSelection = Objetos inv\u00E1lidos est\u00E3o selecionados para cortar.
+invalidSelectionBOMViewRev = N\u00E3o \u00E9 poss\u00EDvel recortar BOMView do item.
+invalidSelectionBOMView = N\u00E3o \u00E9 poss\u00EDvel recortar BOMView do item.
+inaccessibleBOMViewRev = N\u00E3o \u00E9 poss\u00EDvel cortar linhas de BOM de {0}.
+acessDenied = Acesso de grava\u00E7\u00E3o negado.
+invalidSelectionAssemblyArrangement = N\u00E3o \u00E9 poss\u00EDvel cortar AssemblyArrangement da BOMViewRev.
+error.TITLE = Recortar
+
+cutting = Cortar
+from = De

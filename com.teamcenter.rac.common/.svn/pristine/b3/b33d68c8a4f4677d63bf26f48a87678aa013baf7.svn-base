@@ -1,0 +1,1485 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2021.
+# Siemens Digital Industries Software.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Entries for Preference Dialog
+#-------------------------------------
+command.TITLE=Mo\u017Enosti
+
+unableToDisplayPanel.TITLE=Nen\u00ED mo\u017En\u00E9 zobrazit mo\u017Enosti
+unableToDisplayPanel.MESSAGE=Nen\u00ED mo\u017En\u00E9 zobrazit mo\u017Enosti... Panel nen\u00ED definov\u00E1n.
+plmxmlServiceNotFound.MSG=Slu\u017Eba PLMXML nenalezena!
+
+rootPreference.TITLE=Mo\u017Enosti
+
+columns.available=Dostupn\u00FD:
+columns.selected=Zobrazen\u00FD:
+
+updatingThePreferences=Aktualizov\u00E1n\u00ED mo\u017Enost\u00ED...
+notImplemented=Panel nen\u00ED implementov\u00E1n
+
+#Entries for noPrivilege Seen
+#------------------------------
+noPriv.LABEL=Nem\u00E1te pr\u00E1va Sysadmin k prohl\u00ED\u017Een\u00ED dat
+
+#keys for the first level root
+#-------------------------------------
+general.TITLE=Obecn\u00FD
+caeSigRelPanel.TITLE=Obecn\u00FD
+designcontext.TITLE=N\u00E1vrh kontextu
+productContext.TITLE=Kontext v\u00FDrobku
+designContextGeneral.TITLE=Obecn\u00FD
+productItem.TITLE=Polo\u017Eka v\u00FDrobku
+variantRuleLabel.LABEL=Automaticky ur\u010Dit nastaven\u00ED pravidla varianty, pokud maximum z
+targetAppearanceTextFieldLabel.LABEL=Vzhledy c\u00EDle
+permutationsTextFieldLabel.LABEL=Relevantn\u00ED mo\u017Enosti
+maxNoOfMatchesLabel.LABEL=Maxim\u00E1ln\u00ED povolen\u00FD po\u010Det shod:
+firstScreenMatchesTextFieldLabel.LABEL=Hled\u00E1n\u00ED pomoc\u00ED z\u00E1stupn\u00FDch znak\u016F
+secondScreenMatchesTextFieldLabel.LABEL=Hled\u00E1n\u00ED spr\u00E1vce struktury
+psInteroperoperabilityLabel.LABEL=Mo\u017Enosti vz\u00E1jemn\u00FDch vztah\u016F struktury v\u00FDrobku:
+cadLabel.LABEL=CAD
+visLabel.LABEL=VIS
+pruneTreeLabel.LABEL=O\u0159ezat strom
+supprCompLabel.LABEL=Potl. komponentu
+hideCompLabel.LABEL=Skr\u00FDt komponentu
+pseCommandLabel.LABEL=Zobrazit p\u0159\u00EDkaz "Otev\u0159\u00EDt ve spr\u00E1vci struktury"
+pseCheckBoxString=Ano
+pseCommandLabel_1.LABEL=Vlo\u017Eit nov\u011B p\u0159idan\u00E9 instance komponent
+pseCommandLabel_2.LABEL=Polo\u017Eky objektu kontextu struktury...
+searchEnginePreferenceLabel.LABEL=Vybrat modul hled\u00E1n\u00ED k hled\u00E1n\u00ED struktury v\u00FDrobku...
+cachelessRefineSearch.LABEL=Up\u0159esnit hled\u00E1n\u00ED bez vyrovn\u00E1vac\u00ED pam\u011Bti
+qplUGSearchEngine=Modul hled\u00E1n\u00ED QPL UG/NX
+qplJTSearchEngine=Modul hled\u00E1n\u00ED QPL JT
+appearanceSearchEngine=Modul hled\u00E1n\u00ED vzhledu
+cachelessSearchEngine=Modul hled\u00E1n\u00ED bez vyrovn\u00E1vac\u00ED pam\u011Bti
+useTrueShapeSearch=Pou\u017E\u00EDt hled\u00E1n\u00ED True Shape
+searchEnginePreferenceLabel.LABEL=Vybrat modul hled\u00E1n\u00ED k hled\u00E1n\u00ED struktury v\u00FDrobku...
+structureContextObjectEntriesLabel.LABEL=Polo\u017Eky objektu kontextu struktury...
+includeCompInstLabel.LABEL=Vlo\u017Eit nov\u011B p\u0159idan\u00E9 instance komponent
+syncWithPSE.LABEL=Automaticky synchronizovat a o\u0159ezat v\u00FDb\u011Bry DesignContext se spr\u00E1vcem struktury
+
+gs.TITLE=Spolupr\u00E1ce v\u00EDce pracovi\u0161\u0165
+
+siteSearch.TITLE=Hledat pracovi\u0161t\u011B
+groupSearch.TITLE=Hledat skupina
+userSearch.TITLE=Hledat u\u017Eivatel
+
+lov.TITLE=Seznam hodnot
+
+operationaldataconf.TITLE=Live Update
+
+logging.TITLE=P\u0159ihla\u0161ov\u00E1n\u00ED
+
+importExport.TITLE=Import/export
+
+integration.TITLE=Integrace
+
+system.TITLE=Syst\u00E9m
+
+mail.TITLE=Po\u0161ta
+
+checkin/checkout.TITLE=Uvolnit/rezervovat
+
+process.TITLE=Pracovn\u00ED postup
+
+tcUg.TITLE=NX
+tcJTEditor.TITLE=JT Editor
+
+SEEC.TITLE=Solid Edge
+
+tcPV.TITLE=Vizualizace \u017Eivotn\u00EDho cyklu
+
+tcVMU.TITLE=Vizualizace \u017Eivotn\u00EDho cyklu s Visdis
+
+portalViewer.TITLE=Vizualizace \u017Eivotn\u00EDho cyklu
+
+productStructure.TITLE=Spr\u00E1vce struktury
+
+grm.TITLE=GRM
+
+step.TITLE=Form\u00E1t STEP
+
+dataset.TITLE=Dataset
+
+aie.TITLE=AIE
+
+nxMgrIdeas.TITLE = Integrace pro I-deas
+
+project.TITLE={0}
+
+visualization.TITLE=Vizualizace
+
+#--- XLU: Fix for PR5807647, item 2
+currentProjectPref.TITLE=Pouze aktu\u00E1ln\u00ED projekt
+activeProjectPref.TITLE=Aktivn\u00ED projekty
+userApplyCurrentProjectPref.LABEL=Pou\u017E\u00EDt pravidla zabezpe\u010Den\u00ED projektu
+
+applicationPreference.TITLE=Mo\u017Enost aplikace
+#---Fix for PR ID: 5130321
+GraphBomComp.TITLE=Grafick\u00E9 porovn\u00E1n\u00ED rozpisky
+
+refreshNotify.TITLE=Upozorn\u011Bn\u00ED obnoven\u00ED
+Calendar.TITLE=Kalend\u00E1\u0159
+
+#keys for the second level root
+#-------------------------------
+ui.TITLE=UI
+
+item.TITLE=Polo\u017Eka
+
+itemRevision.TITLE=Revize polo\u017Eky
+
+alias.TITLE=Alias
+
+identifier.TITLE=Identifik\u00E1tor
+
+tracelink.TITLE=Systems Engineering
+
+crossProbing.TITLE=K\u0159\u00ED\u017Eov\u00E9 sondov\u00E1n\u00ED
+
+#Second Level Children for the Integration
+#------------------------------------------
+mgc.TITLE=MGC
+
+myriad.TITLE=Myriad
+
+#Second Level Children for the gs
+#-----------------------------------
+ods.TITLE=ODS
+
+idsm.TITLE=IDSM
+
+gsMiscellaneous.TITLE=Spolupr\u00E1ce v\u00EDce pracovi\u0161\u0165 - r\u016Fzn\u00E9
+
+importRemote.TITLE=Importovat vzd\u00E1len\u00E9
+
+gsNXPartFamiliesPublish.TITLE=Rozm\u011Brov\u00E9 \u0159ady sou\u010D\u00E1st\u00ED NX
+
+#Second Level Children for the Process
+#---------------------------------------
+inbox.TITLE=Doru\u010Den\u00E9 polo\u017Eky
+
+newprocess.TITLE=Nov\u00FD proces
+
+workflowGeneral.TITLE=Obecn\u00FD
+
+changeman.TITLE=Zm\u011Bnit spr\u00E1vu
+
+#Second Level Children for ChangeManagement
+#---------------------------------------
+cmbom.TITLE=Sledov\u00E1n\u00ED rozpisky
+
+cmgraph.TITLE=Grafick\u00E1 historie
+
+#Second Level Children for the Product Structure
+#------------------------------------------------
+psui.TITLE=Spr\u00E1vce struktury UI
+
+#Second Level Children for the Navigator
+#------------------------------------------------
+navigator.TITLE=Navig\u00E1tor
+
+#Third Level Children for the NavigatorColumnShown
+#---------------------------------------------------
+navigatorColumnShown.TITLE=NavigatorColumnShown
+
+#Second Level Children for Calendar
+#------------------------------------------
+
+calendar.TITLE=Kalend\u00E1\u0159
+startOfWeek.TITLE=Za\u010D\u00E1tek t\u00FDdne
+defaultBaseCalendar.TITLE=V\u00FDchoz\u00ED z\u00E1kladn\u00ED kalend\u00E1\u0159
+startOfWeek.MSG=Vyberte p\u0159edvolbu za\u010D\u00E1tku t\u00FDdne pro u\u017Eivatelsk\u00E9 kalend\u00E1\u0159e.
+defaultBaseCalendar.MSG=Vyberte v\u00FDchoz\u00ED z\u00E1kladn\u00ED kalend\u00E1\u0159 pro syst\u00E9m.
+
+
+#keys for the GeneralUIPanel
+#-----------------------------
+wsoInsertSelectionsPref.LABEL=Vlo\u017Eit s v\u00FDb\u011Brem:
+wsoInsertSelectionsPref.1=V\u0161echny vybran\u00E9 slo\u017Eky
+wsoInsertSelectionsPref.2=Prvn\u00ED vybran\u00E1 slo\u017Eka
+wsoInsertSelectionsPref.3=Slo\u017Eky Nov\u00E9
+wsoInsertSelectionsPref.4=Nic
+
+wsoInsertNoSelectionsPref.LABEL=Vlo\u017Eit bez v\u00FDb\u011Bru:
+wsoInsertNoSelectionsPref.1=Slo\u017Eky Nov\u00E9
+wsoInsertNoSelectionsPref.2=Slo\u017Eka Dom\u016F
+wsoInsertNoSelectionsPref.3=Nic
+
+
+#Tree order displaying name
+treeOrderDisplayName=Vzestupn\u011B,Sestupn\u011B,Bez t\u0159\u00EDd\u011Bn\u00ED
+treeDisplayOrder=Strom zobrazuj\u00EDc\u00ED po\u0159ad\u00ED
+
+openAfterCreatePref.LABEL=Po tvorb\u011B otev\u0159\u00EDt:
+openAfterCreatePref.0=Neotv\u00EDrat automaticky
+openAfterCreatePref.1=Otev\u0159\u00EDt automaticky
+
+wsoFolderSavePref.LABEL=Slo\u017Eka ulo\u017Een\u00ED:
+wsoFolderSavePref.1=Ulo\u017Eit po ka\u017Ed\u00E9 zm\u011Bn\u011B
+wsoFolderSavePref.2=Ulo\u017Eit pouze p\u0159i vyzv\u00E1n\u00ED
+wsoFolderSavePref.3=P\u0159i uzav\u0159en\u00ED se zeptat u\u017Eivatel\u016F, zda cht\u011Bj\u00ED ulo\u017Eit pr\u00E1ci
+
+generalUI.TAB1.TITLE=Obecn\u00FD
+generalUI.TAB2.TITLE=Mo\u017Enost sloupce
+generalUI.TAB3.TITLE=Sys Admin
+
+columnOrderVisibility.LABEL=Po\u0159ad\u00ED a zobrazen\u00ED sloupce:
+columns.hidden=Dostupn\u00FD:
+columns.shown=Zobrazen\u00FD:
+
+display_real_prop_name.0=Zobraziteln\u00FD n\u00E1zev:
+display_real_prop_name.1=Skute\u010Dn\u00FD n\u00E1zev vlastnosti
+displayName.LABEL=Mo\u017Enost zobrazen\u00E9ho n\u00E1zvu:
+dataset.LABEL=Limit \u010Di\u0161t\u011Bn\u00ED verze datasetu:
+
+datasetID.LABEL=Pou\u017Eit\u00ED ID datasetu:
+datasetID.ON.LABEL=Zapnuto
+
+audit.LABEL=Spr\u00E1vce auditu
+audit.ON.LABEL=Zapnuto
+
+subscribe.LABEL=Spr\u00E1vce p\u0159edplatn\u00E9ho
+subscribe.ON.LABEL=Zapnuto
+
+#keys for the GRMPanel
+#--------------------------------
+requirementRelationPrimary.LABEL=Prim\u00E1rn\u00ED relace po\u017Eadavku:
+requirementRelationPrimary.Item=Polo\u017Eka
+requirementRelationPrimary.ItemRevision=ItemRevision
+
+manifestationRelationPrimary.LABEL=Prim\u00E1rn\u00ED relace manifestace:
+manifestationRelationPrimary.Item=Polo\u017Eka
+manifestationRelationPrimary.ItemRevision=ItemRevision
+
+referenceRelationPrimary.LABEL=Prim\u00E1rn\u00ED relace reference:
+referenceRelationPrimary.Item=Polo\u017Eka
+referenceRelationPrimary.ItemRevision=ItemRevision
+
+masterFormRelationPrimary.LABEL=Prim\u00E1rn\u00ED relace hlavn\u00EDho formul\u00E1\u0159e:
+masterFormRelationPrimary.Item=Polo\u017Eka
+masterFormRelationPrimary.ItemRevision=ItemRevision
+
+#keys for the GeneralItemPanel
+#--------------------------------
+flColumnCatIVFSeparatorPref.LABEL=Odd\u011Blova\u010D mezi polo\u017Ekou a ItemRevision:
+itemDefaultRelation.LABEL=V\u00FDchoz\u00ED relace vlo\u017Een\u00ED:
+
+
+
+itemShownRelations.LABEL=Relace pro polo\u017Eky
+itemRelationsAsFolder.LABEL=Zobrazen\u00E9 relace polo\u017Eky pro pseudo slo\u017Eku
+
+generalItem.TAB1.TITLE=Obecn\u00FD
+generalItem.TAB2.TITLE=Souvisej\u00EDc\u00ED objekty
+
+generalItem.available=Dostupn\u00E9 relace
+generalItem.selected=Zobrazen\u00E9 relace
+
+selectItemTypes.LABEL=Vybran\u00FD typu polo\u017Eky:
+selectItemTypesComboBox.TOOLTIP=V\u00FDb\u011Brem typu polo\u017Eky zobrazte seznam asociovan\u00FDch relac\u00ED.
+
+generalItem.TAB3.TITLE=Zobrazit
+order.LABEL=Po\u0159ad\u00ED zobrazen\u00ED:
+releasedStatus=Stav vyd\u00E1n\u00ED
+inProcessStatus=Zpracov\u00E1v\u00E1 se
+workingStatus=Pracovn\u00ED
+configured=Konfigurov\u00E1no
+all=Zobrazit v\u0161echny revize
+itemRevisionDisplay.LABEL=Filtr zobrazen\u00ED reviz\u00ED
+displayable=Zobrazit jen zobraziteln\u00E9 revize
+displayRule.LABEL=Ur\u010Dit po\u0159ad\u00ED a pravidlo pro zobrazen\u00ED reviz\u00ED
+
+tableHeaderRule=Pravidlo
+tableHeaderRelation=
+tableHeaderCondition=Podm\u00EDnka
+tableHeaderLimit=Limit
+
+ruleOpColumn.TIP=Vyberte n\u00E1zev pravidla dvojit\u00FDm kliknut\u00EDm.
+limitColumn.TIP=Vlo\u017Ete/zm\u011B\u0148te limit hodnoty dvojit\u00FDm kliknut\u00EDm.
+choice.TIP=Klikn\u011Bte na bu\u0148ku pro zobrazen\u00ED seznamu mo\u017Enost\u00ED.
+conditionOpColumn.TIP=Dvojklikem vyberte stav vyd\u00E1n\u00ED.
+conditionOpRule.TIP=Vyberte pravidlo revize dvojit\u00FDm kliknut\u00EDm.
+relationOpColumn.TIP=Dvojit\u00FDm kliknut\u00EDm vyberte oper\u00E1tor relace.
+disabledOperatorCell.TIP=Znak rovn\u00E1 se/nerovn\u00E1 se nen\u00ED pro pravidlo platn\u00FD
+disabledConditionCell.TIP=Pro pravidlo neexistuje platn\u00E1 podm\u00EDnka
+disabledLimitCell.TIP=Maxim\u00E1ln\u00ED po\u010Det reviz\u00ED konfigurovan\u00FDch pravidlem revize je jedna. \u00DAprava tohoto pole nen\u00ED povolena.
+disabledTable.TIP=Zkontrolujte zobrazen\u00ED reviz\u00ED pro zviditeln\u00ED tabulky
+anyStatus=* (Jak\u00FDkoliv stav)
+revisionRelationSelection.TITLE=Vybrat revizi relace
+revisionRelationSelection.MSG={0} a {1} jsou oboustran\u011B exkluzivn\u00ED relace a jen jedena z nich m\u016F\u017Ee b\u00FDt v seznamu zobrazen\u00FDch relac\u00ED. Vyberte relaci ze seznamu n\u00ED\u017Ee a p\u0159idejte ji do seznamu zobrazen\u00FDch relac\u00ED.
+
+#keys for the GeneralItemRevisionPanel
+#--------------------------------------
+flColumnCatObjSeparatorPref.LABEL=Odd\u011Blova\u010D mezi polo\u017Ekou/reviz\u00ED polo\u017Eky a n\u00E1zvem:
+flColumnCatSeqSeparatorPref.LABEL=Odd\u011Blova\u010D mezi polo\u017Ekou/reviz\u00ED polo\u017Eky a ID posloupnosti:
+itemRevisionDefaultRelation.LABEL=V\u00FDchoz\u00ED relace vlo\u017Een\u00ED:
+
+itemRevisionShownRelations.LABEL=Relace pro revizi polo\u017Eky
+itemRevisionRelationsAsFolder.LABEL=Zobrazen\u00E9 relace revize polo\u017Eky pro pseudo slo\u017Eku
+
+generalItemRevision.TAB1.TITLE=Obecn\u00FD
+generalItemRevision.TAB2.TITLE=Souvisej\u00EDc\u00ED objekt
+
+generalItemRevision.available=Dostupn\u00E9 relace
+generalItemRevision.selected=Zobrazen\u00E9 relace
+
+selectItemRevisionTypes.LABEL=Vybran\u00FD typ revize polo\u017Eky:
+selectItemRevisionTypesComboBox.TOOLTIP=V\u00FDb\u011Brem typu revize polo\u017Eky zobrazte seznam asociovan\u00FDch relac\u00ED.
+
+#Keys for the GeneralMiscellaneousPanel
+#---------------------------------------
+pomReference.LABEL=POM - Kde odkazov\u00E1no:
+pomReference.ON.LABEL=Ano
+
+#Keys for the GeneralAliasPanel
+#---------------------------------------
+aliasSeparator.LABEL=Odd\u011Blova\u010D mezi kontextem a ID aliasu:
+aliasLength.LABEL=D\u00E9lka kontextu:
+
+#Keys for the GeneralTracelinkPanel
+#---------------------------------------
+tracelinkMode.LABEL=Re\u017Eim aktivn\u00EDho propojen\u00ED
+tracelinkMode.ON=Zapnuto
+tracelinkMode.TIP=Povol\u00ED nebo zak\u00E1\u017Ee u\u017Eivateli prov\u00E1d\u011Bt operace souvisej\u00EDc\u00ED s aktivn\u00EDm propojen\u00EDm.
+
+indirectTracelinkMode.LABEL=V\u00FDpis nep\u0159\u00EDm\u00E9ho aktivn\u00EDho propojen\u00ED
+indirectTracelinkMode.ON=Zapnuto
+indirectTracelinkMode.TIP=Povol\u00ED nebo zak\u00E1\u017Ee zobrazen\u00ED nep\u0159\u00EDm\u00E9ho aktivn\u00EDho propojen\u00ED ve v\u00FDpisu sledovatelnosti.
+
+traceReportLayout.LABEL=Pohled sledov\u00E1n\u00ED zleva doprava
+traceReportLayout.ON=Zapnuto
+traceReportLayout.TIP=Povoluje zm\u011Bnu zarovn\u00E1n\u00ED v\u00FDpisu sledov\u00E1n\u00ED na zleva doprava.
+
+ApplyTemplates.LABEL=Pou\u017E\u00EDt \u0161ablony (pro vestav\u011Bn\u00E9 \u00FApravy)
+ApplyTemplates.ON=Zapnuto
+ApplyTemplates.TIP=Pou\u017Eije pro vybran\u00FD objekt na panelu zobrazen\u00ED/\u00FAprav po\u017Eadavk\u016F v\u00FDchoz\u00ED \u0161ablonu objektu.
+
+brwClrTxt.LABEL=Proch\u00E1zet text
+brwClrTxt.ON=Zapnuto
+brwClrTxt.TIP=Povol\u00ED nebo zak\u00E1\u017Ee u\u017Eivateli zobrazit ClearText nebo FullText na panelu zobrazen\u00ED/\u00FAprav po\u017Eadavk\u016F.
+
+quickPanel.LABEL=Panel rychl\u00E9 tvorby
+quickPanel.ON=Zapnuto
+quickPanel.TIP=Zobraz\u00ED panel rychl\u00E9 tvorby v aplikaci Systems Engineering.
+
+calDefCompObject.LABEL=Vypo\u010D\u00EDtat definuj\u00EDc\u00ED/vyhovuj\u00EDc\u00ED objekty
+calDefCompObject.ON=Zapnuto
+calDefCompObject.TIP=Povol\u00ED nebo zak\u00E1\u017Ee u\u017Eivatel zobrazit vlastnosti definuj\u00EDc\u00EDch \u010Di vyhovuj\u00EDc\u00EDch objekt\u016F.
+
+importKeywords.LABEL= Kl\u00ED\u010Dov\u00E1 slova pro import
+
+#keys for the Cross probing preference panel
+#--------------------------------
+primaryComponent=Naj\u00EDt zdroje
+secondaryComponent=Naj\u00EDt c\u00EDle
+bothComponent=Oba
+relationTraversalType.LABEL=Sm\u011Br k\u0159\u00ED\u017Eov\u00E9ho sondov\u00E1n\u00ED:
+relationDepthTraversal.LABEL=Hloubkov\u00FD p\u0159echod relac\u00ED:
+searchAll.LABEL=Hledat ve v\u0161ech \u00FArovn\u00EDch
+enterDepthLevel.LABEL=Ur\u010Den\u00E1 hloubka
+relationPanel.LABEL=Relace pro k\u0159\u00ED\u017Eov\u00E9 sondov\u00E1n\u00ED:
+enterLevelText.TOOLTIP=Zadejte celo\u010D\u00EDselnou hodnotu krom\u011B 0.
+indirectTracelinkMode.LABEL=Hled\u00E1n\u00ED nep\u0159\u00EDm\u00E9ho aktivn\u00EDho propojen\u00ED:
+addRelButton.TOOLTIP=P\u0159id\u00E1 vybran\u00E9 relace na panel "Zahrnout relace".
+addAllRelsButton.TOOLTIP=P\u0159id\u00E1 v\u0161echny relace na panel "Zahrnout relace".
+removeRelButton.TOOLTIP=Odebere vybran\u00E9 relace z panelu "Zahrnout relace".
+removeAllRelsButton.TOOLTIP=Odebere v\u0161echny relace z panelu "Zahrnout relace".
+allowedRelations=Povolen\u00E9 relace:
+selectedRelations=Vybran\u00E9 relace:
+
+#Keys for the GeneralIdentifierPanel
+#---------------------------------------
+identifierLength.LABEL=D\u00E9lka kontextu:
+identifierContext.LABEL=Jak mus\u00ED b\u00FDt kontext p\u0159ipojen:
+
+#keys for the ProcessCheckInOutPanel
+#--------------------------------
+removeFileOnCheckIn.LABEL=Odebrat soubor p\u0159i uvoln\u011Bn\u00ED:
+removeFileOnCheckIn.ON=Ano
+
+checkOutDir.LABEL=Rezervovat adres\u00E1\u0159:
+
+autoCheckOut.LABEL=Automatick\u00E1 rezervace:
+autoCheckOut.ON.LABEL=Zapnuto
+
+checkOutAndExport.LABEL=Exportovat soubory p\u0159i rezervaci:
+checkOutAndExport.ON.LABEL=Ano
+
+CHECKOUT.TAB1.TITLE=Obecn\u00FD
+CHECKOUT.TAB2.TITLE=Sys Admin
+
+#keys for the ProcessInboxPanel
+#--------------------------------
+inboxColumns.LABEL=Zobrazen\u00E9 sloupce
+inboxColumnsAvailable.LABEL=Dostupn\u00FD:
+inboxColumnsShown.LABEL=Zobrazen\u00FD:
+
+workflowInboxInterval.LABEL=Interval zji\u0161\u0165ov\u00E1n\u00ED nov\u00FDch \u00FAkol\u016F doru\u010Den\u00FDch polo\u017Eek
+workflowInboxInterval.0=Zak\u00E1zat
+workflowInboxInterval.1=Zkontrolovat jednou p\u0159i p\u0159ihl\u00E1\u0161en\u00ED
+workflowInboxInterval.2=Interval (minuty)
+
+tcEPMTask.LABEL=Mo\u017Enost zobrazen\u00ED \u00FAlohy:
+tcEPMDetailTaskFirst.0=Zobrazit jen podrobn\u00E9 \u00FAlohy
+tcEPMDetailTaskFirst.1=Zobrazit v\u0161echny p\u0159i\u0159azen\u00E9 \u00FAlohy
+
+workflowInboxSuspendedTasks.LABEL=P\u0159eru\u0161en\u00E9 \u00FAlohy
+workflowInboxSuspendedTasks.0=P\u0159eru\u0161it jednu \u00FAlohu a zobrazit zah\u00E1jen\u00E9 a p\u0159eru\u0161en\u00E9 \u00FAlohy \nv \u00FAloh\u00E1ch k proveden\u00ED
+workflowInboxSuspendedTasks.1=P\u0159eru\u0161it jednu \u00FAlohu a zobrazit jen zah\u00E1jen\u00E9 \u00FAlohy v \u00FAloh\u00E1ch k proveden\u00ED
+workflowInboxSuspendedTasks.2=P\u0159eru\u0161it v\u0161echny zah\u00E1jen\u00E9 \u00FAlohy tohoto procesu a zobrazit zah\u00E1jen\u00E9 a\np\u0159eru\u0161en\u00E9 \u00FAlohy v \u00FAloh\u00E1ch k proveden\u00ED
+workflowInboxSuspendedTasks.3=P\u0159eru\u0161it v\u0161echny zah\u00E1jen\u00E9 \u00FAlohy tohoto procesu a zobrazit zah\u00E1jen\u00E9 a\np\u0159eru\u0161en\u00E9 \u00FAlohy v \u00FAloh\u00E1ch k proveden\u00ED
+
+#keys for the WorkflowPreferenceGeneralPanel
+#-------------------------------
+workflowGeneralDefaultView.LABEL=V\u00FDchoz\u00ED pohled
+workflowGeneralTaskView=\u00DAloha
+workflowGeneralProcessView=Proces
+showAdvancePasteInNewProcess=Zobrazit pokro\u010Dil\u00E9 vkl\u00E1d\u00E1n\u00ED do nov\u00E9ho procesu
+
+#keys for the gsODSPanel
+#-------------------------------
+odsSite.LABEL=Pracovi\u0161t\u011B ODS
+ods_permitted_sites.LABEL=Pracovi\u0161t\u011B s ODS:
+ods_restricted_sites.LABEL=Pracovi\u0161t\u011B bez ODS:
+ods_searchable_sites.LABEL=Hledateln\u00E9 pracovi\u0161t\u011B ODS:
+ods_searchable_sites_excluded.LABEL=Vylou\u010Den\u00E9 hledateln\u00E9 pracovi\u0161t\u011B ODS:
+
+ODS.TAB1.TITLE=Obecn\u00FD
+ODS.TAB2.TITLE=Sys Admin
+
+#keys for the gsIDSMPanel
+#------------------------------------
+idsm_permitted_sites.LABEL=Pracovi\u0161t\u011B s IDSM:
+idsm_restricted_sites.LABEL=Pracovi\u0161t\u011B bez IDSM:
+idsm_permitted_transfer_sites.LABEL=P\u0159enosov\u00E9 pracovi\u0161t\u011B s IDSM:
+
+#keys for the gsMiscellaneousPanel
+#-------------------------------------
+directory.LABEL=Zadat adres\u00E1\u0159 p\u0159enosu:
+tc_publishable_classes.LABEL=Publikovateln\u00E9 t\u0159\u00EDdy:
+tc_defalut_export_sites.LABEL=Exportovat pracovi\u0161t\u011B:
+tc_transfer_area.LABEL=P\u0159enosov\u00FD prostor Teamcenter:
+
+# keys for gsImportRemotePanel
+# ----------------------------------------
+
+loadCurrentPref = Na\u010Dten\u00ED aktu\u00E1ln\u00EDch mo\u017Enost\u00ED...
+transfer.TITLE = Mo\u017Enosti p\u0159enosu
+transferOwnership = P\u0159en\u00E9st vlastnictv\u00ED
+performImportExport = Prov\u00E9st v pozad\u00ED
+IEOptions.generalTab.TITLE = Obecn\u00FD
+IEOptions.advancedTab.TITLE = Pokro\u010Dil\u00E9
+IEOptions.partfamTab.TITLE = Rozm\u011Brov\u00E9 \u0159ady sou\u010D\u00E1st\u00ED NX
+IEOptions.customTab.TITLE = Custom
+
+IEOption.saveOptions.TITLE = Ulo\u017Eit mo\u017Enosti
+IEOption.saveOptionsBox = Ulo\u017Eit v\u0161echny mo\u017Enosti jako standardn\u00ED
+
+relationship.TITLE = Mo\u017Enosti vztahu
+includeReference = Zahrnout referenci
+excludeReference = Vyjmout referenci
+
+itemOption.TITLE = Mo\u017Enosti polo\u017Eky
+includeAllRevisitions = Zahrnout v\u0161echny revize
+latestRevisionOnly = Pouze posledn\u00ED revize
+latestWorkingRevisionOnly = Pouze posledn\u00ED pracovn\u00ED revize
+latestWorkingAnyReleaseStatus = Posledn\u00ED pracovn\u00ED/libovoln\u00FD stav vyd\u00E1n\u00ED
+latestAnyReleaseStatus = Jak\u00FDkoliv posledn\u00ED stav vyd\u00E1n\u00ED
+selectedRevisionOnly = Pouze vybran\u00E9 revize
+specificReleaseStatus = Pouze specifick\u00FD stav vyd\u00E1n\u00ED
+
+datasetOption.TITLE = Mo\u017Enosti datasetu
+includeAllRevision = Zahrnout v\u0161echny verze
+includeAllFiles = Zahrnout v\u0161echny soubory
+
+generalWorkspaceObject.TITLE = Obecn\u00E9 mo\u017Enosti
+includesModifiedObjectOnly = Zahrnout pouze zm\u011Bn\u011Bn\u00E9 objekty
+excludeExportProtectedObjects = Vyjmout objekty chr\u00E1n\u011Bn\u00E9 proti exportu
+excludeFolderContents = Vyjmout obsah slo\u017Eky
+
+pse.TITLE = Mo\u017Enosti spr\u00E1vce struktury
+includeEntireBOM = Zahrnout celou rozpisku
+transferTopLevelItem = P\u0159en\u00E9st pouze polo\u017Eku nejvy\u0161\u0161\u00ED \u00FArovn\u011B
+excludeTransferProtectedComponents = Vyjmout komponenty chr\u00E1n\u011Bn\u00E9 proti p\u0159enosu
+excludeExportProctedComponents = Vyjmout komponenty chr\u00E1n\u011Bn\u00E9 proti exportu
+includeDistributedComponents = Zahrnout distribuovan\u00E9 komponenty
+
+ieSession.TITLE = Mo\u017Enosti relace
+previewMode = N\u00E1hled pomoc\u00ED v\u00FDpisu
+completionReport = Generovat v\u00FDpisy importu nebo exportu
+continueOnError = Pokra\u010Dovat p\u0159i chyb\u011B
+
+synchronization.TITLE = Mo\u017Enosti synchronizace nebo ov\u011B\u0159en\u00ED
+synchronizeAutomatically = Synchronizovat automaticky
+synchronizeInBatchMode = Synchronizovat v d\u00E1vkov\u00E9m re\u017Eimu
+doNotSynchronize = Nesynchronizovat
+notify = Upozornit e-mailem
+
+sendOptions.TITLE = Mo\u017Enosti odesl\u00E1n\u00ED
+owningUser = Vzd\u00E1len\u00FD vlastn\u00EDc\u00ED u\u017Eivatel:
+owningGroup = Vzd\u00E1len\u00E1 vlastn\u00EDc\u00ED skupina:
+blankOwningUser = (Pou\u017E\u00EDt v\u00FDchoz\u00ED pravidla vlastnictv\u00ED u\u017Eivatele)
+blankOwningGroup = (Pou\u017E\u00EDt v\u00FDchoz\u00ED pravidla vlastnictv\u00ED skupiny)
+currentSelection.LABEL = Aktu\u00E1ln\u00ED v\u00FDb\u011Br
+selectedUser = U\u017Eivatel
+selectedGroup = Skupina:
+selectUserGroup = Vybrat nov\u00E9ho vlastn\u00EDc\u00EDho u\u017Eivatele
+defaultOwningUserGroupRule = Pou\u017E\u00EDt v\u00FDchoz\u00ED pravidla vlastnictv\u00ED u\u017Eivatele/skupiny
+error.TITLE = Chyba...
+selectionError.MSG = Vybran\u00FD objekt nen\u00ED u\u017Eivatel
+noSelectionError.MSG = Nic nen\u00ED vybr\u00E1no
+
+IEOption.relationExclude.TITLE = Nen\u00ED mo\u017En\u00E9 vylou\u010Dit relaci
+IEOption.relationExclude = je vy\u017Eadovan\u00E1 relace
+IEOption.relationExcludeXfer = je vy\u017Eadovan\u00E1 relace p\u0159i p\u0159evodu vlastnictv\u00ED
+
+IEOption.relationInclude.TITLE = Nen\u00ED mo\u017En\u00E9 zahrnout relaci
+IEOption.relationIncludeXfer = je vylou\u010Denou relac\u00ED s v\u00FDjimkou p\u0159ev\u00E1d\u011Bn\u00ED vlastnictv\u00ED
+IEOption.relationInclude = je vylou\u010Den\u00E1 relace
+
+none = Nic
+
+#keys for NXPartFamilies tab in IE Options Panel
+#------------------------------------------------
+pfWithAsy.LABEL = Sestavy s komponentami \u010Dlen\u016F rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1st\u00ED
+
+pfmWithAsy = Zahrnout \u010Dleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1st\u00ED
+pftWithAsy = Zahrnout \u0161ablony rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1st\u00ED m\u00EDsto \u010Dlen\u016F
+allPfWithAsy = Zahrnout \u010Dleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1st\u00ED i jejich \u0161ablony
+noPfWithAsy = Nezahrnovat \u010Dleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1st\u00ED ani jejich \u0161ablony
+
+nxPartFam.TITLE = Mo\u017Enosti pro rozm\u011Brov\u00E9 \u0159ady sou\u010D\u00E1st\u00ED NX
+pfWithAsyTitle = Sestavy s \u010Dleny rozm\u011Brov\u00FDch \u0159ad:
+pfmWithAsyNote = Zahrnout \u010Dleny
+pftWithAsyNote = Zahrnout \u0161ablony
+allPfWithAsyNote = Zahrnout \u010Dleny a \u0161ablony
+noPfWithAsyNote = Nic nezahrnovat
+
+pfmWithPFTPanel.LABEL = \u0160ablony rozm\u011Brov\u00E9 \u0159ady sou\u010D\u00E1sti
+pfmWithPFT = Zahrnout \u010Dleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+
+pftWithPFMPanel.LABEL = \u010Cleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+pftWithPFM = Zahrnout \u0161ablony rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+
+#keys for the gsUGPartFamiliesPanel
+#----------------------------------------
+pubPFWithAsy.LABEL = Publikov\u00E1n\u00ED sestav s komponentami \u010Dlen\u016F rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+pubPFWithAsy.0 = Publikovat \u010Dleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+pubPFWithAsy.1 = Publikovat \u0161ablony rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti m\u00EDsto \u010Dlen\u016F
+pubPFWithAsy.2 = Publikovat \u010Dleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti i jejich \u0161ablony
+pubPFWithAsy.3 = Nepublikovat \u010Dleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti ani jejich \u0161ablony
+
+pubPFMWithPFTPanel.LABEL = Publikov\u00E1n\u00ED \u0161ablon rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+pubPFMWithPFTCheckbox.LABEL = Publikovat tak\u00E9 \u010Dleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+
+pubPFTWithPFMPanel.LABEL = Publikov\u00E1n\u00ED \u010Dlen\u016F rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+pubPFTWithPFMCheckbox.LABEL = Publikovat tak\u00E9 \u0161ablony rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+
+#keys for the IEOptionsPanel error message dialog when lost the setting
+#----------------------------------------------
+IEOptions.ExceptionDialog.ServerError.TITLE=Chyba p\u0159i na\u010D\u00EDt\u00E1n\u00ED p\u0159edvoleb serveru
+IEOptions.ExceptionDialog.ServerError.MESSAGE=B\u011Bhem na\u010D\u00EDt\u00E1n\u00ED p\u0159edvoleb do\u0161lo k chyb\u011B.\nM\u016F\u017Ee doj\u00EDt ke ztr\u00E1t\u011B nastaven\u00ED mo\u017Enost\u00ED importu nebo exportu.\nRestartujte operaci importu nebo exportu.
+IEOptions.ExceptionDialog.ClientError.TITLE=Chyba zobrazen\u00ED p\u0159edvoleb
+IEOptions.ExceptionDialog.ClientError.MESSAGE=B\u011Bhem zobrazen\u00ED p\u0159edvoleb do\u0161lo k chyb\u011B.\nM\u016F\u017Ee doj\u00EDt ke ztr\u00E1t\u011B nastaven\u00ED mo\u017Enost\u00ED importu nebo exportu.\nObnovte mo\u017Enosti p\u0159edvoleb importu nebo exportu.
+IEOptions.ExceptionDialog.SpecificRelStatusError.MESSAGE=\u017D\u00E1dn\u00FD specifick\u00FD stav vyd\u00E1n\u00ED nen\u00ED nastaven.
+
+#keys for the product structure  UI Panel
+#----------------------------------------
+precise.1=P\u0159esn\u011B
+imprecise.1=Nep\u0159esn\u011B
+
+autoPack.LABEL=Zobrazen\u00ED ve v\u00FDchoz\u00EDm nastaven\u00ED spr\u00E1vce struktury sbalen\u00ED
+remoteApprQuery.LABEL=Povolit spr\u00E1vci struktury prov\u00E1d\u011Bt hled\u00E1n\u00ED pomoc\u00ED vzhledov\u00E9ho modulu hled\u00E1n\u00ED na vzd\u00E1len\u00FDch pracovi\u0161t\u00EDch
+substitutes.LABEL=Zobrazit nahrazen\u00ED ve v\u00FDchoz\u00EDm nastaven\u00ED
+configName.LABEL=V\u00FDchoz\u00ED pravidlo revize:
+
+pseui.ON.LABEL=Ano
+
+productcontext.LABEL=Vlastnosti kontextu v\u00FDrobku
+properties.shown=Zobrazen\u00FD
+properties.hidden=Skryt\u00FD
+
+productItem.LABEL=Vlastnosti polo\u017Eky v\u00FDrobku
+
+columns.LABEL=Zobrazen\u00E9 sloupce spr\u00E1vce struktury 
+viewType.LABEL=V\u00FDchoz\u00ED typ pohledu:
+precision.LABEL=Mo\u017Enost p\u0159esnosti rozpisky:
+titleFormat.LABEL=Form\u00E1t "n\u00E1zvu \u0159\u00E1dku rozpisky" pro polo\u017Eky typu:
+
+redlinePendingEdits.LABEL=Zobrazit p\u0159ipom\u00EDnky pro nevy\u0159e\u0161en\u00E9 \u00FApravy 
+
+#keys for the QueryPanel
+#-----------------------------
+searchGeneralOptions.TITLE=Obecn\u00E9 mo\u017Enosti
+
+case.LABEL=Prov\u00E9st hled\u00E1n\u00ED s rozli\u0161en\u00EDm velikosti p\u00EDsmen:
+query.ON.LABEL=Ano
+
+caseSensitiveButton=Rozli\u0161ovat velikost p\u00EDsmen
+caseSensitiveButton.TIP=Zapnout rozli\u0161en\u00ED velikosti p\u00EDsmen
+
+showDetailsButton=Zobrazit operandy
+showDetailsButton.TIP=Zobrazit logick\u00E9 a matematick\u00E9 operandy ve formul\u00E1\u0159i dotazu
+
+showLatestDatasetButton=Posledn\u00ED verze datasetu
+showLatestDatasetButton.TIP=P\u0159epnout posledn\u00ED verzi dataset\u016F
+
+searchClassificationHierarchyButton=Hledat v hierarchii klasifikace
+searchClassificationHierarchyButton.TIP=Zapnout hled\u00E1n\u00ED v hierarchii klasifikace
+enableHierarchicalTypeSearchButton=Zapnout hled\u00E1n\u00ED v hierarchii typu
+enableHierarchicalTypeSearchButton.TIP=Zapnout hled\u00E1n\u00ED v hierarchii typu
+queryOptionGroup.LABEL=Mo\u017Enosti dotazu
+queryColumns.LABEL=Obl\u00EDben\u00FD dotaz:
+
+searchLimit.LABEL=Nastavit velikost startovac\u00ED str\u00E1nky:
+
+wildcard.LABEL=Mo\u017Enost z\u00E1stupn\u00FDch znak\u016F:
+wildcard.1=Styl SQL
+wildcard.2=Styl Unix
+wildcard.3=Styl Windows
+wildcard.1.TIP=<html><body><font size=2><p>&nbsp Styl z\u00E1stupn\u00FDch znak\u016F Oracle.</p><p>&nbsp V\u00EDce znak\u016F uv\u00E1d\u011Bjte pomoc\u00ED znaku "%". </p> <p>&nbsp Pro jednotliv\u00E9 znaky pou\u017Eijte znak "_". </p></font></body></html>
+wildcard.2.TIP=<html><body><font size=2><p>&nbsp Styl z\u00E1stupn\u00FDch znak\u016F Unix.</p><p>&nbsp V\u00EDce znak\u016F uv\u00E1d\u011Bjte pomoc\u00ED znaku "*". </p> <p>&nbsp Pro jednotliv\u00E9 znaky pou\u017Eijte znak ".". </p></font></body></html>
+wildcard.3.TIP=<html><body><font size=2><p>&nbsp Styl z\u00E1stupn\u00FDch znak\u016F Windows.</p><p>&nbsp V\u00EDce znak\u016F uv\u00E1d\u011Bjte pomoc\u00ED znaku "*". </p> <p>&nbsp Pro jednotliv\u00E9 znaky pou\u017Eijte znak "?". </p></font></body></html>
+
+multiEntry.1=Povolit v\u00EDce polo\u017Eek
+multiEntry.1.TIP=<html><body><font size=2> <p>&nbsp Umo\u017E\u0148uje pou\u017Eit\u00ED seznamu s odd\u011Blova\u010Di v poli pro zad\u00E1n\u00ED dotazu. </p> <p>&nbsp Platn\u00E9 pouze pro dva logick\u00E9 operandy = (je rovno) a != (nen\u00ED rovno) </p> <p>&nbsp Seznam umo\u017E\u0148uje maxim\u00E1ln\u011B 254 odd\u011Blen\u00FDch n\u00E1zv\u016F. </p> </font></body></html>
+
+multiEntry.SepLabel=Znak odd\u011Blova\u010De
+multiEntry.TIP=<html><body><font size=2><p>&nbsp Nastavuje znak odd\u011Blova\u010De pro funkci v\u00EDce polo\u017Eek.</p><p>&nbsp Mus\u00ED j\u00EDt o viditeln\u00FD znak. </p> <p>&nbsp Pokud nen\u00ED nastaven \u017E\u00E1dn\u00FD znak, pou\u017Eit\u00ED v\u00EDce polo\u017Eek je zak\u00E1z\u00E1no <p></font></body></html>
+
+multiEntry.LABEL= Mo\u017Enosti v\u00EDce polo\u017Eek
+multiEntry.canuse=Pou\u017Eit\u00ED v\u00EDce polo\u017Eek zapnuto
+multiEntry.cannotuse=Pou\u017Eit\u00ED v\u00EDce polo\u017Eek zak\u00E1z\u00E1no
+
+escapeCharPanel.TIP=<html><body><font size=2> <p>&nbsp Umo\u017E\u0148uje nahrazen\u00ED z\u00E1stupn\u00FDch znak\u016F pomoc\u00ED \u0159\u00EDdic\u00EDho znaku. </p> </font></body></html>
+
+escapeCharEntry.LABEL=\u0158\u00EDdic\u00ED znak
+
+escapeCharPanel.LABEL= \u0158\u00EDdic\u00ED znak
+
+#Key for LOV
+lovPanel.TITLE=Zobrazen\u00ED dvojic hodnoty a popisu
+lovSeparator.LABEL=Odd\u011Blova\u010D mezi hodnotou a popisem:
+shownHidden.TITLE=Vybrat seznam hodnot a zobrazit nebo skr\u00FDt popis
+shown = Zobrazen\u00FD
+hidden = Skryt\u00FD
+
+#keys for StepPanel
+#---------------------------------
+# tab1
+stepOrgId.LABEL=ID organizace:
+stepNameDelimiter.LABEL=Odd\u011Blova\u010D n\u00E1zv\u016F:
+stepNameSequence.LABEL=Posloupnost n\u00E1zv\u016F
+stepNameSequenceAvailable.LABEL=Dostupn\u00FD:
+stepNameSequenceShown.LABEL=Zobrazen\u00FD:
+stepPartItems.LABEL=Polo\u017Eky sou\u010D\u00E1st\u00ED:
+stepToolItems.LABEL=Polo\u017Eky n\u00E1stroj\u016F:
+stepApprovedStatus.LABEL=Stav schv\u00E1len\u00ED:
+stepNotApprovedStatus.LABEL=Stav neschv\u00E1len\u00ED:
+
+# tab2
+stepMaterialSpec.LABEL=Specifikace materi\u00E1lu:
+stepProcessSpec.LABEL=Specifikace procesu:
+stepSurfaceSpec.LABEL=Specifikace povrchov\u00FDch \u00FAprav:
+stepDesignSpec.LABEL=Specifikace n\u00E1vrhu:
+stepDrawing.LABEL=V\u00FDkres:
+stepCadFilename.LABEL=N\u00E1zev souboru CAD:
+
+stepMakeOrBuy.LABEL=Vyr\u00E1b\u011Bn\u00FD nebo Kupovan\u00FD:
+stepImportDir.LABEL=Adres\u00E1\u0159 pro import:
+stepExportDir.LABEL=Adres\u00E1\u0159 pro export:
+stepExportDataFormat.LABEL=Form\u00E1t dat exportu:
+stepExportDataFormat.1=AP203
+stepExportDataFormat.2=AP214
+stepExportDlg.TITLE=Export
+stepImportDlg.TITLE=Import
+
+step.TAB1.TITLE=Obecn\u00FD
+step.TAB2.TITLE=Spec
+step.TAB3.TITLE=SysAdmin
+
+#keys for CAEBomComparePanel
+#---------------------------------
+caeItemRevShownAttributes.LABEL=Atributy reviz\u00ED polo\u017Eky
+caeItemRevAttributesForBomCompare.LABEL=Zobrazen\u00E9 vlastnosti revize polo\u017Eky pro porovn\u00E1n\u00ED rozpisky
+
+selectPreferenceLocationTypes.LABEL=Um\u00EDst\u011Bn\u00ED
+caeItemRevision.TAB1.TITLE=Vlastnosti \u010D\u00E1ste\u010Dn\u00E9 shody
+
+caeItemRevision.available=Dostupn\u00E9 vlastnosti
+caeItemRevision.selected=Vybran\u00E9 vlastnosti
+
+#keys for CAEToolGeneralPanel
+#---------------------------------
+
+
+# tab1
+caeSigRelProduct.LABEL=V\u00FDznamn\u00E9 typy vztah\u016F v\u00FDrobku
+caeSigRelModel.LABEL=V\u00FDznamn\u00E9 typy vztah\u016F pro modelu CAE 3D
+caeSigRelAnalysis.LABEL=V\u00FDznamn\u00E9 typy vztah\u016F pro anal\u00FDzu CAE 3D
+caeSigRel1DModel.LABEL=V\u00FDznamn\u00E9 typy vztah\u016F pro modelu CAE 1D
+caeSigRel1DAnalysis.LABEL=V\u00FDznamn\u00E9 typy vztah\u016F pro anal\u00FDzu CAE 1D
+
+caeToolGeneralPanel.TAB1.TITLE=D\u016Fle\u017Eit\u00E9 neaktu\u00E1ln\u00ED relace
+caeToolGeneralPanel.TAB2.TITLE=Neaktu\u00E1ln\u00ED zv\u00FDrazn\u011Bn\u00ED
+
+myFavSimTools.LABEL=Obl\u00EDben\u00E9 simula\u010Dn\u00ED n\u00E1stroje
+myToolsInToolBar.LABEL=Simula\u010Dn\u00ED n\u00E1stroje na panelu n\u00E1stroj\u016F
+
+myFavReleasedSimTools.LABEL=Obl\u00EDben\u00E9 vydan\u00E9 simula\u010Dn\u00ED n\u00E1stroje
+myReleasedToolsInToolBar.LABEL=Vydan\u00E9 simula\u010Dn\u00ED n\u00E1stroje na panelu n\u00E1stroj\u016F
+
+caeToolRevRuleForSimulationToolbar.BORDER.LABEL=Pravidlo revize simula\u010Dn\u00EDch n\u00E1stroj\u016F na panelu n\u00E1stroj\u016F
+caeToolRevRuleForSimulationToolbar.LABEL=Pravidlo revize
+caeToolReleaseStatus.LABEL=Stav vyd\u00E1n\u00ED k pou\u017Eit\u00ED
+
+myFavCAEPackages.LABEL=Moje obl\u00EDben\u00E9 bal\u00EDky CAE
+myCAEPackagesInToolBar.LABEL=Bal\u00EDky CAE na panelu n\u00E1stroj\u016F
+CAEPackageLogDSNameBlank.ERROR=Pole N\u00E1zev datasetu protokolu bal\u00EDku CAE nem\u016F\u017Ee b\u00FDt pr\u00E1zdn\u00E9.
+# tab2
+caeHighColorAction.LABEL=Akce:
+caeHighColorCaution.LABEL=Upozorn\u011Bn\u00ED:
+caeHighColorNoAction.LABEL=\u017D\u00E1dn\u00E1 akce:
+caeHighColorOutOfScope.LABEL=Mimo rozsah:
+
+# tab3
+caeToolGeneralPanel.TAB3.TITLE=Pravidlo revize
+caeRevisionRuleForProduct.LABEL=V\u00FDchoz\u00ED pravidlo revize pro pohled v\u00FDrobku
+caeRevisionRuleForModel.LABEL=V\u00FDchoz\u00ED pravidlo revize pro pohled modelu
+caeDefaultRevisionRule.BORDER.LABEL=V\u00FDchoz\u00ED pravidlo revize
+
+# tab4
+caeToolGeneralPanel.TAB4.TITLE=Operace s p\u016Fvodem
+caeGenEnablePedigreeOption.LABEL=Povolit operace s p\u016Fvodem
+caeGenPedigreeRelationForCAEModel.LABEL=Relace modelu CAE 3D
+caeGenPedigreeRelationForCAEAnalysis.LABEL=Relace anal\u00FDzy CAE 3D
+
+# tab5
+caeToolGeneralPanel.TAB5.TITLE=Zv\u00FDrazn\u011Bn\u00ED modelu
+uniqueLineColor.LABEL=Jedine\u010Dn\u00E9 modely CAE 3D:
+recycleLineColor.LABEL=Recyklovan\u00E9 modely CAE 3D:
+reuseLineColor.LABEL=Opakovan\u011B pou\u017Eit\u00E9 modely CAE 3D:
+
+# tab6
+caeToolGeneralPanel.TAB6.TITLE=Konfigurace CAE
+caeGenEnableGroupAdminBypassOption.LABEL=Obej\u00EDt spr\u00E1vce skupiny 
+
+# Keys for LoggingPanel
+#----------------------
+applicationLogging.LABEL=Protokolov\u00E1n\u00ED aplikace:
+journallingLogging.LABEL=Protokolov\u00E1n\u00ED \u017Eurn\u00E1lov\u00E1n\u00ED:
+logging.ON.LABEL=Zapnuto
+
+# Keys for ImportExportPanel
+#----------------------
+truncateFileName.LABEL=Zkr\u00E1cen\u00FD n\u00E1zev souboru:
+truncateFileName.YES.LABEL=Ano
+
+# Keys for SystemPanel
+#--------------------
+number.LABEL=Maxim\u00E1ln\u00ED po\u010Det pokus\u016F:
+time.LABEL=\u010Casov\u00FD interval opakov\u00E1n\u00ED (s):
+
+# Keys for MailPanel
+#-------------------
+mailTime.LABEL=Interval kontroly nov\u00FDch zpr\u00E1v (min):
+
+# Keys for newprocesspanel
+#----------------------------
+alternateProcedure.LABEL=Filtr \u0161ablony procesu:
+alternateProcedure.1=libovoln\u00FD
+alternateProcedure.2=nic
+
+alternateProcedure.1.LABEL=Libovoln\u00FD
+alternateProcedure.2.LABEL=Nic
+
+# Keys for TCUGPanel
+#---------------------
+ugMasterTool.LABEL=Hlavn\u00ED n\u00E1stroj NX:
+ugMasterVolume.LABEL=Hlavn\u00ED svazek NX:
+ugPartTool.LABEL=N\u00E1stroj sou\u010D\u00E1sti NX:
+updateAttributes.LABEL=Synchronizovat atributy sou\u010D\u00E1st\u00ED mezi NX a Teamcenterem:
+openInUG.LABEL=Zobrazit p\u0159\u00EDkaz "Otev\u0159\u00EDt v NX":
+
+openInUG.ON.LABEL=Ano
+updateAttributes.ON.LABEL=Ano
+
+openInJTEditor.LABEL=Zobrazit p\u0159\u00EDkaz "Otev\u0159\u00EDt v Editoru JT":
+openInJTEditor.ON.LABEL=Ano
+
+# Keys for NXMgrIdeasPreferencesPanel
+#---------------------
+TcIIUnavailable.LABEL=Teamcenter Integration pro I-deas (TcII) nen\u00ED dostupn\u00FD
+
+# Keys for SEECPanel
+#---------------------
+openInSEEC.LABEL=Zobrazit p\u0159\u00EDkaz "Otev\u0159\u00EDt v aplikaci Solid Edge":
+openInSEEC.ON.LABEL=Ano
+
+
+# Keys for the NavigatorColumnPreferencePanel
+#-------------------------------------------
+addButton.TIP=P\u0159id\u00E1 vybran\u00FD typ/vlastnost do seznamu.
+removeButton.TIP=Odstran\u00ED vybran\u00FD typ/vlastnost ze seznamu.
+clearButton.TIP=Vyma\u017Ee v\u0161echny typy/vlastnosti ze seznamu.
+upButton.TIP=P\u0159esune vybranou hodnotu v seznamu nahoru
+downButton.TIP=P\u0159esune vybranou hodnotu v seznamu dol\u016F
+
+preferenceList.TIP=Seznam vybran\u00FDch sloupc\u016F
+
+# Keys for DatasetPanel
+# -------------------------------------------------------
+datasetType.LABEL=Typ datasetu:
+defaultTool.LABEL=V\u00FDchoz\u00ED n\u00E1stroj:
+datasetFileExportOption.LABEL=Mo\u017Enosti exportu pojmenovan\u00FDch referenc\u00ED:
+exportLowerCase.LABEL=Mal\u00E1 p\u00EDsmena
+exportUpperCase.LABEL=Velk\u00E1 p\u00EDsmena
+exportRetainCase.LABEL=Zachovat velikost p\u00EDsmen
+searchBy.BUTTON=Hledat v\u00FDchoz\u00ED n\u00E1stroj v aplikaci pomoc\u00ED typu MIME
+
+# Keys for TCPVPanel
+#---------------------
+#openInPV.LABEL=Show "Open Bookmark in Teamcenter Visualization" command:
+#openInPV.YES.LABEL=YES
+
+# Keys for TCVMUPanel
+#---------------------
+openInVMU.LABEL=Zobrazit p\u0159\u00EDkaz "Otev\u0159\u00EDt ve vizualizaci \u017Eivotn\u00EDho cyklu":
+openInVMU.YES.LABEL=Ano
+
+openInVMUWrongVersion.LABEL=<html><body>Verze Teamcenter Visualization nen\u00ED konfigurov\u00E1na pro Teamcenter 5.0 nebo vy\u0161\u0161\u00ED. <br> Proto tyto funkce nejsou dostupn\u00E9. <br> Kontaktujte sv\u00E9ho spr\u00E1vce syst\u00E9mu.</br></body></html>
+
+# Keys for PortalViewerPanel
+#---------------------
+viewAs2D.LABEL=Zobrazit soubory NX .prt jako 2D obr\u00E1zky:
+viewAs2D.YES.LABEL=Ano
+
+# Keys for message center
+# -------------------------------------------------------
+loadingPanel.MESSAGE=Na\u010D\u00EDt\u00E1n\u00ED vybran\u00E9ho panelu...
+
+# Keys for AIEPreferencesPanel
+#-----------------------------
+exportDir.LABEL=Adres\u00E1\u0159 pro export:
+exportProt.LABEL=Export soubor\u016F jen pro \u010Dten\u00ED jako jen pro \u010Dten\u00ED:
+saveLog.LABEL=Ulo\u017Eit protokol odstran\u011Bn\u00FDch propojen\u00ED:
+aieYES.LABEL=Ano
+ignoreFileExtensions.LABEL=Ignorovan\u00E9 typy soubor\u016F (nap\u0159\u00EDklad "BAK, DOC"):
+namedRefsToExport.LABEL=Exportovan\u00E9 pojmenovan\u00E9 reference
+importMaster.LABEL=Import hlavn\u00EDch detail\u016F
+masterApp.LABEL=Aplikace
+masterBoth.LABEL=Oba
+primaryRef.LABEL=Prim\u00E1rn\u00ED
+allRef.LABEL=V\u0161e
+selectRef.LABEL=Vybrat
+aieGeneral.TAB1.TITLE=Obecn\u00FD
+aieExport.TAB2.TITLE=Export
+aieImport.TAB3.TITLE=Import
+aieUG.TAB4.TITLE=NX
+partFamilyMembers.LABEL=\u010Cleny rozm\u011Brov\u00FDch \u0159ad sou\u010D\u00E1sti
+aieError.LABEL=Chyba
+aieLose.LABEL=Zru\u0161it
+aieStripStatus.LABEL=Stav pruhu
+autotranslateMode.LABEL=Re\u017Eim automatick\u00E9ho p\u0159ekladu
+aieDefault.LABEL=V\u00FDchoz\u00ED
+aieLegacy.LABEL=Star\u0161\u00ED
+aieCopyNonMaster.LABEL=Kop\u00EDrovat jin\u00E9 ne\u017E hlavn\u00ED
+refreshAsCheckout.LABEL=Rezervovat nov\u00E9 komponenty b\u011Bhem obnovov\u00E1n\u00ED propojen\u00ED:
+aieNotEnabled.LABEL=AIE nen\u00ED zapnuto. P\u0159edvolby jsou aktivn\u00ED pouze kdy\u017E je AIE zapnuto.
+SEECNotEnabled.LABEL=Integrace Solid Edge nen\u00ED nainstalov\u00E1na.
+
+# Key for: CM Color Setting
+# -------------------------------------------------------
+colors.LABEL=Dvojit\u00FDm kliknut\u00EDm na palety barev vyberete jin\u00E9 barvy
+colors.TITLE=Barvy p\u0159edstavuj\u00EDc\u00ED r\u016Fzn\u00E9 typy zm\u011Bn rozpisky:
+add.LABEL=P\u0159idat:
+cancel.LABEL=Zru\u0161it:
+qunatity.LABEL=Zm\u011Bna po\u010Dtu:
+# <KARIM 6thMay2003> New labels for Note Change project
+notechange.LABEL=Zm\u011Bna popisu:
+move.LABEL=Posun:
+reshape.LABEL=Zm\u011Bna tvaru:
+common.LABEL=Z\u00E1kladn\u00ED sou\u010D\u00E1st:
+chooser.TITLE=V\u00FDb\u011Br barev
+
+# <Ranjit 19 Jan 2004> label for Variant Change
+variantchange.LABEL=Zm\u011Bna varianty:
+
+# Key for: CM Positions Setting
+# -------------------------------------------------------
+initial_pos.TITLE=Po\u010D\u00E1te\u010Dn\u00ED pozice v\u0161ech \u0159\u00EDdic\u00EDch posuvn\u00EDk\u016F v dialogov\u00E9m okn\u011B historie t\u011B\u017Ei\u0161t\u011B
+gh_setting.TITLE=Nastaven\u00ED historie grafiky:
+init_Pos.LABEL=Po\u010D\u00E1te\u010Dn\u00ED pozice posuvn\u00EDk\u016F:
+position.LABEL=Pozice:
+common_parts.LABEL=Zobrazit z\u00E1kladn\u00ED sou\u010D\u00E1sti
+
+# Project Propagation Rule Panel
+# -------------------------------------------------------
+confirmProjectRule.TITLE=Potvrdit pravidla propagace {0}
+confirmProjectRule.MESSAGE=Je nutn\u00E9 pou\u017E\u00EDt pom\u016Fcku {0} k aktualizaci v\u0161ech {0} na pracovi\u0161ti\n po \u00FAprav\u011B pravidel propagace {0} \n Opravdu chcete pokra\u010Dovat?
+userApplyCurrentProjectPref.LABEL=Pou\u017E\u00EDt {0} bezpe\u010Dnostn\u00ED pravidla
+currentProjectPref.TITLE=Pouze {0} aktu\u00E1ln\u00ED
+activeProjectPref.TITLE=Aktivn\u00ED {0}
+
+# Keys for Import/Export of Change Objects
+# -------------------------------------------------------
+changeObjects.TITLE=Zm\u011Bnit mo\u017Enosti objekt\u016F
+bomchanges.LABEL=Zahrnout BomChanges
+supercedures.LABEL=Zahrnout nahrazen\u00ED
+
+# Keys for Analysis settings panel
+# -------------------------------------------------------
+
+defaultAnalysisTool.LABEL=         Aktu\u00E1ln\u00ED n\u00E1stroj anal\u00FDzy:
+defaultSimulationTool.LABEL=       Aktu\u00E1ln\u00ED n\u00E1stroj simulace:
+batchMeshingDirectory.TITLE=   Ko\u0159enov\u00FD adres\u00E1\u0159 d\u00E1vkov\u00E9ho s\u00ED\u0165ov\u00E1n\u00ED:
+resultsManagerRootDirectory.TITLE=Ko\u0159enov\u00FD adres\u00E1\u0159 spr\u00E1vce v\u00FDsledk\u016F:
+analysisViewType.LABEL=         Typ zobrazen\u00ED anal\u00FDzy:
+availableAnalysisTools.LABEL=      Dostupn\u00E9 n\u00E1stroje anal\u00FDzy:
+availableSimulationTools.LABEL=    Dostupn\u00E9 n\u00E1stroje simulace:
+batchMeshingSizes.LABEL=           Velikosti d\u00E1vkov\u00E9ho s\u00ED\u0165ov\u00E1n\u00ED:
+currentApplication.LABEL=Aktu\u00E1ln\u00ED aplikace:
+confirmSettings.LABEL=Potvrdit nastaven\u00ED p\u0159i spu\u0161t\u011Bn\u00ED
+externalTemplate.LABEL=Pou\u017E\u00EDt extern\u00ED \u0161ablonu:
+templates.LABEL=\u0160ablony:
+simulationTemplates.TITLE=\u0160ablony simulace
+internalTemplatesFolder.LABEL=Intern\u00ED slo\u017Eka \u0161ablon
+filterBVRImport.TITLE=Import souboru filtru BVR
+filterBVRExport.TITLE=Export souboru filtru BVR
+filterBVRImportMsg.LABEL=Soubor filtru byl \u00FAsp\u011B\u0161n\u011B importov\u00E1n.
+filterBVRExportMsg.LABEL=Soubor filtru byl \u00FAsp\u011B\u0161n\u011B exportov\u00E1n.
+
+# Keys for CAE
+# -------------------------------------------------------
+fileExtn.LABEL=P\u0159\u00EDpony soubor\u016F
+server.LABEL=Server
+startupScript.LABEL=Spou\u0161t\u011Bc\u00ED skript
+attrInfo.LABEL=Nastavit atributy CAEModel
+browse.TOOLTIP=Vybrat um\u00EDst\u011Bn\u00ED spou\u0161t\u011Bc\u00EDho skriptu
+search.TOOLTIP=Hledat dataset
+toolName.NAME=N\u00E1zev n\u00E1stroje
+server.NAME=Server
+datasetType.NAME=Typ datasetu
+extension.NAME=Roz\u0161\u00ED\u0159en\u00ED
+attribute.NAME=Atribut
+value.NAME=Hodnota
+CAETools.TITLE=CAE
+SimToolConfigDSNameBlank.ERROR=Pole N\u00E1zev datasetu konfigurace n\u00E1stroje simulace CAE nem\u016F\u017Ee b\u00FDt pr\u00E1zdn\u00E9.
+
+preProcessor.TITLE=Preprocesor
+solver.TITLE=\u0158e\u0161i\u010D
+postProcessor.TITLE=Postprocesor
+caeGeneral.TITLE=N\u00E1stroje simulace
+toolsInputConfiguration.TITLE=Vstupn\u00ED konfigurace n\u00E1stroj\u016F
+toolsOutputConfiguration.TITLE=V\u00FDstupn\u00ED konfigurace n\u00E1stroj\u016F
+inspector.TITLE=Inspektor
+productStructure.TITLE=Struktura v\u00FDrobku
+simulationStructure.TITLE=Struktura modelu
+position.TITLE=Pozice
+rootNode.TITLE=Uzel ko\u0159ene
+
+# Keys for CAE Accountability Check panel
+# -------------------------------------------------------
+caeAccCheckDatasetNameBlank.ERROR=Pole Propagace atribut\u016F p\u0159ehledu n\u00E1zvu datasetu nem\u016F\u017Ee b\u00FDt pr\u00E1zdn\u00E9.
+
+# Keys for Package settings panel
+# -------------------------------------------------------
+packages.TITLE=Bal\u00EDky CAE
+packages.LABEL=Bal\u00EDky CAE
+siteLoc.LABEL=Pracovi\u0161t\u011B
+groupLoc.LABEL=Skupina
+userLoc.LABEL=U\u017Eivatel
+
+panelFolderForOutput.LABEL=Slo\u017Eka pro v\u00FDstupn\u00ED objekty
+lblLocationFolder.LABEL=Slo\u017Eka um\u00EDst\u011Bn\u00ED
+useAlternateFolder.LABEL=Alternativn\u00ED slo\u017Eka
+lblOptions.LABEL=Vytvo\u0159it v\u00FDstupn\u00ED objekty:
+btnLocationFolder.LABEL=P\u0159\u00EDmo ve slo\u017Ece um\u00EDst\u011Bn\u00ED
+btnSubFolder.LABEL=V podslo\u017Ece slo\u017Eky um\u00EDst\u011Bn\u00ED
+folderNotSelected.MSG=Vybran\u00E1 slo\u017Eka v\u00FDstupu nen\u00ED platn\u00E1. P\u0159edvolba nebude ulo\u017Eena.
+caePackageLogDatasetName.LABEL=N\u00E1zev datasetu protokolu bal\u00EDku CAE:
+invalidFolderPrefValueError.MSG=Hodnota p\u0159edvolby um\u00EDst\u011Bn\u00ED slo\u017Eky pro bal\u00ED\u010Dek CAE nen\u00ED platn\u00E1. Pou\u017Eije se slo\u017Eka u\u017Eivatele pro nov\u00E9 polo\u017Eky.
+caePackageDetailedLog.LABEL=Trval\u00FD protokol bal\u00EDku CAE
+caePackagePersistLog.LABEL=Protokol bal\u00EDku CAE
+pasteOutputOptions.LABEL=Vlo\u017Eit mo\u017Enosti v\u00FDstupu
+btnItem.Label=Polo\u017Eka
+btnItemRevision.Label=Revize polo\u017Eky
+# Keys for Simulation Dashboard settings panel
+# -------------------------------------------------------
+simMonitor.TITLE=\u0158\u00EDd\u00EDc\u00ED panely simulace
+simMonitorDomains.LABEL=Dom\u00E9ny \u0159\u00EDdic\u00EDho panelu modelu:
+simMonitorLocation.LABEL=Um\u00EDst\u011Bn\u00ED:
+deleteDomainConfirm.TITLE=Potvrdit odstran\u011Bn\u00ED dom\u00E9ny
+deleteDomainConfirm.Message=Chcete odstranit vybran\u00E9 dom\u00E9ny?
+simlationDashboardLocationFolder.LABEL=Slo\u017Eka um\u00EDst\u011Bn\u00ED \u0159\u00EDdic\u00EDho panelu simulace
+modelDashboardTab.TITLE=\u0158\u00EDd\u00EDc\u00ED panel modelu
+analysisDashboardlocation.LABEL=Slo\u017Eka pro objekty \u0159\u00EDd\u00EDc\u00EDho panelu anal\u00FDzy:
+analysisDashboardInvalidLocation.MSG=Hodnota p\u0159edvolby obsahuj\u00EDc\u00ED um\u00EDst\u011Bn\u00ED slo\u017Eky nen\u00ED platn\u00E1, pou\u017Eije se slo\u017Eka u\u017Eivatele pro nov\u00E9 polo\u017Eky.
+# Keys for CAE Structure Map settings panel
+# -------------------------------------------------------
+structMap.TITLE=Mapa struktury CAE
+relationship.LABEL=Vytvo\u0159te vztah mezi v\u00FDstupn\u00ED strukturou a mapou struktury CAE
+persistLog.LABEL=Trval\u00FD protokol mapy struktury CAE
+ancestorMap.LABEL=Povol\u00ED mapov\u00E1n\u00ED dat p\u0159edch\u016Fdc\u016F
+mapLevelBox.LABEL=Maxim\u00E1ln\u00ED \u00FArovn\u011B mapov\u00E1n\u00ED dat p\u0159edch\u016Fdc\u016F:
+fileNameField.LABEL=Um\u00EDst\u011Bn\u00ED soubor\u016F map dat:
+dataMap.LABEL=Akce mapov\u00E1n\u00ED dat p\u0159edch\u016Fdc\u016F
+fileName.LABEL=Soubor datov\u00E9 mapy
+structureMap.LABEL=N\u00E1zev datasetu protokolu mapy struktury CAE:
+structureMapContentScope.LABEL=Rozsah obsahu protokolu mapy struktury CAE:
+structureMapContentScopeSummary.LABEL=Souhrn
+structureMapContentScopeDetailed.LABEL=Podrobn\u00FD
+structureMapMaximumObjectInMemory.LABEL=Maxim\u00E1ln\u00ED po\u010Det objekt\u016F mapy struktury CAE v pam\u011Bti:
+structureMapMaximumObjectInMemory.ERROR=Bylo zad\u00E1no neplatn\u00E9 \u010D\u00EDslo pro maxim\u00E1ln\u00ED po\u010Det objekt\u016F v pam\u011Bti. Zadejte nenulov\u00E9 kladn\u00E9 cel\u00E9 \u010D\u00EDslo.
+structureMapMarkuptoDate.LABEL=Povolit ozna\u010Den\u00ED aktu\u00E1lnosti:
+structureMapApplyReuseRules.LABEL=Aplikovat pravidla opakovan\u00E9ho pou\u017Eit\u00ED na podsestavy:
+SMPanelTRUE.LABEL=TRUE
+SMPanelFALSE.LABEL=FALSE
+structureMapMarkuptoDateOn.LABEL=Zapnuto
+structureMapMarkuptoDateOff.LABEL=VYPNUTO
+structureMapLog.LABEL=Protokol mapy struktury CAE
+StructureMapIR.ERROR=Komponenta nen\u00ED platn\u00E1. Vyberte revizi polo\u017Eky.
+structuremapLogDatasetNameEmpty.MESSAGE=Je nutn\u00E9 ur\u010Dit hodnotu n\u00E1zvu datasetu protokolu mapy struktury CAE.
+folderLocForNewCAEItem.LABEL=Um\u00EDst\u011Bn\u00ED slo\u017Eky pro v\u00FDstupn\u00ED objekty
+outputFolder.LABEL=Slo\u017Eka pro v\u00FDstupn\u00ED objekty:
+useNewstuffFolder.LABEL=Nov\u00E9
+useNoneFolder.LABEL=Nic
+useOtherFolder.LABEL=Jin\u00E1 slo\u017Eka
+useOtherFolderLoc.LABEL=Pou\u017E\u00EDt jinou slo\u017Eku pro v\u00FDstupn\u00ED objekty:
+
+structureMapApplyValidation.LABEL=Povolit automatick\u00E9 ov\u011B\u0159en\u00ED pravidel mapy struktury CAE:
+
+CAEToolItem.ERROR=Komponenta nen\u00ED platn\u00E1. Vyberte objekt typu n\u00E1stroje simulace.
+
+#Inspector Preferences
+InspectorSummaryDSNameField.LABEL=N\u00E1zev datasetu souhrnu spu\u0161t\u011Bn\u00ED inspektora
+defaultRootAction.LABEL=V\u00FDchoz\u00ED akce uzlu ko\u0159ene
+rootBOMLineCombo.LABEL=V\u00FDchoz\u00ED akce BOMLine ko\u0159ene
+itemType.LABEL=V\u00FDchoz\u00ED typ polo\u017Eky akce nov\u00E9ho modelu
+newRootItem.TEXT=Pou\u017E\u00EDt nov\u00FD model
+reviseRootItem.TEXT=Pou\u017E\u00EDt revidovan\u00FD model
+DoNothing.TEXT=Ned\u011Blat nic
+criteriaColumnHeading.TEXT=Krit\u00E9ria
+defaultActionColumnHeading.TEXT=V\u00FDchoz\u00ED akce
+ProductWithNoCAEModel.CRITERIA=V\u00FDrobek bez modelu
+unequalOccurrences.CRITERIA=Rozd\u00EDln\u00FD po\u010Det v\u00FDskyt\u016F
+missingModelBOMLines.CRITERIA=Chyb\u011Bj\u00EDc\u00ED komponenty modelu
+extraModelBOMLines.CRITERIA=Komponenty modelu nav\u00EDc
+unequalVariantConditions.CRITERIA=Rozd\u00EDln\u00FD po\u010Det spole\u010Dn\u00FDch podm\u00EDnek varianty
+CAEModelWithDifferentProductRev.CRITERIA=Model s odli\u0161n\u00FDm c\u00EDlem revize v\u00FDrobku
+CAEModelWithNoProduct.CRITERIA=Model bez v\u00FDrobku
+modelLinkedToNonActiveProduct.CRITERIA=Revize modelu propojen\u00E9 s neaktivn\u00EDmi v\u00FDrobky
+createCAEModel.ACTION=Pou\u017E\u00EDt nov\u00FD model
+useCAEModelRelated2ProductRevision.ACTION=Pou\u017E\u00EDt model souvisej\u00EDc\u00ED s reviz\u00ED v\u00FDrobku
+useCAEModelRelated2ProductItem.ACTION=Pou\u017E\u00EDt model souvisej\u00EDc\u00ED s polo\u017Ekou v\u00FDrobku
+reviseModelRevisionAndReplace.ACTION=Revidovat revizi modelu a nahradit vztah
+useAndRevisedCAEModel.ACTION=Pou\u017E\u00EDt revidovan\u00FD model
+addNewRelationship.ACTION=P\u0159idat vztah
+replaceExistingRelationship.ACTION=Nahradit vztah
+removeModelIR.ACTION=Odebrat model
+copyVariantCondition.ACTION=Kop\u00EDrovat podm\u00EDnku varianty z BOMLine v\u00FDrobku do BOMLine modelu
+doNothing.ACTION=Ned\u011Blat nic
+setEqual.ACTION=Nastavit je stejn\u011B
+actionColumn.TIP=Kliknut\u00EDm vybrat n\u00E1zev akce
+inspectorSummaryDatasetNameEmpty.MESSAGE=Pole N\u00E1zev datasetu souhrnu spu\u0161t\u011Bn\u00ED inspektora nem\u016F\u017Ee b\u00FDt pr\u00E1zdn\u00E9.
+
+allToolsMsg.LABEL=V\u0161e
+
+dataset.NAME=Dataset
+
+toolInformationOutputFiles.LABEL=Informace n\u00E1stroje pro v\u00FDstupn\u00ED soubory
+additionaloutputInformationl.LABEL=Dal\u0161\u00ED v\u00FDstupn\u00ED informace
+primaryInput.LABEL=Prim\u00E1rn\u00ED vstup
+alternateInput.LABEL=Alternativn\u00ED vstup
+configuredTools.LABEL=Konfigurovan\u00E9 n\u00E1stroje
+startupScript.LABEL=Spou\u0161t\u011Bc\u00ED skript
+startupFile.TITLE=Spou\u0161t\u011Bc\u00ED soubor
+onePreProcessor.MESSAGE=Nen\u00ED povoleno v\u00EDce polo\u017Eek pro stejn\u00FD n\u00E1stroj
+onePreProcessor.MESSAGETITLE=Upozorn\u011Bn\u00ED
+selectToolForPrimaryDatasetType.MESSAGE=Vybrat n\u00E1stroj a ur\u010Dit prim\u00E1rn\u00ED DatasetType
+selectToolForDatasetType.MESSAGETITLE=Vybrat n\u00E1stroj
+configurePrimaryInputForPrimaryDatasetType.MESSAGE=Konfigurovat prim\u00E1rn\u00ED vstup pro n\u00E1stroj a ur\u010Dit prim\u00E1rn\u00ED v\u00FDstupn\u00ED DatasetType
+configurePrimaryInputForPrimaryDatasetType.MESSAGETITLE=Konfigurovat prim\u00E1rn\u00ED vstup
+batchMeshOptionsWarningMsg=V n\u00E1sleduj\u00EDc\u00EDch tabulk\u00E1ch chyb\u00ED n\u011Bkter\u00E1 po\u017Eadovan\u00E1 pole: {0}
+StructureMapLogDSNameBlank.ERROR=Pole N\u00E1zev datasetu protokolu mapy struktury CAE nem\u016F\u017Ee b\u00FDt pr\u00E1zdn\u00E9.
+
+# Keys for CAE Attribute Compare
+# -------------------------------------------------------
+acccheck.TITLE=Porovn\u00E1n\u00ED atributu CAE
+AttributePropagateSummaryDSNameField.LABEL=Propagace atribut\u016F p\u0159ehledu n\u00E1zvu datasetu
+
+# Keys for CAE Bom Comapre
+#---------------------------------------------------------
+bomcompare.TITLE=Porovn\u00E1n\u00ED rozpisky CAE
+
+# Keys for User Preference Error Messages
+# ---------------------------------------
+errorSavingUserOptions.TITLE=Chyba p\u0159i ukl\u00E1d\u00E1n\u00ED mo\u017Enost\u00ED u\u017Eivatele
+
+# For improve preference management project
+# -----------------------------------------
+loadingPreferences.MESSAGE=Na\u010D\u00EDt\u00E1n\u00ED p\u0159edvoleb
+userPreferences.NAME=Mo\u017Enosti
+indexPreferences.NAME=Filtry
+searchPreferences.NAME=Hledat
+preferencesTree.NAME=Organizace
+
+userPreferences.TITLE=Mo\u017Enosti
+indexPreferences.TITLE=P\u0159edvolby dle filtr\u016F
+searchPreferences.TITLE=P\u0159edvolby dle hled\u00E1n\u00ED
+preferencesTree.TITLE=P\u0159edvolby dle organizace
+
+# Remote Checkin
+sendComponentsAsReplicas=Poslat komponenty jako repliky
+
+# Changes for Multi-site Synchronization
+# --------------------------------------
+SyncOptions.generalTab.TITLE=Obecn\u00FD
+SyncOptions.advancedTab.TITLE=Pokro\u010Dil\u00E9
+sync.TITLE=Mo\u017Enosti synchronizace
+SyncReportOnly=Pouze v\u00FDpis
+SyncOnly=Prov\u00E9st synchronizaci
+BackgroundSync=Prov\u00E9st synchronizaci na pozad\u00ED
+SyncOptions.saveOptions.TITLE=Ulo\u017Eit mo\u017Enosti
+SyncOptions.saveOptionsBox=Ulo\u017Eit v\u0161echny mo\u017Enosti jako standardn\u00ED
+SyncOptions.revRuleOptions.TITLE=Mo\u017Enosti pravidla revize
+SyncOptions.revRuleOptionsBox=Specifick\u00E9 pravidlo revize
+SyncOptions.dsOptions.TITLE=Mo\u017Enosti datasetu
+SyncOptions.dsOptions.includeAllVersions=Zahrnout v\u0161echny verze
+SyncOptions.dsOptions.allFiles=Zahrnout v\u0161echny soubory
+SyncOptions.generalWSOptions.TITLE=Obecn\u00E9 mo\u017Enosti
+SyncOptions.generalWSOptions.excludeFolder=Vyjmout obsah slo\u017Eky
+SyncOptions.generalWSOptions.excludeExpProtected=Vyjmout objekty chr\u00E1n\u011Bn\u00E9 proti exportu
+SyncOptions.sessionOptions.TITLE=Mo\u017Enosti relace
+SyncOptions.sessionOptions.genFailRep=Generovat chybov\u00FD v\u00FDpis
+SyncOptions.assemblyOptions.TITLE=Mo\u017Enosti sestavy
+SyncOptions.assemblyOptions.maxLevelLabel=Maxim\u00E1ln\u00ED po\u010Det \u00FArovn\u00ED
+SyncOptions.assemblyOptions.excludeExpProComp=Vylou\u010Dit komponenty chr\u00E1n\u011Bn\u00E9 p\u0159ed exportem
+SyncOptions.assemblyOptions.includeBom=Zahrnout celou rozpisku
+SyncOption.relationExclude.TITLE = Nen\u00ED mo\u017En\u00E9 vylou\u010Dit relaci
+# Keys for RefreshNotifyPanel
+# -------------------------------------------------------
+refreshNotifyInfo.LABEL=Definujte mo\u017Enosti konfigurov\u00E1n\u00ED chov\u00E1n\u00ED upozorn\u011Bn\u00ED na obnoven\u00ED.
+
+refreshNotifyOptions.LABEL=Mo\u017Enosti upozorn\u011Bn\u00ED obnoven\u00ED
+automaticRefreshOptions.LABEL=Mo\u017Enosti automatick\u00E9ho obnoven\u00ED
+
+refreshNotify.TITLE=Upozorn\u011Bn\u00ED obnoven\u00ED
+refreshNotify.TIP=<html><body><font size=2><p>&nbsp Zapn\u011Bte upozorn\u011Bn\u00ED na obnoven\u00ED objekt\u016F, kter\u00E9 byly zm\u011Bn\u011Bny jin\u00FDmi u\u017Eivateli.</p></font></body></html>
+
+pullIntervalTextField.TITLE=Interval v minut\u00E1ch pro upozorn\u011Bn\u00ED na\u010Dten\u00ED
+pullIntervalTextField.TIP=<html><body><font size=2><p>&nbsp Definujte interval v minut\u00E1ch, po kter\u00E9m klient zobraz\u00ED upozorn\u011Bn\u00ED na obnoven\u00ED.</p><p>&nbsp Pokud zad\u00E1te 0, pou\u017Eije se v\u00FDchoz\u00ED hodnota (15).</p></font></body></html>
+
+notifyListTextField.TITLE=Maxim\u00E1ln\u00ED po\u010Det objekt\u016F na na\u010Dten\u00ED
+notifyListTextField.TIP=<html><body><font size=2><p>&nbsp Definujte maxim\u00E1ln\u00ED po\u010Det objekt\u016F, kter\u00E9 mohou b\u00FDt vr\u00E1ceny p\u0159i na\u010Dten\u00ED.</p><p>&nbsp Pokud zad\u00E1te 0 (v\u00FDchoz\u00ED), nebude po\u010Det objekt\u016F omezen.</p></font></body></html>
+
+autoRefreshWaitingTextField.TITLE=\u010Cas \u010Dek\u00E1n\u00ED v minut\u00E1ch p\u0159ed obnoven\u00EDm objekt\u016F s upozorn\u011Bn\u00EDm
+autoRefreshWaitingTextField.TIP=<html><body><font size=2><p>&nbsp Definujte \u010Das \u010Dek\u00E1n\u00ED v minut\u00E1ch, po kter\u00E9m klient \u010Dek\u00E1 automaticky obnov\u00ED objekty s upozorn\u011Bn\u00EDm.</p><p>&nbsp Pokud zad\u00E1te 0 (v\u00FDchoz\u00ED), obnoven\u00ED bude zah\u00E1jeno okam\u017Eit\u011B po obdr\u017Een\u00ED upozorn\u011Bn\u00ED.</p></font></body></html>
+
+autoRefreshIntervalTextField.TITLE=Interval v minut\u00E1ch pro obnoven\u00ED objekt\u016F s upozorn\u011Bn\u00EDm
+autoRefreshIntervalTextField.TIP=<html><body><font size=2><p>&nbsp Definujte interval v minut\u00E1ch, ve kter\u00E9m klient obnovuje objekty s upozorn\u011Bn\u00EDm.</p><p>&nbsp Pokud zad\u00E1te 0, pou\u017Eije se v\u00FDchoz\u00ED hodnota (10).</p></font></body></html>
+
+autoRefreshListTextField.TITLE=Maxim\u00E1ln\u00ED po\u010Det objekt\u016F na obnoven\u00ED
+autoRefreshListTextField.TIP=<html><body><font size=2><p>&nbsp Definujte maxim\u00E1ln\u00ED po\u010Det objekt\u016F, kter\u00E9 mohou b\u00FDt obnoveny p\u0159i vol\u00E1n\u00ED.</p><p>&nbsp Pokud zad\u00E1te 0 (v\u00FDchoz\u00ED), po\u010Det objekt\u016F nebude omezen.</p></font></body></html>
+
+SyncOption.relationExclude = je vy\u017Eadovan\u00E1 relace
+SyncOption.relationInclude.TITLE = Nen\u00ED mo\u017En\u00E9 zahrnout relaci
+SyncOption.relationInclude = je vylou\u010Den\u00E1 relace
+SyncSession.TITLE = Mo\u017Enosti relace
+SyncOptions.sessionOptions.genImpExpFail=Generovat seznam chyb importu a exportu
+
+Add.TOOLTIP=P\u0159idat
+Subract.TOOLTIP=Odebrat
+siteSubract.TOOLTIP=Odebrat pracovi\u0161t\u011B
+groupSubract.TOOLTIP=Odstranit skupinu
+userSubract.TOOLTIP=Odebrat u\u017Eivatele
+ClearAll.TOOLTIP=Odstranit v\u0161e
+AddDataset.TOOLTIP=P\u0159idat vybran\u00FD dataset
+
+deleteToolConfirm.TITLE=Potvrdit odstran\u011Bn\u00ED n\u00E1stroje
+deleteToolConfirm.Message=Chcete odstranit n\u00E1stroj a v\u0161echny asociovan\u00E9 konfigurace?
+
+noReference.Message=Pro dataset nejsou definov\u00E1ny \u017E\u00E1dn\u00E9 reference
+noReference.title=\u017D\u00E1dn\u00E9 reference
+
+noRevSelectorSelected.Message=Nen\u00ED vybr\u00E1n \u017E\u00E1dn\u00FD v\u00FDb\u011Br revize. Vyberte jeden v\u00FDb\u011Br revize z mo\u017Enost\u00ED polo\u017Eky.
+noRevSelectorSelected.Title=Chyba
+
+sitePreferencesUnlock.TITLE=Odemknout p\u0159edvolby pracovi\u0161t\u011B
+sitePreferencesUnlock.MESSAGE=P\u0159ed ukon\u010Den\u00EDm tohoto dialogov\u00E9ho okna mus\u00ED b\u00FDt p\u0159edvolby pracovi\u0161t\u011B odemknuty.
+
+# ME Options Dialog
+# ------------------
+# Fix for PR 6151841 Options dialog -> Options tree: ME should be Manufacturing
+meEditorPanel.TITLE=Obr\u00E1b\u011Bn\u00ED
+meEditorPanel.PERT_TAB.TITLE=Pert
+meEditorPanel.TIME_TAB.TITLE=\u010Cas
+meEditorPanel.GANTT_TAB.TITLE=Gantt\u016Fv diagram
+meEditorPanel.GRAPHICS_TAB.TITLE=Grafika
+pertAutoSizeCheckBox.LABEL=R\u00E1me\u010Dky Pert s automatickou velikost\u00ED
+occurrenceType.LABEL=V\u00FDchoz\u00ED typ v\u00FDskytu
+sourceType=Typ zdroje
+targetType=Typ c\u00EDle
+defOccurrenceType=V\u00FDchoz\u00ED typ v\u00FDskytu
+# 'Empty' option in 'Default Occurrence Type' column
+assignCustomizedOccurrenceTypeEmpty=Pr\u00E1zdn\u00E9
+# 'All' option in 'Default Occurrence Type'- 'Source Type' and 'Target Type' columns
+assignCustomizedOccurrenceTypeAll=V\u0161e
+processConfigRuleType.LABEL=Nad\u0159azen\u00E1 konfigurace podle p\u0159i\u0159azen\u00E9 pod\u0159azen\u00E9 konfigurace
+# columns of process configuration table
+parentType=Typ nad\u0159azen\u00E9 polo\u017Eky
+# 'All' option in 'Parent Configuration Upon Assigned Child Configuration'- 'Parent Type' column
+processConfigRuleTypeParentTypeAll=V\u0161e
+configureOutRule=Konfigurovat pravidlo
+processConfigColFilterBy=Filtrovat dle
+processConfigColOccOrChildTypes=Typy v\u00FDskyt\u016F a pod\u0159azen\u00FDch polo\u017Eek
+# The options available in 'Configure Out Rule' column combo box
+configureOutRuleOne=Jeden
+configureOutRuleAll=V\u0161e
+configureOutRuleAllLoaded=AllLoaded
+configureOutRuleOneLoaded=OneLoaded
+# options for filter by column of process configuration
+filterByOccurrence=Typy v\u00FDskytu
+filterByChild=Pod\u0159azen\u00E9 typy
+buttonEditTypes.TOOLTIP=Kliknut\u00EDm na tla\u010D\u00EDtko zobraz\u00EDte seznam mo\u017Enost\u00ED.
+#structureType=Structure Type
+#processConfigRuleCheckBox.LABEL=Allow Parent Configuration Upon Child Assignment
+currentTimeUnit.LABEL=Aktu\u00E1ln\u00ED jednotka \u010Dasu
+timeDecimalPlaces.LABEL=Desetinn\u00E1 m\u00EDsta
+timeSignificantDecimalPlaces.TEXT=V\u00FDznamn\u00FD
+#structureContextType.LABEL=Default Type Under Structure Context
+loadRelatedStructCheckBox.LABEL=Na\u010D\u00EDst p\u0159\u00EDbuzn\u00E9 struktury pro podnik/proces/v\u00FDrobek
+expandTreeCheckBox.LABEL=P\u0159i na\u010Dten\u00ED rozbalit prvn\u00ED \u00FArove\u0148
+timeActivity.LABEL=V\u00FDchoz\u00ED \u010Dasov\u00E1 aktivita
+colors.TITLE=Barvy p\u0159edstavuj\u00EDc\u00ED typy \u010Dasov\u00E9 anal\u00FDzy:
+showExitCO.LABEL=Zobrazit rezervovan\u00E9 objekty p\u0159i ukon\u010Den\u00ED
+expandToSelection.LABEL=Rozbalit na v\u00FDb\u011Br
+objType.LABEL=Typ objektu
+pertNodeText.LABEL=Vzor textu uzlu Pert 
+pertNodeTable.LABEL=Konfigurovat text uzlu Pert
+pertNodeTable.TOOLTIP=<html>Form\u00E1t platn\u00E9ho z\u00E1znamu v n\u011Bkolika segmentech strukturovan\u00FD n\u00E1sleduj\u00EDc\u00EDm zp\u016Fsobem:<br><b>voln\u00FD-text[n\u00E1zev-vlastnosti]voln\u00FD-text</b><br><b>voln\u00FD-text</b> je jak\u00FDkoliv text krom\u011B hranat\u00FDch z\u00E1vorek ([ a ]).<br><b>n\u00E1zev-vlastnosti</b> je platn\u00FD n\u00E1zev vlastnosti typu objektu. Mus\u00ED se nach\u00E1zet uvnit\u0159 hranat\u00FDch z\u00E1vorek.<br>Text m\u016F\u017Ee b\u00FDt pr\u00E1zdn\u00FD.<br><br>P\u0159\u00EDklad platn\u00E9ho z\u00E1znamu: <br>[bl_item_item_id]/[bl_rev_item_revision_id]<br>[bl_rev_object_name]</html> 
+okButton.LABEL=OK
+cancelButton.LABEL=Storno
+editButton.LABEL=Upravit
+
+#OperationDataConfigurationPanel
+OperationalDataConfigurationPanel.TITLE=Live Update
+OperationalDataConfigurationPanel.SUBTITLE=Objekty Live Update
+OperationalDataConfigurationPanel.AllowOpsDeploy=Povolit Live Update
+OperationalDataConfigurationPanel.AllowOpsDeployText=POZN\u00C1MKA: V\u00FDb\u011Brem zapnete a zru\u0161en\u00EDm v\u00FDb\u011Bru zak\u00E1\u017Eete slu\u017Ebu Live Update na tomto pracovi\u0161ti.
+OperationalDataConfigurationPanel.DescriptionText=Seznamy objekt\u016F Live Update, kter\u00E9 jsou dostupn\u00E9/vybran\u00E9 k aktualizaci (nasazen\u00ED)\ndo datab\u00E1ze bez vypnut\u00ED syst\u00E9mu prost\u0159ednictv\u00EDm BMIDE Live Update nebo mo\u017Enosti nasazen\u00ED TEM "{0}". Objekty v seznamu "{1}" ozna\u010Duj\u00ED objekty, kter\u00E9 se mohou zobrazit v u\u017Eivatelsk\u00E9 \u0161ablon\u011B nasazen\u00E9 ve v\u00FDrobn\u00ED datab\u00E1zi BMIDE Live Update nebo mo\u017Enosti TEM "{0}".
+OperationalDataConfigurationPanel.AvailableTitle=Dostupn\u00FD
+OperationalDataConfigurationPanel.LiveUpdateFromTEMOption=Aktualizovat datab\u00E1zi (Pouze prov\u00E9st aktualizace Live Update - v\u00FDpadek syst\u00E9mu nen\u00ED vy\u017Eadov\u00E1n)
+OperationalDataConfigurationPanel.ActiveTitle=Vybr\u00E1no pro Live Update
+OperationalDataConfigurationPanel.AvailableText=P\u0159esunut\u00ED tohoto objektu do seznamu Aktivn\u00ED umo\u017En\u00ED u\u017Eivatel\u016Fm nasadit tyto objekty ve vlastn\u00ED \u0161ablon\u011B.
+OperationalDataConfigurationPanel.InvalidOpsDataTitle=Upozorn\u011Bn\u00ED Live Update
+OperationalDataConfigurationPanel.InvalidAvailableOpsDataMessage=N\u00E1sleduj\u00EDc\u00ED objekty byly odebr\u00E1ny ze seznamu dostupn\u00FDch objekt\u016F Live Update, proto\u017Ee nejsou platn\u00E9:\n[{0}]
+OperationalDataConfigurationPanel.InvalidActiveOpsDataMessage=N\u00E1sleduj\u00EDc\u00ED objekty byly odebr\u00E1ny ze seznamu aktivn\u00EDch objekt\u016F Live Update, proto\u017Ee nejsou platn\u00E9:\n[{0}]
+OperationalDataConfigurationPanel.ActiveText=Objekt v seznamu Aktivn\u00ED ozna\u010Duje, \u017Ee tyto objekty se mohou zobrazit ve vlastn\u00ED \u0161ablon\u011B nasazen\u00E9 ve v\u00FDrobn\u00ED datab\u00E1zi pomoc\u00ED provozn\u00EDho klienta BMIDE nebo mo\u017Enosti TEM pro aktualizaci provozn\u00EDch dat.
+
+timeReportsGroup.TEXT=V\u00FDpisy \u010Dasu
+timeAnalysisReportDisplayName.TEXT=V\u00FDpis anal\u00FDzy \u010Dasu
+allocatedTimeReportDisplayName.TEXT=V\u00FDpis p\u0159id\u011Blen\u00E9ho \u010Dasu
+reportDefinition.LABEL=Definice v\u00FDpisu
+stylesheet.LABEL=Tabulka styl\u016F
+reportDefinitionNotFound.TOOLTIP=Pro tento ID nebyla nalezena \u017E\u00E1dn\u00E1 definice v\u00FDpisu.
+typeName.LABEL=N\u00E1zev typu
+blankDisplaybyType.LABEL=Typy filtr\u016F pr\u00E1zdn\u00E9ho zobrazen\u00ED a vizualizace
+addNewTypeDialog.TITLE=P\u0159idat nov\u00FD typ
+addNewTypeDialog.selectParentMsg=Vybrat nad\u0159azen\u00FD typ:
+addNewTypeDialog.selectTypeMsg=Vybrat n\u00E1zev typu:
+Product=V\u00FDrobek
+Plant=Podnik
+Occurrence=Proces
+
+structureTypeName.LABEL=Typ struktury
+typeName.LABEL=N\u00E1zev typu
+blankDisplaybyType.LABEL=Dostupn\u00E9 typy v pr\u00E1zdn\u00E9m/zobrazen\u00ED podle typu a p\u0159\u00EDkazy filtru vizualizace 
+addNewTypeDialog.TITLE=P\u0159idat nov\u00FD typ
+addNewTypeDialog.selectParentMsg=Vybrat typ struktury:
+addNewTypeDialog.selectTypeMsg=Vybrat n\u00E1zev typu:
+addNewTypeDialog.selectOccMsg=Vybrat n\u00E1zev v\u00FDskytu:
+Product=V\u00FDrobek
+Plant=Podnik
+Occurrence=Proces
+# Keys for Sim Process settings panel
+# -------------------------------------------------------
+toolConfigRootNameField.LABEL=Ko\u0159en konfigurace n\u00E1stroj\u016F simulace
+systemTempLocation.LABEL=V\u00FDchoz\u00ED po\u010D\u00E1te\u010Dn\u00ED um\u00EDst\u011Bn\u00ED
+windowsTempLocation.LABEL=Platforma Windows
+unixTempLocation.LABEL=Platforma Unix
+browseforFolder.LABEL=Hledat slo\u017Eku
+
+sharedStagingDirectory.LABEL=V\u00FDchoz\u00ED sd\u00EDlen\u00E9 stavov\u00E9 um\u00EDst\u011Bn\u00ED
+userStagingDirectory.LABEL=V\u00FDchoz\u00ED u\u017Eivatelsk\u00E9 stavov\u00E9 um\u00EDst\u011Bn\u00ED
+platform.LABEL=Platforma
+windows.LABEL=Windows
+unix.LABEL=Unix
+folderNamingPattern.LABEL=Vzor pojmenov\u00E1n\u00ED slo\u017Eek
+folderNamePatternInvalid.MESSAGE=Vzor pojmenov\u00E1n\u00ED slo\u017Eek nen\u00ED platn\u00FD. Vzor je mo\u017En\u00E9 ur\u010Dit jako kombinaci pevn\u00FDch \u0159et\u011Bzc\u016F zadan\u00FDch v uvozovk\u00E1ch a kl\u00ED\u010Dov\u00FDch slov. Podporovan\u00E1 kl\u00ED\u010Dov\u00E1 slova jsou: ITEMID, REVID, ITEMREVID, ITEMREVNAME, REVVERSION. \n N\u00E1zev slo\u017Eky nem\u016F\u017Ee obsahovat \u017E\u00E1dn\u00FD z n\u00E1sleduj\u00EDc\u00EDch znak\u016F: \\/:*?"<>|  pro Windows a / pro Unix. \n P\u0159\u00EDklady vzor\u016F: ITEMID"-"ITEMREVNAME, ITEMREVID"-".
+folderNamePatternInvalid.TITLE=Neplatn\u00FD vzor n\u00E1zvu slo\u017Eky
+
+enableContextBasedSimToolLaunch.LABEL=Zapnout kontextovou nab\u00EDdku pro spu\u0161t\u011Bn\u00ED n\u00E1stroje simulace
+UnableToLocateCAESE_DMService.ERROR=Nen\u00ED mo\u017En\u00E9 nal\u00E9zt slu\u017Ebu datov\u00E9ho modelu spr\u00E1vy proces\u016F simulace.
+
+
+stylesheetNotFound.TOOLTIP=Tabulka styl\u016F s t\u00EDmto n\u00E1zvem nebyla nalezena.
+meGantt.Behavior=Chov\u00E1n\u00ED
+meGantt.Appearance=Vzhled
+meGanttDefaultDisplayMode.Label=Zobrazit vypo\u010D\u00EDtan\u00E9 trv\u00E1n\u00ED
+meGanttDefaultEditMode.Label=Re\u017Eim \u00FApln\u00FDch \u00FAprav
+meGanttZoom.Label=\u00DArove\u0148 p\u0159ibl\u00ED\u017Een\u00ED:
+meGanttElementHeight.Label=V\u00FD\u0161ka objektu:
+meGanttDefaultElementColorButton.Label=Barva objektu:
+meGanttDefaultMarkedColorButton.Label=Barva objektu kritick\u00E9 dr\u00E1hy:
+meGanttDefaultSelectionColorButton.Label=Barva v\u00FDb\u011Bru:
+meGanttDefaultCalcDurationColorButton.Label=Barva vypo\u010D\u00EDtan\u00E9ho trv\u00E1n\u00ED:
+meGanttDefaultFlowColorButton.Label=Barva proud\u011Bn\u00ED:
+meGanttMarkedFlowColorButton.Label=Barva proud\u011Bn\u00ED kritick\u00E9 dr\u00E1hy:
+meGanttImplicitFlowColorButton.Label=Barva implicitn\u00EDho proud\u011Bn\u00ED: 
+
+loadingReportDefinitionInfo.TEXT=Na\u010D\u00EDt\u00E1n\u00ED informac\u00ED o definici v\u00FDpisu...
+dataCardPreferencesPanel.TITLE=Datov\u00E1 karta
+dataCardLocation.LABEL=Um\u00EDst\u011Bn\u00ED datov\u00E9 karty:
+dataCardTimeUnitFactor.LABEL=Faktor jednotek \u010Dasu:
+wbs.TITLE=WBS
+statusIndicator.TITLE=Indik\u00E1tory stavu
+
+#The formatting of the tooltip will add the <html> and <body> tags where needed
+preference.unformattedTOOLTIP=N\u00E1zev p\u0159edvolby: {1}<br/>Rozsah ochrany: {0}<br/>Popis:<br/>{2}
+
+# Keys for ProductView panel
+# -------------------------------------------------------
+productView.TITLE=Pohled v\u00FDrobku
+productViewCreationPreference.TITLE=P\u0159edvolby tvorby pohledu v\u00FDrobku
+productViewApplyPreference.TITLE=P\u0159edvolby pou\u017Eit\u00ED pohledu v\u00FDrobku
+imageCapturePanel.TITLE=Kreslen\u00ED obr\u00E1zku:
+thumbnailPanel.TITLE=N\u00E1hled:
+playMotionCheckBox.LABEL=P\u0159ehr\u00E1t pohyb v aktu\u00E1ln\u00EDm pohledu
+configurationRule.LABEL=Pravidlo konfigurace, kter\u00E9 bude pou\u017Eito:
+showPVNameCheckBox.LABEL=Zobrazit dialogov\u00E9 okno n\u00E1zvu pohledu v\u00FDrobku
+imageFormat.LABEL=Form\u00E1t obr\u00E1zku:
+imageResolution.LABEL=Rozli\u0161en\u00ED obr\u00E1zku:
+imageWidth.LABEL=\u0160\u00ED\u0159ka obr\u00E1zku:
+imageHeight.LABEL=V\u00FD\u0161ka obr\u00E1zku:
+thumbnailHeight.LABEL=V\u00FD\u0161ka (v pixelech):
+thumbnailWidth.LABEL=\u0160\u00ED\u0159ka (v pixelech):
+thumbnailQuantity.LABEL=Kvalita:
+thumbnailQuantity.LOW.LABEL=N\u00EDzk\u00FD
+thumbnailQuantity.HIGH.LABEL=Vysok\u00FD
+viewToggleWarnLevel.LABEL=\u00DArove\u0148 upozorn\u011Bn\u00ED p\u0159ep\u00EDna\u010De pohledu:
+viewTogglesConsider.LABEL=Zohled\u0148ovan\u00E9 p\u0159ep\u00EDna\u010De pohledu:
+createGeometryAsset.LABEL=Polo\u017Eka geometrie:
+
+
+contMgmt.TITLE=Spr\u00E1va obsahu
+
+# Search Preference Pages
+newSearch.TITLE=Hledat
+newSearchFavorites.TITLE=Obl\u00EDben\u00E9
+newSearchFavoriteBO.TITLE=Obl\u00EDben\u00E9 typy objekt\u016F procesu
+newSearchGeneral.TITLE=Obecn\u00FD
+newSearchRemote.TITLE=Vzd\u00E1len\u00FD
+newSearchResults.TITLE=V\u00FDsledky
+newSearchSavedSearches.TITLE=Ulo\u017Een\u00E1 hled\u00E1n\u00ED
+
+displayMySavedSearches.LABEL=Zobrazit ulo\u017Een\u00E1 hled\u00E1n\u00ED
+defaultBOType.LABEL=V\u00FDchoz\u00ED typ objektu procesu
+defaultSearch.LABEL=V\u00FDchoz\u00ED hled\u00E1n\u00ED
+changeBtn.TEXT=Zm\u011Bnit...
+generalBorder.TEXT=Obecn\u00FD
+searchLocal.LABEL=N\u00E1rodn\u00ED prost\u0159ed\u00ED hled\u00E1n\u00ED
+searchHistory.LABEL=Konfigurovat velikost historie hled\u00E1n\u00ED:
+changeSearchBtn.TEXT=Smazat historii hled\u00E1n\u00ED
+loadingPageSize.LABEL=Nastavit velikost startovac\u00ED str\u00E1nky:
+openSearchResultLimit.LABEL=Nastavit limit v\u00FDsledk\u016F otev\u0159en\u00E9ho hled\u00E1n\u00ED:
+loadAllLimit.LABEL=Nastavit limit pro na\u010Dten\u00ED v\u0161ech:
+ChangeSearchDialog.TITLE=Zm\u011Bnit hled\u00E1n\u00ED
+ChangeSearchDialog.MSG=Vybrat ulo\u017Een\u00E1 hled\u00E1n\u00ED:
+gettingSearch.MSG=Z\u00EDsk\u00E1v\u00E1n\u00ED hled\u00E1n\u00ED
+expandFolderAction.MSG=Rozbalov\u00E1n\u00ED vybran\u00E9 slo\u017Eky...
+SearchTreeContentProvider.MSG=Na\u010D\u00EDt\u00E1n\u00ED
+BusinessObjectSelectionDialog.TITLE=Vybrat typ objektu procesu
+BusinessObjectSelectionDialog.MSG=Vybrat typ objektu procesu
+addBO.TEXT=P\u0159idat
+removeBO.TEXT=Odebrat
+boColumn.Text=Typ objektu procesu
+downButton.TEXT=Dol\u016F
+upButton.TEXT=Nahoru
+invalidBO.MSG=Typ objektu procesu "{0}" nen\u00ED platn\u00FD.
+
+#4GD TCXML labels
+
+lowLevel.LABEL=TC XML
+sessionOpt.TITLE=Mo\u017Enosti relace TC XML
+overrideOption.LABEL=P\u0159edefinovat hodnoty optionset
+exportItemWithDE.LABEL=Exportovat zdrojov\u00E9 objekty objektu n\u00E1vrhu
+importItemWithDE.LABEL=Importovat zdrojov\u00E9 objekty objektu n\u00E1vrhu
+exportDEWithWS.LABEL=Exportovat objekt n\u00E1vrhu v pracovn\u00ED mno\u017Ein\u011B
+importDEWithWS.LABEL=Importovat objekt n\u00E1vrhu v pracovn\u00ED mno\u017Ein\u011B
+includeBLContent.LABEL=Zahrnout obsah z\u00E1kladny
+tcxmlOperationNotSupported=V\u00FDb\u011Br objektu nen\u00ED operac\u00ED vzd\u00E1len\u00E9ho importu/exportu podporov\u00E1n.
+prefValueMustBeDefined=Je nutn\u00E9 zadat platnou hodnotu pro p\u0159edvolbu "TC_force_legacy_multisite". Zadejte hodnotu jako "true" pro re\u017Eim OBJIO nebo "false" pro re\u017Eim TCXML.
+
+# Keys for derivative rules settings panel
+# -------------------------------------------------------
+derivative.TITLE=Odvodit
+derivative.LABEL=Odvodit
+derivative.HEADING=Um\u00EDst\u011Bn\u00ED revize polo\u017Eky pravidel odvozen\u00ED:
+derivativeLogDataSet.LABEL=N\u00E1zev datasetu protokolu odvozen\u00ED
+derivativeLogPanel.LABEL=Protokol odvozen\u00ED
+persistSummaryLog.LABEL=Trval\u00FD protokol odvozen\u00ED
+locationSearch.TOOLTIP=Hledat
+locationClear.TOOLTIP=Smazat
+derivativeLogContentScope.LABEL=Rozsah obsahu protokolu odvozen\u00ED:
+derivativeLogContentScopeSummary.LABEL=Souhrn
+derivativeLogContentScopeDetailed.LABEL=Podrobn\u00FD
+derivativeNoSimGroupAdminFound.MESSAGE=Um\u00EDst\u011Bn\u00ED revize polo\u017Eky pravidel odvozen\u00ED nen\u00ED mo\u017En\u00E9 nastavit, proto\u017Ee aktu\u00E1ln\u00ED u\u017Eivatel nebyl definov\u00E1n jako spr\u00E1vce skupiny "Spr\u00E1va simulace".
+derivativeNoSimGroupAdminFound.TITLE=Nebyl nalezen spr\u00E1vce skupiny
+derivativeLogDSNameBlank.MESSAGE=N\u00E1zev datasetu protokolu odvozen\u00ED nesm\u00ED b\u00FDt pr\u00E1zdn\u00FD.
+derivativeLogDSNameBlank.TITLE=Pr\u00E1zdn\u00FD n\u00E1zev datasetu protokolu odvozen\u00ED
+derivativeNamePattern.LABEL=Vzor n\u00E1zvu pro odvozen\u00E9 struktury
+derivativeNamePatternBlank.MESSAGE=Vzor n\u00E1zvu nem\u016F\u017Ee b\u00FDt pr\u00E1zdn\u00FD.
+derivativeNamePatternBlank.TITLE=Pr\u00E1zdn\u00FD vzor n\u00E1zvu
+derivativeNamePatternInvalid.MESSAGE=Vzor n\u00E1zvu je neplatn\u00FD.
+derivativeNamePatternInvalid.TITLE=Neplatn\u00FD vzor n\u00E1zvu
+
+# Keys for file upload rules settings panel
+# -------------------------------------------------------
+fileExplorer.TITLE=Pr\u016Fzkumn\u00EDk soubor\u016F
+defaultWorkingDir.LABEL=V\u00FDchoz\u00ED pracovn\u00ED adres\u00E1\u0159e
+FURPanelFileUploadConflict.LABEL=V\u00FDchoz\u00ED mo\u017Enost \u0159e\u0161en\u00ED konfliktu na\u010Dten\u00ED souboru
+FURPanelFileupload.LABEL=Odeslat
+FURPanelFileRenameUpload.LABEL=P\u0159ejmenovat a odeslat
+FURPanelFileUploadSkip.LABEL=P\u0159esko\u010Dit
+FURPanelFileDownloadConflict.LABEL=V\u00FDchoz\u00ED mo\u017Enost \u0159e\u0161en\u00ED konfliktu sta\u017Een\u00ED souboru
+FURPanelFileDownloadOverwrite.LABEL=P\u0159epsat
+FURPanelFileRenameDownload.LABEL=P\u0159ejmenovat a st\u00E1hnout
+
+# Keys for IMDS panel
+# -------------------------------------------------------
+Imds.TITLE=IMDS
+CmpnyInfo.TITLE=Informace o spole\u010Dnosti
+
+# Keys for subcmpl panel
+# -------------------------------------------------------
+SubsComp.TITLE=Dodr\u017Een\u00ED p\u0159edpis\u016F o slo\u017Een\u00ED
+SuppDec.TITLE=Deklarace dodavatele
+prefValues.TITLE=Hodnoty p\u0159edvolby
+
+# Keys for CAE UI Configuration settings panel
+# -------------------------------------------------------
+caeUIConfiguration.TITLE=Konfigurace UI
+caeItemRevAttributesForUIConfig.LABEL=Zobrazeny vlastnosti revize polo\u017Eky pro {0}
+caeItemRevAttributesForMultiSaveAs.LABEL=Zobrazeny vlastnosti revize polo\u017Eky pro {0}
+caeItemAttributesForMultiSaveAs.LABEL=Zobrazeny vlastnosti polo\u017Eky pro {0}
+caeUIConfigurationPanel.TAB1.TITLE=Nahradit
+caeUIConfigurationPanel.TAB2.TITLE=Dotaz v\u00EDcen\u00E1sobn\u00E9ho nahrazen\u00ED
+caeUIConfigurationPanel.TAB3.TITLE=Otev\u0159\u00EDt model
+caeUIConfigurationPanel.TAB4.TITLE=Otev\u0159\u00EDt anal\u00FDzu
+caeUIConfigurationPanel.TAB5.TITLE=Otev\u0159\u00EDt polo\u017Eku

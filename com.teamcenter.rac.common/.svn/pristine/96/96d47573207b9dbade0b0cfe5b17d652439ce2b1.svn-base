@@ -1,0 +1,20 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2010.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Messages 
+implicitCO.TITLE=Pobierz niejawnie
+unableimplicitCO.MESSAGE=Operacja pobierania niejawnego nie powiod\u0142a si\u0119.
+unableToCheckOut.MESSAGE=Operacja pobierania elementu nie powiod\u0142a si\u0119.
+unableToSave.MESSAGE=Zapisanie zmian w elemencie nie powiod\u0142o si\u0119.
+unableToCheckIn.MESSAGE=Operacja zwr\u00F3cenia elementu nie powiod\u0142a si\u0119.
+unableToCancelReservation.MESSAGE=Anulowanie pobranego elementu nie powiod\u0142o si\u0119.
+unableToGetUnderlyingObject.MESSAGE=Uzyskiwanie komponentu podstawowego zako\u0144czone niepowodzeniem.
+performedCancelCO.MESSAGE=Wykonano anulowanie pobierania elementu.
+performedCI.MESSAGE=Wykonano zwr\u00F3cenie elementu.
+saveProperties.TITLE=Zapisz w\u0142a\u015Bciwo\u015Bci...
+SaveFailed.TEXT=W przypadku wybranych element\u00F3w wymienionych poni\u017Cej zapisywanie nie powiod\u0142o si\u0119. Wszystkie zmodyfikowane warto\u015Bci w\u0142a\u015Bciwo\u015Bci zosta\u0142y utracone.

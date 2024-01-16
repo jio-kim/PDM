@@ -1,0 +1,291 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the lov package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#09-Apr-2001  wangp                   Move entries from common to common/lov
+#24-Oct-2001  wangp                   add sort button
+#15-Jun-2003  Bruce Hebbard           Add multipick button
+#12-Nov-2004  x_suje                  Added file element "RowObject.java".
+#18-Nov-2004  x_suje                  for attribute sharing project
+#07-Jan-2005  faming                  V10 LOV Enhancement Project to Phase 8
+#24-Jan-2005  faming                  V10 LOV Enhancement Project
+#29-Apr-2005  hoangh                  PR#5178172
+#31-May-2005  bhamidip                Fix PR 5182338 (Attribute Sharing values found message incorrect)
+#$HISTORY$
+#=================================================================================================*/
+
+# LOVComboBox Keys
+# ------------------------
+LOVComboLoad=Carregando lista de valores
+
+# Interdependent LOV panel
+#--------------------------
+LOVInterdependentButton.TIP=<html><body>{0}</body></html>
+
+# LOVPopupButton Keys
+# ------------------------------
+LOVPopupWindow.TITLE=Lista de valores
+LOVComponentInvalid=Imposs\u00EDvel carregar lista de valores.
+LOVPopupButton.TIP=Clique para carregar a lista de valores.
+
+valueLabel.NAME=Valor:
+searchLabel.NAME=Pesquisar:
+inputLabel.NAME=Entrada:
+rangeLabel.NAME=Intervalo:
+
+valueText.TIP=Insira o valor, e ent\u00E3o pressione ENTER
+findText.TIP=Insira crit\u00E9rio de pesquisa, e ent\u00E3o pressione ENTER ou bot\u00E3o de pesquisa.
+valueTextRange.TIP=Insira o valor que est\u00E1 entre o intervalo.
+filterButton.TIP=Pressione para iniciar pesquisa
+addButton.TIP =Inicie a opera\u00E7\u00E3o para obter os valores de LOV do datasource externo.
+allButton.TIP=Carregar todos os valores localizados
+nextButton.TIP=Carregar o pr\u00F3ximo conjunto de valores encontrados.
+prevButton.TIP=Carregar conjunto anterior de valores encontrados.
+sortButton.TIP=Ordenar em ordem crescente.
+sqlButton.TIP=Exibir as cl\u00E1usulas de busca na caixa de di\u00E1logo
+multipickButton.TIP=Selecione valores m\u00FAltiplos de uma lista.
+multicolumnButton.TIP=Selecione uma linha de dados de uma tabela.
+HierarchyLOVPopupButton.TIP=Selecione o valor na hierarquia.
+selectValue=Selecionar valor para
+search.TIP=Buscar valor de entrada para
+search=Pesquisar
+
+LOVDefaultMessage=Insira os crit\u00E9rios de pesquisa e pressione entre.
+LOVDefaultMessageForRange=Insira o valor que est\u00E1 entre o intervalo.
+LOVFound=valores encontrados
+LOVFound1=valor localizado
+LOVShown=mostrados
+LOVNoFound.TIP=Nenhum valor encontrado.
+LOVLoadFirst=Carregando  pr\u00F3ximo conjunto de componentes
+loadPrevious=Carregando conjunto anterior de componentes
+loadNext=Carregando pr\u00F3ximo conjunto de componentes
+loadAll=Carregando todos os componentes localizados
+loadByPart=Carregando  pr\u00F3ximo conjunto de componentes
+LOVPopupMsgFailToLoad=Falha ao carregar a lista de valores.
+LOVPopupMsgTitle=Carregar a lista de valores
+LOVCannotConvertMessage=Imposs\u00EDvel converter entrada para tipo solicitado.
+LOVAllValuesNotFound=Imposs\u00EDvel carregar valores de LOV.
+
+invalidRangeInput.MESSAGE=O valor digitado est\u00E1 fora do intervalo definido para esse LOV.\nInsira o valor entre o intervalo de {0} para {1}.
+invalidInput.TITLE=Entrada Inv\u00E1lida
+
+LOVMultiColumnPopupButton.Tip=Clique para visualizar a coluna m\u00FAltipla da tela LOV
+LOVMultiColumnNoMapping=A propriedade anexada \u00E0 LOV n\u00E3o \u00E9 mapeada para nenhum atributo externo.
+MultiColumnPanel.ERROR=ERRO
+MultiColumnTable.TIP=Essa tabela exibe o datasource externo dos atributos de valores mapeados
+MultiColumnFoundRows=linhas foram encontradas. Deseja carregar todas?
+MultiColumnFoundRows.TITLE=Carregando linhas de quest\u00E3o
+andCondition=AND
+orCondition=OR
+SqlDialog.TITLE=Modificar cl\u00E1usulas de busca
+SqlDialog.header=Especifique o filtro de valores para os atributos mapeados.
+saveButton.TITLE=Salvar
+saveButton.TIP=Salva as cl\u00E1usulas de filtro definidas pelo usu\u00E1rio.
+colsaveButton.TIP=Salva os dados da coluna oculta definidos pelo usu\u00E1rio
+startLoading=Iniciar o preenchimento das tabelas de colunas m\u00FAltiplas..
+getValues=Solicitar os valores de LOV do datasource externo...
+fetchValues=Recuperar valores
+Ascending=Os valores da coluna est\u00E3o ordenados em ordem crescente
+Descending=Os valores da coluna est\u00E3o ordenados em ordem crescente
+displayDialog.TITLE=Controle de exibi\u00E7\u00E3o da coluna
+displayDialog.Header=Selecione a coluna da tabela que deseja exibir/ocultar
+lovTableshownColumns.LABEL=Colunas da tabela LOV
+generalColumn.available=Exibindo colunas
+generalColumn.selected=Colunas Ocultas
+addToHidden.TIP=Clique para adicionar o valor selecionado do Exibir coluna para Ocultar coluna
+removeFromHidden.TIP=Clique para adicionar o valor selecionado em Ocultar coluna para Exibir coluna
+isPrimaryColumn=Imposs\u00EDvel ocultar a coluna prim\u00E1ria da tabela. 
+primary.ERROR=Erro na coluna prim\u00E1ria
+refresh.TIP=Isso recarrega os valores da coluna da tabela.
+userDialog.TITLE=Caixa de di\u00E1logo sele\u00E7\u00E3o de usu\u00E1rio
+userDialog.Header=Selecione um valor de sua escolha para atribuir para a propriedade
+okButton.TITLE=OK
+okButton.TIP=Pressione Ok para salvar a entrada selecionada.
+noSelection.TITLE=Erro
+noSelection.ERROR=Nada selecionado da lista
+andCondition=AND
+orCondition=OR
+noMappingExists=Nenhum atributo mapeado encontrado para essa propriedade. Entre em contato com o administrador
+logicalOpTip=Selecionar as c\u00E9lulas abaixo desta coluna para especificar operadores l\u00F3gicos
+attributeTip=Esta coluna representa os atributos externos
+mathTip=Selecione as c\u00E9lulas abaixo desta coluna para especificar operadores matem\u00E1ticos
+UserTip=Selecione as c\u00E9lulas abaixo desta coluna para especificar valores de filtro.
+
+defineFilter.TIP=Defina o filtro para associar ao valor selecionado.
+cutFilter.TIP=Recorte o filtro associado do valor selecionado.
+refreshLOV.TIP=Atualizar exibi\u00E7\u00E3o de LOV.
+deleteFilter.TIP=excluir filtro selecionado de LOV.
+selectLevel.TIP=Selecionar todos os n\u00F3s de mesmo n\u00EDvel na \u00E1rvore.
+validateTree.TIP=Selecionar n\u00EDvel para verificar por valores de folhas n\u00E3o balanceadas.
+
+
+# Entries for the LOVTree
+#------------------------------------------
+lovTreeRootText=Lista de valores
+
+# Entries for the LOV Panel
+#------------------------------------------
+createLOV=Criar
+createLOV.TIP=Criar novo objeto de LOV
+createLOV.MNEMONIC=C
+
+modifyLOV=Modificar
+modifyLOV.TIP=Modificar um objeto de LOV
+modifyLOV.MNEMONIC=M
+
+deleteLOV=Excluir
+deleteLOV.TIP=Excluir um objeto de LOV
+deleteLOV.MNEMONIC=D
+
+clearLOV=Limpar
+clearLOV.TIP=Limpar todos os valores.
+clearLOV.MNEMONIC=R
+
+LOVPropertyAttachment.TITLE=Lista de valores de propriedades do anexo
+LOVDependentPropertyAttachment.TITLE=Lista de valores de propriedades do anexo dependente
+
+addButton.TIP=Adiciona o tipo/propriedade selecionada \u00E0 lista.
+removeButton.TIP=Remove o tipo/propriedade selecionada da lista.
+clearButton.TIP=Limpa todos os tipos/propriedades selecionadas da lista.
+
+attachmentList.TIP=A lista de propriedades do anexo associadas para este LOV.
+
+integer=Inteiro
+double=Duplo
+char=Caracteres
+string=String
+date=Data
+reference=Refer\u00EAncia
+
+ListOfValuesTag=Etiqueta
+ListOfValuesTagExtent=Extens\u00E3o da etiqueta
+
+ListOfValuesString=String
+ListOfValuesStringExtent=Extens\u00E3o da string
+ListOfValuesTagRDVSearchRevRule=Pesquisar regra rev RDV
+ListOfValuesStringExtentGrName=Nome do grupo
+ListOfValuesStringExtentPubrType=Tipo de grava\u00E7\u00E3o da publica\u00E7\u00E3o
+ListOfValuesStringExtentStatus=Status
+ListOfValuesStringExtentUsName=Nome do Usu\u00E1rio
+ListOfValuesStringExtentUserId=ID do usu\u00E1rio
+ListOfValuesStringExtentWSOClass=Classe
+ListOfValuesInteger=Inteiro
+ListOfValuesIntegerExtentSite=Site
+ListOfValuesFilter=Filtro
+ListOfValuesDouble=Duplo
+ListOfValuesDate=Data
+ListOfValuesChar=Caracteres
+
+exhaustive=Exaustivo
+suggestive=Sugestivo
+range=Intervalo
+
+addValue.TIP=Adiciona os valores inseridos na lista.
+removeValue.TIP=Remove o valor selecionado da lista.
+upValue.TIP=Move o objeto selecionado para cima.
+downValue.TIP=Move o objeto selecionado para baixo.
+
+loadValues.TIP=Carrega todos os valores da classe de refer\u00EAncia selecionada na lista.
+
+name=Nome :
+filterName=Filtro de nome:
+description=Descri\u00E7\u00E3o:
+valueType=Tipo do valor
+usage=Uso:
+valueName=Valor
+descriptionName=Descri\u00E7\u00E3o
+shownValue=Exibindo valores
+hiddenValue=Valores Ocultos
+hierarchy=Hierarquia
+attach=Anexar:
+addDesc.TIP=Adicionar para a propriedade de descri\u00E7\u00E3o do anexo.
+removeDesc.TIP=Remover a propriedade de descri\u00E7\u00E3o do anexo.
+referenceClass.TIP=Refer\u00EAncia de classe e atributo
+basedOnLOV=Baseado na LOV
+listOfValuesFilter=Lista de valores
+noAttachment=Nenhum anexo
+selectLevel.TITLE=Escolha o n\u00EDvel para selecionar
+found=localizado
+
+values=Valores
+value=Valor:
+
+upperLimit=upper_limit
+lowerLimit=lower_limit
+
+# Entries for message center
+#------------------------------------------
+deletingLOV=Excluindo LOV ...
+creatingLOV=Criando LOV ...
+savingLOV=Salvando LOV ...
+fetchingValues=Carregando valores para a classe e atributo selecionado ...
+
+# Entries for confirmation message
+#------------------------------------------
+confirmDelete.TITLE=Excluir confirma\u00E7\u00E3o
+confirmDelete.MESSAGE=Deseja realmente excluir
+
+# Entries for error messages
+#------------------------------------------
+cannotConvert=Imposs\u00EDvel converter a entrada para o tipo correspondente.
+noLOVFound=Nenhuma lista de valores localizada.
+noComponentsToFetch=Nenhum valor foi localizado para classe e atributo selecionado.
+error.TITLE=Erro
+information.TITLE=Lista de valores
+warning.TITLE=Aviso
+invalidNullValue=Valor nulo \u00E9 inv\u00E1lido e n\u00E3o pode ser salvo.
+duplicatedValue=\u00E9 valor duplicado e n\u00E3o pode ser salvo.
+
+# PR# 4282192 (lov_type not supported in SA module) - Entries for lov type combobox
+#----------------------------------------------------------------------------------
+loadingLOVTypes=Carregando lista de tipos de valores ....
+lovType=Tipo de LOV:
+listOfValuesChar=Lista de valores Caracter
+listOfValuesDate=Lista de valores Data
+listOfValuesDouble=Lista de valores Double
+listOfValuesInteger=Lista de valores Inteiro
+listOfValuesString=Lista de valores String
+listOfValuesTag=Lista de valores Tag
+lsitOfValuesFilter=Filtro de Lista de valores
+
+nextFound.TIP=Selecionar o pr\u00F3ximo localizado.
+previousFound.TIP=Selecionar o anterior localizado.
+for=para
+attachDependencyButton.TIP=Anexar a propriedade dependente
+lovDependencyWizard.TITLE=Assistente de depend\u00EAncias de LOV
+selectLOV=Selecionar LOV
+selectLOV.INFO=Selecionar o LOV que deseja para associar \u00E0
+defineFilter.TITLE=Definir filtro
+defineFilter.INFO=Definir o filtro que deseja para associar \u00E0
+defineFilter.TIP=Defina o filtro para associar ao valor selecionado.
+directDependencyCheckbox=Depend\u00EAncia direta com base em LOV
+findStatus=Localizar nome de classe Teamcenter antes de
+classificationName=Nome da classifica\u00E7\u00E3o 
+defineClassification.TITLE=Definir classifica\u00E7\u00F5es
+defineClassification.TIP=Definir classifica\u00E7\u00F5es
+selectLevelOrClassification.TITLE=Selecionar n\u00EDvel ou classifica\u00E7\u00E3o
+selectIncludeParentLevel=Selecionar n\u00EDvel pai incluso
+level=N\u00EDvel
+allLevel=Todos os n\u00EDveis
+
+cutFilter.TIP=Recorte o filtro associado do valor selecionado.
+refreshLOV.TIP=Atualizar exibi\u00E7\u00E3o de LOV.
+deleteFilter.TIP=Remover e excluir filtro LOV selecionado.
+selectLevel.TIP=Selecionar todos os n\u00F3s de mesmo n\u00EDvel na \u00E1rvore.
+validateTree.TIP=Selecionar o n\u00EDvel para verifica\u00E7\u00E3o de valores de folhas n\u00E3o balanceadas.
+
+selectFilter.TITLE=Selecionar filtro
+createFilter.TITLE=Criar filtro
+
+loadHierarchy.TIP=Carregar todas as hierarquia.

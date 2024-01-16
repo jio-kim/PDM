@@ -1,0 +1,22 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2007 UGS Corp. All Rights Reserved.
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the globalalternate package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: globalalternate_locale.properties
+#   Module  : com.teamcenter.rac.commands.globalalternate
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#$HISTORY$
+#=================================================================================================*/
+
+# Related Global Alternates
+hasRelatedGlobalAlts.TITLE = \uAD00\uB828 \uC804\uC5ED \uAD50\uCCB4 \uD56D\uBAA9
+listRelatedGlobalAlts.MESSAGE = \uC120\uD0DD\uB41C \uC544\uC774\uD15C\uC5D0\uB294 \uB2E4\uC74C\uACFC \uAC19\uC740 \uC804\uC5ED \uAD50\uCCB4 \uD56D\uBAA9\uC774 \uC788\uC2B5\uB2C8\uB2E4.
+cutRelatedGlobalAlts.MESSAGE = \uC804\uC5ED \uAD50\uCCB4 \uD56D\uBAA9\uC744 \uC81C\uAC70\uD558\uBA74 \uD574\uB2F9 \uAD50\uCCB4 \uD56D\uBAA9\uACFC\uC758 \uAD00\uACC4\uAC00 \uC0AD\uC81C\uB429\uB2C8\uB2E4.\n\uC804\uC5ED \uAD50\uCCB4 \uD56D\uBAA9\uC744 \uC0AD\uC81C\uD558\uC2DC\uACA0\uC2B5\uB2C8\uAE4C?

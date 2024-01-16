@@ -1,0 +1,30 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the checkoutnotification package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=Powiadomienie o wycofaniu
+error.TITLE=Powiadomienie o wycofaniu
+updatingList=Aktualizacja listy powiadomie\u0144
+users=U\u017Cytkownicy:
+noSelectionError=Nie wybrano \u017Cadnych u\u017Cytkownik\u00F3w do usuni\u0119cia
+noUsersToRemove=Nie mo\u017Cna usun\u0105\u0107 - brak u\u017Cytkownik\u00F3w na li\u015Bcie
+userAlreadyPresent=Wybrany u\u017Cytkownik znajduje si\u0119 ju\u017C na li\u015Bcie powiadomie\u0144
+loadingUsers=Pobieranie u\u017Cytkownik\u00F3w do listy powiadomie\u0144
+buildingUserList=Pobieranie wszystkich u\u017Cytkownik\u00F3w...
+add.TIP=Dodaj u\u017Cytkownika do listy powiadomie\u0144
+remove.TIP=Usuwa u\u017Cytkownik\u00F3w z listy powiadomie\u0144

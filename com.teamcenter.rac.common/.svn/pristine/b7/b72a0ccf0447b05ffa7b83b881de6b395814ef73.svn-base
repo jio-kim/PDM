@@ -1,0 +1,46 @@
+#*==================================================================================================
+#
+#                           Copyright (c) 2003 EDS PLM Solutions
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the itemidregistry package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: publish_locale.properties
+#   Module  : com.teamcenter.rac.commands.publish
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#02-Apr-2003  rlee                    Initial create
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# command.TITLE not used but here to placate AbstractProgressDialog
+command.TITLE=Factice
+
+confirmationText=Confirmez-vous de publier vers
+questionMark=?
+publish.STATUS=Publication
+dotDotDot=...
+registerItemId.TITLE=Enregistrer l'article
+registerItemIdSuccess.INITIALSTATUS=Article(s) s\u00E9lectionn\u00E9(s) en cours d'enregistrement
+registerItemIdSuccess.STATUS=Article(s) s\u00E9lectionn\u00E9(s): enregistrement r\u00E9ussi
+
+unregisterItemId.TITLE=Annuler l'enregistrement de l'article
+unregisterItemIdSuccess.INITIALSTATUS=Article(s) s\u00E9lectionn\u00E9(s) en cours d'annulation d'enregistrement
+unregisterItemIdSuccess.STATUS=Article(s) s\u00E9lectionn\u00E9(s): annulation d'enregistrement r\u00E9ussie
+
+noSelectionError = Aucun objet \u00E0 publier n'est s\u00E9lectionn\u00E9
+notADataset = L'objet s\u00E9lectionn\u00E9 n'est pas un jeu de donn\u00E9es
+
+odsPublicationSite.LABEL=Sites publication ODS
+sites.available=Sites disponibles
+sites.selected=Sites s\u00E9lectionn\u00E9s
+
+site.TITLE=S\u00E9lection de site
+
+objectNotItem="L'objet n'est pas un article"

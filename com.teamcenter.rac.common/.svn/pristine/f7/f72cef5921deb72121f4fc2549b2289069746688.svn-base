@@ -1,0 +1,119 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newenvelope package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newenvelope_locale.properties
+#   Module  : com.teamcenter.rac.commands.newenvelope
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#16-Aug-2000  jordan                  V7 UI prototype
+#26-Apr-2001  x_gopala                PR Fix #4271324
+#26-Apr-2001  x_gopala                Merge in PR fix #4271324
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for new envelope dialog
+# --------------------------------
+command.TITLE1=\uC0C8 \uD3B8\uC9C0
+command.TITLE2=\uD3B8\uC9C0
+
+to=\uBC1B\uB294 \uC0AC\uB78C...
+to.MNEMONIC=T
+to.TOOLTIP=\uBC1B\uB294 \uC0AC\uB78C \uC120\uD0DD
+
+cc=\uCC38\uC870...
+cc.TOOLTIP=\uBC1B\uB294 \uC0AC\uB78C \uC120\uD0DD
+
+send=\uBCF4\uB0B4\uAE30
+send.MNEMONIC=S
+send.TOOLTIP=\uD3B8\uC9C0 \uBCF4\uB0B4\uAE30
+
+subject=\uC81C\uBAA9:
+
+message=\uBA54\uC2DC\uC9C0:
+
+attachment=\uCCA8\uBD80\uBB3C:
+
+audit=\uAC10\uC0AC:
+yes=\uC608
+
+add.TOOLTIP=\uAC1C\uCCB4\uB97C \uD074\uB9BD\uBCF4\uB4DC\uC5D0 \uCCA8\uBD80 \uD30C\uC77C\uB85C \uCD94\uAC00
+
+remove.TOOLTIP=\uCCA8\uBD80\uC5D0\uC11C \uAC1C\uCCB4 \uC81C\uAC70
+
+include=\uD3EC\uD568
+include.TOOLTIP=\uCCA8\uBD80 \uB9AC\uC2A4\uD2B8\uC5D0\uC11C \uC120\uD0DD\uD55C \uD14D\uC2A4\uD2B8 \uB370\uC774\uD130 \uC9D1\uD569 \uAC1C\uCCB4\uC758 \uB0B4\uC6A9\uC744 \uBA54\uC2DC\uC9C0 \uBC14\uB514\uC5D0 \uC0BD\uC785\uD569\uB2C8\uB2E4.
+includeButton.TITLE=\uD3EC\uD568
+noFileFound=\uD30C\uC77C\uC744 \uCC3E\uC744 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.
+
+references=\uCC38\uC870
+references.TOOLTIP=\uBCF4\uB0BC \uCC38\uC870\uB97C \uC120\uD0DD
+referencesButton.TITLE=\uCC38\uC870
+
+ok.TOOLTIP=\uD3B8\uC9C0\uB97C \uC800\uC7A5
+
+# Entries for select recipients dialog
+# --------------------------------------
+selectRecipient.TITLE=\uBC1B\uB294 \uC0AC\uB78C \uC120\uD0DD
+
+search=\uAC80\uC0C9:
+
+toButton=\uBC1B\uB294 \uC0AC\uB78C ->
+toButton.MNEMONIC=T
+ccButton=\uCC38\uC870 ->
+ccButton.MNEMONIC=C
+
+userButton.TOOLTIP=\uAC80\uC0C9 \uC870\uAC74\uC5D0 \uC77C\uCE58\uD558\uB294 \uC0AC\uC6A9\uC790 ID \uCC3E\uAE30
+groupButton.TOOLTIP=\uAC80\uC0C9 \uC870\uAC74\uC5D0 \uC77C\uCE58\uD558\uB294 \uADF8\uB8F9 \uCC3E\uAE30
+aliasButton.TOOLTIP=\uAC80\uC0C9 \uC870\uAC74\uC5D0 \uC77C\uCE58\uD558\uB294 \uC8FC\uC18C \uB9AC\uC2A4\uD2B8 \uCC3E\uAE30
+addressListButton.TOOLTIP=\uC8FC\uC18C \uB9AC\uC2A4\uD2B8 \uB2E4\uC774\uC5BC\uB85C\uADF8 \uC2DC\uC791
+find.TOOLTIP=\uAC80\uC0C9 \uC870\uAC74\uC744 \uC785\uB825\uD558\uACE0 \uBC84\uD2BC\uC744 \uB204\uB974\uC2ED\uC2DC\uC624.
+
+# Entries for message center messages
+# -------------------------------------------------------------
+creatingNewEnvelope=\uC0C8 \uD3B8\uC9C0\uB97C \uC0DD\uC131 \uC911...
+updatingEnvelope=\uD3B8\uC9C0 \uC5C5\uB370\uC774\uD2B8...
+sendingEnvelope=\uD3B8\uC9C0\uB97C \uBCF4\uB0B4\uB0C5\uB2C8\uB2E4...
+loadingMembers=\uAD6C\uC131\uC6D0\uC744 \uB85C\uB4DC \uC911...
+loadingFile=\uD30C\uC77C\uC744 \uC77D\uB294 \uC911...
+abortSending=\uC0C8 \uD3B8\uC9C0 \uBCF4\uB0B4\uAE30\uB97C \uC911\uB2E8\uD569\uB2C8\uB2E4.
+
+# Error Messages for invalid recipients
+# ---------------------------------------------------------------
+errorInvalidRecipients.TITLE=\uC798\uBABB\uB41C \uBC1B\uB294 \uC0AC\uB78C \uC624\uB958 \uBC1C\uC0DD!!!
+invalidRecipients.MESSAGE=\uBC1B\uB294 \uC0AC\uB78C "{0}"\uC774(\uAC00) \uC798\uBABB\uB418\uC5C8\uC2B5\uB2C8\uB2E4.
+
+# Error Messages
+# ---------------------------------------------------------------
+errorAddingAttach.TITLE=\uCCA8\uBD80\uB97C \uCD94\uAC00\uD558\uB294 \uC911 \uC624\uB958 \uBC1C\uC0DD!!!
+invalidAttach.MESSAGE="{0}" \uAC1C\uCCB4\uB294 \uC798\uBABB\uB41C \uCCA8\uBD80\uBB3C\uC785\uB2C8\uB2E4.
+
+# Entries for the mail send blocking panel
+# ---------------------------------------------------------------
+blockSending.TITLE=\uD3B8\uC9C0 \uBCF4\uB0B4\uAE30 \uCC28\uB2E8
+blockSending.MESSAGE=\uC678\uBD80 \uC218\uC2E0\uC790\uC5D0\uAC8C \uC774 \uD3B8\uC9C0\uB97C \uBCF4\uB0BC \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.\n"Mail_OSMail_activated" \uD658\uACBD\uC124\uC815\uC774 FALSE\uB85C \uC124\uC815\uB418\uC5B4 \uC788\uAC70\uB098 "Mail_server_name" \uD658\uACBD\uC124\uC815 \uAC12\uC774 \uC62C\uBC14\uB978 \uBA54\uC77C \uC11C\uBC84\uAC00 \uC544\uB2D9\uB2C8\uB2E4. \uACC4\uC18D\uD558\uB824\uBA74 \uC678\uBD80 \uBA54\uC77C \uC218\uC2E0\uC790\uB97C \uC81C\uAC70\uD558\uC2ED\uC2DC\uC624.
+
+# Entries for error when inserting text from a text dataset
+# ---------------------------------------------------------------
+textDatasetInsertion.TITLE=\uD14D\uC2A4\uD2B8 \uB370\uC774\uD130 \uC9D1\uD569 \uC0BD\uC785
+textDatasetInsertion.textLengthLimitation.MESSAGE=\uD3B8\uC9C0 \uBC14\uB514 \uD06C\uAE30\uAC00 \uC81C\uD55C\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. \uD14D\uC2A4\uD2B8 \uB370\uC774\uD130 \uC9D1\uD569 \uAC1C\uCCB4\uC5D0\uC11C {0}\uC790\uB9CC \uBCF5\uC0AC\uD569\uB2C8\uB2E4.
+textDatasetInsertion.noMoreCharacters.MESSAGE=\uD3B8\uC9C0 \uBC14\uB514\uC758 \uCD5C\uB300 \uD06C\uAE30\uC5D0 \uB3C4\uB2EC\uD588\uC2B5\uB2C8\uB2E4.
+textDatasetInsertion.MESSAGE=\uC120\uD0DD\uD55C \uB370\uC774\uD130 \uC9D1\uD569\uC5D0\uC11C \uD14D\uC2A4\uD2B8\uB97C \uC0BD\uC785\uD560 \uC218 \uC5C6\uC2B5\uB2C8\uB2E4. \uB370\uC774\uD130 \uC9D1\uD569\uC5D0 \uC798\uBABB\uB41C \uBB38\uC790\uAC00 \uC788\uC2B5\uB2C8\uB2E4. \n"{0}" 
+messageTextAreaInsertion.textLengthLimitation.MESSAGE=\uD3B8\uC9C0 \uBC14\uB514 \uD06C\uAE30\uAC00 \uC81C\uD55C\uB418\uC5B4 \uC788\uC2B5\uB2C8\uB2E4. \uD074\uB9BD\uBCF4\uB4DC \uAC1C\uCCB4\uC5D0\uC11C {0}\uC790\uB9CC \uBCF5\uC0AC\uD569\uB2C8\uB2E4.
+messageTextAreaInsertion.TITLE=\uBC14\uB514 \uD06C\uAE30 \uCD08\uACFC
+
+# Entries for warning message displayed when the subject field is too large
+# -------------------------------------------------------------------------
+subjectFieldSizeExceeded.MESSAGE=\uD3B8\uC9C0 \uC81C\uBAA9\uC758 \uCD5C\uB300 \uD06C\uAE30\uC5D0 \uB3C4\uB2EC\uD588\uC2B5\uB2C8\uB2E4.
+subjectFieldSizeExceeded.TITLE=\uC81C\uBAA9 \uD06C\uAE30 \uCD08\uACFC

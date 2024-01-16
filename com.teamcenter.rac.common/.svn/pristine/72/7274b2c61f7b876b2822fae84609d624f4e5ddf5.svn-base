@@ -1,0 +1,405 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.teamcenter.rac.common" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.teamcenter.rac.common" id="filesSelector" name="filesSelector"/>
+      </appinfo>
+      <documentation>
+         Purpose of this extension point is to allow customer to define custom implementation for file selection dialog displayed during “Create dataset” and “Import files to existing dataset” use cases and perform any additional validations on files being imported
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <choice>
+            <element ref="client" minOccurs="1" maxOccurs="unbounded"/>
+         </choice>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  com.teamcenter.rac.common.filesSelector
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  An optional identifier of the extension instance
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  An optional name of the extension instance
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="client">
+      <annotation>
+         <documentation>
+            This extension is used to add custom file selection functionality in &apos;Create new dataset&apos; and &apos;Import file to existing dataset&apos; use cases
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  In this attribute customer must specify it&apos;s own class which provides file selection implementation. This class must implement IFilesSelector interface.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java" basedOn="com.teamcenter.rac.commands.newdataset.IFilesSelector"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+         <attribute name="priority" type="string" use="required">
+            <annotation>
+               <documentation>
+                  This attribute should be a valid integer value indicating priority of extension. Higher the integer value implies higher the priority of extension. In case any invalid value is specified it will be ignored and priority of 0 will be assumed for that extension implementation. 
+&lt;br&gt;
+This attribute will be relevant in case multiple implementations for ‘filesSelector’ extension point are available. In that case this attribute will be used to determine and use extension with highest priority.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         This extension point was introduced in Tc2007.1.8
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         For implementing filesSelector extension point customer will need to write code and provide implementation for IFilesSelector interface. 
+&lt;br&gt;
+Using filesSelector extension point one can implement additional client side validation on file being imported to dataset
+&lt;br&gt;
+For example
+&lt;br&gt;
+&lt;ul&gt;
+&lt;li&gt;
+Let’s assume customer wants to put validation if file being imported is of length 0 bytes or if file object selected by user is a directory, in that case customer wants validation code to pop-up appropriate error message to end-user and discontinue file import operation  
+&lt;/li&gt;
+&lt;/ul&gt;
+Following example code demonstrates how these validation can be implemented using filesSelector extension point
+&lt;br&gt;
+&lt;br&gt;
+package multifile_selection;&lt;br&gt;&lt;br&gt;
+
+import com.teamcenter.rac.commands.namedreferences.ImportFilesFileChooser;&lt;br&gt;
+import com.teamcenter.rac.commands.newdataset.IFilesSelector;&lt;br&gt;
+import com.teamcenter.rac.commands.newdataset.TCFileDescriptor;&lt;br&gt;
+import com.teamcenter.rac.kernel.TCComponentDatasetDefinition;&lt;br&gt;
+import com.teamcenter.rac.kernel.TCComponentDatasetDefinition.TCInvalidFileTypeException;&lt;br&gt;
+import com.teamcenter.rac.kernel.TCComponentDatasetDefinition.TCInvalidRefTypeException;&lt;br&gt;
+import com.teamcenter.rac.kernel.TCException;&lt;br&gt;
+import java.io.File;&lt;br&gt;
+import javax.swing.JFileChooser;&lt;br&gt;
+import java.util.List;&lt;br&gt;
+import java.util.ArrayList;&lt;br&gt;
+import javax.swing.JOptionPane;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+
+
+public class SampleFileSelector implements IFilesSelector {&lt;br&gt;&lt;br&gt;
+
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;
+ private List&amp;lt;TCFileDescriptor&amp;gt; listOfFileDesc = null;&lt;br&gt;&lt;br&gt;
+
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;
+ public void initialize(TCComponentDatasetDefinition dsDef)&lt;br&gt;
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;
+ {&lt;br&gt;
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+  ImportFilesFileChooser fc= new ImportFilesFileChooser ( dsDef, null );&lt;br&gt;
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+  int ret = fc.showDialog ( null, null );&lt;br&gt;
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+     if ( ret == JFileChooser.APPROVE_OPTION )&lt;br&gt;
+     &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        {&lt;br&gt;
+         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      File selectedFile= fc.getSelectedFile();&lt;br&gt;
+      &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      String fileType = fc.getType();&lt;br&gt;
+      &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      String fileRefType = fc.getReferenceType();&lt;br&gt;
+      &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+      listOfFileDesc = new ArrayList&amp;lt;TCFileDescriptor&amp;gt;(1);&lt;br&gt;
+
+
+
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       try&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       {&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       TCFileDescriptor currDesc=null;&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;       
+       //Any additional validations which customer wants to implement&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       isSelectedFileValid(selectedFile);&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       //Create TCFilDescriptor object&lt;br&gt;
+              &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       currDesc = new TCFileDescriptor(dsDef,selectedFile,fileType,fileRefType);&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                    listOfFileDesc.add(currDesc);&lt;br&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       }&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       catch (TCInvalidRefTypeException ex)&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       {&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        //Do appropriate exception handling&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       }&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       catch (TCInvalidFileTypeException ex)&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       {&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                    //Do appropriate exception handling&lt;br&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       }&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       catch(TCException ex)&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       {&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                    //Do appropriate exception handling&lt;br&gt;
+                &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       }&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       catch(Exception ex)&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+       {&lt;br&gt;
+       &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+		   JOptionPane.showMessageDialog(null, ex);&lt;br&gt;
+		   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+		   listOfFileDesc=null;&lt;br&gt;
+		   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+		   return;&lt;br&gt;
+	   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;  
+       }&lt;br&gt;       
+     &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        }&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+ }&lt;br&gt;
+
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;
+ public List&amp;lt;TCFileDescriptor&amp;gt; getSelectedFiles()&lt;br&gt;
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;
+ {&lt;br&gt;
+  &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+  return listOfFileDesc;&lt;br&gt;
+ &amp;nbsp;&amp;nbsp;&amp;nbsp;
+ }&lt;br&gt;
+
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    public String getFormattedText()&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    {&lt;br&gt;
+     &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        if ((listOfFileDesc != null) &amp;&amp; (listOfFileDesc.size()&gt;0))&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        {&lt;br&gt;
+         &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+            String displayText=listOfFileDesc.get(0).getFile().getPath();&lt;br&gt;
+            &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+            for (int i=1;i&amp;lt;listOfFileDesc.size();++i)&lt;br&gt;
+            &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+            {&lt;br&gt;
+             &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+                displayText = displayText + &quot;, &quot; + listOfFileDesc.get(i).getFile().getPath();&lt;br&gt;
+            &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+            }&lt;br&gt;
+            &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+            return displayText;&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        }&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+        return null;&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    }&lt;br&gt;&lt;br&gt;
+    
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    //Additional user-validation methods, We have chosen some simple validation examples&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    //Customer can similar validation in preferred fashion&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    public String isFileADirectory(File fileObj)&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    {&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	if ( fileObj.isDirectory())&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	{&lt;br&gt;
+    	    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    		return &quot;You have selected directory (&quot; + fileObj.getName() + &quot;), please select a valid file&quot;;&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;	
+    	}&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	return null;&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;	
+    }&lt;br&gt;&lt;br&gt;
+    
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    public String isFileZeroLength(File fileObj)&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    {&lt;br&gt;
+        &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	if ( fileObj.length()==0)&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	{&lt;br&gt;
+    	    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    		return &quot;You have selected file (&quot; + fileObj.getName() + &quot; with length 0, please select a valid file&quot;;&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;	    			
+    	}&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	return null;&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;	
+    }&lt;br&gt;&lt;br&gt;
+    
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    public boolean isSelectedFileValid(File fileObj) throws Exception&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;
+    {&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	String validationMessage=null;&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	validationMessage = isFileADirectory(fileObj);&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	if (validationMessage!=null)&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	{&lt;br&gt;
+    	    &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    		throw new Exception(validationMessage);&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;	
+    	}&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	validationMessage = isFileZeroLength(fileObj);&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	if (validationMessage!=null)&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	{&lt;br&gt;
+    		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    		throw new Exception(validationMessage);&lt;br&gt;
+		&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	}&lt;br&gt;
+    	&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;
+    	return true;&lt;br&gt;
+    &amp;nbsp;&amp;nbsp;&amp;nbsp;	
+    }&lt;br&gt;
+    
+}&lt;br&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         To implement this extension point customer needs to implement IFilesSelector java interface and supply appropriate implementation
+&lt;br&gt;
+Following is short documentation about expected implementation for methods defined in IFilesSelector interface. Detailed documentation for IFilesSelector interface is available in Teamcenter javadocs
+&lt;br&gt;
+&lt;ul&gt;
+
+&lt;li&gt;
+public void initialize(TCComponentDatasetDefinition dsDef)
+&lt;br&gt;
+- Custom code must implement this method to interactively select files from user by popping up appropriate dialog
+&lt;br&gt;
+We recommend customer to use ImportFilesFileChooser dialog defined in
+com.teamcenter.rac.commands.namedreferences package. It is standard Teamcenter dialog
+which is used in Teamcenter Out of the box code to get information about selected files from user.
+Apart from selecting files it has additional widgets which allow user to select file type and reference type too.
+&lt;br&gt;&lt;br&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+public List&amp;lt;TCFileDescriptor&amp;gt; getSelectedFiles()
+&lt;br&gt;
+- Custom code must implement this method to return information about files selected by user.
+This method must not attempt any UI interaction. i.e. it must be strictly non interactive
+&lt;br&gt;
+For files selected by user Custom code is expected to encapsulate
+File object, file type and file reference type information into
+TCFileDescriptor objects and return them to caller.
+&lt;br&gt;
+TCFileDescriptor constructor provides validations to check if
+file type and reference type combination is valid for given dataset
+definition type. Please check the exception which TCFileDescriptor
+constructor may throw. Custom code is expected to handle these
+exceptions
+&lt;br&gt;
+This API should return List&amp;lt;TCFileDescriptor&amp;gt; i.e. List of TCFileDescriptor for selected files.
+If user does not select any files this method must return null
+&lt;br&gt;&lt;br&gt;
+&lt;/li&gt;
+
+&lt;li&gt;
+public String getFormattedText()
+&lt;br&gt;
+- Custom code must implement this method to return path of selected file. This method should be
+strictly non-interactive, i.e. it should not attempt any UI interaction with user
+&lt;br&gt;
+In case user has selected multiple files custom code is expected to return concatenated representation
+for paths of selected files. This information returned by custom code is used only for display purpose.
+In case user has not selected any files this method must return null
+&lt;br&gt;
+This API should return full path of selected file (or concatenated string as the case may be )
+&lt;br&gt;&lt;br&gt;
+&lt;/li&gt;
+
+&lt;/ul&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         Out of the box Teamcenter code does not implement this extension point. In Examples section of this extension point documentation one sample implementation has been provided.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         &lt;br&gt;// @&lt;COPYRIGHT&gt;@
+&lt;br&gt;// ==================================================
+&lt;br&gt;// Copyright 2009.
+&lt;br&gt;// Siemens Product Lifecycle Management Software Inc.
+&lt;br&gt;// All Rights Reserved.
+&lt;br&gt;// ==================================================
+&lt;br&gt;// @&lt;COPYRIGHT&gt;@
+      </documentation>
+   </annotation>
+
+</schema>

@@ -1,0 +1,56 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the deepcopy package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#18-Jul-2001  x_gopala                Initial Creation
+#12-Oct-2001  wangp                   revise project (for x_gopala)
+#27-Jan-2006  narayasu                Fix for PR 5371739
+#$HISTORY$
+#=================================================================================================*/
+
+# Advanced copy options tab
+# --------------------------------------------------
+advanced.TITLE=Zaawansowane
+fromTree=\u0179r\u00F3d\u0142o:
+sourceGeneric=\u0179r\u00F3d\u0142owa zmiana pozycji og\u00F3lnej:
+sourceVariant=\u0179r\u00F3d\u0142owa zmiana wariantu pozycji:
+toTree=Po\u0142o\u017Cenie docelowe:
+useCopyPref= W\u0142\u0105cz niestandardowe opcje kopiowania
+copyPreferences=Preferencje kopiowania:
+userPref=U\u017Cytkownik
+sitePref=Lokalizacja
+
+loadingTree.MSG=Wczytywanie drzewa...
+
+error.TITLE=Zdublowany wpis
+errormsg=Sprawdzanie zdublowanych/nieprawid\u0142owych warto\u015Bci preferencji w pliku preferencji lokalizacji
+
+# Popupmenu
+# --------------------------------------------------
+copy_as_object.POPUP_TITLE=Opcje kopiowania
+
+copy_as_reference.NAME=Kopiuj jako odwo\u0142anie
+copy_as_NoCopyOrReferenceNewCopy.NAME=Nie kopiuj lub powi\u0105\u017C z najnowszym
+copy_as_object.NAME=Kopiuj jako obiekt
+no_copy.NAME=Nie kopiuj
+relate_to_latest.NAME=Powi\u0105\u017C z najnowszym
+revise_and_relate_to_latest.NAME= Utw\u00F3rz rewizj\u0119 i powi\u0105\u017C z najnowszym
+copy_as_object.TIP=Ustawiono opcj\u0119 Kopiuj jako obiekt
+copy_as_reference.TIP=Ustawiono opcj\u0119 Kopiuj jako odwo\u0142anie
+copy_as_NoCopyOrReferenceNewCopy.TIP=Nie kopiuj lub powi\u0105\u017C z najnowszym zestawem opcji
+no_copy.TIP=Ustawiono opcj\u0119 Nie kopiuj.
+relate_to_latest.TIP=Powi\u0105\u017C z najnowszym zestawem opcji
+revise_and_relate_to_latest.TIP= Utw\u00F3rz rewizj\u0119 i powi\u0105\u017C z najnowszym zestawem opcji
+
+download=Tworzenie drzew dok\u0142adnego kopiowania...

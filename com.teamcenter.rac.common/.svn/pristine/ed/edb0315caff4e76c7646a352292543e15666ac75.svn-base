@@ -1,0 +1,584 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+ReplaceStdNote=Sostituisci revisione ParametricRequirement
+
+aboutText=Teamcenter RAC \u00E8 la piattaforma PLM. 
+UpdateActionSet.label=Aggiornamenti del software
+UpdateActionSet.menu.label=&Aggiornamenti del software
+UpdateActionSet.updates.label=Trova e installa...
+UpdateActionSet.updates.MNEMONIC=F
+UpdateActionSet.configManager.label=Gestisci configurazione
+UpdateActionSet.configManager.MNEMONIC=M
+
+HelpActionSet.label=Guida
+Help.menu.label=Guida
+
+Help.helpAbout.label=Informazioni su
+Help.helpAbout.MNEMONIC=A
+
+Help.helpApplication.label=Applicazione corrente
+Help.helpFramework.label=Libreria di guide
+Close.NAME=Chiudi
+Close.MNEMONIC=C
+
+tools.Signal_Manager.NAME=Gestore di segnali
+Replace_Part_in_Product.TITLE=Sostituisci parte nel prodotto
+selectBelowAll.TITLE=Tutte le linee
+selectBelowLeaf.TITLE=Linee inferiori
+ShowHide_Data_Panel.TITLE=Mostra/Nascondi pannello dati
+Show_Data_Panel.TITLE=Mostra il pannello dati
+Import_Feature_Data.TITLE=Importa dati funzionalit\u00E0...
+Unload_All.TITLE=Scarica tutto
+Graphical_BOM_Compare.TITLE=Graphical BOM Compare
+Configuration_Context.TITLE=Contesto di configurazione...
+Toggle_In_Context_Mode.TITLE=Attiva/Disattiva modalit\u00E0 in contesto
+Mode.NAME=Modalit\u00E0
+Actions.NAME=Azioni
+Calendar.NAME=Calendario
+Incontext_Mode.NAME=Modalit\u00E0 in contesto
+Move.NAME=Sposta
+Select_Below.NAME=Seleziona sotto
+Template.NAME=Template
+new.NAME=Nuovo
+Connection.NAME=Connessione
+Open_Session.NAME=Apri sessione
+Save_As.NAME=Salva con nome...
+Search.NAME=Ricerca
+Go.NAME=Vai
+Graphics.NAME=Grafica
+Program.NAME=Programma
+view.NAME=visualizza
+Zoom_Factor.NAME=Fattore zoom
+CriticalPath.NAME=Percorso critico
+EVM.NAME=EVM
+Team.NAME=Team
+Accountability_Check.NAME=Verifica di rispondenza
+All_History_Lines.NAME=Tutte le righe della cronistoria
+Arrangements.NAME=Disposizioni
+Assembly_Tree.NAME=Struttura dell'assieme
+Batch_Mesh.NAME=Mesh in batch
+CheckInOut.NAME=Checkin/Checkout
+Connection_Manager.NAME=Gestore di connessioni
+Export.NAME=Esporta
+Id_Display_Rule.NAME=Regola di visualizzazione ID
+Implemented_By.NAME=Implementato da
+Import.NAME=Importa
+Modify_Allocation.NAME=Modifica allocazione
+MultiSite_Collaboration.NAME=Collaborazione multisito
+MultiSite_Collaboration.MNEMONIC=M
+Item_Id_Registry.NAME=Registro ID item
+Publish.NAME=Pubblica
+Send.NAME=Invia
+Split_Occurrence.TITLE=Dividi occorrenza...
+Insert_Level.TITLE=Inserisci livello...
+End_Item.TITLE=Stato dell'assieme item finale...
+Synchronize.NAME=Sincronizza
+Unpublish.NAME=Annulla pubblicazione
+Open_In.NAME=Apri in
+PartDesign.NAME=Progetto parte
+Process_Assignment_List.NAME=Elenco di assegnazioni di processi
+Realized_By.NAME=Realizzato da
+Reports.NAME=Report
+Revision_Rule.NAME=Regola di revisione
+Roll_up_Report.NAME=Report cumulativo
+Send_Additional_Data_To.NAME=Invia dati aggiuntivi a...
+Send_Data_To.NAME=Invia dati a...
+Show_Related_Analyses.NAME=Mostra analisi correlate
+Associate_Signal_To.NAME=Associa segnale a
+Remove_Signal_Association.NAME=Elimina associazione segnale 
+Site_CheckInOut.NAME=Checkin/Checkout sito
+Snapshot.NAME=Istantanea
+Structure_Alignment.NAME=Allineamento struttura
+Completeness_Check.NAME=Verifica di completezza
+Trace_Report.NAME=Report di tracciamento
+Unattached_Lines.NAME=Linee non allegate
+Validation.NAME=Convalida
+Variants.NAME=Varianti
+Audit.NAME=Audit
+Audit.MNEMONIC=A
+AuditFile.TITLE=File
+AttachNotes=Allega requisiti/note
+StandardNotes.TITLE=Requisiti parametrici
+CustomNotes.TITLE=Nota personalizzata
+AuditManager.TITLE=Visualizzazione dei log di audit
+Effectivity.NAME=Effettivit\u00E0
+Expand_options.NAME=Espandi opzioni
+PackUnpack.NAME=Compatta/Scompatta
+Show_Unconfigured_Data.NAME=Mostra dati non configurati
+Signal_Explorer.NAME=Esplora segnale
+Show_Signals.NAME=Mostra i segnali
+Toggle_In_Allocation_Context_Mode.TITLE=Abilita/Disabilita modalit\u00E0 contesto allocazione
+Show_Allocation_Navigator_Panel.TITLE=Mostra pannello del navigatore allocazione
+Show_Allocations_IC_Information_Panel.TITLE=Mostra pannello di informazioni IC allocazioni
+Toggle_In_Allocation_Drag_N_Drop_Mode.TITLE=Abilita/Disabilita modalit\u00E0 Trascina e Rilascia
+Show_Only_Selected_Allocation_Types.TITLE=Mostra solo tipi di allocazioni selezionate
+Incremental_Change.NAME=Modifica incrementale
+icDisplay_Icons.NAME=Visualizza icone
+Html_Text.NAME=HTML/Testo
+sap.NAME=Visualizza dati SAP
+RelatedSubstitutes.NAME=Elementi sostitutivi correlati
+
+newMenu.NAME=Nuovo
+home.title=Home
+inbox.title=Il mio elenco di lavori
+myWebLinks.title=I miei collegamenti
+mySavedSearches.title=Ricerche salvate
+myViewMarkup.title=La mia vista/Il mio markup
+quickLinks.title=Collegamenti rapidi
+openItems.title=Apri item
+history.title=Cronistoria
+favorites.title=Preferiti
+iWantTo.title=Voglio...
+search.title=Ricerca
+searchToggle.title=Ricerca
+customize.title=Personalizza
+organize.title=Organizza
+defaultTaskPane.title=Pannello di attivit\u00E0 predefinito
+closeAll.title=Chiudi tutto
+clear.title=Cancella
+
+foldersToggle.TITLE=Cartelle
+Open.TITLE=Apri
+Open_With.TITLE=Apri con...
+Soft_Abort.TITLE=Interruzione Soft
+Send_To.TITLE=Invia a
+Item.TITLE=Item...
+POMObject.TITLE=Oggetto...
+TableRow.TITLE=Riga tabella...
+NameValue.TITLE=Valore nome...
+Folder.TITLE=Cartella...
+BO.TITLE=Altro...
+Part.TITLE=Parte...
+Form.TITLE=Form...
+Item_Element.TITLE=Elemento item...
+Dataset.TITLE=Set di dati...
+URL.TITLE=URL...
+Workflow_Process.TITLE=Processo di workflow...
+Signal.TITLE=Segnale...
+Design.TITLE=Progetto...
+Revise.TITLE=Revisiona...
+Revisable.TITLE=Revisionabile...
+NonRevisable.TITLE=Non revisionabile...
+Interface_Definition.TITLE=Definizione di interfaccia...
+Process_Variable.TITLE=Variabile di processo...
+Objects_.TITLE=Oggetti...
+To_PLMXML_.TITLE=A PLMXML...
+To_Default_ODS_.TITLE=All'ODS predefinito...
+Pack_All.TITLE=Compatta tutto
+Work_Context.TITLE=Contesto di lavoro...
+Compare_2D_Images.TITLE=Confronta immagini 2D
+Show_Unconfigured_Variants.TITLE=Mostra varianti non configurate
+Show_Unconfigured_Assignments.TITLE=Mostra occorrenze assegnate non configurate
+Enable_Filtering_Unconfigured_due_to_Classic_Variants.TITLE=Attiva la configurazione variante classica da caricare
+User_Setting.TITLE=Impostazioni utente...
+
+firstBrowseAction.TITLE=Prima azione di navigazione
+Latest.TITLE=Pi\u00F9 recenti
+Summary_Reports.TITLE=Report riepilogativi
+Report_Builder_Reports.TITLE=Report di Report Builder
+Select_Unused.TITLE=Seleziona non utilizzati
+Toggle_Precise_Imprecise.TITLE=Preciso/Impreciso
+Revision_Effectivity.TITLE=Effettivit\u00E0 revisione...
+previousBrowseAction.TITLE=Azione di navigazione precedente
+Assign_Work_Context.TITLE=Assegna contesto di lavoro...
+Paste.TITLE=Incolla speciale...
+Change_Ownership.TITLE=Modifica proprietario...
+Assign.TITLE=Assegna...
+Configure.TITLE=Configura...
+Configure_Variants.TITLE=Configura varianti...
+Address_List.TITLE=Rubrica indirizzi...
+Verify_Part_Structure.TITLE=Controlla struttura parte
+From_Briefcase.TITLE=Da Briefcase...
+Bulk_Load.TITLE=Caricamento in blocco...
+From_All_ODS_Sites.TITLE=Da tutti i siti ODS
+Stand_In.TITLE=Attendi
+Occurrence_Effectivity.TITLE=Effettivit\u00E0 occorrenza...
+ReplaceInContext.TITLE=Sostituisci l'assieme in contesto...
+Select_Occurrence_Type_Filters.TITLE=Seleziona filtri del tipo di occorrenza...
+Up.TITLE=Su
+Audit.TITLE=Audit
+Generate_Portfolio_.TITLE=Genera portfolio...
+nextBrowseAction.TITLE=Prossima azione di navigazione
+Variant_Rule.TITLE=Regola variante
+Only_Configure_Root.TITLE=Configura solo root
+Save_Configuration.TITLE=Salva configurazione
+Count_Modules.TITLE=Conteggio moduli...
+Remote_Checkout_.TITLE=Checkout remoto...
+Check_In.TITLE=Checkin...
+Access.TITLE=Accesso...
+To_ODS_Publication_List_.TITLE=All'elenco Pubblicazione ODS...
+Schedule.TITLE=Schedulazione
+From_Specific_ODS_Site_s__.TITLE=Dai siti ODS specifici...
+SearchVI.TITLE=Cerca...
+Notes.TITLE=Note...
+To_Remote_Site_Via_Global_Services.TITLE=Importazione remota usando multi-sito globale...
+Component.TITLE=Componente...
+Remove.TITLE=Rimuovi
+Register_Item_Id.TITLE=Registra ID item
+archiveObjects.TITLE=Archivia
+Modify_Current.TITLE=Modifica corrente...
+Remove_target_from_PublishLink.TITLE=Rimuovi destinazione da PublishLink
+Top_Level.TITLE=Primo livello
+Make_Immune_.TITLE=Rendi immune...
+Add_targets_to_PublishLink.TITLE=Aggiungi destinazione a PublishLink
+Set_In_Context.TITLE=Imposta nel contesto
+Remove_In_Context_Override.TITLE=Rimuovi ridefinizione in contesto
+BOMView_Revision.TITLE=Revisione vista distinta base...
+Cancel_Check_Out.TITLE=Annulla checkout...
+Print.TITLE=Stampa
+PrintAs.TITLE=Stampa...
+Save.TITLE=Salva
+Save.MNEMONIC=S
+SaveAs.TITLE=Salva con nome
+Save.TIP=Salva i contenuti correnti
+Exit.TITLE=Esci 
+Remote_Export_.TITLE=Esportazione remota...
+Clear_Display.TITLE=Annulla schermata
+Paste_Substitute.TITLE=Incolla elemento sostitutivo
+Envelope.TITLE=Busta...
+Show_Part_Solutions.TITLE=Visualizza soluzioni parte
+Create_Edit.TITLE=Crea/Modifica...
+Bottom.TITLE=Ultimo livello
+Publish_Data.TITLE=Pubblica dati
+Report_Designer_Reports.TITLE=Report di Report Designer
+Notification_List.TITLE=Elenco di notifiche...
+Objects_to_Excel.TITLE=Oggetti in Excel
+Objects_to_CSV.TITLE=Oggetti a file CSV
+Objects_to_Word.TITLE=Oggetti in Word
+Purge.TITLE=Elimina
+Prune.TITLE=Riduci
+Expand_Below.TITLE=Espandi verso il basso
+Expand_To_Level.TITLE=Espandi...
+#x_reddyb SDLC-10270
+#Expand to Type
+Expand_To_Type.TITLE=Espandi a tipo
+RevertAction.NAME=Annulla modifiche
+Resume.TITLE=Riprendi
+Down_a_Level.TITLE=Gi\u00F9 di un livello
+Process___Change_Selector.TITLE=Processa e modifica selettore
+Check_Out_History.TITLE=Cronistoria checkout...
+Disconnect.TITLE=Disconnessione...
+View_With.TITLE=Visualizza con...
+ID.TITLE=ID...
+Select_Completely_Used.TITLE=Seleziona completamente utilizzati
+Perform.TITLE=Esegui
+Show_Hide_In_Context_Bomline.TITLE=Mostra/Nascondi linea distinta base in contesto
+Select_Over_used.TITLE=Seleziona sovrautilizzati
+Promote.TITLE=Promuovi
+Abort.TITLE=Interrompi
+Find_lines_with_same_logical_identity.TITLE=Trova linee con lo stesso ID logico
+Show_Unconfigured_Changes.TITLE=Mostra modifiche non configurate
+Refresh_Window.TITLE=Aggiorna finestra
+Run_Validations.TITLE=Esegui convalida...
+Replace_User.TITLE=Sostituisci utente
+Open_PublishLink_source_structure.TITLE=Apri struttura sorgente PublishLink
+Find_Clipboard_Items.TITLE=Trova item nella clipboard
+Current_Users.TITLE=Utenti correnti...
+Find_PublishLink_targets.TITLE=Trova destinazioni PublishLink
+To_Default_ODS.TITLE=All'ODS predefinito
+Top.TITLE=Primo livello
+Organization.TITLE=Organizzazione...
+Down.TITLE=Gi\u00F9
+Change.TITLE=Modifica classica...
+From_Default_ODS_.TITLE=Dall'ODS predefinito...
+Unregister_Item_Id.TITLE=Annulla registrazione ID item
+restoreObjects.TITLE=Ripristina
+Effectivity_Mapping.TITLE=Mapping effettivit\u00E0...
+Remote.TITLE=Remoto...
+Unpack.TITLE=Scompatta
+Unpack_All.TITLE=Scompatta tutto
+Create_PublishLink.TITLE=Crea PublishLink
+Remove_Immunity_.TITLE=Rimuovi immunit\u00E0...
+Structure_Context.TITLE=Contesto di struttura...
+View_Set_Current.TITLE=Visualizza/Imposta corrente...
+Replace_From_Clipboard.TITLE=Sostituisci
+Replace.TITLE=Sostituisci...
+Rename.TITLE=Rinomina
+Copy_Workflow_Process.TITLE=Copia processo di workflow
+Start.TITLE=Avvia
+Assembly.TITLE=Assieme...
+Set_Date_Unit_End_Item.TITLE=Imposta data/unit\u00E0/item finale...
+View_Results.TITLE=Visualizza risultati...
+Baseline.TITLE=Baseline...
+Copy_Item_of_Line.TITLE=Copia item di linea
+Find_PublishLink_source.TITLE=Trova sorgente PublishLink
+Occurrence_Group.TITLE=Gruppo di occorrenze...
+External.TITLE=Esterno...
+Connect.TITLE=Connessione...
+Show_GCS_Connection_Points.TITLE=Visualizza punti di connessione GCS
+Guided_Component_Search.TITLE=Ricerca guidata del componente...
+Guided_Component_Search.TIP=Aggiungi componente classificato usando la ricerca guidata...
+Collapse_Below.TITLE=Comprimi a partire da
+Variant_Condition.TITLE=Condizione variante...
+Up_a_Level.TITLE=Su di un livello
+Objects.TITLE=Oggetti...
+From_PLMXML.TITLE=Da PLM XML
+Save_Bookmark.TITLE=Salva segnalibro...
+Show_Unconfigured_By_Occurrence_Effectivity.TITLE=Visualizza effettivit\u00E0 per occorrenza non configurata 
+List_Substitutes.TITLE=Elenco elementi sostitutivi
+Manage_Global_Alternates.TITLE=Gestisci alternative globali 
+Check_Out.TITLE=Checkout...
+Save_and_Keep_Check_Out.TITLE=Salva e mantieni in checkout
+Implicit_Check_Out_Save_Changes.TITLE=Salva modifiche
+Apply_Occurrence_Type_Filter.TITLE=Applica filtro del tipo di occorrenza
+CAE_Item.TITLE=Item CAE...
+Set_Override_folder.TITLE=Imposta cartella di ridefinizione...
+Remove_Design_from_Product.TITLE=Rimuovi progetto dal prodotto
+Item_Revision.TITLE=Item (revision)...
+Delete_PublishLink_for_source.TITLE=Elimina PublishLink per sorgente
+Named_References.TITLE=Riferimenti denominati...
+Task_Properties.TITLE=Propriet\u00E0 dell'attivit\u00E0...
+Open_Live_Excel.TITLE=Apri Live Excel
+Suspend.TITLE=Sospendi
+Pack.TITLE=Compatta
+Store_Occurrence_Paths.TITLE=Archivia percorsi di occorrenza
+Store_Occurrence_Paths_With_ID.TITLE=Memorizza percorsi di occorrenza con ID
+Options.TITLE=Opzioni...
+View___Set_Current.TITLE=Visualizza/Imposta corrente
+latestBrowseAction.TITLE=Azione di navigazione pi\u00F9 recente
+Save_as_CC.TITLE=Salva come nuovo contesto condiviso...
+Transfer_Check_Out.TITLE=Trasferisci checkout...
+Signoff_Report.TITLE=Report dei signoff
+Import_Remote.TITLE=Importa oggetti remoti...
+Update_Variant_Item.TITLE=Aggiorna item variante...
+From_Default_ODS.TITLE=Dall'ODS predefinito
+Add_Remove_View_Tabs_.TITLE=Mostra/Nascondi gruppi di occorrenze...
+Replace_Design_in_Product.TITLE=Sostituisci progetto nel prodotto
+Object.TITLE=Oggetto
+Assign_Resource.TITLE=Assegna risorse
+Expand.TITLE=Espandi
+View.TITLE=Visualizza
+Custom_Reports.TITLE=Report personalizzati
+View_Rollup_Reports.TITLE=Vista report rollup
+Show_Collaboration_Panel.TITLE=Mostra/Nascondi pannello condiviso
+Collaboration_Context.TITLE=Contesto condiviso...
+Add.TITLE=Aggiungi...
+Show_Lower_Structure_Panel.TITLE=Mostra/Nascondi secondo pannello di struttura
+To_Briefcase.TITLE=A Briefcase...
+Bulk_Extract.TITLE=Estrazione in blocco...
+To_Pdx.TITLE=Al PDX...
+Unlink_Variant_Item.TITLE=Annulla il collegamento dell'item variante...
+Add_Design_to_Product.TITLE=Aggiungi progetto al prodotto
+Complete.TITLE=Completa
+Item_From_Template.TITLE=Item da template...
+
+makePrimaryRepresentation.TITLE=Rendi rappresentazione primaria
+makePrimaryRepresentation.TIP=Imposta la revisione progetto selezionata come rappresentazione primaria della revisione parte.
+makePrimaryRepresentation.MNEMONIC=d
+resetPrimary.TITLE=Reimposta la rappresentazione primaria...
+resetPrimaryRepresentation.TITLE=Reimposta rappresentazione primaria
+resetPrimaryRepresentation.TIP=Reimposta la rappresentazione primaria selezionata di una parte.
+resetPrimaryInvalidSelection=Selezionare uno degli item revision nelle rappresentazioni della parte
+
+multisiteReplicaSyncMenu.TITLE=Verifica lo stato di sinc. replica
+multisiteReplicaSyncMenu.TIP=Verifica oggetto Stato di sinc. replica
+multisiteReplicaSyncMenu.MNEMONIC=M
+
+#File->View/MarkUp
+viewMarkUpAction.MNEMONIC=R
+ViewMarkUp.TITLE=Vista/Markup
+viewMarkUpAction.TIP=Vista/Markup
+
+#File->Sign
+digitalSigningAction.MNEMONIC=D
+DigitalSigning.TITLE=Firma documento
+digitalSigning.TIP=Firma documento
+
+#File->Cancel Sign
+#cancelSigningAction.MNEMONIC=
+CancelSigning.TITLE=Annulla firma
+cancelSigning.TIP=Annulla firma
+
+# Edit->User Setting ...
+# ----------------------
+userSettingAction.NAME=Impostazioni utente...
+userSettingAction.TIP=Visualizza/Modifica le impostazioni correnti di autenticazione utente
+userSettingAction.MNEMONIC=U
+
+# Edit -> Option
+# ----------------------
+preferencesAction.NAME=Opzioni...
+preferencesAction.TIP=Opzioni
+preferencesAction.MNEMONIC=O
+
+cutAction.NAME=Taglia
+cutAction.TIP=Tagliare la selezione e inserirla nella clipboard
+cutAction.MNEMONIC=T
+
+traceReport.NAME=Report di tracciamento
+checkOutAction.NAME=Checkout...
+pasteAction.NAME=Incolla
+pasteAction.TIP=Incollare un riferimento nell'oggetto contenuto nella clipboard
+subscribeAction.NAME=Abbonamento...
+cancelCheckOutAction.NAME=Annulla checkout...
+copyAction.NAME=Copia
+copyAction.TIP=Copiare la selezione e inserirla nella clipboard
+copyAppendAction.NAME=Copia e aggiungi
+copyAppendAction.TITLE=Copia e aggiungi
+generateReportAction.NAME=Genera report
+noteDetailsAction.NAME=Dettagli nota
+findWhereAllocatedAction.NAME=Dove allocato
+findWhereAllocatedAction.TIP=Dove allocato
+setWorkContextAction.NAME=Imposta contesto di lavoro corrente...
+accessAction.NAME=Accesso...
+removeFromProjectAction.NAME=Rimuovi
+subscribeRefreshNotifyAction.NAME=Abbonamento a Avviso di aggiornamento...
+purgeAction.NAME=Elimina
+assignToLicenseAction.NAME=Allega
+addToFavoritesAction.NAME=Aggiungi ai Preferiti
+removeFromLicenseAction.NAME=Separa
+refreshAction.NAME=Aggiorna
+refreshAction.MNEMONIC=R
+editAction.NAME=Modifica
+addPartToProductAction.NAME=Aggiungi parte al prodotto
+deleteAction.NAME=Elimina
+deleteAction.TIP=Eliminare definitivamente l'oggetto selezionato
+transferCheckOutAction.NAME=Trasferisci checkout...
+variantDetailsAction.NAME=Dettagli condizione variante
+CCRemoveACTAlignmentAction.NAME=Mostra linee collegate
+checkOutHistoryAction.NAME=Cronistoria checkout...
+manageGlobalAlternatesAction.NAME=Gestisci alternative globali 
+checkInAction.NAME=Checkin...
+propertiesAction.NAME=Propriet\u00E0 della vista
+addNew.NAME=Aggiungi nuovo...
+
+
+cicoMenu.NAME=Checkin/Checkout
+cicoMenu.MNEMONIC=C
+
+project.NAME=Progetto
+project.TIP=Assegna oggetti o rimuovi dai progetti
+project.MNEMONIC=P
+
+license.NAME=Licenza
+license.TIP=Allega oggetti o separa dalle licenze
+license.MNEMONIC=L
+
+multisiteSyncPopMenu.NAME=Sincronizzazione distribuita
+multisiteSyncPopMenu.MNEMONIC=S
+
+Configure_Variants.NAME=Configura varianti...
+editProperties.NAME=Propriet\u00E0
+viewProperties.NAME=Propriet\u00E0 della vista
+
+# Tracelink commands
+# --------------------
+tracelinkMenu.NAME=Tracelink
+
+# open in xxx commands
+# --------------------
+openInNX.NAME=Apri in NX
+openInTCJTEditor.NAME= Apri nell'editor JT
+#openInPV.NAME=Open Bookmark In Lifecycle Visualization
+openInVMU.NAME=Apri in Lifecycle Visualization
+openInSEEC.NAME=Apri in Solid Edge
+
+# Incremental Change commands
+# --------------------
+incrementalChangeMenu.NAME=Modifica incrementale
+incrementalCreateIC.NAME=Crea contesto...
+incrementalAdd.NAME=Aggiungi
+incrementalRemove.NAME=Rimuovi
+incrementalCreate.NAME=Crea su oggetto
+incrementalDelete.NAME=Elimina su oggetto
+removeIncrementalChanges.NAME=Elimina modifiche...
+icBaseline.NAME=Baseline della modifica incrementale...
+icChange.NAME=Modifica allegato...
+icSplit.NAME=Dividi...
+icIntent.NAME=Intento
+icNoIcons.NAME=Nessuno
+icCurrentIcIcons.NAME=Contesto corrente
+icAllIcIcons.NAME=Tutti i contesti
+icHideRemoveIcons.NAME=Nascondi/Rimuovi icone 
+
+# Import Templates commands
+Templates.NAME=Template
+SpecTemplate.NAME=Template di specifiche
+ObjTemplate.NAME=Template di oggetto
+ExcelTemplate.NAME=Template di Excel
+Fnd0HTMLObjTmpl.NAME=Template HTML
+
+# AIE related common commands
+# ---------------------------
+importFromConnection.NAME=Dalla connessione...
+exportToConnection.NAME=Alla connessione...
+checkOutToConnection.NAME=Checkout in connessione...
+checkInFromConnection.NAME=Checkin da connessione...
+connectionsAction.NAME=Connessioni...
+
+ShowJTProperties.TITLE=Propriet\u00E0 JT...
+ShowSubComponents.TITLE=Mostra sottocomponenti
+HideSubComponents.TITLE=Nascondi sottocomponenti
+
+command.name.AdvancedSearch=Ricerca avanzata
+command.name.Null=Comando null
+command.name.Search=Ricerca
+command.label.General=Generali...
+command.label.Item=Item...
+command.label.ItemRevision=Item revision...
+command.label.DatasetName=Nome del set di dati
+command.label.KeywordSearch=Ricerca per parola chiave
+menu.mnemonic.HelpUpdate=S
+
+Check_Out_to_site.TITLE=Checkout nel sito...
+Check_In_from_site.TITLE=Checkin dal sito...
+#Update Thumbnail related
+updateThumbnail.NAME=Aggiorna miniatura...
+updateThumbnail.TIP=Aggiorna miniatura
+Cancel_Check_Out_to_site.TITLE=Annulla checkout nel sito...
+Local_Check_Out.TITLE=Checkout locale...
+Local_Check_In.TITLE=Checkin locale...
+Cancel_Local_Check_Out.TITLE=Annulla checkout locale...
+siteLocalCheckoutAction.MNEMONIC=R
+siteLocalCheckinAction.MNEMONIC=U
+siteLocalCancelCheckoutAction.MNEMONIC=X
+
+ApplyConfigContext.TITLE=Applica contesto di configurazione...
+# Fix In-Structure Associations command
+# -----------------------------
+fixAssociations.NAME=Ripara le associazioni nella struttura
+
+Markup.TITLE=Annotazione
+Markup_Mode.TITLE=Modalit\u00E0 di markup 
+Markup_View.TITLE=Mostra vista markup
+Markup_Delete.TITLE=Elimina markup (questo livello)
+Markup_Apply.TITLE=Applica markup (questo livello)
+Markup_Apply_All.TITLE=Applica markup (tutti i livelli)
+Markup_Evaluate.TITLE=Convalida accesso per applicare i markup (tutti i livelli)
+
+# Localization
+#-------------------------------------------------
+Export_Translations.TITLE=Esporta traduzioni
+Import_Translations.TITLE=Importa traduzioni
+Filter_Objects.TITLE=Filtro oggetti
+
+Export_Translations.TIP=Esporta traduzioni in un file XML
+Import_Translations.TIP=Importa traduzioni nel database
+Filter_Objects.TIP=Filtra oggetti in base ai criteri di localizzazione
+
+L10N.NAME=Localizzazione
+
+Change_Locale.TITLE=Modifica impostazioni locali
+
+TCInfoCenter.LABEL=InfoCenter
+OpenMailBox.LABEL=Cassetta postale
+
+bf_category_name=Trasferimento di propriet\u00E0 briefcase
+bfOwnershipCart.NAME=Briefcase
+bfTransfeOwnership.NAME=Contrassegna per il trasferimento della propriet\u00E0
+addPartToOwnershipCart.MNEMONIC=A
+bfOwnershipView.TITLE=Trasferimento di propriet\u00E0 briefcase
+
+# Digital signature related commands
+Apply_DigitalSign.TITLE=Simbolo PKI
+Void_DigitalSign.TITLE=Annullato
+
+
+# Choose Save As Service Mode
+SaveAsMode.NAME=Scegli modalit\u00E0 di salvataggio come servizio

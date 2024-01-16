@@ -1,0 +1,69 @@
+
+
+exporting=Exporting...
+
+exportObjectsNoSelection.TITLE = Export Objects ...
+noObjectsSelected = No object is selected.
+
+exportSpec.ERRORMSG = Invalid selection for export. Select either a single Specification or one or more Specification Elements.
+exportSpec.ERROR = Export Selection Error
+
+
+#Export To Word dialog
+exportToWord.TITLE=Export To Word
+exportToWord1.HEADER=Export To Word Application
+exportToWord2.HEADER=Select Specification and Object Template Override
+exportToWord.TOOLTIP=Select Specification and Object Template override for export to Word.
+outputGroup.TEXT=Output
+templateOverrideGroup.TEXT=Template Override
+staticButton.TEXT=Static Snapshot
+staticButton.TOOLTIP=Open in Read-only Mode
+copyToDatasetButton.TEXT=Copy Snapshot To Dataset
+liveButton.TEXT=Live Integration with Word
+liveButton.TOOLTIP=Open in Editing Mode
+specTemplateLabel.TEXT=Specification Template:
+overrideObjTempLabel.TEXT=Override Object Template for:
+overrideConfirm.TEXT=Current list of overrides. Do you want to continue?
+overrideConfirmTitle.TEXT=Confirm Override
+objTemplate.TEXT=Template
+businessObject.TEXT=Business Object
+availObjTemplateLabel.TEXT=Available Object Templates: 
+chooseAndSelectLabel.TEXT=(Choose template and add to table to override)
+selTemplateLabel.TEXT=Selected Object Template:
+selButton.TEXT=>>
+removeButton.TEXT=<<
+saveButton.TEXT=Save
+boColumnLabel.TEXT=Business Object
+exportUsingFN.TEXT=Use Find Number for Export
+temOverrideColumnLabel.TEXT=Object Template Override
+overrideObject.ERRORMSG=Please Select Business Object type for override
+overrideTemplate.ERRORMSG=Please Select Object template from list
+removeObject.ERRORMSG=No row selected to remove from the table
+liveOptionGroup.TEXT=Live options
+offlineModeOption.TEXT=Export for structure editing and work offline
+checkoutOption.TEXT=Check out objects before export
+markupButton.TEXT=Export for Markup
+
+#FMS error messages
+fmserror.ERROR = Error retrieving data
+fileDownloadError.ERRORMSG = File was not downloaded
+fileTicketError.ERRORMSG = No file ticket was generated
+fileUploadError.ERRORMSG = File could not be uploaded
+fmsErrorDetails.ERRORMSG = This is usually due to a configuration problem where the FMS master config has not been updated with the proper volume/access id (requires an FMS restart).\nCheck for FMS_HOME environment variable.
+
+# content compare strings
+exportToWord_ContentCompare.TITLE=Export To Word: For Compare Content
+
+copyURL = Copy URL
+copyURL.MNEMONIC =C
+copyURL.MESSAGE =Generated URL has been copied to system clipboard.
+copyURL.TITLE =Copied URL
+copyURL.TOOLTIP=Copy URL to system clipboard 
+overrideChanged.ERRORMSG =Copy URL will not honor a runtime object template override, unless template override is saved for {0} specification template.
+
+ErrorWhileRetrievingData.ERROR = Error while retrieving specification data
+ErrorWhileRetrievingData.TITLE = Error retrieving data
+
+BlockExportError=Export to Live Word was not done because either the object is not checked-out or is checked-out by another user. Please check-out the object before exporting.
+CheckOutError=Check-Out Error
+

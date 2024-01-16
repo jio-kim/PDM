@@ -1,0 +1,154 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.teamcenter.rac.common" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.teamcenter.rac.common" id="openTCObjectInApplication" name="Open tcobject"/>
+      </appinfo>
+      <documentation>
+         &lt;p&gt;
+This extension point allows the extenders to specify a application ID to open quick links such as Home and My worklist with in given application. 
+&lt;/p&gt;
+&lt;p&gt;
+User can speicify mulitple application ids for the given object type .
+&lt;/p&gt;
+&lt;p&gt;
+When the particular links get clicked in the application , it will read extension to check whether particular link open in current active perspective . If not define then it will open in defualt perspective that is navigation parespective
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+   <include schemaLocation="schema://org.eclipse.core.expressions/schema/expressionLanguage.exsd"/>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+      </annotation>
+      <complexType>
+         <sequence minOccurs="1" maxOccurs="unbounded">
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="tcObject">
+      <annotation>
+         <documentation>
+            Use this element if quick links are to be open in the current perspective.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="applicationId" type="string">
+            <annotation>
+               <documentation>
+                  specifies the application ID of the application
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="typeSupported" type="string">
+            <annotation>
+               <documentation>
+                  Object type of the Quick links.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         Teamcenter 8.0
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;br&gt;
+&lt;u&gt;Example 1:&lt;/u&gt;
+&lt;p&gt;
+To open objects of type ABC or ABCRevision in MyPerspective (perspective id is com.mycom.MyPerspective):
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&gt;
+   &lt;extension
+         point=&quot;com.teamcenter.rac.common.tcOpenConfiguration&quot;&gt;
+      &lt;openWithPerspective
+            id=&quot;com.mycom.MyPerspective&quot;&gt;
+         &lt;when&gt;
+            &lt;iterate
+                  ifEmpty=&quot;false&quot;&gt;
+               &lt;adapt
+                     type=&quot;com.teamcenter.rac.kernel.TCComponent&quot;&gt;
+                  &lt;or&gt;
+                     &lt;test
+                           property=&quot;com.teamcenter.rac.kernel.TCComponent.typeClass&quot;
+                           value=&quot;ABC,ABCRevision&quot;&gt;
+                     &lt;/test&gt;
+                  &lt;/or&gt;
+               &lt;/adapt&gt;
+            &lt;/iterate&gt;
+         &lt;/when&gt;
+      &lt;/openWithPerspective&gt;
+   &lt;/extension&gt;
+&lt;/pre&gt;
+&lt;/p&gt;
+&lt;br&gt;
+&lt;u&gt;Example 2:&lt;/u&gt;
+&lt;p&gt;
+In continuation to the above example, let us consider MyABC and MyABCRevision as sub business objects of ABC and ABCRevision. With the extension in Example 1, trying to open objects of type MyABC and MyABCRevision would open them in com.mycom.MyPerspective. 
+&lt;/p&gt;
+&lt;p&gt;
+To open objects of type MyABC and MyABCRevision with another perspective (say com.mycom.MyAnotherPerspective), below is the usage (notice the usage of &quot;priority&quot; attribute).
+&lt;/p&gt;
+&lt;p&gt;
+&lt;pre&gt;
+   &lt;extension  point=&quot;com.teamcenter.rac.common.openTCObjectInApplication&quot;&gt;
+     &lt;tcObject 
+         applicationId=&quot;com.teamcenter.rac.cme.mpp.MPPApplication&quot;
+         typeSupported=&quot;Fnd0HomeFolder&quot;&gt; 
+      &lt;/tcObject&gt;
+       &lt;tcObject 
+         applicationId=&quot;com.teamcenter.rac.cme.mpp.MPPApplication&quot;
+         typeSupported=&quot;User_Inbox&quot;&gt; 
+      &lt;/tcObject&gt;
+    &lt;/extension&gt; 
+&lt;/pre&gt;
+&lt;/p&gt;
+      </documentation>
+   </annotation>
+
+
+
+
+</schema>

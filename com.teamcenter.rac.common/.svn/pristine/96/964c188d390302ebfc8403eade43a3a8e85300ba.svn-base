@@ -1,0 +1,30 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# Keys for clipboard
+# -----------------------------
+clear.TEXT=Smazat schr\u00E1nku
+append=P\u0159ipojit
+removeButton.TIP=Odstranit vybran\u00E9 objekty ze schr\u00E1nky
+clearClipboardButton.TIP=Vy\u010Distit obsah schr\u00E1nky
+openButton.TIP=Otev\u0159\u00EDt vybran\u00FD objekt
+appendCheckBox.TIP=P\u0159epnout mezi re\u017Eimem p\u0159episu a p\u0159id\u00E1n\u00ED
+clipboardButton.TIP=Schr\u00E1nka
+clipboardButton.TITLE=Obsah schr\u00E1nky
+sendToUG.TIP=Odeslat obsah schr\u00E1nky do NX
+
+clipboardButton.ICON=icons/clipboard_16.png
+clipboardAppendButton.ICON=icons/clipboardappend_16.png
+removeButton.ICON=icons/remove_16.png
+clear.ICON=icons/clear_16.png
+open.ICON=icons/open_16.png
+sendToUG.ICON=icons/sendto_16.png
+
+defaultAction.ICON=icons/defaultactionicon_16.png
+SWTClipboardDialog.append=p\u0159ipojit  
+SWTClipboardDialog.close=Zav\u0159\u00EDt

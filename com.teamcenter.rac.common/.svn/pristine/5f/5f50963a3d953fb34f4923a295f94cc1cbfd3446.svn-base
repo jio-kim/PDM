@@ -1,0 +1,36 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all keys pertaining to the
+#                   TC addresslist package. This is an internal file so therefore
+#                   only TC PBU developers should be modifying this file.  To
+#                   make changes please modify the addresslist_user.properties file.
+#                   Do NOT modify this file.  This allows properties found in
+#                   this file to be over-written but not destroyed.
+#
+#   Filename: addresslist.properties
+#   Module  : com.teamcenter.rac.commands.addresslist
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#29-Oct-1999  huangz                  Initial creation
+#01-Nov-1999  huangz                  add confirmation msg keys
+#11-Feb-2000  mccollr                 Remove the localization keys and place within the locale file.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#05-Apr-2000  wangp                   add entry for org button
+#27-Jan-2005  Zhixin Huang            Change the icon from gif to png file.
+#24-Feb-2005  Zhixin Huang            Change the icon from gif to png file and clean up the entries phase 2.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+import=com.teamcenter.rac.common.common
+
+# Entries for new address list dialog
+# -------------------------------------------------------------
+addressList.ICON=images/aliaslist_16.png
+
+email.ICON= images/newenvelope_16.png

@@ -1,0 +1,45 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the pasteas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: pasteas_locale.properties
+#   Module  : com.teamcenter.rac.commands.pasteas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = \uC120\uD0DD\uD558\uC5EC \uBD99\uC5EC\uB123\uAE30
+addAs = \uB2E4\uB978 \uC774\uB984\uC73C\uB85C \uCD94\uAC00:
+confirmationText = \uBD99\uC5EC\uB123\uAE30 \uD558\uACA0\uC2B5\uB2C8\uAE4C?
+
+# Entries for error message
+clipboardEmpty = \uD074\uB9BD\uBCF4\uB4DC\uAC00 \uBE44\uC5B4 \uC788\uC2B5\uB2C8\uB2E4.
+error.TITLE = \uC120\uD0DD\uD558\uC5EC \uBD99\uC5EC\uB123\uAE30
+
+#PasteBOMAsDialog
+componentOfSelectedAssembly = \uC120\uD0DD\uD55C \uC5B4\uC148\uBE14\uB9AC\uC758 \uCEF4\uD3EC\uB10C\uD2B8
+substituteOfSelectedAssembly = \uC120\uD0DD\uD55C \uC5B4\uC148\uBE14\uB9AC \uB300\uCCB4
+numberOfOccurrences = \uC5B4\uCEE4\uB7F0\uC2A4 \uC218:
+quantityPerOccurrence = \uC5B4\uCEE4\uB7F0\uC2A4 \uB2F9 \uC218\uB7C9:
+ar = A/R
+sequenceNumber = \uCC3E\uAE30 \uBC88\uD638:
+viewType = \uBDF0 \uC720\uD615:
+
+# Entries for message center
+loadingRelations=\uAD00\uACC4\uB97C \uB85C\uB4DC \uC911... 
+
+# Entries for displaying error messages when wrong relation is used
+captureRelation = \uCEA1\uCC98 \uAD00\uACC4\uB9CC \uC0AC\uC6A9\uD574\uC57C \uD569\uB2C8\uB2E4.
+relation.TITLE = \uC798\uBABB\uB41C \uAD00\uACC4

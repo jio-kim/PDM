@@ -1,0 +1,376 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- Schema file written by PDE -->
+<schema targetNamespace="com.teamcenter.rac.common" xmlns="http://www.w3.org/2001/XMLSchema">
+<annotation>
+      <appinfo>
+         <meta.schema plugin="com.teamcenter.rac.common" id="renderingHint" name="Stylesheet rendering hint for property"/>
+      </appinfo>
+      <documentation>
+         The &lt;code&gt;com.teamcenter.rac.common.renderingHint&lt;/code&gt; extension point is used to allow custom-sites to define custom renderingHints.
+RenderingHint class definiton should extends any OOTB renderingHint class or must implements InterfacePropertyComponent to be valid renderingHint.
+      </documentation>
+   </annotation>
+
+   <element name="extension">
+      <annotation>
+         <appinfo>
+            <meta.element />
+         </appinfo>
+         <documentation>
+            Entry point for Extension Point
+         </documentation>
+      </annotation>
+      <complexType>
+         <sequence>
+            <element ref="renderingHint" minOccurs="1" maxOccurs="unbounded"/>
+         </sequence>
+         <attribute name="point" type="string" use="required">
+            <annotation>
+               <documentation>
+                  com.teamcenter.rac.common.renderingHint
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="id" type="string">
+            <annotation>
+               <documentation>
+                  An optional identifier of the extension instance.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="name" type="string">
+            <annotation>
+               <documentation>
+                  An optional name of the extension instance.
+               </documentation>
+               <appinfo>
+                  <meta.attribute translatable="true"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="renderingHint">
+      <annotation>
+         <documentation>
+            The Extension point has the OOTB supported renderingHint definitions.It is extensible to sites to define custom renderingHint.The Extension Point has element renderingHint which has attribute defining its id and Priority which has referendce to PropetyBean and legacyPropertyBean with attribute class which defnies the actual java class definition of particular renderingHint.
+         </documentation>
+      </annotation>
+      <complexType>
+         <choice>
+            <element ref="propertyBean"/>
+            <element ref="legacyPropertyBean"/>
+         </choice>
+         <attribute name="id" type="string" use="required">
+            <annotation>
+               <documentation>
+                  The unique identifier of this renderingHint.
+               </documentation>
+            </annotation>
+         </attribute>
+         <attribute name="priority" type="string">
+            <annotation>
+               <documentation>
+                  This attribute should be a valid integer value indicating priority of extension. Higher the integer value implies higher the priority of extension. In case any invalid value is specified it will be ignored and priority of 0 will be assumed for that extension implementation. 
+&lt;br&gt;
+This attribute will be relevant in case multiple class implementations for &quot;Beans’ extension point are available. In that case this attribute will be used to determine and use extension with highest priority.
+               </documentation>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="propertyBean">
+      <annotation>
+         <documentation>
+            Bean Definiton for the renderingHint.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Class definition for this renderingHint.
+
+Class need to define following constructor with arugments,
+
+Eg:
+
+public class CustomPropertyBean
+    extends AbstractPropertyBean
+    {
+    
+     CustomPropertyBean( FormToolkit toolkit, Composite parent, boolean renderFlat, Map paramTable )
+           {
+     
+            }
+    
+  }
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <element name="legacyPropertyBean">
+      <annotation>
+         <documentation>
+            Legacy Bean Definiton for the renderingHint.
+         </documentation>
+      </annotation>
+      <complexType>
+         <attribute name="class" type="string" use="required">
+            <annotation>
+               <documentation>
+                  Class definition for this renderingHint.
+               </documentation>
+               <appinfo>
+                  <meta.attribute kind="java"/>
+               </appinfo>
+            </annotation>
+         </attribute>
+      </complexType>
+   </element>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="since"/>
+      </appinfo>
+      <documentation>
+         This extension point was introduced in TC8.3.1
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="examples"/>
+      </appinfo>
+      <documentation>
+         &lt;br&gt;
+ For implementing renderingHint extension point customer will need to write code and provide implementation for InterfacePropertyComponent interface. 
+&lt;br&gt;
+Using renderingHint extension point one can implement custom renderingHint for property. This can be implemented for propertyBean rendering style as well legacyProeprtyBean rendering style.
+&lt;br&gt;
+For example, Let’s assume customer wants to define MyTextField bean extending from OOTB TextFieldpropertyBean for their custom attributes, The Bean needs to have TextControl and button next to it to generate random numberon it.
+&lt;br&gt;
+Following example code demonstrates how these validation can be implemented using renderingHint extension point&lt;br&gt;
+
+package custom.stylesheet.beans;&lt;br&gt;
+
+import com.teamcenter.rac.kernel.TCProperty;&lt;br&gt;
+import com.teamcenter.rac.kernel.TCPropertyDescriptor;&lt;br&gt;
+import com.teamcenter.rac.util.controls.TextControl;&lt;br&gt;
+import com.teamcenter.rac.viewer.stylesheet.beans.TextfieldPropertyBean;&lt;br&gt;
+import java.util.Map;&lt;br&gt;
+import org.eclipse.swt.widgets.Composite;&lt;br&gt;
+import org.eclipse.ui.forms.widgets.FormToolkit;&lt;br&gt;
+
+public class MyTextFeild&lt;br&gt;
+    extends TextfieldPropertyBean&lt;br&gt;
+{
+
+    public MyTextFeild( TextControl tc )&lt;br&gt;
+    {
+        super( tc );&lt;br&gt;
+
+    }&lt;br&gt;
+
+    public MyTextFeild( FormToolkit toolkit, Composite parent,&lt;br&gt;
+            boolean renderFlat, Map paramTable )&lt;br&gt;
+    {&lt;br&gt;
+        super( toolkit, parent, renderFlat, paramTable );&lt;br&gt;
+
+        GridLayout layout = (GridLayout) parent.getLayout();&lt;br&gt;
+
+        layout.numColumns = 3;&lt;br&gt;
+
+        Button numberGenerator = new Button( parent, SWT.PUSH );&lt;br&gt;
+
+        numberGenerator.setText( &quot;number&quot; );&lt;br&gt;
+
+        toolkit.adapt( numberGenerator, true, true );&lt;br&gt;
+
+        numberGenerator.addSelectionListener( new SelectionListener()&lt;br&gt;
+        {&lt;br&gt;
+
+            @Override&lt;br&gt;
+            public void widgetSelected( SelectionEvent e )&lt;br&gt;
+            {
+               //Code to generate random number&lt;br&gt;
+                Text t = getTextField();&lt;br&gt;
+                t.setText( &quot;Random number generated&quot; );&lt;br&gt;
+
+            }
+
+            @Override
+            public void widgetDefaultSelected( SelectionEvent e )
+            {&lt;br&gt;
+            }
+        });&lt;br&gt;
+
+    }&lt;br&gt;
+
+    @Override&lt;br&gt;
+    public void load( TCProperty p )&lt;br&gt;
+        throws Exception&lt;br&gt;
+    {
+        super.load( p );&lt;br&gt;
+       &lt;br&gt;
+    }&lt;br&gt;
+
+    @Override&lt;br&gt;
+    public void load( TCPropertyDescriptor desc )&lt;br&gt;
+        throws Exception&lt;br&gt;
+    {&lt;br&gt;
+        super.load( desc );&lt;br&gt;
+       
+    }&lt;br&gt;
+
+}&lt;br&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="apiinfo"/>
+      </appinfo>
+      <documentation>
+         To implement this extension point customer needs to implement AbstractPropertyBean java interface for PropertyBeans and InterfacePropertyComponent for  LegacyPropertyBeans.
+The customer-sites also can extends any OOTB supported renderingHint.
+&lt;br&gt;
+  Following is short documentation about expected implementation for methods defined in InterfacePropertyComponent and AbstractPropertyBean interface. Detailed documentation for InterfacePropertyComponent and AbstractPropertyBean interface is available in Teamcenter javadocs
+&lt;br&gt;
+
+
+&lt;ul&gt;
+&lt;b&gt;Following are expected methods are of InterfacePropertyComponent&lt;/b&gt;
+&lt;li&gt;
+public void load ( TCComponent comp ) throws Exception
+&lt;br&gt;
+This method when implemented will provide the bean with the intelligence to load it&apos;s data that it represents.
+This method is invoked when the rendering is first displayed.  
+It is used to signal the initial loading and UI component setting for the defined property value.
+&lt;/li&gt;
+
+&lt;li&gt;
+public void load ( TCPropertyDescriptor descriptor ) throws Exception
+&lt;br&gt;
+This method will load the bean based on the provided property descriptor.
+It will set the bean visibility, mandatory according to the descriptor.
+&lt;/li&gt;
+
+&lt;li&gt;
+public void load ( TCProperty prop ) throws Exception
+&lt;br&gt;
+This method will load the bean based on provided tc property.
+&lt;/li&gt;
+
+&lt;li&gt;
+public void save ( TCComponent comp )throws Exception
+&lt;br&gt;
+This method when implemented will provide the bean with the intelligence to save it&apos;s data that it represents.
+This method is invoked when the object is saving itself to the database.
+This method is smart enough to not set the value if it has not been changed.
+&lt;/li&gt;     
+
+ &lt;li&gt;
+ public void save ( TCProperty p )throws Exception
+ &lt;br&gt;
+ This method when implemented will provide the bean with the intelligence to save it&apos;s data that it represents.
+ &lt;/li&gt;
+
+
+ &lt;li&gt;
+ public String getProperty()
+ &lt;br&gt;
+ This method should return the property name that associated with the bean
+ &lt;/li&gt;
+
+ &lt;li&gt; 
+ public void setProperty(String prop)
+ &lt;br&gt;
+ This method sets the property name that associated with the bean.
+ &lt;/li&gt;
+ 
+ &lt;li&gt;
+ public void setVisible(boolean visible)
+ &lt;br&gt;
+ This method is used to set the visibility of the property.
+ &lt;/li&gt;
+ 
+&lt;li&gt;
+ public boolean isMandatory()
+ &lt;br&gt;
+ This method is used to check if the property is mandatory.
+ &lt;/li&gt;
+ 
+ 
+ &lt;li&gt;
+ public void setMandatory(boolean state)
+ &lt;br&gt;
+  This method sets the property mandatory according to the flag.
+  &lt;/li&gt;
+  
+ &lt;li&gt;
+ public void setModifiable(boolean state)
+ &lt;br&gt;
+ This method sets the property enabled according to the flag.
+ &lt;/li&gt;
+ 
+ &lt;li&gt;
+  public Object getEditableValue()
+ &lt;br&gt;
+  This method is used to get the value for the property.
+  &lt;/li&gt;
+  
+ &lt;li&gt;
+ public void setUIFValue(Object value)
+ &lt;br&gt;
+ This method sets the displayable value on the bean.
+ &lt;/li&gt;
+ 
+ &lt;li&gt;
+ public boolean isPropertyModified ( TCComponent comp ) throws Exception
+ &lt;br&gt;
+ This method checks if the value on this bean has been changed.
+ &lt;/li&gt;
+ 
+ &lt;li&gt;
+ public boolean isPropertyModified ( TCProperty p ) throws Exception
+  &lt;br&gt;
+ Checks if is property modified.
+ &lt;/li&gt;
+ 
+&lt;/ul&gt;
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="implementation"/>
+      </appinfo>
+      <documentation>
+         Out of the box Teamcenter code implement this extension point for OOTB supported renderingHints. In Examples section of this extension point documentation one sample implementation has been provided.
+      </documentation>
+   </annotation>
+
+   <annotation>
+      <appinfo>
+         <meta.section type="copyright"/>
+      </appinfo>
+      <documentation>
+         &lt;br&gt;// @&lt;COPYRIGHT&gt;@
+&lt;br&gt;// ==================================================
+&lt;br&gt;// Copyright 2011
+&lt;br&gt;// Siemens Product Lifecycle Management Software Inc.
+&lt;br&gt;// All Rights Reserved.
+&lt;br&gt;// ==================================================
+&lt;br&gt;// @&lt;COPYRIGHT&gt;@
+      </documentation>
+   </annotation>
+
+</schema>

@@ -1,0 +1,35 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#=================================================================================================
+#  Date       Name                    Description of Change
+# 27-May-2009  kabra                   initial creation
+# $HISTORY$
+# =================================================================================================
+
+# Entries for AddNewHandler
+#-----------------------------
+AddNewHandler.NoSourceFound=N\u00E3o h\u00E1 atributo de origem ou Par\u00E2metro configurados para esse comando
+AddNewHandler.NoObjectType=N\u00E3o \u00E9 poss\u00EDvel encontrar o tipo de objeto para iniciar o assistente.
+ViewMarkupHandler.Title=Visualizar/Marcar
+ViewMarkupHandler.CreateJob=Visualizar/marcar tarefa de arquivos de carregamento...
+ViewMarkupHandler.AppLaunchError=Ocorreu um erro ao iniciar a ferramenta associada
+ViewMarkupHandler.PopulateMyViewMarkup=Preencher o link r\u00E1pido Marcar/MyView
+DigitalSigningHandler.Title=Assinar
+DigitalSigningHandler.CreateJob=Assinar tarefas de arquivos de carregamento...
+DigitalSigningHandler.AppLaunchError=Ocorreu um erro ao iniciar a ferramenta associada
+CancelSigningHandler.Title=Cancelar assinatura
+CancelSigningHandler.CreateJob=Cancelar assinatura de tarefas de arquivos de carregamento...
+CancelSigningHandler.SessionError=Falha ao inicializar sess\u00E3o
+CancelSigningHandler.ServiceError=Falha ao localizar o servi\u00E7o DigitalSignature
+setPreference.MSG=Definir prefer\u00EAncia
+TaskStatusActionHandler.Title=Erro
+
+warning=Aviso
+InvalidObjectToSendTo.TITLE=Opera\u00E7\u00E3o inv\u00E1lida
+InvalidObjectToSendTo.MESSAGE=Um ou mais dos objetos de entrada s\u00E3o inv\u00E1lidos para envio ao destino.

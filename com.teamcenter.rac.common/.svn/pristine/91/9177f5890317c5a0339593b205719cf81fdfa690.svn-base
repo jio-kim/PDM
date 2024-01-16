@@ -1,0 +1,27 @@
+#* @<COPYRIGHT_START>@
+# ===============================================
+# Copyright 2007 UGS Corp. All Rights Reserved.
+# ===============================================
+# @<COPYRIGHT_END>@
+
+command.TITLE=Propriedades
+commandReadOnly.TITLE=Propriedades (somente leitura)
+
+loadingProperties=Carregando propriedades ...
+savingProperties=Salvando propriedades ...
+
+print.TIP = Imprimir propriedades de objeto.
+
+failToDisplay=N\u00E3o \u00E9 poss\u00EDvel exibir as propriedades.
+
+# For SmartEdit
+# -------------
+multipleObjects.TITLE=Propriedades modific\u00E1veis em comum
+
+#For the Edit button on the read only properties dialog
+edit=Efetuar reserva e editar
+edit.TIP=Reservar e editar propriedades
+edit.MNEMONIC=Edit
+
+# Status message while performing Implicit Check out
+doingImplicitCO=Salvando altera\u00E7\u00F5es e realizando reserva/devolu\u00E7\u00E3o impl\u00EDcita...

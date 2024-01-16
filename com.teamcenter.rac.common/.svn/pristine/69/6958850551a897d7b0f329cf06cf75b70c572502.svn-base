@@ -1,0 +1,44 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newmarkup package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newmarkup_locale.properties
+#   Module  : com.teamcenter.rac.common.tcviewer.commands.newmarkup
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#05-Mar-2000  grayjk                  file create; holds strings for localization
+#28-Dec-2000  xuesimon                add file type name
+#05-Dec-2001  xuesimon                add HLR
+#05-Dec-2001  xuesimon                promote to pv_look_v8
+#02-Aug-2002  xuesimon                Fix pr#4482293
+#12-Nov-2003  xuesimon                Add dataSet
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Create Markup Layer Dialog
+command.TITLE=\u5EFA\u7ACB\u8A3B\u8A18\u5716\u5C64
+
+name= \u8CC7\u6599\u96C6\u540D\u7A31\uFF1A
+description=\u6558\u8FF0\uFF1A
+fileType= \u5F71\u50CF\u683C\u5F0F\uFF1A
+dataSetType= \u8CC7\u6599\u96C6\u985E\u578B\uFF1A
+
+# Error Messages
+error.TITLE=\u65B0\u5EFA\u8A3B\u8A18\u5716\u5C64...
+
+#Messages and keys for the Abort Message Box
+aborted.TITLE=\u5DF2\u4E2D\u6B62
+
+aborting=\u6B63\u5728\u4E2D\u6B62...
+
+# for HLR
+HLR_Pref=HLR \u559C\u597D\u8A2D\u5B9A

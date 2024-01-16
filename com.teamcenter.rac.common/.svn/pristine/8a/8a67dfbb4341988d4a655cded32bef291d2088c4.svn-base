@@ -1,0 +1,19 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2008.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+# File description:  This properties file contains all keys pertaining to the popupmenu package. This is
+#                    internal development file.  It is designed by the system that when customization
+#                    is to occur that the integrator would modify the popupmenu_user.properties file
+#                    rather than this file.  The reason is that the popupmenu_user.properties allows the
+#                    user to override functionality but not replace.  Therefore, by doing so the
+#                    integrator can be guaranteed to have a fallback in the event of programming
+#                    errors within the properties file.
+
+import=com.teamcenter.rac.common.common,com.teamcenter.rac.common.taskpane.taskpane,com.teamcenter.rac.pse.pse,com.teamcenter.rac.tracelinks.tracelinks,com.teamcenter.rac.scm.popupmenu.popupmenu
+
+GRBViews.ICON=images/relation_browser_16.png

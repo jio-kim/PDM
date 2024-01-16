@@ -1,0 +1,69 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the delete package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: delete_locale.properties
+#   Module  : com.teamcenter.rac.commands.delete
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#14-Apr-2004  Hui Xiao                PR4799296: make error message easier to understand.
+#06-Apr-2005  vkansal                 Fix PR#4333740
+#07-Apr-2005  vkansal                 Change the confirmation message
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#22-May-2008  Trupti Purohit          Fixed 5872726 (Unable to remove/add surrogate user)
+#04-Jun-2009  Ayan Bose               Added message for non-deletable TcBOM entities
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = D\u00E9truire
+
+confirmationText = Confirmer la destruction?
+deleteAllSequencesConfirmationText = Confirmer la destruction? (Inclut les jeux de donn\u00E9es attach\u00E9s.)
+deleteAllSequencesSWTToolTipText = Les jeux de donn\u00E9es attach\u00E9s \u00E0 des r\u00E9visions d'articles seront \u00E9galement d\u00E9truits.
+
+deleteAllSequences = D\u00E9truire toutes les s\u00E9quences
+
+deletePublished = D\u00E9truire les composants publi\u00E9s
+published = (Publi\u00E9)
+attachment = (Pi\u00E8ce jointe)
+
+deleteObjects = Suppression des objets ...
+EWO=Saisir EWO(Autorisation)pour composants
+
+noSelection = Aucun objet \u00E0 supprimer n'est s\u00E9lectionn\u00E9
+rootSelection = Impossible de supprimer la racine.
+invalidSelection = Impossible de supprimer les objets s\u00E9lectionn\u00E9s
+invalidSelectionBOMView = Impossible de d\u00E9truire VueNomenclature car r\u00E9f\u00E9renc\u00E9e par\nR\u00E9vVueNomenclature de R\u00E9visionArticle.
+dependentSubtaskSelection = Une sous-t\u00E2che d\u00E9pendante a \u00E9t\u00E9 s\u00E9lectionn\u00E9e pour destruction. La destruction de cette sous-t\u00E2che lib\u00E8rera le parent de la d\u00E9pendance.\nConfirmez-vous de continuer?
+
+
+error.TITLE = Supprimer...
+confirmPublishDelText = Les objets suivants sont publi\u00E9s vers un ou plusieurs sites.\nLa suppression d'un de ces objets annulerait automatiquement sa publication.
+confirmPublishDelSWTText = Un ou plusieurs objets s\u00E9lectionn\u00E9s sont publi\u00E9s. \nD\u00E9truire ces objets annulerait automatiquement la publication des objets.
+yes = Oui
+no = Non
+dontShowAgain.MESSAGE = Ne plus afficher ce message.
+cannotEditStructure.MESSAGE = Impossible de d\u00E9truire l'article dans le dossier d'articles.\nL'\u00E9dition de structure ne peut pas \u00EAtre effectu\u00E9e dans Mon Teamcenter
+
+deleteSurrogate= Suppression par rempla\u00E7ant
+removeSurrogate = ne sera plus utilisateur rempla\u00E7ant.\n
+confirmationmessage = Voulez-vous continuer \u00E0 supprimer?
+inboxDeletionConfirmation=Les relations rempla\u00E7antes (s'il y en a) seront supprim\u00E9es.\n
+ResourcePoolSubscriptionOperation.MESSAGE = Utilisez la bo\u00EEte de dialogue \n"Souscription \u00E0 un pool de ressources" \npour ajouter/supprimer des souscriptions \u00E0 un pool de ressources 
+
+usageObjectCannotBeDeleted= L'op\u00E9ration D\u00E9truire n'est pas autoris\u00E9e sur l'objet s\u00E9lectionn\u00E9.
+
+referencedby = Instance r\u00E9f\u00E9renc\u00E9e par
+
+

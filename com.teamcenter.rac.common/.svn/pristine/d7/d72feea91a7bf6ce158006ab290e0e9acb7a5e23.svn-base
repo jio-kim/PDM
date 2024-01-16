@@ -1,0 +1,26 @@
+importTemplate.TITLE=Importuj szablon
+importSpecTemplate.TITLE=Importuj szablon specyfikacji
+enterSpecName.TEXT=Wprowad\u017A nazw\u0119 szablonu specyfikacji
+importObjTemplate.TITLE=Importuj szablon elementu
+enterObjName.TEXT=Wprowad\u017A nazw\u0119 szablonu elementu
+importExcelTemplate.TITLE=Importuj szablon programu Excel
+enterExcelName.TEXT=Wprowad\u017A nazw\u0119 szablonu programu Excel
+importFnd0HTMLObjTmpl.TITLE=Importuj szablon HTML
+enterFnd0HTMLObjTmpl.TEXT=Wprowad\u017A nazw\u0119 szablonu HTML
+templateName.TEXT=Nawa pliku szablonu
+templateDescription.TEXT=Opis szablonu
+browse.TEXT=Przegl\u0105daj
+noFileSelection.ERRORMSG=Wybierz szablon do zaimportowania 
+importTemplate.ERROR=B\u0142\u0105d wyboru importu
+importTemplateResponse.ERROR = B\u0142\u0105d importowania szablonu.
+fmserror.ERROR = B\u0142\u0105d pobierania danych
+fileTicketError.ERRORMSG = Nie wygenerowano biletu pliku
+fileUploadError.ERRORMSG = Nie mo\u017Cna wgra\u0107 pliku
+nullResponseError.ERRORMSG = Odpowied\u017A operacji importowania zwraca warto\u015B\u0107 null.
+importingError.ERRORMSG = Wyst\u0105pi\u0142 b\u0142\u0105d podczas importowania.
+importSuccessMsg = Pomy\u015Blnie zaimportowano szablon. Od\u015Bwie\u017C folder szablon\u00F3w, aby zobaczy\u0107 nowy szablon.
+importNullResponseMsg = Operacja importowania zwr\u00F3ci\u0142a warto\u015B\u0107 null.
+fmsErrorDetails.ERRORMSG = Jest to zazwyczaj spowodowane problemem z konfiguracj\u0105, gdy g\u0142\u00F3wna konfiguracja FMS nie zosta\u0142a zaktualizowana w\u0142a\u015Bciwym ID wolumenu/dost\u0119pu (wymaga ponownego uruchomienia FMS).\nSprawd\u017A zmienn\u0105 \u015Brodowiskow\u0105 FMS_HOME.
+browseDialog.TITLE=Wybierz plik do zaimportowania
+
+ 

@@ -1,0 +1,48 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2010.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@ 
+
+multipleSelStdNote=Impossible d'attacher simultan\u00E9ment plusieurs r\u00E9visions d'exigences param\u00E9triques \u00E0 un article/une r\u00E9vision d'article 
+mulSelect.TITLE=S\u00E9lection multiple
+
+sourceComp=Copier l'exigence param\u00E9trique vers le presse-papiers et s\u00E9lectionner l'article/la r\u00E9vision d'article auquel doit \u00EAtre associ\u00E9e l'exigence param\u00E9trique
+source.TITLE=Erreur
+
+replacesource = Une r\u00E9vision d'exigence param\u00E9trique doit \u00EAtre copi\u00E9e vers le presse-papiers pour effectuer cette op\u00E9ration
+
+stdnotedialog.TITLE = Saisir les valeurs param\u00E9triques
+notetext=Texte de la note
+flagnote=Note d'indicateur
+
+error=Erreur
+
+differentItem=Impossible de remplacer la r\u00E9vision d'exigence param\u00E9trique par la r\u00E9vision d'une autre exigence param\u00E9trique
+differentItem.TITLE=Remplacer
+
+wrongReplace=L'objet copi\u00E9 et l'objet s\u00E9lectionn\u00E9 doivent \u00EAtre de type R\u00E9vision d'exigence param\u00E9trique
+wrongReplace.TITLE=Remplacer
+
+
+notInContext=S\u00E9lectionner une r\u00E9vision d'exigence param\u00E9trique associ\u00E9e \u00E0 un article/une r\u00E9vision d'article pour effectuer cette op\u00E9ration
+
+mulItems=Impossible d'attacher une exigence param\u00E9trique \u00E0 plusieurs articles/r\u00E9visions d'articles simultan\u00E9ment
+
+NotItem=L'objet s\u00E9lectionn\u00E9 doit \u00EAtre un article/une r\u00E9vision d'article pour effectuer cette op\u00E9ration
+
+Parameter.TITLE=Param\u00E8tre
+Value.TITLE=Valeur
+
+partslistnote = Note de liste de pi\u00E8ces
+noObjectSelected.TITLE = Aucun objet s\u00E9lectionn\u00E9
+noObjectSelected = Aucun objet s\u00E9lectionn\u00E9 pour effectuer cette op\u00E9ration
+
+replaceStandardNote=Remplacer la r\u00E9vision d'exigence param\u00E9trique
+standardNote=Exigence param\u00E9trique
+
+revError=Ce n'est pas une r\u00E9vision configur\u00E9e valable. S\u00E9lectionnez une r\u00E9vision configur\u00E9e en fonction de la r\u00E8gle sp\u00E9cifi\u00E9e dans la pr\u00E9f\u00E9rence PARAM_REQ_REV_RULE.
+revError.TITLE=R\u00E9vision configur\u00E9e non valable
+

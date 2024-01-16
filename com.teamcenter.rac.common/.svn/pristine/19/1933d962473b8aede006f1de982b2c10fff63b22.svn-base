@@ -1,0 +1,22 @@
+#===================================================================================================
+#
+#                   Copyright (c) 2007 Unigraphics Solutions Inc., All rights reserved
+#
+#===================================================================================================
+# File description: This properties file for IESiteDialog file.
+#
+#   Filename: exportobjects.properties
+#   Module  : com.teamcenter.rac.common.IESiteDialog
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+#05-Feb-2007  pately                  Initial creation
+#$HISTORY$
+#=================================================================================================*/
+remoteCheckoutSite.LABEL=\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u043E\u0434\u0438\u043D \u0441\u0430\u0439\u0442 \u0434\u043B\u044F \u0443\u0434\u0430\u043B\u0435\u043D\u043D\u043E\u0439 \u0431\u043B\u043E\u043A\u0438\u0440\u043E\u0432\u043A\u0438
+remoteTransferSite.LABEL=\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u0442\u043E\u043B\u044C\u043A\u043E \u043E\u0434\u0438\u043D \u0441\u0430\u0439\u0442 \u0434\u043B\u044F \u043F\u0435\u0440\u0435\u0434\u0430\u0447\u0438 \u043F\u0440\u0430\u0432 \u0432\u043B\u0430\u0434\u0435\u043D\u0438\u044F
+remoteSites.LABEL=\u0412\u044B\u0431\u0440\u0430\u0442\u044C \u0446\u0435\u043B\u0435\u0432\u044B\u0435 \u0443\u0434\u0430\u043B\u0435\u043D\u043D\u044B\u0435 \u0441\u0430\u0439\u0442\u044B
+remoteSites.available=\u0414\u043E\u0441\u0442\u0443\u043F\u043D\u044B\u0435 \u0441\u0430\u0439\u0442\u044B
+remoteSites.selected=\u0412\u044B\u0431\u0440\u0430\u043D\u043D\u044B\u0435 \u0441\u0430\u0439\u0442\u044B
+site.TITLE = \u0412\u044B\u0431\u043E\u0440 \u0443\u0434\u0430\u043B\u0435\u043D\u043D\u043E\u0433\u043E \u0441\u0430\u0439\u0442\u0430
+

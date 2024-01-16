@@ -1,0 +1,584 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+ReplaceStdNote=\u66FF\u6362\u53C2\u6570\u5316\u9700\u6C42\u7248\u672C
+
+aboutText=Teamcenter RAC \u662F PLM \u5E73\u53F0\u3002
+UpdateActionSet.label=\u8F6F\u4EF6\u66F4\u65B0
+UpdateActionSet.menu.label=\u8F6F\u4EF6\u66F4\u65B0(&S)
+UpdateActionSet.updates.label=\u67E5\u627E\u548C\u5B89\u88C5(F)...
+UpdateActionSet.updates.MNEMONIC=F
+UpdateActionSet.configManager.label=\u7BA1\u7406\u914D\u7F6E(M)
+UpdateActionSet.configManager.MNEMONIC=M
+
+HelpActionSet.label=\u5E2E\u52A9
+Help.menu.label=\u5E2E\u52A9
+
+Help.helpAbout.label=\u5173\u4E8E(A)
+Help.helpAbout.MNEMONIC=A
+
+Help.helpApplication.label=\u5F53\u524D\u5E94\u7528\u7A0B\u5E8F
+Help.helpFramework.label=\u5E2E\u52A9\u5E93
+Close.NAME=\u5173\u95ED(C)
+Close.MNEMONIC=C
+
+tools.Signal_Manager.NAME=\u4FE1\u53F7\u7BA1\u7406\u5668
+Replace_Part_in_Product.TITLE=\u66FF\u6362\u4EA7\u54C1\u96F6\u4EF6
+selectBelowAll.TITLE=\u6240\u6709\u884C
+selectBelowLeaf.TITLE=\u6700\u5E95\u884C
+ShowHide_Data_Panel.TITLE=\u663E\u793A/\u9690\u85CF\u6570\u636E\u9762\u677F
+Show_Data_Panel.TITLE=\u663E\u793A\u6570\u636E\u9762\u677F
+Import_Feature_Data.TITLE=\u5BFC\u5165\u7279\u5F81\u6570\u636E...
+Unload_All.TITLE=\u5168\u90E8\u5378\u8F7D
+Graphical_BOM_Compare.TITLE=\u56FE\u5F62 BOM \u6BD4\u8F83
+Configuration_Context.TITLE=\u914D\u7F6E\u5173\u8054...
+Toggle_In_Context_Mode.TITLE=\u5207\u6362\u5173\u8054\u6A21\u5F0F
+Mode.NAME=\u6A21\u5F0F
+Actions.NAME=\u64CD\u4F5C
+Calendar.NAME=\u5DE5\u4F5C\u65E5\u5386
+Incontext_Mode.NAME=\u5173\u8054\u6A21\u5F0F
+Move.NAME=\u79FB\u52A8
+Select_Below.NAME=\u9009\u62E9\u5982\u4E0B
+Template.NAME=\u6A21\u677F
+new.NAME=\u65B0\u5EFA
+Connection.NAME=\u8FDE\u63A5
+Open_Session.NAME=\u6253\u5F00\u4F1A\u8BDD
+Save_As.NAME=\u53E6\u5B58\u4E3A...
+Search.NAME=\u641C\u7D22
+Go.NAME=\u6267\u884C
+Graphics.NAME=\u56FE\u5F62(G)
+Program.NAME=\u9879\u76EE\u96C6
+view.NAME=\u89C6\u56FE
+Zoom_Factor.NAME=\u7F29\u653E\u56E0\u5B50
+CriticalPath.NAME=\u5173\u952E\u8DEF\u5F84
+EVM.NAME=EVM
+Team.NAME=\u5C0F\u7EC4
+Accountability_Check.NAME=\u8D23\u4FE1\u5EA6\u68C0\u67E5
+All_History_Lines.NAME=\u6240\u6709\u5386\u53F2\u8BB0\u5F55\u884C
+Arrangements.NAME=\u5E03\u7F6E
+Assembly_Tree.NAME=\u88C5\u914D\u6811
+Batch_Mesh.NAME=\u6279\u5904\u7406\u7F51\u683C
+CheckInOut.NAME=\u7B7E\u5165/\u7B7E\u51FA
+Connection_Manager.NAME=\u8FDE\u63A5\u7BA1\u7406\u5668
+Export.NAME=\u5BFC\u51FA
+Id_Display_Rule.NAME=ID \u663E\u793A\u89C4\u5219
+Implemented_By.NAME=\u88AB\u5B9E\u65BD
+Import.NAME=\u5BFC\u5165
+Modify_Allocation.NAME=\u4FEE\u6539\u5206\u914D
+MultiSite_Collaboration.NAME=\u591A\u7AD9\u70B9\u534F\u540C
+MultiSite_Collaboration.MNEMONIC=M
+Item_Id_Registry.NAME=\u96F6\u7EC4\u4EF6 ID \u6CE8\u518C\u8868
+Publish.NAME=\u53D1\u5E03
+Send.NAME=\u53D1\u9001
+Split_Occurrence.TITLE=\u62C6\u5206\u4E8B\u4F8B...
+Insert_Level.TITLE=\u63D2\u5165\u5C42...
+End_Item.TITLE=\u9876\u5C42\u96F6\u7EC4\u4EF6\u88C5\u914D\u72B6\u6001...
+Synchronize.NAME=\u540C\u6B65
+Unpublish.NAME=\u53D6\u6D88\u53D1\u5E03
+Open_In.NAME=\u6253\u5F00\u73AF\u5883
+PartDesign.NAME=\u96F6\u4EF6\u8BBE\u8BA1
+Process_Assignment_List.NAME=\u6D41\u7A0B\u6307\u6D3E\u5217\u8868
+Realized_By.NAME=\u88AB\u5B9E\u73B0
+Reports.NAME=\u62A5\u544A
+Revision_Rule.NAME=\u7248\u672C\u89C4\u5219
+Roll_up_Report.NAME=\u7D2F\u79EF\u62A5\u544A
+Send_Additional_Data_To.NAME=\u53D1\u9001\u5176\u4ED6\u6570\u636E\u81F3...
+Send_Data_To.NAME=\u53D1\u9001\u6570\u636E\u81F3...
+Show_Related_Analyses.NAME=\u663E\u793A\u76F8\u5173\u5206\u6790
+Associate_Signal_To.NAME=\u4FE1\u53F7\u5173\u8054\u5BF9\u8C61
+Remove_Signal_Association.NAME=\u79FB\u9664\u4FE1\u53F7\u5173\u8054
+Site_CheckInOut.NAME=\u7AD9\u70B9\u7B7E\u5165/\u7B7E\u51FA
+Snapshot.NAME=\u5FEB\u7167
+Structure_Alignment.NAME=\u7ED3\u6784\u5BF9\u5E94
+Completeness_Check.NAME=\u5B8C\u6574\u6027\u68C0\u67E5
+Trace_Report.NAME=\u8DDF\u8E2A\u62A5\u544A
+Unattached_Lines.NAME=\u672A\u9644\u52A0\u7684\u884C
+Validation.NAME=\u9A8C\u8BC1
+Variants.NAME=\u53D8\u91CF
+Audit.NAME=\u5BA1\u8BA1
+Audit.MNEMONIC=A
+AuditFile.TITLE=\u6587\u4EF6
+AttachNotes=\u9644\u52A0\u9700\u6C42/\u6CE8\u91CA
+StandardNotes.TITLE=\u53C2\u6570\u5316\u9700\u6C42
+CustomNotes.TITLE=\u5B9A\u5236\u6CE8\u91CA
+AuditManager.TITLE=\u67E5\u770B\u5BA1\u8BA1\u65E5\u5FD7
+Effectivity.NAME=\u6709\u6548\u6027
+Expand_options.NAME=\u5C55\u5F00\u9009\u9879
+PackUnpack.NAME=\u6253\u5305/\u89E3\u5305
+Show_Unconfigured_Data.NAME=\u663E\u793A\u672A\u914D\u7F6E\u7684\u6570\u636E
+Signal_Explorer.NAME=\u4FE1\u53F7\u6D4F\u89C8\u5668
+Show_Signals.NAME=\u663E\u793A\u4FE1\u53F7
+Toggle_In_Allocation_Context_Mode.TITLE=\u5207\u6362\u5206\u914D\u5173\u8054\u6A21\u5F0F
+Show_Allocation_Navigator_Panel.TITLE=\u663E\u793A\u5206\u914D\u5BFC\u89C8\u5668\u9762\u677F
+Show_Allocations_IC_Information_Panel.TITLE=\u663E\u793A\u5206\u914D IC \u4FE1\u606F\u9762\u677F
+Toggle_In_Allocation_Drag_N_Drop_Mode.TITLE=\u5207\u6362\u5206\u914D\u62D6\u653E\u6A21\u5F0F
+Show_Only_Selected_Allocation_Types.TITLE=\u4EC5\u663E\u793A\u9009\u5B9A\u7684\u5206\u914D\u7C7B\u578B
+Incremental_Change.NAME=\u589E\u91CF\u66F4\u6539
+icDisplay_Icons.NAME=\u663E\u793A\u56FE\u6807
+Html_Text.NAME=HTML/\u6587\u672C
+sap.NAME=\u663E\u793A SAP \u6570\u636E
+RelatedSubstitutes.NAME=\u76F8\u5173\u66FF\u4EE3\u4EF6
+
+newMenu.NAME=\u65B0\u5EFA
+home.title=Home
+inbox.title=\u6211\u7684\u5DE5\u4F5C\u5217\u8868
+myWebLinks.title=\u6211\u7684\u94FE\u63A5
+mySavedSearches.title=\u6211\u7684\u5DF2\u4FDD\u5B58\u641C\u7D22
+myViewMarkup.title=\u6211\u7684\u89C6\u56FE/\u6279\u6CE8
+quickLinks.title=\u5FEB\u901F\u94FE\u63A5
+openItems.title=\u6253\u5F00\u96F6\u7EC4\u4EF6
+history.title=\u5386\u53F2\u8BB0\u5F55
+favorites.title=\u6536\u85CF\u5939
+iWantTo.title=\u6211\u8981...
+search.title=\u641C\u7D22
+searchToggle.title=\u641C\u7D22
+customize.title=\u5B9A\u5236
+organize.title=\u7EC4\u7EC7
+defaultTaskPane.title=\u9ED8\u8BA4\u4EFB\u52A1\u7A97\u683C
+closeAll.title=\u5168\u90E8\u5173\u95ED
+clear.title=\u6E05\u9664
+
+foldersToggle.TITLE=\u6587\u4EF6\u5939
+Open.TITLE=\u6253\u5F00
+Open_With.TITLE=\u6253\u5F00\u65B9\u5F0F...
+Soft_Abort.TITLE=\u8F6F\u4E2D\u6B62
+Send_To.TITLE=\u53D1\u9001\u5230
+Item.TITLE=\u96F6\u7EC4\u4EF6...
+POMObject.TITLE=\u5BF9\u8C61...
+TableRow.TITLE=\u8868\u884C...
+NameValue.TITLE=\u540D\u79F0\u503C...
+Folder.TITLE=\u6587\u4EF6\u5939...
+BO.TITLE=\u5176\u4ED6...
+Part.TITLE=\u96F6\u4EF6...
+Form.TITLE=\u8868\u5355...
+Item_Element.TITLE=\u96F6\u7EC4\u4EF6\u5143\u7D20...
+Dataset.TITLE=\u6570\u636E\u96C6...
+URL.TITLE=URL...
+Workflow_Process.TITLE=\u5DE5\u4F5C\u6D41\u7A0B...
+Signal.TITLE=\u4FE1\u53F7...
+Design.TITLE=\u8BBE\u8BA1...
+Revise.TITLE=\u4FEE\u8BA2...
+Revisable.TITLE=\u53EF\u4FEE\u8BA2...
+NonRevisable.TITLE=\u4E0D\u53EF\u4FEE\u8BA2...
+Interface_Definition.TITLE=\u63A5\u53E3\u5B9A\u4E49...
+Process_Variable.TITLE=\u8FC7\u7A0B\u53D8\u91CF...
+Objects_.TITLE=\u5BF9\u8C61...
+To_PLMXML_.TITLE=\u5230 PLMXML...
+To_Default_ODS_.TITLE=\u5230\u9ED8\u8BA4 ODS...
+Pack_All.TITLE=\u5168\u90E8\u6253\u5305
+Work_Context.TITLE=\u5DE5\u4F5C\u5173\u8054...
+Compare_2D_Images.TITLE=\u6BD4\u8F83 2D \u56FE\u50CF
+Show_Unconfigured_Variants.TITLE=\u663E\u793A\u672A\u914D\u7F6E\u7684\u53D8\u91CF
+Show_Unconfigured_Assignments.TITLE=\u663E\u793A\u672A\u914D\u7F6E\u7684\u5DF2\u6307\u6D3E\u4E8B\u4F8B
+Enable_Filtering_Unconfigured_due_to_Classic_Variants.TITLE=\u542F\u7528\u4F20\u7EDF\u53D8\u91CF\u201C\u914D\u7F6E\u4EE5\u52A0\u8F7D\u201D
+User_Setting.TITLE=\u7528\u6237\u8BBE\u7F6E...
+
+firstBrowseAction.TITLE=\u7B2C\u4E00\u4E2A\u6D4F\u89C8\u64CD\u4F5C
+Latest.TITLE=\u6700\u65B0
+Summary_Reports.TITLE=\u6C47\u603B\u62A5\u544A
+Report_Builder_Reports.TITLE=\u62A5\u544A\u6784\u5EFA\u5668\u62A5\u544A
+Select_Unused.TITLE=\u9009\u62E9\u672A\u4F7F\u7528\u7684
+Toggle_Precise_Imprecise.TITLE=\u5207\u6362\u7CBE\u786E/\u975E\u7CBE\u786E
+Revision_Effectivity.TITLE=\u7248\u672C\u6709\u6548\u6027...
+previousBrowseAction.TITLE=\u4E0A\u4E00\u4E2A\u6D4F\u89C8\u64CD\u4F5C
+Assign_Work_Context.TITLE=\u6307\u6D3E\u5DE5\u4F5C\u5173\u8054...
+Paste.TITLE=\u9009\u62E9\u6027\u7C98\u8D34...
+Change_Ownership.TITLE=\u66F4\u6539\u6240\u6709\u6743...
+Assign.TITLE=\u6307\u6D3E...
+Configure.TITLE=\u914D\u7F6E...
+Configure_Variants.TITLE=\u914D\u7F6E\u53D8\u91CF...
+Address_List.TITLE=\u5730\u5740\u5217\u8868...
+Verify_Part_Structure.TITLE=\u786E\u8BA4\u96F6\u4EF6\u7ED3\u6784
+From_Briefcase.TITLE=\u4ECE\u516C\u6587\u5305...
+Bulk_Load.TITLE=\u6279\u91CF\u52A0\u8F7D...
+From_All_ODS_Sites.TITLE=\u4ECE\u6240\u6709 ODS \u7AD9\u70B9
+Stand_In.TITLE=\u4EE3\u66FF
+Occurrence_Effectivity.TITLE=\u4E8B\u4F8B\u6709\u6548\u6027...
+ReplaceInContext.TITLE=\u66FF\u6362\u5173\u8054\u7684\u88C5\u914D...
+Select_Occurrence_Type_Filters.TITLE=\u9009\u62E9\u4E8B\u4F8B\u7C7B\u578B\u8FC7\u6EE4\u5668...
+Up.TITLE=\u4E0A\u79FB
+Audit.TITLE=\u5BA1\u8BA1
+Generate_Portfolio_.TITLE=\u751F\u6210\u516C\u4E8B\u5305...
+nextBrowseAction.TITLE=\u4E0B\u4E00\u4E2A\u6D4F\u89C8\u64CD\u4F5C
+Variant_Rule.TITLE=\u53D8\u91CF\u89C4\u5219
+Only_Configure_Root.TITLE=\u4EC5\u914D\u7F6E\u6839\u8282\u70B9
+Save_Configuration.TITLE=\u4FDD\u5B58\u914D\u7F6E
+Count_Modules.TITLE=\u6A21\u5757\u8BA1\u6570...
+Remote_Checkout_.TITLE=\u8FDC\u7A0B\u7B7E\u51FA...
+Check_In.TITLE=\u7B7E\u5165...
+Access.TITLE=\u8BBF\u95EE...
+To_ODS_Publication_List_.TITLE=\u5230 ODS \u53D1\u5E03\u5217\u8868...
+Schedule.TITLE=\u65F6\u95F4\u8868
+From_Specific_ODS_Site_s__.TITLE=\u4ECE\u7279\u5B9A ODS \u7AD9\u70B9...
+SearchVI.TITLE=\u641C\u7D22...
+Notes.TITLE=\u5907\u6CE8...
+To_Remote_Site_Via_Global_Services.TITLE=\u4F7F\u7528\u5168\u5C40\u591A\u7AD9\u70B9\u8FDC\u7A0B...
+Component.TITLE=\u7EC4\u4EF6...
+Remove.TITLE=\u79FB\u9664
+Register_Item_Id.TITLE=\u6CE8\u518C\u96F6\u7EC4\u4EF6 ID
+archiveObjects.TITLE=\u5F52\u6863
+Modify_Current.TITLE=\u4FEE\u6539\u5F53\u524D...
+Remove_target_from_PublishLink.TITLE=\u4ECE\u53D1\u5E03\u94FE\u63A5\u79FB\u9664\u76EE\u6807
+Top_Level.TITLE=\u9876\u7EA7
+Make_Immune_.TITLE=\u4F7F\u514D\u75AB...
+Add_targets_to_PublishLink.TITLE=\u5C06\u76EE\u6807\u6DFB\u52A0\u5230\u53D1\u5E03\u94FE\u63A5
+Set_In_Context.TITLE=\u8BBE\u7F6E\u5173\u8054
+Remove_In_Context_Override.TITLE=\u79FB\u9664\u5173\u8054\u66FF\u4EE3
+BOMView_Revision.TITLE=BOM \u89C6\u56FE\u7248\u672C...
+Cancel_Check_Out.TITLE=\u53D6\u6D88\u7B7E\u51FA...
+Print.TITLE=\u6253\u5370
+PrintAs.TITLE=\u6253\u5370...
+Save.TITLE=\u4FDD\u5B58
+Save.MNEMONIC=S
+SaveAs.TITLE=\u53E6\u5B58\u4E3A
+Save.TIP=\u4FDD\u5B58\u5F53\u524D\u5185\u5BB9
+Exit.TITLE=\u9000\u51FA 
+Remote_Export_.TITLE=\u8FDC\u7A0B\u5BFC\u51FA...
+Clear_Display.TITLE=\u6E05\u9664\u663E\u793A
+Paste_Substitute.TITLE=\u7C98\u8D34\u66FF\u4EE3\u4EF6
+Envelope.TITLE=\u4FE1\u5C01...
+Show_Part_Solutions.TITLE=\u663E\u793A\u96F6\u4EF6\u89E3\u51B3\u65B9\u6848
+Create_Edit.TITLE=\u521B\u5EFA/\u7F16\u8F91...
+Bottom.TITLE=\u7F6E\u5E95
+Publish_Data.TITLE=\u53D1\u5E03\u6570\u636E
+Report_Designer_Reports.TITLE=\u62A5\u544A\u8BBE\u8BA1\u5668\u62A5\u544A
+Notification_List.TITLE=\u901A\u77E5\u5217\u8868...
+Objects_to_Excel.TITLE=\u5BF9\u8C61\u5230 Excel
+Objects_to_CSV.TITLE=\u5BF9\u8C61\u5230 CSV
+Objects_to_Word.TITLE=\u5BF9\u8C61\u5230 Word
+Purge.TITLE=\u6E05\u7406
+Prune.TITLE=\u4FEE\u526A
+Expand_Below.TITLE=\u5411\u4E0B\u5C55\u5F00
+Expand_To_Level.TITLE=\u5411\u4E0B\u5C55\u5F00...
+#x_reddyb SDLC-10270
+#Expand to Type
+Expand_To_Type.TITLE=\u5C55\u5F00\u5230\u7C7B\u578B
+RevertAction.NAME=\u8FD8\u539F\u7F16\u8F91
+Resume.TITLE=\u6062\u590D
+Down_a_Level.TITLE=\u5411\u4E0B\u79FB\u52A8\u4E00\u7EA7
+Process___Change_Selector.TITLE=\u6D41\u7A0B\u548C\u66F4\u6539\u9009\u62E9\u5668
+Check_Out_History.TITLE=\u7B7E\u51FA\u5386\u53F2\u8BB0\u5F55...
+Disconnect.TITLE=\u65AD\u5F00...
+View_With.TITLE=\u67E5\u770B\u65B9\u5F0F...
+ID.TITLE=ID...
+Select_Completely_Used.TITLE=\u9009\u62E9\u5B8C\u5168\u4F7F\u7528\u7684
+Perform.TITLE=\u6267\u884C
+Show_Hide_In_Context_Bomline.TITLE=\u663E\u793A/\u9690\u85CF\u201C\u5173\u8054\u201DBOM \u884C
+Select_Over_used.TITLE=\u9009\u62E9\u8FC7\u5EA6\u4F7F\u7528\u7684
+Promote.TITLE=\u63D0\u5347
+Abort.TITLE=\u4E2D\u6B62
+Find_lines_with_same_logical_identity.TITLE=\u67E5\u627E\u5E26\u6709\u76F8\u540C\u903B\u8F91\u6807\u8BC6\u7684\u884C
+Show_Unconfigured_Changes.TITLE=\u663E\u793A\u672A\u914D\u7F6E\u7684\u66F4\u6539
+Refresh_Window.TITLE=\u5237\u65B0\u7A97\u53E3
+Run_Validations.TITLE=\u8FD0\u884C\u9A8C\u8BC1...
+Replace_User.TITLE=\u66FF\u6362\u7528\u6237
+Open_PublishLink_source_structure.TITLE=\u6253\u5F00\u53D1\u5E03\u94FE\u63A5\u6E90\u7ED3\u6784
+Find_Clipboard_Items.TITLE=\u67E5\u627E\u526A\u8D34\u677F\u96F6\u7EC4\u4EF6
+Current_Users.TITLE=\u5F53\u524D\u7528\u6237...
+Find_PublishLink_targets.TITLE=\u67E5\u627E\u53D1\u5E03\u94FE\u63A5\u76EE\u6807
+To_Default_ODS.TITLE=\u5230\u9ED8\u8BA4 ODS
+Top.TITLE=\u7F6E\u9876
+Organization.TITLE=\u7EC4\u7EC7...
+Down.TITLE=\u4E0B\u79FB
+Change.TITLE=\u4F20\u7EDF\u66F4\u6539...
+From_Default_ODS_.TITLE=\u4ECE\u9ED8\u8BA4 ODS...
+Unregister_Item_Id.TITLE=\u6CE8\u9500\u96F6\u7EC4\u4EF6 ID
+restoreObjects.TITLE=\u6062\u590D
+Effectivity_Mapping.TITLE=\u6709\u6548\u6027\u6620\u5C04...
+Remote.TITLE=\u8FDC\u7A0B...
+Unpack.TITLE=\u89E3\u5305
+Unpack_All.TITLE=\u5168\u90E8\u89E3\u5305
+Create_PublishLink.TITLE=\u521B\u5EFA\u53D1\u5E03\u94FE\u63A5
+Remove_Immunity_.TITLE=\u79FB\u9664\u514D\u75AB...
+Structure_Context.TITLE=\u7ED3\u6784\u5173\u8054...
+View_Set_Current.TITLE=\u67E5\u770B/\u8BBE\u7F6E\u5F53\u524D...
+Replace_From_Clipboard.TITLE=\u66FF\u6362
+Replace.TITLE=\u66FF\u6362...
+Rename.TITLE=\u91CD\u547D\u540D
+Copy_Workflow_Process.TITLE=\u590D\u5236\u5DE5\u4F5C\u6D41\u7A0B
+Start.TITLE=\u5F00\u59CB
+Assembly.TITLE=\u88C5\u914D...
+Set_Date_Unit_End_Item.TITLE=\u8BBE\u7F6E\u65E5\u671F/\u5355\u5143/\u9876\u5C42\u96F6\u7EC4\u4EF6...
+View_Results.TITLE=\u67E5\u770B\u7ED3\u679C...
+Baseline.TITLE=\u57FA\u7EBF...
+Copy_Item_of_Line.TITLE=\u590D\u5236\u884C\u96F6\u7EC4\u4EF6
+Find_PublishLink_source.TITLE=\u67E5\u627E\u53D1\u5E03\u94FE\u63A5\u6E90
+Occurrence_Group.TITLE=\u4E8B\u4F8B\u7EC4...
+External.TITLE=\u5916\u90E8...
+Connect.TITLE=\u8FDE\u63A5...
+Show_GCS_Connection_Points.TITLE=\u663E\u793A GCS \u8FDE\u63A5\u70B9
+Guided_Component_Search.TITLE=\u5F15\u5BFC\u5F0F\u7EC4\u4EF6\u641C\u7D22...
+Guided_Component_Search.TIP=\u4F7F\u7528\u5F15\u5BFC\u5F0F\u7EC4\u4EF6\u641C\u7D22\u6DFB\u52A0\u5206\u7C7B\u7684\u7EC4\u4EF6...
+Collapse_Below.TITLE=\u81EA\u4E0B\u6298\u53E0
+Variant_Condition.TITLE=\u53D8\u91CF\u6761\u4EF6...
+Up_a_Level.TITLE=\u5411\u4E0A\u79FB\u52A8\u4E00\u7EA7
+Objects.TITLE=\u5BF9\u8C61...
+From_PLMXML.TITLE=\u4ECE PLMXML
+Save_Bookmark.TITLE=\u4FDD\u5B58\u4E66\u7B7E...
+Show_Unconfigured_By_Occurrence_Effectivity.TITLE=\u663E\u793A\u672A\u6309\u4E8B\u4F8B\u6709\u6548\u6027\u914D\u7F6E\u7684
+List_Substitutes.TITLE=\u5217\u51FA\u66FF\u4EE3\u4EF6
+Manage_Global_Alternates.TITLE=\u7BA1\u7406\u5168\u5C40\u5907\u9009\u4EF6
+Check_Out.TITLE=\u7B7E\u51FA...
+Save_and_Keep_Check_Out.TITLE=\u4FDD\u5B58\u5E76\u4FDD\u6301\u7B7E\u51FA
+Implicit_Check_Out_Save_Changes.TITLE=\u4FDD\u5B58\u66F4\u6539
+Apply_Occurrence_Type_Filter.TITLE=\u5E94\u7528\u4E8B\u4F8B\u7C7B\u578B\u8FC7\u6EE4\u5668
+CAE_Item.TITLE=CAE \u96F6\u7EC4\u4EF6...
+Set_Override_folder.TITLE=\u8BBE\u7F6E\u66FF\u4EE3\u6587\u4EF6\u5939...
+Remove_Design_from_Product.TITLE=\u4ECE\u4EA7\u54C1\u4E2D\u79FB\u9664\u8BBE\u8BA1
+Item_Revision.TITLE=\u96F6\u7EC4\u4EF6\uFF08\u7248\u672C\uFF09...
+Delete_PublishLink_for_source.TITLE=\u5220\u9664\u6E90\u7684\u53D1\u5E03\u94FE\u63A5
+Named_References.TITLE=\u547D\u540D\u7684\u5F15\u7528...
+Task_Properties.TITLE=\u4EFB\u52A1\u5C5E\u6027...
+Open_Live_Excel.TITLE=\u5B9E\u65F6\u6253\u5F00 Excel
+Suspend.TITLE=\u6302\u8D77
+Pack.TITLE=\u6253\u5305
+Store_Occurrence_Paths.TITLE=\u5B58\u50A8\u4E8B\u4F8B\u8DEF\u5F84
+Store_Occurrence_Paths_With_ID.TITLE=\u4F7F\u7528 ID \u5B58\u50A8\u4E8B\u4F8B\u8DEF\u5F84
+Options.TITLE=\u9009\u9879...
+View___Set_Current.TITLE=\u67E5\u770B/\u8BBE\u7F6E\u5F53\u524D
+latestBrowseAction.TITLE=\u6700\u65B0\u6D4F\u89C8\u64CD\u4F5C
+Save_as_CC.TITLE=\u53E6\u5B58\u4E3A\u65B0\u7684\u534F\u540C\u5173\u8054...
+Transfer_Check_Out.TITLE=\u4F20\u9012\u7B7E\u51FA...
+Signoff_Report.TITLE=\u7B7E\u53D1\u62A5\u544A
+Import_Remote.TITLE=\u8FDC\u7A0B\u5BFC\u5165...
+Update_Variant_Item.TITLE=\u66F4\u65B0\u53D8\u91CF\u96F6\u7EC4\u4EF6(U)...
+From_Default_ODS.TITLE=\u4ECE\u9ED8\u8BA4 ODS
+Add_Remove_View_Tabs_.TITLE=\u663E\u793A/\u9690\u85CF\u4E8B\u4F8B\u7EC4...
+Replace_Design_in_Product.TITLE=\u66FF\u6362\u4EA7\u54C1\u8BBE\u8BA1
+Object.TITLE=\u5BF9\u8C61
+Assign_Resource.TITLE=\u6307\u6D3E\u8D44\u6E90
+Expand.TITLE=\u5C55\u5F00
+View.TITLE=\u67E5\u770B
+Custom_Reports.TITLE=\u5B9A\u5236\u62A5\u544A
+View_Rollup_Reports.TITLE=\u67E5\u770B\u7D2F\u79EF\u62A5\u544A
+Show_Collaboration_Panel.TITLE=\u663E\u793A/\u9690\u85CF\u534F\u540C\u9762\u677F
+Collaboration_Context.TITLE=\u534F\u540C\u5173\u8054...
+Add.TITLE=\u6DFB\u52A0...
+Show_Lower_Structure_Panel.TITLE=\u663E\u793A/\u9690\u85CF\u53E6\u4E00\u4E2A\u7ED3\u6784\u9762\u677F
+To_Briefcase.TITLE=\u81F3\u516C\u6587\u5305...
+Bulk_Extract.TITLE=\u6279\u91CF\u62BD\u53D6...
+To_Pdx.TITLE=\u81F3 PDX...
+Unlink_Variant_Item.TITLE=\u53D6\u6D88\u94FE\u63A5\u53D8\u91CF\u96F6\u7EC4\u4EF6...
+Add_Design_to_Product.TITLE=\u5C06\u8BBE\u8BA1\u6DFB\u52A0\u5230\u4EA7\u54C1
+Complete.TITLE=\u5B8C\u6210
+Item_From_Template.TITLE=\u6839\u636E\u6A21\u677F\u65B0\u5EFA\u96F6\u7EC4\u4EF6...
+
+makePrimaryRepresentation.TITLE=\u8BBE\u4E3A\u4E3B\u8981\u8868\u793A(D)
+makePrimaryRepresentation.TIP=\u5C06\u9009\u5B9A\u7684\u8BBE\u8BA1\u7248\u672C\u8BBE\u4E3A\u96F6\u4EF6\u7248\u672C\u7684\u4E3B\u8981\u8868\u793A\u3002
+makePrimaryRepresentation.MNEMONIC=d
+resetPrimary.TITLE=\u91CD\u7F6E\u4E3B\u8981\u8868\u793A...
+resetPrimaryRepresentation.TITLE=\u91CD\u7F6E\u4E3B\u8981\u8868\u793A
+resetPrimaryRepresentation.TIP=\u91CD\u7F6E\u96F6\u4EF6\u7684\u9009\u5B9A\u4E3B\u8981\u8868\u793A\u3002
+resetPrimaryInvalidSelection=\u8BF7\u5728\u96F6\u4EF6\u8868\u793A\u4E0B\u9762\u9009\u62E9\u4E00\u4E2A\u96F6\u7EC4\u4EF6\u7248\u672C
+
+multisiteReplicaSyncMenu.TITLE=\u68C0\u67E5\u526F\u672C\u540C\u6B65\u72B6\u6001(M)
+multisiteReplicaSyncMenu.TIP=\u68C0\u67E5\u526F\u672C\u540C\u6B65\u72B6\u6001\u5BF9\u8C61
+multisiteReplicaSyncMenu.MNEMONIC=M
+
+#File->View/MarkUp
+viewMarkUpAction.MNEMONIC=R
+ViewMarkUp.TITLE=\u67E5\u770B/\u6279\u6CE8
+viewMarkUpAction.TIP=\u67E5\u770B/\u6279\u6CE8
+
+#File->Sign
+digitalSigningAction.MNEMONIC=D
+DigitalSigning.TITLE=\u7B7E\u540D\u6587\u6863
+digitalSigning.TIP=\u7B7E\u540D\u6587\u6863
+
+#File->Cancel Sign
+#cancelSigningAction.MNEMONIC=
+CancelSigning.TITLE=\u53D6\u6D88\u7B7E\u540D
+cancelSigning.TIP=\u53D6\u6D88\u7B7E\u540D
+
+# Edit->User Setting ...
+# ----------------------
+userSettingAction.NAME=\u7528\u6237\u8BBE\u7F6E(U)...
+userSettingAction.TIP=\u67E5\u770B/\u66F4\u6539\u5F53\u524D\u7528\u6237\u8BA4\u8BC1\u8BBE\u7F6E
+userSettingAction.MNEMONIC=U
+
+# Edit -> Option
+# ----------------------
+preferencesAction.NAME=\u9009\u9879(O)...
+preferencesAction.TIP=\u9009\u9879
+preferencesAction.MNEMONIC=O
+
+cutAction.NAME=\u526A\u5207(T)
+cutAction.TIP=\u526A\u5207\u9009\u62E9\u5185\u5BB9\u5E76\u5C06\u5176\u653E\u5230\u526A\u8D34\u677F
+cutAction.MNEMONIC=T
+
+traceReport.NAME=\u8DDF\u8E2A\u62A5\u544A
+checkOutAction.NAME=\u7B7E\u51FA...
+pasteAction.NAME=\u7C98\u8D34
+pasteAction.TIP=\u5C06\u526A\u8D34\u677F\u4E2D\u5305\u542B\u7684\u5F15\u7528\u9879\u7C98\u8D34\u5230\u5BF9\u8C61
+subscribeAction.NAME=\u8BA2\u9605...
+cancelCheckOutAction.NAME=\u53D6\u6D88\u7B7E\u51FA...
+copyAction.NAME=\u590D\u5236
+copyAction.TIP=\u590D\u5236\u9009\u5B9A\u5BF9\u8C61\u5E76\u5C06\u5176\u653E\u5230\u526A\u8D34\u677F
+copyAppendAction.NAME=\u590D\u5236\u9644\u52A0
+copyAppendAction.TITLE=\u590D\u5236\u9644\u52A0
+generateReportAction.NAME=\u751F\u6210\u62A5\u544A
+noteDetailsAction.NAME=\u6CE8\u91CA\u8BE6\u7EC6\u4FE1\u606F
+findWhereAllocatedAction.NAME=\u4F55\u5904\u5206\u914D
+findWhereAllocatedAction.TIP=\u4F55\u5904\u5206\u914D
+setWorkContextAction.NAME=\u8BBE\u7F6E\u5F53\u524D\u5DE5\u4F5C\u5173\u8054...
+accessAction.NAME=\u8BBF\u95EE...
+removeFromProjectAction.NAME=\u79FB\u9664
+subscribeRefreshNotifyAction.NAME=\u8BA2\u9605\u4EE5\u5237\u65B0\u901A\u77E5...
+purgeAction.NAME=\u6E05\u7406
+assignToLicenseAction.NAME=\u9644\u52A0
+addToFavoritesAction.NAME=\u6DFB\u52A0\u5230\u6536\u85CF\u5939
+removeFromLicenseAction.NAME=\u62C6\u79BB
+refreshAction.NAME=\u5237\u65B0
+refreshAction.MNEMONIC=R
+editAction.NAME=\u7F16\u8F91
+addPartToProductAction.NAME=\u5C06\u96F6\u4EF6\u6DFB\u52A0\u5230\u4EA7\u54C1
+deleteAction.NAME=\u5220\u9664
+deleteAction.TIP=\u6C38\u4E45\u5220\u9664\u9009\u5B9A\u7684\u5BF9\u8C61
+transferCheckOutAction.NAME=\u4F20\u9012\u7B7E\u51FA...
+variantDetailsAction.NAME=\u53D8\u91CF\u6761\u4EF6\u8BE6\u7EC6\u4FE1\u606F
+CCRemoveACTAlignmentAction.NAME=\u663E\u793A\u8FDE\u63A5\u7684\u884C
+checkOutHistoryAction.NAME=\u7B7E\u51FA\u5386\u53F2\u8BB0\u5F55...
+manageGlobalAlternatesAction.NAME=\u7BA1\u7406\u5168\u5C40\u5907\u9009\u4EF6
+checkInAction.NAME=\u7B7E\u5165...
+propertiesAction.NAME=\u67E5\u770B\u5C5E\u6027
+addNew.NAME=\u6DFB\u52A0\u65B0\u7684...
+
+
+cicoMenu.NAME=\u7B7E\u5165/\u7B7E\u51FA(C)
+cicoMenu.MNEMONIC=C
+
+project.NAME=\u9879\u76EE(P)
+project.TIP=\u5C06\u5BF9\u8C61\u6307\u6D3E\u5230\u9879\u76EE\u6216\u4ECE\u9879\u76EE\u79FB\u9664\u5BF9\u8C61
+project.MNEMONIC=P
+
+license.NAME=\u8BB8\u53EF\u8BC1(L)
+license.TIP=\u5C06\u5BF9\u8C61\u9644\u52A0\u5230\u8BB8\u53EF\u8BC1\u6216\u4ECE\u8BB8\u53EF\u8BC1\u62C6\u79BB\u5BF9\u8C61
+license.MNEMONIC=L
+
+multisiteSyncPopMenu.NAME=\u591A\u7AD9\u70B9\u540C\u6B65(S)
+multisiteSyncPopMenu.MNEMONIC=S
+
+Configure_Variants.NAME=\u914D\u7F6E\u53D8\u91CF...
+editProperties.NAME=\u5C5E\u6027
+viewProperties.NAME=\u67E5\u770B\u5C5E\u6027
+
+# Tracelink commands
+# --------------------
+tracelinkMenu.NAME=\u8DDF\u8E2A\u94FE\u63A5
+
+# open in xxx commands
+# --------------------
+openInNX.NAME=\u5728 NX \u4E2D\u6253\u5F00
+openInTCJTEditor.NAME= \u5728 JT \u7F16\u8F91\u5668\u4E2D\u6253\u5F00
+#openInPV.NAME=Open Bookmark In Lifecycle Visualization
+openInVMU.NAME=\u5728\u751F\u547D\u5468\u671F\u53EF\u89C6\u5316\u4E2D\u6253\u5F00
+openInSEEC.NAME=\u5728 Solid Edge \u4E2D\u6253\u5F00
+
+# Incremental Change commands
+# --------------------
+incrementalChangeMenu.NAME=\u589E\u91CF\u66F4\u6539
+incrementalCreateIC.NAME=\u521B\u5EFA\u5173\u8054...
+incrementalAdd.NAME=\u6DFB\u52A0
+incrementalRemove.NAME=\u79FB\u9664
+incrementalCreate.NAME=\u5728\u5BF9\u8C61\u4E0A\u521B\u5EFA
+incrementalDelete.NAME=\u5728\u5BF9\u8C61\u4E0A\u5220\u9664
+removeIncrementalChanges.NAME=\u79FB\u9664\u66F4\u6539...
+icBaseline.NAME=\u589E\u91CF\u66F4\u6539\u57FA\u7EBF...
+icChange.NAME=\u7F16\u8F91\u9644\u4EF6...
+icSplit.NAME=\u62C6\u5206...
+icIntent.NAME=\u610F\u56FE
+icNoIcons.NAME=\u65E0
+icCurrentIcIcons.NAME=\u5F53\u524D\u5173\u8054
+icAllIcIcons.NAME=\u6240\u6709\u5173\u8054
+icHideRemoveIcons.NAME=\u9690\u85CF/\u79FB\u9664\u56FE\u6807
+
+# Import Templates commands
+Templates.NAME=\u6A21\u677F
+SpecTemplate.NAME=\u89C4\u8303\u6A21\u677F
+ObjTemplate.NAME=\u5BF9\u8C61\u6A21\u677F
+ExcelTemplate.NAME=Excel \u6A21\u677F
+Fnd0HTMLObjTmpl.NAME=HTML \u6A21\u677F
+
+# AIE related common commands
+# ---------------------------
+importFromConnection.NAME=\u4ECE\u8FDE\u63A5...
+exportToConnection.NAME=\u5230\u8FDE\u63A5...
+checkOutToConnection.NAME=\u7B7E\u51FA\u5230\u8FDE\u63A5...
+checkInFromConnection.NAME=\u4ECE\u8FDE\u63A5\u7B7E\u5165...
+connectionsAction.NAME=\u8FDE\u63A5...
+
+ShowJTProperties.TITLE=JT \u5C5E\u6027...
+ShowSubComponents.TITLE=\u663E\u793A\u5B50\u7EC4\u4EF6
+HideSubComponents.TITLE=\u9690\u85CF\u5B50\u7EC4\u4EF6
+
+command.name.AdvancedSearch=\u9AD8\u7EA7\u641C\u7D22
+command.name.Null=\u7A7A\u547D\u4EE4
+command.name.Search=\u641C\u7D22
+command.label.General=\u5E38\u89C4...
+command.label.Item=\u96F6\u7EC4\u4EF6...
+command.label.ItemRevision=\u96F6\u7EC4\u4EF6\u7248\u672C...
+command.label.DatasetName=\u6570\u636E\u96C6\u540D\u79F0
+command.label.KeywordSearch=\u5173\u952E\u5B57\u641C\u7D22
+menu.mnemonic.HelpUpdate=S
+
+Check_Out_to_site.TITLE=\u7B7E\u51FA\u5230\u7AD9\u70B9...
+Check_In_from_site.TITLE=\u4ECE\u7AD9\u70B9\u7B7E\u5165...
+#Update Thumbnail related
+updateThumbnail.NAME=\u66F4\u65B0\u7F29\u7565\u56FE...
+updateThumbnail.TIP=\u66F4\u65B0\u7F29\u7565\u56FE
+Cancel_Check_Out_to_site.TITLE=\u53D6\u6D88\u7B7E\u51FA\u5230\u7AD9\u70B9...
+Local_Check_Out.TITLE=\u672C\u5730\u7B7E\u51FA...
+Local_Check_In.TITLE=\u672C\u5730\u7B7E\u5165...
+Cancel_Local_Check_Out.TITLE=\u53D6\u6D88\u672C\u5730\u7B7E\u51FA...
+siteLocalCheckoutAction.MNEMONIC=R
+siteLocalCheckinAction.MNEMONIC=U
+siteLocalCancelCheckoutAction.MNEMONIC=X
+
+ApplyConfigContext.TITLE=\u5E94\u7528\u914D\u7F6E\u5173\u8054...
+# Fix In-Structure Associations command
+# -----------------------------
+fixAssociations.NAME=\u4FEE\u590D\u7ED3\u6784\u5185\u5173\u8054
+
+Markup.TITLE=\u6279\u6CE8
+Markup_Mode.TITLE=\u6279\u6CE8\u6A21\u5F0F
+Markup_View.TITLE=\u663E\u793A\u6279\u6CE8\u89C6\u56FE
+Markup_Delete.TITLE=\u5220\u9664\u6279\u6CE8\uFF08\u6B64\u5C42\uFF09
+Markup_Apply.TITLE=\u5E94\u7528\u6279\u6CE8\uFF08\u6B64\u5C42\uFF09
+Markup_Apply_All.TITLE=\u5E94\u7528\u6279\u6CE8\uFF08\u6240\u6709\u5C42\uFF09
+Markup_Evaluate.TITLE=\u9A8C\u8BC1\u5E94\u7528\u6279\u6CE8\u7684\u8BBF\u95EE\u6743\uFF08\u6240\u6709\u7EA7\u522B\uFF09
+
+# Localization
+#-------------------------------------------------
+Export_Translations.TITLE=\u5BFC\u51FA\u7FFB\u8BD1
+Import_Translations.TITLE=\u5BFC\u5165\u7FFB\u8BD1
+Filter_Objects.TITLE=\u8FC7\u6EE4\u5BF9\u8C61
+
+Export_Translations.TIP=\u5C06\u7FFB\u8BD1\u5BFC\u51FA\u81F3 XML \u6587\u4EF6
+Import_Translations.TIP=\u5C06\u7FFB\u8BD1\u5BFC\u5165\u6570\u636E\u5E93
+Filter_Objects.TIP=\u57FA\u4E8E\u672C\u5730\u5316\u51C6\u5219\u8FC7\u6EE4\u5BF9\u8C61
+
+L10N.NAME=\u672C\u5730\u5316
+
+Change_Locale.TITLE=\u66F4\u6539\u8BED\u8A00\u73AF\u5883
+
+TCInfoCenter.LABEL=\u4FE1\u606F\u4E2D\u5FC3
+OpenMailBox.LABEL=\u90AE\u7BB1
+
+bf_category_name=\u516C\u6587\u5305\u6240\u6709\u6743\u4F20\u9012
+bfOwnershipCart.NAME=\u516C\u6587\u5305
+bfTransfeOwnership.NAME=\u6240\u6709\u6743\u4F20\u9012\u6807\u8BB0
+addPartToOwnershipCart.MNEMONIC=A
+bfOwnershipView.TITLE=\u516C\u6587\u5305\u6240\u6709\u6743\u4F20\u9012
+
+# Digital signature related commands
+Apply_DigitalSign.TITLE=PKI \u7B7E\u540D
+Void_DigitalSign.TITLE=\u4F7F\u5931\u6548
+
+
+# Choose Save As Service Mode
+SaveAsMode.NAME=\u9009\u62E9\u201C\u53E6\u5B58\u4E3A\u201D\u670D\u52A1\u6A21\u5F0F

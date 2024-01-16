@@ -1,0 +1,95 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the access package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: access_locale.properties
+#   Module  : com.teamcenter.rac.commands.access
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#22-Mar-2000  huangz                  Add the key changeOwnershipObjects
+#04-May-2000  huangz                  Fix PR when no component is selected.
+#01-Nov-2000  wangp                   add entries for more access
+#11-Oct-2001  Zhixin Huang            Add the AMRule Tree simulation.
+#16-Oct-2001  Zhixin Huang            Enhance it according to AMRuleTree project.
+#07-Jun-2002  braun                   Added WRITE_ICOS privilege.
+#07-Jun-2002  helmutl                 merge from AM project
+#09-Apr-2003  Jeff Martin             4704737, 4705796- Added 4 new keys.
+#14-Apr-2003  martinj                 Code review change
+#14-Apr-2003  martinj                 merge in
+#15-Sep-2003  x_monthr                For AttachmentLine
+#17-Nov-2003  helmutl                 PR#4880552 rename in-CLASS to Classification
+#17-Nov-2003  helmutl                 Merge from Helmut
+#13-Jul-2005  faming                  004259: implement new Project privileges
+#12-Oct-2005  faming                  004259: new AM Project Privileges in V10 SR1
+#17-Nov-2005  rlee                    Add support for REMOTE_CICO AM priv
+#29-Nov-2005  rlee                    Code review change
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#07-Jun-2007  M.Ram Narsimhamurty     Added support for ADS Program Context
+#30-Jun-2009  ntl                     add support for MARKUP, BATCH_PRINT, DIGITAL_SIGN
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE=Zugriff
+accessName = Zugriff von
+
+#Keys for the Access Dialog
+#----------------------------
+role=Rolle:
+group=Gruppe:
+getRight.TIP = Die aktuell ausgew\u00E4hlten Benutzerberechtigungen abrufen.
+userInfo=Aktueller Eigent\u00FCmer:
+userID=Benutzer:
+aclCommand.TITLE = Zugriffsberechtigungssteuerliste (ACL)
+
+AccessDenied=Zugriff verweigert
+AccessPermitted=Zugang erlaubt
+MARKUP.true.TIP=Ansicht/Markup-Zugriff gew\u00E4hrt
+BATCH_PRINT.true.TIP=Stapeldruckzugriff erlaubt
+DIGITAL_SIGN.true.TIP=Digitale Signatur Zugriff erlaubt
+MARKUP.false.TIP=Ansicht/Markup-Zugriff verweigert
+BATCH_PRINT.false.TIP=Stapeldruckzugriff verweigert
+DIGITAL_SIGN.false.TIP=Digitale Signatur Zugriff verweigert
+MARKUP.TITLE=Ansicht/Markup
+BATCH_PRINT.TITLE=Stapeldruck
+DIGITAL_SIGN.TITLE=Digitale Signatur
+Administer_ADA_Licenses.true.TIP= Administration von ADA-Lizenzen, Zugriff gew\u00E4hrt
+Administer_ADA_Licenses.false.TIP= Administration von ADA-Lizenzen, Zugriff verweigert
+
+Administer_ADA_Licenses.TITLE= Administration von ADA-Lizenzen
+
+accessControl.TIP = Zugriff auf Steuerliste abrufen.
+accessOper=Festlegen des Zugriffs
+extraProtection.TIP = Zus\u00E4tzlichen Schutz anzeigen.
+
+access.TITLE=Zugriff
+noOwner.MSG=Kein Eigent\u00FCmer am aktuellen Objekt gefunden
+
+readingEffectiveACL=G\u00FCltigkeits-ACLs werden gelesen...
+
+getACLInfo = Zugriffsinformationen werden abgerufen...
+
+notValidObjectsSelected = Ausgew\u00E4hlte Komponente ist keine g\u00FCltige Komponente, um Zugriff zu erhalten.
+
+noRuleApply = <Keine anwendbaren Regeln>
+table.HEADER = Berechtigung, Zugriff, Benannte ACL, Zugriffsberechtigter, Regelpfad
+loadingProtection = Schutz erhalten f\u00FCr
+extraProtection.TITLE = Extra-Schutz f\u00FCr
+
+loadingGroups = Gruppen werden geladen von
+loadingRoles = Rollen werden geladen von
+
+loadingUserIds = Benutzer-IDs werden geladen...
+loadingACLDialog = ACL-Dialog wird geladen...
+loadingAccessDialog = Zugriffsdialog wird geladen...
+
+

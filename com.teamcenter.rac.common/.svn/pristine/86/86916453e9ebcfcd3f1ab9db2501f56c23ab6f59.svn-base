@@ -1,0 +1,154 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the organization package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: organization_locale.properties
+#   Module  : com.teamcenter.rac.common.organization
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#14-Mar-2000  mccollr                 Initial Promote.
+#14-Mar-2000  wangp                   Add key for root node.
+#04-Oct-2001  wangp                   add more entries
+#05-Oct-2001  wangp                   Move org selection dlg key from common to common/organization
+#                                     Move group/role/user panel keys from common to common/organization
+#11-Oct-2001  wangp                   Fix merge problem
+#17-Oct-2001  wangp                   Modify noMatch message
+#02-Jun-2002  Sarma Cherukupalli      Promote deactivate group member
+#03-Jul-2002  Sarma Cherukupalli      Modify the tool tip on show/supress deactivate group member button
+#11-Feb-2003  wangp                   add msg for confirming loading search result
+#17-Apr-2003  x_brahma                added searchGroupRole.TIP
+#22-May-2003  Zhixin Huang            Conflict resolutions for P9.0.0.1
+#04-Mar-2004  wangp                   fix pr 2033901 per Rob M.
+#18-Oct-2004  Hugh Stewart            Last login time project.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#26-Feb-2006  Alisa Smith             PR5410098: FIxed spelling error.  Added "i" to adminstrator.
+#16-Mar-2006  liang                   De-imanization project
+#17-Mar-2006  liang                   merge to PLM1
+#$HISTORY$
+#=================================================================================================*/
+
+loadingGroupTree.MESSAGE=\u30EB\u30FC\u30C8\u30B0\u30EB\u30FC\u30D7\u3092\u30ED\u30FC\u30C9\u3057\u3066\u3044\u307E\u3059...\u3057\u3070\u3089\u304F\u304A\u5F85\u3061\u304F\u3060\u3055\u3044\u3002
+
+organization.TITLE=\u7D44\u7E54
+
+# Entries for OrgTreePanel
+# -------------------------------------------
+search.TIP=\u30B0\u30EB\u30FC\u30D7\u3001\u30ED\u30FC\u30EB\u3001\u30E6\u30FC\u30B6\u306E\u691C\u7D22\u57FA\u6E96\u3092\u5165\u529B\u3057\u307E\u3059
+searchText=\u691C\u7D22\u57FA\u6E96\u3092\u5165\u529B...
+emptyPanelText=\u30B0\u30EB\u30FC\u30D7\u3001\u30ED\u30FC\u30EB\u307E\u305F\u306F\u30E6\u30FC\u30B6\u3092\u30EA\u30B9\u30C8\u304B\u3089\u9078\u629E\u3057\u3066\u304F\u3060\u3055\u3044...
+searchGroupRole.TIP=\u30B0\u30EB\u30FC\u30D7/\u30ED\u30FC\u30EB\u306E\u691C\u7D22\u57FA\u6E96\u3092\u5165\u529B\u3057\u307E\u3059\u3002
+groupButton.TIP=\u30B0\u30EB\u30FC\u30D7\u3092\u691C\u7D22
+roleButton.TIP=\u30ED\u30FC\u30EB\u3092\u691C\u7D22 
+userButton.TIP=\u30E6\u30FC\u30B6\u3092\u691C\u7D22(\u30E6\u30FC\u30B6ID\u304A\u3088\u3073\u30E6\u30FC\u30B6\u540D\u3092\u57FA\u6E96)
+searchButton.TIP=\u30E6\u30FC\u30B6\u30D5\u30A3\u30FC\u30EB\u30C9\u304C\u7A7A\u3067\u306A\u304F\u3001\u30ED\u30FC\u30EB\u304A\u3088\u3073\u30B0\u30EB\u30FC\u30D7\u3067\u7D50\u679C\u3092\u30D5\u30A3\u30EB\u30BF\u3057\u3066\u3044\u308B\u5834\u5408\u306F\u3001\u30E6\u30FC\u30B6\u3092\u898B\u3064\u3051\u307E\u3059\u3002 \u30E6\u30FC\u30B6\u30D5\u30A3\u30FC\u30EB\u30C9\u304C\u7A7A\u3067\u30ED\u30FC\u30EB\u30D5\u30A3\u30FC\u30EB\u30C9\u304C\u7A7A\u3067\u306A\u3044\u5834\u5408\u306F\u3001\u30ED\u30FC\u30EB\u3092\u898B\u3064\u3051\u307E\u3059\u3002 \u30E6\u30FC\u30B6\u304A\u3088\u3073\u30ED\u30FC\u30EB\u30D5\u30A3\u30FC\u30EB\u30C9\u306E\u53CC\u65B9\u304C\u7A7A\u3067\u30B0\u30EB\u30FC\u30D7\u30D5\u30A3\u30FC\u30EB\u30C9\u304C\u7A7A\u3067\u306A\u3044\u5834\u5408\u306F\u3001\u30B0\u30EB\u30FC\u30D7\u3092\u898B\u3064\u3051\u307E\u3059\u3002
+userFieldText=\u30E6\u30FC\u30B6ID\u307E\u305F\u306F\u30E6\u30FC\u30B6\u540D\u3092\u5165\u529B
+userField.TIP=\u30E6\u30FC\u30B6ID\u307E\u305F\u306F\u30E6\u30FC\u30B6\u540D\u57FA\u6E96\u3067\u3059\u3002 \u5927\u6587\u5B57\u5C0F\u6587\u5B57\u306E\u533A\u5225\u306F\u306A\u304F\u3001\u30EF\u30A4\u30EB\u30C9\u30AB\u30FC\u30C9\u6587\u5B57\u304C\u8A31\u53EF\u3055\u308C\u3066\u3044\u307E\u3059\u3002
+roleFieldText=\u30ED\u30FC\u30EB\u540D\u3092\u5165\u529B
+roleField.TIP=\u30ED\u30FC\u30EB\u540D\u57FA\u6E96\u3067\u3059\u3002 \u30EF\u30A4\u30EB\u30C9\u30AB\u30FC\u30C9\u6587\u5B57\u304C\u8A31\u53EF\u3055\u308C\u3066\u3044\u307E\u3059\u3002
+groupFieldText=\u30B0\u30EB\u30FC\u30D7\u540D\u3092\u5165\u529B
+groupField.TIP=\u30B0\u30EB\u30FC\u30D7\u540D\u57FA\u6E96\u3067\u3059\u3002 \u30EF\u30A4\u30EB\u30C9\u30AB\u30FC\u30C9\u6587\u5B57\u304C\u8A31\u53EF\u3055\u308C\u3066\u3044\u307E\u3059\u3002
+refreshButton.TIP=\u7D44\u7E54\u56F3\u3092\u518D\u30ED\u30FC\u30C9\u3057\u307E\u3059
+supressAllGMButton.TIP=\u975E\u30A2\u30AF\u30C6\u30A3\u30D6\u306A\u30B0\u30EB\u30FC\u30D7\u30E1\u30F3\u30D0\u30FC\u3092\u975E\u8868\u793A\u306B\u3057\u307E\u3059
+showAllGMButton.TIP=\u975E\u30A2\u30AF\u30C6\u30A3\u30D6\u306A\u30B0\u30EB\u30FC\u30D7\u30E1\u30F3\u30D0\u30FC\u3092\u8868\u793A\u3057\u307E\u3059
+
+localLabel=\u30ED\u30FC\u30AB\u30EB
+localUserButton.TIP=\u30ED\u30FC\u30AB\u30EB\u30E6\u30FC\u30B6\u3092\u691C\u7D22
+replicaLabel=\u8907\u88FD
+replicaUserButton.TIP=\u8907\u88FD\u30E6\u30FC\u30B6\u3092\u691C\u7D22
+allLabel=\u3059\u3079\u3066
+allUserButton.TIP=\u3059\u3079\u3066\u306E\u30E6\u30FC\u30B6\u3092\u691C\u7D22
+filterByHomeSite.TIP=\u30DB\u30FC\u30E0\u30B5\u30A4\u30C8\u3067\u30E6\u30FC\u30B6\u3092\u30D5\u30A3\u30EB\u30BF
+
+FilterBySite.LABEL=\u30B5\u30A4\u30C8\u3067\u30D5\u30A3\u30EB\u30BF
+FilterByHomeSite.LABEL=\u30DB\u30FC\u30E0\u30B5\u30A4\u30C8\u3067\u30D5\u30A3\u30EB\u30BF
+
+searchingFor=\u691C\u7D22\u4E2D
+inOrgTree=\u7D44\u7E54\u56F3\u3067
+makeSelection=\u9078\u629E\u3092\u5B9F\u884C
+
+Group=\u30B0\u30EB\u30FC\u30D7
+Role=\u30ED\u30FC\u30EB
+User=\u30E6\u30FC\u30B6
+
+Local=\u30ED\u30FC\u30AB\u30EB
+Replica=\u8907\u88FD
+All=\u3059\u3079\u3066
+Users=\u30E6\u30FC\u30B6
+
+noGroupFound=\u6307\u5B9A\u3055\u308C\u305F\u540D\u524D\u3092\u6301\u3064\u30B0\u30EB\u30FC\u30D7\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3002
+noRoleFound=\u6307\u5B9A\u3055\u308C\u305F\u540D\u524D\u3092\u6301\u3064\u30ED\u30FC\u30EB\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3002
+noUserFound=\u6307\u5B9A\u3055\u308C\u305F\u540D\u524D\u3092\u6301\u3064\u30E6\u30FC\u30B6\u304C\u898B\u3064\u304B\u308A\u307E\u305B\u3093\u3002
+
+noSearchInput=\u691C\u7D22\u57FA\u6E96\u304C\u5165\u529B\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002
+
+confirmSearchWithStar=\u691C\u7D22\u57FA\u6E96\u3068\u3057\u3066 * \u3092\u4F7F\u7528\u3059\u308B\u3068\u691C\u7D22\u306E\u7D42\u4E86\u306B\u6642\u9593\u304C\u304B\u304B\u308B\u304B\u3082\u3057\u308C\u307E\u305B\u3093\u3002\n\u7D99\u7D9A\u3057\u307E\u3059\u304B?
+thereAre=\u3053\u3053\u306B
+confirmLoad=\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u304C\u898B\u3064\u304B\u308A\u307E\u3057\u305F\u3002\u30ED\u30FC\u30C9\u3057\u307E\u3059\u304B?
+search.TITLE=\u691C\u7D22
+search=\u691C\u7D22:
+projects=\u30D7\u30ED\u30B8\u30A7\u30AF\u30C8: 
+
+#Resource Pool options panel labels
+#----------------------------------
+resourcePoolPanelLabel=\u30EA\u30BD\u30FC\u30B9\u30D7\u30FC\u30EB\u30AA\u30D7\u30B7\u30E7\u30F3
+specificGroupRadioLabel=\u7279\u5B9A\u306E\u30B0\u30EB\u30FC\u30D7
+anyGroupRadioLabel=\u4EFB\u610F\u306E\u30B0\u30EB\u30FC\u30D7
+anyMemberRadioLabel=\u4EFB\u610F\u306E\u30E1\u30F3\u30D0\u30FC
+allMemberRadioLabel=\u3059\u3079\u3066\u306E\u30E1\u30F3\u30D0\u30FC
+
+# Entries for OrganizationSelectionDialog class
+# ---------------------------------------------
+orgSelectionDialog.TITLE=\u7D44\u7E54\u9078\u629E\u30C0\u30A4\u30A2\u30ED\u30B0...
+
+# Keys for the GroupPanel
+# -----------------------
+name=\u540D\u524D:
+descriptionLabel=\u8AAC\u660E:
+privilegeLabel=DBA\u6A29\u9650:
+parentLabel=\u89AA\u30B0\u30EB\u30FC\u30D7:
+volumeLabel=\u30DC\u30EA\u30E5\u30FC\u30E0:
+roleLabel=\u30ED\u30FC\u30EB:
+
+# Keys for the RolePanel
+# -----------------------
+groupLabel=\u30C7\u30D5\u30A9\u30EB\u30C8\u30B0\u30EB\u30FC\u30D7:
+nameLabel=\u540D\u524D:
+descriptionLabel=\u8AAC\u660E:
+
+#Keys for the UserPanel
+#-----------------------
+userIDLabel=\u30E6\u30FC\u30B6ID:
+userNameLabel=\u30E6\u30FC\u30B6\u540D:
+volumeLabel=\u30C7\u30D5\u30A9\u30EB\u30C8\u30DC\u30EA\u30E5\u30FC\u30E0:
+localVolumeLabel=\u30ED\u30FC\u30AB\u30EB\u30DC\u30EA\u30E5\u30FC\u30E0:
+mailBoxLabel=\u30E1\u30FC\u30EB\u30DC\u30C3\u30AF\u30B9
+homeFolderLabel=\u30DB\u30FC\u30E0\u30D5\u30A9\u30EB\u30C0
+groupLabel=\u30C7\u30D5\u30A9\u30EB\u30C8\u30B0\u30EB\u30FC\u30D7:
+newStuffFolderLabel=NewStuff\u30D5\u30A9\u30EB\u30C0
+os_usernameLabel=OS\u540D:
+linkLabel=\u30EA\u30F3\u30AF:
+userStatusLabel=\u30E6\u30FC\u30B6\u72B6\u614B:
+activeLabel=\u30A2\u30AF\u30C6\u30A3\u30D6
+inactiveLabel=\u975E\u30A2\u30AF\u30C6\u30A3\u30D6
+loginTimeLabel=\u524D\u56DE\u30ED\u30B0\u30A4\u30F3:
+
+user.TITLE=\u30E6\u30FC\u30B6
+person.TITLE=\u30D1\u30FC\u30BD\u30F3
+groupMember.TITLE=\u30E1\u30F3\u30D0
+
+roleLabel=\u30ED\u30FC\u30EB:
+gaLabel=\u30B0\u30EB\u30FC\u30D7\u7BA1\u7406\u8005:
+
+# citizenship
+Existing_Citizenship_MSG=\u4F7F\u7528\u6A29 {0} \u304C\u91CD\u8907\u3057\u3066\u3044\u307E\u3059\u3002
+Existing_Citizenship_TLE=\u65E2\u5B58\u306E\u4F7F\u7528\u6A29
+
+

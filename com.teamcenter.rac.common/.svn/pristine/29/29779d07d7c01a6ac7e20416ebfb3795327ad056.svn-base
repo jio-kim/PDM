@@ -1,0 +1,31 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the sendtoug package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: sendtoug_locale.properties
+#   Module  : com.teamcenter.rac.commands.sendtoug
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#08-Aug-2001  viswanat                Created to support send to UG
+#13-Oct-2004  Geethika Chitturi       Changing UG to NX
+#15-Oct-2004  Geethika Chitturi       Merge from x_chittu_hyd_p10.0.0.5 to x_chittu_hyd_p10.0.0.6
+#18-Oct-2004  Geethika Chitturi       Removed Ctrl-M's
+#19-Oct-2004  Geethika Chitturi       Merging to project branch
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for error messages
+# -----------------------------
+clipboardEmpty =\u30AF\u30EA\u30C3\u30D7\u30DC\u30FC\u30C9\u304C\u7A7A\u3067\u3059\u3002
+noSendTarget =\u8CBC\u4ED8\u3051\u5148\u306E\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u304C\u9078\u629E\u3055\u308C\u3066\u3044\u307E\u305B\u3093\u3002
+invalidSendTarget =\u8CBC\u4ED8\u3051\u5148\u3068\u3057\u3066\u7121\u52B9\u306A\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u304C\u9078\u629E\u3055\u308C\u3066\u3044\u307E\u3059\u3002
+error.TITLE =NX\u306B\u9001\u4FE1 ...

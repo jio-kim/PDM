@@ -1,0 +1,71 @@
+#*==================================================================================================
+#
+#                    Copyright (c) 2004 UGS
+#                   Unpublished - All rights reserved
+#                   
+#                   
+# THIS PROGRAM IS AN UNPUBLISHED WORK FULLY PROTECTED BY THE UNITED STATES
+#  COPYRIGHT LAWS AND IS CONSIDERED A TRADE SECRET BELONGING TO THE COPYRIGHT
+#                                   HOLDER.
+#
+#====================================================================================================
+# File description: This properties file contains all locale specific keys for the saveas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: revisesignal_locale.properties
+#   Module  : com.teamcenter.rac.commands.revisesignal
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#04-Oct-2004  x_bhadra                Initial Version
+#08-Nov-2004  x_bhadra                Fixing the Registry Problem
+#08-Nov-2004  Narayana Murthy         Merge from P10.0.0.6
+#10-Nov-2004  x_bhadra                Merge from lbom_pse_support branch
+#21-Nov-2005  Chandra Veerapaneni     Fix PR# 5237127
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+SignalType=Type de signal:
+
+# Revise Panel
+# -----------------------------
+createConfirm.TITLE=R\u00E9viser la R\u00E9vision de signal
+createConfirm.MSG=Pour poursuivre, il faut cr\u00E9er une nouvelle r\u00E9vision de signal. \nVoulez-vous cr\u00E9er la nouvelle r\u00E9vision d'article?
+
+# Revise Item Info Panel
+# ------------------------------
+itemInfo.LABEL=D\u00E9finir les informations de base pour la nouvelle r\u00E9vision de signal.
+itemInfoStep.NAME=Entrez les informations sur le signal
+itemInfoStep.TOOLTIP=D\u00E9finir les informations de base du signal.
+
+# Item Revision Master form panel (Additional Item Revision page)
+# ---------------------------------------------------------------
+itemRevMasterForm.LABEL=D\u00E9finir des informations de r\u00E9vision du signal suppl\u00E9mentaires.
+itemRevMasterFormStep.NAME=Saisie d'informations de r\u00E9vision du signal suppl\u00E9mentaires
+itemRevMasterFormStep.TOOLTIP=D\u00E9finir des informations de r\u00E9vision du signal suppl\u00E9mentaires.
+
+# open option panel
+# -----------------
+checkOutOnCreate = Bloquer la r\u00E9vision de signal \u00E0 la cr\u00E9ation
+
+# Revise Alternate ID/ ReviseIdInfoPanel
+# ---------------------------------------
+step1=1. S\u00E9lectionner la r\u00E9vision:
+step2=2. S\u00E9lectionner le type:
+step3=3. Entrer les informations de base:
+
+idContext=Contexte d'ID:
+idType=Type d'ID:
+
+# Messages for message center
+# ------------------------------
+creatingNewComponent = Cr\u00E9ation d'une nouvelle r\u00E9vision de signal
+openingNewComponent=Ouverture d'une nouvelle r\u00E9vision de signal
+
+# Error Messages
+# ----------------------
+unableToRevise.MSG=Seuls les identificateurs de R\u00E9visions de signal/R\u00E9v. sont r\u00E9visables. \nS\u00E9lectionnez un identificateur de Connexion de signal ou de R\u00E9v. et r\u00E9essayez.
+failToRevise=Echec de r\u00E9vision de la r\u00E9vision de signal.

@@ -1,0 +1,48 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2010.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@ 
+
+multipleSelStdNote=Moment\u00E1ln\u011B nen\u00ED mo\u017En\u00E9 p\u0159ipojit v\u00EDce reviz\u00ED parametrick\u00E9ho po\u017Eadavku k polo\u017Ece/ItemRevision. 
+mulSelect.TITLE=V\u00EDcen\u00E1sobn\u00FD v\u00FDb\u011Br
+
+sourceComp=Zkop\u00EDrujte parametrick\u00FD po\u017Eadavek do schr\u00E1nky a vyberte polo\u017Eku/ItemRevision, ke kter\u00E9 m\u00E1 b\u00FDt parametrick\u00FD po\u017Eadavek p\u0159i\u0159azen.
+source.TITLE=Chyba
+
+replacesource = Pro proveden\u00ED t\u00E9to operace mus\u00ED b\u00FDt revize parametrick\u00E9ho po\u017Eadavku zkop\u00EDrov\u00E1na do schr\u00E1nky
+
+stdnotedialog.TITLE = Vstupn\u00ED parametrick\u00E9 hodnoty
+notetext=Text pozn\u00E1mky
+flagnote=Pozn\u00E1mka zna\u010Dky
+
+error=Chyba
+
+differentItem=Revizi parametrick\u00E9ho po\u017Eadavku nen\u00ED mo\u017En\u00E9 nahradit reviz\u00ED jin\u00E9ho parametrick\u00E9ho po\u017Eadavku
+differentItem.TITLE=Nahradit
+
+wrongReplace=Zkop\u00EDrovan\u00FD objekt a vybran\u00FD objekt mus\u00ED b\u00FDt typu revize parametrick\u00E9ho po\u017Eadavku
+wrongReplace.TITLE=Nahradit
+
+
+notInContext=Chcete-li prov\u00E9st tuto operaci, vyberte revizi parametrick\u00E9ho po\u017Eadavku, kter\u00E1 je p\u0159i\u0159azena k polo\u017Ece/ItemRevision
+
+mulItems=Moment\u00E1ln\u011B nen\u00ED mo\u017En\u00E9 p\u0159ipojit parametrick\u00FD po\u017Eadavek k v\u00EDce polo\u017Ek\u00E1m/ItemRevision
+
+NotItem=Chcete-li prov\u00E9st tuto operaci, mus\u00ED b\u00FDt vybran\u00FD objekt polo\u017Eka/ItemRevision
+
+Parameter.TITLE=Parametr
+Value.TITLE=Hodnota
+
+partslistnote = Pozn\u00E1mka kusovn\u00EDku
+noObjectSelected.TITLE = Nen\u00ED vybr\u00E1n \u017E\u00E1dn\u00FD objekt
+noObjectSelected = Pro proveden\u00ED t\u00E9to operace nen\u00ED vybr\u00E1n \u017E\u00E1dn\u00FD objekt.
+
+replaceStandardNote=Nahradit revizi parametrick\u00E9ho po\u017Eadavku
+standardNote=Parametrick\u00FD po\u017Eadavek
+
+revError=Nejedn\u00E1 se o platn\u011B konfigurovanou revizi. Vyberte konfigurovanou revizi podle pravidla revize ur\u010Den\u00E9ho v p\u0159edvolb\u011B PARAM_REQ_REV_RULE.
+revError.TITLE=Neplatn\u011B konfigurovan\u00E1 revize
+

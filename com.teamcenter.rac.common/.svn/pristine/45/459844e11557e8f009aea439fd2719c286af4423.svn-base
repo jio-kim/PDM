@@ -1,0 +1,11 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2010.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@ 
+
+import=com.teamcenter.rac.common.common
+
+msgRegLocation=com.teamcenter.rac.commands.standardnote.standardnote

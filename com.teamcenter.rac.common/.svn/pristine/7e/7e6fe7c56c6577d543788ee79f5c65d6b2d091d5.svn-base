@@ -1,0 +1,46 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 1998 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description:
+#
+#   Filename: explore_user.properties
+#   Module  : com.teamcenter.rac.common.explore
+#
+#===================================================================================================
+#  Date       Name                    Description of Change
+# 6-Sep-2000  G.Sridhar               Initial Release
+#20-Sep-2000  x_subrat               Initial Creation for Deep Select
+#20-Sep-2000  Subrata Sen             Fixed Comments with User IDs entries.
+#20-Sep-2000  Subrata Sen             Merge to try_uif_v7.0
+#15-Aug-2002  wangp                   clean up entires.
+#23-Aug-2002  wangp                   changes after review
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+dialog.TITLE=\u691C\u7D22
+
+#----Rule table entries
+type=\u30BF\u30A4\u30D7
+relation=\u30EA\u30EC\u30FC\u30B7\u30E7\u30F3
+ruleTitle=\u9078\u629E\u30EB\u30FC\u30EB
+anyTypeOrRelation=\u3044\u305A\u308C\u304B
+
+refreshTree.TIP=\u30EB\u30FC\u30EB\u30D9\u30FC\u30B9\u306E\u30C4\u30EA\u30FC\u5185\u306E\u9078\u629E\u9805\u76EE\u3092\u66F4\u65B0\u3057\u307E\u3059
+addRule.TIP=\u30EB\u30FC\u30EB\u3092\u8FFD\u52A0
+removeRule.TIP=\u9078\u629E\u3055\u308C\u305F\u30EB\u30FC\u30EB\u3092\u9664\u53BB\u3057\u307E\u3059
+
+#----Explore tree entries
+root.TITLE=\u30A8\u30AF\u30B9\u30D7\u30ED\u30FC\u30E9
+selectAll.TIP=\u3059\u3079\u3066\u306E\u30B3\u30F3\u30DD\u30FC\u30CD\u30F3\u30C8\u3092\u9078\u629E
+
+#----Messages
+loadTypeRelation=\u3059\u3079\u3066\u306E\u30BF\u30A4\u30D7\u3068\u30EA\u30EC\u30FC\u30B7\u30E7\u30F3\u3092\u30ED\u30FC\u30C9\u3057\u3066\u3044\u307E\u3059...
+loadRules=\u30BF\u30A4\u30D7/\u30EA\u30EC\u30FC\u30B7\u30E7\u30F3\u30EB\u30FC\u30EB\u3092\u30ED\u30FC\u30C9\u3057\u3066\u3044\u307E\u3059...
+expandAll=\u30B3\u30F3\u30DD\u30FC\u30CD\u30F3\u30C8\u3092\u5C55\u958B\u3057\u3066\u3044\u307E\u3059...
+updatingTree=\u30C4\u30EA\u30FC\u306E\u9078\u629E\u9805\u76EE\u3092\u66F4\u65B0\u3057\u3066\u3044\u307E\u3059...
+selectingAll=\u30C4\u30EA\u30FC\u5185\u306E\u3059\u3079\u3066\u306E\u30B3\u30F3\u30DD\u30FC\u30CD\u30F3\u30C8\u3092\u9078\u629E\u3057\u3066\u3044\u307E\u3059...
+gettingSelection=\u30C4\u30EA\u30FC\u304B\u3089\u9078\u629E\u9805\u76EE\u3092\u53D6\u5F97\u3057\u3066\u3044\u307E\u3059...

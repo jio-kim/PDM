@@ -1,0 +1,119 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newenvelope package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newenvelope_locale.properties
+#   Module  : com.teamcenter.rac.commands.newenvelope
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#16-Aug-2000  jordan                  V7 UI prototype
+#26-Apr-2001  x_gopala                PR Fix #4271324
+#26-Apr-2001  x_gopala                Merge in PR fix #4271324
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Entries for new envelope dialog
+# --------------------------------
+command.TITLE1=\u65B0\u5EFA\u4FE1\u5C01
+command.TITLE2=\u4FE1\u5C01
+
+to=\u6536\u4EF6\u4EBA(T)...
+to.MNEMONIC=T
+to.TOOLTIP=\u9078\u53D6\u6536\u4EF6\u4EBA
+
+cc=\u6284\u9001...
+cc.TOOLTIP=\u9078\u53D6\u6536\u4EF6\u4EBA
+
+send=\u50B3\u9001(S)
+send.MNEMONIC=S
+send.TOOLTIP=\u50B3\u9001\u4FE1\u5C01
+
+subject=\u4E3B\u65E8\uFF1A
+
+message=\u90F5\u4EF6\uFF1A
+
+attachment=\u9644\u4EF6\uFF1A
+
+audit=\u5BE9\u6838\uFF1A
+yes=\u662F
+
+add.TOOLTIP=\u5C07\u526A\u8CBC\u7C3F\u4E0A\u7684\u7269\u4EF6\u4F5C\u70BA\u9644\u4EF6\u65B0\u589E
+
+remove.TOOLTIP=\u5F9E\u9644\u4EF6\u4E2D\u79FB\u9664\u7269\u4EF6
+
+include=\u5305\u542B
+include.TOOLTIP=\u5C07\u5728\u9644\u4EF6\u6E05\u55AE\u4E2D\u9078\u53D6\u7684\u6587\u5B57\u8CC7\u6599\u96C6\u7269\u4EF6\u7684\u5167\u5BB9\u63D2\u5165\u8A0A\u606F\u6B63\u6587
+includeButton.TITLE=\u5305\u542B
+noFileFound=\u672A\u627E\u5230\u6A94\u6848\u3002
+
+references=\u53C3\u8003
+references.TOOLTIP=\u9078\u53D6\u5C07\u8981\u50B3\u9001\u7684\u53C3\u8003
+referencesButton.TITLE=\u53C3\u8003
+
+ok.TOOLTIP=\u5132\u5B58\u4FE1\u5C01
+
+# Entries for select recipients dialog
+# --------------------------------------
+selectRecipient.TITLE=\u9078\u53D6\u6536\u4EF6\u4EBA
+
+search=\u641C\u5C0B\uFF1A
+
+toButton=\u6536\u4EF6\u4EBA(T)->
+toButton.MNEMONIC=T
+ccButton=\u6284\u9001(C)->
+ccButton.MNEMONIC=C
+
+userButton.TOOLTIP=\u641C\u5C0B\u7B26\u5408\u641C\u5C0B\u6E96\u5247\u7684\u4F7F\u7528\u8005 ID\u3002
+groupButton.TOOLTIP=\u641C\u5C0B\u7B26\u5408\u641C\u5C0B\u6E96\u5247\u7684\u7FA4\u7D44\u3002
+aliasButton.TOOLTIP=\u641C\u5C0B\u7B26\u5408\u641C\u5C0B\u6E96\u5247\u7684\u5730\u5740\u6E05\u55AE\u3002
+addressListButton.TOOLTIP=\u555F\u52D5\u5730\u5740\u6E05\u55AE\u5C0D\u8A71\u65B9\u584A\u3002
+find.TOOLTIP=\u8F38\u5165\u641C\u5C0B\u6E96\u5247\u4E26\u6309\u5176\u4E2D\u4E00\u500B\u6309\u9215\u3002
+
+# Entries for message center messages
+# -------------------------------------------------------------
+creatingNewEnvelope=\u6B63\u5728\u65B0\u5EFA\u4FE1\u5C01...
+updatingEnvelope=\u6B63\u5728\u66F4\u65B0\u4FE1\u5C01...
+sendingEnvelope=\u6B63\u5728\u50B3\u9001\u4FE1\u5C01...
+loadingMembers=\u6B63\u5728\u8F09\u5165\u6210\u54E1...
+loadingFile=\u6B63\u5728\u8B80\u53D6\u6A94\u6848...
+abortSending=\u50B3\u9001\u65B0\u4FE1\u5C01\u6642\u4E2D\u6B62\u3002
+
+# Error Messages for invalid recipients
+# ---------------------------------------------------------------
+errorInvalidRecipients.TITLE=\u932F\u8AA4\uFF0C\u7121\u6548\u7684\u6536\u4EF6\u4EBA\uFF01\uFF01\uFF01
+invalidRecipients.MESSAGE=\u6536\u4EF6\u4EBA "{0}" \u7121\u6548\u3002
+
+# Error Messages
+# ---------------------------------------------------------------
+errorAddingAttach.TITLE=\u65B0\u589E\u9644\u4EF6\u6642\u51FA\u932F\uFF01\uFF01\uFF01
+invalidAttach.MESSAGE=\u7269\u4EF6\u300C{0}\u300D\u662F\u7121\u6548\u9644\u4EF6\u3002
+
+# Entries for the mail send blocking panel
+# ---------------------------------------------------------------
+blockSending.TITLE=\u963B\u6B62\u50B3\u9001\u4FE1\u5C01
+blockSending.MESSAGE=\u7121\u6CD5\u5C07\u6B64\u4FE1\u5C01\u50B3\u9001\u7D66\u5916\u90E8\u6536\u4EF6\u4EBA\u3002\n "Mail_OSMail_activated" \u559C\u597D\u8A2D\u5B9A\u672A\u8A2D\u5B9A\u70BA TRUE \u6216 "Mail_server_name" \u559C\u597D\u8A2D\u5B9A\u672A\u8A2D\u5B9A\u70BA\u6709\u6548\u7684\u90F5\u4EF6\u4F3A\u670D\u5668\u3002\u5982\u679C\u60A8\u60F3\u8981\u7E7C\u7E8C\uFF0C\u8ACB\u79FB\u9664\u5916\u90E8\u90F5\u4EF6\u6536\u4EF6\u4EBA\u3002
+
+# Entries for error when inserting text from a text dataset
+# ---------------------------------------------------------------
+textDatasetInsertion.TITLE=\u6587\u5B57\u8CC7\u6599\u96C6\u63D2\u5165
+textDatasetInsertion.textLengthLimitation.MESSAGE=\u7531\u65BC\u4FE1\u5C01\u6B63\u6587\u5927\u5C0F\u53D7\u9650\uFF0C\u53EA\u80FD\u8907\u88FD\u6587\u5B57\u8CC7\u6599\u96C6\u7269\u4EF6\u4E2D\u7684\u524D {0} \u500B\u5B57\u5143\u3002
+textDatasetInsertion.noMoreCharacters.MESSAGE=\u5DF2\u9054\u5230\u4FE1\u5C01\u6B63\u6587\u7684\u6700\u5927\u5927\u5C0F\u4E0A\u9650\u3002
+textDatasetInsertion.MESSAGE=\u7121\u6CD5\u63D2\u5165\u9078\u5B9A\u8CC7\u6599\u96C6\u4E2D\u7684\u6587\u5B57\u3002\u5176\u4E2D\u5305\u542B\u975E\u6CD5\u5B57\u5143\uFF1A\n\u300C{0}\u300D
+messageTextAreaInsertion.textLengthLimitation.MESSAGE=\u7531\u65BC\u4FE1\u5C01\u6B63\u6587\u5927\u5C0F\u53D7\u9650\uFF0C\u53EA\u80FD\u8907\u88FD\u526A\u8CBC\u7C3F\u7269\u4EF6\u4E2D\u7684\u524D {0} \u500B\u5B57\u5143\u3002
+messageTextAreaInsertion.TITLE=\u6B63\u6587\u5927\u5C0F\u5DF2\u8D85\u51FA
+
+# Entries for warning message displayed when the subject field is too large
+# -------------------------------------------------------------------------
+subjectFieldSizeExceeded.MESSAGE=\u5DF2\u9054\u5230\u4FE1\u5C01\u4E3B\u65E8\u7684\u6700\u5927\u5927\u5C0F\u4E0A\u9650\u3002
+subjectFieldSizeExceeded.TITLE=\u4E3B\u65E8\u5927\u5C0F\u5DF2\u8D85\u51FA

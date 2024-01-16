@@ -1,0 +1,14 @@
+targetSite=Siti di destinazione:
+confirmationText=Seleziona sito di destinazione per il trasferimento di propriet\u00E0
+command.TITLE=Trasferimento di propriet\u00E0 al sito
+yes=S\u00EC
+no=No
+yes.MNEMONIC=y
+no.MNEMONIC=n
+noSiteConfigured=Non ci sono siti contrassegnati per i trasferimenti offline, non \u00E8 quindi consentito contrassegnare gli oggetti per il passaggio di propriet\u00E0.
+siteNotConfigured.TITLE=Selezione del sito di destinazione
+invalidSelection=Il componente selezionato \u00E8 gi\u00E0 nella vista, nella replica oppure non nell'item o item revision.
+invalidSelection.TITLE=Errore di selezione del componente  
+allSitesAreUnmanaged=Non ci sono siti di destinazione per trasferimenti offline gestiti, non \u00E8 quindi consentito contrassegnare gli oggetti 4GD per il passaggio di propriet\u00E0.
+
+ 

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.common.DBAPrivilegeContext">
+   <implementation class="com.teamcenter.rac.common.DBAPrivilegeContext"/>
+   <service>
+      <provide interface="com.teamcenter.rac.common.DBAPrivilegeContext"/>
+      <provide interface="org.osgi.service.event.EventHandler"/>
+   </service>
+   <property name="event.topics" type="String">
+        com/teamcenter/rac/aifrcp/event/Session/UserDBA
+    </property>
+</scr:component>

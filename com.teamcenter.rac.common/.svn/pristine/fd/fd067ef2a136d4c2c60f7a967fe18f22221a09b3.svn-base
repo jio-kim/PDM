@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="com.teamcenter.rac.common">
+   <implementation class="com.teamcenter.rac.services.ProgressCheckingService"/>
+   <service>
+      <provide interface="com.teamcenter.rac.services.IProgressCheckingService"/>
+   </service>
+</scr:component>

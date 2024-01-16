@@ -1,0 +1,58 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newbomviewrevision package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newbomviewrevision_locale.properties
+#   Module  : com.teamcenter.rac.commands.newbomviewrevision
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#10-Mar-2000  huangz                  Revise and finish it after Scott left.
+#10-Mar-2000  huangz                  Change the key name
+#16-Mar-2000  mccollr                 Merge out from Cypress to Troy.
+#06-Apr-2000  huangz                  Change the value of key
+#18-Oct-2001  wangp                   add key for name
+#29-Mar-2004  Zhixin Huang            Fix PR 4923225 (give some infor for the view types empty in Save BVR and New BVR).
+#01-Apr-2004  Zhixin Huang            Fix bug
+#01-Apr-2004  Zhixin Huang            Merge to Troy.
+#30-Apr-2004  wangp                   fix pr 4963411: fix spelling error
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# SaveBOMViewRevisionAsDialog
+# ------------------------
+command.TITLE = Nov\u00E1 revize BOMView
+bvrInformation = Vytvo\u0159it nov\u00E9 BVR pro:
+BVRId = ID polo\u017Eky
+rev = ID revize
+viewType = Typ pohledu:
+billDisplay = Vytvo\u0159it jako:
+precise = P\u0159esn\u011B
+imprecise = Nep\u0159esn\u011B
+openOnCreate = Otev\u0159\u00EDt p\u0159i vytvo\u0159en\u00ED
+name = N\u00E1zev
+
+loadingViewTypes = Na\u010Dten\u00ED typ\u016F BOMView...
+viewTypeError = Nelze na\u010D\u00EDst typ BOMView
+creatingNewBOMViewRevision = Vytvo\u0159it revizi BOMView...
+failToCreate = Chyba p\u0159i vytvo\u0159en\u00ED BOMView
+
+error.TITLE = Chyba
+multipleSelectionError = V\u00EDce v\u00FDb\u011Br\u016F nen\u00ED povoleno.
+
+itemSelectionError = V\u00FDb\u011Br mus\u00ED b\u00FDt polo\u017Eka nebo revize polo\u017Eky.
+
+noValidViewTypes=Neexistuje platn\u00FD typ pohledu pro zadanou revizi polo\u017Eky. Revize\n bu\u010Fto neexistuje, nebo jsou v\u0161echny typy pohledu ji\u017E pou\u017Eity.
+noValidViewTypes.TITLE = \u017D\u00E1dn\u00FD typ pohledu
+
+remind.MSG = Seznam typ\u016F pohledu je ten, kter\u00FD je dostupn\u00FD podle vlo\u017Een\u00E9 polo\u017Eky a ID\n reviz\u00ED. V p\u0159\u00EDpad\u011B, \u017Ee n\u011Bjak\u00E9 ID je neplatn\u00E9 nebo v\u0161echny typy\n pohledu jsou ji\u017E pou\u017Eity, seznam typ\u016F pohledu bude pr\u00E1zdn\u00FD. U\u017Eivatel m\u016F\u017Ee zadat jin\u00E9 ID a\n dostupn\u00E9 typy pohledu budou ur\u010Deny a zobrazeny.

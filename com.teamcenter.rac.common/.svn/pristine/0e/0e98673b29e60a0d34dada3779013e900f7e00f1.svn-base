@@ -1,0 +1,39 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2011.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the sitecheckout package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: sitecheckout_locale.properties
+#   Module  : com.teamcenter.rac.commands.sitecheckout
+#
+#===================================================================================================
+
+command.TITLE=Check-out To Site
+comments=Comments:
+changeid=Change ID:
+targetSite=Target Site:
+
+confirmationText=Are you sure you want to check-out to site?
+checkOutToSite=Checking Out to Site
+error.TITLE=Site Check-out
+errorType=Site check-out is not allowed for one of the selected object type.
+noSelectionError=No objects are selected to be checked out
+noItemRevError.MESSAGE=Site Check-in/Site Check-out operations are not valid for the selected line(s) without an Item Revision.
+noAttachmentError.MESSAGE=Check-in/Check-out operations are not valid for the selected line(s) without an attachment object.
+noPreferencesDefined=Specify preferences for the types you want to support.\nPlease check the %1$s preference.
+
+objectCheckedOutLocally.MESSAGE=Object "%1$s" is checked out locally, site check-out is not allowed.
+objectCheckedOutByDifferentSite.MESSAGE=Object "%1$s" is checked out by a different site, site check-out is not allowed
+ObjectCheckedOutByDiffUser.MESSAGE=Object "%1$s" is checked out by a different user, site check-out is not allowed.
+ObjectOwnedByDiffSite.MESSAGE=Object "%1$s" is owned by a different site, site check-out is not allowed
+readReservation.ERRORMESSAGE = Failed to read the Reservation for the object "%1$s". Terminating the site check-out action. Refresh object and try site check-out again.
+objectIsReserved.ERRORMESSAGE = This Object is already Checked-Out by another site. Please check object properties for more details.

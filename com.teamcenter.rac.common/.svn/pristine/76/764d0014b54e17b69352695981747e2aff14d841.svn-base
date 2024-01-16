@@ -1,0 +1,24 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2009.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the form package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#$HISTORY$
+#=================================================================================================*/
+
+#Localization
+#-----------------------------------
+MasterLocaleChangingwarning.TITLE =Aviso en cambio de la configuraci\u00F3n regional maestra
+MasterLocaleChangingwarningList.MESSAGE=Las propiedades indicadas abajo tienen una configuraci\u00F3n regional maestra que es diferente de la configuraci\u00F3n regional de entrada:
+MasterLocaleChangingwarningExplain.MESSAGE=Si contin\u00FAa, se actualizar\u00E1 la configuraci\u00F3n regional maestra y todas las traducciones ser\u00E1n inv\u00E1lidas.
+MasterLocaleChangingwarningConfirmation.MESSAGE=\u00BFEst\u00E1 seguro de que desea continuar?

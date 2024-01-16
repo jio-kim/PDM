@@ -1,0 +1,49 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the printas package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: printas_locale.properties
+#   Module  : com.teamcenter.rac.commands.printas
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#04-Aug-2000  huangz                  Revise the code to do the client side print
+#30-Aug-2000  huangz                  Change the structure to content.
+#14-Sep-2000  huangz                  Add the keys for print BOMLine
+#18-Sep-2000  huangz                  Change the key value of print as dialog.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = \u5370\u5237...
+
+objectProperties = \u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u30D7\u30ED\u30D1\u30C6\u30A3
+formProperties = \u30D5\u30A9\u30FC\u30E0\u30D7\u30ED\u30D1\u30C6\u30A3
+
+structure = \u30B3\u30F3\u30C6\u30F3\u30C4
+structureDisplay = \u30B3\u30F3\u30C6\u30F3\u30C4 (\u73FE\u5728\u306E\u8868\u793A)
+printAppHTML = \u30A2\u30D7\u30EA\u30B1\u30FC\u30B7\u30E7\u30F3 (HTML/\u30C6\u30AD\u30B9\u30C8)
+printAppGraphics = \u30A2\u30D7\u30EA\u30B1\u30FC\u30B7\u30E7\u30F3 (\u30B0\u30E9\u30D5\u30A3\u30C3\u30AF\u30B9)
+
+level = \u30EC\u30D9\u30EB
+data = \u30C7\u30FC\u30BF
+
+# PrintDatasetDialog
+# --------------------
+toolUsed = \u4F7F\u7528\u30C4\u30FC\u30EB:
+
+# Error Messages
+# --------------------
+notRightType = \u9078\u629E\u3055\u308C\u305F\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3092\u51E6\u7406\u3067\u304D\u307E\u305B\u3093\u3002
+error.TITLE = \u5370\u5237...
+noComponent = \u30B3\u30F3\u30DD\u30FC\u30CD\u30F3\u30C8\u306FNULL\u3067\u3059\u3002
+
+printAsStatus = \u5370\u5237...

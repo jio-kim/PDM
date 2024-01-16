@@ -1,0 +1,42 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the cut package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: cut_locale.properties
+#   Module  : com.teamcenter.rac.commands.cut
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#11-Feb-2000  mccollr                 Initial Promote.
+#05-Mar-2000  chenm                   Merge from int_v6.2 to chenm_v62
+#09-Apr-2001  Endi Wu                 Define new entry for PR1074807
+#26-Apr-2002  Rob McColl              Rebranding change from tc to Teamcenter.
+#14-Oct-2003  scottb                  Add message for invalid arrangement cut
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+command.TITLE = \u526A\u4E0B
+
+confirmationText = \u78BA\u5B9A\u8981\u526A\u4E0B\u55CE\uFF1F
+noConfirmationText = \u6B63\u5728\u526A\u4E0B...
+
+noSelection = \u672A\u9078\u5B9A\u8981\u526A\u4E0B\u7684\u7269\u4EF6\u3002
+rootSelection = \u4E0D\u80FD\u526A\u4E0B\u6839\u7269\u4EF6\u3002
+invalidSelection = \u9078\u5B9A\u7684\u8981\u526A\u4E0B\u7684\u7269\u4EF6\u7121\u6548\u3002
+invalidSelectionBOMViewRev = \u7121\u6CD5\u5F9E\u9805\u76EE\u7248\u672C\u4E2D\u526A\u4E0B BOM \u8996\u5716\u7248\u672C\u3002
+invalidSelectionBOMView = \u7121\u6CD5\u5F9E\u9805\u76EE\u4E2D\u526A\u4E0B BOM \u8996\u5716\u3002
+inaccessibleBOMViewRev = \u7121\u6CD5\u5F9E {0} \u526A\u4E0B BOM \u5217\u3002
+acessDenied = \u5BEB\u5B58\u53D6\u88AB\u62D2\u7D55\u3002
+invalidSelectionAssemblyArrangement = \u4E0D\u80FD\u5F9E BOMViewRevision \u526A\u4E0B AssemblyArrangement\u3002
+error.TITLE = \u526A\u4E0B
+
+cutting = \u6B63\u5728\u526A\u4E0B
+from = \u5F9E

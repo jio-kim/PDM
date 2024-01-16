@@ -1,0 +1,40 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2012.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the newform package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: newform_locale.properties
+#   Module  : com.teamcenter.rac.commands.newform
+#
+#===================================================================================================
+
+command.TITLE=Formulario nuevo
+
+name=Nombre:
+description=Descripci\u00F3n:
+type=Tipo:
+relation=Relaci\u00F3n:
+openOnCreate=Abrir al crear
+
+creatingNewForm=Creando un formulario nuevo {0} ...
+abort=Anular la apertura del formulario nuevo
+loadingTypes=Recuperando los tipos de formulario...
+formTypeError=Error al cargar los tipos de formulario...
+failToCreate=Fallo al crear el formulario
+error.TITLE=Formulario nuevo...
+
+# Messages and keys for the Abort Message Box 
+# ----------------------------------------------
+aborted=Creaci\u00F3n de formulario interrumpida... Formulario creado e insertado parcialmente
+aborted.TITLE=Anulada
+
+aborting=Anulando...

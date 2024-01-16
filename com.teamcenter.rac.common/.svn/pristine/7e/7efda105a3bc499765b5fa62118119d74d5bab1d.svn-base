@@ -1,0 +1,56 @@
+# @<COPYRIGHT>@
+# ==================================================
+# Copyright 2007.
+# Siemens Product Lifecycle Management Software Inc.
+# All Rights Reserved.
+# ==================================================
+# @<COPYRIGHT>@
+
+#*==================================================================================================
+# File description: This properties file contains all locale specific keys for the deepcopy package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#===================================================================================================
+#   Date      Name                    Description of Change
+#18-Jul-2001  x_gopala                Initial Creation
+#12-Oct-2001  wangp                   revise project (for x_gopala)
+#27-Jan-2006  narayasu                Fix for PR 5371739
+#$HISTORY$
+#=================================================================================================*/
+
+# Advanced copy options tab
+# --------------------------------------------------
+advanced.TITLE=\u8A73\u7D30
+fromTree=\u30B3\u30D4\u30FC\u5143:
+sourceGeneric=\u30B3\u30D4\u30FC\u5143 \u4E00\u822C\u30A2\u30A4\u30C6\u30E0\u30EA\u30D3\u30B8\u30E7\u30F3:
+sourceVariant=\u30BD\u30FC\u30B9\u30D0\u30EA\u30A2\u30F3\u30C8\u30A2\u30A4\u30C6\u30E0\u30EA\u30D3\u30B8\u30E7\u30F3:
+toTree=\u30B3\u30D4\u30FC\u5148:
+useCopyPref= \u30E6\u30FC\u30B6\u30B3\u30D4\u30FC\u30AA\u30D7\u30B7\u30E7\u30F3\u3092\u6709\u52B9\u306B\u3059\u308B
+copyPreferences=\u30B3\u30D4\u30FC\u30D7\u30EA\u30D5\u30A1\u30EC\u30F3\u30B9:
+userPref=\u30E6\u30FC\u30B6
+sitePref=\u30B5\u30A4\u30C8
+
+loadingTree.MSG=\u30C4\u30EA\u30FC\u3092\u30ED\u30FC\u30C9\u3057\u3066\u3044\u307E\u3059...
+
+error.TITLE=\u91CD\u8907\u30A8\u30F3\u30C8\u30EA
+errormsg=\u30B5\u30A4\u30C8\u30D7\u30EA\u30D5\u30A1\u30EC\u30F3\u30B9\u30D5\u30A1\u30A4\u30EB\u306B\u91CD\u8907\u307E\u305F\u306F\u9593\u9055\u3063\u305F\u30D7\u30EA\u30D5\u30A1\u30EC\u30F3\u30B9\u5024\u304C\u3042\u308A\u307E\u3059\u3002
+
+# Popupmenu
+# --------------------------------------------------
+copy_as_object.POPUP_TITLE=\u30B3\u30D4\u30FC\u30AA\u30D7\u30B7\u30E7\u30F3
+
+copy_as_reference.NAME=\u53C2\u7167\u3068\u3057\u3066\u30B3\u30D4\u30FC
+copy_as_NoCopyOrReferenceNewCopy.NAME=\u30B3\u30D4\u30FC\u306A\u3057\u3001\u307E\u305F\u306F\u6700\u65B0\u306B\u95A2\u4FC2\u3059\u308B
+copy_as_object.NAME=\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3068\u3057\u3066\u30B3\u30D4\u30FC
+no_copy.NAME=\u30B3\u30D4\u30FC\u3057\u306A\u3044
+relate_to_latest.NAME=\u6700\u65B0\u306B\u95A2\u4FC2\u3059\u308B
+revise_and_relate_to_latest.NAME= \u6700\u65B0\u306B\u30EA\u30D3\u30B8\u30E7\u30F3\u30A2\u30C3\u30D7\u3057\u3066\u95A2\u4FC2\u4ED8\u3051
+copy_as_object.TIP=[\u30AA\u30D6\u30B8\u30A7\u30AF\u30C8\u3068\u3057\u3066\u30B3\u30D4\u30FC] \u30AA\u30D7\u30B7\u30E7\u30F3\u304C\u8A2D\u5B9A\u3055\u308C\u307E\u3059\u3002
+copy_as_reference.TIP=[\u53C2\u7167\u3068\u3057\u3066\u30B3\u30D4\u30FC] \u30AA\u30D7\u30B7\u30E7\u30F3\u304C\u8A2D\u5B9A\u3055\u308C\u307E\u3059\u3002
+copy_as_NoCopyOrReferenceNewCopy.TIP=\u30B3\u30D4\u30FC\u306A\u3057\u3001\u307E\u305F\u306F\u6700\u65B0\u30AA\u30D7\u30B7\u30E7\u30F3\u30BB\u30C3\u30C8\u306B\u95A2\u4FC2\u3059\u308B
+no_copy.TIP=[\u30B3\u30D4\u30FC\u3057\u306A\u3044] \u30AA\u30D7\u30B7\u30E7\u30F3\u304C\u8A2D\u5B9A\u3055\u308C\u307E\u3059\u3002
+relate_to_latest.TIP=\u95A2\u4FC2\u3059\u308B\u6700\u65B0\u306E\u30AA\u30D7\u30B7\u30E7\u30F3\u30BB\u30C3\u30C8
+revise_and_relate_to_latest.TIP= \u6700\u65B0\u306B\u30EA\u30D3\u30B8\u30E7\u30F3\u30A2\u30C3\u30D7\u3057\u3066\u95A2\u4FC2\u4ED8\u3051\u30AA\u30D7\u30B7\u30E7\u30F3\u30BB\u30C3\u30C8
+
+download=\u30C7\u30A3\u30FC\u30D7\u30B3\u30D4\u30FC\u30C4\u30EA\u30FC\u3092\u4F5C\u6210\u3057\u3066\u3044\u307E\u3059...

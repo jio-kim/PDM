@@ -1,0 +1,137 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2000 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the table package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: table_locale.properties
+#   Module  : com.teamcenter.rac.common.table
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#31-Jan-2001  huangz                  Initial creation
+#23-Feb-2001  huangz                  Merge from Try_uif_v7.0 branch to Zhixin's branch to fix the clearcase shif problem.
+#06-Mar-2001  Zhixin Huang            Add the yes.VALUE and no.VALUE key
+#14-Jan-2002  Zhixin Huang            Add auto filter feature.
+#28-Jan-2002  Zhixin Huang            Fix PR 4155683 & Add the copy selection with headers menu.
+#29-Jan-2002  Zhixin Huang            Enhance the auto filter feature.
+#09-May-2002  Zhixin Huang            Add the key for auto filter.
+#13-Dec-2002  Zhixin Huang            Revise according to Rob's comments.
+#27-Dec-2002  Zhixin Huang            Add the key for tool tip.
+#06-Feb-2003  wangp                   fix pr 4639098: add checkout with export value
+#11-Mar-2003  wangp                   fix pr 4724205: show icon for check out with export
+#30-Apr-2003  Zhixin Huang            Integrate from PRE_try_p9.0.0.0 to try_p9.0.0.1.
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#19-Oct-2008  Medha Thakur            appended a '.' at the end of generalInstruction2. 
+#$HISTORY$
+#=================================================================================================*/
+
+yes.VALUE=yes
+no.VALUE=no
+checkedExport.VALUE=Y/E
+checkedExport.VALUE=Y/E
+
+all = ALL
+autoFilter.TITLE = Auto Filter
+negative.TIP=Toggle down to filter the result not meet the condtion(s).
+
+removeColumn.MSG = Do you want to remove column -
+removeColumn.TITLE = Remove Column
+
+copySelectionWithHeader = With Headers
+copySelectionWithoutHeader Without Headers
+
+add.TIP = Add a new condition.
+remove.TIP = Remove the selected condition.
+
+addFilter.TIP = Add a new filter condtion.
+
+filter.TIP = Select a condtion to filter or ALL to restore table
+
+autoFilterHistory.TIP = Press for auto filter.
+filterConditionEditor.TITLE = Filter Condition Editor
+composeCondition.TITLE = Create condition
+clear.TIP = Clean all the conditions.
+
+# Entries for InsertColumnDialog
+# -----------------------------------
+availableProperties.LABEL=Available
+selectedProperties.LABEL=Selected
+displayName=Show internal names of properties 
+
+loadingProperty=Loading properties ...
+
+changeColumnDialog.TITLE=Change Columns
+generalInstruction1=In the tree, select the type of objects whose properties you want to see. 
+generalInstruction2=Use the navigation buttons to choose the columns to be displayed and either save the modified list as a new column configuration or apply to the current view.
+generalInstruction3=Note that the first time the category nodes are expanded within a Teamcenter session, it may take some time for the types to load in the tree and to show their display names, depending on the number of types in the database. From the next time onwards, the expansion will be quick due to the types being cached.
+
+others=Others
+
+categoryAndType=Category and Type
+availableColumns=Available Columns
+displayedColumns=Displayed Columns
+
+saveColumnConfig=Save...
+applyColumnConfig=Apply
+
+duplicateColumnWarn.MSG=One or more of the column(s) selected is already in the table, and will not be added.
+duplicateColumnWarn.TITLE=Duplicate Columns
+
+
+overwriteConfigurationWarn.MSG=A column configuration with the same name already exists. Do you wish to overwite it?
+overwriteConfigurationWarn.TITLE=Overwrite Column Configuration
+
+AdminConfigurationError.TITLE=Column Configuration Error
+AdminConfigurationError.MSG=A column configuration with same name was already created by an administrative user.
+
+# Tooltips
+# --------
+saveColumnConfig.TIP=Save the current selections as a column configuration
+applyCurrentSelections.TIP=Apply the selected columns to the current view
+addColumns.TIP=Add the selected columns from Available Columns to Displayed Columns
+removeColumns.TIP=Remove the selected columns from Displayed Columns to Available Columns
+moveColumnsUp.TIP=Move the selected columns one level up
+moveColumnsDown.TIP=Move the selected columns one level down
+
+# Save/Copy Column Config dlg
+# --------------------------
+saveColumnConfigurationDialog.TITLE=Save Column Configuration
+saveColumnConfigurationDialog.HEADER=Save the displayed columns as a column configuration. These saved column configurations can later on be applied using Apply Column Configuration.
+columnConfigurationName=Name
+columnConfigurationDesc=Description
+save=Save
+
+copyColumnConfigurationDialog.TITLE=Copy Column Configuration
+copyColumnConfigurationDialog.HEADER=Copy an existing column configuration to a new column configuration.
+ScopeLabel=Scope
+copyOf=Copy of
+
+
+# Apply Column Config dlg
+# --------------------------
+applyColumnConfigurationDialog.TITLE=Apply Column Configuration
+applyColumnConfigurationDialog.HEADER=Apply a previously saved column configuration to the current view, or create, delete or edit your saved column configurations.
+columnViews=Column Views
+loadingColumnViews=Loading column views...
+deleteColumnConfiguration.MSG = Do you want to delete column configuration -
+deleteColumnConfiguration.TITLE = Delete Column Configuration
+addConfiguration.TIP=Add a new column configuration
+editConfiguration.TIP=Modify an existing column configuration and apply it to the current view
+copyConfiguration.TIP=Copy the selected column configuration to a new configuration
+deleteConfiguration.TIP=Delete the selected column configuration
+applyColumnConfig.TIP=Applies the selected column configuration to the current view
+
+# Logging messages
+# --------------------------
+noValueForPreference=No value for preference: 
+User.configNamePattern=(User)%1
+Group.configNamePattern=(Group)%1
+Site.configNamePattern=(Site)%1
+Role.configNamePattern=(Role)%1
+

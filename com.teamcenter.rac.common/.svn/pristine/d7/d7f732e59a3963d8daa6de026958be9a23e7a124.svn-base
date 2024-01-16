@@ -1,0 +1,105 @@
+#*==================================================================================================
+#
+#                   Copyright (c) 2003 Unigraphics Solutions Inc., An EDS Company
+#                            Unpublished - All rights reserved
+#
+#===================================================================================================
+# File description: This properties file contains all locale specific keys for the iddisplayrule package.
+#                   It is the intent that this file is to be localized based upon the Java
+#                   localization resource bundle naming conventions.  For further information
+#                   please refer to the Java doc on this subject.
+#
+#   Filename: iddisplayrule_locale.properties
+#   Module  : com.teamcenter.rac.commands.iddisplayrule
+#
+#===================================================================================================
+#   Date      Name                    Description of Change
+#19-Jun-2003  wangp                   initial create
+#20-Jun-2003  wangp                   add more keys for msg
+#24-Jun-2003  wangp                   add more entries
+#27-Jun-2003  wangp                   add msg
+#10-Sep-2003  wangp                   fix pr4830539: add Any(No Display Rule)
+#30-Oct-2003  Endi Wu                 Add entry
+#03-Nov-2003  Shreyas Shah            Fixed anyRule string
+#06-Feb-2006  Venkatesh Chitnis       de-imanization
+#$HISTORY$
+#=================================================================================================*/
+
+# Id display rule dialog
+# ------------------------------------
+idDisplayRule.TITLE = ID-Anzeigeregeln
+
+anyRule=Leer (nur Ausgangs-ID)
+
+currentDisplayRule=Aktuelle Anzeigeregel:
+noCurrentRule=nicht zutreffend
+
+create=Erstellen
+create.MNEMONIC=t
+create.TIP=Eine ID-Anzeigeregel erstellen
+
+modify=\u00C4ndern
+modify.MNEMONIC=M
+modify.TIP=Die ausgew\u00E4hlte ID-Anzeigeregel bearbeiten
+
+remove=Entfernen
+remove.MNEMONIC=R
+remove.TIP=Die ausgew\u00E4hlten ID-Anzeigeregeln entfernen
+
+setCurrent=Aktuelle festlegen
+setCurrent.MNEMONIC=S
+setCurrent.TIP=Legt die ausgew\u00E4hlte Regel als aktuelle Anzeigeregel fest oder w\u00E4hlen Sie nichts aus, um die Festlegung der Anzeigeregel aufzuheben.
+
+add=Hinzuf\u00FCgen
+add.MNEMONIC=A
+add.TIP=Anzeigeregeln eines anderen Benutzers f\u00FCr aktuelle Liste hinzuf\u00FCgen.
+
+asDefault=Standard verwenden
+ruleContent=Kontext der ausgew\u00E4hlten Regel:
+ruleList=Regelliste:
+
+modify.TITLE=Regel bearbeiten
+modify.MSG=W\u00E4hlen Sie bitte eine g\u00FCltige Regel zum Bearbeiten aus.
+
+remove.TITLE=Regel entfernen
+remove.MSG=W\u00E4hlen Sie bitte eine g\u00FCltige Regel zum Entfernen aus.
+removeConfirm.MSG=M\u00F6chten Sie die ausgew\u00E4hlten Regeln entfernen?
+
+setCurrent.TITLE=Aktuelle Regel festlegen
+setCurrent.MSG=W\u00E4hlen Sie bitte eine Regel aus, die als aktuelle Regel festgelegt wird.
+curretRuleSet.MSG=Die aktuelle Anzeigeregel wurde ge\u00E4ndert. Die aktuell angezeigten Daten werden aktualisiert.
+setCurrentConfirm.MSG=M\u00F6chten Sie die ausgew\u00E4hlte Regel als aktuelle Anzeigeregel festlegen?
+unsetCurrentConfirm.MSG=M\u00F6chten Sie die Festlegung der aktuellen Anzeigeregel aufheben?
+noCurrentRule.MSG=Keine aktuelle Anzeigeregel vorhanden.
+
+loadingRules=ID-Anzeigeregeln werden geladen...
+
+refresh.MSG=Aktualisieren...
+
+# Create/Modify Id display rule dialog
+# ------------------------------------------
+createIdDisplayRule.TITLE=ID-Anzeigeregel erstellen
+modifyIdDisplayRule.TITLE=ID-Anzeigeregel bearbeiten
+ruleName=Regelname:
+allContexts=Verf\u00FCgbare Kontexte:
+selectedContexts=Ausgew\u00E4hlte Kontexte:
+
+# Add Id display rule dialog
+# -------------------------------------
+addIdDisplayRule.TITLE=ID-Anzeigeregel hinzuf\u00FCgen
+selectUser=Ausgew\u00E4hlter Benutzer:
+ruleListForUser=Regeln, deren Eigent\u00FCmer der ausgew\u00E4hlte Benutzer ist:
+
+# Error messages
+# -----------------------------------------
+error.TITLE=ID-Anzeigeregeln
+cannotGetCurrentRule=Abfrage der aktuellen Anzeigeregel nicht m\u00F6glich.
+cannotSetCurrentRule=Aktuelle Anzeigeregel konnte nicht festgelegt werden.
+cannotRemoveRules=Angeforderte Regeln konnten nicht entfernt werden.
+cannotDisplayRule=Ausgew\u00E4hlte Regel kann nicht angezeigt werden.
+cannotGetRuleList=Regelliste konnte nicht abgerufen werden.
+cannotSaveRule=Ge\u00E4nderte Regel konnte nicht gespeichert werden.
+cannotCreateRule=Neue Regel konnte nicht erstellt werden.
+cannotAddRule=Ausgew\u00E4hlte Regeln konnten nicht hinzugef\u00FCgt werden.
+cannotModify.MSG=Die ausgew\u00E4hlte Regel konnte nicht ge\u00E4ndert werden.
+addExistingRule.MSG=Die ausgew\u00E4hlte Regel wurde bereits hinzugef\u00FCgt.
