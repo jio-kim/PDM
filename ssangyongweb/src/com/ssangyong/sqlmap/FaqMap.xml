@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!--
+ [SR150421-027][20150811][ymjang] PLM system 개선사항 - Manual 조회 관리기능 추가
+ -->
+ <mapper namespace="com.ssangyong.mapper.FaqMapper">
+
+	<insert id="insertFaq" parameterType="java.util.HashMap">
+	INSERT INTO FAQ ( FAQ_PUID, FAQ_SEQ, FAQ_TYPE, TITLE, USE_FLAG, CONTENTS, CREATE_USER, CREATE_DATE, MODIFY_USER, MODIFY_DATE )
+	     VALUES ( #{faq_puid}, #{faq_seq}, #{faq_type}, #{title}, '1', #{contents}, #{create_user}, sysdate, #{modify_user}, sysdate )
+	</insert>
+
+	<update id="updateFaq" parameterType="java.util.HashMap">
+	UPDATE FAQ 
+	   SET FAQ_TYPE = #{faq_type}
+	     , TITLE = #{title}
+	     , CONTENTS = #{contents}
+	     , MODIFY_USER = #{modify_user}
+	     , MODIFY_DATE = sysdate
+     WHERE FAQ_PUID = #{faq_puid}
+	</update>
+
+	<update id="updateFaqSeq" parameterType="java.util.HashMap">
+	UPDATE FAQ 
+	   SET FAQ_SEQ = #{faq_seq}
+     WHERE FAQ_PUID = #{faq_puid}
+	</update>
+
+	<delete id="deleteFaq" parameterType="java.util.HashMap">
+	UPDATE FAQ
+	   SET USE_FLAG = '0'
+	 WHERE FAQ_PUID = #{faq_puid}
+	</delete>
+
+	<select id="selectFaqList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT FAQ_PUID, FAQ_SEQ
+	     , FAQ_TYPE
+	     , TITLE, USE_FLAG
+	     , CONTENTS
+	     , CREATE_USER
+	     , TO_CHAR(CREATE_DATE, 'YYYY-MM-DD HH24:MI:SS') AS CREATE_DATE
+	     , MODIFY_USER
+	     , TO_CHAR(MODIFY_DATE, 'YYYY-MM-DD HH24:MI:SS') AS MODIFY_DATE
+	  FROM FAQ
+	 WHERE USE_FLAG = '1'
+    <if test="TITLE != null">
+        AND UPPER(TITLE) LIKE  UPPER(<![CDATA['%']]>|| #{TITLE, jdbcType=VARCHAR} || <![CDATA['%']]> )
+    </if>
+    <if test="CONTENTS != null">
+        AND (UPPER(TITLE) LIKE UPPER(<![CDATA['%']]> || #{CONTENTS, jdbcType=VARCHAR} || <![CDATA['%']]>)  OR 
+                UPPER(CONTENTS) LIKE UPPER(<![CDATA['%']]>|| #{CONTENTS, jdbcType=VARCHAR}|| <![CDATA['%']]>))
+    </if>
+  ORDER BY FAQ_SEQ ASC, MODIFY_DATE DESC
+	</select>
+    
+    <!-- [20150825] [ymjang] FAQ PUID 채번 오류 수정 -->
+	<select id="selectNextOUID" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT 'FAQ' || LPAD((SELECT NVL(MAX(TO_NUMBER(SUBSTR(FAQ_PUID, 4))), 0) + 1 FROM FAQ), 8, '0') AS FAQ_PUID
+		 , (SELECT NVL(MAX(TO_NUMBER(SUBSTR(FAQ_PUID, 4))), 0) + 1 FROM FAQ) AS FAQ_SEQ
+      FROM DUAL
+	</select>
+
+</mapper>

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.ifpe">
+      <!-- IF_PE_PRODUCT - ResultMap -->
+      <resultMap id="PRODUCT_VO_RESULT" type="com.symc.work.model.ProductInfoVO">
+        <result property="ifId" column="IF_ID"/>
+        <result property="ecoId" column="ECO_ID"/>
+        <result property="projectId" column="PROJECT_ID"/>
+        <result property="productId" column="PRODUCT_ID"/>
+        <result property="productRevId" column="PRODUCT_REV_ID"/>
+        <result property="creationDate" column="CREATION_DATE"/>
+        <result property="ifDate" column="IF_DATE"/>
+        <result property="waitDate" column="WAIT_DATE"/>
+        <result property="completeDate" column="COMPLETE_DATE"/>
+        <result property="transType" column="TRANS_TYPE"/>
+        <result property="stat" column="STAT"/>
+      </resultMap>
+
+      <!-- IF_PE_FUNCTION - ResultMap -->
+      <resultMap id="FUNCTION_VO_RESULT" type="com.symc.work.model.FunctionInfoVO">
+        <result property="productId" column="PRODUCT_ID"/>
+        <result property="productRevId" column="PRODUCT_REV_ID"/>
+        <result property="productName" column="PRODUCT_NAME"/>
+        <result property="functionId" column="FUNCTION_ID"/>
+        <result property="functionRevId" column="FUNCTION_REV_ID"/>
+        <result property="functionName" column="FUNCTION_NAME"/>
+      </resultMap>
+
+      <!-- IF_PE_PART_INFO - ResultMap -->
+      <resultMap id="PART_INFO_VO_RESULT" type="com.symc.work.model.PartInfoVO">
+        <result property="ifId" column="IF_ID"/>
+        <result property="partNanme" column="PART_NAME"/>
+        <result property="partNumber" column="PART_NUMBER"/>
+        <result property="partTYpe" column="PART_TYPE"/>
+        <result property="creationDate" column="CREATION_DATE"/>
+        <result property="projectCode" column="PROJECT_CODE"/>
+        <result property="koreanName" column="KOREAN_NAME"/>
+        <result property="unit" column="UNIT"/>
+        <result property="ecoNo" column="ECO_NO"/>
+        <result property="color" column="COLOR"/>
+        <result property="category" column="CATEGORY"/>
+        <result property="shownOnNo" column="SHOWN_ON_NO"/>
+        <result property="version" column="VERSION"/>
+        <result property="maturity" column="MATURITY"/>
+        <result property="lastModDate" column="LAST_MOD_DATE"/>
+        <result property="lastModUser" column="LAST_MOD_USER"/>
+        <result property="owningGroup" column="OWNING_GROUP"/>
+        <result property="owner" column="OWNER"/>
+        <result property="estWeight" column="EST_WEIGHT"/>
+        <result property="calWeight" column="CAL_WEIGHT"/>
+        <result property="actualWeight" column="ACTUAL_WEIGHT"/>
+        <result property="changeDesc" column="CHANGE_DESC"/>
+        <result property="objectId" column="OBJECT_ID"/>
+        <result property="hasCatpart" column="HAS_CATPART"/>
+        <result property="hasCgr" column="HAS_CGR"/>
+        <result property="hasCatdwg" column="HAS_CATDWG"/>
+        <result property="reference" column="REFERENCE"/>
+        <result property="partOrigin" column="PART_ORIGIN"/>
+        <result property="material" column="MATERIAL"/>
+        <result property="altMaterial" column="ALT_MATERIAL"/>
+        <result property="releasedDate" column="RELEASED_DATE"/>
+        <result property="selectivePart" column="SELECTIVE_PART"/>
+        <result property="finish" column="FINISH"/>
+      </resultMap>
+
+     <!-- I/F PRODUCT 정보 테이블(IF_PE_PRODUCT) 조회 쿼리 -->
+     <select id="getPeProductList" parameterType="java.util.HashMap" resultMap="PRODUCT_VO_RESULT">
+        SELECT * FROM IF_PE_PRODUCT
+            WHERE STAT IN
+                <foreach item="stat" collection="status" open="(" separator="," close=")">
+                    #{stat, jdbcType=VARCHAR}
+                </foreach>
+            AND TRANS_TYPE = #{transType, jdbcType=VARCHAR}
+            ORDER BY IF_DATE
+    </select>
+
+    <!-- I/F FUNCTION 정보 테이블(IF_PE_FUNCTION) 조회 쿼리 -->
+     <select id="getFunctionList" parameterType="java.util.HashMap" resultMap="FUNCTION_VO_RESULT">
+        SELECT * FROM IF_PE_FUNCTION
+            WHERE PRODUCT_ID = #{productId, jdbcType=VARCHAR}
+    </select>
+
+    <!-- PRODUCT 상부 BOM 체크를 위한 Daily Check 정보를 조회 -->
+    <select id="getDailyCheck" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT * FROM IF_PE_DAILY_CHECK WHERE PRODUCT_ID = #{productId, jdbcType=VARCHAR}
+    </select>
+
+    <!-- Product ID를 가지고 초도 배포이력이 있는지 확인한다. -->
+    <select id="checkFirstDistribute" parameterType="java.util.HashMap" resultType="Integer">
+        SELECT COUNT(*) FROM IF_PE_PRODUCT WHERE PRODUCT_ID = #{productId, jdbcType=VARCHAR}
+        AND TRANS_TYPE = 'P' AND STAT = 'SUCCESS'
+    </select>
+
+    <!-- Product ID를 가지고 PRODUCT I/F 에러가 있었는지 확인한다. -->
+    <select id="checkProductError" parameterType="java.util.HashMap" resultType="Integer">
+        SELECT COUNT(*) FROM IF_PE_PRODUCT WHERE PRODUCT_ID = #{productId, jdbcType=VARCHAR}
+        AND STAT = 'ERROR'
+    </select>
+
+    <!-- Part Number, Version, STAT = 'SUCCESS' 을 가지고 가지고 있는 Part Type을 조회 - 중복 등록 체크용  -->
+    <select id="getFileType" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT FILE_TYPE FROM IF_PE_FILE_PATH WHERE PART_NUMBER = #{partNumber, jdbcType=VARCHAR}
+        AND VERSION = #{version, jdbcType=VARCHAR} AND STAT = 'SUCCESS'
+    </select>
+
+    <!-- OCC 절대 경로를 가지고 BOM Change 정보를 알아온다. -->
+    <select id="getBomChangeAbsOccInfo" parameterType="com.symc.work.model.BOMChangeInfoVO" resultType="com.symc.work.model.BOMChangeInfoVO">
+        SELECT * FROM IF_PE_BOM_CHANGE WHERE IF_ID = #{ifId, jdbcType=VARCHAR} AND ABS_OCC_PUID = #{absOccPuid, jdbcType=VARCHAR}
+    </select>
+    
+    <!-- FUNCTION I/F 배포를 위한 Product와 연계된 Function List -->
+    <select id="getIfPproductFunctionList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        SELECT * FROM IF_PE_TRANS_FUNCTION WHERE IF_ID = #{ifId, jdbcType=VARCHAR}
+    </select>
+
+    <!-- I/F PRODUCT 정보 테이블(IF_PE_PRODUCT) 상태를 변경한다. -->
+    <update id="changePeProductStatus" parameterType="java.util.HashMap">
+        UPDATE IF_PE_PRODUCT SET
+            STAT = #{status, jdbcType=VARCHAR}
+            <if test="waitDate != null">
+            , WAIT_DATE = #{waitDate, jdbcType=VARCHAR}
+            </if>
+        WHERE IF_ID = #{ifId, jdbcType=VARCHAR}
+    </update>
+
+    <!-- I/F PRODUCT 정보 테이블(IF_PE_PRODUCT)에 PART, BOM COUNT를 업데이트한다. -->
+    <update id="changePeProductPartBomCount" parameterType="java.util.HashMap">
+        UPDATE IF_PE_PRODUCT
+        SET
+            PART_COUNT = (SELECT COUNT(*) FROM IF_PE_PART_INFO WHERE IF_ID = #{ifId, jdbcType=VARCHAR})
+            , BOM_COUNT = (SELECT COUNT(*) FROM IF_PE_BOM_CHANGE WHERE IF_ID = #{ifId, jdbcType=VARCHAR})
+        WHERE IF_ID = #{ifId, jdbcType=VARCHAR}
+    </update>
+
+     <!-- I/F BOM CHANGE 정보 테이블(IF_PE_BOM_CHANGE)을 업데이트한다. -->
+    <update id="changeBOMChangeInfo" parameterType="com.symc.work.model.BOMChangeInfoVO">
+        UPDATE IF_PE_BOM_CHANGE
+        SET
+            CHANGE_TYPE = #{changeType, jdbcType=VARCHAR},
+            EPL_ID = #{eplId, jdbcType=VARCHAR},
+            OLD_OCC_PUID = #{oldOccPuid, jdbcType=VARCHAR}
+        WHERE IF_ID = #{ifId, jdbcType=VARCHAR} AND ABS_OCC_PUID = #{absOccPuid, jdbcType=VARCHAR}
+    </update>
+
+    <!-- I/F PRODUCT LOG정보 테이블(IF_PE_PRODUCT_LOG)에 LOG를 등록한다. -->
+    <insert id="createPeProductLog" parameterType="java.util.HashMap">
+        INSERT INTO IF_PE_PRODUCT_LOG (IF_ID, PRODUCT_ID, LOG)
+        VALUES (#{ifId, jdbcType=VARCHAR}, #{productId, jdbcType=VARCHAR}, #{log, jdbcType=CLOB})
+    </insert>
+
+    <!-- Variant 정보를 IF_PE_VARIANT 테이블에 등록한다. -->
+    <insert id="createPeVariantInfo" parameterType="com.symc.work.model.VariantInfoVO">
+        INSERT INTO IF_PE_VARIANT (PRODUCT_ID, PRODUCT_REV_ID, PRODUCT_NAME, VARIANT_ID, VARIANT_REV_ID, VARIANT_NAME, OPTIONS)
+        VALUES
+        (#{productId, jdbcType=VARCHAR}, #{productRevId, jdbcType=VARCHAR}, #{productName, jdbcType=VARCHAR}
+        , #{variantId, jdbcType=VARCHAR}, #{variantRevId, jdbcType=VARCHAR}, #{variantName, jdbcType=VARCHAR}, #{options, jdbcType=CLOB})
+    </insert>
+
+    <!-- Function 정보를 IF_PE_FUNCTION 테이블에 등록한다. -->
+    <insert id="createPeFunctionInfo" parameterType="com.symc.work.model.FunctionInfoVO">
+        INSERT INTO IF_PE_FUNCTION (PRODUCT_ID, PRODUCT_REV_ID, PRODUCT_NAME, FUNCTION_ID, FUNCTION_REV_ID, FUNCTION_NAME)
+        VALUES
+        (#{productId, jdbcType=VARCHAR}, #{productRevId, jdbcType=VARCHAR}, #{productName, jdbcType=VARCHAR}
+        , #{functionId, jdbcType=VARCHAR}, #{functionRevId, jdbcType=VARCHAR}, #{functionName, jdbcType=VARCHAR})
+    </insert>
+
+    <!-- Part정보를 IF_PE_PART_INFO 테이블에 등록한다. -->
+    <insert id="createPePartInfo" parameterType="com.symc.work.model.PartInfoVO">
+        INSERT INTO IF_PE_PART_INFO
+        (IF_ID, PART_NAME, PART_NUMBER, PART_TYPE, CREATION_DATE, PROJECT_CODE, KOREAN_NAME, UNIT, ECO_NO, COLOR,
+        CATEGORY, SHOWN_ON_NO, VERSION, MATURITY, LAST_MOD_DATE, LAST_MOD_USER, OWNING_GROUP, OWNER, EST_WEIGHT,
+        CAL_WEIGHT, ACTUAL_WEIGHT, CHANGE_DESC, OBJECT_ID, HAS_CATPART, HAS_CGR, HAS_CATDWG, REFERENCE, PART_ORIGIN,
+        MATERIAL, ALT_MATERIAL, RELEASED_DATE, SELECTIVE_PART, FINISH)
+        VALUES
+        (#{ifId, jdbcType=VARCHAR}, #{partName, jdbcType=VARCHAR}, #{partNumber, jdbcType=VARCHAR}, #{partType, jdbcType=VARCHAR}, #{creationDate, jdbcType=DATE}
+        , #{projectCode, jdbcType=VARCHAR}, #{koreanName, jdbcType=VARCHAR}, #{unit, jdbcType=VARCHAR}, #{ecoNo, jdbcType=VARCHAR}, #{color, jdbcType=VARCHAR}
+        , #{category, jdbcType=VARCHAR}, #{shownOnNo, jdbcType=VARCHAR}, #{version, jdbcType=VARCHAR}, #{maturity, jdbcType=VARCHAR}
+        , #{lastModDate, jdbcType=DATE}, #{lastModUser, jdbcType=VARCHAR}, #{owningGroup, jdbcType=VARCHAR}, #{owner, jdbcType=VARCHAR}
+        , #{estWeight, jdbcType=NUMERIC}, #{calWeight, jdbcType=NUMERIC}, #{actualWeight, jdbcType=NUMERIC}, #{changeDesc, jdbcType=VARCHAR}, #{objectId, jdbcType=VARCHAR}
+        , #{hasCatpart, jdbcType=VARCHAR}, #{hasCgr, jdbcType=VARCHAR}, #{hasCatdwg, jdbcType=VARCHAR}, #{reference, jdbcType=VARCHAR}, #{partOrigin, jdbcType=VARCHAR}
+        , #{material, jdbcType=VARCHAR}, #{altMaterial, jdbcType=VARCHAR}, #{releasedDate, jdbcType=DATE}, #{selectivePart, jdbcType=VARCHAR}, #{finish, jdbcType=VARCHAR})
+    </insert>
+
+    <!-- BOM Change 정보를 IF_PE_BOM_CHANGE 테이블에 등록한다. -->
+    <insert id="createBOMChangeInfo" parameterType="com.symc.work.model.BOMChangeInfoVO">
+        INSERT INTO IF_PE_BOM_CHANGE
+        (IF_ID, PARENT_ID, PARENT_REV_ID, PARENT_TYPE, OPTIONS,
+        CHILD_ID, CHILD_REV_ID, CHILD_TYPE, FIND_NO, CHANGE_TYPE, OCC_PUID,
+        ABS_OCC_PUID, ABS_MATRIX, SUPPLY_MODE, OPTION_CONDITION, EPL_ID,
+        OLD_OCC_PUID, MODULE_CODE, POSITION_DESC, ORDER_NO, OLD_ORDER_NO, ALTER_PART)
+        VALUES
+        (#{ifId, jdbcType=VARCHAR}, #{parentId, jdbcType=VARCHAR}, #{parentRevId, jdbcType=VARCHAR}, #{parentType, jdbcType=VARCHAR}, #{options, jdbcType=CLOB}
+        , #{childId, jdbcType=VARCHAR}, #{childRevId, jdbcType=VARCHAR}, #{childType, jdbcType=VARCHAR}, #{findNo, jdbcType=VARCHAR}, #{changeType, jdbcType=VARCHAR}, #{occPuid, jdbcType=VARCHAR}
+        , #{absOccPuid, jdbcType=VARCHAR}, #{absMatrix, jdbcType=VARCHAR}, #{supplyMode, jdbcType=VARCHAR}, #{optionCondition, jdbcType=CLOB}, #{eplId, jdbcType=VARCHAR}
+        , #{oldOccPuid, jdbcType=VARCHAR}, #{moduleCode, jdbcType=VARCHAR}, #{positionDesc, jdbcType=VARCHAR}, (SELECT DISTINCT PORDER_NO FROM INFODBA.PPSOCCURRENCE WHERE ROCC_THREADU=#{occPuid, jdbcType=VARCHAR})
+        , (SELECT DISTINCT PORDER_NO FROM INFODBA.PPSOCCURRENCE WHERE ROCC_THREADU=#{oldOccPuid, jdbcType=VARCHAR}) , #{alterPart, jdbcType=VARCHAR})
+    </insert>
+
+    <!-- PRODUCT 상부 BOM 체크를 위한 Daily Check 정보를 등록 -->
+    <insert id="createDailyCheck" parameterType="java.util.HashMap">
+        MERGE INTO IF_PE_DAILY_CHECK
+        USING DUAL
+        ON (PRODUCT_ID = #{productId, jdbcType=VARCHAR})
+        WHEN MATCHED THEN
+            UPDATE SET
+                CHECK_DATE = #{checkDate, jdbcType=DATE}
+        WHEN NOT MATCHED THEN
+            INSERT (PRODUCT_ID, CHECK_DATE)
+            VALUES (#{productId, jdbcType=VARCHAR}, #{checkDate, jdbcType=DATE})
+    </insert>
+
+    <!-- CAD DATE File PATH 정보 등록 -->
+    <insert id="createFilePath" parameterType="java.util.HashMap">
+        MERGE INTO IF_PE_FILE_PATH
+        USING DUAL
+        ON (PART_NUMBER = #{partNumber, jdbcType=VARCHAR} AND VERSION = #{version, jdbcType=VARCHAR} AND FILE_TYPE = #{fileType, jdbcType=VARCHAR})
+        WHEN MATCHED THEN
+            UPDATE SET
+                FILE_PATH = #{filePath, jdbcType=VARCHAR},
+                REAL_FILE_NAME = #{realFileName, jdbcType=VARCHAR},
+                CREATION_DATE = SYSDATE,
+                STAT = #{stat, jdbcType=VARCHAR},
+                EAI_FLAG = 'I'
+        WHEN NOT MATCHED THEN
+            INSERT (PART_NUMBER, VERSION, PART_NAME, FILE_TYPE, FILE_PATH, REAL_FILE_NAME, CREATION_DATE, STAT)
+            VALUES (#{partNumber, jdbcType=VARCHAR}, #{version, jdbcType=VARCHAR}, #{partName, jdbcType=VARCHAR}
+            , #{fileType, jdbcType=VARCHAR}, #{filePath, jdbcType=VARCHAR}, #{realFileName, jdbcType=VARCHAR}, SYSDATE, #{stat, jdbcType=VARCHAR})
+    </insert>
+
+    <!-- I/F 관련 유효정보 테이블 (IF_PE_ENV_VALUES) 테이블 등록 -->
+    <insert id="createEnvValuesInfo" parameterType="com.symc.work.model.KeyLOV">
+        INSERT INTO IF_PE_ENV_VALUES
+        (ENV_NAME, ENV_VALUES)
+        VALUES
+        (#{id, jdbcType=VARCHAR}, #{value, jdbcType=VARCHAR})
+    </insert>
+
+    <!-- VARIANT VALUE I/F 관련 테이블 (IF_PE_VARIANT_VALUE) 테이블 등록 -->
+    <insert id="createVariantValueInfo" parameterType="java.util.HashMap">
+        INSERT INTO IF_PE_VARIANT_VALUE
+        (CODE_NAME, CODE_DESC)
+        VALUES
+        (#{CODE_NAME, jdbcType=VARCHAR}, #{CODE_DESC, jdbcType=VARCHAR})
+    </insert>
+
+    <!-- IF_PE_BATCH_TIME - 배치 실행 시간 종료시간 등록 -->
+    <insert id="createBatchTimeInfo" parameterType="java.util.HashMap">
+        INSERT INTO IF_PE_BATCH_TIME
+        (START_DATE, END_DATE)
+        VALUES
+        (#{startDate, jdbcType=DATE}, #{endDate, jdbcType=DATE})
+    </insert>
+
+    <!-- IF_PE_ECO_BOM_LIST - PRODUCT ECO I/F 등록 [EC 등록] -->
+    <insert id="createEcoBomListInfo" parameterType="java.util.HashMap">
+	    INSERT INTO IF_PE_ECO_BOM_LIST (IF_ID,
+	                                ECO_NO,
+	                                EPL_YN,
+	                                OCC_THREADS,
+	                                CT,
+	                                PARENT_NO,
+	                                PARENT_REV,
+	                                PARENT_TYPE,
+	                                PARENT_PROJECT,
+	                                OLD_PART_NO,
+	                                OLD_PART_REV,
+	                                OLD_PART_TYPE,
+	                                NEW_PART_NO,
+	                                NEW_PART_REV,
+	                                NEW_PART_TYPE,
+	                                OLD_SEQ,
+	                                NEW_SEQ,
+	                                OLD_QTY,
+	                                NEW_QTY,
+	                                OLD_SMODE,
+	                                NEW_SMODE,
+	                                OLD_APART,
+	                                NEW_APART,
+	                                OLD_MCODE,
+	                                NEW_MCODE,
+	                                OLD_VC,
+	                                NEW_VC,
+	                                OLD_IC,
+	                                NEW_IC,
+	                                OLD_PLT_STK,
+	                                OLD_AS_STK,
+	                                NEW_COST,
+	                                NEW_TOOL,
+	                                CHG_DESC,
+	                                OLD_DESC,
+	                                CRE_DATE,
+	                                UPD_USER_ID,
+	                                UPD_DATE,
+	                                EPL_ID,
+	                                OLD_OCCS)
+	   SELECT #{ifId, jdbcType=VARCHAR} AS IF_ID,
+	          ECO_NO,
+	          EPL_YN,
+	          OCC_THREADS,
+	          CT,
+	          PARENT_NO,
+	          PARENT_REV,
+	          PARENT_TYPE,
+	          GET_EFFECTIVITY_PROJECTS(OLD_PROJECT,NEW_PROJECT),
+	          OLD_PART_NO,
+	          OLD_PART_REV,
+	          OLD_PART_TYPE,
+	          NEW_PART_NO,
+	          NEW_PART_REV,
+	          NEW_PART_TYPE,
+	          OLD_SEQ,
+	          NEW_SEQ,
+	          OLD_QTY,
+	          NEW_QTY,
+	          OLD_SMODE,
+	          NEW_SMODE,
+	          OLD_APART,
+	          NEW_APART,
+	          OLD_MCODE,
+	          NEW_MCODE,
+	          OLD_VC,
+	          NEW_VC,
+	          OLD_IC,
+	          NEW_IC,
+	          OLD_PLT_STK,
+	          OLD_AS_STK,
+	          NEW_COST,
+	          NEW_TOOL,
+	          CHG_DESC,
+	          OLD_DESC,
+	          CRE_DATE,
+	          UPD_USER_ID,
+	          UPD_DATE,
+	          EPL_ID,
+	          OLD_OCCS
+	     FROM ECO_BOM_LIST A
+	    WHERE ECO_NO = #{ecoNo, jdbcType=VARCHAR}
+    </insert>
+
+    <!-- EAI Job() 정보 등록 -->
+    <insert id="createEaiJob" parameterType="java.util.HashMap">
+        MERGE INTO IF_PE_EAI_JOB
+        USING DUAL
+        ON (IF_ID = #{ifId, jdbcType=VARCHAR})
+        WHEN MATCHED THEN
+            UPDATE SET
+                EAI_FLAG = 'I',
+                IF_DATE = TO_CHAR(#{ifDate, jdbcType=DATE}, 'YYYYMMDDHH24MISS')
+        WHEN NOT MATCHED THEN
+            INSERT (IF_ID, IF_DATE)
+            VALUES (#{ifId, jdbcType=VARCHAR}, TO_CHAR(#{ifDate, jdbcType=DATE}, 'YYYYMMDDHH24MISS'))
+    </insert>
+
+    <!-- Variant 정보테이블 (IF_PE_VARIANT) 테이블 전체 삭제 -->
+    <delete id="deleteAllPeVariantInfo" parameterType="java.util.HashMap">
+        DELETE FROM IF_PE_VARIANT WHERE PRODUCT_ID = #{productId, jdbcType=VARCHAR}
+    </delete>
+
+    <!-- Function 정보테이블 (IF_PE_FUNCTION) 테이블 전체 삭제 -->
+    <delete id="deleteAllPeFunctionInfo" parameterType="java.util.HashMap">
+        DELETE FROM IF_PE_FUNCTION WHERE PRODUCT_ID = #{productId, jdbcType=VARCHAR}
+    </delete>
+
+    <!-- I/F 관련 유효정보 테이블 (IF_PE_ENV_VALUES) 테이블 삭제 -->
+    <delete id="deleteEnvValuesInfo" parameterType="java.util.HashMap">
+        DELETE FROM IF_PE_ENV_VALUES WHERE ENV_NAME = #{envName, jdbcType=VARCHAR}
+    </delete>
+
+    <!-- VARIANT VALUE I/F 관련 테이블 (IF_PE_VARIANT_VALUE) 테이블 삭제 -->
+    <delete id="deleteVariantValueInfo">
+        DELETE FROM IF_PE_VARIANT_VALUE
+    </delete>
+    <!-- IF_PE_BATCH_TIME - 배치 실행 시간 종료시간 삭제 -->
+    <delete id="deleteBatchTimeInfo">
+        DELETE FROM IF_PE_BATCH_TIME
+    </delete>
+
+    <!-- I/F PRODUCT LOG정보 테이블(IF_PE_PRODUCT_LOG)에 LOG를 삭제한다. -->
+    <delete id="deletePeProductLog" parameterType="java.util.HashMap">
+        DELETE FROM IF_PE_PRODUCT_LOG WHERE IF_ID = #{ifId, jdbcType=VARCHAR}
+    </delete>
+
+</mapper>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.tc.variant">
+     <select id="getVariantValueList" resultType="java.util.HashMap">
+        SELECT CODE_NAME, CODE_DESC FROM VARIANT_VALUE WHERE CODE_DESC IS NOT NULL
+    </select>
+</mapper>

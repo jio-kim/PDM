@@ -1,0 +1,1022 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ssangyong.mapper.SYMCMECOMapper">
+    <!-- ECO NO를 생성 -->
+	<select id="getNextMECOSerial" parameterType="java.lang.String" resultType="java.lang.String">
+		<!-- [SR140828-015][20140829] shcho, Migration 후 MECO ID 채번을 601 부터 할 수 있도록 변경. (2015년에는 다시 001부터 채번 할 수 있도록 Preference를 이용한 초기값 설정 적용) -->
+		<!-- 
+		SELECT #{prefix}|| LTRIM(NVL( TO_CHAR(TO_NUMBER(SUBSTR(MAX(I.PITEM_ID), 8,3))+1,'009'),'001')) nextID
+		FROM INFODBA.PITEM I
+		    ,INFODBA.PWORKSPACEOBJECT WO
+		WHERE I.PUID = WO.PUID
+		   AND WO.POBJECT_TYPE = 'M7_MECO'
+		   AND I.PITEM_ID LIKE #{prefix}||'%'
+		 -->   
+		SELECT 
+			CASE WHEN MECO.NEWNO > TO_NUMBER(#{init_no}) THEN #{prefix}||LPAD(TO_CHAR(MECO.NEWNO), 3, '0')
+			ELSE  #{prefix}||#{init_no} 
+			END AS nextID
+		FROM
+		(
+			SELECT 
+				NVL(TO_NUMBER(SUBSTR(MAX(I.PITEM_ID), 8,3)+1), 1) NEWNO
+			FROM 
+				INFODBA.PITEM I
+				,INFODBA.PWORKSPACEOBJECT WO
+			WHERE I.PUID = WO.PUID
+			AND WO.POBJECT_TYPE = 'M7_MECO'
+			AND I.PITEM_ID LIKE #{prefix}||'%'
+		) MECO
+	</select>
+
+	<!-- ECO 결재선 저장 -->
+	<insert id="saveApprovalLine" parameterType="ApprovalLineData">
+		insert into eco_approval_line
+		     (
+		       eco_no
+		      ,sort
+		      ,task
+		      ,team_name
+		      ,user_name
+		      ,tc_member_puid
+		       )
+		values
+		     (
+		       #{eco_no, jdbcType=VARCHAR}
+		      ,#{sort, jdbcType=VARCHAR}
+		      ,#{task, jdbcType=VARCHAR}
+		      ,#{team_name, jdbcType=VARCHAR}
+		      ,#{user_name, jdbcType=VARCHAR}
+		      ,#{tc_member_puid, jdbcType=VARCHAR}
+		       )
+	</insert>
+	<!-- ECO 결재선 불러오기 -->
+	<select id="getApprovalLine" parameterType="ApprovalLineData" resultType="ApprovalLineData">
+		select eco_no
+		      ,sort
+		      ,task
+		      ,team_name
+		      ,user_name
+		      ,tc_member_puid
+		from eco_approval_line
+		where eco_no = #{eco_no}
+		ORDER BY sort
+	</select>
+	<!-- ECO 결재선 삭제 -->
+	<delete id="removeApprovalLine" parameterType="ApprovalLineData">
+		delete from eco_approval_line
+		where eco_no = #{eco_no}
+	</delete>
+	<!-- 사용자 결재선[ECO/ECI] 저장하기 -->
+	<insert id="saveUserApprovalLine" parameterType="ApprovalLineData">
+		insert into eco_approval_line
+		     (
+    		   eco_no
+		      ,saved_name
+		      ,saved_user
+		      ,sort
+		      ,task
+		      ,team_name
+		      ,user_name
+		      ,tc_member_puid
+		       )
+		values
+		     (
+    		   #{eco_no}
+		      ,#{saved_name}
+		      ,#{saved_user}
+		      ,#{sort}
+		      ,#{task}
+		      ,#{team_name}
+		      ,#{user_name}
+		      ,#{tc_member_puid}
+		       )
+	</insert>
+	<!-- 저장된 사용자 결재선 이름 모두 가져오기 -->
+	<select id="loadSavedUserApprovalLine" parameterType="ApprovalLineData" resultType="ApprovalLineData">
+		select distinct saved_name
+		from eco_approval_line
+		where saved_user = #{saved_user}
+		AND eco_no = #{eco_no}
+		AND saved_name is not null
+	</select>
+
+	<delete id="deleteApprovalLine" parameterType="ApprovalLineData">
+		DELETE FROM ECO_APPROVAL_LINE
+		WHERE SAVED_NAME = #{saved_name}
+		   AND SAVED_USER = #{saved_user}
+		   AND ECO_NO = #{eco_no}
+	</delete>
+	<!-- 저장된 사용자 결재선 가져오기 -->
+	<select id="loadApprovalLine" parameterType="ApprovalLineData" resultType="ApprovalLineData">
+		SELECT TASK
+		     ,G.PNAME TEAM_NAME
+		     ,U.PUSER_NAME USER_NAME
+		     ,TC_MEMBER_PUID
+		FROM ECO_APPROVAL_LINE AL
+		     ,INFODBA.PPOM_MEMBER M
+		     ,INFODBA.PPOM_USER U
+		     ,INFODBA.PPOM_GROUP G
+		WHERE AL.TC_MEMBER_PUID = M.PUID
+		   AND M.RUSERU = U.PUID
+		   AND M.RGROUPU = G.PUID
+		   AND SAVED_NAME = #{saved_name}
+		   AND SAVED_USER = #{saved_user}
+		   AND ECO_NO = #{eco_no}
+	    ORDER BY AL.SORT
+	</select>
+
+
+	<!-- MECO EPL List -->
+	<resultMap id="BIND_MECOBOMEditData" type="SYMCBOPEditData">
+        <result property="mecoNo" column="MECONO"/>
+        <result property="shopNo" column="SHOPNO"/>
+        <result property="parentPuid" column="PAREUNTPUID"/>
+        <result property="parentType" column="PARENTTYPE"/>
+        <result property="parentNo" column="PARENTNO"/>
+        <result property="parentRev" column="PARENTREV"/>
+        <result property="parentName" column="PARENTNAME"/>
+        <result property="old_child_puid" column="OLD_CHILD_PUID"/>
+        <result property="old_child_type" column="OLD_CHILD_TYPE"/>
+        <result property="old_child_no" column="OLD_CHILD_NO"/>
+        <result property="old_child_rev" column="OLD_CHILD_REV"/>
+        <result property="old_child_name" column="OLD_CHILD_NAME"/>
+        <result property="old_shown_no_no" column="OLD_SHOWN_ON_NO"/>
+        <result property="old_qty" column="OLD_QTY"/>
+        <result property="old_vc" column="OLD_VC"/>
+        <result property="new_child_puid" column="NEW_CHILD_PUID"/>
+        <result property="new_child_type" column="NEW_CHILD_TYPE"/>
+        <result property="new_child_no" column="NEW_CHILD_NO"/>
+        <result property="new_child_rev" column="NEW_CHILD_REV"/>
+        <result property="new_child_name" column="NEW_CHILD_NAME"/>
+        <result property="new_shown_no_no" column="NEW_SHOWN_ON_NO"/>
+        <result property="new_qty" column="NEW_QTY"/>
+        <result property="new_vc" column="NEW_VC"/>
+        <result property="ecoNo" column="ECO_NO"/>
+        <result property="userId" column="USERID"/>
+        <result property="seq" column="SEQ"/>
+        <result property="parent_mod_date" column="PARENT_MOD_DATE"/>
+        <result property="old_occ_uid" column="OLD_OCC_UID"/>
+        <result property="new_occ_uid" column="NEW_OCC_UID"/>
+        <result property="eplId" column="EPL_ID"/>
+
+    </resultMap>
+
+	<select id="selectMECOEplList" parameterType="java.lang.String" resultMap="BIND_MECOBOMEditData">
+			SELECT
+			LEVEL,
+			E.MECONO,E.SHOPNO,E.PAREUNTPUID,E.PARENTTYPE,E.PARENTNO,E.PARENTREV,E.PARENTNAME,
+			E.OLD_CHILD_PUID,E.OLD_CHILD_TYPE,E.OLD_CHILD_NO,E.OLD_CHILD_REV,E.OLD_CHILD_NAME,E.OLD_SHOWN_ON_NO,E.OLD_QTY,E.OLD_VC,E.OLD_OCC_UID,
+			E.NEW_CHILD_PUID,E.NEW_CHILD_TYPE,E.NEW_CHILD_NO,E.NEW_CHILD_REV,E.NEW_CHILD_NAME,E.NEW_SHOWN_ON_NO,E.NEW_QTY,E.NEW_VC,E.NEW_OCC_UID,
+			E.ECO_NO,E.SEQ,E.EPL_ID,E.PARENT_MOD_DATE,E.USERID
+			FROM
+					MECO_EPL E
+
+			WHERE
+			        E.MECONO = #{mecoNo, jdbcType=VARCHAR}
+			         START WITH  E.PARENTNO IN
+			         (
+	                    SELECT
+	                          DISTINCT EP.PARENTNO
+	                    FROM
+	                            MECO_EPL EP
+	                    WHERE
+	                            EP.MECONO = #{mecoNo, jdbcType=VARCHAR} AND
+	                            EP.PARENTNO NOT IN
+	                            (
+	                                 SELECT
+	                                 DISTINCT EP1.NEW_CHILD_NO
+	                                 FROM MECO_EPL EP1
+	                                 WHERE
+	                                 EP1.MECONO =#{mecoNo, jdbcType=VARCHAR} AND
+	                                 EP1.NEW_CHILD_NO IS NOT NULL
+	                            )
+			         )
+				CONNECT BY PRIOR E.NEW_CHILD_NO = E.PARENTNO
+				ORDER SIBLINGS BY TO_NUMBER(E.SEQ)
+	</select>
+
+	    <resultMap id="BIND_SYMCBOMEditData" type="com.ssangyong.rac.kernel.SYMCBOMEditData">
+        <result property="eplId" column="EPL_ID"/>
+        <result property="ecoNo" column="ECO_NO"/>
+        <result property="ecoNoOld" column="ECO_NO_OLD"/>
+        <result property="occUid" column="OCC_THREADS"/>
+        <result property="changeType" column="CT"/>
+        <result property="parentNo" column="PARENT_NO"/>
+        <result property="parentRev" column="PARENT_REV"/>
+        <result property="projectOld" column="OLD_PROJECT"/>
+        <result property="projectNew" column="NEW_PROJECT"/>
+        <result property="partOriginOld" column="OLD_PART_ORIGIN"/>
+        <result property="partNoOld" column="OLD_PART_NO"/>
+        <result property="partRevOld" column="OLD_PART_REV"/>
+        <result property="partOriginNew" column="NEW_PART_ORIGIN"/>
+        <result property="partNoNew" column="NEW_PART_NO"/>
+        <result property="partRevNew" column="NEW_PART_REV"/>
+        <result property="partNameNew" column="NEW_PART_NAME"/>
+        <result property="partNameOld" column="OLD_PART_NAME"/>
+        <result property="partTypeNew" column="NEW_PART_TYPE"/>
+        <result property="partTypeOld" column="OLD_PART_TYPE"/>
+        <result property="seqOld" column="OLD_SEQ"/>
+        <result property="seqNew" column="NEW_SEQ"/>
+        <result property="qtyOld" column="OLD_QTY"/>
+        <result property="qtyNew" column="NEW_QTY"/>
+        <result property="supplyModeOld" column="OLD_SMODE"/>
+        <result property="supplyModeNew" column="NEW_SMODE"/>
+        <result property="altOld" column="OLD_APART"/>
+        <result property="altNew" column="NEW_APART"/>
+        <result property="moduleCodeOld" column="OLD_MCODE"/>
+        <result property="moduleCodeNew" column="NEW_MCODE"/>
+        <result property="vcOld" javaType="java.lang.String" jdbcType="CLOB" column="DECODE_OLD_VC"/>
+        <result property="vcNew" javaType="java.lang.String" jdbcType="CLOB" column="DECODE_NEW_VC"/>
+        <result property="selNew" column="NEW_SEL"/>
+        <result property="selOld" column="OLD_SEL"/>
+        <result property="catNew" column="NEW_CAT"/>
+        <result property="catOld" column="OLD_CAT"/>
+        <result property="colorIdNew" column="NEW_COLOR_I"/>
+        <result property="colorIdOld" column="OLD_COLOR_I"/>
+        <result property="colorSectionNew" column="NEW_COLOR_S"/>
+        <result property="colorSectionOld" column="OLD_COLOR_S"/>
+        <result property="shownOnNew" column="NEW_SHOWN_ON"/>
+        <result property="shownOnOld" column="OLD_SHOWN_ON"/>
+        <result property="icOld" column="OLD_IC"/>
+        <result property="icNew" column="NEW_IC"/>
+        <result property="pltStkOld" column="OLD_PLT_STK"/>
+        <result property="asStkOld" column="OLD_AS_STK"/>
+        <result property="costNew" column="NEW_COST"/>
+        <result property="toolNew" column="NEW_TOOL"/>
+        <result property="chgDesc" column="CHG_DESC"/>
+        <result property="userId" column="UPD_USER_ID"/>
+        <result property="ecoNo" column="ECO_NO" />
+		<result property="releaseDate" column="RELEASE_DATE" />
+         <!-- <result property="" column="UPD_DATE"/> -->
+    </resultMap>
+
+
+
+
+	<!-- Compare BOMViewRevision of the solutionItems to MECO_EPL -->
+	<select id="checkModifiedMEPL" parameterType="java.lang.String" resultType="java.util.HashMap">
+		SELECT
+ 				ME.PAREUNTPUID, ME.PARENTNO, ME.MECONO
+		FROM
+				MECO_EPL me,
+				infodba.pitemrevision pir,
+				infodba.PPSBOMVIEWREVISION pbvr,
+				infodba.PSTRUCTURE_REVISIONS psr
+		WHERE
+		         ME.PAREUNTPUID = PIR.PUID AND
+			     PIR.PUID = PSR.PUID AND
+		         PSR.PVALU_0 = PBVR.PUID AND
+		         TO_CHAR(PBVR.PSTRUCT_LAST_MOD_DATE+9/24, 'YYYY-MM-DD HH24:MI') > ME.PARENT_MOD_DATE and
+		         ME.MECONO = #{mecoNo, jdbcType=VARCHAR}
+	</select>
+
+	<select id="checkExistMEPL" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT
+ 				distinct 'T'
+		FROM
+				MECO_EPL ME
+		WHERE
+		         ME.MECONO = #{mecoNo, jdbcType=VARCHAR}
+	</select>
+
+
+	<update id="truncateModifiedEPL" statementType="CALLABLE">
+		{call MECO_TRUNCATE_MODIFIED_EPL(#{mecNo}, 'system', false)}
+	</update>
+
+	<delete id="deleteMECOEPL" parameterType="String">
+		delete from MECO_EPL
+		where mecono = #{mecoNo,  jdbcType=VARCHAR}
+<!-- 			AND PARENTTYPE NOT IN (
+					'M7_BOPAssyOpRevision', 
+					'M7_BOPPaintOpRevision', 
+					'M7_BOPBodyOpRevision', 'M7_BOPWeldOPRevision'
+				) -->
+	</delete>
+	<insert id="insertMECOEPL" parameterType="SYMCBOPEditData" >
+	INSERT into MECO_EPL
+		(
+			MECONO,
+			SHOPNO,
+			PAREUNTPUID,
+			PARENTTYPE,
+			PARENTNO,
+			PARENTREV,
+			PARENTNAME,
+			OLD_CHILD_PUID,
+			OLD_CHILD_TYPE,
+			OLD_CHILD_NO,
+			OLD_CHILD_REV,
+			OLD_CHILD_NAME,
+			OLD_SHOWN_ON_NO,
+			OLD_QTY,
+			OLD_VC,
+			OLD_OCC_UID,
+			NEW_CHILD_PUID,
+			NEW_CHILD_TYPE,
+			NEW_CHILD_NO,
+			NEW_CHILD_REV,
+			NEW_CHILD_NAME,
+			NEW_SHOWN_ON_NO,
+			NEW_QTY,
+			NEW_VC,
+			NEW_OCC_UID,
+			ECO_NO,
+			USERID,
+			SEQ,
+			PARENT_MOD_DATE
+		)
+		values
+		(
+			#{mecoNo, jdbcType=VARCHAR}
+		   ,#{shopNo, jdbcType=VARCHAR}
+		   ,#{parentPuid, jdbcType=VARCHAR}
+		   ,#{parentType, jdbcType=VARCHAR}
+		   ,#{parentNo, jdbcType=VARCHAR}
+		   ,#{parentRev, jdbcType=VARCHAR}
+		   ,#{parentName, jdbcType=VARCHAR}
+		   ,#{old_child_puid, jdbcType=VARCHAR}
+		   ,#{old_child_type, jdbcType=VARCHAR}
+		   ,#{old_child_no, jdbcType=VARCHAR}
+		   ,#{old_child_rev, jdbcType=VARCHAR}
+		   ,#{old_child_name, jdbcType=VARCHAR}
+		   ,#{old_shown_no_no, jdbcType=VARCHAR}
+		   ,#{old_qty, jdbcType=VARCHAR}
+		   ,#{old_vc, jdbcType=VARCHAR}
+		   ,#{old_occ_uid, jdbcType=VARCHAR}
+		   ,#{new_child_puid, jdbcType=VARCHAR}
+		   ,#{new_child_type, jdbcType=VARCHAR}
+		   ,#{new_child_no, jdbcType=VARCHAR}
+		   ,#{new_child_rev, jdbcType=VARCHAR}
+		   ,#{new_child_name, jdbcType=VARCHAR}
+		   ,#{new_shown_no_no, jdbcType=VARCHAR}
+		   ,#{new_qty, jdbcType=VARCHAR}
+		   ,#{new_vc, jdbcType=VARCHAR}
+		   ,#{new_occ_uid, jdbcType=VARCHAR}
+		   ,#{ecoNo, jdbcType=VARCHAR}
+		   ,#{userId, jdbcType=VARCHAR}
+		   ,#{seq, jdbcType=VARCHAR}
+		   ,#{parent_mod_date, jdbcType=VARCHAR}
+
+		)
+
+	</insert>
+  <!-- 
+	<select id="getEndItemMECONoForProcessSheet" parameterType="java.lang.String" resultType="java.util.HashMap">
+		SELECT MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV
+		FROM MECO_EPL
+		WHERE PARENTNO = #{operationno, jdbcType=VARCHAR}
+		AND NEW_CHILD_TYPE IN ('Vehicle Part', 'S7_Vehpart', 'Standard Part', 'S7_Stdpart')
+		GROUP BY MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV
+		ORDER BY PARENTNO, PARENTREV DESC , NEW_CHILD_NO DESC, NEW_CHILD_REV DESC
+	</select>
+   -->
+  
+	<select id="getEndItemMECONoForProcessSheet" parameterType="java.lang.String" resultType="java.util.HashMap">
+		SELECT DISTINCT MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV, OLD_CHILD_NO, OLD_CHILD_REV
+		FROM MECO_EPL
+		WHERE PARENTNO = #{operationno, jdbcType=VARCHAR}
+        GROUP BY MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV,OLD_CHILD_NO, OLD_CHILD_REV
+        ORDER BY PARENTNO, PARENTREV DESC , NEW_CHILD_NO DESC, NEW_CHILD_REV, OLD_CHILD_NO, OLD_CHILD_REV DESC
+		
+	</select>
+
+	<select id="getSubsidiaryMECONoForProcessSheet" parameterType="java.lang.String" resultType="java.util.HashMap">
+		SELECT MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV
+		FROM MECO_EPL
+		WHERE PARENTNO = #{operationno, jdbcType=VARCHAR}
+		AND NEW_CHILD_TYPE IN ('SubsidiaryMaterial', 'M7_Subsidiary')
+		GROUP BY MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV
+		ORDER BY PARENTNO, PARENTREV DESC , NEW_CHILD_NO DESC, NEW_CHILD_REV DESC
+	</select>
+
+	<select id="getResourceMECONoForProcessSheet" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV
+		FROM MECO_EPL
+		WHERE PARENTNO = #{operationno, jdbcType=VARCHAR}
+		AND NEW_CHILD_TYPE IN ('Tool', 'M7_Tool', 'Robot', 'M7_Robot', 'JigFixture', 'M7_JigFixture', 'Gun', 'M7_Gun', 'GeneralEquipment', 'M7_GeneralEquip', 'PlantOPArea', 'M7_PlantOPArea', 'PlantStation')
+		GROUP BY MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV
+		<if test="stationno == null">
+		ORDER BY PARENTNO, PARENTREV DESC , NEW_CHILD_NO DESC, NEW_CHILD_REV DESC
+		</if>
+		<if test="stationno != null">
+		UNION ALL
+		SELECT MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV
+		FROM MECO_EPL
+		WHERE PARENTNO = #{stationno, jdbcType=VARCHAR}
+		AND NEW_CHILD_TYPE IN ('Tool', 'M7_Tool', 'Robot', 'M7_Robot', 'JigFixture', 'M7_JigFixture', 'Gun', 'M7_Gun', 'GeneralEquipment', 'M7_GeneralEquip', 'PlantOPArea', 'M7_PlantOPArea', 'PlantStation')
+		GROUP BY MECONO, PARENTNO, PARENTREV, NEW_CHILD_NO, NEW_CHILD_REV
+		ORDER BY PARENTNO, PARENTREV DESC , NEW_CHILD_NO DESC, NEW_CHILD_REV DESC
+		</if>
+	</select>
+  
+    <!--  수정자 : bc.kim
+    // 이종화 차장님 요청 
+    // 작업표준서 Preview 에서 공법 조회시 Resource 항목에 속성값이 변경( No Revise ) 되었을때 
+    // 해당 Resource 의 기호가 MECO 의 기호에 맞게 변경 되는 로직 추가  -->
+	<select id="getSymbomResourceMecoNo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		 SELECT PPSOCCURRENCE.ROCC_THREADU,
+                PPSOCCURRENCE.RCHILD_ITEMU,
+                PPSOCCURRENCE.PSEQ_NO AS PSEQ_NO,
+                PPSOCCURRENCE.PORDER_NO AS SHOWN_ON_NO,
+                PPSOCCURRENCE.PQTY_VALUE,
+                PPSOCCURRENCE.PUID AS OCC_PUID,
+                OLD_REV_VIEW.ITEM_ID AS PARENT_ITEM_ID,
+                OLD_REV_VIEW.ITEM_REV_ID AS PARENT_REV_ID,
+                pitemrevision.puid ,
+                PITEM.PITEM_ID,
+                PPSOCCURRENCETYPE.PNAME AS OCC_TYPE_NAME,
+                DBMS_LOB.SUBSTR (IMAN_MVLBLOB.DATA, 4000, 1) AS OPTION_COND
+               , get_bom_note_text(PPSOCCURRENCE.rnotes_refu, 'M7_TORQUE_VALUE') AS change_value
+            FROM INFODBA.PPSOCCURRENCE,
+                INFODBA.PPSOCCURRENCETYPE,
+                (
+                    SELECT PSTRUCTURE_REVISIONS.PVALU_0 AS BOMVIEW_PUID,
+                            PITEMREVISION.PUID AS ITEM_REV_PUID,
+                            PITEM.PUID AS ITEM_PUID,
+                            PITEM.PITEM_ID AS ITEM_ID,
+                            PITEMREVISION.PITEM_REVISION_ID AS ITEM_REV_ID,
+                            PWORKSPACEOBJECT.POBJECT_TYPE AS ITEM_TYPE
+                    FROM INFODBA.PITEMREVISION,
+                            INFODBA.PSTRUCTURE_REVISIONS,
+                            INFODBA.PITEM,
+                            INFODBA.PWORKSPACEOBJECT
+                      WHERE PITEMREVISION.PUID = PSTRUCTURE_REVISIONS.PUID
+                            AND PITEMREVISION.RITEMS_TAGU = PITEM.PUID
+                            AND PWORKSPACEOBJECT.PUID = PITEM.PUID
+                            AND PITEM.PITEM_ID = #{operationNo, jdbcType=VARCHAR}
+                            AND PITEMREVISION.PITEM_REVISION_ID = #{revisionId, jdbcType=VARCHAR}
+                ) OLD_REV_VIEW,
+                INFODBA.IMAN_MVLBLOB
+                
+                , INFODBA.PITEMREVISION
+                , INFODBA.PITEM
+                , INFODBA.PWORKSPACEOBJECT
+                , infodba.PM7_TOOLREVISION
+                WHERE     PPSOCCURRENCE.RPARENT_BVRU = OLD_REV_VIEW.BOMVIEW_PUID
+                    AND PPSOCCURRENCETYPE.PUID(+) = PPSOCCURRENCE.ROCC_TYPEU
+                    AND PPSOCCURRENCE.PUID = IMAN_MVLBLOB.NAME(+)
+                    AND PPSOCCURRENCE.RCHILD_ITEMU = pitem.puid 
+                    AND PITEMREVISION.RITEMS_TAGU = PITEM.PUID
+                    AND PWORKSPACEOBJECT.PUID = PITEM.PUID
+                    AND pitemrevision.puid = pm7_toolrevision.puid
+	</select> 
+  
+   <!--  수정자 : bc.kim
+    // 이종화 차장님 요청 
+    // 작업표준서 Preview 에서 공법 조회시 Resource 항목에 속성값이 변경( No Revise ) 되었을때 
+    // 해당 Subsidiary 의 기호가 MECO 의 기호에 맞게 변경 되는 로직 추가  -->
+    <select id="getSymbomSubsidiaryMecoNo" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+     SELECT PPSOCCURRENCE.ROCC_THREADU,
+                PPSOCCURRENCE.RCHILD_ITEMU,
+                PPSOCCURRENCE.PSEQ_NO AS PSEQ_NO,
+                PPSOCCURRENCE.PORDER_NO AS SHOWN_ON_NO,
+                PPSOCCURRENCE.PQTY_VALUE,
+                PPSOCCURRENCE.PUID AS OCC_PUID,
+                OLD_REV_VIEW.ITEM_ID AS PARENT_ITEM_ID,
+                OLD_REV_VIEW.ITEM_REV_ID AS PARENT_REV_ID,
+                pitemrevision.puid ,
+                PITEM.PITEM_ID,
+                PPSOCCURRENCETYPE.PNAME AS OCC_TYPE_NAME,
+                DBMS_LOB.SUBSTR (IMAN_MVLBLOB.DATA, 4000, 1) AS OPTION_COND
+              , get_bom_note_text(PPSOCCURRENCE.rnotes_refu, 'M7_SUBSIDIARY_QTY') AS change_value             
+            FROM INFODBA.PPSOCCURRENCE,
+                INFODBA.PPSOCCURRENCETYPE,
+                (
+                    SELECT PSTRUCTURE_REVISIONS.PVALU_0 AS BOMVIEW_PUID,
+                            PITEMREVISION.PUID AS ITEM_REV_PUID,
+                            PITEM.PUID AS ITEM_PUID,
+                            PITEM.PITEM_ID AS ITEM_ID,
+                            PITEMREVISION.PITEM_REVISION_ID AS ITEM_REV_ID,
+                            PWORKSPACEOBJECT.POBJECT_TYPE AS ITEM_TYPE
+                    FROM INFODBA.PITEMREVISION,
+                            INFODBA.PSTRUCTURE_REVISIONS,
+                            INFODBA.PITEM,
+                            INFODBA.PWORKSPACEOBJECT
+                      WHERE PITEMREVISION.PUID = PSTRUCTURE_REVISIONS.PUID
+                            AND PITEMREVISION.RITEMS_TAGU = PITEM.PUID
+                            AND PWORKSPACEOBJECT.PUID = PITEM.PUID
+                            AND PITEM.PITEM_ID = #{operationNo, jdbcType=VARCHAR}
+                            AND PITEMREVISION.PITEM_REVISION_ID = #{revisionId, jdbcType=VARCHAR}
+                ) OLD_REV_VIEW,
+                INFODBA.IMAN_MVLBLOB
+                
+                , INFODBA.PITEMREVISION
+                , INFODBA.PITEM
+                , INFODBA.PWORKSPACEOBJECT
+                , infodba.PM7_SUBSIDIARYREVISION
+                WHERE     PPSOCCURRENCE.RPARENT_BVRU = OLD_REV_VIEW.BOMVIEW_PUID
+                    AND PPSOCCURRENCETYPE.PUID(+) = PPSOCCURRENCE.ROCC_TYPEU
+                    AND PPSOCCURRENCE.PUID = IMAN_MVLBLOB.NAME(+)
+                    AND PPSOCCURRENCE.RCHILD_ITEMU = pitem.puid 
+                    AND PITEMREVISION.RITEMS_TAGU = PITEM.PUID
+                    AND PWORKSPACEOBJECT.PUID = PITEM.PUID
+                    AND pitemrevision.puid = PM7_SUBSIDIARYREVISION.puid
+
+  </select> 
+
+	<select id="getLastEPLLoadDate" parameterType="java.util.HashMap" resultType="java.util.Date">
+		SELECT  ROW_CREATION_DATE
+		FROM MECO_EPL
+		WHERE MECONO = #{mecoid, jdbcType=VARCHAR}
+		AND ROWNUM=1
+
+	</select>
+
+	<select id="getEndItemListOnFunction" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
+		SELECT
+  			W.PROJECT_NO PROJECT, W.FUNC_NO FUNCTION_NO, W.SEQ SEQ, W.BOM_LEVEL BOM_LEVEL,
+            W.PART_NO, W.VER VER, W.PART_NAME PART_NAME, W.QTY, W.SUPPMODE SUPPMODE, W.OPTIONS OPTIONS,
+           	W.POS_DESC POST_DESC, W.U_CATEGORY, W.ECO_NO IN_ECO, W.END_ECO_NO OUT_ECO, W.EFF IN_ECO_DATE, W.EFF_IN IN_DATE, W.EFF_OUT OUT_DATE, W.OCC_PUID
+		FROM
+			TABLE(MBOM_IF_PACKAGE_TEST.GET_STRUCTURE('', #{function_no, jdbcType=VARCHAR}, #{release_date, jdbcType=VARCHAR}, '0')) W
+		WHERE W.SUPPMODE IN ('C0 P7', 'C1 P7', 'C7 P7', 'G0 P7', 'P1', 'P7', 'PD')
+	</select>
+
+	<select id="isMECOEPLChanged" resultType="String">
+
+	</select>
+
+   <update id="updateMEcoStatus">
+	   	UPDATE INFODBA.PM7_MECOREVISION MR
+		SET MR.PM7_MECO_MATURITY = #{mecoStatus}
+		WHERE MR.PUID = (
+		  SELECT R.PUID
+		  FROM INFODBA.PITEMREVISION R
+		      ,INFODBA.PWORKSPACEOBJECT W
+		      ,INFODBA.PM7_MECOREVISION ER
+		  WHERE ER.PUID = W.PUID
+		    AND W.PACTIVE_SEQ = '1'
+		    AND R.PUID = ER.PUID
+		    AND R.PUID = #{mecoRevPuid} )
+   </update>
+
+   <update id="refreshTCTimeStamp">
+		MERGE INTO INFODBA.POM_TIMESTAMP A
+		USING (SELECT PUID TID, PTIMESTAMP, PLSD FROM INFODBA.PPOM_OBJECT WHERE PUID = #{itemPuid}) B
+		ON (A.PUID = B.TID)
+		WHEN MATCHED THEN
+		UPDATE
+		SET A.PTIMESTAMP = DECODE(SUBSTR(A.PTIMESTAMP,LENGTH(A.PTIMESTAMP)),'X',SUBSTR(A.PTIMESTAMP,1,LENGTH(A.PTIMESTAMP)-1)||'Z', SUBSTR(A.PTIMESTAMP,1,LENGTH(A.PTIMESTAMP)-1)||'X')
+		WHEN NOT MATCHED THEN
+		INSERT (PUID, PTIMESTAMP, PDBTIMESTAMP, PDELETED)
+		VALUES (B.TID,  B.PTIMESTAMP, B.PLSD, 1)
+   </update>
+    <!--
+     W.OLD_PART_NO AS OLD_PART_NO,
+     OLD_PART.DISPLAY_PART_NO AS OLD_PART_NO
+     W.NEW_PART_NO AS NEW_PART_NO,
+     NEW_PART.DISPLAY_PART_NO AS NEW_PART_NO
+     -->
+    <!-- 2016-05-30 taeku.jeong ECO_BOM_LIST.PARENT_PROJECT -> ECO_BOM_LIST.NEW_PROJECT 로 수정 --> 
+	<select id="searchECOEplList" parameterType="java.util.HashMap" resultMap="BIND_SYMCBOMEditData">
+		SELECT
+			ECO_NO,
+			EPL_YN,
+			CT,
+			PARENT_NO,
+			PARENT_REV,
+			PARENT_TYPE,
+			NEW_PROJECT,
+			OLD_PROJECT,
+			OLD_PART_NO,
+			OLD_PART_REV,
+			OLD_PART_TYPE,
+			NEW_PART_NO,
+			NEW_PART_REV,
+			NEW_PART_TYPE,
+			OLD_PART_NAME,
+			NEW_PART_NAME,
+			OLD_SEQ,
+			NEW_SEQ,
+			OLD_QTY,
+			NEW_QTY,
+			OLD_SMODE,
+			NEW_SMODE,
+			OLD_APART,
+			NEW_APART,
+			OLD_MCODE,
+			NEW_MCODE,
+			DECODE_OLD_VC,
+			DECODE_NEW_VC,
+			OLD_IC,
+			NEW_IC,
+			OLD_PLT_STK,
+			OLD_AS_STK,
+			NEW_COST,
+			NEW_TOOL,
+			CHG_DESC,
+			EPL_ID,
+			OLD_DESC,
+			OLD_PART_ORIGIN,
+			NEW_PART_ORIGIN,
+			OLD_SEL,
+			NEW_SEL,
+			OLD_CAT,
+			NEW_CAT,
+			OLD_COLOR_I,
+			NEW_COLOR_I,
+			OLD_COLOR_S,
+			NEW_COLOR_S,
+			OLD_SHOWN_ON,
+			NEW_SHOWN_ON,
+			RELEASE_DATE
+		FROM
+				(
+					SELECT
+							W.ECO_NO AS ECO_NO,
+					        W.EPL_YN AS EPL_YN,
+					        W.CT AS CT,
+					        W.PARENT_NO AS PARENT_NO,
+					        W.PARENT_REV AS PARENT_REV,
+					        W.PARENT_TYPE AS PARENT_TYPE,
+					        W.NEW_PROJECT AS NEW_PROJECT,
+					        W.OLD_PROJECT AS OLD_PROJECT,
+					        NVL(OLD_PART.DISPLAY_PART_NO,W.OLD_PART_NO) AS OLD_PART_NO,
+					        W.OLD_PART_REV AS OLD_PART_REV,
+					        W.OLD_PART_TYPE AS OLD_PART_TYPE,
+					        NVL(NEW_PART.DISPLAY_PART_NO, W.OLD_PART_NO) AS NEW_PART_NO,
+					        W.NEW_PART_REV AS NEW_PART_REV,
+					        W.NEW_PART_TYPE AS NEW_PART_TYPE,
+							OLD_PART.PART_NAME AS OLD_PART_NAME,
+					        NEW_PART.PART_NAME AS NEW_PART_NAME,
+					        W.OLD_SEQ AS OLD_SEQ,
+					        W.NEW_SEQ AS NEW_SEQ,
+					        W.OLD_QTY AS OLD_QTY,
+					        W.NEW_QTY AS NEW_QTY,
+					        W.OLD_SMODE AS OLD_SMODE,
+					        W.NEW_SMODE AS NEW_SMODE,
+					        W.OLD_APART AS OLD_APART,
+					        W.NEW_APART AS NEW_APART,
+					        W.OLD_MCODE AS OLD_MCODE,
+					        W.NEW_MCODE AS NEW_MCODE,
+					        DECODE_OPTION_CONDITION(W.OLD_VC) AS DECODE_OLD_VC,
+					        DECODE_OPTION_CONDITION(W.NEW_VC) AS DECODE_NEW_VC,
+					        W.OLD_IC AS OLD_IC,
+					        W.NEW_IC AS NEW_IC,
+					        W.OLD_PLT_STK AS OLD_PLT_STK,
+					        W.OLD_AS_STK AS OLD_AS_STK,
+					        W.NEW_COST AS NEW_COST,
+					        W.NEW_TOOL AS NEW_TOOL,
+					        W.CHG_DESC AS CHG_DESC,
+					        W.EPL_ID AS EPL_ID,
+					        W.OLD_DESC AS OLD_DESC,
+					        OLD_PART.PART_ORIGIN AS OLD_PART_ORIGIN,
+					        NEW_PART.PART_ORIGIN AS NEW_PART_ORIGIN,
+					        OLD_PART.SEL AS OLD_SEL,
+					        NEW_PART.SEL AS NEW_SEL,
+					        OLD_PART.CAT AS OLD_CAT,
+					        NEW_PART.CAT AS NEW_CAT,
+					        OLD_PART.COLOR_I AS OLD_COLOR_I,
+					        NEW_PART.COLOR_I AS NEW_COLOR_I,
+					        OLD_PART.COLOR_S AS OLD_COLOR_S,
+					        NEW_PART.COLOR_S AS NEW_COLOR_S,
+					        OLD_PART.SON AS OLD_SHOWN_ON,
+					        NEW_PART.SON AS NEW_SHOWN_ON,
+					        WO.PDATE_RELEASED AS RELEASE_DATE
+					 FROM ECO_BOM_LIST w, infodba.pworkspaceobject wo ,
+					 (
+					        	SELECT
+					            		 I.PITEM_ID AS ITEM_ID,
+										 IR.PITEM_REVISION_ID AS ITEM_REV,
+					            		 IRW.POBJECT_NAME AS PART_NAME,
+					                     IR.PS7_DISPLAY_PART_NO  AS DISPLAY_PART_NO,
+					                     IR.PS7_PART_TYPE AS PART_ORIGIN,
+					                     IRV.PS7_SELECTIVE_PART SEL,
+					                     IRV.PS7_REGULATION CAT,
+					                     IRV.PS7_COLOR COLOR_I,
+					                     IRV.PS7_COLOR_ID COLOR_S,
+					                     CASE WHEN IRV.RS7_SHOWN_PART_NOU = 'AAAAAAAAAAAAAA' THEN ''
+					                                                ELSE (SELECT PITEM_ID
+					                                   FROM INFODBA.PITEM I
+					                                  WHERE IRV.RS7_SHOWN_PART_NOU = I.PUID)
+					                      END AS SON
+					            FROM infodba.pitemrevision ir, infodba.pworkspaceobject irw, infodba.pitem i, infodba.ps7_vehpartrevision irv
+					            WHERE
+					                        IR.RITEMS_TAGU = I.PUID AND
+					                        IR.PUID = IRW.PUID AND
+					                        IR.PUID = IRV.PUID
+					 ) NEW_PART,
+					 (
+					        	SELECT
+					            		 I.PITEM_ID AS ITEM_ID,
+										 IR.PITEM_REVISION_ID AS ITEM_REV,
+					            		 IRW.POBJECT_NAME AS PART_NAME,
+					                     IR.PS7_DISPLAY_PART_NO  AS DISPLAY_PART_NO,
+					                     IR.PS7_PART_TYPE AS PART_ORIGIN,
+					                     IRV.PS7_SELECTIVE_PART SEL,
+					                     IRV.PS7_REGULATION CAT,
+					                     IRV.PS7_COLOR COLOR_I,
+					                     IRV.PS7_COLOR_ID COLOR_S,
+					                     CASE WHEN IRV.RS7_SHOWN_PART_NOU = 'AAAAAAAAAAAAAA' THEN ''
+					                                                ELSE (SELECT PITEM_ID
+					                                   FROM INFODBA.PITEM I
+					                                  WHERE IRV.RS7_SHOWN_PART_NOU = I.PUID)
+					                      END AS SON
+					            FROM infodba.pitemrevision ir, infodba.pworkspaceobject irw, infodba.pitem i,  infodba.ps7_vehpartrevision irv
+					            WHERE
+					                        IR.RITEMS_TAGU = I.PUID AND
+					                        IR.PUID = IRW.PUID AND
+					                        IR.PUID = IRV.PUID
+					 ) OLD_PART
+					 WHERE
+					  			   W.OLD_SEQ = W.NEW_SEQ
+					        AND  W.NEW_PART_NO = NEW_PART.ITEM_ID(+)
+					        AND W.NEW_PART_REV = new_part.ITEM_REV(+)
+					        AND  W.OLD_PART_NO = OLD_PART.ITEM_ID(+)
+					        AND W.OLD_PART_REV = OLD_PART.ITEM_REV(+)
+					        AND WO.POBJECT_NAME= W.ECO_NO
+					        AND WO.POBJECT_TYPE='S7_ECORevision'
+					        AND ( W.NEW_SMODE IN ( 'C0 P7', 'C1 P7', 'C7 P7', 'G0 P7', 'P1', 'P7', 'PD') OR
+					                W.OLD_SMODE IN ( 'C0 P7', 'C1 P7', 'C7 P7', 'G0 P7', 'P1', 'P7', 'PD') )
+						    AND TO_CHAR(WO.PDATE_RELEASED + 9 / 24, 'YYYY-MM-DD')  BETWEEN #{FROM_DATE, jdbcType=VARCHAR} AND #{TO_DATE,jdbcType=VARCHAR}
+		<if test ="BI_TYPE !='' and BI_TYPE != null">
+							AND W.NEW_PROJECT=#{PRODUCT, jdbcType=VARCHAR}
+		</if>
+		<if test ="BI_TYPE =='' ">
+							AND W.NEW_PROJECT='AAAAAAAAAAAAAA'
+		</if>
+<!--
+  		<if test="PRODUCT !='' and PRODUCT != null ">
+
+  		</if>
+ -->
+  		<if test="BI_TYPE == 'ALL' ">
+  				AND W.OLD_PART_NO = W.NEW_PART_NO
+        		AND (
+	        		<!-- 	W.OLD_QTY != W.NEW_QTY OR-->
+	        		 	dbms_lob.compare(W.OLD_VC, W.NEW_VC)  !=0 or
+	                    W.OLD_SMODE != W.NEW_SMODE
+                 )
+  		</if>
+  		<if test="BI_TYPE == 'Option'  ">
+  				AND W.OLD_PART_NO = W.NEW_PART_NO
+        		AND (
+	        		<!-- 	W.OLD_QTY != W.NEW_QTY OR-->
+	        		 	dbms_lob.compare(W.OLD_VC, W.NEW_VC)  !=0 and
+	                    W.OLD_SMODE = W.NEW_SMODE
+                 )
+  		</if>
+  		<if test="BI_TYPE == 'S.Mode' ">
+  				AND W.OLD_PART_NO = W.NEW_PART_NO
+        		AND (
+	        		<!-- 	W.OLD_QTY != W.NEW_QTY OR-->
+	        		 	dbms_lob.compare(W.OLD_VC, W.NEW_VC)  =0 and
+	                    W.OLD_SMODE != W.NEW_SMODE
+                 )
+  		</if>
+
+  		<if test="BI_TYPE == 'Etc' ">
+  				AND W.OLD_PART_NO = W.NEW_PART_NO
+        		AND (
+	        		<!-- 	W.OLD_QTY != W.NEW_QTY OR-->
+	        		 	dbms_lob.compare(W.OLD_VC, W.NEW_VC)  =0 and
+	                    W.OLD_SMODE = W.NEW_SMODE
+                 )
+  		</if>
+
+
+  				UNION ALL
+
+					SELECT
+							W.ECO_NO AS ECO_NO,
+					        W.EPL_YN AS EPL_YN,
+					        W.CT AS CT,
+					        W.PARENT_NO AS PARENT_NO,
+					        W.PARENT_REV AS PARENT_REV,
+					        W.PARENT_TYPE AS PARENT_TYPE,
+					        W.NEW_PROJECT AS NEW_PROJECT,
+					        W.OLD_PROJECT AS OLD_PROJECT,
+					        NVL(OLD_PART.DISPLAY_PART_NO,W.OLD_PART_NO) AS OLD_PART_NO,
+					        W.OLD_PART_REV AS OLD_PART_REV,
+					        W.OLD_PART_TYPE AS OLD_PART_TYPE,
+					        NVL(NEW_PART.DISPLAY_PART_NO, W.OLD_PART_NO) AS NEW_PART_NO,
+					        W.NEW_PART_REV AS NEW_PART_REV,
+					        W.NEW_PART_TYPE AS NEW_PART_TYPE,
+							OLD_PART.PART_NAME AS OLD_PART_NAME,
+					        NEW_PART.PART_NAME AS NEW_PART_NAME,
+					        W.OLD_SEQ AS OLD_SEQ,
+					        W.NEW_SEQ AS NEW_SEQ,
+					        W.OLD_QTY AS OLD_QTY,
+					        W.NEW_QTY AS NEW_QTY,
+					        W.OLD_SMODE AS OLD_SMODE,
+					        W.NEW_SMODE AS NEW_SMODE,
+					        W.OLD_APART AS OLD_APART,
+					        W.NEW_APART AS NEW_APART,
+					        W.OLD_MCODE AS OLD_MCODE,
+					        W.NEW_MCODE AS NEW_MCODE,
+					        DECODE_OPTION_CONDITION(W.OLD_VC) AS DECODE_OLD_VC,
+					        DECODE_OPTION_CONDITION(W.NEW_VC) AS DECODE_NEW_VC,
+					        W.OLD_IC AS OLD_IC,
+					        W.NEW_IC AS NEW_IC,
+					        W.OLD_PLT_STK AS OLD_PLT_STK,
+					        W.OLD_AS_STK AS OLD_AS_STK,
+					        W.NEW_COST AS NEW_COST,
+					        W.NEW_TOOL AS NEW_TOOL,
+					        W.CHG_DESC AS CHG_DESC,
+					        W.EPL_ID AS EPL_ID,
+					        W.OLD_DESC AS OLD_DESC,
+					        OLD_PART.PART_ORIGIN AS OLD_PART_ORIGIN,
+					        NEW_PART.PART_ORIGIN AS NEW_PART_ORIGIN,
+					        OLD_PART.SEL AS OLD_SEL,
+					        NEW_PART.SEL AS NEW_SEL,
+					        OLD_PART.CAT AS OLD_CAT,
+					        NEW_PART.CAT AS NEW_CAT,
+					        OLD_PART.COLOR_I AS OLD_COLOR_I,
+					        NEW_PART.COLOR_I AS NEW_COLOR_I,
+					        OLD_PART.COLOR_S AS OLD_COLOR_S,
+					        NEW_PART.COLOR_S AS NEW_COLOR_S,
+					        OLD_PART.SON AS OLD_SHOWN_ON,
+					        NEW_PART.SON AS NEW_SHOWN_ON,
+					        WO.PDATE_RELEASED AS RELEASE_DATE
+					 FROM ECO_BOM_LIST w, infodba.pworkspaceobject wo ,
+					 (
+					        	SELECT
+					            		 I.PITEM_ID AS ITEM_ID,
+										 IR.PITEM_REVISION_ID AS ITEM_REV,
+					            		 IRW.POBJECT_NAME AS PART_NAME,
+					                     IR.PS7_DISPLAY_PART_NO  AS DISPLAY_PART_NO,
+					                     IR.PS7_PART_TYPE AS PART_ORIGIN,
+					                     IRV.PS7_SELECTIVE_PART SEL,
+					                     IRV.PS7_REGULATION CAT,
+					                     IRV.PS7_COLOR COLOR_I,
+					                     IRV.PS7_COLOR_ID COLOR_S,
+					                     CASE WHEN IRV.RS7_SHOWN_PART_NOU = 'AAAAAAAAAAAAAA' THEN ''
+					                                                ELSE (SELECT PITEM_ID
+					                                   FROM INFODBA.PITEM I
+					                                  WHERE IRV.RS7_SHOWN_PART_NOU = I.PUID)
+					                      END AS SON
+					            FROM infodba.pitemrevision ir, infodba.pworkspaceobject irw, infodba.pitem i, infodba.ps7_vehpartrevision irv
+					            WHERE
+					                        IR.RITEMS_TAGU = I.PUID AND
+					                        IR.PUID = IRW.PUID AND
+					                        IR.PUID = IRV.PUID
+					 ) NEW_PART,
+					 (
+					        	SELECT
+					            		 I.PITEM_ID AS ITEM_ID,
+										 IR.PITEM_REVISION_ID AS ITEM_REV,
+					            		 IRW.POBJECT_NAME AS PART_NAME,
+					                     IR.PS7_DISPLAY_PART_NO  AS DISPLAY_PART_NO,
+					                     IR.PS7_PART_TYPE AS PART_ORIGIN,
+					                     IRV.PS7_SELECTIVE_PART SEL,
+					                     IRV.PS7_REGULATION CAT,
+					                     IRV.PS7_COLOR COLOR_I,
+					                     IRV.PS7_COLOR_ID COLOR_S,
+					                     CASE WHEN IRV.RS7_SHOWN_PART_NOU = 'AAAAAAAAAAAAAA' THEN ''
+					                                                ELSE (SELECT PITEM_ID
+					                                   FROM INFODBA.PITEM I
+					                                  WHERE IRV.RS7_SHOWN_PART_NOU = I.PUID)
+					                      END AS SON
+					            FROM infodba.pitemrevision ir, infodba.pworkspaceobject irw, infodba.pitem i,  infodba.ps7_vehpartrevision irv
+					            WHERE
+					                        IR.RITEMS_TAGU = I.PUID AND
+					                        IR.PUID = IRW.PUID AND
+					                        IR.PUID = IRV.PUID
+					 ) OLD_PART
+					 WHERE
+					  			   W.OLD_SEQ = W.NEW_SEQ
+					        AND  W.NEW_PART_NO = NEW_PART.ITEM_ID(+)
+					        AND W.NEW_PART_REV = new_part.ITEM_REV(+)
+					        AND  W.OLD_PART_NO = OLD_PART.ITEM_ID(+)
+					        AND W.OLD_PART_REV = OLD_PART.ITEM_REV(+)
+					        AND WO.POBJECT_NAME= W.ECO_NO
+					        AND WO.POBJECT_TYPE='S7_ECORevision'
+					        AND ( W.NEW_SMODE IN ( 'C0 P7', 'C1 P7', 'C7 P7', 'G0 P7', 'P1', 'P7', 'PD') OR
+					                W.OLD_SMODE IN ( 'C0 P7', 'C1 P7', 'C7 P7', 'G0 P7', 'P1', 'P7', 'PD') )
+						    AND TO_CHAR(WO.PDATE_RELEASED + 9 / 24, 'YYYY-MM-DD')  BETWEEN #{FROM_DATE, jdbcType=VARCHAR} AND #{TO_DATE,jdbcType=VARCHAR}
+		<if test ="CHANGE_CHILD !='' and CHANGE_CHILD !=null ">
+							AND W.NEW_PROJECT=#{PRODUCT, jdbcType=VARCHAR}
+		</if>
+		<if test ="CHANGE_CHILD =='' ">
+							AND W.NEW_PROJECT='AAAAAAAAAAAAAA'
+		</if>
+
+  		<if test="CHANGE_CHILD == 'All' ">
+  				AND ( W.OLD_PART_NO is null or W.NEW_PART_NO is null or  W.OLD_PART_NO != W.NEW_PART_NO )
+  		</if>
+
+  		<if test="CHANGE_CHILD == 'Add' ">
+  				AND W.OLD_PART_NO is null
+				AND W.NEW_PART_NO is not null
+  		</if>
+
+  		<if test="CHANGE_CHILD == 'Del' ">
+  				AND W.OLD_PART_NO is not null
+				AND W.NEW_PART_NO is null
+  		</if>
+
+  		<if test="CHANGE_CHILD == 'Diff.Part Change' ">
+  				AND W.OLD_PART_NO is not null
+				AND W.NEW_PART_NO is not null
+  				AND W.OLD_PART_NO != W.NEW_PART_NO
+  		</if>
+
+
+
+
+
+
+
+  		<!-- Deprecated -->
+  		<!--
+  		<if test="REVISE_TYPE == 'D.Part'">
+
+  				AND W.PARENT_NO != (  SELECT BI.ITEM_ID
+  									  FROM INFODBA.PITEMREVISION BV, INFODBA.PITEM BI, INFODBA.PIMANRELATION BR, INFODBA.PIMANTYPE BT,
+  									       INFODBA.PITEMREVISION WV, INFODBA.PITEM WI
+  									  WHERE
+  									  			WV.RITEMS_TAGU = WI.PUID
+  									  		AND WV.PITEM_REVISION_ID = W.PARENT_REV
+  									  		AND WI.PITEM_ID = W.PARENT_NO
+  									  		AND BR.RPRIMARY_OBJECTU = WV.PUID
+  									  		AND BR.RRELATION_TYPEU = BT.PUID
+  									  		AND BT.PTYPE_NAME ='IMAN_based_on'
+  									  		AND BR.RSECONDARY_OBJECTU = BV.PUID
+  									  		AND BV.RITEMS_TAGU = BI.PUID
+
+  								    )
+  		</if>
+		 -->
+		<!-- Deprecated -->
+  		<!--
+  		<if test="REVISE_TYPE == 'S.Part'">
+
+  				AND W.PARENT_NO = (  SELECT BI.ITEM_ID
+  									  FROM INFODBA.PITEMREVISION BV, INFODBA.PITEM BI, INFODBA.PIMANRELATION BR, INFODBA.PIMANTYPE BT,
+  									       INFODBA.PITEMREVISION WV, INFODBA.PITEM WI
+  									  WHERE
+  									  			WV.RITEMS_TAGU = WI.PUID
+  									  		AND WV.PITEM_REVISION_ID = W.PARENT_REV
+  									  		AND WI.PITEM_ID = W.PARENT_NO
+  									  		AND BR.RPRIMARY_OBJECTU = WV.PUID
+  									  		AND BR.RRELATION_TYPEU = BT.PUID
+  									  		AND BT.PTYPE_NAME ='IMAN_based_on'
+  									  		AND BR.RSECONDARY_OBJECTU = BV.PUID
+  									  		AND BV.RITEMS_TAGU = BI.PUID
+  								  )
+  		</if>
+		 -->
+		<!--
+  		<if test="FROM_DATE !=null and TO_DATE == null">
+  					AND TO_CHAR(WO.PDATE_RELEASED + 9 / 24, 'YYYY-MM-DD') <![CDATA[<=]]> #{FROM_DATE, jdbcType=VARCHAR}
+  		</if>
+
+  		<if test="FROM_DATE == null and TO_DATE !=null" >
+  					AND TO_CHAR(WO.PDATE_RELEASED + 9 / 24, 'YYYY-MM-DD')  <![CDATA[>=]]> #{TO_DATE, jdbcType=VARCHAR}
+  		</if>
+ 		-->
+		<!-- Sorted by Released date -->
+					)
+			        ORDER BY RELEASE_DATE
+	</select>
+	
+		<!-- [NON-SR][20160219] taeku.jeong MECO 상신 Validation과정에 Parent Node에 추가된 Item의 목록을 List 한다. -->
+	<select id="getChangedNewItemIdList" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
+		WITH BOM_VIEW AS (
+			SELECT PPSBOMVIEWREVISION.PUID AS BOM_VIEW_REV_PUID,
+				PITEM.PITEM_ID AS ITEM_ID,
+				PITEMREVISION.PITEM_REVISION_ID AS ITEM_REV_ID
+			FROM INFODBA.PITEM, INFODBA.PITEMREVISION,
+				INFODBA.PSTRUCTURE_REVISIONS, INFODBA.PPSBOMVIEWREVISION,
+				INFODBA.PWORKSPACEOBJECT
+			WHERE PITEMREVISION.RITEMS_TAGU=PITEM.PUID
+				AND PITEMREVISION.PUID=PSTRUCTURE_REVISIONS.PUID
+				AND PSTRUCTURE_REVISIONS.PVALU_0=PPSBOMVIEWREVISION.PUID
+				AND PWORKSPACEOBJECT.PUID=PITEMREVISION.PUID
+				AND PWORKSPACEOBJECT.POBJECT_TYPE IN (
+					'M7_BOPAssyOpRevision','M7_BOPBodyOpRevision',
+					'M7_BOPLineRevision','M7_BOPPaintOpRevision',
+					'M7_BOPShopRevision','M7_BOPStationRevision',
+					'M7_BOPWeldOPRevision'
+				)
+		),
+		NEW_ITEMS AS (
+			SELECT RCHILD_ITEMU AS ITEM_PUID
+			FROM INFODBA.PPSOCCURRENCE, BOM_VIEW 
+			WHERE PPSOCCURRENCE.RPARENT_BVRU=BOM_VIEW.BOM_VIEW_REV_PUID 
+				AND BOM_VIEW.ITEM_ID=#{Target_Item_Id, jdbcType=VARCHAR}
+				AND BOM_VIEW.ITEM_REV_ID=#{New_Rev_Id, jdbcType=VARCHAR}  
+			MINUS
+			SELECT RCHILD_ITEMU AS ITEM_PUID 
+			FROM INFODBA.PPSOCCURRENCE, BOM_VIEW 
+			WHERE PPSOCCURRENCE.RPARENT_BVRU=BOM_VIEW.BOM_VIEW_REV_PUID 
+				AND BOM_VIEW.ITEM_ID=#{Old_Rev_Id, jdbcType=VARCHAR}
+				AND BOM_VIEW.ITEM_REV_ID='001'
+		)
+		SELECT PITEM.PITEM_ID AS ITEM_ID,
+			PWORKSPACEOBJECT.POBJECT_TYPE AS ITEM_TYPE
+		FROM INFODBA.PITEM, NEW_ITEMS,
+			INFODBA.PWORKSPACEOBJECT
+		WHERE NEW_ITEMS.ITEM_PUID=PITEM.PUID
+			AND PWORKSPACEOBJECT.PUID=PITEM.PUID
+			AND PWORKSPACEOBJECT.POBJECT_TYPE IN (
+				'M7_BOPAssyOp','M7_BOPBodyOp',
+				'M7_BOPLine','M7_BOPPaintOp',
+				'M7_BOPShop','M7_BOPStation',
+				'M7_BOPWeldOP'
+			)
+	</select>
+</mapper>

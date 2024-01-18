@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.symc.partnamegroup">
+    <!-- Product List 조회 -->
+    <select id="getProducts" resultType="java.lang.String">
+      SELECT PRODUCT FROM PNG_PROD_ORDER ORDER BY ASSIGN_ORDER
+    </select>
+    
+    <select id="getRowKey" resultType="java.lang.String">
+      select to_char(SYSTIMESTAMP,'yyyymmddhh24missFF3') rowkey from dual
+    </select>
+    
+    <insert id="set1LevelItemList" >
+        {call PKG_NAME_GROUP.set1LevelItemList(#{PRODUCT, jdbcType=VARCHAR}, #{ROWKEY, jdbcType=VARCHAR})}
+    </insert>
+    
+    <delete id="deletePngEpl">
+        delete from PNG_EPL where ROWKEY = #{ROWKEY, jdbcType=VARCHAR}
+    </delete> 
+    
+    <!-- 15일 생산계획 스펙 조회 -->
+    <select id="getPlan15SpecList" resultType="java.util.HashMap">
+      SELECT A.SPECNO PUID,
+             B.PRODUCT,
+             A.SPECNO SPEC_NO,
+             'PLAN SPEC' "TYPE",
+             (SELECT MAX(TO_CHAR(A1.LAST_MODIFY_DATE, 'YYYY-MM-DD'))
+                  FROM HBOM.PSPEC_MASTER@LINK_003_HBOM A1
+                 WHERE A1.GMODEL = A.GMODEL
+                   AND A1.SPEC_NO = A.SPECNO
+                   AND A1.VERSION = A.VERSION) CREATE_DATE,
+                 TO_DATE(PDATE, 'YYYYMMDD') PRODUCTION_PLAN_DATE
+        FROM IF_MFG_SPEC A,
+             (SELECT PR.PS7_GMODEL_CODE GMODEL, PI.PITEM_ID PRODUCT
+                FROM INFODBA.PITEM               PI,
+                     INFODBA.PWORKSPACEOBJECT    PIW,
+                     INFODBA.PITEMREVISION       PIR,
+                     INFODBA.PS7_PRODUCTREVISION PR
+               WHERE PR.PUID = PIR.PUID
+                 AND PIR.PUID = PIW.PUID
+                 AND PI.PUID = PIR.RITEMS_TAGU
+                 AND PI.PITEM_ID = #{PRODUCT, jdbcType=VARCHAR}
+                 AND PIW.POBJECT_TYPE = 'S7_ProductRevision'
+                 AND PIR.PS7_MATURITY = 'Released') B
+       WHERE A.GMODEL = B.GMODEL
+         AND A.YYYYMMDD = (SELECT MAX(A1.YYYYMMDD)
+                             FROM IF_MFG_SPEC A1
+                            WHERE A1.GMODEL = A.GMODEL)
+         AND A.VERSION = (SELECT MAX(A1.VERSION)
+                            FROM IF_MFG_SPEC A1
+                           WHERE A1.GMODEL = A.GMODEL
+                             AND A1.SPECNO = A.SPECNO)
+         <if test="SPEC_NO != null">
+         AND A.SPECNO = #{SPEC_NO, jdbcType=VARCHAR}
+         <!-- AND A.SPECNO LIKE '%' || #{SPEC_NO, jdbcType=VARCHAR} || '%' -->
+         </if>
+       ORDER BY A.SPECNO
+    </select>
+    
+    <!-- End Item Name List 조회 -->
+    <select id="getEndItemNameList" resultType="java.util.HashMap">
+    <![CDATA[
+      SELECT NAMELIST.GROUP_ID,
+             P_MASTER.GROUP_NAME,
+             P_MASTER.DEFAULT_QTY,
+             A.FUNCTION_NO,
+             A.CHILD_NO,
+             A.CHILD_NAME,
+             A.CONDITION,
+             A.SUPPLY_MODE,
+             A.LV,
+             COUNT(CHILD_NAME) NAME_COUNT
+        FROM TABLE(PKG_NAME_GROUP.GET_1LEVEL_ITEM_WITH_SPEC(#{PRODUCT, jdbcType=VARCHAR}, #{SPEC_TYPE, jdbcType=VARCHAR}, #{PUID, jdbcType=VARCHAR}, #{ROWKEY, jdbcType=VARCHAR})) A,
+             PNG_NAME_LIST NAMELIST,
+             PNG_MASTER P_MASTER
+       WHERE A.CHILD_NAME = NAMELIST.PART_NAME
+         AND NAMELIST.GROUP_ID = P_MASTER.GROUP_ID
+         AND INSTR(P_MASTER.REF_FUNCS, SUBSTR(A.FUNCTION_NO, 0, 4)) > 0
+       GROUP BY NAMELIST.GROUP_ID, P_MASTER.GROUP_NAME, P_MASTER.DEFAULT_QTY, A.FUNCTION_NO, A.CHILD_NO, A.CHILD_NAME, A.CONDITION, A.SUPPLY_MODE, A.LV
+       ORDER BY NAMELIST.GROUP_ID, A.FUNCTION_NO, A.LV, A.CHILD_NAME
+    ]]>
+    </select>
+    
+    <!-- Group ID, Product 별 Condition 조회 -->
+    <select id="getNameGroupCondition" resultType="java.util.HashMap">
+      SELECT *
+        FROM PNG_CONDITION_LIST
+       WHERE GROUP_ID = #{GROUP_ID, jdbcType=VARCHAR}
+       ORDER BY PART_IDX
+    </select>
+     
+    <!-- Group ID, Product 별 Part Name Group Master 조회 -->
+    <select id="getNameGroupMaster" resultType="java.util.HashMap">
+      SELECT A.*,
+             (SELECT DBMS_LOB.SUBSTR(WM_CONCAT(PART_NAME), 4000, 1) FROM PNG_NAME_LIST WHERE GROUP_ID = A.GROUP_ID) PART_NAMES
+        FROM PNG_MASTER A, PNG_ASSIGN B
+       WHERE A.GROUP_ID = B.GROUP_ID(+)
+         AND B.PRODUCT = #{PRODUCT, jdbcType=VARCHAR}
+         <if test="GROUP_ID != null">
+         AND A.GROUP_ID = #{GROUP_ID, jdbcType=VARCHAR}
+         </if>
+       GROUP BY A.GROUP_ID, GROUP_NAME, REF_FUNCS, DESCRIPTION, DEFAULT_QTY, IS_ENABLED
+       ORDER BY A.GROUP_ID, GROUP_NAME
+    </select>
+    
+    <!-- Spec 조회 -->
+    <select id="getSpec" resultType="string">
+      SELECT PKG_NAME_GROUP.GET_SPEC(#{SPEC_TYPE, jdbcType=VARCHAR}, #{PUID, jdbcType=VARCHAR}) SPEC FROM DUAL
+    </select>
+    
+    <!-- Assign 조회 -->
+    <select id="isAssigned" resultType="string">
+      SELECT DECODE(COUNT(*), 0, 'false', 'true') RESULT
+        FROM PNG_ASSIGN
+       WHERE PRODUCT = #{PRODUCT, jdbcType=VARCHAR}
+         AND GROUP_ID = #{GROUP_ID, jdbcType=VARCHAR}
+    </select>
+    <!-- 주간 오류 리스트 등록 -->
+    <insert id="insertWeeklyErrorReport" >
+        INSERT INTO PNG_WEEKLY_REPORT_HISTORY VALUES(#{PRODUCT, jdbcType=VARCHAR}, #{GROUP_ID, jdbcType=VARCHAR}
+                                                                                          , #{SPEC_NO, jdbcType=VARCHAR}, #{REASON, jdbcType=VARCHAR}
+                                                                                          , TO_DATE(#{CREATION_DATE, jdbcType=VARCHAR},'YYYY-MM-DD HH24:MI:SS'))
+    </insert>
+  </mapper>

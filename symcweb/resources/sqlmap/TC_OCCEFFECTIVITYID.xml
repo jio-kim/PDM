@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.occeffectivityid">
+    <!-- ECO Demon process -->
+    <select id="selectECODemonTarget" resultType="java.util.HashMap">
+    <![CDATA[
+        WITH ECO_PART AS (
+            SELECT ECOI.PITEM_ID ECO_NO
+                 , ECOIRW.PDATE_RELEASED ECO_DATE
+                 , PPART.PART_NO
+                 , PPART.PART_REV
+                 , PIR.PUID REV_PUID
+                 , PSR.PVALU_0 PART_BVR
+              FROM INFODBA.PITEMREVISION ECOIR
+                 , INFODBA.PWORKSPACEOBJECT ECOIRW
+                 , INFODBA.PITEM ECOI
+                 , ECO_EPL_PART_DATE PPART
+                 , INFODBA.PITEM PI
+                 , INFODBA.PITEMREVISION PIR
+                 , INFODBA.PWORKSPACEOBJECT PIRW
+                 , INFODBA.PSTRUCTURE_REVISIONS PSR
+             WHERE ECOIR.PUID = ECOIRW.PUID
+               AND ECOIRW.POBJECT_TYPE = 'S7_ECORevision'
+               AND TO_CHAR(ECOIRW.PDATE_RELEASED + 9 / 24, 'YYYYMMDD') = #{PDATE_RELEASED, jdbcType=VARCHAR}
+               AND ECOIR.RITEMS_TAGU = ECOI.PUID
+               AND ECOI.PITEM_ID = PPART.ECO_NO
+               AND PPART.BI_YN = 'N'
+               AND PPART.PART_NO = PI.PITEM_ID
+               AND PI.PUID = PIR.RITEMS_TAGU
+               AND PIR.PITEM_REVISION_ID = PPART.PART_REV
+               AND PIR.PUID = PIRW.PUID
+               AND PIRW.PACTIVE_SEQ = 1
+               AND PIR.PUID = PSR.PUID
+         )
+         SELECT E.ECO_NO
+              , E.PART_NO
+              , E.PART_REV
+              , E.PART_BVR
+              , B.BASE_NO
+              , B.BASE_REV
+           FROM ECO_PART E
+              , (SELECT E.REV_PUID
+                      , BI.PITEM_ID BASE_NO
+                      , BIR.PITEM_REVISION_ID BASE_REV
+                   FROM ECO_PART E
+                      , INFODBA.PIMANRELATION REL
+                      , INFODBA.PIMANTYPE RT
+                      , INFODBA.PITEMREVISION BIR
+                      , INFODBA.PITEM BI
+                      , INFODBA.PWORKSPACEOBJECT BIW
+                  WHERE E.REV_PUID = REL.RPRIMARY_OBJECTU
+                    AND REL.RRELATION_TYPEU = RT.PUID
+                    AND RT.PTYPE_NAME = 'IMAN_based_on'
+                    AND REL.RSECONDARY_OBJECTU = BIR.PUID
+                    AND BIR.RITEMS_TAGU = BI.PUID
+                    AND BI.PUID = BIW.PUID
+                    AND BIW.PACTIVE_SEQ = 1) B
+         WHERE E.REV_PUID = B.REV_PUID(+)
+         ORDER BY ECO_DATE
+    ]]>     
+    </select>
+    
+	<select id="selectOccurrenceECO" resultType="java.util.HashMap">
+    <![CDATA[
+	SELECT OCC.ROCC_THREADU
+	     , NBL.CT
+	     , CASE WHEN SUBSTR(NBL.CT, 1, 1) = 'N' OR SUBSTR(NBL.CT, 1, 1) = 'F' THEN NBL.ECO_NO
+	            ELSE (SELECT MIN(ECO_NO)
+       		            FROM ECO_BOM_LIST OBL
+               		   WHERE OBL.PARENT_NO = #{baseNo, jdbcType=VARCHAR}
+	                     AND OBL.PARENT_REV = #{baseRev, jdbcType=VARCHAR}
+       		             AND OBL.NEW_PART_NO = DECODE(NBL.OLD_PART_NO, NULL, NBL.NEW_PART_NO, NBL.OLD_PART_NO)
+	                     AND OBL.NEW_PART_REV = DECODE(NBL.OLD_PART_NO, NULL, NBL.NEW_PART_REV, NBL.OLD_PART_REV)
+       		             AND DBMS_LOB.COMPARE (NVL(OBL.NEW_VC, '@'), NVL(DECODE(NBL.OLD_PART_NO, NULL, NBL.NEW_VC, NBL.OLD_VC), '@')) = 0
+               		     AND NVL(OBL.NEW_SEQ, '@') = NVL(DECODE(NBL.OLD_PART_NO, NULL, NBL.NEW_SEQ, NBL.OLD_SEQ), '@')
+	                     AND NVL(OBL.NEW_SMODE, '@') = NVL(DECODE(NBL.OLD_PART_NO, NULL, NBL.NEW_SMODE, NBL.OLD_SMODE), '@')
+	                     AND NVL(OBL.NEW_APART, '@') = NVL(DECODE(NBL.OLD_PART_NO, NULL, NBL.NEW_APART, NBL.OLD_APART), '@')
+       		         )
+      		END ECO_NO
+	  FROM INFODBA.PPSOCCURRENCE OCC
+	     , ECO_BOM_LIST NBL
+	 WHERE OCC.RPARENT_BVRU = #{parentBVR, jdbcType=VARCHAR}
+	   AND NBL.ECO_NO = #{ecoNo, jdbcType=VARCHAR}
+	   AND NBL.PARENT_NO = #{parentNo, jdbcType=VARCHAR}
+	   AND NBL.PARENT_REV = #{parentRev, jdbcType=VARCHAR}
+	   AND INSTR(NBL.OCC_THREADS, OCC.ROCC_THREADU, 1) > 0
+    ]]>     
+	</select>
+    
+</mapper>

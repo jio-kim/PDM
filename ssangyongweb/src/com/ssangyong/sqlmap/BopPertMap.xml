@@ -1,0 +1,581 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ssangyong.mapper.BopPertMapper">
+
+    <!-- 선택한 공정(Station)까지의 PERT 정보 가져오기 (실시간) -->
+	<select id="selectBopPertList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT PUID
+			  ,REV_PUID
+			  ,OCC_ID
+			  ,ID
+			  ,TYPE
+			  ,SUCCESSORS
+		  FROM(
+		   WITH BOPTREE AS (SELECT LEVEL LVL
+								  ,PI.PUID AS PARENTS_PUID
+								  ,PREV.PUID AS PARENTS_REVPUID
+								  ,PI.PITEM_ID AS PARENTS_ID
+								  ,PREV.PITEM_REVISION_ID AS P_REV_NO
+								  ,PWSO.POBJECT_TYPE AS P_ITEM_TYPE
+								  ,POCC.PUID AS POCC
+								  ,CI.PUID AS CHILD_PUID
+								  ,CREV.PUID AS CHILD_REVPUID
+								  ,CI.PITEM_ID AS CHILD_ID
+								  ,CREV.PITEM_REVISION_ID AS C_REV_NO
+								  ,CWSO.POBJECT_TYPE AS C_ITEM_TYPE
+							  FROM INFODBA.PITEM PI
+		                           INNER JOIN INFODBA.PWORKSPACEOBJECT PWSO ON PWSO.POBJECT_TYPE IN
+								   ('M7_BOPShop', 'M7_BOPLine', 'M7_BOPStation') AND PI.PUID = PWSO.PUID
+								   INNER JOIN INFODBA.PITEMREVISION PREV ON PI.PUID = PREV.RITEMS_TAGU
+		   					       AND PREV.PITEM_REVISION_ID = (SELECT MAX(MAX_REV.PITEM_REVISION_ID)
+															   FROM INFODBA.PITEMREVISION MAX_REV WHERE MAX_REV.RITEMS_TAGU = PI.PUID)
+								   INNER JOIN INFODBA.PSTRUCTURE_REVISIONS PSTR ON PREV.PUID = PSTR.PUID
+								   INNER JOIN INFODBA.PPSOCCURRENCE POCC ON PSTR.PVALU_0 = POCC.RPARENT_BVRU
+								   INNER JOIN INFODBA.PITEM CI ON POCC.RCHILD_ITEMU = CI.PUID
+								   INNER JOIN INFODBA.PWORKSPACEOBJECT CWSO ON CI.PUID = CWSO.PUID
+								   AND CWSO.POBJECT_TYPE IN ('M7_BOPLine', 'M7_BOPStation')
+								   INNER JOIN INFODBA.PITEMREVISION CREV ON CREV.RITEMS_TAGU = CI.PUID
+								   AND CREV.PITEM_REVISION_ID = ( SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+																	FROM INFODBA.PITEMREVISION MAX_CREV WHERE MAX_CREV.RITEMS_TAGU = CI.PUID )
+							 START WITH PI.PITEM_ID = #{SHOP_ID, jdbcType=VARCHAR}
+							 CONNECT BY PRIOR CI.PUID = PI.PUID
+							), MAIN_BP AS (SELECT BOPTREE.* ,(SELECT CREDCI.PITEM_ID
+																FROM INFODBA.PPRED_LIST_0 RED, INFODBA.PPSOCCURRENCE CREDOCC, INFODBA.PITEM CREDCI
+															   WHERE RED.PVALU_0 = BOPTREE.POCC AND CREDOCC.PUID = RED.PUID AND	CREDOCC.RCHILD_ITEMU = CREDCI.PUID
+															  ) AS SUCCESSORS
+											 FROM BOPTREE)
+						    SELECT M.CHILD_PUID AS PUID,
+								   M.CHILD_REVPUID AS REV_PUID,
+								   M.POCC AS OCC_ID,
+								   M.CHILD_ID AS ID,
+								   M.C_ITEM_TYPE AS TYPE,
+								   NVL((NVL(M.SUCCESSORS, (SELECT SUB_BD.CHILD_ID
+							  FROM MAIN_BP SUB_BD, INFODBA.PM7_EXT_DECESSORS EXTD
+							 WHERE EXTD.PVALU_0 = M.PARENTS_REVPUID
+							   AND EXTD.PUID = SUB_BD.CHILD_REVPUID ))),
+							      (SELECT MIN(SUB_BS.CHILD_ID)
+									 FROM MAIN_BP SUB_BD, MAIN_BP SUB_BS
+									WHERE SUB_BD.CHILD_REVPUID = M.PARENTS_REVPUID
+									  AND SUB_BD.SUCCESSORS = SUB_BS.PARENTS_ID
+								  )
+								  ) AS SUCCESSORS
+							  FROM MAIN_BP M
+							 WHERE M.C_ITEM_TYPE = 'M7_BOPStation'
+								  )
+					   START WITH ID = #{STATION_ID, jdbcType=VARCHAR}
+					   CONNECT BY PRIOR ID = SUCCESSORS
+	</select>
+
+    <!-- 선택된공정의 Vehpart 비교 (결합판넬) (여러개의 판낼 검색) -->
+	<select id="selectBopVehpartList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT POCC
+       	  ,CHILD_PUID
+          ,CHILD_REVPUID
+          ,CHILD_REVPUID
+		  ,CHILD_ID
+          ,C_REV_NO
+          ,OCCTYPE
+		  ,C_ITEM_TYPE
+      FROM( SELECT LEVEL LVL
+			      ,POCC.PUID AS POCC
+				  ,CI.PUID AS CHILD_PUID
+				  ,CREV.PUID AS CHILD_REVPUID
+				  ,CI.PITEM_ID AS CHILD_ID
+	              ,CREV.PITEM_REVISION_ID AS C_REV_NO
+                  ,OCC_TYPE.PNAME AS OCCTYPE
+				  ,CWSO.POBJECT_TYPE AS C_ITEM_TYPE
+              FROM INFODBA.PITEM PI
+		           INNER JOIN INFODBA.PWORKSPACEOBJECT PWSO ON PWSO.POBJECT_TYPE IN
+                              ('M7_BOPStation', 'M7_BOPBodyOp', 'S7_Vehpart') AND PI.PUID = PWSO.PUID
+                   INNER JOIN INFODBA.PITEMREVISION PREV ON PI.PUID = PREV.RITEMS_TAGU
+                   AND PREV.PITEM_REVISION_ID = DECODE(PWSO.POBJECT_TYPE, 'S7_Vehpart',
+                                                 	  (SELECT MAX(MAX_REV.PITEM_REVISION_ID)
+                                                   		 FROM INFODBA.PITEMREVISION MAX_REV, INFODBA.PRELEASE_STATUS_LIST PRSL, INFODBA.PRELEASESTATUS PRS
+                                                  		WHERE MAX_REV.RITEMS_TAGU = PI.PUID
+                                                    	  AND PRSL.PUID = MAX_REV.PUID
+                                                    	  AND PRSL.PVALU_0 = PRS.PUID
+                                                    	  AND PRS.PNAME = 'S7_Released')
+                                                  	  ,(SELECT MAX(MAX_REV.PITEM_REVISION_ID)
+                                                   		  FROM INFODBA.PITEMREVISION MAX_REV
+                                                  		 WHERE MAX_REV.RITEMS_TAGU = PI.PUID))
+                   INNER JOIN INFODBA.PSTRUCTURE_REVISIONS PSTR ON PREV.PUID = PSTR.PUID
+				   INNER JOIN INFODBA.PPSOCCURRENCE POCC ON PSTR.PVALU_0 = POCC.RPARENT_BVRU
+				   INNER JOIN INFODBA.PITEM CI ON POCC.RCHILD_ITEMU = CI.PUID
+				   INNER JOIN INFODBA.PWORKSPACEOBJECT CWSO ON CI.PUID = CWSO.PUID
+				   AND CWSO.POBJECT_TYPE IN ('M7_BOPBodyOp','S7_Vehpart')
+				   INNER JOIN INFODBA.PITEMREVISION CREV ON CREV.RITEMS_TAGU = CI.PUID
+                   AND CREV.PITEM_REVISION_ID = DECODE(CWSO.POBJECT_TYPE, 'S7_Vehpart',
+                                                 	  (SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+                                                   		 FROM INFODBA.PITEMREVISION MAX_CREV, INFODBA.PRELEASE_STATUS_LIST CRSL, INFODBA.PRELEASESTATUS CRS
+                                                  		WHERE MAX_CREV.RITEMS_TAGU = CI.PUID
+                                                    	  AND CRSL.PUID = MAX_CREV.PUID
+                                                    	  AND CRSL.PVALU_0 = CRS.PUID
+                                                    	  AND CRS.PNAME = 'S7_Released')
+                                                  	 ,(SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+                                                  		 FROM INFODBA.PITEMREVISION MAX_CREV
+                                                  		WHERE MAX_CREV.RITEMS_TAGU = CI.PUID))
+                   LEFT OUTER JOIN INFODBA.PPSOCCURRENCETYPE OCC_TYPE ON POCC.ROCC_TYPEU = OCC_TYPE.PUID
+			  START WITH PI.PITEM_ID IN
+			  			<foreach collection="STATION_LIST" item="item" index="index" separator="," open="(" close=")">
+			  					#{item}
+			  			</foreach>
+             CONNECT BY PRIOR CI.PUID = PI.PUID)
+       		<!-- WHERE CHILD_REVPUID  IN
+       			<foreach collection="REVPUID_LIST" item="item" index="index" separator="," open="(" close=")">
+			  			#{item}
+			  	</foreach>  -->
+	</select>
+
+	<!-- 저장한 테이블에서 선택한 공정(Station)까지의 PERT 정보 가져오기 -->
+	<select id="selectStationDecessorsList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT SHOP_ID
+     	  ,PUID
+    	  ,REV_PUID
+   	      ,OCC_ID
+      	  ,ID
+      	  ,TYPE
+      	  ,SUCCESSORS
+      FROM BOP_PERT_INFO
+     WHERE SHOP_ID = #{SHOP_ID, jdbcType=VARCHAR}
+       AND ID != #{STATION_ID, jdbcType=VARCHAR}
+       AND USE_FLAG = '1'
+     START WITH ID = #{STATION_ID, jdbcType=VARCHAR}
+       AND USE_FLAG = '1'
+   CONNECT BY PRIOR ID = SUCCESSORS
+       AND USE_FLAG = '1'
+   </select>
+
+   	<!-- 선택된공정의 상위 공정 E/I 리스트 가져오기 (E/I 하위 파트는 가져오지 않는다) -->
+	<select id="selectBopEndItemList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT POCC
+       	  ,CHILD_PUID
+          ,CHILD_REVPUID
+          ,CHILD_REVPUID
+		  ,CHILD_ID
+          ,C_REV_NO
+          ,OCCTYPE
+		  ,C_ITEM_TYPE
+      FROM( SELECT LEVEL LVL
+			      ,POCC.PUID AS POCC
+				  ,CI.PUID AS CHILD_PUID
+				  ,CREV.PUID AS CHILD_REVPUID
+				  ,CI.PITEM_ID AS CHILD_ID
+	              ,CREV.PITEM_REVISION_ID AS C_REV_NO
+                  ,OCC_TYPE.PNAME AS OCCTYPE
+				  ,CWSO.POBJECT_TYPE AS C_ITEM_TYPE
+              FROM INFODBA.PITEM PI
+		           INNER JOIN INFODBA.PWORKSPACEOBJECT PWSO ON PWSO.POBJECT_TYPE IN
+                              ('M7_BOPStation', 'M7_BOPBodyOp') AND PI.PUID = PWSO.PUID
+                   INNER JOIN INFODBA.PITEMREVISION PREV ON PI.PUID = PREV.RITEMS_TAGU
+                   AND PREV.PITEM_REVISION_ID = (SELECT MAX(MAX_REV.PITEM_REVISION_ID)
+                                                   FROM INFODBA.PITEMREVISION MAX_REV
+                                                  WHERE MAX_REV.RITEMS_TAGU = PI.PUID)
+                   INNER JOIN INFODBA.PSTRUCTURE_REVISIONS PSTR ON PREV.PUID = PSTR.PUID
+				   INNER JOIN INFODBA.PPSOCCURRENCE POCC ON PSTR.PVALU_0 = POCC.RPARENT_BVRU
+				   INNER JOIN INFODBA.PITEM CI ON POCC.RCHILD_ITEMU = CI.PUID
+				   INNER JOIN INFODBA.PWORKSPACEOBJECT CWSO ON CI.PUID = CWSO.PUID
+				   AND CWSO.POBJECT_TYPE IN ('M7_BOPBodyOp','S7_Vehpart')
+				   INNER JOIN INFODBA.PITEMREVISION CREV ON CREV.RITEMS_TAGU = CI.PUID
+                   AND CREV.PITEM_REVISION_ID = ( SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+                                                    FROM INFODBA.PITEMREVISION MAX_CREV
+                                                   WHERE MAX_CREV.RITEMS_TAGU = CI.PUID )
+                   LEFT OUTER JOIN INFODBA.PPSOCCURRENCETYPE OCC_TYPE ON POCC.ROCC_TYPEU = OCC_TYPE.PUID
+			  START WITH PI.PITEM_ID IN
+			  			<foreach collection="STATION_LIST" item="item" index="index" separator="," open="(" close=")">
+			  					#{item}
+			  			</foreach>
+             CONNECT BY PRIOR CI.PUID = PI.PUID)
+             WHERE TYPE = 'S7_Vehpart'
+	</select>
+
+	<!-- [SR150529-021][20150821] [shcho] 누적 파트 생성 방법 보완개선 요청 -->
+	<select id="selectBopStationPertList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT   PUID
+			    ,REV_PUID
+			    ,OCC_ID
+			    ,ID
+			    ,TYPE
+			    ,SUCCESSORS
+		  FROM(
+		   WITH BOPTREE AS (SELECT LEVEL LVL,
+								   PI.PUID AS PARENTS_PUID,
+								   PREV.PUID AS PARENTS_REVPUID,
+								   PI.PITEM_ID AS PARENTS_ID,
+								   PREV.PITEM_REVISION_ID AS P_REV_NO,
+								   PWSO.POBJECT_TYPE AS P_ITEM_TYPE,
+								   POCC.PUID AS POCC,
+								   CI.PUID AS CHILD_PUID,
+								   CREV.PUID AS CHILD_REVPUID,
+								   CI.PITEM_ID AS CHILD_ID,
+								   CREV.PITEM_REVISION_ID AS C_REV_NO,
+								   CWSO.POBJECT_TYPE AS C_ITEM_TYPE
+							  FROM INFODBA.PITEM PI
+		                           INNER JOIN INFODBA.PWORKSPACEOBJECT PWSO ON PWSO.POBJECT_TYPE IN
+								   ('M7_BOPShop', 'M7_BOPLine', 'M7_BOPStation') AND PI.PUID = PWSO.PUID
+								   INNER JOIN INFODBA.PITEMREVISION PREV ON PI.PUID = PREV.RITEMS_TAGU
+		   					       AND PREV.PITEM_REVISION_ID = (SELECT MAX(MAX_REV.PITEM_REVISION_ID)
+															   FROM INFODBA.PITEMREVISION MAX_REV WHERE MAX_REV.RITEMS_TAGU = PI.PUID)
+								   INNER JOIN INFODBA.PSTRUCTURE_REVISIONS PSTR ON PREV.PUID = PSTR.PUID
+								   INNER JOIN INFODBA.PPSOCCURRENCE POCC ON PSTR.PVALU_0 = POCC.RPARENT_BVRU
+								   INNER JOIN INFODBA.PITEM CI ON POCC.RCHILD_ITEMU = CI.PUID
+								   INNER JOIN INFODBA.PWORKSPACEOBJECT CWSO ON CI.PUID = CWSO.PUID
+								   AND CWSO.POBJECT_TYPE IN ('M7_BOPLine', 'M7_BOPStation')
+								   INNER JOIN INFODBA.PITEMREVISION CREV ON CREV.RITEMS_TAGU = CI.PUID
+								   AND CREV.PITEM_REVISION_ID = ( SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+																	FROM INFODBA.PITEMREVISION MAX_CREV WHERE MAX_CREV.RITEMS_TAGU = CI.PUID )
+							 START WITH PI.PITEM_ID = #{STATION_ID, jdbcType=VARCHAR}
+							 CONNECT BY PRIOR CI.PUID = PI.PUID
+							), MAIN_BP AS (SELECT BOPTREE.* ,(SELECT CREDCI.PITEM_ID
+																FROM INFODBA.PPRED_LIST_0 RED, INFODBA.PPSOCCURRENCE CREDOCC, INFODBA.PITEM CREDCI
+															   WHERE RED.PVALU_0 = BOPTREE.POCC AND CREDOCC.PUID = RED.PUID AND	CREDOCC.RCHILD_ITEMU = CREDCI.PUID
+															  ) AS SUCCESSORS
+											 FROM BOPTREE)
+						    SELECT M.CHILD_PUID AS PUID,
+								   M.CHILD_REVPUID AS REV_PUID,
+								   M.POCC AS OCC_ID,
+								   M.CHILD_ID AS ID,
+								   M.C_ITEM_TYPE AS TYPE,
+								   NVL((NVL(M.SUCCESSORS, (SELECT SUB_BD.CHILD_ID
+							  FROM MAIN_BP SUB_BD, INFODBA.PM7_EXT_DECESSORS EXTD
+							 WHERE EXTD.PVALU_0 = M.PARENTS_REVPUID
+							   AND EXTD.PUID = SUB_BD.CHILD_REVPUID ))),
+							      (SELECT MIN(SUB_BS.CHILD_ID)
+									 FROM MAIN_BP SUB_BD, MAIN_BP SUB_BS
+									WHERE SUB_BD.CHILD_REVPUID = M.PARENTS_REVPUID
+									  AND SUB_BD.SUCCESSORS = SUB_BS.PARENTS_ID
+								  )
+								  ) AS SUCCESSORS
+							  FROM MAIN_BP M
+							 WHERE M.C_ITEM_TYPE = 'M7_BOPStation'
+								  )
+             START WITH SUCCESSORS IS NULL
+		     CONNECT BY PRIOR ID = SUCCESSORS
+	</select>
+
+	<!-- 전체 공정의 PERT 구성 순으로 가져온다 (검증시 갯수, 및 마지막으로 끈긴 부분 파악) 검증 1-->
+	<!-- [SR150529-021][20150821] [ymjang] 누적 파트 생성 방법 보완개선 요청 -->
+	<select id="selectBopStationPertCountList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    SELECT /*+RULE */ PUID
+	     , REV_PUID
+	     , OCC_ID
+	     , ID
+	     , TYPE
+         , PARENTS_ID
+         , PARENTS_REVPUID
+		 , SUCCESSORS
+      FROM (
+  	         WITH BOPTREE AS 
+                ( 
+                    SELECT LEVEL LVL,
+                           PI.PUID AS PARENTS_PUID,
+                           PREV.PUID AS PARENTS_REVPUID,
+                           PI.PITEM_ID AS PARENTS_ID,
+                           PREV.PITEM_REVISION_ID AS P_REV_NO,
+                           PWSO.POBJECT_TYPE AS P_ITEM_TYPE,
+                           POCC.PUID AS POCC,
+                           CI.PUID AS CHILD_PUID,
+                           CREV.PUID AS CHILD_REVPUID,
+                           CI.PITEM_ID AS CHILD_ID,
+                           CREV.PITEM_REVISION_ID AS C_REV_NO,
+                           CWSO.POBJECT_TYPE AS C_ITEM_TYPE
+                      FROM INFODBA.PITEM PI INNER JOIN INFODBA.PWORKSPACEOBJECT PWSO 
+                                                    ON PWSO.POBJECT_TYPE IN ('M7_BOPShop', 'M7_BOPLine', 'M7_BOPStation') 
+                                                   AND PI.PUID = PWSO.PUID
+                                            INNER JOIN INFODBA.PITEMREVISION PREV ON PI.PUID = PREV.RITEMS_TAGU
+                                                   AND PREV.PITEM_REVISION_ID = (SELECT MAX(MAX_REV.PITEM_REVISION_ID)
+                                                                                   FROM INFODBA.PITEMREVISION MAX_REV
+                                                                                  WHERE MAX_REV.RITEMS_TAGU = PI.PUID)
+                                            INNER JOIN INFODBA.PSTRUCTURE_REVISIONS PSTR 
+                                                    ON PREV.PUID = PSTR.PUID
+                                            INNER JOIN INFODBA.PPSOCCURRENCE POCC 
+                                                    ON PSTR.PVALU_0 = POCC.RPARENT_BVRU
+                                            INNER JOIN INFODBA.PITEM CI 
+                                                    ON POCC.RCHILD_ITEMU = CI.PUID
+                                            INNER JOIN INFODBA.PWORKSPACEOBJECT CWSO 
+                                                    ON CI.PUID = CWSO.PUID
+                                                   AND CWSO.POBJECT_TYPE IN ('M7_BOPLine', 'M7_BOPStation')
+                                            INNER JOIN INFODBA.PITEMREVISION CREV 
+                                                    ON CREV.RITEMS_TAGU = CI.PUID
+                                                   AND CREV.PITEM_REVISION_ID = ( SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+                                                                                    FROM INFODBA.PITEMREVISION MAX_CREV 
+                                                                                   WHERE MAX_CREV.RITEMS_TAGU = CI.PUID )
+                   START WITH PI.PITEM_ID = #{SHOP_ID, jdbcType=VARCHAR}
+                   CONNECT BY PRIOR CI.PUID = PI.PUID
+                ), MAIN_BP AS ( SELECT BOPTREE.* 
+                                     ,( SELECT CREDCI.PITEM_ID
+                                          FROM INFODBA.PPRED_LIST_0 RED, INFODBA.PPSOCCURRENCE CREDOCC, INFODBA.PITEM CREDCI
+                                         WHERE RED.PVALU_0 = BOPTREE.POCC AND CREDOCC.PUID = RED.PUID AND	CREDOCC.RCHILD_ITEMU = CREDCI.PUID
+                                       ) AS SUCCESSORS
+                                  FROM BOPTREE)
+           SELECT M.CHILD_PUID AS PUID,
+                  M.CHILD_REVPUID AS REV_PUID,
+                  M.POCC AS OCC_ID,
+                  M.CHILD_ID AS ID,
+                  M.C_ITEM_TYPE AS TYPE,
+                  M.SUCCESSORS AS SUCCESSORS1,
+                  M.PARENTS_ID,
+                  M.PARENTS_REVPUID,
+                  NVL((NVL(M.SUCCESSORS, ( SELECT MAX(PI1.PITEM_ID)
+                                             FROM INFODBA.PM7_EXT_DECESSORS EXTD
+                                                , INFODBA.PITEM PI1
+                                                , INFODBA.PITEMREVISION PIR1
+                                            WHERE PI1.PUID = PIR1.RITEMS_TAGU
+                                              AND EXTD.PUID = PIR1.PUID
+                                              AND EXTD.PVALU_0 = M.CHILD_REVPUID ) )),
+                                        ( SELECT MIN(SUB_BS.CHILD_ID)
+                                            FROM MAIN_BP SUB_BD, MAIN_BP SUB_BS
+                                           WHERE SUB_BD.CHILD_REVPUID = M.PARENTS_REVPUID
+                                             AND SUB_BD.SUCCESSORS = SUB_BS.PARENTS_ID
+                                        )
+                      ) AS SUCCESSORS
+            FROM MAIN_BP M
+           WHERE M.C_ITEM_TYPE = 'M7_BOPStation'
+           )
+  START WITH SUCCESSORS IS NULL
+  CONNECT BY PRIOR ID = SUCCESSORS
+	</select>
+
+	<!-- 전체 공정의 PERT 의 상관없이 가져온다 (검증시 갯수 파악) 검증 1-->
+	<select id="selectBopStationCount" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	     			SELECT /*+RULE */ COUNT(*) AS COUNT
+		      		  FROM(
+                            SELECT LEVEL LVL,
+								   PI.PUID AS PARENTS_PUID,
+								   PREV.PUID AS PARENTS_REVPUID,
+								   PI.PITEM_ID AS PARENTS_ID,
+								   PREV.PITEM_REVISION_ID AS P_REV_NO,
+								   PWSO.POBJECT_TYPE AS P_ITEM_TYPE,
+								   POCC.PUID AS POCC,
+								   CI.PUID AS CHILD_PUID,
+								   CREV.PUID AS CHILD_REVPUID,
+								   CI.PITEM_ID AS CHILD_ID,
+								   CREV.PITEM_REVISION_ID AS C_REV_NO,
+								   CWSO.POBJECT_TYPE AS C_ITEM_TYPE
+							  FROM INFODBA.PITEM PI
+		                           INNER JOIN INFODBA.PWORKSPACEOBJECT PWSO ON PWSO.POBJECT_TYPE IN
+								   ('M7_BOPShop', 'M7_BOPLine', 'M7_BOPStation') AND PI.PUID = PWSO.PUID
+								   INNER JOIN INFODBA.PITEMREVISION PREV ON PI.PUID = PREV.RITEMS_TAGU
+		   					       AND PREV.PITEM_REVISION_ID = (SELECT MAX(MAX_REV.PITEM_REVISION_ID)
+															   FROM INFODBA.PITEMREVISION MAX_REV WHERE MAX_REV.RITEMS_TAGU = PI.PUID)
+								   INNER JOIN INFODBA.PSTRUCTURE_REVISIONS PSTR ON PREV.PUID = PSTR.PUID
+								   INNER JOIN INFODBA.PPSOCCURRENCE POCC ON PSTR.PVALU_0 = POCC.RPARENT_BVRU
+								   INNER JOIN INFODBA.PITEM CI ON POCC.RCHILD_ITEMU = CI.PUID
+								   INNER JOIN INFODBA.PWORKSPACEOBJECT CWSO ON CI.PUID = CWSO.PUID
+								   AND CWSO.POBJECT_TYPE IN ('M7_BOPLine', 'M7_BOPStation')
+								   INNER JOIN INFODBA.PITEMREVISION CREV ON CREV.RITEMS_TAGU = CI.PUID
+								   AND CREV.PITEM_REVISION_ID = ( SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+																	FROM INFODBA.PITEMREVISION MAX_CREV WHERE MAX_CREV.RITEMS_TAGU = CI.PUID )
+							 START WITH PI.PITEM_ID = #{SHOP_ID, jdbcType=VARCHAR}
+							 CONNECT BY PRIOR CI.PUID = PI.PUID)
+               WHERE C_ITEM_TYPE = 'M7_BOPStation'
+	</select>
+
+	<!-- 이미 저장되어 있는 BOP의 공정의 PERT 순서대로 가져온다 (검증시 PERT 변경 유무 확인) 검증 2-->
+	<select id="selectBopStationDecessorsList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT SHOP_ID
+      		  ,PUID
+      		  ,REV_PUID
+      		  ,OCC_ID
+      		  ,ID
+      		  ,TYPE
+      		  ,SUCCESSORS
+      		  ,CREATE_DATE
+      		  ,MODIFY_DATE
+  		  FROM BOP_PERT_INFO
+  		 WHERE SHOP_ID = #{SHOP_ID, jdbcType=VARCHAR}
+    	   AND USE_FLAG = '1'
+         START WITH SUCCESSORS IS NULL
+           AND USE_FLAG = '1'
+       CONNECT BY PRIOR ID = SUCCESSORS
+           AND USE_FLAG = '1'
+	</select>
+
+	<!-- [SR150529-021][20150821] [ymjang] 누적 파트 생성 방법 보완개선 요청 -->
+	<!-- [20221024] [seho] 너무 느려서 빠르게 변경. 리비전 룰 가져오는 부분 변경함. 이전소스랑 비교해서 확인하시오. -->
+	<insert id="insertBopStationDecessorsInfo" parameterType="java.util.HashMap">
+	INSERT INTO BOP_PERT_INFO ( SHOP_ID, PUID, REV_PUID, OCC_ID, ID, TYPE, SUCCESSORS,
+	                            CREATE_USER, CREATE_DATE, MODIFY_USER, MODIFY_DATE, USE_FLAG )
+			SELECT #{SHOP_ID, jdbcType=VARCHAR}
+		   	     , PUID, REV_PUID, OCC_ID, ID, TYPE, SUCCESSORS
+		         , #{USER, jdbcType=VARCHAR}, SYSDATE, #{USER, jdbcType=VARCHAR}, SYSDATE, '1'
+			  FROM(
+	  	         WITH BOPTREE AS 
+	                ( 
+	                    SELECT LEVEL LVL,
+	                           PI.PUID AS PARENTS_PUID,
+	                           PREV.PUID AS PARENTS_REVPUID,
+	                           PI.PITEM_ID AS PARENTS_ID,
+	                           PREV.PITEM_REVISION_ID AS P_REV_NO,
+	                           PWSO.POBJECT_TYPE AS P_ITEM_TYPE,
+	                           POCC.PUID AS POCC,
+	                           CI.PUID AS CHILD_PUID,
+	                           CREV.PUID AS CHILD_REVPUID,
+	                           CI.PITEM_ID AS CHILD_ID,
+	                           CREV.PITEM_REVISION_ID AS C_REV_NO,
+	                           CWSO.POBJECT_TYPE AS C_ITEM_TYPE
+	                      FROM INFODBA.PITEM PI INNER JOIN INFODBA.PWORKSPACEOBJECT PWSO 
+	                                                    ON PWSO.POBJECT_TYPE IN ('M7_BOPShop', 'M7_BOPLine', 'M7_BOPStation') 
+	                                                   AND PI.PUID = PWSO.PUID
+	                                            INNER JOIN INFODBA.PITEMREVISION PREV ON PI.PUID = PREV.RITEMS_TAGU
+	                                                   AND PREV.PUID = GETLATESTREVISION(PI.PUID)
+	                                            INNER JOIN INFODBA.PSTRUCTURE_REVISIONS PSTR 
+	                                                    ON PREV.PUID = PSTR.PUID
+	                                            INNER JOIN INFODBA.PPSOCCURRENCE POCC 
+	                                                    ON PSTR.PVALU_0 = POCC.RPARENT_BVRU
+	                                            INNER JOIN INFODBA.PITEM CI 
+	                                                    ON POCC.RCHILD_ITEMU = CI.PUID
+	                                            INNER JOIN INFODBA.PWORKSPACEOBJECT CWSO 
+	                                                    ON CI.PUID = CWSO.PUID
+	                                                   AND CWSO.POBJECT_TYPE IN ('M7_BOPLine', 'M7_BOPStation')
+	                                            INNER JOIN INFODBA.PITEMREVISION CREV 
+	                                                    ON CREV.RITEMS_TAGU = CI.PUID
+	                                                   AND CREV.PUID = GETLATESTREVISION(CI.PUID)
+	                   START WITH PI.PITEM_ID = #{SHOP_ID, jdbcType=VARCHAR}
+	                   CONNECT BY PRIOR CI.PUID = PI.PUID
+	                ), MAIN_BP AS ( SELECT BOPTREE.* 
+	                                     ,( SELECT CREDCI.PITEM_ID
+	                                          FROM INFODBA.PPRED_LIST_0 RED, INFODBA.PPSOCCURRENCE CREDOCC, INFODBA.PITEM CREDCI
+	                                         WHERE RED.PVALU_0 = BOPTREE.POCC AND CREDOCC.PUID = RED.PUID AND	CREDOCC.RCHILD_ITEMU = CREDCI.PUID
+	                                       ) AS SUCCESSORS
+	                                  FROM BOPTREE)
+	           SELECT M.CHILD_PUID AS PUID,
+	                  M.CHILD_REVPUID AS REV_PUID,
+	                  M.POCC AS OCC_ID,
+	                  M.CHILD_ID AS ID,
+	                  M.C_ITEM_TYPE AS TYPE,
+	                  M.SUCCESSORS AS SUCCESSORS1,
+	                  M.PARENTS_ID,
+	                  M.PARENTS_REVPUID,
+	                  NVL((NVL(M.SUCCESSORS, ( SELECT MAX(PI1.PITEM_ID)
+	                                             FROM INFODBA.PM7_EXT_DECESSORS EXTD
+	                                                , INFODBA.PITEM PI1
+	                                                , INFODBA.PITEMREVISION PIR1
+	                                            WHERE PI1.PUID = PIR1.RITEMS_TAGU
+	                                              AND EXTD.PUID = PIR1.PUID
+	                                              AND EXTD.PVALU_0 = M.CHILD_REVPUID ) )),
+	                                        ( SELECT MIN(SUB_BS.CHILD_ID)
+	                                            FROM MAIN_BP SUB_BD, MAIN_BP SUB_BS
+	                                           WHERE SUB_BD.CHILD_REVPUID = M.PARENTS_REVPUID
+	                                             AND SUB_BD.SUCCESSORS = SUB_BS.PARENTS_ID
+	                                        )
+	                      ) AS SUCCESSORS
+	            FROM MAIN_BP M
+	           WHERE M.C_ITEM_TYPE = 'M7_BOPStation'
+	           )
+	  START WITH SUCCESSORS IS NULL
+	  CONNECT BY PRIOR ID = SUCCESSORS
+	</insert>
+
+	<update id="updateBopPertInfo" parameterType="java.util.HashMap">
+		UPDATE BOP_PERT_INFO
+		   SET USE_FLAG = '0'
+		      ,MODIFY_USER = #{USER, jdbcType=VARCHAR}
+		      ,MODIFY_DATE = SYSDATE
+		 WHERE USE_FLAG = '1'
+		   AND SHOP_ID = #{SHOP_ID, jdbcType=VARCHAR}
+	</update>
+
+	<delete id="deleteBopPertInfo" parameterType="java.util.HashMap">
+		DELETE FROM BOP_PERT_INFO
+		 WHERE USE_FLAG = '1'
+		   AND SHOP_ID = #{SHOP_ID, jdbcType=VARCHAR}
+    </delete>
+
+    <!-- 현재 BOP구성되어 있는 PERT 순서대로 공법까지의 BOMLine 의 LAST_MOD_DATE 까지 가져온다 -->
+	<select id="selectBopStationDecessorsLastModDateList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    	          SELECT /*+RULE*/LEVEL LVL
+						,PI.PUID AS PARENTS_PUID
+						,PREV.PUID AS PARENTS_REVPUID
+						,PI.PITEM_ID AS PARENTS_ID
+						,PREV.PITEM_REVISION_ID AS P_REV_NO
+						,PWSO.POBJECT_TYPE AS P_ITEM_TYPE
+						,POCC.PUID AS POCC
+						,CI.PUID AS CHILD_PUID
+						,CREV.PUID AS CHILD_REVPUID
+						,CI.PITEM_ID AS CHILD_ID
+						,CREV.PITEM_REVISION_ID AS C_REV_NO
+						,CWSO.POBJECT_TYPE AS C_ITEM_TYPE
+                        ,(SELECT MAX(BOMREV.PSTRUCT_LAST_MOD_DATE) + 9/24
+                            FROM INFODBA.PPSBOMVIEW BOM
+                                ,INFODBA.PPSBOMVIEWREVISION BOMREV
+                           WHERE BOM.RPARENT_ITEMU = CI.PUID
+                             AND BOMREV.RBOM_VIEWU = BOM.PUID) AS LAST_MOD_DATE
+	 			   FROM INFODBA.PITEM PI
+		                INNER JOIN INFODBA.PWORKSPACEOBJECT PWSO ON PWSO.POBJECT_TYPE IN
+						('M7_BOPShop', 'M7_BOPLine', 'M7_BOPStation') AND PI.PUID = PWSO.PUID
+						INNER JOIN INFODBA.PITEMREVISION PREV ON PI.PUID = PREV.RITEMS_TAGU
+		   				AND PREV.PITEM_REVISION_ID = (SELECT MAX(MAX_REV.PITEM_REVISION_ID)
+										 			    FROM INFODBA.PITEMREVISION MAX_REV
+										 			   WHERE MAX_REV.RITEMS_TAGU = PI.PUID)
+						INNER JOIN INFODBA.PSTRUCTURE_REVISIONS PSTR ON PREV.PUID = PSTR.PUID
+						INNER JOIN INFODBA.PPSOCCURRENCE POCC ON PSTR.PVALU_0 = POCC.RPARENT_BVRU
+						INNER JOIN INFODBA.PITEM CI ON POCC.RCHILD_ITEMU = CI.PUID
+						INNER JOIN INFODBA.PWORKSPACEOBJECT CWSO ON CI.PUID = CWSO.PUID
+						AND CWSO.POBJECT_TYPE IN ('M7_BOPLine', 'M7_BOPStation', 'M7_BOPBodyOp')
+						INNER JOIN INFODBA.PITEMREVISION CREV ON CREV.RITEMS_TAGU = CI.PUID
+						AND CREV.PITEM_REVISION_ID = ( SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+														 FROM INFODBA.PITEMREVISION MAX_CREV
+														WHERE MAX_CREV.RITEMS_TAGU = CI.PUID )
+				  START WITH PI.PITEM_ID = #{SHOP_ID, jdbcType=VARCHAR}
+				  CONNECT BY PRIOR CI.PUID = PI.PUID
+        </select>
+
+    <!-- 현재 OccGroup 을 만들려는 공정의 상위 공정에 E/I 리스트를 가져온다 (bl_abs_occ_id 포함) -->
+	<select id="selectBopStationDecessorsEndItemList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+     SELECT POCC
+          ,ABS_OCC_ID
+       	  ,CHILD_PUID
+          ,CHILD_REVPUID
+          ,CHILD_REVPUID
+		  ,CHILD_ID
+          ,C_REV_NO
+          ,OCCTYPE
+		  ,C_ITEM_TYPE
+      FROM( SELECT LEVEL LVL
+			      ,POCC.PUID AS POCC
+            	  ,SRCNODE.RABS_OCCU AS ABS_OCC_ID
+				  ,CI.PUID AS CHILD_PUID
+				  ,CREV.PUID AS CHILD_REVPUID
+				  ,CI.PITEM_ID AS CHILD_ID
+	              ,CREV.PITEM_REVISION_ID AS C_REV_NO
+                  ,OCC_TYPE.PNAME AS OCCTYPE
+				  ,CWSO.POBJECT_TYPE AS C_ITEM_TYPE
+              FROM INFODBA.PITEM PI
+		           INNER JOIN INFODBA.PWORKSPACEOBJECT PWSO ON PWSO.POBJECT_TYPE IN
+                              ('M7_BOPStation', 'M7_BOPBodyOp') AND PI.PUID = PWSO.PUID
+                   INNER JOIN INFODBA.PITEMREVISION PREV ON PI.PUID = PREV.RITEMS_TAGU
+                   AND PREV.PITEM_REVISION_ID = (SELECT MAX(MAX_REV.PITEM_REVISION_ID)
+                                                   FROM INFODBA.PITEMREVISION MAX_REV
+                                                  WHERE MAX_REV.RITEMS_TAGU = PI.PUID)
+                   INNER JOIN INFODBA.PSTRUCTURE_REVISIONS PSTR ON PREV.PUID = PSTR.PUID
+				   INNER JOIN INFODBA.PPSOCCURRENCE POCC ON PSTR.PVALU_0 = POCC.RPARENT_BVRU
+                   INNER JOIN INFODBA.PMEAPPEARANCEPATHNODE NODE ON NODE.ROCC_THREADU = POCC.ROCC_THREADU
+           		   INNER JOIN INFODBA.PMEAPPEARANCEPATHROOT ROOT ON NODE.RPATH_ROOTU = ROOT.PUID
+           		   AND ROOT.RTRACKED_ITEMU = #{SHOP_ITEM_PUID, jdbcType=VARCHAR}
+           		   INNER JOIN INFODBA.PABSOCCURRENCE ABSOCC ON  NODE.RABS_OCCU = ABSOCC.PUID
+           		   LEFT OUTER JOIN INFODBA.PMEAPPEARANCEPATHNODE SRCNODE ON ABSOCC.PABS_OCC_ID = SRCNODE.RABS_OCCU
+           		   INNER JOIN INFODBA.PITEM CI ON POCC.RCHILD_ITEMU = CI.PUID
+				   INNER JOIN INFODBA.PWORKSPACEOBJECT CWSO ON CI.PUID = CWSO.PUID
+				   AND CWSO.POBJECT_TYPE IN ('M7_BOPBodyOp','S7_Vehpart')
+				   INNER JOIN INFODBA.PITEMREVISION CREV ON CREV.RITEMS_TAGU = CI.PUID
+                   AND CREV.PITEM_REVISION_ID = DECODE(CWSO.POBJECT_TYPE, 'S7_Vehpart',
+                                                 	  (SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+                                                   		 FROM INFODBA.PITEMREVISION MAX_CREV, INFODBA.PRELEASE_STATUS_LIST CRSL, INFODBA.PRELEASESTATUS CRS
+                                                  		WHERE MAX_CREV.RITEMS_TAGU = CI.PUID
+                                                    	  AND CRSL.PUID = MAX_CREV.PUID
+                                                    	  AND CRSL.PVALU_0 = CRS.PUID
+                                                    	  AND CRS.PNAME = 'S7_Released')
+                                                  	 ,(SELECT MAX(MAX_CREV.PITEM_REVISION_ID)
+                                                  		 FROM INFODBA.PITEMREVISION MAX_CREV
+                                                  		WHERE MAX_CREV.RITEMS_TAGU = CI.PUID))
+                   LEFT OUTER JOIN INFODBA.PPSOCCURRENCETYPE OCC_TYPE ON POCC.ROCC_TYPEU = OCC_TYPE.PUID
+			  START WITH PI.PITEM_ID IN
+			  			<foreach collection="STATION_LIST" item="item" index="index" separator="," open="(" close=")">
+			  				#{item}
+			  			</foreach>
+             CONNECT BY PRIOR CI.PUID = PI.PUID)
+             WHERE C_ITEM_TYPE = 'S7_Vehpart'
+	</select>
+
+</mapper>

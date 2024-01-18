@@ -1,0 +1,1631 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.ssangyong.mapper.CCNInfoMapper">
+
+    <!-- 마스터리스트에서 키값으로 사용할 값을 가져온다 -->
+    <select id="selectMasterListKey" resultType="String">
+    SELECT SYS_GUID() AS LIST_ID FROM DUAL
+    </select>
+    
+    <!-- 선택한 CCN 에 연결되어 있는 마스터 정보에 시스템 코드 를 가져온다 -->
+    <select id="selectMasterSystemCode" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    SELECT DISTINCT(NEW_SYSTEM_CODE) AS MASTER_LIST_SYSCODE 
+      FROM CCN_PREBOM_MASTER_LIST 
+     WHERE CCN_ID = #{ccnId, jdbcType=VARCHAR}
+       AND NEW_SYSTEM_CODE IS NOT NULL
+     ORDER BY NEW_SYSTEM_CODE
+     </select>
+
+    <!-- 선택한 CCN 에 을지 정보 를 가져온다 -->
+    <select id="selectMasterInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    SELECT MAIN.*
+        <!--  [CSH]20200312 사용되는곳 없이 속도만 잡아먹고 있음
+         ,(SELECT SUB.LIST_ID 
+             FROM CCN_PREBOM_MASTER_LIST SUB
+            WHERE MAIN.OLD_CHILD_UNIQUE_NO = SUB.NEW_CHILD_UNIQUE_NO
+              AND MAIN.OLD_CHILD_REV = SUB.NEW_CHILD_REV
+              AND MAIN.OLD_SEQ = SUB.NEW_SEQ
+              AND MAIN.OLD_FUNCTION = SUB.NEW_FUNCTION
+              AND ROWNUM = 1) AS OLD_LIST_ID
+        -->
+         ,(SELECT COUNT(*) 
+             FROM (SELECT A.LIST_ID, A.OPTION_TYPE
+                     FROM CCN_PREBOM_USAGE A, CCN_PREBOM_MASTER_LIST B 
+                    WHERE B.LIST_ID = A.LIST_ID
+                    GROUP BY A.LIST_ID, A.OPTION_TYPE) SUB
+            WHERE MAIN.LIST_ID = SUB.LIST_ID) AS OPTION_TYPE_COUNT
+         ,(SELECT DISTINCT(SUB.OPTION_TYPE)
+             FROM (SELECT A.LIST_ID, A.OPTION_TYPE
+                     FROM CCN_PREBOM_USAGE A, CCN_PREBOM_MASTER_LIST B 
+                    WHERE B.LIST_ID = A.LIST_ID
+                    GROUP BY A.LIST_ID, A.OPTION_TYPE) SUB
+            WHERE MAIN.LIST_ID = SUB.LIST_ID
+              AND ROWNUM = 1) AS OPTION_TYPE_NAME
+      FROM CCN_PREBOM_MASTER_LIST MAIN
+     WHERE CCN_ID = #{ccnId, jdbcType=VARCHAR}
+     ORDER BY NVL(NEW_LEV, OLD_LEV), NVL(NEW_SEQ, OLD_SEQ) ASC        
+    </select>
+    
+    <!-- 선택한 CCN 에 을지 MasterList 에 Usage 정보 를 가져온다 -->
+    <select id="selectMasterUsageInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    SELECT LIST_ID
+          ,OPTION_TYPE
+          ,USAGE_LV1
+          ,USAGE_LV2
+          ,USAGE_LV3
+          ,USAGE_LV4
+          ,USAGE_LV5
+          ,USAGE_QTY
+          ,(USAGE_LV1||USAGE_LV2||USAGE_LV3||USAGE_LV4||USAGE_LV5) AS LV5_KEY
+          ,HISTORY_TYPE       
+      FROM CCN_PREBOM_USAGE
+     WHERE LIST_ID = #{listId, jdbcType=VARCHAR} 
+       AND HISTORY_TYPE = #{historyType, jdbcType=VARCHAR}
+    </select>
+    
+    <!-- 선택한 CCN 에 OSPEC 에 Header 정보를 가져온다 -->
+    <select id="selectOSpecHeaderInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    SELECT OSPEC_NO
+        ,(SELECT COUNT(AREA) 
+           FROM CCN_PREBOM_OSPEC_TRIM SUB 
+          WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}
+            AND SUB.AREA = MAIN.AREA
+          )AS LV1_COUNT
+        ,(SELECT SUB.AREA AS KEY 
+           FROM CCN_PREBOM_OSPEC_TRIM SUB 
+          WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}
+            AND SUB.AREA = MAIN.AREA            
+            AND ROWNUM = 1
+          )AS LV1_KEY            
+        ,(SELECT COUNT(PASSENGER) 
+           FROM CCN_PREBOM_OSPEC_TRIM SUB 
+          WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}          
+            AND SUB.AREA = MAIN.AREA
+            AND SUB.PASSENGER = MAIN.PASSENGER
+          )AS LV2_COUNT
+        ,(SELECT (SUB.AREA||SUB.PASSENGER) AS KEY 
+           FROM CCN_PREBOM_OSPEC_TRIM SUB 
+          WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}          
+            AND SUB.AREA = MAIN.AREA
+            AND SUB.PASSENGER = MAIN.PASSENGER
+            AND ROWNUM = 1
+          )AS LV2_KEY  
+        ,(SELECT COUNT(ENGINE) 
+           FROM CCN_PREBOM_OSPEC_TRIM SUB 
+          WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}
+            AND SUB.AREA = MAIN.AREA
+            AND SUB.PASSENGER = MAIN.PASSENGER
+            AND SUB.ENGINE = MAIN.ENGINE
+          )AS LV3_COUNT
+         ,(SELECT (SUB.AREA||SUB.PASSENGER||SUB.ENGINE) AS KEY 
+           FROM CCN_PREBOM_OSPEC_TRIM SUB 
+          WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}
+            AND SUB.AREA = MAIN.AREA
+            AND SUB.PASSENGER = MAIN.PASSENGER
+            AND SUB.ENGINE = MAIN.ENGINE
+            AND ROWNUM = 1
+          )AS LV3_KEY  
+          ,(SELECT COUNT(GRADE) 
+           FROM CCN_PREBOM_OSPEC_TRIM SUB 
+          WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}
+            AND SUB.AREA = MAIN.AREA
+            AND SUB.PASSENGER = MAIN.PASSENGER
+            AND SUB.ENGINE = MAIN.ENGINE
+            AND SUB.GRADE = MAIN.GRADE
+          )AS LV4_COUNT
+          ,(SELECT (SUB.AREA||SUB.PASSENGER||SUB.ENGINE||SUB.GRADE) AS KEY 
+           FROM CCN_PREBOM_OSPEC_TRIM SUB 
+          WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}
+            AND SUB.AREA = MAIN.AREA
+            AND SUB.PASSENGER = MAIN.PASSENGER
+            AND SUB.ENGINE = MAIN.ENGINE
+            AND SUB.GRADE = MAIN.GRADE
+            AND ROWNUM = 1
+          )AS LV4_KEY
+          ,(SELECT (SUB.AREA||SUB.PASSENGER||SUB.ENGINE||SUB.GRADE||SUB.TRIM) AS KEY 
+           FROM CCN_PREBOM_OSPEC_TRIM SUB 
+          WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}
+            AND SUB.AREA = MAIN.AREA
+            AND SUB.PASSENGER = MAIN.PASSENGER
+            AND SUB.ENGINE = MAIN.ENGINE
+            AND SUB.GRADE = MAIN.GRADE
+            AND SUB.TRIM = MAIN.TRIM
+            AND ROWNUM = 1
+          )AS LV5_KEY    
+          ,AREA AS USAGE_LV1
+          ,PASSENGER AS USAGE_LV2 
+          ,ENGINE AS USAGE_LV3
+          ,GRADE AS USAGE_LV4
+          ,TRIM  AS USAGE_LV5
+      FROM CCN_PREBOM_OSPEC_TRIM MAIN
+     WHERE OSPEC_NO = #{ospecNo, jdbcType=VARCHAR}    
+     ORDER BY TRIM_SEQ
+    </select>
+    
+   <!-- SYMC 인트라넷을 통한 메일 발송 -->
+   <update id="sendMail" statementType="CALLABLE">
+        {call CALS.MAILSEND@LINK_001_VNET(#{the_sysid},#{the_sabun},#{the_title},#{the_remark},#{the_tsabun})}
+   </update>
+   
+   <!-- SYMC 인트라넷을 통한 메일 발송 (through EAI) -->
+   <!-- [20160921][ymjang] ORA-01461 LONG 값은 LONG 열에 삽입할 때만 바인드할 수 있습니다. 오류 수정 -->
+   <select id="sendMailEai">
+   INSERT INTO IF_USER.IF_EMAIL (SEQ_NO, SYSTEM_ID, FROM_USERS, TITLE, REMARK, TO_USERS, CREATE_DATE ) 
+        SELECT ( SELECT GET_NEXT_MAIL_SEQ() FROM DUAL ) AS SEQ_NO
+             , #{the_sysid,jdbcType=VARCHAR,mode=IN}, #{the_sabun,jdbcType=VARCHAR,mode=IN}
+             , SUBSTR(#{the_title,jdbcType=VARCHAR,mode=IN}, 1, 4000)
+             , SUBSTR(#{the_remark,jdbcType=VARCHAR,mode=IN}, 1, 4000)
+             , #{the_tsabun,jdbcType=VARCHAR,mode=IN}
+             , SYSDATE
+          FROM DUAL
+   </select>
+   
+    <!-- Master List 정보를 insert 한다 -->
+    <insert id="insertCCNMaster" parameterType="java.util.HashMap">
+    INSERT INTO CCN_MASTER (
+        CCN_NO
+        ,PROJECT_CODE
+        ,SYSTEM_CODE
+        ,PROJECT_TYPE
+        ,CHG_DESC        
+        ,OSPEC_NO
+        ,REGULATION
+        ,COST_DOWN
+        ,ORDERING_SPEC
+        ,QUALITY_IMPROVEMENT
+        ,CORRECTION_OF_EPL
+        ,STYLING_UPDATE
+        ,WEIGHT_CHANGE
+        ,MATERIAL_COST_CHANGE
+        ,THE_OTHERS
+        ,GATE
+        ,RELEASE_DATE
+        ,CREATOR
+        ,DEPT_NAME
+        ,AFFETED_SYS_CODE
+    ) VALUES (
+        #{CCN_NO, jdbcType=VARCHAR},
+        #{PROJECT_CODE, jdbcType=VARCHAR},
+        #{SYSTEM_CODE, jdbcType=VARCHAR},
+        #{PROJECT_TYPE, jdbcType=VARCHAR},
+        #{CHG_DESC, jdbcType=VARCHAR},        
+        #{OSPEC_NO, jdbcType=VARCHAR},
+        #{REGULATION, jdbcType=VARCHAR},
+        #{COST_DOWN, jdbcType=VARCHAR},
+        #{ORDERING_SPEC, jdbcType=VARCHAR},
+        #{QUALITY_IMPROVEMENT, jdbcType=VARCHAR},
+        #{CORRECTION_OF_EPL, jdbcType=VARCHAR},
+        #{STYLING_UPDATE, jdbcType=VARCHAR},
+        #{WEIGHT_CHANGE, jdbcType=VARCHAR},
+        #{MATERIAL_COST_CHANGE, jdbcType=VARCHAR},
+        #{THE_OTHERS, jdbcType=VARCHAR},        
+        #{GATE, jdbcType=VARCHAR},
+        to_char(#{RELEASE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+        #{CREATOR, jdbcType=VARCHAR},
+        #{DEPT_NAME, jdbcType=VARCHAR},
+        #{AFFETED_SYS_CODE, jdbcType=VARCHAR}
+    )    
+    </insert>
+    
+    <!-- Master List 정보를 insert 한다 (IF 용)-->
+    <insert id="insertIfCCNMaster" parameterType="java.util.HashMap">
+    INSERT INTO IF_CCN_MASTER (
+        CCN_NO
+        ,PROJECT_CODE
+        ,SYSTEM_CODE
+        ,PROJECT_TYPE
+        ,CHG_DESC        
+        ,OSPEC_NO
+        ,REGULATION
+        ,COST_DOWN
+        ,ORDERING_SPEC
+        ,QUALITY_IMPROVEMENT
+        ,CORRECTION_OF_EPL
+        ,STYLING_UPDATE
+        ,WEIGHT_CHANGE
+        ,MATERIAL_COST_CHANGE
+        ,THE_OTHERS
+        ,GATE
+        ,RELEASE_DATE
+        ,CREATOR
+        ,DEPT_NAME
+        ,AFFETED_SYS_CODE
+    ) VALUES (
+        #{CCN_NO, jdbcType=VARCHAR},
+        #{PROJECT_CODE, jdbcType=VARCHAR},
+        #{SYSTEM_CODE, jdbcType=VARCHAR},
+        #{PROJECT_TYPE, jdbcType=VARCHAR},
+        #{CHG_DESC, jdbcType=VARCHAR},        
+        #{OSPEC_NO, jdbcType=VARCHAR},
+        #{REGULATION, jdbcType=VARCHAR},
+        #{COST_DOWN, jdbcType=VARCHAR},
+        #{ORDERING_SPEC, jdbcType=VARCHAR},
+        #{QUALITY_IMPROVEMENT, jdbcType=VARCHAR},
+        #{CORRECTION_OF_EPL, jdbcType=VARCHAR},
+        #{STYLING_UPDATE, jdbcType=VARCHAR},
+        #{WEIGHT_CHANGE, jdbcType=VARCHAR},
+        #{MATERIAL_COST_CHANGE, jdbcType=VARCHAR},
+        #{THE_OTHERS, jdbcType=VARCHAR},        
+        #{GATE, jdbcType=VARCHAR},
+        to_char(#{RELEASE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+        #{CREATOR, jdbcType=VARCHAR},
+        #{DEPT_NAME, jdbcType=VARCHAR},
+        #{AFFETED_SYS_CODE, jdbcType=VARCHAR}
+    )    
+    </insert>
+    
+    <delete id="deleteCCNMaster" parameterType="java.util.HashMap">
+        DELETE FROM CCN_MASTER
+         WHERE CCN_NO = #{CCN_NO, jdbcType=VARCHAR}
+    </delete>
+    
+        <!-- CCN EPL List 정보를 insert 한다 -->
+    <insert id="insertEPLList" parameterType="java.util.HashMap">
+        INSERT INTO CCN_PREBOM_MASTER_LIST (
+        LIST_ID 
+       ,CCN_ID
+       ,OLD_PROJECT
+       ,NEW_PROJECT
+       ,OLD_SYSTEM_CODE 
+       ,NEW_SYSTEM_CODE 
+       ,OLD_SYSTEM_NAME 
+       ,NEW_SYSTEM_NAME 
+       ,OLD_FUNCTION    
+       ,NEW_FUNCTION    
+       ,PARENT_NO  
+       ,PARENT_UNIQUE_NO
+       ,PARENT_REV 
+       ,PARENT_NAME
+       ,PREBOM_UNIQUE_ID
+       ,OLD_CHILD_NO
+       ,OLD_CHILD_UNIQUE_NO    
+       ,NEW_CHILD_NO    
+       ,NEW_CHILD_UNIQUE_NO
+       ,OLD_CHILD_REV   
+       ,NEW_CHILD_REV   
+       ,OLD_CHILD_NAME  
+       ,NEW_CHILD_NAME  
+       ,OLD_SEQ 
+       ,NEW_SEQ 
+       ,OLD_MANDATORY_OPT
+       ,NEW_MANDATORY_OPT
+       ,OLD_SPECIFICATION
+       ,NEW_SPECIFICATION
+       ,OLD_MODULE
+       ,NEW_MODULE
+       ,OLD_SMODE
+       ,NEW_SMODE
+       ,OLD_LEV 
+       ,NEW_LEV 
+       ,OLD_COLOR_ID    
+       ,NEW_COLOR_ID    
+       ,OLD_SELECTIVE_PART 
+       ,NEW_SELECTIVE_PART
+       ,OLD_CATEGORY  
+       ,NEW_CATEGORY  
+       ,OLD_EST_WEIGHT  
+       ,NEW_EST_WEIGHT  
+       ,OLD_TGT_WEIGHT  
+       ,NEW_TGT_WEIGHT  
+       ,OLD_BOX    
+       ,NEW_BOX    
+       ,OLD_CONTENTS    
+       ,NEW_CONTENTS    
+       ,OLD_CHG_TYPE_ENGCONCEPT 
+       ,NEW_CHG_TYPE_ENGCONCEPT 
+       ,OLD_ORIGIN_PROJ
+       ,NEW_ORIGIN_PROJ
+       ,OLD_DC_ID   
+       ,NEW_DC_ID   
+       ,OLD_DC_REV  
+       ,NEW_DC_REV  
+       ,OLD_RELEASED_DATE
+       ,NEW_RELEASED_DATE
+       ,OLD_CON_DWG_PLAN
+       ,NEW_CON_DWG_PLAN
+       ,OLD_CON_DWG_PERFORMANCE 
+       ,NEW_CON_DWG_PERFORMANCE 
+       ,OLD_CON_DWG_TYPE    
+       ,NEW_CON_DWG_TYPE    
+       ,OLD_DWG_DEPLOYABLE_DATE 
+       ,NEW_DWG_DEPLOYABLE_DATE 
+       ,OLD_PRD_DWG_PLAN    
+       ,NEW_PRD_DWG_PLAN    
+       ,OLD_PRD_DWG_PERFORMANCE 
+       ,NEW_PRD_DWG_PERFORMANCE 
+       ,OLD_DVP_NEEDED_QTY  
+       ,NEW_DVP_NEEDED_QTY  
+       ,OLD_DVP_USE 
+       ,NEW_DVP_USE 
+       ,OLD_DVP_REQ_DEPT
+       ,NEW_DVP_REQ_DEPT
+       ,OLD_ENG_DEPT_NM 
+       ,NEW_ENG_DEPT_NM 
+       ,OLD_ENG_RESPONSIBLITY 
+       ,NEW_ENG_RESPONSIBLITY
+       ,EST_COST_MATERIAL 
+       ,TGT_COST_MATERIAL 
+       ,SELECTED_COMPANY
+       ,PRT_TOOLG_INVESTMENT 
+       ,PRD_TOOL_COST 
+       ,PRD_SERVICE_COST 
+       ,PRD_SAMPLE_COST 
+       ,PUR_TEAM 
+       ,PUR_RESPONSIBILITY 
+       ,EMPLOYEE_NO 
+       ,CHANGE_DESC        
+       ,OLD_PRD_PROJECT
+       ,NEW_PRD_PROJECT
+       ,OLD_ALTER_PART
+       ,NEW_ALTER_PART
+       ,OLD_REGULATION
+       ,NEW_REGULATION
+       ,OLD_ECO
+       ,NEW_ECO
+       ,OLD_VC
+       ,NEW_VC
+       ,OLD_SYSTEM_ROW_KEY
+       ,NEW_SYSTEM_ROW_KEY
+       ,OLD_PRD_PART_NO
+       ,NEW_PRD_PART_NO
+       ,OLD_PROTO_TOOLING
+       ,NEW_PROTO_TOOLING
+       ,OLD_OSPEC_NO
+       ,NEW_OSPEC_NO
+        ) values (            
+              #{LIST_ID, jdbcType=VARCHAR},
+              #{CCN_ID, jdbcType=VARCHAR},
+              #{OLD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PROJECT, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{OLD_FUNCTION, jdbcType=VARCHAR},
+              #{NEW_FUNCTION, jdbcType=VARCHAR},
+              #{PARENT_NO, jdbcType=VARCHAR},
+              #{PARENT_UNIQUE_NO, jdbcType=VARCHAR},
+              #{PARENT_REV, jdbcType=VARCHAR},
+              #{PARENT_NAME, jdbcType=VARCHAR},
+              #{PREBOM_UNIQUE_ID, jdbcType=VARCHAR},
+              #{OLD_CHILD_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_REV, jdbcType=VARCHAR},
+              #{NEW_CHILD_REV, jdbcType=VARCHAR},
+              #{OLD_CHILD_NAME, jdbcType=VARCHAR},
+              #{NEW_CHILD_NAME, jdbcType=VARCHAR},
+              #{OLD_SEQ, jdbcType=VARCHAR},
+              #{NEW_SEQ, jdbcType=VARCHAR},
+              #{OLD_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{NEW_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{OLD_SPECIFICATION, jdbcType=VARCHAR},
+              #{NEW_SPECIFICATION, jdbcType=VARCHAR},
+              #{OLD_MODULE, jdbcType=VARCHAR},
+              #{NEW_MODULE, jdbcType=VARCHAR},
+              #{OLD_SMODE, jdbcType=VARCHAR},
+              #{NEW_SMODE, jdbcType=VARCHAR},
+              to_number(#{OLD_LEV, jdbcType=VARCHAR}),
+              to_number(#{NEW_LEV, jdbcType=VARCHAR}),
+              #{OLD_COLOR_ID, jdbcType=VARCHAR},
+              #{NEW_COLOR_ID, jdbcType=VARCHAR},
+              #{OLD_SELECTIVE_PART, jdbcType=VARCHAR},
+              #{NEW_SELECTIVE_PART, jdbcType=VARCHAR},
+              #{OLD_CATEGORY, jdbcType=VARCHAR},
+              #{NEW_CATEGORY, jdbcType=VARCHAR},
+              #{OLD_EST_WEIGHT, jdbcType=VARCHAR},
+              #{NEW_EST_WEIGHT, jdbcType=VARCHAR},
+              #{OLD_TGT_WEIGHT, jdbcType=VARCHAR},
+              #{NEW_TGT_WEIGHT, jdbcType=VARCHAR},              
+              #{OLD_BOX, jdbcType=VARCHAR},
+              #{NEW_BOX, jdbcType=VARCHAR},
+              #{OLD_CONTENTS, jdbcType=VARCHAR},
+              #{NEW_CONTENTS, jdbcType=VARCHAR},
+              #{OLD_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{NEW_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{OLD_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{NEW_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{OLD_DC_ID, jdbcType=VARCHAR},
+              #{NEW_DC_ID, jdbcType=VARCHAR},
+              #{OLD_DC_REV, jdbcType=VARCHAR},
+              #{NEW_DC_REV, jdbcType=VARCHAR},
+              to_char(#{OLD_RELEASED_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              to_char(#{NEW_RELEASED_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              #{OLD_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_TYPE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_TYPE, jdbcType=VARCHAR},
+              to_char(#{OLD_DWG_DEPLOYABLE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              to_char(#{NEW_DWG_DEPLOYABLE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              #{OLD_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              to_number(#{OLD_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              to_number(#{NEW_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              #{OLD_DVP_USE, jdbcType=VARCHAR},
+              #{NEW_DVP_USE, jdbcType=VARCHAR},
+              #{OLD_DVP_REQ_DEPT, jdbcType=VARCHAR},
+              #{NEW_DVP_REQ_DEPT, jdbcType=VARCHAR},              
+              #{OLD_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{NEW_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{OLD_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{NEW_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{EST_COST_MATERIAL, jdbcType=VARCHAR},
+              #{TGT_COST_MATERIAL, jdbcType=VARCHAR},
+              #{SELECTED_COMPANY, jdbcType=VARCHAR},
+              #{PRT_TOOLG_INVESTMENT, jdbcType=VARCHAR},
+              #{PRD_TOOL_COST, jdbcType=VARCHAR},
+              #{PRD_SERVICE_COST, jdbcType=VARCHAR},
+              #{PRD_SAMPLE_COST, jdbcType=VARCHAR},
+              #{PUR_TEAM, jdbcType=VARCHAR},
+              #{PUR_RESPONSIBILITY, jdbcType=VARCHAR},
+              #{EMPLOYEE_NO, jdbcType=VARCHAR},
+              #{CHANGE_DESC, jdbcType=VARCHAR},
+              #{OLD_PRD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PRD_PROJECT, jdbcType=VARCHAR},
+              #{OLD_ALTER_PART, jdbcType=VARCHAR},
+              #{NEW_ALTER_PART, jdbcType=VARCHAR},
+              #{OLD_REGULATION, jdbcType=VARCHAR},
+              #{NEW_REGULATION, jdbcType=VARCHAR},
+              #{OLD_ECO, jdbcType=VARCHAR},
+              #{NEW_ECO, jdbcType=VARCHAR},
+              #{OLD_VC, jdbcType=VARCHAR},
+              #{NEW_VC, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{OLD_PRD_PART_NO, jdbcType=VARCHAR},
+              #{NEW_PRD_PART_NO, jdbcType=VARCHAR},
+              #{OLD_PROTO_TOOLING, jdbcType=VARCHAR},
+              #{NEW_PROTO_TOOLING, jdbcType=VARCHAR},
+              #{OLD_OSPEC_NO, jdbcType=VARCHAR},
+              #{NEW_OSPEC_NO, jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    <insert id="insertEPLList_" parameterType="java.util.HashMap">
+        INSERT INTO CCN_PREBOM_MASTER_LIST (
+        LIST_ID 
+       ,CCN_ID
+       ,OLD_PROJECT
+       ,NEW_PROJECT
+       ,OLD_SYSTEM_CODE 
+       ,NEW_SYSTEM_CODE 
+       ,OLD_SYSTEM_NAME 
+       ,NEW_SYSTEM_NAME 
+       ,OLD_FUNCTION    
+       ,NEW_FUNCTION    
+       ,PARENT_NO  
+       ,PARENT_UNIQUE_NO
+       ,PARENT_REV 
+       ,PARENT_NAME
+       ,PREBOM_UNIQUE_ID
+       ,OLD_CHILD_NO
+       ,OLD_CHILD_UNIQUE_NO    
+       ,NEW_CHILD_NO    
+       ,NEW_CHILD_UNIQUE_NO
+       ,OLD_CHILD_REV   
+       ,NEW_CHILD_REV   
+       ,OLD_CHILD_NAME  
+       ,NEW_CHILD_NAME  
+       ,OLD_SEQ 
+       ,NEW_SEQ 
+       ,OLD_MANDATORY_OPT
+       ,NEW_MANDATORY_OPT
+       ,OLD_SPECIFICATION
+       ,NEW_SPECIFICATION
+       ,OLD_MODULE
+       ,NEW_MODULE
+       ,OLD_SMODE
+       ,NEW_SMODE
+       ,OLD_LEV 
+       ,NEW_LEV 
+       ,OLD_COLOR_ID    
+       ,NEW_COLOR_ID    
+       ,OLD_SELECTIVE_PART 
+       ,NEW_SELECTIVE_PART
+       ,OLD_CATEGORY  
+       ,NEW_CATEGORY  
+       ,OLD_EST_WEIGHT  
+       ,NEW_EST_WEIGHT  
+       ,OLD_TGT_WEIGHT  
+       ,NEW_TGT_WEIGHT  
+       ,OLD_BOX    
+       ,NEW_BOX    
+       ,OLD_CONTENTS    
+       ,NEW_CONTENTS    
+       ,OLD_CHG_TYPE_ENGCONCEPT 
+       ,NEW_CHG_TYPE_ENGCONCEPT 
+       ,OLD_ORIGIN_PROJ
+       ,NEW_ORIGIN_PROJ
+       ,OLD_DC_ID   
+       ,NEW_DC_ID   
+       ,OLD_DC_REV  
+       ,NEW_DC_REV  
+       ,OLD_RELEASED_DATE
+       ,NEW_RELEASED_DATE
+       ,OLD_CON_DWG_PLAN
+       ,NEW_CON_DWG_PLAN
+       ,OLD_CON_DWG_PERFORMANCE 
+       ,NEW_CON_DWG_PERFORMANCE 
+       ,OLD_CON_DWG_TYPE    
+       ,NEW_CON_DWG_TYPE    
+       ,OLD_DWG_DEPLOYABLE_DATE 
+       ,NEW_DWG_DEPLOYABLE_DATE 
+       ,OLD_PRD_DWG_PLAN    
+       ,NEW_PRD_DWG_PLAN    
+       ,OLD_PRD_DWG_PERFORMANCE 
+       ,NEW_PRD_DWG_PERFORMANCE 
+       ,OLD_DVP_NEEDED_QTY  
+       ,NEW_DVP_NEEDED_QTY  
+       ,OLD_DVP_USE 
+       ,NEW_DVP_USE 
+       ,OLD_DVP_REQ_DEPT
+       ,NEW_DVP_REQ_DEPT
+       ,OLD_ENG_DEPT_NM 
+       ,NEW_ENG_DEPT_NM 
+       ,OLD_ENG_RESPONSIBLITY 
+       ,NEW_ENG_RESPONSIBLITY
+       ,EST_COST_MATERIAL 
+       ,TGT_COST_MATERIAL 
+       ,SELECTED_COMPANY
+       ,PRT_TOOLG_INVESTMENT 
+       ,PRD_TOOL_COST 
+       ,PRD_SERVICE_COST 
+       ,PRD_SAMPLE_COST 
+       ,PUR_TEAM 
+       ,PUR_RESPONSIBILITY 
+       ,EMPLOYEE_NO 
+       ,CHANGE_DESC        
+       ,OLD_PRD_PROJECT
+       ,NEW_PRD_PROJECT
+       ,OLD_ALTER_PART
+       ,NEW_ALTER_PART
+       ,OLD_REGULATION
+       ,NEW_REGULATION
+       ,OLD_ECO
+       ,NEW_ECO
+       ,OLD_VC
+       ,NEW_VC
+       ,OLD_SYSTEM_ROW_KEY
+       ,NEW_SYSTEM_ROW_KEY
+       ,OLD_PRD_PART_NO
+       ,NEW_PRD_PART_NO
+       ,OLD_PROTO_TOOLING
+       ,NEW_PROTO_TOOLING
+       ,OLD_OSPEC_NO
+       ,NEW_OSPEC_NO
+        ) values (            
+              #{LIST_ID, jdbcType=VARCHAR},
+              #{CCN_ID, jdbcType=VARCHAR},
+              #{OLD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PROJECT, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{OLD_FUNCTION, jdbcType=VARCHAR},
+              #{NEW_FUNCTION, jdbcType=VARCHAR},
+              #{PARENT_NO, jdbcType=VARCHAR},
+              #{PARENT_UNIQUE_NO, jdbcType=VARCHAR},
+              #{PARENT_REV, jdbcType=VARCHAR},
+              #{PARENT_NAME, jdbcType=VARCHAR},
+              #{PREBOM_UNIQUE_ID, jdbcType=VARCHAR},
+              #{OLD_CHILD_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_REV, jdbcType=VARCHAR},
+              #{NEW_CHILD_REV, jdbcType=VARCHAR},
+              #{OLD_CHILD_NAME, jdbcType=VARCHAR},
+              #{NEW_CHILD_NAME, jdbcType=VARCHAR},
+              #{OLD_SEQ, jdbcType=VARCHAR},
+              #{NEW_SEQ, jdbcType=VARCHAR},
+              #{OLD_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{NEW_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{OLD_SPECIFICATION, jdbcType=VARCHAR},
+              #{NEW_SPECIFICATION, jdbcType=VARCHAR},
+              #{OLD_MODULE, jdbcType=VARCHAR},
+              #{NEW_MODULE, jdbcType=VARCHAR},
+              #{OLD_SMODE, jdbcType=VARCHAR},
+              #{NEW_SMODE, jdbcType=VARCHAR},
+              to_number(#{OLD_LEV, jdbcType=VARCHAR}),
+              to_number(#{NEW_LEV, jdbcType=VARCHAR}),
+              #{OLD_COLOR_ID, jdbcType=VARCHAR},
+              #{NEW_COLOR_ID, jdbcType=VARCHAR},
+              #{OLD_SELECTIVE_PART, jdbcType=VARCHAR},
+              #{NEW_SELECTIVE_PART, jdbcType=VARCHAR},
+              #{OLD_CATEGORY, jdbcType=VARCHAR},
+              #{NEW_CATEGORY, jdbcType=VARCHAR},
+              #{OLD_EST_WEIGHT, jdbcType=VARCHAR},
+              #{NEW_EST_WEIGHT, jdbcType=VARCHAR},
+              #{OLD_TGT_WEIGHT, jdbcType=VARCHAR},
+              #{NEW_TGT_WEIGHT, jdbcType=VARCHAR},              
+              #{OLD_BOX, jdbcType=VARCHAR},
+              #{NEW_BOX, jdbcType=VARCHAR},
+              #{OLD_CONTENTS, jdbcType=VARCHAR},
+              #{NEW_CONTENTS, jdbcType=VARCHAR},
+              #{OLD_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{NEW_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{OLD_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{NEW_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{OLD_DC_ID, jdbcType=VARCHAR},
+              #{NEW_DC_ID, jdbcType=VARCHAR},
+              #{OLD_DC_REV, jdbcType=VARCHAR},
+              #{NEW_DC_REV, jdbcType=VARCHAR},
+              #{OLD_RELEASED_DATE, jdbcType=VARCHAR},
+              #{NEW_RELEASED_DATE, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_TYPE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_TYPE, jdbcType=VARCHAR},
+              to_char(#{OLD_DWG_DEPLOYABLE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              to_char(#{NEW_DWG_DEPLOYABLE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              #{OLD_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              to_number(#{OLD_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              to_number(#{NEW_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              #{OLD_DVP_USE, jdbcType=VARCHAR},
+              #{NEW_DVP_USE, jdbcType=VARCHAR},
+              #{OLD_DVP_REQ_DEPT, jdbcType=VARCHAR},
+              #{NEW_DVP_REQ_DEPT, jdbcType=VARCHAR},              
+              #{OLD_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{NEW_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{OLD_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{NEW_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{EST_COST_MATERIAL, jdbcType=VARCHAR},
+              #{TGT_COST_MATERIAL, jdbcType=VARCHAR},
+              #{SELECTED_COMPANY, jdbcType=VARCHAR},
+              #{PRT_TOOLG_INVESTMENT, jdbcType=VARCHAR},
+              #{PRD_TOOL_COST, jdbcType=VARCHAR},
+              #{PRD_SERVICE_COST, jdbcType=VARCHAR},
+              #{PRD_SAMPLE_COST, jdbcType=VARCHAR},
+              #{PUR_TEAM, jdbcType=VARCHAR},
+              #{PUR_RESPONSIBILITY, jdbcType=VARCHAR},
+              #{EMPLOYEE_NO, jdbcType=VARCHAR},
+              #{CHANGE_DESC, jdbcType=VARCHAR},
+              #{OLD_PRD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PRD_PROJECT, jdbcType=VARCHAR},
+              #{OLD_ALTER_PART, jdbcType=VARCHAR},
+              #{NEW_ALTER_PART, jdbcType=VARCHAR},
+              #{OLD_REGULATION, jdbcType=VARCHAR},
+              #{NEW_REGULATION, jdbcType=VARCHAR},
+              #{OLD_ECO, jdbcType=VARCHAR},
+              #{NEW_ECO, jdbcType=VARCHAR},
+              #{OLD_VC, jdbcType=VARCHAR},
+              #{NEW_VC, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{OLD_PRD_PART_NO, jdbcType=VARCHAR},
+              #{NEW_PRD_PART_NO, jdbcType=VARCHAR},
+              #{OLD_PROTO_TOOLING, jdbcType=VARCHAR},
+              #{NEW_PROTO_TOOLING, jdbcType=VARCHAR},
+              #{OLD_OSPEC_NO, jdbcType=VARCHAR},
+              #{NEW_OSPEC_NO, jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    <!-- CCN EPL Usage List 정보를 insert 한다 -->
+    <insert id="insertEPLUsageInfo" parameterType="java.util.HashMap">
+    INSERT INTO CCN_PREBOM_USAGE ( LIST_ID,  OPTION_TYPE, SYSTEM_ROW_KEY
+                                 , USAGE_LV1, USAGE_LV2, USAGE_LV3, USAGE_LV4, USAGE_LV5
+                                 , USAGE_QTY, HISTORY_TYPE ) 
+                          values ( #{LIST_ID, jdbcType=VARCHAR}
+                                 , #{OPTION_TYPE, jdbcType=VARCHAR}
+                                 , #{SYSTEM_ROW_KEY, jdbcType=VARCHAR}
+                                 , #{USAGE_LV1, jdbcType=VARCHAR}
+                                 , #{USAGE_LV2, jdbcType=VARCHAR}
+                                 , #{USAGE_LV3, jdbcType=VARCHAR}
+                                 , #{USAGE_LV4, jdbcType=VARCHAR}
+                                 , #{USAGE_LV5, jdbcType=VARCHAR}
+                                 , to_number(#{USAGE_QTY, jdbcType=VARCHAR})
+                                 , #{HISTORY_TYPE, jdbcType=VARCHAR} )
+    </insert>
+    
+    <delete id="deleteEPLList" parameterType="String">
+        DELETE FROM CCN_PREBOM_MASTER_LIST
+         WHERE CCN_ID = #{ccnId, jdbcType=VARCHAR}
+    </delete>
+   
+   <!-- [20160715][ymjang] CCN EPL 보정 기능 신규 추가 --> 
+   <update id="correctCCNEPL" statementType="CALLABLE">
+   		{call PKG_CCN_EPL_CORRECTION.CORRECTING_EPL(#{CCN_NO, jdbcType=VARCHAR})}
+   </update>   
+    
+    <!-- 기존에 저장되어 있는 CCN 에 LIST ID 를 가져온다 -->
+    <select id="selectUsageListId" parameterType="String" resultType="java.util.HashMap">
+    SELECT LIST_ID 
+      FROM CCN_PREBOM_MASTER_LIST 
+     WHERE CCN_ID = #{ccnId, jdbcType=VARCHAR}
+    </select>
+    
+    <delete id="deleteEPLUsageInfo" parameterType="String">
+        DELETE FROM CCN_PREBOM_USAGE
+         WHERE LIST_ID = #{listId, jdbcType=VARCHAR}
+    </delete>
+    
+    <!-- [20160718][ymjang] USAGE 삭제 로직 개선  -->
+    <!-- 기존에 저장되어 있는 특정 CCN 에 해당하는 USAGE 전체를 삭제한다. -->
+    <select id="deleteEPLUsageInfoAll" parameterType="String">
+    DELETE FROM CCN_PREBOM_USAGE
+          WHERE LIST_ID IN ( SELECT LIST_ID FROM CCN_PREBOM_MASTER_LIST WHERE CCN_ID = #{ccnId, jdbcType=VARCHAR} )
+    </select>
+    
+    <!-- CCN EPL List 정보를 insert 한다 (IF 용)-->
+    <!-- [SR180315-044][ljg] 설계구상서 및 o-spec no 등록요청에 따른 OLD_OSPEC_NO, NEW_OSPEC_NO 컬럼 추가-->
+    <insert id="insertIfEPLList" parameterType="java.util.HashMap">
+        INSERT INTO If_CCN_PREBOM_MASTER_LIST (
+        LIST_ID 
+       ,CCN_ID
+       ,OLD_PROJECT
+       ,NEW_PROJECT
+       ,OLD_SYSTEM_CODE 
+       ,NEW_SYSTEM_CODE 
+       ,OLD_SYSTEM_NAME 
+       ,NEW_SYSTEM_NAME 
+       ,OLD_FUNCTION    
+       ,NEW_FUNCTION    
+       ,PARENT_NO  
+       ,PARENT_UNIQUE_NO
+       ,PARENT_REV 
+       ,PARENT_NAME
+       ,OLD_CHILD_NO
+       ,OLD_CHILD_UNIQUE_NO    
+       ,NEW_CHILD_NO    
+       ,NEW_CHILD_UNIQUE_NO
+       ,OLD_CHILD_REV   
+       ,NEW_CHILD_REV   
+       ,OLD_CHILD_NAME  
+       ,NEW_CHILD_NAME  
+       ,OLD_SEQ 
+       ,NEW_SEQ 
+       ,OLD_MANDATORY_OPT
+       ,NEW_MANDATORY_OPT
+       ,OLD_SPECIFICATION
+       ,NEW_SPECIFICATION
+       ,OLD_MODULE
+       ,NEW_MODULE
+       ,OLD_SMODE
+       ,NEW_SMODE
+       ,OLD_LEV 
+       ,NEW_LEV 
+       ,OLD_COLOR_ID    
+       ,NEW_COLOR_ID    
+       ,OLD_EST_WEIGHT  
+       ,NEW_EST_WEIGHT  
+       ,OLD_TGT_WEIGHT  
+       ,NEW_TGT_WEIGHT  
+       ,OLD_BOX    
+       ,NEW_BOX    
+       ,OLD_CONTENTS    
+       ,NEW_CONTENTS    
+       ,OLD_CHG_TYPE_ENGCONCEPT 
+       ,NEW_CHG_TYPE_ENGCONCEPT 
+       ,OLD_ORIGIN_PROJ
+       ,NEW_ORIGIN_PROJ
+       ,OLD_DC_ID   
+       ,NEW_DC_ID   
+       ,OLD_DC_REV  
+       ,NEW_DC_REV  
+       ,OLD_RELEASED_DATE
+       ,NEW_RELEASED_DATE
+       ,OLD_CON_DWG_PLAN
+       ,NEW_CON_DWG_PLAN
+       ,OLD_CON_DWG_PERFORMANCE 
+       ,NEW_CON_DWG_PERFORMANCE 
+       ,OLD_CON_DWG_TYPE    
+       ,NEW_CON_DWG_TYPE    
+       ,OLD_DWG_DEPLOYABLE_DATE 
+       ,NEW_DWG_DEPLOYABLE_DATE 
+       ,OLD_PRD_DWG_PLAN    
+       ,NEW_PRD_DWG_PLAN    
+       ,OLD_PRD_DWG_PERFORMANCE 
+       ,NEW_PRD_DWG_PERFORMANCE 
+       ,OLD_DVP_NEEDED_QTY  
+       ,NEW_DVP_NEEDED_QTY  
+       ,OLD_DVP_USE 
+       ,NEW_DVP_USE 
+       ,OLD_DVP_REQ_DEPT
+       ,NEW_DVP_REQ_DEPT
+       ,OLD_ENG_DEPT_NM 
+       ,NEW_ENG_DEPT_NM 
+       ,OLD_ENG_RESPONSIBLITY 
+       ,NEW_ENG_RESPONSIBLITY
+       ,CHANGE_DESC        
+       ,OLD_PRD_PROJECT
+       ,NEW_PRD_PROJECT
+       ,OLD_ALTER_PART
+       ,NEW_ALTER_PART
+       ,OLD_REGULATION
+       ,NEW_REGULATION
+       ,OLD_ECO
+       ,NEW_ECO
+       ,OLD_SYSTEM_ROW_KEY
+       ,NEW_SYSTEM_ROW_KEY
+       ,OLD_PRD_PART_NO
+       ,NEW_PRD_PART_NO
+       ,OLD_PROTO_TOOLING
+       ,NEW_PROTO_TOOLING
+       ,OLD_OSPEC_NO
+       ,NEW_OSPEC_NO
+        ) values (            
+              #{LIST_ID, jdbcType=VARCHAR},
+              #{CCN_ID, jdbcType=VARCHAR},
+              #{OLD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PROJECT, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{OLD_FUNCTION, jdbcType=VARCHAR},
+              #{NEW_FUNCTION, jdbcType=VARCHAR},
+              #{PARENT_NO, jdbcType=VARCHAR},
+              #{PARENT_UNIQUE_NO, jdbcType=VARCHAR},
+              #{PARENT_REV, jdbcType=VARCHAR},
+              #{PARENT_NAME, jdbcType=VARCHAR},
+              #{OLD_CHILD_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_REV, jdbcType=VARCHAR},
+              #{NEW_CHILD_REV, jdbcType=VARCHAR},
+              #{OLD_CHILD_NAME, jdbcType=VARCHAR},
+              #{NEW_CHILD_NAME, jdbcType=VARCHAR},
+              #{OLD_SEQ, jdbcType=VARCHAR},
+              #{NEW_SEQ, jdbcType=VARCHAR},
+              #{OLD_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{NEW_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{OLD_SPECIFICATION, jdbcType=VARCHAR},
+              #{NEW_SPECIFICATION, jdbcType=VARCHAR},
+              #{OLD_MODULE, jdbcType=VARCHAR},
+              #{NEW_MODULE, jdbcType=VARCHAR},
+              #{OLD_SMODE, jdbcType=VARCHAR},
+              #{NEW_SMODE, jdbcType=VARCHAR},
+              to_number(#{OLD_LEV, jdbcType=VARCHAR}),
+              to_number(#{NEW_LEV, jdbcType=VARCHAR}),
+              #{OLD_COLOR_ID, jdbcType=VARCHAR},
+              #{NEW_COLOR_ID, jdbcType=VARCHAR},
+              to_number(#{OLD_EST_WEIGHT, jdbcType=VARCHAR}),
+              to_number(#{NEW_EST_WEIGHT, jdbcType=VARCHAR}),
+              to_number(#{OLD_TGT_WEIGHT, jdbcType=VARCHAR}),
+              to_number(#{NEW_TGT_WEIGHT, jdbcType=VARCHAR}),              
+              #{OLD_BOX, jdbcType=VARCHAR},
+              #{NEW_BOX, jdbcType=VARCHAR},
+              #{OLD_CONTENTS, jdbcType=VARCHAR},
+              #{NEW_CONTENTS, jdbcType=VARCHAR},
+              #{OLD_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{NEW_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{OLD_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{NEW_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{OLD_DC_ID, jdbcType=VARCHAR},
+              #{NEW_DC_ID, jdbcType=VARCHAR},
+              #{OLD_DC_REV, jdbcType=VARCHAR},
+              #{NEW_DC_REV, jdbcType=VARCHAR},
+              to_char(#{OLD_RELEASED_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              to_char(#{NEW_RELEASED_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              #{OLD_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_TYPE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_TYPE, jdbcType=VARCHAR},
+              to_char(#{OLD_DWG_DEPLOYABLE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              to_char(#{NEW_DWG_DEPLOYABLE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+              #{OLD_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              to_number(#{OLD_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              to_number(#{NEW_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              #{OLD_DVP_USE, jdbcType=VARCHAR},
+              #{NEW_DVP_USE, jdbcType=VARCHAR},
+              #{OLD_DVP_REQ_DEPT, jdbcType=VARCHAR},
+              #{NEW_DVP_REQ_DEPT, jdbcType=VARCHAR},              
+              #{OLD_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{NEW_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{OLD_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{NEW_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{CHANGE_DESC, jdbcType=VARCHAR},
+              #{OLD_PRD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PRD_PROJECT, jdbcType=VARCHAR},
+              #{OLD_ALTER_PART, jdbcType=VARCHAR},
+              #{NEW_ALTER_PART, jdbcType=VARCHAR},
+              #{OLD_REGULATION, jdbcType=VARCHAR},
+              #{NEW_REGULATION, jdbcType=VARCHAR},
+              #{OLD_ECO, jdbcType=VARCHAR},
+              #{NEW_ECO, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{OLD_PRD_PART_NO, jdbcType=VARCHAR},
+              #{NEW_PRD_PART_NO, jdbcType=VARCHAR},
+              #{OLD_PROTO_TOOLING, jdbcType=VARCHAR},
+              #{NEW_PROTO_TOOLING, jdbcType=VARCHAR},
+              #{OLD_OSPEC_NO, jdbcType=VARCHAR},
+              #{NEW_OSPEC_NO, jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    
+    <!-- CCN EPL Usage List 정보를 insert 한다 (IF 용) -->
+    <insert id="insertIfEPLUsageInfo" parameterType="java.util.HashMap">
+        INSERT INTO IF_CCN_PREBOM_USAGE (
+            LIST_ID,              
+              OPTION_TYPE,
+              SYSTEM_ROW_KEY,
+              USAGE_LV1,
+              USAGE_LV2,
+              USAGE_LV3,
+              USAGE_LV4,
+              USAGE_LV5,
+              USAGE_QTY,
+              HISTORY_TYPE
+        ) values (
+            #{LIST_ID, jdbcType=VARCHAR},
+            #{OPTION_TYPE, jdbcType=VARCHAR},
+            #{SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+            #{USAGE_LV1, jdbcType=VARCHAR},
+              #{USAGE_LV2, jdbcType=VARCHAR},
+              #{USAGE_LV3, jdbcType=VARCHAR},
+              #{USAGE_LV4, jdbcType=VARCHAR},
+              #{USAGE_LV5, jdbcType=VARCHAR},
+              to_number(#{USAGE_QTY, jdbcType=VARCHAR}),
+              #{HISTORY_TYPE, jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <select id="selectDwgDeployableDate" resultType="string">
+        select ps7_dwg_deployable_date + 9/24 dwg_deployable_date from infodba.PS7_PREVEHPARTREVISION  where puid=#{PUID, jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectDcsReleasedDate" resultType="string">
+        select pst.pdate_released + 9/24 released_date
+		  from infodba.prelease_status_list prsl, infodba.preleasestatus pst
+		 where prsl.pvalu_0 = pst.puid
+		   and prsl.puid=#{PUID, jdbcType=VARCHAR}
+    </select>
+
+    <select id="selectCCNValidateMessage" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    <![CDATA[
+		WITH CCN_INFO AS
+		 (SELECT M.CCN_NO,
+		         M.PROJECT_CODE,
+		         M.PROJECT_TYPE,
+		         M.GATE,
+		         ML.OLD_PROJECT,
+		         ML.NEW_PROJECT,
+		         ML.OLD_SYSTEM_CODE,
+		         ML.NEW_SYSTEM_CODE,
+		         ML.PARENT_NO,
+		         ML.PARENT_UNIQUE_NO,
+		         ML.PARENT_REV,
+		         ML.PREBOM_UNIQUE_ID,
+		         ML.OLD_CHILD_UNIQUE_NO,
+		         ML.NEW_CHILD_UNIQUE_NO,
+		         ML.OLD_CHILD_REV,
+		         ML.NEW_CHILD_REV,
+		         ML.OLD_SEQ,
+		         ML.NEW_SEQ,
+		         ML.OLD_SMODE,
+		         ML.NEW_SMODE,
+		         ML.OLD_LEV,
+		         ML.NEW_LEV,
+		         ML.OLD_SYSTEM_ROW_KEY,
+		         ML.NEW_SYSTEM_ROW_KEY,
+		         ML.LIST_ID
+		    FROM CCN_MASTER M, CCN_PREBOM_MASTER_LIST ML
+		   WHERE M.CCN_NO = ML.CCN_ID
+		     AND M.CCN_NO = #{ccnId, jdbcType=VARCHAR}
+		  ),
+		CCN_USAGE_IS_NULL AS
+		 (SELECT CASE
+		           WHEN COUNT(CCN_NO) = 0 THEN
+		            'MLM Usage is not generated!'
+		         END MESSAGE
+		    FROM CCN_INFO INFO, CCN_PREBOM_USAGE U
+		   WHERE INFO.LIST_ID = U.LIST_ID),
+		CCN_GATE_NO_IS_NULL AS
+		 (SELECT CASE
+		           WHEN COUNT(CCN_NO) > 0 THEN
+		            'Gate No can''t have a null value!'
+		         END MESSAGE
+		    FROM CCN_INFO
+		   WHERE GATE IS NULL),
+		CCN_LEV_IS_NULL AS
+		 (SELECT CASE
+		           WHEN COUNT(CCN_NO) > 0 THEN
+		            'LEV can''t have a null value!'
+		         END MESSAGE
+		    FROM CCN_INFO
+		   WHERE OLD_LEV IS NULL
+		     AND NEW_LEV IS NULL),
+		CCN_PROJECT_TYPE_IS_NULL AS
+		 (SELECT CASE
+		           WHEN COUNT(CCN_NO) > 0 THEN
+		            'Project Type can''t have a null value!'
+		         END MESSAGE
+		    FROM CCN_INFO
+		   WHERE PROJECT_TYPE IS NULL),
+		CCN_MASTER_LIST_IS_NULL AS
+		 (SELECT CASE
+		           WHEN COUNT(CCN_NO) = 0 THEN
+		            'Project Type can''t have a null value!'
+		         END MESSAGE
+		    FROM CCN_INFO),
+		CCN_CUT_AND_PASTE AS
+		 (SELECT CUT.CCN_NO,
+		         CASE
+		           WHEN COUNT(CUT.CCN_NO) > 0 THEN
+		            'Cut And Paste EPL is exist.'
+		         END MESSAGE
+		    FROM CCN_INFO CUT, CCN_INFO PASTE
+		   WHERE CUT.CCN_NO = PASTE.CCN_NO
+		     AND CUT.NEW_CHILD_UNIQUE_NO IS NULL
+		     AND PASTE.OLD_CHILD_UNIQUE_NO IS NULL
+		     AND CUT.PARENT_UNIQUE_NO = PASTE.PARENT_UNIQUE_NO
+		     AND CUT.OLD_CHILD_UNIQUE_NO = PASTE.NEW_CHILD_UNIQUE_NO
+		     AND CUT.OLD_CHILD_REV = PASTE.NEW_CHILD_REV
+		     AND CUT.OLD_SEQ = PASTE.NEW_SEQ
+		     AND CUT.OLD_SYSTEM_ROW_KEY = PASTE.NEW_SYSTEM_ROW_KEY
+		   GROUP BY CUT.CCN_NO),
+		CCN_SYSTEM_ROW_KEY_IS_DUP AS
+		 (SELECT CCN_NO,
+		         CASE
+		           WHEN COUNT(CCN_NO) > 0 THEN
+		            'System Row Key is duplicated.'
+		         END MESSAGE
+		    FROM (SELECT CCN_NO, NEW_SYSTEM_ROW_KEY SYSTEM_ROW_KEY
+		            FROM CCN_INFO
+		           WHERE NEW_SYSTEM_ROW_KEY IS NOT NULL
+		           GROUP BY CCN_NO, NEW_SYSTEM_ROW_KEY
+		          HAVING COUNT(*) > 1
+		          UNION ALL
+		          SELECT CCN_NO, OLD_SYSTEM_ROW_KEY SYSTEM_ROW_KEY
+		            FROM CCN_INFO
+		           WHERE OLD_SYSTEM_ROW_KEY IS NOT NULL
+		           GROUP BY CCN_NO, OLD_SYSTEM_ROW_KEY
+		          HAVING COUNT(*) > 1)
+		   GROUP BY CCN_NO)
+		SELECT MESSAGE
+		  FROM CCN_USAGE_IS_NULL
+		 WHERE MESSAGE IS NOT NULL
+		UNION
+		SELECT MESSAGE
+		  FROM CCN_GATE_NO_IS_NULL
+		 WHERE MESSAGE IS NOT NULL
+		UNION
+		SELECT MESSAGE
+		  FROM CCN_LEV_IS_NULL
+		 WHERE MESSAGE IS NOT NULL
+		UNION
+		SELECT MESSAGE
+		  FROM CCN_PROJECT_TYPE_IS_NULL
+		 WHERE MESSAGE IS NOT NULL
+		UNION
+		SELECT MESSAGE
+		  FROM CCN_MASTER_LIST_IS_NULL
+		 WHERE MESSAGE IS NOT NULL
+		UNION
+		SELECT MESSAGE
+		  FROM CCN_SYSTEM_ROW_KEY_IS_DUP
+		 WHERE MESSAGE IS NOT NULL
+		UNION
+		SELECT MESSAGE
+		  FROM CCN_CUT_AND_PASTE
+		 WHERE MESSAGE IS NOT NULL
+	]]>
+    </select>
+    
+    <!-- IF CCN Master 정보 삭제 -->
+    <delete id="deleteIFCCNMaster" parameterType="java.util.HashMap">
+        DELETE FROM IF_CCN_MASTER
+         WHERE CCN_NO = #{CCN_NO, jdbcType=VARCHAR}
+    </delete>
+    
+    <!--  IF CCN Usage 정보를 삭제함-->
+    <delete id="deleteIFEPLUsageInfo" parameterType="String">
+      DELETE FROM IF_CCN_PREBOM_USAGE
+            WHERE LIST_ID IN (SELECT LIST_ID
+                                FROM IF_CCN_PREBOM_MASTER_LIST
+                               WHERE CCN_ID = #{ccnId, jdbcType=VARCHAR})
+    </delete>
+    <!-- IF CCN MASTER LIST를 삭제함-->
+    <delete id="deleteIFEPLList" parameterType="String">
+        DELETE FROM IF_CCN_PREBOM_MASTER_LIST
+         WHERE CCN_ID = #{ccnId, jdbcType=VARCHAR}
+    </delete>
+
+	<!-- [20160718] IF CCN Master 정보 생성 로직 개선- Stored Procedure 로 이관함. -->
+	<select id="createIfCCN" parameterType="hashmap" statementType="CALLABLE" >
+	<![CDATA[
+ 	{ call IF_USER.P_CREATE_IF_CCN ( #{CCN_NO,jdbcType=VARCHAR,mode=IN}) }
+    ]]>
+	</select>
+   <!-- CCN에 Reference 된 Pre BOM 파트 리스트를  가져옴  -->
+    <select id="selectPreBomPartsReferencedFromCCN" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+      WITH REF_PARTS
+           AS (SELECT REF_ITEM.PITEM_ID PART_ID,
+                      REF_REV.PITEM_REVISION_ID PART_REV,
+                      REF_REV.PUID,
+                      REF_ITEM.PS7_DISPLAY_PART_NO,
+                      IS_CONNECTED_PRE_FUNCTION (REF_ITEM.PITEM_ID) IS_PRE_FUNCTION
+                 FROM INFODBA.PITEM CCN_ITEM,
+                      INFODBA.PITEMREVISION CCN_REV,
+                      INFODBA.PITEM REF_ITEM,
+                      INFODBA.PITEMREVISION REF_REV,
+                      INFODBA.PS7_PREFUNCMASTERREVISION PRE_REV
+                WHERE     CCN_REV.RITEMS_TAGU = CCN_ITEM.PUID
+                      AND CCN_REV.PUID = PRE_REV.RS7_CCN_NOU
+                      AND PRE_REV.PUID = REF_REV.PUID
+                      AND REF_REV.RITEMS_TAGU = REF_ITEM.PUID
+                      AND CCN_ITEM.PITEM_ID = #{CCN_NO, jdbcType=VARCHAR}
+                      AND CCN_REV.PITEM_REVISION_ID = #{CCN_REV, jdbcType=VARCHAR}
+               UNION
+               SELECT REF_ITEM.PITEM_ID PART_ID,
+                      REF_REV.PITEM_REVISION_ID PART_REV,
+                      REF_REV.PUID,
+                      REF_ITEM.PS7_DISPLAY_PART_NO,
+                      IS_CONNECTED_PRE_FUNCTION (REF_ITEM.PITEM_ID) IS_PRE_FUNCTION
+                 FROM INFODBA.PITEM CCN_ITEM,
+                      INFODBA.PITEMREVISION CCN_REV,
+                      INFODBA.PITEM REF_ITEM,
+                      INFODBA.PITEMREVISION REF_REV,
+                      INFODBA.PS7_PREVEHPARTREVISION PRE_REV
+                WHERE     CCN_REV.RITEMS_TAGU = CCN_ITEM.PUID
+                      AND CCN_REV.PUID = PRE_REV.RS7_CCN_NOU
+                      AND PRE_REV.PUID = REF_REV.PUID
+                      AND REF_REV.RITEMS_TAGU = REF_ITEM.PUID
+                      AND CCN_ITEM.PITEM_ID = #{CCN_NO, jdbcType=VARCHAR}
+                      AND CCN_REV.PITEM_REVISION_ID =#{CCN_REV, jdbcType=VARCHAR})
+      SELECT * FROM REF_PARTS WHERE IS_PRE_FUNCTION <![CDATA[>]]>0     
+    </select>
+    
+    <!--[20170622][ljg] BOM을 역전개 하여 부모의 리비전이 여러개일 경우 해당 부모의 최종 리비전만 가져옴  -->
+    <select id="whereUsed" parameterType="java.lang.String" resultType="java.lang.String">
+      select pir.puid
+      from infodba.pitem pi
+           , infodba.pitemrevision pir
+           , infodba.pstructure_revisions psr
+           , infodba.ppsbomviewrevision bvr
+           , infodba.ppsoccurrence occ
+           , infodba.pitem ci
+           , infodba.pworkspaceobject wo
+      where pi.puid = pir.ritems_tagu
+      and pir.puid = psr.puid
+      AND psr.pvalu_0 = bvr.puid
+      AND bvr.puid = occ.rparent_bvru
+      AND occ.rchild_itemu = ci.puid
+      and pir.puid = wo.puid
+      and wo.pactive_seq = '1'
+      and pir.pitem_revision_id = (select max(pitem_revision_id) from infodba.pitemrevision ir where pi.puid = ir.ritems_tagu)
+      and wo.pobject_type in ('S7_PreVehPartRevision', 'S7_PreFuncMasterRevision', 'S7_PreFunctionRevision')
+      and ci.pitem_id = #{ITEM_ID, jdbcType=VARCHAR}
+    </select>
+    
+    <select id="getParent4Digit" resultType="String">
+      SELECT /*+RULE*/ substr(PI.PITEM_ID,0,4) PID
+      FROM INFODBA.PITEM                   PI
+         , INFODBA.PITEMREVISION           PIR
+         , INFODBA.PSTRUCTURE_REVISIONS    PSR
+         , INFODBA.PPSBOMVIEWREVISION      BVR
+         , INFODBA.PPSOCCURRENCE           OCC
+         , INFODBA.PITEM                   CI
+         , INFODBA.PITEMREVISION           CIR
+         , INFODBA.PWORKSPACEOBJECT        PIRW
+         , INFODBA.PWORKSPACEOBJECT        CIRW
+      WHERE PI.PUID = PIR.RITEMS_TAGU
+      AND PIR.PUID = PSR.PUID
+      AND PSR.PVALU_0 = BVR.PUID
+      AND BVR.PUID = OCC.RPARENT_BVRU
+      AND OCC.RCHILD_ITEMU = CI.PUID
+      AND CI.PUID = CIR.RITEMS_TAGU
+      AND PIR.PUID = PIRW.PUID
+      AND CIR.PUID = CIRW.PUID
+      AND PIRW.PACTIVE_SEQ = 1
+      AND CIRW.PACTIVE_SEQ = 1
+      AND PIR.PITEM_REVISION_ID = (SELECT MAX(TIR.PITEM_REVISION_ID) FROM INFODBA.PITEMREVISION TIR WHERE TIR.RITEMS_TAGU = PI.PUID)
+      AND CIR.PITEM_REVISION_ID = (SELECT MAX(TIR.PITEM_REVISION_ID) FROM INFODBA.PITEMREVISION TIR WHERE TIR.RITEMS_TAGU = CI.PUID)
+      AND PIRW.POBJECT_TYPE = #{TYPE, jdbcType=VARCHAR}
+      AND rownum = 1
+      START WITH CI.PITEM_ID = #{ID, jdbcType=VARCHAR}
+      AND CIR.PITEM_REVISION_ID = #{REV, jdbcType=VARCHAR}
+      CONNECT BY PRIOR PIR.PUID = CIR.PUID
+      AND PIR.PITEM_REVISION_ID = (SELECT MAX(TIR.PITEM_REVISION_ID) FROM INFODBA.PITEMREVISION TIR WHERE TIR.RITEMS_TAGU = PI.PUID)
+      AND CIR.PITEM_REVISION_ID = (SELECT MAX(TIR.PITEM_REVISION_ID) FROM INFODBA.PITEMREVISION TIR WHERE TIR.RITEMS_TAGU = CI.PUID)
+      ORDER SIBLINGS BY CI.PITEM_ID
+    </select>
+    
+    <select id="getParent4DigitReleased" resultType="String">
+      SELECT /*+RULE*/ substr(PI.PITEM_ID,0,4) PID
+      FROM INFODBA.PITEM                   PI
+         , INFODBA.PITEMREVISION           PIR
+         , INFODBA.PSTRUCTURE_REVISIONS    PSR
+         , INFODBA.PPSBOMVIEWREVISION      BVR
+         , INFODBA.PPSOCCURRENCE           OCC
+         , INFODBA.PITEM                   CI
+         , INFODBA.PITEMREVISION           CIR
+         , INFODBA.PWORKSPACEOBJECT        PIRW
+         , INFODBA.PWORKSPACEOBJECT        CIRW
+      WHERE PI.PUID = PIR.RITEMS_TAGU
+      AND PIR.PUID = PSR.PUID
+      AND PSR.PVALU_0 = BVR.PUID
+      AND BVR.PUID = OCC.RPARENT_BVRU
+      AND OCC.RCHILD_ITEMU = CI.PUID
+      AND CI.PUID = CIR.RITEMS_TAGU
+      AND PIR.PUID = PIRW.PUID
+      AND CIR.PUID = CIRW.PUID
+      AND PIRW.PACTIVE_SEQ = 1
+      AND CIRW.PACTIVE_SEQ = 1
+      AND PIR.PITEM_REVISION_ID = (SELECT MAX(TIR.PITEM_REVISION_ID) FROM INFODBA.PITEMREVISION TIR, infodba.pworkspaceobject wo WHERE TIR.RITEMS_TAGU = PI.PUID and wo.puid = tir.puid and wo.pdate_released is not null)
+      AND CIR.PITEM_REVISION_ID = (SELECT MAX(TIR.PITEM_REVISION_ID) FROM INFODBA.PITEMREVISION TIR, infodba.pworkspaceobject wo WHERE TIR.RITEMS_TAGU = CI.PUID and wo.puid = tir.puid and wo.pdate_released is not null)
+      AND PIRW.POBJECT_TYPE = #{TYPE, jdbcType=VARCHAR}
+      AND rownum = 1
+      START WITH CI.PITEM_ID = #{ID, jdbcType=VARCHAR}
+      AND CIR.PITEM_REVISION_ID = #{REV, jdbcType=VARCHAR}
+      CONNECT BY PRIOR PIR.PUID = CIR.PUID
+      AND PIR.PITEM_REVISION_ID = (SELECT MAX(TIR.PITEM_REVISION_ID) FROM INFODBA.PITEMREVISION TIR, infodba.pworkspaceobject wo WHERE TIR.RITEMS_TAGU = PI.PUID and wo.puid = tir.puid and wo.pdate_released is not null)
+      AND CIR.PITEM_REVISION_ID = (SELECT MAX(TIR.PITEM_REVISION_ID) FROM INFODBA.PITEMREVISION TIR, infodba.pworkspaceobject wo WHERE TIR.RITEMS_TAGU = CI.PUID and wo.puid = tir.puid and wo.pdate_released is not null)
+      ORDER SIBLINGS BY CI.PITEM_ID
+    </select>
+    
+    <select id="getPreRevisionPuid" resultType="String">
+        select ir.puid ppuid
+        from infodba.pitem i
+           , infodba.pitemrevision ir
+           , infodba.pworkspaceobject wo
+        where i.puid = ir.ritems_tagu
+        and ir.puid = wo.puid
+        and wo.pactive_seq = 1
+        and i.pitem_id = #{ID, jdbcType=VARCHAR}
+        and ir.pitem_revision_id = (
+                                    select max(irr.pitem_revision_id) 
+                                    from infodba.pitemrevision irr 
+                                    where i.puid = irr.ritems_tagu 
+                                    and irr.pitem_revision_id <![CDATA[<]]> #{REV, jdbcType=VARCHAR})
+    </select>
+    
+    <select id="arrParentEPLData" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+      with eco_target as
+      (
+          select soli.pitem_id item_id
+          from infodba.pitem i
+             , infodba.pitemrevision ir
+             , infodba.pimanrelation prel
+             , infodba.pimantype ty
+             , infodba.pitemrevision sol
+             , infodba.pitem soli
+          where i.puid = ir.ritems_tagu
+          and i.pitem_id = #{CCN_NO, jdbcType=VARCHAR}
+          and ir.puid = prel.rprimary_objectu
+          and prel.rrelation_typeu = ty.puid
+          and ty.ptype_name = 'CMHasSolutionItem'
+          and prel.rsecondary_objectu = sol.puid
+          and soli.puid = sol.ritems_tagu
+      )
+      select pi.pitem_id parent_unique_no, pir.ps7_display_part_no parent_no, wo.pobject_type parent_type, wo.pobject_name parent_name, pir.pitem_revision_id parent_rev
+          , pir.puid parent_uid, to_char(pao.plast_mod_date + (9/24),'yyyy-MM-dd hh24:mi') parent_mod_date
+      from infodba.pitem pi
+         , infodba.pitemrevision pir
+         , infodba.pstructure_revisions psr
+         , infodba.ppsbomviewrevision bvr
+         , infodba.ppsoccurrence occ
+         , infodba.pitem ci
+         , infodba.pworkspaceobject wo
+         , infodba.ppom_application_object pao
+      where pi.puid = pir.ritems_tagu
+      and pir.puid = psr.puid
+      and psr.pvalu_0 = bvr.puid
+      and bvr.puid = occ.rparent_bvru
+      and occ.rchild_itemu = ci.puid
+      and pir.puid = wo.puid
+      and pir.puid = pao.puid
+      and wo.pactive_seq = '1'
+      and pir.pitem_revision_id = (select max(pitem_revision_id) from infodba.pitemrevision ir where pi.puid = ir.ritems_tagu)
+      and wo.pobject_type in ('S7_PreVehPartRevision', 'S7_PreFuncMasterRevision', 'S7_PreFunctionRevision')
+      and ci.pitem_id = #{SOL_ID, jdbcType=VARCHAR}
+      and pi.pitem_id not in (select item_id from eco_target)
+    </select>
+    
+    <select id="arrParentEPLDataOld" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+      with bom as
+      (
+        select ci.pitem_id old_child_unique_no, cir.puid old_child_puid, cirw.pobject_type old_child_type, cirw.pobject_name old_child_name
+             , occ.pseq_no old_seq, cir.ps7_display_part_no old_child_no
+             , sum(case when occ.pqty_value is null or occ.pqty_value <![CDATA[<]]> 0 then 1 
+                        else occ.pqty_value end) old_child_qty
+             , cir.pitem_revision_id old_child_rev
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_MODULE_CODE')) old_module
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SUPPLY_MODE')) old_smode
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_REQ_OPT')) old_mandatory_opt
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SPECIFICATION')) old_specification
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_PRE_ALTER_PART')) old_alter_part
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_LEV_M')) old_lev
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SYSTEM_ROW_KEY')) old_system_row_key
+             , max(case when pirw.pobject_type = 'S7_PreFunctionRevision'
+                    then substr(PI.PITEM_ID,0,4) 
+                    else get_parent_4digit(pi.pitem_id, pir.pitem_revision_id, 'S7_PreFunctionRevision', 'Y') 
+                    end 
+                   ) old_function
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_BUDGET_CODE')) old_system_code
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_CHG_CD')) old_chg_type_engconcept
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_DVP_NEEDED_QTY')) old_dvp_needed_qty
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_DVP_USE')) old_dvp_use
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_DVP_REQ_DEPT')) old_dvp_req_dept
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_ENG_DEPT_NM')) old_eng_dept_nm
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_ENG_RESPONSIBLITY')) eng_responsiblity
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_PROTO_TOOLING')) old_proto_tooling
+             , max(cir.ps7_project_code) old_project
+             , max(to_char((select data from infodba.iman_mvlblob where name = occ.puid))) old_vc
+        from infodba.pitem pi
+           , infodba.pitemrevision pir
+           , infodba.pstructure_revisions psr
+           , infodba.ppsbomviewrevision bvr
+           , infodba.ppsoccurrence occ
+           , infodba.pitem ci
+           , infodba.pitemrevision cir
+           , infodba.pworkspaceobject cirw
+           , infodba.pworkspaceobject pirw
+        where pi.pitem_id = #{PARENT_ID, jdbcType=VARCHAR}
+        and pi.puid = pir.ritems_tagu
+        <choose>            
+            <when test="PARENT_REV != null and PARENT_REV != ''">
+                and pir.pitem_revision_id = #{PARENT_REV, jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and pir.pitem_revision_id = (select /*+ NO_UNNEST */ max(pitem_revision_id) from infodba.pitemrevision ir, infodba.pworkspaceobject irwo where pi.puid = ir.ritems_tagu and ir.puid = irwo.puid and irwo.pdate_released is not null)
+            </otherwise>
+        </choose>
+        and pir.puid = pirw.puid
+        and pirw.pactive_seq = '1'
+        and pir.puid = psr.puid
+        and psr.pvalu_0 = bvr.puid
+        and bvr.puid = occ.rparent_bvru
+        and occ.rchild_itemu = ci.puid
+        and ci.pitem_id = #{PROB_ID, jdbcType=VARCHAR}
+        and ci.puid = cir.ritems_tagu
+        and cir.pitem_revision_id = #{PROB_REV, jdbcType=VARCHAR}
+        and cir.puid = cirw.puid
+        and cirw.pactive_seq = '1'
+        group by ci.pitem_id, cir.puid, cirw.pobject_type, cirw.pobject_name, occ.pseq_no, cir.pitem_revision_id, cir.ps7_display_part_no
+      )
+      select bom.*
+          , (select ppu.puser_id
+                  from infodba.ppom_user ppu
+                     , infodba.puser pu
+                     , infodba.pperson ps
+                  where ppu.puid = pu.puid
+                  and pu.rpersonu = ps.puid
+                  and ppu.puser_name like bom.eng_responsiblity||'%'
+                  and ps.ppa6 = bom.old_eng_dept_nm
+             ) old_eng_responsiblity
+           , (select pd.pval_0
+                  from infodba.plistofvalues pl
+                     , infodba.PLOV_VALUES_3 pv
+                     , infodba.PLOV_VALUE_DESCRIPTIONS_3 pd
+                  where pl.puid = pv.puid
+                  and pv.puid = pd.puid 
+                  and pv.pseq = pd.pseq
+                  and pl.plov_name = 'S7_SYSTEM_CODE'
+                  and pv.pval_0 = bom.old_system_code
+           ) old_system_name
+      from bom
+    </select>
+    
+    <select id="arrParentEPLDataNew" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+      with bom as
+      (
+        select ci.pitem_id NEW_CHILD_UNIQUE_NO, cir.puid NEW_CHILD_PUID, cirw.pobject_type NEW_CHILD_TYPE, cirw.pobject_name NEW_CHILD_NAME
+             , occ.pseq_no NEW_SEQ, cir.ps7_display_part_no NEW_CHILD_NO
+             , sum(case when occ.pqty_value is null or occ.pqty_value <![CDATA[<]]> 0 then 1 
+                        else occ.pqty_value end) NEW_CHILD_QTY
+             , cir.pitem_revision_id NEW_CHILD_REV
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_MODULE_CODE')) NEW_MODULE
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SUPPLY_MODE')) NEW_SMODE
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_REQ_OPT')) NEW_MANDATORY_OPT
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SPECIFICATION')) NEW_SPECIFICATION
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_PRE_ALTER_PART')) NEW_ALTER_PART
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_LEV_M')) NEW_LEV
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SYSTEM_ROW_KEY')) NEW_SYSTEM_ROW_KEY
+             , max(case when pirw.pobject_type = 'S7_PreFunctionRevision'
+                    then substr(PI.PITEM_ID,0,4) 
+                    else get_parent_4digit(pi.pitem_id, pir.pitem_revision_id, 'S7_PreFunctionRevision', 'N') 
+                    end 
+                   ) NEW_FUNCTION
+             , max(cir.ps7_project_code) NEW_PROJECT
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_BUDGET_CODE')) NEW_SYSTEM_CODE
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_CHG_CD')) NEW_CHG_TYPE_ENGCONCEPT
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_DVP_NEEDED_QTY')) NEW_DVP_NEEDED_QTY
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_DVP_USE')) NEW_DVP_USE
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_DVP_REQ_DEPT')) NEW_DVP_REQ_DEPT
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_ENG_DEPT_NM')) NEW_ENG_DEPT_NM
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_ENG_RESPONSIBLITY')) ENG_RESPONSIBLITY
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_PROTO_TOOLING')) NEW_PROTO_TOOLING
+             , max(to_char((select data from infodba.iman_mvlblob where name = occ.puid))) NEW_VC
+        from infodba.pitem pi
+           , infodba.pitemrevision pir
+           , infodba.pstructure_revisions psr
+           , infodba.ppsbomviewrevision bvr
+           , infodba.ppsoccurrence occ
+           , infodba.pitem ci
+           , infodba.pitemrevision cir
+           , infodba.pworkspaceobject cirw
+           , infodba.pworkspaceobject pirw
+        where pi.pitem_id = #{PARENT_ID, jdbcType=VARCHAR}
+        and pi.puid = pir.ritems_tagu
+        <choose>            
+            <when test="PARENT_REV != null and PARENT_REV != ''">
+                and pir.pitem_revision_id = #{PARENT_REV, jdbcType=VARCHAR}
+            </when>
+            <otherwise>
+                and pir.pitem_revision_id = (select max(pitem_revision_id) from infodba.pitemrevision ir where pi.puid = ir.ritems_tagu)
+            </otherwise>
+        </choose>
+        and pir.puid = pirw.puid
+        and pirw.pactive_seq = '1'
+        and pir.puid = psr.puid
+        and psr.pvalu_0 = bvr.puid
+        and bvr.puid = occ.rparent_bvru
+        and occ.rchild_itemu = ci.puid
+        and ci.pitem_id = #{SOL_ID, jdbcType=VARCHAR}
+        and ci.puid = cir.ritems_tagu
+        and cir.pitem_revision_id = #{SOL_REV, jdbcType=VARCHAR}
+        and cir.puid = cirw.puid
+        and cirw.pactive_seq = '1'
+        group by ci.pitem_id, cir.puid, cirw.pobject_type, cirw.pobject_name, occ.pseq_no, cir.pitem_revision_id, cir.ps7_display_part_no
+      )
+      select bom.*
+           , (select m.dc_id || ',' || m.dc_rev || ',' || to_char(m.dc_released_date,'YYYYMMDDHH24MISS')
+              from dcs_info m
+              where m.system_code = bom.new_system_code
+              and m.project_code = bom.new_project
+              and m.dc_rev = (select max(dc_rev) from dcs_info s where s.dc_id = m.dc_id)
+             ) dcs_info
+           , (select pd.pval_0
+              from infodba.plistofvalues pl
+                 , infodba.PLOV_VALUES_3 pv
+                 , infodba.PLOV_VALUE_DESCRIPTIONS_3 pd
+              where pl.puid = pv.puid
+              and pv.puid = pd.puid 
+              and pv.pseq = pd.pseq
+              and pl.plov_name = 'S7_SYSTEM_CODE'
+              and pv.pval_0 = bom.new_system_code
+             ) new_system_name
+           , (select ppu.puser_id
+              from infodba.ppom_user ppu
+                 , infodba.puser pu
+                 , infodba.pperson ps
+              where ppu.puid = pu.puid
+              and pu.rpersonu = ps.puid
+              and ppu.puser_name like bom.eng_responsiblity||'%'
+              and ps.ppa6 = bom.new_eng_dept_nm
+              ) new_eng_responsiblity
+      from bom
+    </select>
+    
+    <select id="getChildBOMPro" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+      with bom as
+      (
+        select ci.pitem_id item_id
+             , occ.pseq_no seq_no
+             , ciw.pobject_type object_type
+             , cirw.pobject_type rev_object_type
+             , sum(case when occ.pqty_value is null or occ.pqty_value <![CDATA[<]]>  0 then 1 
+                        else occ.pqty_value end
+                  ) qty
+             , max(to_char((select data from infodba.iman_mvlblob where name = occ.puid))) vc
+             , max(occ.puid) occ_fnd_id
+             , cir.pitem_revision_id rev_id
+             , '' abs_occ_id
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_MODULE_CODE')) module
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SUPPLY_MODE')) smode
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_REQ_OPT')) req_opt
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SPECIFICATION')) spec_desc
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_CHG_CD')) chg_cd
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_PRE_ALTER_PART')) alter_part
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_LEV_M')) lev_m
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SYSTEM_ROW_KEY')) system_row_key
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_DVP_NEEDED_QTY')) dpv_needed_qty
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_DVP_USE')) dvp_use
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_DVP_REQ_DEPT')) dvp_req_dept
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_ENG_DEPT_NM')) eng_dept_nm
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_ENG_RESPONSIBLITY')) eng_respon
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_PROTO_TOOLING')) proto_tooling
+             , max(GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_BUDGET_CODE')) system_code
+             , listagg(occ.rocc_threadu,'') within group (order by occ.rocc_threadu)  occ_id
+             , cir.puid cpuid
+             , cirw.pobject_name cname
+             , cir.ps7_display_part_no cdisplay_no
+             , max(case when pirw.pobject_type = 'S7_PreFunctionRevision' then 
+                          substr(PI.PITEM_ID,0,4) 
+                        else 
+                          <choose>            
+                            <when test="RULE != 'Released'">
+                              get_parent_4digit(pi.pitem_id, pir.pitem_revision_id, 'S7_PreFunctionRevision', 'N') 
+                            </when>
+                            <otherwise>
+                              get_parent_4digit(pi.pitem_id, pir.pitem_revision_id, 'S7_PreFunctionRevision', 'Y')
+                            </otherwise>
+                          </choose>
+                        end 
+                   ) func
+             , max(cir.ps7_project_code) project_code   
+             , pi.pitem_id pid
+             , pir.ps7_display_part_no p_display_no
+             , pirw.pobject_type p_rev_type
+             , pirw.pobject_name p_name
+             , pir.pitem_revision_id p_rev
+             , pir.puid p_uid
+             , to_char(pao.plast_mod_date + (9/24),'yyyy-MM-dd hh24:mi') p_mod_date
+        from infodba.pitem pi
+           , infodba.pitemrevision pir
+           , infodba.pstructure_revisions psr
+           , infodba.ppsbomviewrevision bvr
+           , infodba.ppsoccurrence occ
+           , infodba.pitem ci
+           , infodba.pitemrevision cir
+           , infodba.pworkspaceobject cirw
+           , infodba.pworkspaceobject pirw
+           , infodba.pworkspaceobject ciw
+           , infodba.ppom_application_object pao
+        where pi.pitem_id = #{ID, jdbcType=VARCHAR}
+        and pi.puid = pir.ritems_tagu
+        and pir.pitem_revision_id = #{REV, jdbcType=VARCHAR}
+        and pir.puid = pirw.puid
+        and pir.puid = pao.puid
+        and pirw.pactive_seq = '1'
+        and pir.puid = psr.puid
+        and psr.pvalu_0 = bvr.puid
+        and bvr.puid = occ.rparent_bvru
+        and occ.rchild_itemu = ci.puid
+        and ci.puid = ciw.puid
+        and ci.puid = cir.ritems_tagu
+        <choose>            
+            <when test="RULE != 'Released'">
+                and cir.pitem_revision_id = (select max(pitem_revision_id) from infodba.pitemrevision ir where ci.puid = ir.ritems_tagu)
+            </when>
+            <otherwise>
+                and cir.pitem_revision_id = (select /*+ NO_UNNEST */ max(pitem_revision_id) from infodba.pitemrevision ir, infodba.pworkspaceobject irwo where ci.puid = ir.ritems_tagu and ir.puid = irwo.puid and irwo.pdate_released is not null)
+            </otherwise>
+        </choose>
+        and cir.puid = cirw.puid
+        and cirw.pactive_seq = '1'
+        group by pi.pitem_id, pir.ps7_display_part_no, pirw.pobject_type, pirw.pobject_name, pir.pitem_revision_id, pir.puid, pao.plast_mod_date
+               , ci.pitem_id, cir.puid, ciw.pobject_type, cirw.pobject_type, cirw.pobject_name, occ.pseq_no, cir.pitem_revision_id, cir.ps7_display_part_no
+      )
+      select bom.*
+          , (SELECT m.dc_id || ',' || m.dc_rev || ',' || to_char(m.dc_released_date,'YYYYMMDDHH24MISS')
+              from dcs_info m
+              where m.system_code = bom.system_code
+              and m.project_code = bom.project_code
+              and m.dc_rev = (select max(dc_rev) from dcs_info s where s.dc_id = m.dc_id)
+            ) dcs_info
+          , (select ppu.puser_id
+            from infodba.ppom_user ppu
+               , infodba.puser pu
+               , infodba.pperson ps
+            where ppu.puid = pu.puid
+            and pu.rpersonu = ps.puid
+            and ppu.puser_name like bom.eng_respon||'%'
+            and ps.ppa6 = bom.eng_dept_nm
+             ) eng_responsiblity
+         , (select pd.pval_0
+            from infodba.plistofvalues pl
+               , infodba.plov_values_3 pv
+               , infodba.plov_value_descriptions_3 pd
+            where pl.puid = pv.puid
+            and pv.puid = pd.puid 
+            and pv.pseq = pd.pseq
+            and pl.plov_name = 'S7_SYSTEM_CODE'
+            and pv.pval_0 = bom.system_code
+          ) system_name
+      from bom
+    </select>
+
+</mapper>

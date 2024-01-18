@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<!--
+ [SR150421-027][20150811][ymjang] PLM system 개선사항 - Manual 조회 관리기능 추가
+ -->
+<mapper namespace="com.ssangyong.mapper.AddfileMapper">
+
+	<insert id="insertAddfile" parameterType="java.util.HashMap">
+	INSERT INTO ADDFILE ( ADDFILE_PUID, ADDFILE_SEQ, DOC_ID, DOC_REV_ID, DATASET_PUID, FILE_NM, FILE_LOCATION, FILE_TYPE )
+	     VALUES ( #{addfile_puid}, #{addfile_seq}, #{doc_id}, #{doc_rev_id}, #{dataset_puid}, #{file_nm}, #{file_location}, #{file_type})
+	</insert>
+
+	<delete id="deleteAddfileAll" parameterType="java.util.HashMap">
+	DELETE FROM ADDFILE
+	      WHERE ADDFILE_PUID = #{addfile_puid}
+	</delete>
+
+	<delete id="deleteAddfile" parameterType="java.util.HashMap">
+	DELETE FROM ADDFILE
+	      WHERE DOC_ID = #{doc_id}
+	</delete>
+
+	<delete id="updAddfile" parameterType="java.util.HashMap">
+	UPDATE ADDFILE
+	   SET DOC_ID = #{doc_id}
+	     , DOC_REV_ID = #{doc_rev_id}
+	     , DATASET_PUID = #{dataset_puid}
+	     , FILE_NM = #{file_nm}
+	     , FILE_LOCATION = #{file_location}
+	     , FILE_TYPE = #{file_type}
+	 WHERE DOC_ID = #{doc_id}
+	</delete>
+
+	<select id="selectAddfileList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT ADDFILE_SEQ
+	     , DOC_ID
+	     , DOC_REV_ID
+	     , DATASET_PUID
+	     , FILE_NM
+	     , FILE_LOCATION
+	     , FILE_TYPE
+	  FROM ADDFILE
+	 WHERE ADDFILE_PUID = #{addfile_puid}
+  ORDER BY ADDFILE_SEQ
+	</select>
+
+	<select id="selectMaxSeq" parameterType="java.util.HashMap" resultType="int">
+	SELECT NVL(MAX(ADDFILE_SEQ), 0) + 1 AS ADDFILE_SEQ
+	  FROM ADDFILE
+	 WHERE ADDFILE_PUID = #{addfile_puid}
+	</select>
+
+</mapper>

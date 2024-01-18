@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+  
+<mapper namespace="com.ssangyong.mapper.GetParentMapper">
+
+    <!-- 
+    [20160816][ymjang][SR160719-029] Get Parent 오류 개선
+    [20160919][ymjang][SR160906-034] Get Parent 오류 개선 - Parent Part 가 삭제된 경우 : 회색 음영 표시(Part application과 동일)
+      -->
+    <select id="searchUpperBOM" resultType="java.util.HashMap">
+    select A.P_PART_NO AS PARENT_NO
+         , A.P_VER AS PARENT_REV
+         , A.BOM_LEVEL + 1 AS LV
+         , CASE WHEN A.P_DATE_RELEASED IS NOT NULL THEN 'Y'
+		        ELSE 'N'
+		   END PARENT_RELEASED
+		 , A.SEQ, A.ORDER_NO
+		 , GET_LIFE_2 (A.P_PART_NO, A.P_VER, A.PART_NO, A.VER) AS P_LIFE
+		 , A.PROJECT_NO
+		 , A.PARENT_REV_TYPE
+      from table(pkg_getparents.get_upper_epl(#{partNo, jdbcType=VARCHAR}, #{partRev, jdbcType=VARCHAR}, #{isWorking, jdbcType=VARCHAR})) A       
+    </select>
+ 
+    <select id="searchAll" resultType="java.util.HashMap">
+		SELECT LEVEL LV,
+		       CI.PUID CHILD_ITEM_UID,
+		       CIR.PUID CHILD_ITEM_REVISION_UID,
+		       CI.PITEM_ID CHILD_PART_NO,
+		       CIR.PITEM_REVISION_ID CHILD_PART_REV,
+		       CASE
+		         WHEN CIR.PS7_MATURITY = 'Released' THEN
+		          'Y'
+		         ELSE
+		          'N'
+		       END CHILD_RELEASED,
+		       CIRW.POBJECT_TYPE CHILD_TYPE,
+		       CAO.PCREATION_DATE CHILD_CREATE_DATE,
+		       CIRW.PDATE_RELEASED CHILD_RELEASED_DATE,
+		       BVR.PSTRUCT_LAST_MOD_DATE,
+		       PI.PUID PARENT_ITEM_UID,
+		       PIR.PUID PARENT_ITEM_REVISION_UID,
+		       PI.PITEM_ID PARENT_NO,
+		       PIR.PITEM_REVISION_ID PARENT_REV,
+		       PIRW.POBJECT_TYPE PARENT_TYPE,
+		       CASE
+		         WHEN PIR.PS7_MATURITY = 'Released' THEN
+		          'Y'
+		         ELSE
+		          'N'
+		       END PARENT_RELEASED,
+		       PAO.PCREATION_DATE PARENT_CREATE_DATE,
+		       PIRW.PDATE_RELEASED PARENT_RELEASED_DATE
+		  FROM INFODBA.PITEM PI,
+		       INFODBA.PITEMREVISION PIR,
+		       INFODBA.PPOM_APPLICATION_OBJECT PAO,
+		       INFODBA.PSTRUCTURE_REVISIONS PSR,
+		       INFODBA.PPSBOMVIEWREVISION BVR,
+		       INFODBA.PPSOCCURRENCE OCC,
+		       INFODBA.PITEM CI,
+		       INFODBA.PITEMREVISION CIR,
+		       INFODBA.PPOM_APPLICATION_OBJECT CAO,
+		       INFODBA.PWORKSPACEOBJECT PIW,
+		       INFODBA.PWORKSPACEOBJECT PIRW,
+		       INFODBA.PWORKSPACEOBJECT CIW,
+		       INFODBA.PWORKSPACEOBJECT CIRW
+		 WHERE PI.PUID = PIR.RITEMS_TAGU
+		   AND PIR.PUID = PAO.PUID
+		   AND PIR.PUID = PSR.PUID
+		   AND PSR.PVALU_0 = BVR.PUID
+		   AND BVR.PUID = OCC.RPARENT_BVRU
+		   AND OCC.RCHILD_ITEMU = CI.PUID
+		   AND CI.PUID = CIR.RITEMS_TAGU
+		   AND CIR.PUID = CAO.PUID
+		   AND PI.PUID = PIW.PUID
+		   AND PIR.PUID = PIRW.PUID
+		   AND CI.PUID = CIW.PUID
+		   AND CIR.PUID = CIRW.PUID
+		   AND PIW.POBJECT_TYPE IN ('S7_FunctionMast', 'S7_Vehpart', 'S7_Stdpart')
+		   AND PIRW.POBJECT_TYPE IN ('S7_FunctionMastRevision',
+		                             'S7_VehpartRevision',
+		                             'S7_StdpartRevision')
+		   AND CIW.POBJECT_TYPE IN ('S7_FunctionMast', 'S7_Vehpart', 'S7_Stdpart')
+		   AND CIRW.POBJECT_TYPE IN ('S7_FunctionMastRevision',
+		                             'S7_VehpartRevision',
+		                             'S7_StdpartRevision')
+		   AND PIW.PACTIVE_SEQ = 1
+		   AND PIRW.PACTIVE_SEQ = 1
+		   AND CIW.PACTIVE_SEQ = 1
+		   AND CIRW.PACTIVE_SEQ = 1
+		 START WITH CI.PITEM_ID = #{partNo, jdbcType=VARCHAR}
+		        AND CIR.PITEM_REVISION_ID = #{partRev, jdbcType=VARCHAR}
+		        AND 1 = CASE
+		             WHEN NVL(TO_CHAR(CIRW.PDATE_RELEASED, 'YYYYMMDD'), '00000000') <![CDATA[<=]]> NVL(TO_CHAR(PIRW.PDATE_RELEASED, 'YYYYMMDD'), '99999999')
+		                  AND PIRW.POBJECT_TYPE = 'S7_FunctionMastRevision' THEN
+		              1
+		              WHEN PIRW.POBJECT_TYPE IN
+		                   ('S7_VehpartRevision', 'S7_StdpartRevision') THEN
+		               1
+		              ELSE
+		               0
+		            END
+		CONNECT BY PRIOR PIR.PUID = CIR.PUID
+		       AND 1 = CASE
+		             WHEN NVL(TO_CHAR(CIRW.PDATE_RELEASED, 'YYYYMMDD'), '00000000') <![CDATA[<=]]> NVL(TO_CHAR(PIRW.PDATE_RELEASED, 'YYYYMMDD'), '99999999')
+		                  AND PIRW.POBJECT_TYPE = 'S7_FunctionMastRevision' THEN
+		              1
+		             WHEN PIRW.POBJECT_TYPE IN
+		                  ('S7_VehpartRevision', 'S7_StdpartRevision') THEN
+		              1
+		             ELSE
+		              0
+		           END
+		 ORDER SIBLINGS BY CI.PITEM_ID, CIR.PITEM_REVISION_ID, PI.PITEM_ID, PIR.PITEM_REVISION_ID
+    </select>
+    
+    <select id="searchLatestReleased" resultType="java.util.HashMap">
+	    SELECT LEVEL LV,
+		       CI.PUID CHILD_ITEM_UID,
+		       CIR.PUID CHILD_ITEM_REVISION_UID,
+		       CI.PITEM_ID CHILD_PART_NO,
+		       CIR.PITEM_REVISION_ID CHILD_PART_REV,
+		       CASE
+		         WHEN CIR.PS7_MATURITY = 'Released' THEN
+		          'Y'
+		         ELSE
+		          'N'
+		       END CHILD_RELEASED,
+		       CIRW.POBJECT_TYPE CHILD_TYPE,
+		       CAO.PCREATION_DATE CHILD_CREATE_DATE,
+		       CIRW.PDATE_RELEASED CHILD_RELEASED_DATE,
+		       PI.PUID PARENT_ITEM_UID,
+		       PIR.PUID PARENT_ITEM_REVISION_UID,
+		       PI.PITEM_ID PARENT_NO,
+		       PIR.PITEM_REVISION_ID PARENT_REV,
+		       PIRW.POBJECT_TYPE PARENT_TYPE,
+		       CASE
+		         WHEN PIR.PS7_MATURITY = 'Released' THEN
+		          'Y'
+		         ELSE
+		          'N'
+		       END PARENT_RELEASED,
+		       PAO.PCREATION_DATE PARENT_CREATE_DATE,
+		       PIRW.PDATE_RELEASED PARENT_RELEASED_DATE
+		  FROM INFODBA.PITEM                   PI,
+		       INFODBA.PITEMREVISION           PIR,
+		       INFODBA.PPOM_APPLICATION_OBJECT PAO,
+		       INFODBA.PSTRUCTURE_REVISIONS    PSR,
+		       INFODBA.PPSBOMVIEWREVISION      BVR,
+		       INFODBA.PPSOCCURRENCE           OCC,
+		       INFODBA.PITEM                   CI,
+		       INFODBA.PITEMREVISION           CIR,
+		       INFODBA.PPOM_APPLICATION_OBJECT CAO,
+		       INFODBA.PWORKSPACEOBJECT        PIW,
+		       INFODBA.PWORKSPACEOBJECT        PIRW,
+		       INFODBA.PWORKSPACEOBJECT        CIW,
+		       INFODBA.PWORKSPACEOBJECT        CIRW
+		 WHERE PI.PUID = PIR.RITEMS_TAGU
+		   AND PIR.PUID = PAO.PUID
+		   AND PIR.PUID = PSR.PUID
+		   AND PSR.PVALU_0 = BVR.PUID
+		   AND BVR.PUID = OCC.RPARENT_BVRU
+		   AND OCC.RCHILD_ITEMU = CI.PUID
+		   AND CI.PUID = CIR.RITEMS_TAGU
+		   AND CIR.PUID = CAO.PUID
+		   AND PI.PUID = PIW.PUID
+		   AND PIR.PUID = PIRW.PUID
+		   AND CI.PUID = CIW.PUID
+		   AND CIR.PUID = CIRW.PUID
+		   AND PIW.POBJECT_TYPE IN ('S7_FunctionMast', 'S7_Vehpart', 'S7_Stdpart')
+		   AND PIRW.POBJECT_TYPE IN ('S7_FunctionMastRevision',
+		                             'S7_VehpartRevision',
+		                             'S7_StdpartRevision')
+		   AND CIW.POBJECT_TYPE IN ('S7_FunctionMast', 'S7_Vehpart', 'S7_Stdpart')
+		   AND CIRW.POBJECT_TYPE IN ('S7_FunctionMastRevision',
+		                             'S7_VehpartRevision',
+		                             'S7_StdpartRevision')
+		   AND PIW.PACTIVE_SEQ = 1
+		   AND PIRW.PACTIVE_SEQ = 1
+		   AND CIW.PACTIVE_SEQ = 1
+		   AND CIRW.PACTIVE_SEQ = 1
+		 START WITH CI.PITEM_ID = #{partNo, jdbcType=VARCHAR}
+		        AND CIR.PITEM_REVISION_ID = #{partRev, jdbcType=VARCHAR}
+		        AND PIRW.PDATE_RELEASED IS NOT NULL
+		        AND PIRW.PDATE_RELEASED =
+		            (SELECT MAX(TIRW.PDATE_RELEASED)
+		               FROM INFODBA.PITEMREVISION    TIR,
+		                    INFODBA.PWORKSPACEOBJECT TIRW,
+		                    INFODBA.PWORKSPACEOBJECT TIW
+		              WHERE TIR.RITEMS_TAGU = PI.PUID
+		                AND TIR.PUID = TIRW.PUID
+		                AND PI.PUID = TIW.PUID)
+		CONNECT BY PRIOR PIR.PUID = CIR.PUID
+		       AND PIRW.PDATE_RELEASED IS NOT NULL
+		       AND PIRW.PDATE_RELEASED =
+		            (SELECT MAX(TIRW.PDATE_RELEASED)
+		                    FROM INFODBA.PITEMREVISION    TIR,
+		                         INFODBA.PWORKSPACEOBJECT TIRW,
+		                         INFODBA.PWORKSPACEOBJECT TIW
+		                   WHERE TIR.RITEMS_TAGU = PI.PUID
+		                     AND TIR.PUID = TIRW.PUID
+		                     AND PI.PUID = TIW.PUID)
+		 ORDER SIBLINGS BY CI.PITEM_ID, CIR.PITEM_REVISION_ID, PI.PITEM_ID, PIR.PITEM_REVISION_ID
+    </select>
+    <select id="searchLatestWorking" resultType="java.util.HashMap">
+	    SELECT LEVEL LV,
+		       CI.PUID CHILD_ITEM_UID,
+		       CIR.PUID CHILD_ITEM_REVISION_UID,
+		       CI.PITEM_ID CHILD_PART_NO,
+		       CIR.PITEM_REVISION_ID CHILD_PART_REV,
+		       CASE
+		         WHEN CIR.PS7_MATURITY = 'Released' THEN
+		          'Y'
+		         ELSE
+		          'N'
+		       END CHILD_RELEASED,
+		       CIRW.POBJECT_TYPE CHILD_TYPE,
+		       CAO.PCREATION_DATE CHILD_CREATE_DATE,
+		       CIRW.PDATE_RELEASED CHILD_RELEASED_DATE,
+		       PI.PUID PARENT_ITEM_UID,
+		       PIR.PUID PARENT_ITEM_REVISION_UID,
+		       PI.PITEM_ID PARENT_NO,
+		       PIR.PITEM_REVISION_ID PARENT_REV,
+		       PIRW.POBJECT_TYPE PARENT_TYPE,
+		       CASE
+		         WHEN PIR.PS7_MATURITY = 'Released' THEN
+		          'Y'
+		         ELSE
+		          'N'
+		       END PARENT_RELEASED,
+		       PAO.PCREATION_DATE PARENT_CREATE_DATE,
+		       PIRW.PDATE_RELEASED PARENT_RELEASED_DATE
+		  FROM INFODBA.PITEM                   PI,
+		       INFODBA.PITEMREVISION           PIR,
+		       INFODBA.PPOM_APPLICATION_OBJECT PAO,
+		       INFODBA.PSTRUCTURE_REVISIONS    PSR,
+		       INFODBA.PPSBOMVIEWREVISION      BVR,
+		       INFODBA.PPSOCCURRENCE           OCC,
+		       INFODBA.PITEM                   CI,
+		       INFODBA.PITEMREVISION           CIR,
+		       INFODBA.PPOM_APPLICATION_OBJECT CAO,
+		       INFODBA.PWORKSPACEOBJECT        PIW,
+		       INFODBA.PWORKSPACEOBJECT        PIRW,
+		       INFODBA.PWORKSPACEOBJECT        CIW,
+		       INFODBA.PWORKSPACEOBJECT        CIRW
+		 WHERE PI.PUID = PIR.RITEMS_TAGU
+		   AND PIR.PUID = PAO.PUID
+		   AND PIR.PUID = PSR.PUID
+		   AND PSR.PVALU_0 = BVR.PUID
+		   AND BVR.PUID = OCC.RPARENT_BVRU
+		   AND OCC.RCHILD_ITEMU = CI.PUID
+		   AND CI.PUID = CIR.RITEMS_TAGU
+		   AND CIR.PUID = CAO.PUID
+		   AND PI.PUID = PIW.PUID
+		   AND PIR.PUID = PIRW.PUID
+		   AND CI.PUID = CIW.PUID
+		   AND CIR.PUID = CIRW.PUID
+		   AND PIW.POBJECT_TYPE IN ('S7_FunctionMast', 'S7_Vehpart', 'S7_Stdpart')
+		   AND PIRW.POBJECT_TYPE IN ('S7_FunctionMastRevision',
+		                             'S7_VehpartRevision',
+		                             'S7_StdpartRevision')
+		   AND CIW.POBJECT_TYPE IN ('S7_FunctionMast', 'S7_Vehpart', 'S7_Stdpart')
+		   AND CIRW.POBJECT_TYPE IN ('S7_FunctionMastRevision',
+		                             'S7_VehpartRevision',
+		                             'S7_StdpartRevision')
+		   AND PIW.PACTIVE_SEQ = 1
+		   AND PIRW.PACTIVE_SEQ = 1
+		   AND CIW.PACTIVE_SEQ = 1
+		   AND CIRW.PACTIVE_SEQ = 1
+		 START WITH CI.PITEM_ID = #{partNo, jdbcType=VARCHAR}
+		        AND CIR.PITEM_REVISION_ID = #{partRev, jdbcType=VARCHAR}
+		        AND PAO.PCREATION_DATE =
+		            (SELECT MAX(TAO.PCREATION_DATE)
+		               FROM INFODBA.PITEMREVISION           TIR,
+		                    INFODBA.PPOM_APPLICATION_OBJECT TAO,
+		                    INFODBA.PWORKSPACEOBJECT        TIW
+		              WHERE TIR.RITEMS_TAGU = PI.PUID
+		                AND TIR.PUID = TAO.PUID
+		                AND PI.PUID = TIW.PUID)
+		CONNECT BY PRIOR PIR.PUID = CIR.PUID
+		       AND PAO.PCREATION_DATE =
+		           (SELECT MAX(TAO.PCREATION_DATE)
+		              FROM INFODBA.PITEMREVISION           TIR,
+		                   INFODBA.PPOM_APPLICATION_OBJECT TAO,
+		                   INFODBA.PWORKSPACEOBJECT        TIW
+		             WHERE TIR.RITEMS_TAGU = PI.PUID
+		               AND TIR.PUID = TAO.PUID
+		               AND PI.PUID = TIW.PUID)
+		 ORDER SIBLINGS BY CI.PITEM_ID, CIR.PITEM_REVISION_ID, PI.PITEM_ID, PIR.PITEM_REVISION_ID
+    </select>
+    
+    <select id="isConnectedFunction" resultType="java.util.HashMap">
+    	SELECT T.PART_NO,
+    		   CASE WHEN 1 = IS_CONNECTED_FUNCTION(T.PART_NO) THEN 'Y' ELSE 'N' END PART_DEADED
+    	  FROM (SELECT I.PITEM_ID PART_NO 
+    	  		  FROM INFODBA.PITEM I
+    	  		 WHERE (0, I.PITEM_ID) IN
+    	  		 <foreach collection="partNoList" item="partNo" open="(" separator="," close=")">
+		            (0, #{partNo,jdbcType=VARCHAR} )
+		         </foreach>
+    	  		 ) T
+    </select>
+
+    <select id="whereUsedStructure" resultType="java.util.HashMap">
+		SELECT PI.PUID PARENT_PUID, PREV.PUID PREV_PUID, OCC.PUID OCC_PUID, CI.PUID CI_PUID, CREV.PUID CREV_PUID, PI.PITEM_ID PI_ID, PREV.PITEM_REVISION_ID PI_REV_ID, CI.PITEM_ID CI_ID, CREV.PITEM_REVISION_ID CI_REV_ID
+		     , (SELECT VC.DATA
+		          FROM INFODBA.IMAN_MVLBLOB VC
+		         WHERE VC.NAME = OCC.PUID) VARIANT_CONDITION
+		     , (SELECT PNTEXT.PVAL_0
+		          FROM INFODBA.PNOTE_TEXTS PNTEXT, INFODBA.PNOTE_TYPES PNTYPE, INFODBA.PNOTETYPE PNT
+		         WHERE PNTEXT.PUID = PNTYPE.PUID
+		           AND PNTEXT.PSEQ = PNTYPE.PSEQ
+		           AND PNTYPE.PVALU_0 = PNT.PUID
+		           AND PNT.PNAME = 'S7_SUPPLY_MODE'
+		           AND PNTEXT.PUID = OCC.RNOTES_REFU) SMODE
+             , (SELECT PPI.PITEM_ID
+                  FROM INFODBA.PITEM PPI, INFODBA.PITEMREVISION PPREV, INFODBA.PSTRUCTURE_REVISIONS PPSTR, INFODBA.PPSOCCURRENCE POCC, INFODBA.PITEM PCI, INFODBA.PWORKSPACEOBJECT PPWSO
+                 WHERE PPI.PUID = PPREV.RITEMS_TAGU
+                   AND PPREV.PUID = PPSTR.PUID
+                   AND PPSTR.PVALU_0 = POCC.RPARENT_BVRU
+                   AND POCC.RCHILD_ITEMU = PCI.PUID
+                   AND PPI.PUID = PPWSO.PUID
+                   AND PPWSO.POBJECT_TYPE = 'S7_FunctionMast'
+                   AND ROWNUM = 1
+                START WITH PCI.PUID = CI.PUID
+                CONNECT BY PRIOR PPI.PUID = PCI.PUID) FUNC_NO
+		  FROM INFODBA.PITEM PI, INFODBA.PITEMREVISION PREV, INFODBA.PSTRUCTURE_REVISIONS PSTR, INFODBA.PPSOCCURRENCE OCC, INFODBA.PITEM CI, INFODBA.PITEMREVISION CREV
+		     , INFODBA.PWORKSPACEOBJECT PWSO, INFODBA.PWORKSPACEOBJECT CWSO
+		 WHERE PI.PUID = PREV.RITEMS_TAGU
+		   AND PREV.PUID = PWSO.PUID
+		   AND PWSO.PACTIVE_SEQ = 1
+		   AND PWSO.POBJECT_TYPE in ('S7_FunctionMastRevision',
+                                     'S7_VehpartRevision',
+                                     'S7_StdpartRevision')
+		   AND PREV.PITEM_REVISION_ID = (SELECT MAX(MR.PITEM_REVISION_ID)
+		                                    FROM INFODBA.PITEMREVISION MR, INFODBA.PRELEASE_STATUS_LIST RSL
+		                                   WHERE MR.RITEMS_TAGU = PREV.RITEMS_TAGU
+		                                     AND PREV.PUID = RSL.PUID)
+		   AND PREV.PUID = PSTR.PUID
+		   AND PSTR.PVALU_0 = OCC.RPARENT_BVRU
+		   AND OCC.RCHILD_ITEMU = CI.PUID
+		   AND CI.PUID = CREV.RITEMS_TAGU
+		   AND CREV.PUID = CWSO.PUID
+		   AND CWSO.PACTIVE_SEQ = 1
+		   AND CREV.PUID = #{PUID,jdbcType=VARCHAR}
+    </select>
+    
+    <select id="whereUsedPreBOMStructure" resultType="java.util.HashMap">
+        SELECT PI.PUID PARENT_PUID, PREV.PUID PREV_PUID, OCC.PUID OCC_PUID, CI.PUID CI_PUID, CREV.PUID CREV_PUID, PI.PITEM_ID PI_ID, PREV.PITEM_REVISION_ID PI_REV_ID, CI.PITEM_ID CI_ID, CREV.PITEM_REVISION_ID CI_REV_ID
+             , (SELECT VC.DATA
+                  FROM INFODBA.IMAN_MVLBLOB VC
+                 WHERE VC.NAME = OCC.PUID) VARIANT_CONDITION
+             , (SELECT PNTEXT.PVAL_0
+                  FROM INFODBA.PNOTE_TEXTS PNTEXT, INFODBA.PNOTE_TYPES PNTYPE, INFODBA.PNOTETYPE PNT
+                 WHERE PNTEXT.PUID = PNTYPE.PUID
+                   AND PNTEXT.PSEQ = PNTYPE.PSEQ
+                   AND PNTYPE.PVALU_0 = PNT.PUID
+                   AND PNT.PNAME = 'S7_SUPPLY_MODE'
+                   AND PNTEXT.PUID = OCC.RNOTES_REFU) SMODE
+             , (SELECT PPI.PITEM_ID
+                  FROM INFODBA.PITEM PPI, INFODBA.PITEMREVISION PPREV, INFODBA.PSTRUCTURE_REVISIONS PPSTR, INFODBA.PPSOCCURRENCE POCC, INFODBA.PITEM PCI, INFODBA.PWORKSPACEOBJECT PPWSO
+                 WHERE PPI.PUID = PPREV.RITEMS_TAGU
+                   AND PPREV.PUID = PPSTR.PUID
+                   AND PPSTR.PVALU_0 = POCC.RPARENT_BVRU
+                   AND POCC.RCHILD_ITEMU = PCI.PUID
+                   AND PPI.PUID = PPWSO.PUID
+                   AND PPWSO.POBJECT_TYPE = 'S7_PreFuncMaster'
+                   AND ROWNUM = 1
+                START WITH PCI.PUID = CI.PUID
+                CONNECT BY PRIOR PPI.PUID = PCI.PUID) FUNC_NO
+          FROM INFODBA.PITEM PI, INFODBA.PITEMREVISION PREV, INFODBA.PSTRUCTURE_REVISIONS PSTR, INFODBA.PPSOCCURRENCE OCC, INFODBA.PITEM CI, INFODBA.PITEMREVISION CREV
+             , INFODBA.PWORKSPACEOBJECT PWSO, INFODBA.PWORKSPACEOBJECT CWSO
+         WHERE PI.PUID = PREV.RITEMS_TAGU
+           AND PREV.PUID = PWSO.PUID
+           AND PWSO.PACTIVE_SEQ = 1
+           AND PWSO.POBJECT_TYPE in ('S7_PreVehPartRevision',
+                                     'S7_PreFuncMasterRevision'
+                                     )
+           AND PREV.PITEM_REVISION_ID = (SELECT MAX(MR.PITEM_REVISION_ID)
+                                            FROM INFODBA.PITEMREVISION MR, INFODBA.PRELEASE_STATUS_LIST RSL
+                                           WHERE MR.RITEMS_TAGU = PREV.RITEMS_TAGU
+                                             AND PREV.PUID = RSL.PUID)
+           AND PREV.PUID = PSTR.PUID
+           AND PSTR.PVALU_0 = OCC.RPARENT_BVRU
+           AND OCC.RCHILD_ITEMU = CI.PUID
+           AND CI.PUID = CREV.RITEMS_TAGU
+           AND CREV.PUID = CWSO.PUID
+           AND CWSO.PACTIVE_SEQ = 1
+           AND CREV.PUID = #{PUID,jdbcType=VARCHAR}
+    </select>
+</mapper>

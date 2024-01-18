@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!-- [SR141119-021][20150119] ymjang, 영문 작업표준서 결재란 공백 오류 수정 의뢰  -->
+ <!-- 1. 최초 생성  -->
+ <mapper namespace="com.symc.ps">
+ 	  <!-- 영문 작업 표준서 결재자 정보 입력을 위한 대상 작표 조회 -->
+      <select id="searchWorkflowReadyToComplete" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select i.pitem_id
+		     , i.puid as item_puid
+		     , ir.puid as item_rev_puid
+		     , irw.pobject_name
+		  from infodba.PITEMREVISION ir
+		     , infodba.PITEM i
+		     , infodba.PWORKSPACEOBJECT irw
+		     , infodba.PPOM_APPLICATION_OBJECT ira
+		 where irw.puid = ira.puid
+		   and irw.puid = ir.puid
+		   and irw.pdate_released is not null
+		   and irw.pactive_seq = 1
+		   and ir.ritems_tagu = i.puid
+		   and ir.ps7_maturity = #{ps7_maturity, jdbcType=VARCHAR}
+		   and i.pitem_id LIKE #{pitem_id, jdbcType=VARCHAR}
+		   and irw.pobject_type = 'M7_ProcessSheetRevision'
+		   and ir.pitem_revision_id = ( select max(ir1.pitem_revision_id)
+		                                  from infodba.PITEMREVISION ir1
+		                                     , infodba.PWORKSPACEOBJECT irw1
+		                                 where irw1.puid = ir1.puid
+		                                   and ir1.ritems_tagu = i.puid
+		                                   and irw1.pdate_released is not null
+		                                   and irw1.pactive_seq = 1  )
+    </select>
+ 
+   <update id="updateRevisionMauturity" parameterType="java.util.HashMap">
+	   	update infodba.PITEMREVISION ir
+		   set ir.ps7_maturity = #{ps7_maturity, jdbcType=VARCHAR}
+		 where ir.puid = #{rev_puid, jdbcType=VARCHAR}
+   </update>
+ 
+</mapper>

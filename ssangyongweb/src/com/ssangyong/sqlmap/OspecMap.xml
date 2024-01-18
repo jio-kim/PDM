@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssangyong.mapper.ospec">
+
+  <insert id="insertOspecMaster" >
+  	merge into OSPEC_MASTER
+    using dual
+    on (O_SPEC_NO=#{O_SPEC_NO, jdbcType=VARCHAR}) 
+    when matched then
+        update set G_MODEL=#{G_MODEL, jdbcType=VARCHAR}, PROJECT=#{PROJECT, jdbcType=VARCHAR}
+        , RELEASED_DATE=#{RELEASED_DATE, jdbcType=VARCHAR}, UPDATE_DATE=sysdate
+        , UPDATE_USER=#{UPDATE_USER, jdbcType=VARCHAR}
+    when not matched then
+            insert (O_SPEC_NO, G_MODEL, PROJECT, RELEASED_DATE, UPDATE_USER)
+            values(#{O_SPEC_NO, jdbcType=VARCHAR}, #{G_MODEL, jdbcType=VARCHAR}, #{PROJECT, jdbcType=VARCHAR}
+            	, #{RELEASED_DATE, jdbcType=VARCHAR}, #{UPDATE_USER, jdbcType=VARCHAR})
+  </insert>
+
+  <insert id="insertOspecDetail">
+  	insert into OSPEC_DETAIL (O_SPEC_NO, OP, OP_NAME, OP_VALUE
+  	, OP_VALUE_NAME, PACKAGE_NAME, DRIVE_TYPE, ALL_VALUE, SPEC_VALUE, EFF_IN, REMARK_DESC
+  	, AVAILABLE, NOT_AVAILABLE, COL_ORDER, ROW_ORDER)
+  	values(#{O_SPEC_NO, jdbcType=VARCHAR}
+  	, #{OP, jdbcType=VARCHAR}, #{OP_NAME, jdbcType=VARCHAR}, #{OP_VALUE, jdbcType=VARCHAR}
+  	, #{OP_VALUE_NAME, jdbcType=VARCHAR}, #{PACKAGE_NAME, jdbcType=VARCHAR}, #{DRIVE_TYPE, jdbcType=VARCHAR}
+  	, #{ALL_VALUE, jdbcType=VARCHAR}, #{SPEC_VALUE, jdbcType=VARCHAR}, #{EFF_IN, jdbcType=VARCHAR}
+  	, #{REMARK_DESC, jdbcType=VARCHAR}, #{AVAILABLE, jdbcType=VARCHAR}, #{NOT_AVAILABLE, jdbcType=VARCHAR}
+  	, #{COL_ORDER, jdbcType=NUMERIC}, #{ROW_ORDER, jdbcType=NUMERIC})
+  </insert>
+
+	<delete id="deleteOspecDetail">
+		delete from OSPEC_Detail where o_spec_no = #{O_SPEC_NO, jdbcType=VARCHAR}
+	</delete>
+	
+	<select id="getOspecMaster" resultType="java.util.HashMap">
+		select * from OSPEC_MASTER where 1=1 
+		<if test="O_SPEC_NO != null">
+			and O_SPEC_NO=#{O_SPEC_NO, jdbcType=VARCHAR}
+		</if>
+		<if test="G_MODEL != null">
+			and G_MODEL=#{G_MODEL, jdbcType=VARCHAR}
+		</if>
+		<if test="PROJECT != null">
+			and PROJECT=#{PROJECT, jdbcType=VARCHAR}
+		</if>
+		<if test="RELEASED_DATE != null">
+			and RELEASED_DATE<![CDATA[<=]]>#{RELEASED_DATE, jdbcType=VARCHAR}
+		</if>		
+		
+	</select>
+	
+	<select id="getOspecDetail" resultType="java.util.HashMap">
+		select * from OSPEC_Detail where O_SPEC_NO=#{O_SPEC_NO, jdbcType=VARCHAR}
+		<if test="PACKAGE_NAME != null">
+			and PACKAGE_NAME=#{PACKAGE_NAME, jdbcType=VARCHAR}
+		</if>
+		<if test="OP != null">
+			and OP=#{OP, jdbcType=VARCHAR}
+		</if>
+		<if test="OP_VALUE != null">
+			and OP_VALUE=#{OP_VALUE, jdbcType=VARCHAR}
+		</if>		
+		order by row_order, col_order
+	</select>	
+	
+	<!-- [20170117][ymjang] 정렬 순서 추가 -->
+	<select id="getGModel" resultType="java.lang.String">
+		select pS7_GModel G_MODEL from infodba.PS7_OSPECSET group by pS7_GModel	order by pS7_GModel
+	</select>	
+
+	<!-- [20170117][ymjang] 정렬 순서 추가 -->
+	<select id="getProject" resultType="java.lang.String">
+		select pS7_Project project from infodba.PS7_OSPECSET 
+		<if test="G_MODEL != null">
+    	   where pS7_GModel=#{G_MODEL, jdbcType=VARCHAR} 
+  		</if>		
+		group by pS7_Project
+		order by pS7_Project	
+	</select>		
+	
+	<delete id="deleteOspecTrim">
+		delete from OSPEC_TRIM where o_spec_no = #{O_SPEC_NO, jdbcType=VARCHAR}
+	</delete>
+	
+	<select id="getOspecTrim" resultType="java.util.HashMap">
+		select * from OSPEC_TRIM where o_spec_no = #{O_SPEC_NO, jdbcType=VARCHAR} order by col_order
+	</select>
+
+	<insert id="insertOspecTrim">
+		insert into OSPEC_TRIM (O_SPEC_NO, AREA, PASSENGER, ENGINE, GRADE, TRIM, COL_ORDER)
+		values(#{O_SPEC_NO, jdbcType=VARCHAR}, #{AREA, jdbcType=VARCHAR},
+		#{PASSENGER, jdbcType=VARCHAR}
+		, #{ENGINE, jdbcType=VARCHAR}, #{GRADE, jdbcType=VARCHAR}, #{TRIM, jdbcType=VARCHAR}
+		, #{COL_ORDER, jdbcType=NUMERIC})
+	</insert>
+	
+	<select id="getOptionGroup" resultType="java.util.HashMap">
+		select GROUP_NAME, Owner, DESCRIPTION, CONDITION from OSPEC_OP_GROUP where PROJECT = #{PROJECT, jdbcType=VARCHAR} 
+		<if test="OWNER != null">
+			and OWNER = #{OWNER, jdbcType=VARCHAR}
+		</if> 
+		group by GROUP_NAME, Owner, DESCRIPTION, CONDITION order by GROUP_NAME, Owner asc
+	</select>	
+
+	<insert id="insertOptionGroup">
+		insert into OSPEC_OP_GROUP (GROUP_NAME, PROJECT, VALUE_NAME, VALUE, OWNER, DESCRIPTION)		
+		values(#{GROUP_NAME, jdbcType=VARCHAR}, #{PROJECT, jdbcType=VARCHAR},
+		#{VALUE_NAME, jdbcType=VARCHAR}
+		, #{VALUE, jdbcType=VARCHAR}, #{OWNER, jdbcType=VARCHAR}, #{DESCRIPTION, jdbcType=VARCHAR})
+	</insert>  	
+	
+	<select id="getOptionGroupDetail" resultType="java.util.HashMap">
+		select * from OSPEC_OP_GROUP where PROJECT = #{PROJECT, jdbcType=VARCHAR} 
+		and GROUP_NAME = #{GROUP_NAME, jdbcType=VARCHAR}
+		<if test="OWNER != null">
+			and OWNER = #{OWNER, jdbcType=VARCHAR}
+		</if>
+		order by VALUE asc
+	</select>	
+	
+	<delete id="deleteOptionGroup">
+		delete from OSPEC_OP_GROUP where PROJECT = #{PROJECT, jdbcType=VARCHAR} 
+		and GROUP_NAME = #{GROUP_NAME, jdbcType=VARCHAR}
+		and OWNER = #{OWNER, jdbcType=VARCHAR}
+	</delete>	
+	
+	<select id="getReferedOptionGroup" resultType="java.util.HashMap">
+		select GROUP_NAME, OWNER from OSPEC_OP_GROUP 
+		where substr( value, 1, 3)=#{VALUE, jdbcType=VARCHAR} and project=#{PROJECT, jdbcType=VARCHAR} 
+		<if test="OWNER != null">
+			and OWNER = #{OWNER, jdbcType=VARCHAR}
+		</if>		
+		group by GROUP_NAME, OWNER order by GROUP_NAME, OWNER
+	</select>
+	
+	<select id="getFunctionList" resultType="java.util.HashMap">
+		select * from table(PKG_OSPEC.GET_FUNCTIONS_with_project(#{PROJECT, jdbcType=VARCHAR}))
+        <if test="FUNCTION_NO != null">
+          WHERE  UPPER(ITEM_ID) LIKE UPPER('%' || #{FUNCTION_NO, jdbcType=VARCHAR} || '%')
+        </if>
+	</select>
+	
+	<select id="getUsedCondition" resultType="java.util.HashMap">
+       SELECT PARENT_NO, CHILD_NO, CHILD_REV_NO, CHILD_NAME, CHILD_REV_PUID, SEQ_NO, CONDITION
+		    FROM TABLE(pkg_ospec.get_used_condition(#{FUNCTION_ID, jdbcType=VARCHAR},#{IS_RELEASE_FLAG, jdbcType=VARCHAR}))
+         <if test="PART_NAME != null">
+              WHERE UPPER(CHILD_NAME) LIKE UPPER('%' || #{PART_NAME, jdbcType=VARCHAR} || '%')
+         </if>
+         GROUP BY PARENT_NO, CHILD_NO, CHILD_REV_NO, CHILD_NAME, CHILD_REV_PUID, SEQ_NO, CONDITION
+         ORDER BY PARENT_NO,CHILD_NO, SEQ_NO
+	</select>
+	
+	<update id="updateOSpecTrimStat" statementType="CALLABLE">
+	    {call P_UPDATE_OSPEC_TRIM_STAT(#{ospecNo, jdbcType=VARCHAR})}
+	</update>
+  <!-- OSPEC GROUP MASTER 정보 UPDATE -->
+   <update id="updateOpGroupMaster" >      
+      UPDATE OSPEC_OP_GROUP O
+         SET  O.DESCRIPTION = #{DESCRIPTION, jdbcType=VARCHAR}
+       <if test="NEW_GROUP_NAME != null">
+           , GROUP_NAME = #{NEW_GROUP_NAME, jdbcType=VARCHAR}
+       </if>
+       WHERE PROJECT = #{PROJECT, jdbcType=VARCHAR}
+         AND O.OWNER = #{OWNER, jdbcType=VARCHAR}
+         AND O.GROUP_NAME = #{OLD_GROUP_NAME, jdbcType=VARCHAR}
+    </update>
+  <!-- OSPEC GROUP MASTER 정보 Condition 정보 UPDATE -->
+   <update id="updateOpGroupCondition" >      
+      UPDATE OSPEC_OP_GROUP O
+         SET  O.CONDITION = #{CONDITION, jdbcType=VARCHAR}
+       WHERE O.PROJECT = #{PROJECT, jdbcType=VARCHAR}
+         AND O.OWNER = #{OWNER, jdbcType=VARCHAR}
+         AND O.GROUP_NAME = #{GROUP_NAME, jdbcType=VARCHAR}
+    </update>    
+    <select id="getOpGroupCondition" resultType="string">
+      SELECT  DISTINCT O.CONDITION FROM OSPEC_OP_GROUP O
+          WHERE O.PROJECT = #{PROJECT, jdbcType=VARCHAR}
+             AND O.OWNER = #{OWNER, jdbcType=VARCHAR}
+             AND O.GROUP_NAME = #{GROUP_NAME, jdbcType=VARCHAR}
+             AND  ROWNUM = 1
+    </select> 
+    
+    <!--[SR181211-009][CSH]External Table에서 DCS 정보 가져오기-->
+    <select id="getDCSInfo" resultType="java.util.HashMap">
+       SELECT m.dc_id DC_ID, m.dc_rev DC_REV, m.dc_released_date DC_RELEASED_DATE
+        FROM dcs_info m
+        where m.system_code = #{SYSTEM_CODE, jdbcType=VARCHAR}
+        and m.project_code = #{PROJECT_CODE, jdbcType=VARCHAR}
+        and m.dc_rev = (select max(dc_rev) from dcs_info s where s.dc_id = m.dc_id)
+    </select>
+    
+</mapper>

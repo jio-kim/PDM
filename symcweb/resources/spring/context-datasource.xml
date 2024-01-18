@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd 
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">  	
+
+  	<bean id="contextProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="locations">
+            <value>classpath*:/properties/*.properties</value>
+        </property>
+    </bean>
+  	
+  	<!--                                                                      		 -->
+  	<!-- ※ 주의 																		 -->
+  	<!-- 아래 주석 및 패턴은 빌두 후 Weblogic에 배포시에 영향을 줄 수 있습니다.					 -->  	
+  	<!--                                                                      		 -->
+  	<!-- weblogic서 사용하는  datasource -->
+  	<!--!
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="DBDS"/>
+	</bean>
+	!-->
+	
+  	<!-- 개발시에 사용하는 datasource -->
+  	<!-- // -->
+    <bean id="tcDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+        <property name="driverClassName" value="#{contextProperties.driver}" />
+        <property name="url" value="#{contextProperties.tcDbUrl}" />
+        <property name="username" value="#{contextProperties.tcDbUsername}" />
+        <property name="password" value="#{contextProperties.tcDbPassword}" />
+        <property name="removeAbandoned" value="true"/>
+        <property name="initialSize" value="20" />
+        <property name="maxActive" value="30" />
+		<!-- [20150104] ymjang,  Connect 끊기는 현상 예방을 위한 조치. 3 lines -->
+        <property name="validationQuery" value="select 1 from dual"/>
+        <property name="testWhileIdle" value="true"/>
+        <property name="timeBetweenEvictionRunsMillis" value="3600000"/><!-- 밀리세컨드 단위 interval(1 hours) -->   
+    </bean>
+    <!-- \\ -->
+</beans>

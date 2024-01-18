@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.symc.ecorpt">
+    <!-- DB LINK DELETE 
+	<select id="getToUserList" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT RECEIVER_ID, SENDER_ID
+	     , SENDER_TEAM, SENDER_HNAME
+	  FROM (
+	        SELECT CASE WHEN B.USER_ID IS NULL THEN A.REGISTER_ID
+	                    ELSE B.USER_ID
+	               END AS RECEIVER_ID
+	             , A.REGISTER_ID AS SENDER_ID
+	             , (SELECT MAX(D1.TEAM)
+	                  FROM CALS.SYSA01TB@LINK_001_VNET D1
+	                     , CALS.SYSA02TB@LINK_001_VNET E1
+	                 WHERE E1.TEAM = D1.TEAM 
+	                   AND D1.APP IN ('0', '2')
+	                   AND LENGTH(D1.TMCOD) >= 8
+	                   AND E1.EMPNO = A.REGISTER_ID ) AS SENDER_TEAM
+	             , (SELECT MAX(E1.HNAME)
+	                  FROM CALS.SYSA01TB@LINK_001_VNET D1
+	                     , CALS.SYSA02TB@LINK_001_VNET E1
+	                 WHERE E1.TEAM = D1.TEAM 
+	                   AND D1.APP IN ('0', '2')
+	                   AND LENGTH(D1.TMCOD) >= 8
+	                   AND E1.EMPNO = A.REGISTER_ID ) AS SENDER_HNAME  
+	          FROM ECO_RPT_STD_INFO A
+	             , ECO_RPT_LIST B
+	         WHERE A.MASTER_PUID = B.MASTER_PUID
+	           AND TO_CHAR(A.ECO_COMPLETE_REQ_DATE, 'YYYYMMDD') = #{ECO_COMPLETE_REQ_DATE, jdbcType=VARCHAR}
+	           AND B.ECO_PUBLISH = '필요'
+	           AND B.ECO_NO IS NULL
+	           AND B.MAIL_SEND_DATE IS NULL 
+	       )
+	GROUP BY RECEIVER_ID, SENDER_ID
+	       , SENDER_TEAM, SENDER_HNAME
+	]]>
+	</select>
+  -->
+  
+    <select id="getToUserList" resultType="java.util.HashMap">
+    <![CDATA[
+    SELECT RECEIVER_ID, SENDER_ID
+         , SENDER_TEAM, SENDER_HNAME
+      FROM (
+            SELECT CASE WHEN B.USER_ID IS NULL THEN A.REGISTER_ID
+                        ELSE B.USER_ID
+                   END AS RECEIVER_ID
+                 , A.REGISTER_ID AS SENDER_ID
+                 , (SELECT MAX(D1.TEAM)
+                      FROM if_user.SYSA01TB D1
+                         , if_user.SYSA02TB E1
+                     WHERE E1.TEAM = D1.TEAM 
+                       AND D1.APP IN ('0', '2')
+                       AND LENGTH(D1.TMCOD) >= 8
+                       AND E1.EMPNO = A.REGISTER_ID ) AS SENDER_TEAM
+                 , (SELECT MAX(E1.HNAME)
+                      FROM if_user.SYSA01TB D1
+                         , if_user.SYSA02TB E1
+                     WHERE E1.TEAM = D1.TEAM 
+                       AND D1.APP IN ('0', '2')
+                       AND LENGTH(D1.TMCOD) >= 8
+                       AND E1.EMPNO = A.REGISTER_ID ) AS SENDER_HNAME  
+              FROM ECO_RPT_STD_INFO A
+                 , ECO_RPT_LIST B
+             WHERE A.MASTER_PUID = B.MASTER_PUID
+               AND TO_CHAR(A.ECO_COMPLETE_REQ_DATE, 'YYYYMMDD') = #{ECO_COMPLETE_REQ_DATE, jdbcType=VARCHAR}
+               AND B.ECO_PUBLISH = '필요'
+               AND B.ECO_NO IS NULL
+               AND B.MAIL_SEND_DATE IS NULL 
+           )
+    GROUP BY RECEIVER_ID, SENDER_ID
+           , SENDER_TEAM, SENDER_HNAME
+    ]]>
+    </select>
+
+	<select id="getStdInfoList" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT DISTINCT 
+	       A.MASTER_PUID
+	     , A.PROJECT_NO, A.OSPEC_ID
+	     , A.CHANGE_DESC, A.DESCRIPTION
+	     , TO_CHAR(A.ECO_COMPLETE_REQ_DATE, 'YYYY-MM-DD') AS ECO_COMPLETE_REQ_DATE
+	  FROM ECO_RPT_STD_INFO A
+	     , ECO_RPT_LIST B
+	 WHERE A.MASTER_PUID = B.MASTER_PUID
+	   AND TO_CHAR(A.ECO_COMPLETE_REQ_DATE, 'YYYYMMDD') = #{ECO_COMPLETE_REQ_DATE, jdbcType=VARCHAR}
+	   AND B.ECO_PUBLISH = '필요'
+	   AND B.ECO_NO IS NULL
+	   AND B.MAIL_SEND_DATE IS NULL 
+	   AND CASE WHEN B.USER_ID IS NULL THEN A.REGISTER_ID
+	            ELSE B.USER_ID
+	       END = #{TO_USER, jdbcType=VARCHAR}
+	   AND A.REGISTER_ID = #{REGISTER_ID, jdbcType=VARCHAR}
+	ORDER BY A.MASTER_PUID
+	]]>
+	</select>
+
+	<select id="getEcoRptList" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT CASE WHEN B.USER_ID IS NULL THEN A.REGISTER_ID
+	            ELSE B.USER_ID
+	       END AS RECEIVER_ID
+	     , B.FUNCTION_ID, B.PART_NAME
+	     , CASE WHEN B.USER_ID IS NULL THEN B.DESCRIPTION || '(담당자 미지정)'
+	            ELSE B.DESCRIPTION
+	       END AS DESCRIPTION
+	     , B.ECO_PUBLISH, B.ECO_NO, B.MAIL_SEND_DATE
+	  FROM ECO_RPT_STD_INFO A
+	     , ECO_RPT_LIST B
+	 WHERE A.MASTER_PUID = B.MASTER_PUID
+	   AND A.MASTER_PUID = #{MASTER_PUID, jdbcType=VARCHAR}
+	   AND B.ECO_PUBLISH = '필요'
+	   AND B.ECO_NO IS NULL
+	   AND B.MAIL_SEND_DATE IS NULL 
+	]]>
+	</select>
+ 
+	<update id="updateMailSendDate" >
+	UPDATE ECO_RPT_LIST
+	   SET MAIL_SEND_DATE = SYSDATE
+	     , MAIL_STATUS = '발송'
+	 WHERE ECO_PUBLISH = '필요'
+	   AND ECO_NO IS NULL
+	   AND MAIL_SEND_DATE IS NULL 
+	   AND MASTER_PUID IN (
+	                       SELECT A.MASTER_PUID
+	                         FROM ECO_RPT_STD_INFO A
+	                            , ECO_RPT_LIST B
+	                        WHERE A.MASTER_PUID = B.MASTER_PUID
+	                          AND TO_CHAR(A.ECO_COMPLETE_REQ_DATE, 'YYYYMMDD') = #{ECO_COMPLETE_REQ_DATE, jdbcType=VARCHAR}
+	                          AND B.ECO_PUBLISH = '필요'
+	                          AND B.ECO_NO IS NULL
+	                          AND B.MAIL_SEND_DATE IS NULL 
+	                          AND CASE WHEN B.USER_ID IS NULL THEN A.REGISTER_ID
+	                                   ELSE B.USER_ID
+	                              END = #{TO_USER, jdbcType=VARCHAR}
+	                          AND A.REGISTER_ID = #{REGISTER_ID, jdbcType=VARCHAR}
+	                       )
+	</update>
+ 
+</mapper>

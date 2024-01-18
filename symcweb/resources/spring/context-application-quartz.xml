@@ -1,0 +1,406 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:context="http://www.springframework.org/schema/context"
+	   xmlns:p="http://www.springframework.org/schema/p"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <!-- setTcPeIFJob : 5시 부터 23시 까지 50분에  -->
+    <!-- [20150716] [ymjang] EAI 는 20, 50 분에 각각 실행되므로  매시 정각과 51분에 실행되도록 수정함. -->
+    <!-- [20150908] [ymjang] 5시 부터 23시 까지 정각에 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <bean id="setTcPeIFJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.TcPeIFJob"/>
+        <property name="description" value="초도,EC등록 BATCH"/>
+    </bean>
+
+    <bean id="setTcPeIFJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="setTcPeIFJob"/>
+        <property name="cronExpression" value="0 50 5-23 * * ?"/>
+        <!-- <property name="cronExpression" value="0 0,30 * * * ?"/>  -->
+    </bean>
+
+	<!-- weldPointCreationJob : 5시 부터 23시 까지 매시 11분, 19분에 -->
+    <!-- [20150908] [ymjang] 5시 부터 23시 까지 15분에 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <!-- [20151215] [ymjang] 5시 부터 23시 까지 11분, 29에 각각 시간당 2회 실행되도록 변경함. (1회 실행시 1개의 ECO만 처리하도록 하기 위함.) -->
+    <bean id="weldPointCreationJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.WeldPointCreationJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="weldPointCreationService">
+                    <ref local="weldPointCreationService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="Weld Point Group 생성"/>
+    </bean>
+
+    <bean id="weldPointCreationJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="weldPointCreationJob"/>
+        <property name="cronExpression" value="0 11,19 5-23 * * ?"/>
+    </bean>
+ 	
+    <!-- notTransEcoSearchJob : 5시 부터 23시 까지 40분에 -->
+    <!-- [20150908] [ymjang] 5시 부터 23시 까지 45분에 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <bean id="notTransEcoSearchJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.NotTransSearchECOJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="notTransSearchECOService">
+                    <ref local="notTransEcoSearchService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="전송결과 업데이트 및 전송 할 EC검색 BATCH"/>
+    </bean>
+
+     <bean id="notTransEcoSearchJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="notTransEcoSearchJob"/>
+        <property name="cronExpression" value="0 40 5-23 * * ?"/>
+    </bean>
+
+    <!-- routingInfoJob : 5시 부터 23시 까지 5분에 -->
+    <!-- [20150908] [ymjang] 5시 부터 23시 까지 30분에 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <bean id="routingInfoJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.RoutingInfoJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="routingInfoService">
+                    <ref local="routingInfoService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="라우팅 정보 Interface"/>
+    </bean>
+
+    <bean id="routingInfoJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="routingInfoJob"/>
+        <property name="cronExpression" value="0 5 5-23 * * ?"/>
+    </bean>
+ 	
+    <!-- mEcoJob : (일~금) 5시 부터 23시 까지 7분간격 -->
+    <!-- [20150908] [ymjang] 5시 부터 23시 까지 7분 간격으로 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <bean id="mEcoJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.MECOJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="mECOService">
+                    <ref local="mECOService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="MECO BATCH"/>
+    </bean>
+
+    <bean id="mEcoJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="mEcoJob"/>
+        <property name="cronExpression" value="0 0/7 5-23 ? * 1-6"/>
+    </bean>
+ 	
+    <!-- pSEngJob : (일~금) 5시 부터 23시 까지 9분간격 -->
+    <!-- [SR141119-021][20150119] ymjang, 영문 작업표준서 결재란 공백 오류 수정 의뢰  -->
+    <!-- [20150908] [ymjang] 5시 부터 23시 까지 9분 간격으로 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <bean id="pSEngJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.PSENGJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="pSENGService">
+                    <ref local="pSENGService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="PSENG BATCH"/>
+    </bean>
+
+    <bean id="pSEngJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="pSEngJob"/>
+        <property name="cronExpression" value="0 0/9 5-23 ? * 1-6"/>
+    </bean>
+
+	<!-- SWM(표준작업요령서) :(월~금) 매일 오전 0시 -->
+    <!-- [20150908] [ymjang] 매일 오전 0시 에 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <bean id="sWmJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.SWMJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="sWmService">
+                    <ref local="sWmService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="SWM Complete BATCH"/>
+    </bean>
+
+    <bean id="sWmJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="sWmJob"/>
+        <property name="cronExpression" value="0 0 0 ? * 2-6"/>
+    </bean>
+
+	<!-- updateVendorInterfaceJob : (일~금) 매일 오전 0시 30분 -->
+    <!-- [20150908] [ymjang] 매일 오전 1시 에 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <bean id="updateVendorInterfaceJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+            <property name="jobClass" value="com.symc.work.job.JobForInterfaceVendor"/>
+            <property name="jobDataAsMap">
+                <map>
+                    <entry key="interfaceVendorService">
+                        <ref local="interfaceVendorService"/>
+                    </entry>
+                </map>
+            </property>
+            <property name="description" value="Update Vendor BATCH"/>
+    </bean>
+
+    <bean id="updateVendorTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="updateVendorInterfaceJob"/>
+        <property name="cronExpression" value="0 30 0 ? * 1-6"/>
+    </bean>
+
+
+	<!-- (미사용) ECORpt : (일~금) 매일 오전 0시 10분-->
+	<bean id="ecoRptJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.symc.work.job.EcoRptMailSendJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="ecoRptMailSendService">
+					<ref local="ecoRptMailSendService"/>
+				</entry>
+			</map>
+		</property>
+		<property name="description" value="ECO Report Mail Send"/>
+	</bean>
+
+	<bean id="ecoRptJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="ecoRptJob"/>
+		<property name="cronExpression" value="0 10 0 ? * 1-6"/>
+	</bean>
+
+
+	<!-- DCSJob : (월~금) 매일 오전 0시 10분-->
+	<!-- [DCS 현업 사용문제 신고내역] [20150708][ymjang] 휴일 아침 5시경 DCS 결재대기 8건 접수알림으로 불편했음. 휴일/시간 조정 요함 -->
+    <!-- [20150908] [ymjang] 매일 오전 4시 에 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+	<bean id="dcsJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+		<property name="jobClass" value="com.symc.work.job.DCSJob"/>
+		<property name="jobDataAsMap">
+			<map>
+				<entry key="dCSService">
+					<ref local="dCSService"/>
+				</entry>
+			</map>
+		</property>
+		<property name="description" value="DCS Delay Mail Send"/>
+	</bean>
+
+	<bean id="dcsJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail" ref="dcsJob"/>
+		<property name="cronExpression" value="0 10 0 ? * 2-6"/>
+	</bean>
+
+    <!-- SetVariantValueJob : 매일 오전 1시 -->
+    <!-- [20150908] [ymjang] 매일 오전 1시 30분에 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <bean id="setVariantValueJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.SetVariantValueJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="tcVariantService">
+                    <ref local="tcVariantService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="VARIANT VALUE BATCH"/>
+    </bean>
+
+     <bean id="setVariantValueJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="setVariantValueJob"/>
+        <property name="cronExpression" value="0 0 1 * * ?"/>
+    </bean>
+
+    <!-- SetSupplyModeJob : 매일 오전 1시 30분 -->
+    <!-- [20150908] [ymjang] 매일 오전 1시로 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <bean id="setSupplyModeJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.SetSupplyModeJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="tcLOVService">
+                    <ref local="tcLOVService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="SUPPLY_MODE BATCH"/>
+    </bean>
+
+    <bean id="setSupplyModeJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="setSupplyModeJob"/>
+        <property name="cronExpression" value="0 30 1 * * ?"/>
+    </bean>
+
+    <!-- OccEffectivityIdJob : 매일 오전 2시 -->
+    <bean id="occEffectivityIdJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.OccEffectivityIdJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="occEffectivityIdService">
+                    <ref local="occEffectivityIdService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="Occurence Effectivity ID (ECO) Update"/>
+    </bean>
+
+     <bean id="occEffectivityIdJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="occEffectivityIdJob"/>
+        <property name="cronExpression" value="0 0 2 * * ?"/>
+    </bean>
+
+    <!-- BPInterfaceJob : 매일 오전 4시 -->
+    <bean id="bpInterfaceJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+        <property name="jobClass" value="com.symc.work.job.BPInterfaceJob"/>
+        <property name="jobDataAsMap">
+            <map>
+                <entry key="bpInterfaceService">
+                    <ref local="bpInterfaceService"/>
+                </entry>
+            </map>
+        </property>
+        <property name="description" value="BPN Interface"/>
+    </bean>
+
+     <bean id="bpInterfaceJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="bpInterfaceJob"/>
+        <property name="cronExpression" value="0 0 4 * * ?"/>
+    </bean>
+
+	<!-- fullPreProductInterfaceJob : 토요일 오전 0시 -->
+	<bean id="fullPreProductInterfaceJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+	        <property name="jobClass" value="com.symc.work.job.FullPreProductInterfaceJob"/>
+	        <property name="jobDataAsMap">
+	            <map>
+	                <entry key="fullPreProductInterfaceService">
+	                    <ref local="fullPreProductInterfaceService"/>
+	                </entry>
+	            </map>
+	        </property>
+	        <property name="description" value="Full Pre-BOM BATCH"/>
+    </bean>
+    
+    <!-- 20171227 EAI 대상이 아닌 prebom fullPreProductNotInterfaceJob : 일요일 오전 18시 -->
+    <bean id="fullPreProductNotInterfaceJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+          <property name="jobClass" value="com.symc.work.job.FullPreProductNotInterfaceJob"/>
+          <property name="jobDataAsMap">
+              <map>
+                  <entry key="fullPreProductNotInterfaceService">
+                      <ref local="fullPreProductNotInterfaceService"/>
+                  </entry>
+              </map>
+          </property>
+          <property name="description" value="Full Pre-BOM BATCH"/>
+    </bean>
+    
+    <bean id="fullBOMTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="fullPreProductInterfaceJob"/>
+        <property name="cronExpression" value="0 0 0 ? * SAT"/>
+    </bean>
+    <!-- 20171227 EAI 대상이 아닌 prebom -->
+    <bean id="notEaifullBOMTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="fullPreProductNotInterfaceJob"/>
+        <property name="cronExpression" value="0 10 0 ? * MON"/>
+    </bean>
+
+  	<!-- PngVerificationJob (Name Group Verification) : 매주 토요일 18시 -->
+  	<bean id="pngVerificationJob" class="org.springframework.scheduling.quartz.JobDetailBean">
+    	<property name="jobClass" value="com.symc.work.job.PngVerificationJob"/>
+    	<property name="jobDataAsMap">
+      	<map>
+        	<entry key="pngVerificationService">
+        	  <ref local="pngVerificationService"/>
+        	</entry>
+      	</map>
+    	</property>
+    	<property name="description" value="Part Name Group Verification"/>
+  	</bean>
+
+  	<bean id="pngVerificationJobTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+    	<property name="jobDetail" ref="pngVerificationJob"/>
+    	<property name="cronExpression" value="0 0 18 ? * SAT"/>
+  	</bean>
+  
+	<!-- (미사용) jobForInterfaceCost : 매주 일요일 오전 1시 -->
+    <!-- [20150908][ymjang] 일요일 오전 1시 에 실행하도록 조정함 -> 오전시간 Scheduler 미작동으로 인한 스케줄 일괄 조정 -->
+    <!-- [20150827][ymjang]EAI I/F 주 토요일 07:00 이므로, 일요일 0시로 조정함. -->
+    <bean id="jobForInterfaceCost" class="org.springframework.scheduling.quartz.JobDetailBean">
+            <property name="jobClass" value="com.symc.work.job.JobForInterfaceCost"/>
+            <property name="jobDataAsMap">
+                <map>
+                    <entry key="interfaceCostService">
+                        <ref local="interfaceCostService"/>
+                    </entry>
+                </map>
+            </property>
+            <property name="description" value="Update Cost BATCH"/>
+    </bean>
+
+    <bean id="updateCostTrigger" class="org.springframework.scheduling.quartz.CronTriggerBean">
+        <property name="jobDetail" ref="jobForInterfaceCost"/>
+        <property name="cronExpression" value="0 0 1 ? * SUN"/>
+    </bean>
+
+	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				
+                <ref bean="setTcPeIFJobTrigger"/>
+                <ref bean="setSupplyModeJobTrigger"/>
+                <ref bean="setVariantValueJobTrigger"/>
+                <ref bean="bpInterfaceJobTrigger"/>
+                <ref bean="occEffectivityIdJobTrigger"/>
+                <ref bean="notTransEcoSearchJobTrigger"/>
+                <ref bean="weldPointCreationJobTrigger"/>
+                <ref bean="routingInfoJobTrigger"/>
+                <ref bean="mEcoJobTrigger"/>
+                <ref bean="sWmJobTrigger"/>
+                <ref bean="pSEngJobTrigger"/>
+                <ref bean="fullBOMTrigger"/>
+                <ref bean="pngVerificationJobTrigger"/>
+                <ref bean="updateVendorTrigger"/>
+                
+                <!-- 20171227 eai 전송하지 않는 product 생성 (D300) -->
+                <ref bean="notEaifullBOMTrigger"/>
+				              
+                <!-- 
+                [20151101] [ymjang] BP 정보 Update 스케줄러 중단.
+                <ref bean="mBomInterfaceDataSyncJobTrigger"/> 
+                -->
+ 
+                <!--
+                [20151101] [ymjang] 목표 재료비 인터페이스 중단 
+                <ref bean="updateCostTrigger"/>
+                -->
+                
+                <!-- 
+                [20160919] [ymjang] 요청이 있을 때까지 스케줄러 중지 
+                <ref bean="ecoRptJobTrigger"/>
+                -->
+                
+                <!--
+                 [20190308] [chkim] 기술문서관리시스템 Open으로 DCS 미결재 메일발송 스케줄러 중단.
+                <ref bean="dcsJobTrigger"/>
+                 -->
+                
+			</list>
+		</property>
+		<property name="quartzProperties">
+			<props>
+				<prop key="org.quartz.threadPool.class">org.quartz.simpl.SimpleThreadPool</prop>
+    			<prop key="org.quartz.threadPool.threadCount">5</prop>
+    			<prop key="org.quartz.threadPool.threadPriority">4</prop>
+    			<prop key="org.quartz.jobStore.class">org.quartz.simpl.RAMJobStore</prop>
+    			<prop key="org.quartz.jobStore.misfireThreshold">60000</prop>
+			</props>
+		</property>
+	</bean>
+
+	<!-- JOB Listener 추가 -->
+	<bean id="taskThreadPool" class="com.symc.common.job.listener.TaskThreadPool"/>
+
+</beans>

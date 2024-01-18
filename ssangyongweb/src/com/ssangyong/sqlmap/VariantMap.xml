@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssangyong.mapper.VariantMapper">
+  <select id="getItem" resultType="java.util.HashMap" >
+    select * from pitem where pitem_id = #{item_id}
+  </select>
+  
+  <delete id="deleteOsiInfo">
+  	delete from IF_OSPEC_MASTER_FROM_HBOM where osi_no=#{OSI_NO, jdbcType=VARCHAR} and variant_no=#{VARIANT_NO, jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insertOsiInfo" >
+    insert into IF_OSPEC_MASTER_FROM_HBOM (product_no, osi_no, variant_no, option_val, cre_date, upd_date)
+    values(#{PRODUCT_NO, jdbcType=VARCHAR},#{OSI_NO, jdbcType=VARCHAR},#{VARIANT_NO, jdbcType=VARCHAR}, #{OPTION_VAL, jdbcType=VARCHAR}, 
+           TO_DATE(#{CRE_DATE, jdbcType=VARCHAR}, 'YYYYMMDDHH24MISS'), 
+           TO_DATE(#{UPD_DATE, jdbcType=VARCHAR}, 'YYYYMMDDHH24MISS'))
+  </insert>
+  
+  <!-- [NON-SR] [20150609] [ymjang] Base Spec IF 데이터 삭제  -->
+  <delete id="deleteBSpecInfo">
+  	delete from IF_BSPEC_MASTER_FROM_HBOM where osi_no=#{OSI_NO, jdbcType=VARCHAR} and variant_no=#{VARIANT_NO, jdbcType=VARCHAR}
+  </delete>
+  
+  <!-- [NON-SR] [20150609] [ymjang] Base Spec IF 데이터 생성  -->
+  <insert id="insertBSpecInfo" >
+    insert into IF_BSPEC_MASTER_FROM_HBOM (product_no, osi_no, variant_no, option_val, cre_date, upd_date)
+    values(#{PRODUCT_NO, jdbcType=VARCHAR},#{OSI_NO, jdbcType=VARCHAR},#{VARIANT_NO, jdbcType=VARCHAR}, #{OPTION_VAL, jdbcType=VARCHAR}, 
+           TO_DATE(#{CRE_DATE, jdbcType=VARCHAR}, 'YYYYMMDDHH24MISS'), 
+           TO_DATE(#{UPD_DATE, jdbcType=VARCHAR}, 'YYYYMMDDHH24MISS'))
+  </insert>
+  
+  <insert id="insertVariantValueDesc" >
+  	merge into variant_value 
+    using dual
+    on (code_name=#{code_name, jdbcType=VARCHAR})
+    when matched then
+        update set code_desc=#{code_desc, jdbcType=VARCHAR} 
+    when not matched then
+            insert (code_name, code_desc)
+            values(#{code_name, jdbcType=VARCHAR},#{code_desc, jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="getVariantValueDesc" resultType="java.util.HashMap">
+    select * from variant_value where code_name is not null
+    <if test="code_name != null">
+    	AND code_name = #{code_name}
+  	</if>
+  </select>
+  
+  <update id="updateVariantValueDesc">
+  	update variant_value set code_desc = #{code_desc} where code_name = #{code_name}
+  </update>
+  
+  <select id="getUsedCount" resultType="java.lang.Integer">
+	select count(*) used_count from 
+	(
+	    select opt.puid from infodba.ppsOption opt, infodba.PUSED_OPTIONS u_opt 
+	    where opt.puid = u_opt.PVALU_0 and  pOption_Name= #{option_name}
+	    union all
+	    select opt.puid from infodba.ppsOption opt, infodba.PUSED_OPTIONS_0 u_opt 
+	    where opt.puid = u_opt.PVALU_0 and  pOption_Name= #{option_name}
+	)
+  </select>
+  <select  id="getUsedOptions" resultType="java.lang.String">
+	select option_name from 
+	(    
+	    select pOption_Name option_name from infodba.ppsOption opt, infodba.PUSED_OPTIONS u_opt 
+	    where opt.puid = u_opt.PVALU_0 and  
+	     pOption_Name in (  
+	          select pOption_Name from infodba.PDECLARED_OPTIONS dOpt, infodba.ppsOption opt 
+	            where DOPT.PVALU_0 = opt.puid
+	            and dOpt.puid=#{item_rev_puid}
+	     ) 
+	    union all    
+	    select pOption_Name option_name from infodba.ppsOption opt, infodba.PUSED_OPTIONS_0 u_opt 
+	    where opt.puid = u_opt.PVALU_0 and  
+	     pOption_Name in (  
+	          select pOption_Name from infodba.PDECLARED_OPTIONS dOpt, infodba.ppsOption opt 
+	            where DOPT.PVALU_0 = opt.puid
+	            and dOpt.puid=#{item_rev_puid}
+	     )
+	 ) group by option_name
+  </select>
+  
+  <delete id="deleteBuildSpecList">
+  	delete from IF_H_BUILD_SPEC_NO_LIST where variant_no=#{VARIANT_ID, jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insertBuidSpecList" >
+    insert into IF_H_BUILD_SPEC_NO_LIST 
+    values(#{VARIANT_ID, jdbcType=VARCHAR},#{SPEC_NO, jdbcType=VARCHAR},#{DESCRIPTION, jdbcType=VARCHAR})
+  </insert>
+  
+  <select id="getLocalBuildSpecList" resultType="java.util.HashMap">
+	select SPEC_NO, DESCRIPTION from IF_H_BUILD_SPEC_NO_LIST where Variant_no like substr(#{VARIANT_ID}, 1, 7) || '%'  
+  </select>
+  
+  <select id="getBuildSpecList" resultType="java.util.HashMap">
+	select trim(spec_no) SPEC_NO, DESCRIPTION from HBOM.PSPEC_VW@LINK_003_HBOM where Variant_no like substr(#{VARIANT_ID}, 1, 7) || '%' group by SPEC_NO, DESCRIPTION  
+  </select>
+  
+  <select id="getBuildSpecInfo" resultType="java.util.HashMap">
+	select * from HBOM.PSPEC_VW@LINK_003_HBOM where variant_no like substr(#{VARIANT_ID}, 1, 7) || '%' and PROJECT_NO = #{PROJECT_NO} and
+	SPEC_NO	in
+	  <foreach item="item" index="index" collection="SPEC_NO"
+	      open="(" separator="," close=")">
+	        LPAD(#{item},15)
+	  </foreach>    
+  </select>  
+  
+  <select id="getNewId" resultType="java.lang.String">
+  	select get_NEW_ID(#{PRE_FIX, jdbcType=VARCHAR}, #{TO_LEN, jdbcType=DECIMAL}) from dual
+  </select>
+  
+  <!-- 보류 <select id="getNextId" resultType="java.lang.String">
+	SELECT #{PRE_FIX, jdbcType=VARCHAR} || LPAD(NVL(MAX(TO_NUMBER(SUBSTR(I.PITEM_ID, LENGTH(#{PRE_FIX, jdbcType=VARCHAR}) + 1, LENGTH(I.PITEM_ID)))), 0) + 1, #{TO_LEN, jdbcType=DECIMAL} - LENGTH(#{PRE_FIX, jdbcType=VARCHAR}), '0')
+	  FROM INFODBA.PITEM I
+	 WHERE I.PITEM_ID LIKE #{PRE_FIX, jdbcType=VARCHAR} || '%'
+	   AND LENGTH(I.PITEM_ID) = #{TO_LEN, jdbcType=DECIMAL}
+	   AND NOT REGEXP_LIKE(SUBSTR(I.PITEM_ID, LENGTH(#{PRE_FIX, jdbcType=VARCHAR}) + 1, LENGTH(I.PITEM_ID)), '[^0-9]')
+  </select> -->
+  
+  <select id="getProjectCodes" resultType="java.lang.String">
+  	select distinct item.pItem_id project_id from infodba.pitem item, infodba.pItemRevision revision,  infodba.PS7_PROJECTREVISION prjRev
+	where
+	item.puid = REVISION.RITEMS_TAGU
+	and revision.puid = prjRev.puid 
+	order by item.pItem_id
+  </select>
+  
+  
+  <select id="getValidationInfoList" resultType="java.util.HashMap">
+	select * from SOS_FUNCTION_NAME_MASTER where  parent_item_id in 
+	<foreach item="item" index="index" collection="FUNCTION_MASTERS"
+	      open="(" separator="," close=")">
+	        #{item}
+	</foreach> 
+	order by Parent_Item_ID, ChilD_Item_Name, OPTION_VALUE  
+  </select>
+  
+  <insert id="insertValidationInfo" >
+  	merge into SOS_FUNCTION_NAME_MASTER 
+    using dual
+    on (idx=#{IDX, jdbcType=DECIMAL})
+    when matched then
+        update set Parent_ITEM_ID=#{Parent_ITEM_ID, jdbcType=VARCHAR},
+        			CHILD_ITEM_NAME=#{CHILD_ITEM_NAME, jdbcType=VARCHAR},
+       				Qty=#{QTY, jdbcType=FLOAT}, 
+       				OPTION_VALUE=#{OPTION, jdbcType=VARCHAR}
+    when not matched then
+            insert (IDX, Parent_ITEM_ID, CHILD_ITEM_NAME, QTY, OPTION_VALUE)
+            values( (select nvl(max(idx), 0) + 1 from SOS_FUNCTION_NAME_MASTER), #{Parent_ITEM_ID, jdbcType=VARCHAR}, #{CHILD_ITEM_NAME, jdbcType=VARCHAR},
+            #{QTY, jdbcType=FLOAT}, #{OPTION, jdbcType=VARCHAR})
+  </insert>  
+  
+  <delete id="deleteValidationInfo">
+  	delete from SOS_FUNCTION_NAME_MASTER where IDX=#{IDX, jdbcType=DECIMAL}
+  </delete>
+  
+  <select id="getSpecOptions" resultType="java.util.HashMap">
+  	SELECT sos.puid, pOption category, pString_Value option_Value
+    FROM infodba.pstoredoptionset sos, infodba.pstoredoptionvalue sov
+   	WHERE sos.puid = sov.rparentu
+    AND sos.puid in 
+	<foreach item="item" index="index" collection="SOS"
+	      open="(" separator="," close=")">
+	        #{item}
+	</foreach> 
+  </select>
+  
+  <select id="getMinusInfo" resultType="java.util.HashMap">
+	WITH parentItem as 
+	    (select ITEM.PITEM_ID, REVISION.PITEM_REVISION_ID, REVISION.PUID PUID from infodba.pItem item, infodba.pItemRevision revision where item.puid = REVISION.RITEMS_TAGU)    
+	select Parent_item_id, child_item_name, Qty from SOS_FUNCTION_NAME_MASTER where parent_item_id in 
+	<foreach item="item" index="index" collection="FUNCTION_MASTERS"
+	      open="(" separator="," close=")">
+	        #{item}
+	</foreach> 
+	minus    
+	select pItem.pItem_ID parent_Item_id, childObj.pObject_name child_item_name, count(childObj.pObject_name) qty from table(bom.get_sos_structures(#{REVISION_PUID, jdbcType=VARCHAR},'','1', #{SOS_PUID, jdbcType=VARCHAR}, '')) str, infodba.pWorkspaceObject childObj, parentItem pItem
+	where str.child_rev_puid=childObj.puid
+	and pItem.puid = str.parent_rev_puid
+	group by pItem.pItem_ID, childObj.pObject_name
+	
+  </select>
+    
+    <select id="selectOSpecTrim" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    	SELECT *
+    	  FROM EBOM_OSPEC_TRIM
+    	 WHERE OSI_NO = #{OSI_NO, jdbcType=VARCHAR}
+    </select>
+    <delete id="deleteOSpecTrim" parameterType="java.util.HashMap">
+  		DELETE FROM EBOM_OSPEC_TRIM
+  		 WHERE OSI_NO = #{OSI_NO, jdbcType=VARCHAR}
+    </delete>
+	<insert id="insertOSpecTrim" parameterType="java.util.HashMap">
+		INSERT INTO EBOM_OSPEC_TRIM
+		   (OSI_NO,
+			PROJECT_NO,
+			VARIANT_HEADER,
+			OSPEC_SECOND,
+			OSPEC_THIRD,
+			OSPEC_FOURTH,
+			OSPEC_SIX,
+			OPT_E00,
+			OPT_E00_DESC,
+			OPT_E10,
+			OPT_E10_DESC,
+			TRIM_SEQ,
+			GMODEL_CODE
+			)
+		VALUES
+		  (#{OSI_NO, jdbcType=VARCHAR},
+		   #{PROJECT_NO, jdbcType=VARCHAR},
+		   #{VARIANT_HEADER, jdbcType=VARCHAR},
+		   #{OSPEC_SECOND, jdbcType=VARCHAR},
+		   #{OSPEC_THIRD, jdbcType=VARCHAR},
+		   #{OSPEC_FOURTH, jdbcType=VARCHAR},
+		   #{OSPEC_SIX, jdbcType=VARCHAR},
+		   #{OPT_E00, jdbcType=VARCHAR},
+		   #{OPT_E00_DESC, jdbcType=VARCHAR},
+		   #{OPT_E10, jdbcType=VARCHAR},
+		   #{OPT_E10_DESC, jdbcType=VARCHAR},
+		   #{TRIM_SEQ, jdbcType=VARCHAR},
+		   #{GMODEL_CODE, jdbcType=VARCHAR})
+	</insert>
+</mapper>

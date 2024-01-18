@@ -1,0 +1,41 @@
+■ 배포 방법
+
+★ 개발 운영 확인 필요.
+/com/ssangyong/config/mybatis-config.xml 파일 29번째 줄에 개발 운영 구분이 존재함.
+
+◆ 1. war 파일 생성
+ File 또는 Popup 메뉴의 Export 선택.
+  Web > WAR file을 선택..
+  Next..
+  Web project : ssangyongweb
+  Destination : D:\Deployment\ssangyongweb_dest\op\202009181600\ssangyongweb.war
+                                                op는 운영
+                                                qa는 개발
+                                                    날짜는 현재 날짜시간까지
+  Target runtime
+   Optimize for a specific server runtime 체크 해제( )
+  Export Source files 체크해제( )
+  Overwrite existing file 체크(V)
+  Finish 클릭. > war 파일 생성 됨.
+
+◆ 2-1. 개발 서버에 적용
+
+    99번 서버에 원격 접속.
+       ssangyongweb 폴더 : D:\TC_Deployment\ssangyoungweb_7090
+    ssangyongweb 폴더에 날짜 폴더를 하나 만들고 ssangyongweb 폴더 아래에 있는 ssangyongweb.war 파일을 복사해둔다.
+    ▶ssangyongweb service를 내린다. 도스창을 닫음.
+    ssangyongweb 폴더에 1번에서 생성한 war 파일을 덮어쓴다.
+    ▶service를 시작한다.
+      service 시작방법 : C:\Users\infodba0\Desktop\TC10 Services\Run_WeblogicServer_SSANGYONGWEB 실행.
+
+◆ 2-2. 운영 서버에 적용
+    ※ 배포는 94번 서버와 95번 서버 두군데에 한다.
+
+    각 서버에 원격 접속 한다.
+       ssangyongweb 폴더 : D:\TC10_Deployment\ssangyoungweb_7090
+    ssangyongweb 폴더에 날짜 폴더를 하나 만들고 ssangyongweb 폴더 아래에 있는 ssangyongweb.war 파일을 복사해둔다.
+    ▶ssangyongweb service를 내린다. 도스창을 닫음.
+    ssangyongweb 폴더에 1번에서 생성한 war 파일을 덮어쓴다.
+    ▶service를 시작한다.
+      service 시작방법 : C:\Users\infodba0\Desktop\Teamcenter Services\01.startWebLogicSSANGYONGWEB.cmd 실행.
+

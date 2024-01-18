@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="start" name="build">
+	<!-- build 설정 -->
+	<property environment="env" />
+	<property name="debuglevel" value="source,lines,vars" />
+	<!-- 배포 디렉토리 -->
+	<tstamp>
+		<format property="current.time" pattern="yyyyMMddHHmmss" />
+	</tstamp>
+	<property name="timestamp.value" value="${current.time}" />
+	<property name="DEPLOY_DIR" location="${env.WORKSPACE}/deploy/${timestamp.value}" />
+	<property name="WEB_APP_DIR" location="${env.WORKSPACE}/symcweb/WebRoot" />
+	<property name="WEB_SRC_DIR" location="${env.WORKSPACE}/symcweb/src" />
+	<property name="WEB_RESOURCES_DIR" location="${env.WORKSPACE}/symcweb/resources" />
+	<property name="WEB_CLASSES_DIR" location="${DEPLOY_DIR}/WEB-INF/classes" />
+	<!-- Application Classpath 지정 -->
+	<path id="app.classpath">
+		<fileset dir="${env.WORKSPACE}/symcweb/WebRoot/WEB-INF/lib">
+			<include name="*.jar" />
+			<include name="*.zip" />
+		</fileset>
+		<fileset dir="D:/jenkins/junit">
+			<include name="*.jar" />
+			<include name="*.zip" />
+		</fileset>
+	</path>
+
+	<!-- weblogic 설정 -->
+	<property name="SYMC_DEPLOY_DIR" value="D:/tc_install_cd/Work/symcweb" />
+	<property name="SYMC_BACKUP_DIR" value="D:/tc_install_cd/Work/symcweb_backup" />
+	<property name="weblogic.home" value="D:/weblogic/wlserver_10.3" />
+	<property name="weblogic.deploy.jar.path" value="${weblogic.home}/server/lib/weblogic.jar" />
+	<property name="weblogic.deploy.url.admin" value="t3://localhost:80" />
+	<property name="weblogic.deploy.user" value="weblogic" />
+	<property name="weblogic.deploy.password" value="weblogic1" />
+	<property name="weblogic.deploy.app.symcweb" value="symcweb" />
+	<property name="weblogic.deploy.app.symcweb.deplySrc" value="${SYMC_DEPLOY_DIR}" />
+	<property name="to.exec" location="${weblogic.home}/server/bin/setWLSEnv.cmd" />
+	<exec executable="${to.exec}" />
+
+	<!-- weblogic task 정의 -->
+	<taskdef name="wldeploy" classname="weblogic.ant.taskdefs.management.WLDeploy"
+		classpath="${weblogic.deploy.jar.path}" />
+	<taskdef name="wlserver" classname="weblogic.ant.taskdefs.management.WLServer"
+		classpath="${weblogic.deploy.jar.path}" />
+
+	<!-- stop -->
+	<target name="stop_symcweb">
+		<wldeploy action="stop" verbose="true" debug="true"
+			name="${weblogic.deploy.app.symcweb}" user="${weblogic.deploy.user}"
+			password="${weblogic.deploy.password}" adminurl="${weblogic.deploy.url.admin}" />
+	</target>
+
+	<!-- undeploy -->
+	<target name="undeploy_symcweb">
+		<wldeploy action="undeploy" verbose="true" debug="true"
+			name="${weblogic.deploy.app.symcweb}" user="${weblogic.deploy.user}"
+			password="${weblogic.deploy.password}" adminurl="${weblogic.deploy.url.admin}"
+			failonerror="false" />
+	</target>
+
+	<!-- deploy -->
+	<target name="deploy_symcweb">
+		<!-- exploded war 형태에 nostage 형태를 가정하였다. 상황에 따라 옵션을 조정한다. -->
+		<wldeploy action="deploy" verbose="true" debug="true"
+			name="${weblogic.deploy.app.symcweb}" source="${weblogic.deploy.app.symcweb.deplySrc}"
+			user="${weblogic.deploy.user}" password="${weblogic.deploy.password}"
+			adminurl="${weblogic.deploy.url.admin}" nostage="true" remote="false" />
+		<wldeploy action="start" verbose="true" debug="true"
+			name="${weblogic.deploy.app.symcweb}" user="${weblogic.deploy.user}"
+			password="${weblogic.deploy.password}" adminurl="${weblogic.deploy.url.admin}" />
+	</target>
+
+	<target name="start">
+		<!-- build -->
+		<antcall target="symc.build" />
+
+		<!-- symcweb stop -->
+		<antcall target="stop_symcweb" />
+
+		<!-- symcweb undeploy -->
+		<antcall target="undeploy_symcweb" />
+
+		<!-- 컴파일 Delpoy 폴더 서버에 복사 -->
+		<antcall target="copyDeployToServer" />
+
+		<!-- symcweb deploy & start -->
+		<antcall target="deploy_symcweb" />
+	</target>
+
+	<!-- 빌드 -->
+	<target name="symc.build" depends="webapp.copy, java.compile" />
+
+	<!-- Source 복사 -->
+	<target name="webapp.copy" description="소스 파일 복사(리소스파일 포함)">
+		<echo>기존 소스 복사 폴더 삭제</echo>
+		<delete dir="${DEPLOY_DIR}" />
+		<echo>소스 복사를 위한 디렉토리 체크...</echo>
+		<mkdir dir="${DEPLOY_DIR}" />
+		<echo>소스 복사</echo>
+		<!-- ext Resource 복사 -->
+		<copy todir="${DEPLOY_DIR}">
+			<fileset dir="${WEB_APP_DIR}">
+				<include name="**/*.*" />
+				<exclude name="**/.svn" />
+				<exclude name="**/build*.xml" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- java compile -->
+	<target name="java.compile">
+		<echo message="java compile" />
+		<mkdir dir="${WEB_CLASSES_DIR}" />
+		<copy includeemptydirs="false" todir="${WEB_CLASSES_DIR}">
+			<fileset dir="${WEB_RESOURCES_DIR}">
+				<include name="**/*.*" />
+				<exclude name="**/*.launch, **/*.java" />
+			</fileset>
+		</copy>
+		<!-- source properties 복사 -->
+		<copy includeemptydirs="false" todir="${WEB_CLASSES_DIR}">
+			<fileset dir="${WEB_SRC_DIR}">
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+		<javac debug="true" nowarn="true" debuglevel="${debuglevel}"
+			destdir="${WEB_CLASSES_DIR}" failonerror="true" fork="true" encoding="UTF-8">
+			<compilerarg line="-Xlint -Xlint:unchecked" />
+			<src path="${WEB_SRC_DIR}" />
+			<classpath refid="app.classpath" />
+		</javac>
+	</target>
+
+	<target name="copyDeployToServer" description="컴파일 Delpoy 폴더 서버에 복사">
+		<property name="symcweb_zip_timestamp" value="${current.time}" />
+		<echo>symcweb Deploy 폴더 백업 - symcweb_${symcweb_zip_timestamp}.zip
+		</echo>
+		<mkdir dir="${SYMC_BACKUP_DIR}" />
+		<zip destfile="${SYMC_BACKUP_DIR}/symcweb_${symcweb_zip_timestamp}.zip"
+			basedir="${SYMC_DEPLOY_DIR}" includes="**/*.*" update="true" />
+		<echo>symcweb Deploy 폴더 삭제</echo>
+		<delete dir="${SYMC_DEPLOY_DIR}" />
+		<echo>symcweb Deploy 폴더 생성</echo>
+		<mkdir dir="${SYMC_DEPLOY_DIR}" />
+		<echo>compile deploy -> symcweb Deploy 폴더 copy</echo>
+		<copy includeemptydirs="false" todir="${SYMC_DEPLOY_DIR}">
+			<fileset dir="${DEPLOY_DIR}">
+				<include name="**/*.*" />
+			</fileset>
+		</copy>
+	</target>
+
+</project>
