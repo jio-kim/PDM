@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssangyong.mapper.WeldPointMapper">
+
+  <!-- [SR150714-022][20150907][ymjang] 용접점 정보(CATIA Feature Name) 추가적 추출 및 BOP 컬럼 생성 요청 -->
+  <insert id="insertWeldPointGroupInfo" >
+  	merge into WELD_POINT_EXPORT
+    using dual
+    on (item_ID=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR} and WELD_TYPE=#{weld_type, jdbcType=VARCHAR} and SHEETS=#{sheets, jdbcType=NUMERIC}
+    	 and TRANSFORM_TRA0=#{transform_tra0, jdbcType=NUMERIC} and transform_tra1=#{transform_tra1, jdbcType=NUMERIC} and transform_tra2=#{transform_tra2, jdbcType=NUMERIC})
+    when matched then
+        update set last_mod_date=sysdate
+    when not matched then
+            insert (item_id, item_rev_id, weld_type, sheets, transform_tra0, transform_tra1, transform_tra2, feature_name)
+            values(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}, #{weld_type, jdbcType=VARCHAR}, #{sheets, jdbcType=NUMERIC}
+            , #{transform_tra0, jdbcType=NUMERIC}, #{transform_tra1, jdbcType=NUMERIC}, #{transform_tra2, jdbcType=NUMERIC}
+            , #{feature_name, jdbcType=VARCHAR})
+  </insert>
+
+  <select id="getDifferentWeldPoint" resultType="java.util.HashMap">
+  	select * from table(WELD_POINT_PKG.get_different_wp(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}, #{pre_item_rev_id, jdbcType=VARCHAR}))
+  	union
+  	select * from table(WELD_POINT_PKG.get_different_wp(#{item_id, jdbcType=VARCHAR}, #{pre_item_rev_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}))
+  	<!--
+	(select Weld_Type, Sheets, transform_tra0, transform_tra1, transform_tra2 from Weld_point_export where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR}
+	minus
+	select Weld_Type, Sheets, transform_tra0, transform_tra1, transform_tra2 from Weld_point_export where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{pre_item_rev_id, jdbcType=VARCHAR})
+	union
+	(select Weld_Type, Sheets, transform_tra0, transform_tra1, transform_tra2 from Weld_point_export where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{pre_item_rev_id, jdbcType=VARCHAR}
+	minus
+	select Weld_Type, Sheets, transform_tra0, transform_tra1, transform_tra2 from Weld_point_export where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR})
+	 -->
+  </select>
+
+  <select id="getRemovedWeldPoint" resultType="java.util.HashMap">
+  	select * from table(WELD_POINT_PKG.get_different_wp(#{item_id, jdbcType=VARCHAR}, #{pre_item_rev_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}))
+  	<!--
+  	(
+	select Weld_Type, Sheets, transform_tra0, transform_tra1, transform_tra2 from Weld_point_export where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{pre_item_rev_id, jdbcType=VARCHAR}
+	minus
+	select Weld_Type, Sheets, transform_tra0, transform_tra1, transform_tra2 from Weld_point_export where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR}
+	)
+	 -->
+  </select>
+
+  <select id="getAddedWeldPoint" resultType="java.util.HashMap">
+	select * from table(WELD_POINT_PKG.get_different_wp(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}, #{pre_item_rev_id, jdbcType=VARCHAR}))
+	<!--
+  	(
+	select Weld_Type, Sheets, transform_tra0, transform_tra1, transform_tra2 from Weld_point_export where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR}
+	minus
+	select Weld_Type, Sheets, transform_tra0, transform_tra1, transform_tra2 from Weld_point_export where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{pre_item_rev_id, jdbcType=VARCHAR}
+	)
+	 -->
+  </select>
+
+	<select id="getLatestRevision" resultType="java.util.HashMap">
+		with rev_info as (
+		select item.pItem_id item_id, revision.PITEM_REVISION_ID item_rev_id, revision.puid puid
+		, revision.pS7_Project_code project, REVISION.RS7_ECO_NOU eco_puid
+		from infodba.pItem item, infodba.pItemRevision revision, infodba.pWorkSpaceObject wso
+		where item.puid = revision.ritems_tagu
+		and revision.puid = wso.puid
+		and WSO.PACTIVE_SEQ = 1)
+		select * from (
+		select item.item_id, item.item_rev_id, item.project, eco.item_id eco_no from rev_info item, rev_info eco
+		where item.eco_puid = eco.puid(+)
+		and item.item_ID = #{item_id, jdbcType=VARCHAR}
+		order by item_rev_id desc)
+		where rownum <![CDATA[<]]> 2
+	</select>
+
+	<select id="getChildren" resultType="java.util.HashMap">
+		with weldSpot as (
+		    select imanRel.rPrimary_Objectu, spotClass.pNumber_OF_SHEETS_WELDED sheets from INFODBA.PIMANRELATION imanRel,infodba.PIMANTYPE imanType, infodba.pForm f, infodba.PSPOTWELDFORMCLASS spotClass
+		    where IMANREL.RRELATION_TYPEU = imanType.puid
+		    and IMANTYPE.PTYPE_NAME = 'TC_Feature_Form_Relation'
+		    and IMANREL.RSECONDARY_OBJECTU = F.PUID
+		    and f.rData_FileU = spotclass.puid
+		)
+		select parent_revision.PS7_PART_TYPE p_origin,  child_item.pitem_id child_id
+		, child_REVISION.PITEM_REVISION_ID child_rev_id
+		, child_REVISION.PS7_PROJECT_CODE project_code, obj.pObject_type child_rev_type, child_revision.PS7_PART_TYPE origin
+		, OBJ.POBJECT_NAME child_name, a.*, spot.sheets
+		from
+		(
+		    select MBOM_IF_Package.get_Released_rev_with_DATE(occ.rChild_itemu, null)  child_rev_puid,
+		        basic.*, occ.puid occ_puid, OCC.ROCC_THREADU occ_thread, OCC.PORDER_NO order_no, occ.pSeq_no seq, OCC.RCHILD_BVU child_view_puid, occ.RNOTES_REFU occ_note_ref_puid,
+		        case when occ.pQty_value <![CDATA[<]]> 1 then 1 else occ.pQty_value  end  qty
+		        , mvl.data condition
+		        , get_bom_note_text(occ.RNOTES_REFU, 'M7_FEATURE_NAME') FEATURE_NAME
+		        ,OCC.POCCURRENCE_NAME occ_name, occ.PEXT_TRANSFORM_TRA0 TRANSFORM_TRA0, occ.PEXT_TRANSFORM_TRA1 TRANSFORM_TRA1, occ.PEXT_TRANSFORM_TRA2 TRANSFORM_TRA2
+		    from
+		    (
+		       select item.pItem_id parent_id, REVISION.PITEM_REVISION_ID parent_rev_id, STRREV.PUID parent_rev_puid, obj.pObject_type parent_rev_type, STRREV.PVALU_0 parent_rev_view_puid
+		          from infodba.PSTRUCTURE_REVISIONS strRev
+		                , infodba.ppsbomviewrevision bvr
+		                , infodba.ppsbomview bv
+		                , infodba.pworkspaceobject obj
+		                , infodba.pItemRevision revision
+		                , infodba.pItem item
+		        where
+		           STRREV.pvalu_0 = bvr.puid    --BOM view revision PUID
+		           and bv.puid = bvr.rbom_viewu        --BOM view PUID
+		           and STRREV.PUID = obj.puid
+		           and STRREV.puid = revision.puid
+		           and revision.rItems_tagu = item.puid
+		           and item.pItem_ID = #{parent_id, jdbcType=VARCHAR}
+		           and revision.pItem_Revision_ID = #{parent_rev_id, jdbcType=VARCHAR}
+		    ) basic, infodba.PPSOCCURRENCE occ, INFODBA.IMAN_MVLBLOB mvl
+		    where OCC.RPARENT_BVRU = basic.parent_rev_view_puid and occ.puid = mvl.name(+)
+		) a, infodba.pWorkspaceObject obj, infodba.pitem child_item, infodba.pitemRevision child_revision
+		, infodba.pItemRevision parent_revision, weldSpot spot
+		where parent_revision.puid = a.parent_rev_puid
+		and a.child_rev_puid = obj.puid
+		and a.child_rev_puid = child_revision.puid
+		and child_revision.ritems_tagu = child_item.puid
+		and a.child_rev_puid = spot.rPrimary_Objectu(+)
+	 	<if test="child_id != null">
+		   AND child_item.pitem_id=#{child_id, jdbcType=VARCHAR}
+		</if>
+	 	<if test="child_rev_id != null">
+		   AND child_REVISION.PITEM_REVISION_ID=#{child_rev_id, jdbcType=VARCHAR}
+		</if>
+		<if test="condition != null">
+			and DBMS_LOB.compare( replace(trim(condition),' ', ''), replace(trim(#{condition, jdbcType=VARCHAR}),' ','')) = 0
+		</if>
+		order by seq, child_item.pitem_id
+	</select>
+
+	<select id="getPreviousRevisionID" resultType="java.lang.String">
+		select MBOM_IF_PACKAGE.get_pre_revision_id(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}) pre_rev_id from dual
+	</select>
+
+	<select id="getWeldPoints" resultType="java.util.HashMap">
+		select * from Weld_point_export where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR}
+	</select>
+
+	<select id="getEcoEplInfo" resultType="map">
+		select epl_id, eco_no, parent_no, parent_rev, new_part_no, new_part_rev, new_smode, new_vc, ct, old_part_no, old_part_rev, decode(ct, 'D', GET_RELATED_NONIF_FUNCTION(old_part_no), GET_RELATED_NONIF_FUNCTION(new_part_no)) func
+		from eco_bom_list where epl_id=#{epl_id, jdbcType=VARCHAR}
+	</select>
+
+	<update id="updateDateReleasedWithEco" statementType="CALLABLE">
+	    {call UPDATE_DATE_RELEASED_WITH_ECO(#{release_status_puid, jdbcType=VARCHAR}, #{eco_rev_puid, jdbcType=VARCHAR})}
+	</update>
+	
+  	<delete id="deleteWeldPointGroupPreRevision" >
+	  	delete from WELD_POINT_PREREVISION where item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR}
+  	</delete>
+
+    <!-- [SR150714-022][20150907][ymjang] 용접점 정보(CATIA Feature Name) 추가적 추출 및 BOP 컬럼 생성 요청  -->
+  	<insert id="insertWeldPointGroupPreRevision" >
+	  	merge into WELD_POINT_PREREVISION
+	    using dual
+	    on (item_id=#{item_id, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR} and WELD_TYPE=#{weld_type, jdbcType=VARCHAR} and SHEETS=#{sheets, jdbcType=NUMERIC}
+	    	 and TRANSFORM_TRA0=#{transform_tra0, jdbcType=NUMERIC} and transform_tra1=#{transform_tra1, jdbcType=NUMERIC} and transform_tra2=#{transform_tra2, jdbcType=NUMERIC})
+	    when matched then
+	        update set last_mod_date=sysdate
+	    when not matched then
+	            insert (item_id, item_rev_id, weld_type, sheets, transform_tra0, transform_tra1, transform_tra2, feature_name)
+	            values(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}, #{weld_type, jdbcType=VARCHAR}, #{sheets, jdbcType=NUMERIC}
+	            , #{transform_tra0, jdbcType=NUMERIC}, #{transform_tra1, jdbcType=NUMERIC}, #{transform_tra2, jdbcType=NUMERIC}
+	            , #{feature_name, jdbcType=VARCHAR})
+ 	 </insert>
+	
+	  <select id="getDifferentWeldPointUp" resultType="java.util.HashMap">
+	  	select * from table(WELD_POINT_PKG.get_ToDelete_WP(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}))
+	  	union
+	  	select * from table(WELD_POINT_PKG.get_ToAdd_WP(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}))
+	  </select>
+	
+	  <select id="getRemovedWeldPointUp" resultType="java.util.HashMap">
+	  	select * from table(WELD_POINT_PKG.get_ToDelete_WP(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}))
+	  </select>
+	
+	  <select id="getAddedWeldPointUp" resultType="java.util.HashMap">
+		select * from table(WELD_POINT_PKG.get_ToAdd_WP(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}))
+	  </select>
+
+	  <!-- [용점접 2차 개선안] [20150907][ymjang] 용접점 처리시 각 대상 Part 별로 상태를 기록하기 위해 상태 테이블에 데이터를 생성한다. -->
+	  <select id="updateWeldPointTransLog" parameterType="java.util.HashMap">
+	  	UPDATE WELD_POINT_TRANS_LOG
+	  	   SET TRANS_FLAG = #{TRANS_FLAG, jdbcType=VARCHAR}
+	  	     , TRANS_MSG = #{TRANS_MSG, jdbcType=VARCHAR}
+	  	 WHERE ECO_NO = #{ECO_NO, jdbcType=VARCHAR}
+	  	   AND FMP_ID = #{FMP_ID, jdbcType=VARCHAR}
+	  	   AND PROJECT_CODE = #{PROJECT_CODE, jdbcType=VARCHAR}
+           AND CHANGE_TYPE = #{CHANGE_TYPE, jdbcType=VARCHAR}   
+	  	   AND EPL_ID = #{EPL_ID, jdbcType=VARCHAR}
+	  	   AND PARENT_NO = #{PARENT_NO, jdbcType=VARCHAR}
+	  	   AND PARENT_REVISION_ID = #{PARENT_REVISION_ID, jdbcType=VARCHAR}
+	  	   AND PART_NO = #{PART_NO, jdbcType=VARCHAR}
+	  	   AND PART_REVISION_ID = #{PART_REVISION_ID, jdbcType=VARCHAR}
+	  </select>
+	
+</mapper>

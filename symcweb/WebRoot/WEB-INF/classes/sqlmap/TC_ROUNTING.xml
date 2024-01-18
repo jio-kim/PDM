@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.routing">
+
+	<insert id="insertRoutingServiceTime">
+		MERGE INTO CUSTOM_WEB_ENV
+		    USING DUAL
+		ON (Key = 'LATEST_ROUTING_SERVICE_START_TIME')
+		WHEN MATCHED THEN
+		    update set VALUE = #{CURRENT_TIME, jdbcType=VARCHAR}
+		WHEN NOT MATCHED THEN
+		insert (KEY,VALUE)
+		values('LATEST_ROUTING_SERVICE_START_TIME', #{CURRENT_TIME, jdbcType=VARCHAR})
+	</insert>
+
+	<select id="getLatestServiceTime" resultType="java.lang.String">
+		select value from CUSTOM_WEB_ENV where key='LATEST_ROUTING_SERVICE_START_TIME'
+	</select>
+
+	<!-- [20150922][ymjang] 대상 MECO 검색 쿼리 변경함. -->
+	<select id="getEcoFromLatestServiceTime" resultType="map">
+	     select item.pitem_id meco_no 
+	       from infodba.pitem item
+	          , infodba.pitemrevision revision
+	          , infodba.pm7_mecorevision ecorevision
+	          , infodba.pworkspaceobject wso
+	      where item.puid = revision.ritems_tagu
+	        and revision.puid = ecorevision.puid
+	        and ecorevision.puid = wso.puid
+	        and revision.pitem_revision_id = '000'
+	        and wso.pactive_seq=1
+	        and wso.pdate_released is not null
+	        and (#{MECO_NO, jdbcType=VARCHAR} is null or item.pitem_id = #{MECO_NO, jdbcType=VARCHAR})
+	        and (#{DATE_STR, jdbcType=VARCHAR} is null or TO_CHAR(WSO.PDATE_RELEASED + 9 / 24, 'YYYYMMDD') >= #{DATE_STR, jdbcType=VARCHAR})
+	        and (#{LATEST_SERVICE_TIME, jdbcType=VARCHAR} is null or WSO.PDATE_RELEASED >= to_date(#{LATEST_SERVICE_TIME, jdbcType=VARCHAR}, 'YYYYMMddHH24MISS') - 9/24)
+	   order by wso.pdate_released asc
+	</select>
+	<!-- 
+	<select id="getEcoFromLatestServiceTime" resultType="map">
+		select ITEM.PITEM_ID ECO_NO from infodba.pItem item, infodba.pItemRevision revision, INFODBA.PM7_MECOREVISION ecoRevision, infodba.pWorkSpaceObject wso
+		where item.puid = revision.rItems_tagu
+		and revision.puid = ecoRevision.puid
+		and ecoRevision.puid = wso.puid
+		and revision.pItem_Revision_ID = '000'
+		and WSO.PACTIVE_SEQ=1
+		and WSO.PDATE_RELEASED is not null
+		and WSO.PDATE_RELEASED >= to_date(#{latest_service_time, jdbcType=VARCHAR}, 'YYYYMMddHH24MISS') - 9/24
+		order by WSO.PDATE_RELEASED asc
+	</select>
+ 	-->
+ 	
+	<select id="getEcoEplInfo" resultType="map">
+		select * from MECO_EPL where new_child_type IN ('Vehicle Part', 'S7_Vehpart', 'Standard Part', 'S7_Stdpart')
+		<if test="MECONO != null">
+			and MECONO = #{MECONO, jdbcType=VARCHAR}
+		</if>
+		<if test="EPL_ID != null">
+			and EPL_ID = #{EPL_ID, jdbcType=VARCHAR}
+		</if>
+		order by parent_no, parent_rev
+	</select>
+
+	<!-- [20150922][ymjang] MBOM_IF_PACKAGE_TEST 로 부터 분리함 -->
+	<update id="insertRoutingInfo" statementType="CALLABLE">
+	    {call SAP_ROUTING_PACKAGE.insert_routing_info(#{MECO_NO, jdbcType=VARCHAR})}
+	</update>
+	
+	<!-- [20150922][ymjang] MBOM_IF_PACKAGE_TEST 로 부터 분리함 -->
+	<update id="update_routing_info_with_eff" statementType="CALLABLE">
+	    {call SAP_ROUTING_PACKAGE.update_routing_info_with_eff()}
+	</update>
+
+</mapper>

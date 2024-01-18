@@ -1,9 +1,3 @@
-/com/
-/log4j.properties
-/mig/
-/mybatis/
-/properties/
 /spring/
-/springmvc/
-/sqlmap/
-/test/
+/properties/
+/com/

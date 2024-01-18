@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ssangyong.mapper.WiringCheckMapper">
+
+	<select id="findUserInVNet" resultType="java.util.HashMap">
+		SELECT EMPNO ID,
+		       HNAME NAME,
+		       TEAM
+		FROM   IF_SYSA02TB
+		WHERE  1=1
+		<if test="USER_ID != null">
+		AND    EMPNO LIKE #{USER_ID, jdbcType=VARCHAR}
+		</if>
+		<if test="USER_NAME != null">
+		AND    HNAME LIKE #{USER_NAME, jdbcType=VARCHAR}
+		</if>
+		ORDER BY 2
+	</select>
+
+	<select id="getWiringMailList" resultType="java.util.HashMap">
+		SELECT M.USER_ID ID,
+		       U.HNAME NAME,
+               U.TEAM,
+		       M.IS_ADMIN
+		FROM   WIRING_MAIL_LIST M,
+		       IF_SYSA02TB U
+		WHERE  M.USER_ID = U.EMPNO
+		<if test="USER_ID != null">
+		AND    M.USER_ID = #{USER_ID, jdbcType=VARCHAR}
+		</if>
+		ORDER BY IS_ADMIN DESC, U.HNAME
+	</select>
+
+  	<delete id="deleteWiringMailList" >
+	  	DELETE WIRING_MAIL_LIST
+  	</delete>
+
+  	<insert id="insertWiringMailList" >
+  		INSERT ALL
+		<foreach collection="USER_LIST" item="item" >
+			INTO WIRING_MAIL_LIST (USER_ID, IS_ADMIN) VALUES ('${item.USER_ID}', '${item.IS_ADMIN}')
+    	</foreach>
+		SELECT * FROM DUAL
+	</insert>
+
+	<select id="getWiringCategoryNo" resultType="java.util.HashMap">
+		SELECT PROJECT_CODE,
+		       WIRING_TYPE,
+		       RTRIM(XMLAGG(XMLELEMENT("CATEGORY_NO", CATEGORY_NO, ' ') ORDER BY CATEGORY_NO).EXTRACT('//text()').GETSTRINGVAL(), ' ') AS CATEGORY_NO
+		FROM   WIRING_CATEGORY_NO
+		GROUP BY PROJECT_CODE, WIRING_TYPE
+		ORDER BY 1, 2, 3
+	</select>
+
+  	<delete id="deleteWiringCategoryNo" >
+	  	DELETE WIRING_CATEGORY_NO
+  	</delete>
+
+  	<insert id="insertWiringCategoryNo" >
+  		INSERT ALL
+		<foreach collection="CATEGORY_NO_LIST" item="item" >
+			INTO WIRING_CATEGORY_NO (PROJECT_CODE, WIRING_TYPE, CATEGORY_NO) VALUES ('${item.PROJECT_CODE}', '${item.WIRING_TYPE}', '${item.CATEGORY_NO}')
+    	</foreach>
+		SELECT * FROM DUAL
+	</insert>
+
+</mapper>

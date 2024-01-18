@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <!-- [20150710] [ymjang] getLOVList Query 오류 수정  -->
+ <mapper namespace="com.symc.tc.lov">
+     <select id="getLOVList" parameterType="java.util.HashMap" resultType="com.symc.work.model.KeyLOV">
+        SELECT #{id, jdbcType=VARCHAR} AS ID, PUID, PVAL_0 AS VALUE FROM INFODBA.PLOV_VALUES_3
+        WHERE PUID = (SELECT PUID FROM INFODBA.PLISTOFVALUES WHERE PLOV_NAME=#{id, jdbcType=VARCHAR})
+    </select>
+
+    <select id="getEcoReason" resultType="java.lang.String">
+		with val_puid as (SELECT PUID FROM INFODBA.PLISTOFVALUES WHERE PLOV_NAME='S7_ECO_REASON')
+		SELECT  lov_desc.pVal_0 AS eco_reason FROM INFODBA.PLOV_VALUES_3 lov_val, infodba.PLOV_VALUE_DESCRIPTIONS_3 lov_desc
+        WHERE lov_val.PUID = (select a.puid from val_puid a)
+        and lov_val.puid = lov_desc.puid
+        and lov_val.pSeq = lov_desc.pSeq
+        and lov_val.puid=(select a.puid from val_puid a)
+        and lov_val.pVal_0=#{ECO_REASON_CODE, jdbcType=VARCHAR}
+    </select>
+     <select id="getLOVValues" parameterType="java.util.HashMap" resultType="com.symc.work.model.KeyLOV">
+        SELECT #{id, jdbcType=VARCHAR} AS ID, VAL.PUID AS PUID, VAL.PVAL_0 AS VALUE, VDESC.PVAL_0 AS DESCRIPTION
+          FROM INFODBA.PLOV_VALUES_3 VAL, INFODBA.PLOV_VALUE_DESCRIPTIONS_3 VDESC
+         WHERE VAL.PUID = (SELECT PUID FROM INFODBA.PLISTOFVALUES WHERE PLOV_NAME=#{id, jdbcType=VARCHAR})
+           AND VAL.PUID = VDESC.PUID
+           AND VAL.PSEQ = VDESC.PSEQ
+    </select>
+
+</mapper>

@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+  
+<mapper namespace="com.ssangyong.mapper.MigrationMapper">  
+	<select id="getValidationList" resultType="java.util.HashMap">  
+		SELECT * FROM ${objectType}	WHERE MIG_FLAG = 'I' AND MIG_SEQ = #{seqType, jdbcType=VARCHAR}	   
+	</select>
+	
+	<!-- 정의 안된 나머지 컬럼들은 자동맵핑 -->
+	<resultMap id="ItemValidationMap" type="java.util.HashMap" >
+	   <result property="ITEM_ID" column="ITEM_ID"/>
+	   <collection property="DATASET_FILE_LIST" column="{partNo=ITEM_ID,revId=REVISION_ID}" javaType="java.util.ArrayList" ofType="java.util.HashMap" select="getItemFileList"/>
+	</resultMap>
+	<select id="getItemValidationList" resultMap="ItemValidationMap">  
+        <choose>
+            <!-- TECH DOC등록은 쿼리를 다르게 한다. -->
+            <when test='objectType == "MIG_ENGDOC"'>
+                SELECT CASE
+                      WHEN ITEM_OBJECT.NAME IS NULL
+                      THEN
+                         NULL
+                      WHEN INSTR (ITEM_OBJECT.NAME,
+                                  '-',
+                                  1,
+                                  3) > 0
+                      THEN
+                         SUBSTR (ITEM_OBJECT.NAME,
+                                 0,
+                                   INSTR (ITEM_OBJECT.NAME,
+                                          '-',
+                                          1,
+                                          3)
+                                 - 1)
+                      ELSE
+                         ITEM_OBJECT.NAME
+                   END
+                      ITEM_ID,
+                   ITEM_OBJECT.NAME,
+                   ITEM_OBJECT.S7_TYPE,
+                   '' S7_ENG_DOC_TYPE, /** 추가 사항 **/
+                   '' S7_SES_CLASSIFICATION, /** 추가 사항 **/
+                   ITEM_OBJECT.DESCRIPTION,
+                   ITEM_OBJECT.S7_MATURITY,
+                   ITEM_OBJECT.S7_REVISED_DATE,
+                   ITEM_OBJECT.FILE_PATH,
+                   ITEM_OBJECT.S7_TOOL,
+                   ITEM_OBJECT.S7_PARAM,
+                   ITEM_OBJECT.PLAST_MOD_DATE,
+                   ITEM_OBJECT.RLAST_MOD_USER,
+                   ITEM_OBJECT.ROWING_GROUP,
+                   ITEM_OBJECT.ROWNIG_USER,
+                   ITEM_OBJECT.PCREATION_DATE,
+                   ITEM_OBJECT.MIG_FLAG,
+                   ITEM_OBJECT.CREATOR,
+                   ITEM_OBJECT.REVISION_ID,
+                   ITEM_OBJECT.MIG_SEQ
+              FROM MIG_ENGDOC ITEM_OBJECT
+                 WHERE ITEM_OBJECT.MIG_FLAG = 'I'
+                    AND ITEM_OBJECT.MIG_SEQ = #{seqType, jdbcType=VARCHAR}
+            </when>
+            <!-- PROJECT 등록은 쿼리를 다르게 한다. - REVISION 정보가 없으므로 초기 데이터 '000' 입력 -->
+            <when test='objectType == "MIG_PROJECT"'>
+	            SELECT ITEM_OBJECT.*, '000' REVISION_ID
+	              FROM ${objectType} ITEM_OBJECT
+	             WHERE     ITEM_OBJECT.MIG_FLAG = 'I'
+	                   AND ITEM_OBJECT.MIG_SEQ = #{seqType, jdbcType=VARCHAR}               
+            </when>  
+            <!-- 나머지 다른 Item - 최신 리비젼 조회 -->
+            <otherwise>
+	            SELECT ITEM_OBJECT.*
+	              FROM ${objectType} ITEM_OBJECT
+	             WHERE     ITEM_OBJECT.MIG_FLAG = 'I'
+	                   AND ITEM_OBJECT.MIG_SEQ = #{seqType, jdbcType=VARCHAR}
+	                   AND ITEM_OBJECT.REVISION_ID =
+	                          (SELECT MAX (MV.REVISION_ID)
+	                             FROM ${objectType} MV
+	                            WHERE MV.ITEM_ID = ITEM_OBJECT.ITEM_ID)
+            </otherwise>
+        </choose>
+    </select>
+    <select id="getItemFileList" parameterType="java.util.HashMap" resultType="java.util.HashMap">  
+        SELECT  PART_NO ITEM_ID,
+                REVISION_ID,
+                CAD_TYPE DATASET_TYPE,
+                NAME DATASET_NAME,
+                FILE_PATH,
+                REVISION_ID FILE_REVISION_ID,
+                V4_TYPE,
+                PART_REV 
+        FROM MIG_FILE A WHERE PART_NO = #{partNo, jdbcType=VARCHAR}
+            AND A.REVISION_ID = #{revId, jdbcType=VARCHAR}            
+            /*
+            AND CAD_TYPE &lt;&gt; 'model'
+            AND A.REVISION_ID =
+                                    (SELECT MAX (MF.REVISION_ID)
+                                       FROM MIG_FILE MF
+                                      WHERE MF.PART_NO = A.PART_NO)
+            */                               
+    </select>
+    <!-- X100 Migration -->
+    <resultMap id="X100_ItemValidationMap" type="java.util.HashMap" >
+       <result property="ITEM_ID" column="ITEM_ID"/>
+       <collection property="DATASET_FILE_LIST" column="{partNo=ITEM_ID,revId=REVISION_ID}" javaType="java.util.ArrayList" ofType="java.util.HashMap" select="getX100ItemFileList"/>
+    </resultMap>
+    <select id="getX100ItemValidationList" resultMap="X100_ItemValidationMap">  
+	    SELECT ITEM_OBJECT.*
+	      FROM X100_MIG_VEHPART ITEM_OBJECT
+	     WHERE     ITEM_OBJECT.MIG_FLAG = 'I'
+	           AND ITEM_OBJECT.MIG_SEQ = #{seqType, jdbcType=VARCHAR}
+	           AND ITEM_OBJECT.REVISION_ID =
+	                  (SELECT MAX (MV.REVISION_ID)
+	                     FROM X100_MIG_VEHPART MV
+	                    WHERE MV.ITEM_ID = ITEM_OBJECT.ITEM_ID)
+
+    </select>
+    <select id="getX100ItemFileList" parameterType="java.util.HashMap" resultType="java.util.HashMap">  
+        SELECT  PART_NO ITEM_ID,
+                REVISION_ID,
+                CAD_TYPE DATASET_TYPE,
+                NAME DATASET_NAME,
+                FILE_PATH,
+                REVISION_ID FILE_REVISION_ID,
+                V4_TYPE,
+                PART_REV 
+        FROM X100_MIG_FILE A WHERE PART_NO = #{partNo, jdbcType=VARCHAR}
+            AND A.REVISION_ID = #{revId, jdbcType=VARCHAR}            
+            /*
+            AND CAD_TYPE &lt;&gt; 'model'
+            AND A.REVISION_ID =
+                                    (SELECT MAX (MF.REVISION_ID)
+                                       FROM X100_MIG_FILE MF
+                                      WHERE MF.PART_NO = A.PART_NO)
+            */                               
+    </select>
+	<update id="updateMigrationItemStatus"  parameterType="java.util.HashMap" >
+        <if test="objectType == 'MIG_ENGDOC'">
+            UPDATE MIG_ENGDOC                      
+            SET MIG_FLAG = #{MIG_FLAG, jdbcType=VARCHAR}           
+            WHERE NAME = #{ITEM_ID, jdbcType=VARCHAR}
+            AND MIG_FLAG &lt;&gt; 'F'         
+        </if>
+        <if test="objectType != 'MIG_ENGDOC'">
+	        UPDATE ${objectType}                      
+	        SET MIG_FLAG = #{MIG_FLAG, jdbcType=VARCHAR}           
+	        WHERE ITEM_ID = #{ITEM_ID, jdbcType=VARCHAR}
+	        AND MIG_FLAG &lt;&gt; 'F'     
+        </if>
+    </update>    
+    <!-- BOM Impot는 현재 사용하고 있지않음. -->    
+    <select id="getBOMValidationList" resultType="java.util.HashMap">  
+        /**
+        SELECT  LEVEL,
+                ITEM_ID, 
+                REVISION_ID, 
+                NAME 
+        FROM MIG_BOM 
+            WHERE MIG_FLAG = 'I' AND MIG_SEQ = #{seqType, jdbcType=VARCHAR}
+        **/    
+            
+		 SELECT ITEM_TABLE.PUID, ITEM_ID, ITEM_OBJECT.POBJECT_NAME
+		  FROM (SELECT 'Inch' ITEM_ID FROM DUAL
+		        UNION
+		        SELECT '000228' ITEM_ID FROM DUAL
+		        UNION
+		        SELECT 'Inch2' ITEM_ID FROM DUAL) DATA,
+		       INFODBA.PITEM ITEM_TABLE,
+		       INFODBA.PWORKSPACEOBJECT ITEM_OBJECT
+		 WHERE     DATA.ITEM_ID = ITEM_TABLE.PITEM_ID(+)
+		       AND ITEM_TABLE.PUID = ITEM_OBJECT.PUID(+)
+    </select>
+    <!-- BOM Impot는 현재 사용하고 있지않음. --> 
+    <update id="updateMigrationBOMStatus"  parameterType="java.util.HashMap" >
+        /**
+        UPDATE                      
+        SET MIG_FLAG = #{MIG_FLAG, jdbcType=VARCHAR}           
+        WHERE ITEM_ID = #{ITEM_ID, jdbcType=VARCHAR}          
+        AND NAME = #{NAME, jdbcType=VARCHAR}
+        **/
+    </update>
+</mapper>

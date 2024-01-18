@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.interface">
+ <resultMap id="projectListResultMap" type="java.util.HashMap">
+        <result property="LOG" javaType="java.lang.String" jdbcType="CLOB" column="LOG"/>
+        <result property="CREATION_DATE" javaType="java.util.Date" jdbcType="DATE" column="CREATION_DATE"/>
+        <result property="WAIT_DATE" javaType="java.util.Date" jdbcType="DATE" column="WAIT_DATE"/>
+        <result property="COMPLETE_DATE" javaType="java.util.Date" jdbcType="DATE" column="COMPLETE_DATE"/>
+ </resultMap>
+	
+	<!-- [20150710] [ymjang] Product 일괄 재배포시 2 건 Select 오류 불생 -->
+	<!-- - Product 배초 여부 확인 -->
+	<select id="chkFirstTransYN" resultType="int">
+		select count('x')
+		  from dual
+		 where exists ( select 'x'
+		                  from IF_PE_PRODUCT a
+		                 where a.trans_type = #{TRANS_TYPE, jdbcType=VARCHAR}
+		                   and a.Product_rev_id = #{PRODUCT_REV_ID, jdbcType=VARCHAR}
+		                   AND a.PROJECT_ID = #{PROJECT_ID, jdbcType=VARCHAR}
+		                   and a.STAT = #{STAT, jdbcType=VARCHAR}
+		              )
+	</select>
+	             
+	<select id="getProductList" resultMap="projectListResultMap">
+	 	select a.*, b.log from IF_PE_PRODUCT a, IF_PE_PRODUCT_LOG b  where a.IF_ID = b.IF_ID(+) and a.trans_type=#{TRANS_TYPE, jdbcType=VARCHAR}
+	 	<if test="PRODUCT_ID != null">
+		   AND a.Product_ID=#{PRODUCT_ID, jdbcType=VARCHAR}
+		</if>
+		<if test="PRODUCT_REV_ID != null">
+		   AND a.Product_rev_id = #{PRODUCT_REV_ID, jdbcType=VARCHAR}
+		</if>
+	 	<if test="REGISTERED_AFTER != null">
+		   AND a.CREATION_Date &gt;= to_date(#{REGISTERED_AFTER, jdbcType=VARCHAR} || ' 00:00:00', 'yyyy-MM-dd HH24:MI:SS')
+		</if>
+		<if test="REGISTERED_BEFORE != null">
+			AND a.CREATION_Date &lt;= to_date(#{REGISTERED_BEFORE, jdbcType=VARCHAR} || ' 00:00:00', 'yyyy-MM-dd HH24:MI:SS')
+		</if>
+		<if test="COMPLETED_AFTER != null">
+			AND a.Complete_Date &gt;= to_date(#{COMPLETED_AFTER, jdbcType=VARCHAR} || ' 00:00:00', 'yyyy-MM-dd HH24:MI:SS')
+		</if>
+		<if test="COMPLETED_BEFORE != null">
+			AND a.Complete_Date &lt;= to_date(#{COMPLETED_BEFORE, jdbcType=VARCHAR} || ' 00:00:00', 'yyyy-MM-dd HH24:MI:SS')
+		</if>
+		<if test="PROJECT_ID != null">
+			AND a.PROJECT_ID = #{PROJECT_ID, jdbcType=VARCHAR}
+		</if>
+		<if test="ECO_ID != null">
+		   AND a.ECO_ID like #{ECO_ID, jdbcType=VARCHAR}
+		</if>
+		<if test="STAT != null">
+		   AND a.STAT = #{STAT, jdbcType=VARCHAR}
+		</if>
+	</select>
+
+	<insert id="insertTransFunction" >
+		insert into IF_PE_TRANS_FUNCTION values(#{IF_ID, jdbcType=VARCHAR}, #{FUNCTION_ID, jdbcType=VARCHAR}, #{FUNCTION_REV_ID, jdbcType=VARCHAR})
+	</insert>
+
+	<insert id="insertProduct" >
+        MERGE INTO IF_PE_Product
+        USING DUAL
+		<choose>
+		    <when test="IF_ID != null">
+	        	ON (IF_ID = #{IF_ID, jdbcType=VARCHAR} )
+		        WHEN NOT MATCHED THEN
+				  insert (IF_ID, ECO_ID, Project_ID, Product_ID, Product_Rev_ID, IF_Date, Trans_Type, STAT)
+				  values(#{IF_ID, jdbcType=VARCHAR},#{ECO_ID, jdbcType=VARCHAR},#{PROJECT_ID, jdbcType=VARCHAR}, #{PRODUCT_ID, jdbcType=VARCHAR}, #{PRODUCT_REV_ID, jdbcType=VARCHAR}
+		    </when>
+		    <otherwise>
+			    ON (ECO_ID = #{ECO_ID, jdbcType=VARCHAR} and Product_ID = #{PRODUCT_ID, jdbcType=VARCHAR} and Product_Rev_ID = #{PRODUCT_REV_ID, jdbcType=VARCHAR})
+			    WHEN NOT MATCHED THEN
+					insert (ECO_ID, Project_ID, Product_ID, Product_Rev_ID, IF_Date, Trans_Type, STAT)
+					values(#{ECO_ID, jdbcType=VARCHAR},#{PROJECT_ID, jdbcType=VARCHAR}, #{PRODUCT_ID, jdbcType=VARCHAR}, #{PRODUCT_REV_ID, jdbcType=VARCHAR}
+		    </otherwise>
+	    </choose>
+        <choose>
+        	<when test="IF_DATE == null">
+        		,sysdate
+        	</when>
+        	<otherwise>
+        		,#{IF_DATE, jdbcType=DATE}
+        	</otherwise>
+        </choose>
+		, #{TRANS_TYPE, jdbcType=VARCHAR}, #{STAT, jdbcType=VARCHAR})
+	</insert>
+
+	<update id="updateProduct">
+  	  update IF_PE_PRODUCT set STAT = #{STAT, jdbcType=VARCHAR}
+  	  <if test="RE_TRANS = 'Y'">
+			   ,IF_DATE=sysdate
+			   ,COMPLETE_DATE = null
+	  </if>
+  	  where IF_ID=#{IF_ID, jdbcType=VARCHAR}
+
+    </update>
+
+    <update id="updateProductStat">
+  	  update IF_PE_PRODUCT set STAT = #{STAT, jdbcType=VARCHAR}, COMPLETE_DATE = to_date(EAI_UPDATE_TIME, 'YYYYMMddHH24MISS')
+  	  where EAI_FLAG=#{EAI_FLAG, jdbcType=VARCHAR} and COMPLETE_DATE is null
+    </update>
+
+    <select id="getNoTransInfo" resultType="java.util.HashMap">
+	 	select * from IF_PE_NO_TRANS where 1=1
+	 	<if test="PRODUCT_ID != null">
+			   and Product_ID=#{PRODUCT_ID, jdbcType=VARCHAR}
+	  	</if>
+
+	</select>
+
+	<insert id="insertNoTransProduct" >
+	  insert into IF_PE_NO_TRANS (Product_ID, Product_Rev_ID, Project_ID, Creation_DATE)
+	  values(#{PRODUCT_ID, jdbcType=VARCHAR}, #{PRODUCT_REV_ID, jdbcType=VARCHAR}
+	  , #{PROJECT_ID, jdbcType=VARCHAR}, sysdate)
+	</insert>
+
+	<select id="getLastBatchExcutionTime" resultType="java.util.Date">
+	 	select START_DATE from if_pe_batch_time
+	</select>
+
+	<insert id="insertEcoDetail" >
+        MERGE INTO IF_PE_ECO_DETAIL
+        USING DUAL
+        ON (ECO_ID = #{ECO_ID, jdbcType=VARCHAR})
+        WHEN NOT MATCHED THEN
+            insert (ECO_ID, RELEASE_DATE, Plant, ECO_Reason, Change_Desc, Affected_Project)
+			  values(#{ECO_ID, jdbcType=VARCHAR},#{RELEASE_DATE, jdbcType=DATE},#{PLANT, jdbcType=VARCHAR},
+			  #{ECO_REASON, jdbcType=VARCHAR}, #{CHANGE_DESC, jdbcType=VARCHAR}, #{AFFECTED_PROJECT, jdbcType=VARCHAR})
+
+	</insert>
+
+	<!-- SYMC 인트라넷을 통한 메일 발송 -->
+   <update id="sendMail" statementType="CALLABLE">
+   		{call CALS.MAILSEND@LINK_001_VNET(#{the_sysid},#{the_sabun},#{the_title},#{the_remark},#{the_tsabun})}
+   </update>
+
+   <!-- SYMC 인트라넷을 통한 메일 발송 (through EAI) -->
+   <select id="sendMailEai">
+   INSERT INTO IF_USER.IF_EMAIL (SEQ_NO, SYSTEM_ID, FROM_USERS, TITLE, REMARK, TO_USERS, CREATE_DATE ) 
+        SELECT ( SELECT GET_NEXT_MAIL_SEQ() FROM DUAL ) AS SEQ_NO
+             , #{the_sysid,jdbcType=VARCHAR,mode=IN}, #{the_sabun,jdbcType=VARCHAR,mode=IN}
+             , #{the_title,jdbcType=VARCHAR,mode=IN}
+             , #{the_remark,jdbcType=VARCHAR,mode=IN}
+             , #{the_tsabun,jdbcType=VARCHAR,mode=IN}
+             , SYSDATE
+          FROM DUAL
+   </select>
+
+	<select id="getMaxBpPuid" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT MAX(BP_PUID) AS BP_PUID 
+      FROM IF_BP 
+     WHERE BP_PUID LIKE #{PDATE_RELEASED, jdbcType=VARCHAR} || '%'
+    ]]>     
+	</select>
+	
+	<select id="getNewParentList" resultType="java.util.HashMap">
+	<![CDATA[
+    SELECT A.P_PART_NO, '' AS OLD_P_PART_REV, A.P_PART_REV
+	     , TO_CHAR((PIRW.PDATE_RELEASED + 9/24), 'YYYYMMDDHH24MISS') AS EFF
+	  FROM IF_BP A
+		 , INFODBA.PWORKSPACEOBJECT PIRW
+	     , INFODBA.PITEM PI, INFODBA.PITEMREVISION PIR
+	 WHERE PIRW.PUID = PIR.PUID
+	   AND PIRW.POBJECT_TYPE <> 'S7_FunctionRevision'
+	   AND PIRW.PACTIVE_SEQ = 1
+	   AND PIR.RITEMS_TAGU = PI.PUID
+	   AND PI.PITEM_ID = A.P_PART_NO
+	   AND PIR.PITEM_REVISION_ID = A.P_PART_REV
+	   AND A.BP_PUID = #{BP_PUID, jdbcType=VARCHAR}
+  	   AND A.BOM_CHANGE_TYPE IN ('A', 'C')
+  GROUP BY A.P_PART_NO, A.P_PART_REV, PIRW.PDATE_RELEASED
+  ORDER BY A.P_PART_NO, A.P_PART_REV
+    ]]>     
+	</select>
+
+	<select id="getOldParentList" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT P_PART_NO, OLD_P_PART_REV, P_PART_REV, EFF
+    FROM (
+          SELECT X.P_PART_NO, X.OLD_P_PART_REV
+               , TO_CHAR((PIRW.PDATE_RELEASED + 9/24), 'YYYYMMDDHH24MISS') AS EFF
+               , ROW_NUMBER() OVER (PARTITION BY X.P_PART_NO ORDER BY X.OLD_P_PART_REV DESC) AS P_PART_SEQ
+               , X.P_PART_REV
+            FROM (
+                  SELECT A.COID AS P_PART_NO
+                       , REPLACE(SUBSTR(A.PPART_NO, INSTR(A.PPART_NO, ' ', -1) +1), ' ') AS OLD_P_PART_REV
+                       , B.P_PART_REV
+                    FROM ECO_EPL_STORAGE A
+                       , (  SELECT B1.COID, B1.COMPID, B1.P_PART_REV AS P_PART_REV
+                                 , B1.PART_NO, B1.PART_REV
+                              FROM IF_BP B1
+                             WHERE B1.BP_PUID = #{BP_PUID, jdbcType=VARCHAR}
+                               AND B1.BOM_CHANGE_TYPE IN ('B', 'D')
+                          GROUP BY B1.COID, B1.COMPID, B1.P_PART_REV
+                                 , B1.PART_NO, B1.PART_REV
+                          ) B
+                   WHERE A.BOM_CHANGE_TYPE IN ('A', 'C')
+                     AND A.COID = B.COID
+                     AND A.COMPID = B.COMPID
+                     AND CASE WHEN A.ENV = 'S7_Function' THEN RTRIM(SUBSTR(A.PART_NO, 1, INSTR(A.PART_NO,  ' ', -1) -2))
+                              ELSE RTRIM(SUBSTR(A.PART_NO, 3, INSTR(A.PART_NO,  ' ', -1) -2))
+                         END = B.PART_NO
+                     AND RTRIM(SUBSTR(A.PART_NO, INSTR(A.PART_NO, ' ', -1) +1)) = B.PART_REV
+                GROUP BY A.COID, REPLACE(SUBSTR(A.PPART_NO, INSTR(A.PPART_NO, ' ', -1) +1), ' '), B.P_PART_REV
+               ) X
+              , INFODBA.PITEM PI
+              , INFODBA.PWORKSPACEOBJECT PIRW
+              , INFODBA.PITEMREVISION PIR 
+          WHERE PIRW.PUID = PIR.PUID
+            AND PIRW.POBJECT_TYPE <> 'S7_FunctionRevision'
+            AND PIRW.PACTIVE_SEQ = 1
+            AND PI.PUID = PIR.RITEMS_TAGU 
+            AND PI.PITEM_ID = X.P_PART_NO
+            AND PIR.PITEM_REVISION_ID = X.OLD_P_PART_REV
+            -- 부모가 다른 경우만, 같은 경우는 Revisiond은 다르더라도 BOM Line 은 동일하기 때문.
+            AND X.OLD_P_PART_REV <> X.P_PART_REV
+         )
+     WHERE P_PART_SEQ = 1
+    ]]>
+	</select>
+
+	<select id="getBpnToUpdate" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT PART_NO, PART_REV, TO_CHAR(ORDER_NO) AS ORDER_NO
+	     , TO_CHAR(BP_DATE_FROM, 'YYYY-MM-DD HH24:MI:SS') AS BP_IN
+	     , TO_CHAR(BP_DATE_TO, 'YYYY-MM-DD HH24:MI:SS') AS BP_OUT
+	     , P_PART_NO || '_' || IN_ECO_NO || '_' || TO_CHAR(ORDER_NO) AS BP_ID
+	     , ECO_NO, BOM_CHANGE_TYPE, COMPID
+	  FROM IF_BP
+	 WHERE BP_PUID = #{BP_PUID, jdbcType=VARCHAR}
+	   AND P_PART_NO = #{P_PART_NO, jdbcType=VARCHAR}
+	   AND P_PART_REV = #{P_PART_REV, jdbcType=VARCHAR}
+    ]]>
+  	   AND BOM_CHANGE_TYPE IN 
+       <foreach item="change_type" collection="BOM_CHANGE_TYPE" open="(" separator="," close=")">
+           #{change_type, jdbcType=VARCHAR}
+       </foreach>
+	</select>
+
+	
+    <select id="getFunctionListToTrans" resultType="java.util.HashMap">
+		select prod.product_id, TRANS_FUNC.FUNCTION_ID, TRANS_FUNC.FUNCTION_REV_ID, prod.stat, prod.creation_date, prod.complete_date, prod.if_id,  prod_log.log
+		from if_pe_product prod, if_pe_product_log prod_log, if_pe_trans_function trans_func
+		where prod.if_id = prod_log.if_id(+) and prod.if_id = trans_func.if_id
+		and prod.product_id = #{PRODUCT_ID, jdbcType=VARCHAR}
+		order by  trans_func.function_id asc
+    </select>
+
+	<select id="getSysGuid" resultType="string">
+		select sys_guid() if_id from dual
+	</select>
+
+	<select id="getFunctionList" resultType="java.util.HashMap">
+		select * from table(MBOM_IF_PACKAGE.get_functions(#{PRODUCT_ID, jdbcType=VARCHAR},''))
+	</select>
+
+	<select id="getParentRev" resultType="string">
+		select distinct parent_rev from eco_bom_list
+		where epl_yn='Y' and ct <![CDATA[<>]]> 'XX'
+		and eco_no = #{ECO_ID, jdbcType=VARCHAR} and parent_no=#{PARENT_ID, jdbcType=VARCHAR}
+	</select>
+  
+    <update id="updateNotEaiPreMasterFullList">
+      update if_prebom_master_full_list set eai_flag = 'X', eai_msg = 'SKIP', eai_create_time = #{EAI_CREATE_TIME, jdbcType=VARCHAR}
+      where eai_flag = 'I'
+    </update>
+    
+    <update id="updateNotEaiPreUsageFullList">
+      update if_prebom_usage_full set eai_flag = 'X', eai_msg = 'SKIP', eai_create_time = #{EAI_CREATE_TIME, jdbcType=VARCHAR}
+      where eai_flag = 'I'
+    </update>
+    
+    <update id="updateNotEaiOspecTrim">
+      update IF_PREBOM_OSPEC_TRIM set eai_flag = 'X', eai_msg = 'SKIP', eai_create_time = #{EAI_CREATE_TIME, jdbcType=VARCHAR}
+      where eai_flag = 'I'
+    </update>
+</mapper>

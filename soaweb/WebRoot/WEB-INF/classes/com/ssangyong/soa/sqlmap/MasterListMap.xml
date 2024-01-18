@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+  
+<mapper namespace="com.ssangyong.soa.mapper.MasterListMapper">  
+
+	<select id="getDCSList" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT IR.PUID
+	     , I.PITEM_ID AS DOC_NO
+	     , IR.PITEM_REVISION_ID AS REVISION_NO
+	     , DCSI.PS7_PROJECT_CODE AS PROJECT_CODE
+	     , DCSI.PS7_SYSTEM_CODE AS SYSTEM_CODE
+	     , HBOM_CM_PACKAGE_TEST.GET_LOV_DESCRIPTION(DCSI.PS7_SYSTEM_CODE, 'S7_SYSTEM_CODE') AS SYSTEM_NAME
+	     , ( SELECT MAX(V.TEAM_NAME)
+	           FROM INFODBA.PGROUP G1
+	              , TEAM_HISTORY V
+	          WHERE V.TEAM_CODE = G1.PDESCRIPTION
+	            AND G1.PUID = G.PUID ) AS OWNING_GROUP
+	     , U.PUSER_NAME AS OWNING_USER
+	     , TO_CHAR(PWO.PDATE_RELEASED + 9 / 24, 'YYYY/MM/DD') AS RELEASE_DATE
+	     , HBOM_CM_PACKAGE_TEST.GET_LOV_DESCRIPTION(DCSIR.PS7_SECRET, 'S7_SECRET') AS SECRET
+	     , DECODE(DCSIR.PS7_FMEA, '1', 'Y', '') AS FMEA
+	     , DECODE(DCSIR.PS7_PRODUCT_SPEC, '1', 'Y', '') AS PRODUCT_SPEC
+	     , DECODE(DCSIR.PS7_FUNCTION_SAFETY, '1', 'Y', '') AS FUNCTION_SAFETY
+	  FROM INFODBA.PITEM I
+	     , INFODBA.PITEMREVISION IR
+	     , INFODBA.PWORKSPACEOBJECT PWO
+	     , INFODBA.PPOM_APPLICATION_OBJECT PAO
+	     , INFODBA.PS7_DESIGNCONCEPTREVISION DCSIR
+	     , INFODBA.PS7_DESIGNCONCEPT DCSI
+	     , INFODBA.PPOM_USER U
+	     , INFODBA.PPOM_GROUP G
+	 WHERE DCSI.PUID = I.PUID
+	   AND DCSIR.PUID = IR.PUID
+	   AND IR.RITEMS_TAGU = I.PUID
+	   AND U.PUID = PAO.ROWNING_USERU
+   	   AND G.PUID = PAO.ROWNING_GROUPU
+   	   AND PAO.PUID = IR.PUID
+	   AND PWO.PUID = IR.PUID
+	   AND PWO.POBJECT_TYPE IN ('S7_DesignConceptRevision') 
+	   AND IR.PITEM_REVISION_ID = ( SELECT MAX(IR1.PITEM_REVISION_ID)
+	                                  FROM INFODBA.PITEM I1
+	                                     , INFODBA.PITEMREVISION IR1
+	                                 WHERE IR1.RITEMS_TAGU = I1.PUID
+	                                   AND I1.PUID = I.PUID
+	                               )
+	   AND DCSI.PS7_PROJECT_CODE = #{PS7_PROJECT_CODE,jdbcType=VARCHAR}
+	   AND DCSI.PS7_SYSTEM_CODE = #{PS7_SYSTEM_CODE,jdbcType=VARCHAR}
+  ORDER BY I.PITEM_ID
+	]]>
+	</select>
+   
+    <select id="getSysGuid" resultType="String">
+    SELECT SYS_GUID() SYSTEM_ROW_KEY FROM DUAL
+    </select>
+   
+</mapper>

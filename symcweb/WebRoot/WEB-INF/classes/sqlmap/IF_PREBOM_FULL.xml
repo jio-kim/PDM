@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.masterfull">
+ 
+    <!-- 마스터리스트에서 키값으로 사용할 값을 가져온다 -->
+    <select id="selectMasterListKey" resultType="String"> 
+    SELECT SYS_GUID() AS LIST_ID FROM DUAL
+    </select>
+
+    <select id="selectDwgDeployableDate" resultType="string">
+        select to_char(ps7_dwg_deployable_date + 9/24, 'YYYYMMDDHH24MISS') dwg_deployable_date from infodba.PS7_PREVEHPARTREVISION  where puid=#{PUID, jdbcType=VARCHAR}
+    </select>
+
+    <!-- [20160903] [ymjang] OLD 이력 오류 개선 -->
+    <select id="getPrebomMasterFullList" resultType="java.util.HashMap">
+		SELECT *
+		  FROM (
+		        SELECT *
+		          FROM PREBOM_MASTER_FULL_LIST PA
+		         WHERE PA.CHILD_UNIQUE_NO = #{ITEM_ID, jdbcType=VARCHAR}
+		           AND PA.CHILD_REV = #{ITEM_REV, jdbcType=VARCHAR}
+		           AND PA.CREATION_DATE = (SELECT MAX(CREATION_DATE)
+		                                     FROM PREBOM_MASTER_FULL_LIST CA
+		                                    WHERE CA.CHILD_UNIQUE_NO = PA.CHILD_UNIQUE_NO
+		                                      AND CA.CHILD_REV = PA.CHILD_REV)
+		      ORDER BY LIST_ID DESC
+		        )
+		 WHERE ROWNUM = 1
+    </select>
+	<!--
+    <select id="getPrebomMasterFullList" resultType="java.util.HashMap">
+        SELECT *
+          FROM PREBOM_MASTER_FULL_LIST PA
+         WHERE PA.CHILD_UNIQUE_NO = #{ITEM_ID, jdbcType=VARCHAR}
+           AND PA.CHILD_REV = #{ITEM_REV, jdbcType=VARCHAR}
+           AND PA.CREATION_DATE = (SELECT MAX(CREATION_DATE)
+                                     FROM PREBOM_MASTER_FULL_LIST CA
+                                    WHERE CA.CHILD_UNIQUE_NO = PA.CHILD_UNIQUE_NO
+                                      AND CA.CHILD_REV = PA.CHILD_REV)
+    </select>
+    -->
+     
+    <select id="getPrebomMasterFullUsageList" resultType="java.util.HashMap">
+         SELECT LIST_ID,
+                USAGE_QTY,
+                USAGE_TYPE AS OPTION_TYPE,                
+                SYSTEM_ROW_KEY,
+                AREA AS USAGE_LV1,
+                PASSENGER AS USAGE_LV2,
+                ENGINE AS USAGE_LV3,
+                GRADE AS USAGE_LV4,
+                TRIM AS USAGE_LV5
+          FROM PREBOM_USAGE_FULL 
+         WHERE LIST_ID = #{LIST_ID, jdbcType=VARCHAR}           
+    </select>
+
+    <!-- [20160903] [ymjang] OLD 이력 오류 개선 -->
+    <select id="getCCNMasterFullList" resultType="java.util.HashMap">
+        SELECT B.*
+          FROM CCN_MASTER A
+             , CCN_PREBOM_MASTER_LIST B
+         WHERE A.RELEASE_DATE IS NOT NULL
+           AND A.CCN_NO = B.CCN_ID
+           AND B.NEW_CHILD_UNIQUE_NO = #{ITEM_ID, jdbcType=VARCHAR}
+           AND B.NEW_CHILD_REV = #{ITEM_REV, jdbcType=VARCHAR}
+           AND B.CREATION_DATE = (SELECT MAX(B1.CREATION_DATE)
+                                    FROM CCN_MASTER A1
+                                       , CCN_PREBOM_MASTER_LIST B1
+                                   WHERE A1.RELEASE_DATE IS NOT NULL
+                                     AND A1.CCN_NO = B1.CCN_ID
+                                     AND B1.NEW_CHILD_UNIQUE_NO = B.NEW_CHILD_UNIQUE_NO
+                                     AND B1.NEW_CHILD_REV = B.NEW_CHILD_REV)
+    </select>
+    <!--   
+    <select id="getCCNMasterFullList" resultType="java.util.HashMap">
+        SELECT *
+          FROM CCN_PREBOM_MASTER_LIST PA
+         WHERE PA.NEW_CHILD_UNIQUE_NO = #{ITEM_ID, jdbcType=VARCHAR}
+           AND PA.NEW_CHILD_REV = #{ITEM_REV, jdbcType=VARCHAR}
+           AND PA.CREATION_DATE = (SELECT MAX(CA.CREATION_DATE)
+                                     FROM CCN_PREBOM_MASTER_LIST CA
+                                    WHERE CA.NEW_CHILD_UNIQUE_NO = PA.NEW_CHILD_UNIQUE_NO
+                                      AND CA.NEW_CHILD_REV = PA.NEW_CHILD_REV)
+    </select>
+    -->
+    
+    <select id="getCCNMasterFullUsageList" resultType="java.util.HashMap">
+        SELECT *
+          FROM CCN_PREBOM_USAGE 
+         WHERE LIST_ID = #{LIST_ID, jdbcType=VARCHAR}
+           AND HISTORY_TYPE = 'NEW'         
+    </select>
+	
+	<!--[20160706][ymjang] Pre-BOM Level, QTY, VC, Sort_Order 항목 추가 -->
+    <!--[20180404][csh] ospec no 항목 추가 -->
+    <!-- 20201029 seho EJS column 추가 -->
+    <!--[20201228] 전성용 WEIGHT_MANAGEMENT column 추가 -->    
+	<insert id="insertPrebomMasterFullList" >
+	  insert into PREBOM_MASTER_FULL_LIST
+	    ( LIST_ID, TARGET_PROJECT, PROJECT, SYSTEM_CODE
+	    , SYSTEM_NAME, FUNCTION, PARENT_NO, PARENT_UNIQUE_NO, PARENT_REV
+	    , PARENT_NAME, PREBOM_UNIQUE_ID, CHILD_NO, CHILD_UNIQUE_NO, CHILD_REV
+	    , CHILD_NAME, SEQ, MANDATORY_OPT, SPECIFICATION
+	    , MODULE, SMODE, LEV, COLOR_ID, CATEGORY
+	    , EST_WEIGHT, TGT_WEIGHT, BOX, CONTENTS, CHG_TYPE_ENGCONCEPT
+	    , ORIGIN_PROJ, DC_ID, DC_REV, RELEASED_DATE
+	    , CON_DWG_PLAN, CON_DWG_PERFORMANCE, CON_DWG_TYPE
+	    , DWG_DEPLOYABLE_DATE, PRD_DWG_PLAN, PRD_DWG_PERFORMANCE
+	    , DVP_NEEDED_QTY, DVP_USE, DVP_REQ_DEPT, ENG_DEPT_NM
+	    , ENG_RESPONSIBLITY, EST_COST_MATERIAL,TGT_COST_MATERIAL
+	    , SELECTED_COMPANY, PRT_TOOLG_INVESTMENT, PRD_TOOL_COST, PRD_SERVICE_COST
+	    , PRD_SAMPLE_COST, PRD_TOTAL, PUR_TEAM, PUR_RESPONSIBILITY
+	    , EMPLOYEE_NO, CHANGE_DESC, PRD_PROJECT, ALTER_PART
+	    , REGULATION, ECO, SYSTEM_ROW_KEY, UNIQUE_ROW_KEY
+	    , LEV_M, QTY, VC, SORT_ORDER
+        , IS_PROTO_TOOLING, OSPEC_NO, EJS, WEIGHT_MANAGEMENT)
+	  values
+	     ( #{LIST_ID , jdbcType=VARCHAR}, #{ TARGET_PROJECT , jdbcType=VARCHAR}, #{ PROJECT , jdbcType=VARCHAR}, #{ SYSTEM_CODE, jdbcType=VARCHAR}
+	     , #{SYSTEM_NAME , jdbcType=VARCHAR}, #{ FUNCTION , jdbcType=VARCHAR}, #{ PARENT_NO , jdbcType=VARCHAR}, #{ PARENT_UNIQUE_NO, jdbcType=VARCHAR}, #{PARENT_REV , jdbcType=VARCHAR}
+	     , #{PARENT_NAME , jdbcType=VARCHAR}, #{ PREBOM_UNIQUE_ID , jdbcType=VARCHAR}, #{ CHILD_NO, jdbcType=VARCHAR}, #{CHILD_UNIQUE_NO , jdbcType=VARCHAR}, #{ CHILD_REV , jdbcType=VARCHAR}
+	     , #{CHILD_NAME , jdbcType=VARCHAR}, #{ SEQ, jdbcType=VARCHAR}, #{MANDATORY_OPT , jdbcType=VARCHAR}, #{ SPECIFICATION , jdbcType=VARCHAR}
+	     , #{MODULE , jdbcType=VARCHAR}, #{ SMODE, jdbcType=VARCHAR}, #{LEV , jdbcType=VARCHAR}, #{ COLOR_ID , jdbcType=VARCHAR}, #{ CATEGORY , jdbcType=VARCHAR}
+	     , #{EST_WEIGHT, jdbcType=VARCHAR}, #{TGT_WEIGHT , jdbcType=VARCHAR}, #{ BOX , jdbcType=VARCHAR}, #{ CONTENTS , jdbcType=VARCHAR}, #{ CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR}
+		 , #{ORIGIN_PROJ , jdbcType=VARCHAR}, #{ DC_ID , jdbcType=VARCHAR}, #{ DC_REV , jdbcType=VARCHAR}, #{ RELEASED_DATE, jdbcType=VARCHAR}
+		 , #{CON_DWG_PLAN , jdbcType=VARCHAR}, #{ CON_DWG_PERFORMANCE , jdbcType=VARCHAR}, #{ CON_DWG_TYPE, jdbcType=VARCHAR}
+		 , #{DWG_DEPLOYABLE_DATE , jdbcType=VARCHAR}, #{ PRD_DWG_PLAN , jdbcType=VARCHAR}, #{ PRD_DWG_PERFORMANCE, jdbcType=VARCHAR}
+		 , #{DVP_NEEDED_QTY , jdbcType=VARCHAR}, #{ DVP_USE , jdbcType=VARCHAR}, #{ DVP_REQ_DEPT , jdbcType=VARCHAR}, #{ ENG_DEPT_NM, jdbcType=VARCHAR}
+		 , #{ENG_RESPONSIBLITY , jdbcType=VARCHAR}, #{ EST_COST_MATERIAL, jdbcType=VARCHAR}, #{TGT_COST_MATERIAL , jdbcType=VARCHAR}
+		 , #{ SELECTED_COMPANY , jdbcType=VARCHAR}, #{ PRT_TOOLG_INVESTMENT, jdbcType=VARCHAR}, #{PRD_TOOL_COST , jdbcType=VARCHAR}, #{ PRD_SERVICE_COST , jdbcType=VARCHAR}
+		 , #{ PRD_SAMPLE_COST, jdbcType=VARCHAR}, #{PRD_TOTAL , jdbcType=VARCHAR}, #{ PUR_TEAM , jdbcType=VARCHAR}, #{ PUR_RESPONSIBILITY , jdbcType=VARCHAR}
+		 , #{ EMPLOYEE_NO, jdbcType=VARCHAR}, #{CHANGE_DESC , jdbcType=VARCHAR}, #{ PRD_PROJECT , jdbcType=VARCHAR}, #{ ALTER_PART , jdbcType=VARCHAR}
+		 , #{ REGULATION, jdbcType=VARCHAR}, #{ECO , jdbcType=VARCHAR}, #{ SYSTEM_ROW_KEY, jdbcType=VARCHAR}, #{ UNIQUE_ROW_KEY, jdbcType=VARCHAR}
+		 , #{LEV_M , jdbcType=VARCHAR}, #{ QTY, jdbcType=VARCHAR}, #{ VC, jdbcType=VARCHAR}, #{ SORT_ORDER, jdbcType=VARCHAR}
+         , #{ IS_PROTO_TOOLING, jdbcType=VARCHAR}, #{ OSPEC_NO, jdbcType=VARCHAR}, #{ EJS, jdbcType=VARCHAR}, #{ WEIGHT_MANAGEMENT, jdbcType=VARCHAR} )
+	</insert>
+
+    <insert id="insertPrebomUsageFullList" >
+      insert into PREBOM_USAGE_FULL
+        (LIST_ID, AREA, PASSENGER, ENGINE, GRADE,
+		 TRIM, USAGE_QTY, USAGE_TYPE, PART_UNIQUE_NO, PROJECT_CODE,
+		 OPT_E00, OPT_E00_DESC, OPT_E10, OPT_E10_DESC, SYSTEM_ROW_KEY, UNIQUE_ROW_KEY)
+      values
+        (#{LIST_ID, jdbcType=VARCHAR}, #{AREA, jdbcType=VARCHAR}, #{PASSENGER, jdbcType=VARCHAR}, #{ENGINE, jdbcType=VARCHAR}, #{GRADE, jdbcType=VARCHAR},
+		 #{TRIM, jdbcType=VARCHAR}, to_number(#{USAGE_QTY, jdbcType=VARCHAR}), #{USAGE_TYPE, jdbcType=VARCHAR}, #{PART_UNIQUE_NO, jdbcType=VARCHAR}, #{PROJECT_CODE, jdbcType=VARCHAR},
+		 #{OPT_E00, jdbcType=VARCHAR}, #{OPT_E00_DESC, jdbcType=VARCHAR}, #{OPT_E10, jdbcType=VARCHAR}, #{OPT_E10_DESC, jdbcType=VARCHAR}, #{SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+		 #{UNIQUE_ROW_KEY, jdbcType=VARCHAR})
+    </insert>
+    
+    <insert id="insertEPLList" >
+        INSERT INTO CCN_PREBOM_MASTER_LIST (
+        LIST_ID 
+       ,CCN_ID
+       ,OLD_PROJECT
+       ,NEW_PROJECT
+       ,OLD_SYSTEM_CODE 
+       ,NEW_SYSTEM_CODE 
+       ,OLD_SYSTEM_NAME 
+       ,NEW_SYSTEM_NAME 
+       ,OLD_FUNCTION    
+       ,NEW_FUNCTION    
+       ,PARENT_NO  
+       ,PARENT_UNIQUE_NO
+       ,PARENT_REV 
+       ,PARENT_NAME
+       ,PREBOM_UNIQUE_ID
+       ,OLD_CHILD_NO
+       ,OLD_CHILD_UNIQUE_NO    
+       ,NEW_CHILD_NO    
+       ,NEW_CHILD_UNIQUE_NO
+       ,OLD_CHILD_REV   
+       ,NEW_CHILD_REV   
+       ,OLD_CHILD_NAME  
+       ,NEW_CHILD_NAME  
+       ,OLD_SEQ 
+       ,NEW_SEQ 
+       ,OLD_MANDATORY_OPT
+       ,NEW_MANDATORY_OPT
+       ,OLD_SPECIFICATION
+       ,NEW_SPECIFICATION
+       ,OLD_MODULE
+       ,NEW_MODULE
+       ,OLD_SMODE
+       ,NEW_SMODE
+       ,OLD_LEV 
+       ,NEW_LEV 
+       ,OLD_COLOR_ID    
+       ,NEW_COLOR_ID    
+       ,OLD_SELECTIVE_PART 
+       ,NEW_SELECTIVE_PART
+       ,OLD_CATEGORY  
+       ,NEW_CATEGORY  
+       ,OLD_EST_WEIGHT  
+       ,NEW_EST_WEIGHT  
+       ,OLD_TGT_WEIGHT  
+       ,NEW_TGT_WEIGHT  
+       ,OLD_BOX    
+       ,NEW_BOX    
+       ,OLD_CONTENTS    
+       ,NEW_CONTENTS    
+       ,OLD_CHG_TYPE_ENGCONCEPT 
+       ,NEW_CHG_TYPE_ENGCONCEPT 
+       ,OLD_ORIGIN_PROJ
+       ,NEW_ORIGIN_PROJ
+       ,OLD_DC_ID   
+       ,NEW_DC_ID   
+       ,OLD_DC_REV  
+       ,NEW_DC_REV  
+       ,OLD_RELEASED_DATE
+       ,NEW_RELEASED_DATE
+       ,OLD_CON_DWG_PLAN
+       ,NEW_CON_DWG_PLAN
+       ,OLD_CON_DWG_PERFORMANCE 
+       ,NEW_CON_DWG_PERFORMANCE 
+       ,OLD_CON_DWG_TYPE    
+       ,NEW_CON_DWG_TYPE    
+       ,OLD_DWG_DEPLOYABLE_DATE 
+       ,NEW_DWG_DEPLOYABLE_DATE 
+       ,OLD_PRD_DWG_PLAN    
+       ,NEW_PRD_DWG_PLAN    
+       ,OLD_PRD_DWG_PERFORMANCE 
+       ,NEW_PRD_DWG_PERFORMANCE 
+       ,OLD_DVP_NEEDED_QTY  
+       ,NEW_DVP_NEEDED_QTY  
+       ,OLD_DVP_USE 
+       ,NEW_DVP_USE 
+       ,OLD_DVP_REQ_DEPT
+       ,NEW_DVP_REQ_DEPT
+       ,OLD_ENG_DEPT_NM 
+       ,NEW_ENG_DEPT_NM 
+       ,OLD_ENG_RESPONSIBLITY 
+       ,NEW_ENG_RESPONSIBLITY
+       ,EST_COST_MATERIAL 
+       ,TGT_COST_MATERIAL 
+       ,SELECTED_COMPANY
+       ,PRT_TOOLG_INVESTMENT 
+       ,PRD_TOOL_COST 
+       ,PRD_SERVICE_COST 
+       ,PRD_SAMPLE_COST 
+       ,PUR_TEAM 
+       ,PUR_RESPONSIBILITY 
+       ,EMPLOYEE_NO 
+       ,CHANGE_DESC        
+       ,OLD_PRD_PROJECT
+       ,NEW_PRD_PROJECT
+       ,OLD_ALTER_PART
+       ,NEW_ALTER_PART
+       ,OLD_REGULATION
+       ,NEW_REGULATION
+       ,OLD_ECO
+       ,NEW_ECO
+       ,OLD_VC
+       ,NEW_VC
+       ,OLD_SYSTEM_ROW_KEY
+       ,NEW_SYSTEM_ROW_KEY
+       ,OLD_PRD_PART_NO
+       ,NEW_PRD_PART_NO
+        ) values (            
+              #{LIST_ID, jdbcType=VARCHAR},
+              #{CCN_ID, jdbcType=VARCHAR},
+              #{OLD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PROJECT, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{OLD_FUNCTION, jdbcType=VARCHAR},
+              #{NEW_FUNCTION, jdbcType=VARCHAR},
+              #{PARENT_NO, jdbcType=VARCHAR},
+              #{PARENT_UNIQUE_NO, jdbcType=VARCHAR},
+              #{PARENT_REV, jdbcType=VARCHAR},
+              #{PARENT_NAME, jdbcType=VARCHAR},
+              #{PREBOM_UNIQUE_ID, jdbcType=VARCHAR},
+              #{OLD_CHILD_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_REV, jdbcType=VARCHAR},
+              #{NEW_CHILD_REV, jdbcType=VARCHAR},
+              #{OLD_CHILD_NAME, jdbcType=VARCHAR},
+              #{NEW_CHILD_NAME, jdbcType=VARCHAR},
+              #{OLD_SEQ, jdbcType=VARCHAR},
+              #{NEW_SEQ, jdbcType=VARCHAR},
+              #{OLD_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{NEW_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{OLD_SPECIFICATION, jdbcType=VARCHAR},
+              #{NEW_SPECIFICATION, jdbcType=VARCHAR},
+              #{OLD_MODULE, jdbcType=VARCHAR},
+              #{NEW_MODULE, jdbcType=VARCHAR},
+              #{OLD_SMODE, jdbcType=VARCHAR},
+              #{NEW_SMODE, jdbcType=VARCHAR},
+              to_number(#{OLD_LEV, jdbcType=VARCHAR}),
+              to_number(#{NEW_LEV, jdbcType=VARCHAR}),
+              #{OLD_COLOR_ID, jdbcType=VARCHAR},
+              #{NEW_COLOR_ID, jdbcType=VARCHAR},
+              #{OLD_SELECTIVE_PART, jdbcType=VARCHAR},
+              #{NEW_SELECTIVE_PART, jdbcType=VARCHAR},
+              #{OLD_CATEGORY, jdbcType=VARCHAR},
+              #{NEW_CATEGORY, jdbcType=VARCHAR},
+              to_number(#{OLD_EST_WEIGHT, jdbcType=VARCHAR}),
+              to_number(#{NEW_EST_WEIGHT, jdbcType=VARCHAR}),
+              to_number(#{OLD_TGT_WEIGHT, jdbcType=VARCHAR}),
+              to_number(#{NEW_TGT_WEIGHT, jdbcType=VARCHAR}),              
+              #{OLD_BOX, jdbcType=VARCHAR},
+              #{NEW_BOX, jdbcType=VARCHAR},
+              #{OLD_CONTENTS, jdbcType=VARCHAR},
+              #{NEW_CONTENTS, jdbcType=VARCHAR},
+              #{OLD_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{NEW_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{OLD_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{NEW_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{OLD_DC_ID, jdbcType=VARCHAR},
+              #{NEW_DC_ID, jdbcType=VARCHAR},
+              #{OLD_DC_REV, jdbcType=VARCHAR},
+              #{NEW_DC_REV, jdbcType=VARCHAR},
+              #{OLD_RELEASED_DATE, jdbcType=VARCHAR},
+              #{NEW_RELEASED_DATE, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_TYPE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_TYPE, jdbcType=VARCHAR},
+              #{OLD_DWG_DEPLOYABLE_DATE, jdbcType=VARCHAR},
+              #{NEW_DWG_DEPLOYABLE_DATE, jdbcType=VARCHAR},
+              #{OLD_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              to_number(#{OLD_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              to_number(#{NEW_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              #{OLD_DVP_USE, jdbcType=VARCHAR},
+              #{NEW_DVP_USE, jdbcType=VARCHAR},
+              #{OLD_DVP_REQ_DEPT, jdbcType=VARCHAR},
+              #{NEW_DVP_REQ_DEPT, jdbcType=VARCHAR},              
+              #{OLD_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{NEW_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{OLD_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{NEW_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{EST_COST_MATERIAL, jdbcType=VARCHAR},
+              #{TGT_COST_MATERIAL, jdbcType=VARCHAR},
+              #{SELECTED_COMPANY, jdbcType=VARCHAR},
+              #{PRT_TOOLG_INVESTMENT, jdbcType=VARCHAR},
+              #{PRD_TOOL_COST, jdbcType=VARCHAR},
+              #{PRD_SERVICE_COST, jdbcType=VARCHAR},
+              #{PRD_SAMPLE_COST, jdbcType=VARCHAR},
+              #{PUR_TEAM, jdbcType=VARCHAR},
+              #{PUR_RESPONSIBILITY, jdbcType=VARCHAR},
+              #{EMPLOYEE_NO, jdbcType=VARCHAR},
+              #{CHANGE_DESC, jdbcType=VARCHAR},
+              #{OLD_PRD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PRD_PROJECT, jdbcType=VARCHAR},
+              #{OLD_ALTER_PART, jdbcType=VARCHAR},
+              #{NEW_ALTER_PART, jdbcType=VARCHAR},
+              #{OLD_REGULATION, jdbcType=VARCHAR},
+              #{NEW_REGULATION, jdbcType=VARCHAR},
+              #{OLD_ECO, jdbcType=VARCHAR},
+              #{NEW_ECO, jdbcType=VARCHAR},
+              #{OLD_VC, jdbcType=VARCHAR},
+              #{NEW_VC, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{OLD_PRD_PART_NO, jdbcType=VARCHAR},
+              #{NEW_PRD_PART_NO, jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    <!-- CCN EPL Usage List 정보를 insert 한다 -->
+    <insert id="insertEPLUsageInfo">
+        INSERT INTO CCN_PREBOM_USAGE (
+            LIST_ID,              
+              OPTION_TYPE,
+              SYSTEM_ROW_KEY,
+              USAGE_LV1,
+              USAGE_LV2,
+              USAGE_LV3,
+              USAGE_LV4,
+              USAGE_LV5,
+              USAGE_QTY,
+              HISTORY_TYPE
+        ) values (
+            #{LIST_ID, jdbcType=VARCHAR},
+            #{OPTION_TYPE, jdbcType=VARCHAR},
+            #{SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+            #{USAGE_LV1, jdbcType=VARCHAR},
+              #{USAGE_LV2, jdbcType=VARCHAR},
+              #{USAGE_LV3, jdbcType=VARCHAR},
+              #{USAGE_LV4, jdbcType=VARCHAR},
+              #{USAGE_LV5, jdbcType=VARCHAR},
+              to_number(#{USAGE_QTY, jdbcType=VARCHAR}),
+              #{HISTORY_TYPE, jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    <!-- CCN EPL List 정보를 insert 한다 (IF 용)-->
+    <insert id="insertIfEPLList" >
+        INSERT INTO If_CCN_PREBOM_MASTER_LIST (
+        LIST_ID 
+       ,CCN_ID
+       ,OLD_PROJECT
+       ,NEW_PROJECT
+       ,OLD_SYSTEM_CODE 
+       ,NEW_SYSTEM_CODE 
+       ,OLD_SYSTEM_NAME 
+       ,NEW_SYSTEM_NAME 
+       ,OLD_FUNCTION    
+       ,NEW_FUNCTION    
+       ,PARENT_NO  
+       ,PARENT_UNIQUE_NO
+       ,PARENT_REV 
+       ,PARENT_NAME
+       ,OLD_CHILD_NO
+       ,OLD_CHILD_UNIQUE_NO    
+       ,NEW_CHILD_NO    
+       ,NEW_CHILD_UNIQUE_NO
+       ,OLD_CHILD_REV   
+       ,NEW_CHILD_REV   
+       ,OLD_CHILD_NAME  
+       ,NEW_CHILD_NAME  
+       ,OLD_SEQ 
+       ,NEW_SEQ 
+       ,OLD_MANDATORY_OPT
+       ,NEW_MANDATORY_OPT
+       ,OLD_SPECIFICATION
+       ,NEW_SPECIFICATION
+       ,OLD_MODULE
+       ,NEW_MODULE
+       ,OLD_SMODE
+       ,NEW_SMODE
+       ,OLD_LEV 
+       ,NEW_LEV 
+       ,OLD_COLOR_ID    
+       ,NEW_COLOR_ID    
+       ,OLD_EST_WEIGHT  
+       ,NEW_EST_WEIGHT  
+       ,OLD_TGT_WEIGHT  
+       ,NEW_TGT_WEIGHT  
+       ,OLD_BOX    
+       ,NEW_BOX    
+       ,OLD_CONTENTS    
+       ,NEW_CONTENTS    
+       ,OLD_CHG_TYPE_ENGCONCEPT 
+       ,NEW_CHG_TYPE_ENGCONCEPT 
+       ,OLD_ORIGIN_PROJ
+       ,NEW_ORIGIN_PROJ
+       ,OLD_DC_ID   
+       ,NEW_DC_ID   
+       ,OLD_DC_REV  
+       ,NEW_DC_REV  
+       ,OLD_RELEASED_DATE
+       ,NEW_RELEASED_DATE
+       ,OLD_CON_DWG_PLAN
+       ,NEW_CON_DWG_PLAN
+       ,OLD_CON_DWG_PERFORMANCE 
+       ,NEW_CON_DWG_PERFORMANCE 
+       ,OLD_CON_DWG_TYPE    
+       ,NEW_CON_DWG_TYPE    
+       ,OLD_DWG_DEPLOYABLE_DATE 
+       ,NEW_DWG_DEPLOYABLE_DATE 
+       ,OLD_PRD_DWG_PLAN    
+       ,NEW_PRD_DWG_PLAN    
+       ,OLD_PRD_DWG_PERFORMANCE 
+       ,NEW_PRD_DWG_PERFORMANCE 
+       ,OLD_DVP_NEEDED_QTY  
+       ,NEW_DVP_NEEDED_QTY  
+       ,OLD_DVP_USE 
+       ,NEW_DVP_USE 
+       ,OLD_DVP_REQ_DEPT
+       ,NEW_DVP_REQ_DEPT
+       ,OLD_ENG_DEPT_NM 
+       ,NEW_ENG_DEPT_NM 
+       ,OLD_ENG_RESPONSIBLITY 
+       ,NEW_ENG_RESPONSIBLITY
+       ,CHANGE_DESC        
+       ,OLD_PRD_PROJECT
+       ,NEW_PRD_PROJECT
+       ,OLD_ALTER_PART
+       ,NEW_ALTER_PART
+       ,OLD_REGULATION
+       ,NEW_REGULATION
+       ,OLD_ECO
+       ,NEW_ECO
+       ,OLD_SYSTEM_ROW_KEY
+       ,NEW_SYSTEM_ROW_KEY
+       ,OLD_PRD_PART_NO
+       ,NEW_PRD_PART_NO
+        ) values (            
+              #{LIST_ID, jdbcType=VARCHAR},
+              #{CCN_ID, jdbcType=VARCHAR},
+              #{OLD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PROJECT, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_CODE, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_NAME, jdbcType=VARCHAR},
+              #{OLD_FUNCTION, jdbcType=VARCHAR},
+              #{NEW_FUNCTION, jdbcType=VARCHAR},
+              #{PARENT_NO, jdbcType=VARCHAR},
+              #{PARENT_UNIQUE_NO, jdbcType=VARCHAR},
+              #{PARENT_REV, jdbcType=VARCHAR},
+              #{PARENT_NAME, jdbcType=VARCHAR},
+              #{OLD_CHILD_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_NO, jdbcType=VARCHAR},
+              #{NEW_CHILD_UNIQUE_NO, jdbcType=VARCHAR},
+              #{OLD_CHILD_REV, jdbcType=VARCHAR},
+              #{NEW_CHILD_REV, jdbcType=VARCHAR},
+              #{OLD_CHILD_NAME, jdbcType=VARCHAR},
+              #{NEW_CHILD_NAME, jdbcType=VARCHAR},
+              #{OLD_SEQ, jdbcType=VARCHAR},
+              #{NEW_SEQ, jdbcType=VARCHAR},
+              #{OLD_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{NEW_MANDATORY_OPT, jdbcType=VARCHAR},
+              #{OLD_SPECIFICATION, jdbcType=VARCHAR},
+              #{NEW_SPECIFICATION, jdbcType=VARCHAR},
+              #{OLD_MODULE, jdbcType=VARCHAR},
+              #{NEW_MODULE, jdbcType=VARCHAR},
+              #{OLD_SMODE, jdbcType=VARCHAR},
+              #{NEW_SMODE, jdbcType=VARCHAR},
+              to_number(#{OLD_LEV, jdbcType=VARCHAR}),
+              to_number(#{NEW_LEV, jdbcType=VARCHAR}),
+              #{OLD_COLOR_ID, jdbcType=VARCHAR},
+              #{NEW_COLOR_ID, jdbcType=VARCHAR},
+              to_number(#{OLD_EST_WEIGHT, jdbcType=VARCHAR}),
+              to_number(#{NEW_EST_WEIGHT, jdbcType=VARCHAR}),
+              to_number(#{OLD_TGT_WEIGHT, jdbcType=VARCHAR}),
+              to_number(#{NEW_TGT_WEIGHT, jdbcType=VARCHAR}),                 
+              #{OLD_BOX, jdbcType=VARCHAR},
+              #{NEW_BOX, jdbcType=VARCHAR},
+              #{OLD_CONTENTS, jdbcType=VARCHAR},
+              #{NEW_CONTENTS, jdbcType=VARCHAR},
+              #{OLD_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{NEW_CHG_TYPE_ENGCONCEPT, jdbcType=VARCHAR},
+              #{OLD_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{NEW_ORIGIN_PROJ, jdbcType=VARCHAR},
+              #{OLD_DC_ID, jdbcType=VARCHAR},
+              #{NEW_DC_ID, jdbcType=VARCHAR},
+              #{OLD_DC_REV, jdbcType=VARCHAR},
+              #{NEW_DC_REV, jdbcType=VARCHAR},
+              #{OLD_RELEASED_DATE, jdbcType=VARCHAR},
+              #{NEW_RELEASED_DATE, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{OLD_CON_DWG_TYPE, jdbcType=VARCHAR},
+              #{NEW_CON_DWG_TYPE, jdbcType=VARCHAR},
+              #{OLD_DWG_DEPLOYABLE_DATE, jdbcType=VARCHAR},
+              #{NEW_DWG_DEPLOYABLE_DATE, jdbcType=VARCHAR},
+              #{OLD_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PLAN, jdbcType=VARCHAR},
+              #{OLD_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              #{NEW_PRD_DWG_PERFORMANCE, jdbcType=VARCHAR},
+              to_number(#{OLD_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              to_number(#{NEW_DVP_NEEDED_QTY, jdbcType=VARCHAR}),
+              #{OLD_DVP_USE, jdbcType=VARCHAR},
+              #{NEW_DVP_USE, jdbcType=VARCHAR},
+              #{OLD_DVP_REQ_DEPT, jdbcType=VARCHAR},
+              #{NEW_DVP_REQ_DEPT, jdbcType=VARCHAR},              
+              #{OLD_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{NEW_ENG_DEPT_NM, jdbcType=VARCHAR},
+              #{OLD_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{NEW_ENG_RESPONSIBLITY, jdbcType=VARCHAR},
+              #{CHANGE_DESC, jdbcType=VARCHAR},
+              #{OLD_PRD_PROJECT, jdbcType=VARCHAR},
+              #{NEW_PRD_PROJECT, jdbcType=VARCHAR},
+              #{OLD_ALTER_PART, jdbcType=VARCHAR},
+              #{NEW_ALTER_PART, jdbcType=VARCHAR},
+              #{OLD_REGULATION, jdbcType=VARCHAR},
+              #{NEW_REGULATION, jdbcType=VARCHAR},
+              #{OLD_ECO, jdbcType=VARCHAR},
+              #{NEW_ECO, jdbcType=VARCHAR},
+              #{OLD_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{NEW_SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+              #{OLD_PRD_PART_NO, jdbcType=VARCHAR},
+              #{NEW_PRD_PART_NO, jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    
+    <!-- CCN EPL Usage List 정보를 insert 한다 (IF 용) -->
+    <insert id="insertIfEPLUsageInfo" >
+        INSERT INTO IF_CCN_PREBOM_USAGE (
+            LIST_ID,              
+              OPTION_TYPE,
+              SYSTEM_ROW_KEY,
+              USAGE_LV1,
+              USAGE_LV2,
+              USAGE_LV3,
+              USAGE_LV4,
+              USAGE_LV5,
+              USAGE_QTY,
+              HISTORY_TYPE
+        ) values (
+            #{LIST_ID, jdbcType=VARCHAR},
+            #{OPTION_TYPE, jdbcType=VARCHAR},
+            #{SYSTEM_ROW_KEY, jdbcType=VARCHAR},
+            #{USAGE_LV1, jdbcType=VARCHAR},
+              #{USAGE_LV2, jdbcType=VARCHAR},
+              #{USAGE_LV3, jdbcType=VARCHAR},
+              #{USAGE_LV4, jdbcType=VARCHAR},
+              #{USAGE_LV5, jdbcType=VARCHAR},
+              to_number(#{USAGE_QTY, jdbcType=VARCHAR}),
+              #{HISTORY_TYPE, jdbcType=VARCHAR}
+        )
+    </insert>
+    
+    <select id="selectMasterSystemCode"  resultType="java.util.HashMap">
+        SELECT DISTINCT(NEW_SYSTEM_CODE) AS MASTER_LIST_SYSCODE 
+          FROM CCN_PREBOM_MASTER_LIST 
+         WHERE CCN_ID = #{CCN_NO, jdbcType=VARCHAR}
+           AND NEW_SYSTEM_CODE IS NOT NULL
+         ORDER BY NEW_SYSTEM_CODE
+     </select>
+     
+     <insert id="insertCCNMaster" >
+    INSERT INTO CCN_MASTER (
+        CCN_NO
+        ,PROJECT_CODE
+        ,SYSTEM_CODE
+        ,PROJECT_TYPE
+        ,CHG_DESC        
+        ,OSPEC_NO
+        ,REGULATION
+        ,COST_DOWN
+        ,ORDERING_SPEC
+        ,QUALITY_IMPROVEMENT
+        ,CORRECTION_OF_EPL
+        ,STYLING_UPDATE
+        ,WEIGHT_CHANGE
+        ,MATERIAL_COST_CHANGE
+        ,THE_OTHERS
+        ,GATE
+        ,RELEASE_DATE
+        ,CREATOR
+        ,DEPT_NAME
+        ,AFFETED_SYS_CODE
+    ) VALUES (
+        #{CCN_NO, jdbcType=VARCHAR},
+        #{PROJECT_CODE, jdbcType=VARCHAR},
+        #{SYSTEM_CODE, jdbcType=VARCHAR},
+        #{PROJECT_TYPE, jdbcType=VARCHAR},
+        #{CHG_DESC, jdbcType=VARCHAR},        
+        #{OSPEC_NO, jdbcType=VARCHAR},
+        #{REGULATION, jdbcType=VARCHAR},
+        #{COST_DOWN, jdbcType=VARCHAR},
+        #{ORDERING_SPEC, jdbcType=VARCHAR},
+        #{QUALITY_IMPROVEMENT, jdbcType=VARCHAR},
+        #{CORRECTION_OF_EPL, jdbcType=VARCHAR},
+        #{STYLING_UPDATE, jdbcType=VARCHAR},
+        #{WEIGHT_CHANGE, jdbcType=VARCHAR},
+        #{MATERIAL_COST_CHANGE, jdbcType=VARCHAR},
+        #{THE_OTHERS, jdbcType=VARCHAR},        
+        #{GATE, jdbcType=VARCHAR},
+        to_char(#{RELEASE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+        #{CREATOR, jdbcType=VARCHAR},
+        #{DEPT_NAME, jdbcType=VARCHAR},
+        #{AFFETED_SYS_CODE, jdbcType=VARCHAR}
+    )    
+    </insert>
+    
+    <!-- Master List 정보를 insert 한다 (IF 용)-->
+    <insert id="insertIfCCNMaster" >
+    INSERT INTO IF_CCN_MASTER (
+        CCN_NO
+        ,PROJECT_CODE
+        ,SYSTEM_CODE
+        ,PROJECT_TYPE
+        ,CHG_DESC        
+        ,OSPEC_NO
+        ,REGULATION
+        ,COST_DOWN
+        ,ORDERING_SPEC
+        ,QUALITY_IMPROVEMENT
+        ,CORRECTION_OF_EPL
+        ,STYLING_UPDATE
+        ,WEIGHT_CHANGE
+        ,MATERIAL_COST_CHANGE
+        ,THE_OTHERS
+        ,GATE
+        ,RELEASE_DATE
+        ,CREATOR
+        ,DEPT_NAME
+        ,AFFETED_SYS_CODE
+    ) VALUES (
+        #{CCN_NO, jdbcType=VARCHAR},
+        #{PROJECT_CODE, jdbcType=VARCHAR},
+        #{SYSTEM_CODE, jdbcType=VARCHAR},
+        #{PROJECT_TYPE, jdbcType=VARCHAR},
+        #{CHG_DESC, jdbcType=VARCHAR},        
+        #{OSPEC_NO, jdbcType=VARCHAR},
+        #{REGULATION, jdbcType=VARCHAR},
+        #{COST_DOWN, jdbcType=VARCHAR},
+        #{ORDERING_SPEC, jdbcType=VARCHAR},
+        #{QUALITY_IMPROVEMENT, jdbcType=VARCHAR},
+        #{CORRECTION_OF_EPL, jdbcType=VARCHAR},
+        #{STYLING_UPDATE, jdbcType=VARCHAR},
+        #{WEIGHT_CHANGE, jdbcType=VARCHAR},
+        #{MATERIAL_COST_CHANGE, jdbcType=VARCHAR},
+        #{THE_OTHERS, jdbcType=VARCHAR},        
+        #{GATE, jdbcType=VARCHAR},
+        to_char(#{RELEASE_DATE, jdbcType=TIMESTAMP},'YYYYMMDDHH24MISS'),
+        #{CREATOR, jdbcType=VARCHAR},
+        #{DEPT_NAME, jdbcType=VARCHAR},
+        #{AFFETED_SYS_CODE, jdbcType=VARCHAR}
+    )    
+    </insert>
+    
+    <select id="getOSPECID" resultType="java.util.HashMap">
+    SELECT OSPEC_NO 
+      FROM CCN_MASTER 
+     WHERE CCN_NO = (SELECT CCN_ID 
+                       FROM CCN_PREBOM_MASTER_LIST 
+                      WHERE NEW_CHILD_UNIQUE_NO = #{PART_ID, jdbcType=VARCHAR}
+                        AND NEW_CHILD_REV = #{PART_REV, jdbcType=VARCHAR}
+                        AND ROWNUM = 1)
+    </select>
+
+	<!-- [20150915][ymjang] 목표재료비시스템은 OSPEC HEADER 정보를 매주 새롭게 보내도록 기능 추가 -->
+	<!-- [20160321][ymjang] 목표재료비시스템은 OSPEC HEADER 정보를 매주 새롭게 보내도록 기능 추가 - 다시 추가 -->
+    <insert id="insertPrebomTrimFullList" >
+	 insert into IF_PREBOM_OSPEC_TRIM ( TRIM, OSPEC_NO, 
+								        AREA, PASSENGER, ENGINE, GRADE, 
+								        OPT_E00, OPT_E10, OPT_E00_DESC, OPT_E10_DESC, 
+								        PROJECT_CODE, CREATION_DATE, STAT, TRIM_SEQ, SYSTEM_ROW_KEY )
+	           select A.TRIM, A.OSPEC_NO
+	                , A.AREA, A.PASSENGER, A.ENGINE, A.GRADE
+	                , A.E00 AS OPT_E00, A.E10 AS OPT_E10
+	                , A.E00_DESC AS OPT_E00_DESC, A.E10_DESC AS OPT_E10_DESC
+	                , SUBSTR(SUBSTR(A.OSPEC_NO, INSTR(A.OSPEC_NO, '-')+1, LENGTH(A.OSPEC_NO)), 1, INSTR(SUBSTR(A.OSPEC_NO, INSTR(A.OSPEC_NO, '-')+1, LENGTH(A.OSPEC_NO)), '-')-1) AS PROJECT_CODE
+	                , TO_CHAR(SYSDATE, 'YYYYMMDDHH24MISS') AS CREATION_DATE, A.STAT
+	                , A.TRIM_SEQ, A.SYSTEM_ROW_KEY								         
+	             from IF_CCN_PREBOM_OSPEC_TRIM A
+	            where A.OSPEC_NO = ( SELECT MAX(A1.OSPEC_NO)
+	                                   FROM IF_CCN_PREBOM_OSPEC_TRIM A1
+	                                  WHERE SUBSTR(SUBSTR(A1.OSPEC_NO, INSTR(A1.OSPEC_NO, '-')+1, LENGTH(A1.OSPEC_NO)), 1, INSTR(SUBSTR(A1.OSPEC_NO, INSTR(A1.OSPEC_NO, '-')+1, LENGTH(A1.OSPEC_NO)), '-')-1)
+	                                      = SUBSTR(SUBSTR(A.OSPEC_NO, INSTR(A.OSPEC_NO, '-')+1, LENGTH(A.OSPEC_NO)), 1, INSTR(SUBSTR(A.OSPEC_NO, INSTR(A.OSPEC_NO, '-')+1, LENGTH(A.OSPEC_NO)), '-')-1)
+	                                ) 
+    </insert>
+
+	<!-- [20160718] IF CCN Master 정보 생성 로직 개선- Stored Procedure 로 이관함. -->
+	<select id="createIfCCN" parameterType="java.util.HashMap" statementType="CALLABLE">
+	<![CDATA[
+ 	{ call IF_USER.P_CREATE_IF_CCN ( #{CCN_NO,jdbcType=VARCHAR,mode=IN}) }
+    ]]>
+	</select>
+
+    <!-- [SR181206-041] SYSTEM_ROW_KEY 가져오는 값이 가끔 누락되는 현상이 있어 TC API 를 DB Query 로 변경 -->
+    <select id="selectSystemRowKey" resultType="string">
+       SELECT get_bom_note_text(OCC.RNOTES_REFU, 'S7_SYSTEM_ROW_KEY') S7_SYSTEM_ROW_KEY
+         FROM INFODBA.PPSOCCURRENCE OCC
+        WHERE OCC.PUID = #{PUID, jdbcType=VARCHAR}
+    </select>
+    
+    <!--[SR181211-009][CSH]External Table에서 DCS 정보 가져오기-->
+    <select id="getDCSInfo" resultType="java.util.HashMap">
+       SELECT m.dc_id DC_ID, m.dc_rev DC_REV, to_char(m.dc_released_date,'yyyyMMddhh24mmss') DC_RELEASED_DATE
+        FROM dcs_info m
+        where m.system_code = #{SYSTEM_CODE, jdbcType=VARCHAR}
+        and m.project_code = #{PROJECT_CODE, jdbcType=VARCHAR}
+        and m.dc_rev = (select max(dc_rev) from dcs_info s where s.dc_id = m.dc_id)
+    </select>
+    
+</mapper>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.costvendor">
+ 
+    <select id="getIdListForUpdateCost" resultType="java.util.HashMap">
+        select distinct CHILD_UNIQUE_NO AS PART_NO from if_COST_BY_PREPART where upper(eai_flag) = 'S' AND update_flag = 'I'
+    </select>
+
+    <select id="getDatasForUpdateCost" resultType="java.util.HashMap">		
+        SELECT CP.CHILD_UNIQUE_NO AS PART_NO
+             , (SELECT COST
+                  FROM IF_COST_BY_PREPART CCP
+                 WHERE CCP.CHILD_UNIQUE_NO = CP.CHILD_UNIQUE_NO
+                   AND CCP.COST_FLAG = 'A'
+                   AND CCP.CREATION_DATE = (SELECT MAX(CREATION_DATE)
+                                        FROM IF_COST_BY_PREPART CCCP
+                                       WHERE CCCP.CHILD_UNIQUE_NO = CCP.CHILD_UNIQUE_NO
+                                         AND CCCP.COST_FLAG = CCP.COST_FLAG
+                                         AND CCCP.EAI_FLAG = CCP.EAI_FLAG
+                                         AND CCCP.UPDATE_FLAG = 'I'
+                                     )
+                   AND CCP.EAI_FLAG = CP.EAI_FLAG
+               AND ROWNUM = 1) AS EST_COST
+             , (SELECT COST
+                  FROM IF_COST_BY_PREPART CCP
+                 WHERE CCP.CHILD_UNIQUE_NO = CP.CHILD_UNIQUE_NO
+                   AND CCP.COST_FLAG = 'B'
+                   AND CCP.CREATION_DATE = (SELECT MAX(CREATION_DATE)
+                                        FROM IF_COST_BY_PREPART CCCP
+                                       WHERE CCCP.CHILD_UNIQUE_NO = CCP.CHILD_UNIQUE_NO
+                                         AND CCCP.COST_FLAG = CCP.COST_FLAG
+                                         AND CCCP.EAI_FLAG = CCP.EAI_FLAG
+                                         AND CCCP.UPDATE_FLAG = 'I'
+                                     )
+                   AND CCP.EAI_FLAG = CP.EAI_FLAG
+               AND ROWNUM = 1) AS TARGET_COST
+             , CP.PROJECT_CODE
+             , CP.SYSTEM_CODE
+             , CP.SEND_DT         
+          FROM IF_COST_BY_PREPART CP
+         WHERE CP.EAI_FLAG = 'S'
+           AND CP.UPDATE_FLAG = 'I'
+           AND CP.CHILD_UNIQUE_NO = #{PART_NO, jdbcType=VARCHAR}
+           AND CP.CREATION_DATE = (SELECT MAX(CREATION_DATE)
+                                        FROM IF_COST_BY_PREPART CCCP
+                                       WHERE CCCP.CHILD_UNIQUE_NO = CP.CHILD_UNIQUE_NO
+                                         AND CCCP.EAI_FLAG = CP.EAI_FLAG
+                                         AND CCCP.UPDATE_FLAG = 'I')
+           AND CP.SEND_DT = (SELECT MAX(SEND_DT)
+                                        FROM IF_COST_BY_PREPART CCCP
+                                       WHERE CCCP.CHILD_UNIQUE_NO = CP.CHILD_UNIQUE_NO
+                                         AND CCCP.EAI_FLAG = CP.EAI_FLAG
+                                         AND CCCP.UPDATE_FLAG = 'I')
+           AND CP.SEQ = (SELECT MAX(SEQ)
+                                        FROM IF_COST_BY_PREPART CCCP
+                                       WHERE CCCP.CHILD_UNIQUE_NO = CP.CHILD_UNIQUE_NO
+                                         AND CCCP.EAI_FLAG = CP.EAI_FLAG
+                                         AND CCCP.UPDATE_FLAG = 'I')
+    </select>
+
+    <select id="getIdListForUpdateVendor" resultType="java.util.HashMap">
+        SELECT DISTINCT PJT_CD, PART_NO, system_code FROM IF_VENDOR_BY_PART WHERE UPPER(EAI_FLAG) = 'S' AND UPDATE_FLAG = 'I' ORDER BY PJT_CD, PART_NO
+    </select>
+
+    <select id="getDatasForUpdateVendor" resultType="java.util.HashMap">
+        SELECT *
+          FROM IF_VENDOR_BY_PART CP
+         WHERE UPPER(CP.EAI_FLAG) = 'S'
+           AND UPPER(CP.UPDATE_FLAG) = 'I'
+           AND CP.PART_NO = #{PART_NO, jdbcType=VARCHAR}
+           AND CP.CREATION_DATE = (SELECT MAX(CCCP.CREATION_DATE)
+                                        FROM IF_VENDOR_BY_PART CCCP
+                                       WHERE CCCP.PART_NO = CP.PART_NO
+                                         AND CCCP.EAI_FLAG = CP.EAI_FLAG
+                                         AND CCCP.UPDATE_FLAG = CP.UPDATE_FLAG)
+    </select>
+
+    <select id="getNewId" resultType="java.lang.String">
+        select GET_NEW_ID(#{PRE_FIX, jdbcType=VARCHAR}, #{TO_LEN, jdbcType=DECIMAL}) from dual
+    </select>
+
+    <select id="getNewIdWithTable" resultType="java.lang.String">
+        SELECT RPAD(#{PRE_FIX, jdbcType=VARCHAR}, 12 - LENGTH(TO_CHAR(LAST_NUM))  , '0') || TO_CHAR(LAST_NUM) 
+          FROM SYMC_PRE_FIX 
+         WHERE PRE_FIX = #{PRE_FIX, jdbcType=VARCHAR}
+    </select>
+    
+    <update id="updNewId">
+        select GET_NEW_ID(#{PRE_FIX, jdbcType=VARCHAR}, #{TO_LEN, jdbcType=DECIMAL}) from dual
+    </update>
+    
+	<update id="updateCostInterfaceTable">
+  	  update IF_COST_BY_PREPART set UPDATE_FLAG = #{UPDATE_FLAG, jdbcType=VARCHAR}, UPDATE_MSG = #{UPDATE_MSG, jdbcType=VARCHAR}
+       where CHILD_UNIQUE_NO = #{ITEM_ID, jdbcType=VARCHAR}
+         and (UPDATE_FLAG is null or UPDATE_FLAG = 'I')
+    </update>
+
+    <update id="updateVendorInterfaceTable">
+      update IF_VENDOR_BY_PART set UPDATE_FLAG = #{UPDATE_FLAG, jdbcType=VARCHAR}, UPDATE_MSG = #{UPDATE_MSG, jdbcType=VARCHAR}
+       where PART_NO = #{ITEM_ID, jdbcType=VARCHAR}
+         and (UPDATE_FLAG is null or UPDATE_FLAG = 'I')
+    </update>
+
+	<select id="getSysGuid" resultType="string">
+		select sys_guid() if_id from dual
+	</select>
+
+</mapper>

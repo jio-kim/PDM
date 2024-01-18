@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.ssangyong.soa.mapper.SendMailEAIMapper">
+   <!-- SYMC 인트라넷을 통한 메일 발송 (through EAI) -->
+   <select id="sendMailEAI">
+   INSERT INTO IF_USER.IF_EMAIL (SEQ_NO, SYSTEM_ID, FROM_USERS, TITLE, REMARK, TO_USERS, CREATE_DATE ) 
+        SELECT ( SELECT GET_NEXT_MAIL_SEQ() FROM DUAL ) AS SEQ_NO
+             , #{the_sysid,jdbcType=VARCHAR,mode=IN}, #{the_sabun,jdbcType=VARCHAR,mode=IN}
+             , #{the_title,jdbcType=VARCHAR,mode=IN}
+             , #{the_remark,jdbcType=VARCHAR,mode=IN}
+             , #{the_tsabun,jdbcType=VARCHAR,mode=IN}
+             , SYSDATE
+          FROM DUAL
+   </select>
+</mapper>
