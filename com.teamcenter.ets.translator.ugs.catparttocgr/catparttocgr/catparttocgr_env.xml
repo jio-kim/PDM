@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<preferences>
+  <category name="General">
+    <category_description>Teamcenter Preferences</category_description>
+
+	<!-- START SINGLE SELECTION PREFERENCES -->
+    <preference name="ETS.TRANSLATORS.SIEMENS" type="String" array="true" disabled="false">
+          <preference_description>This preference lists the available translators for a given provider for the translation services.</preference_description>
+          <context name="Teamcenter">
+            <value>catparttocgr</value>
+          </context>
+    </preference>
+    <preference name="ETS.DATASETTYPES.SIEMENS.CATPARTTOCGR" type="String" array="true" disabled="false">
+          <preference_description>This preference lists the applicable dataset types for the translator.</preference_description>
+          <context name="Teamcenter">
+            <value>CATPart</value>
+          </context>
+    </preference>
+    <preference name="ETS.PRIORITY.SIEMENS.CATPARTTOCGR" type="String" array="false" disabled="false">
+          <preference_description>This preference lists the priority for the translator.</preference_description>
+          <context name="Teamcenter">
+            <value>3</value>
+          </context>
+    </preference>
+    <preference name="ETS.TRANSLATOR_ARGS.SIEMENS.CATPARTTOCGR" type="String" array="true" disabled="false">
+          <preference_description>This preference lists the arguments for the translator.</preference_description>
+          <context name="Teamcenter">
+          </context>
+    </preference>
+    <preference name="ETS.REPEATING_UI.SIEMENS.CATPARTTOCGR" type="String" array="false" disabled="false">
+          <preference_description>Specifies if repeating UI should show up in the Single Selection Dialogue.</preference_description>
+          <context name="Teamcenter">
+            <value>true</value>
+          </context>
+    </preference>    
+	<!-- END SINGLE SELECTION PREFERENCES -->
+	
+	
+  </category>
+</preferences>

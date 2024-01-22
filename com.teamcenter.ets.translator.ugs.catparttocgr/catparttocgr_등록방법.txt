@@ -1,0 +1,154 @@
+catparttocgr deploy 방법
+
+#####
+# 1  # Service.preperties 추가
+#####
+
+1. Dipatcher설치폴더에서 Service.preperties 파일에 다음 내용을 추가
+
+###############################################################################
+#
+#     T R A N S L A T O R S
+#
+
+# Provider Name  : SIEMENS
+# Translator Name: catparttocgr
+Translator.SIEMENS.catparttocgr.Prepare=com.teamcenter.ets.translator.ugs.catparttocgr.TaskPrep
+Translator.SIEMENS.catparttocgr.Load=com.teamcenter.ets.translator.ugs.catparttocgr.DatabaseOperation
+
+
+
+#####
+# 2 # Prefernece 등록
+#####
+
+2. 다음 xml 파일을 catparttocgr_env.xml로 만들어서 preference_manager로 preference를 등록
+   (TC Preferences에서도 설정 가능)
+<?xml version="1.0" encoding="UTF-8"?>
+
+<preferences>
+  <category name="General">
+    <category_description>Teamcenter Preferences</category_description>
+
+	<!-- START SINGLE SELECTION PREFERENCES -->
+    <preference name="ETS.TRANSLATORS.SIEMENS" type="String" array="true" disabled="false">
+          <preference_description>This preference lists the available translators for a given provider for the translation services.</preference_description>
+          <context name="Teamcenter">
+            <value>catparttocgr</value>
+          </context>
+    </preference>
+    <preference name="ETS.DATASETTYPES.SIEMENS.CATPARTTOCGR" type="String" array="true" disabled="false">
+          <preference_description>This preference lists the applicable dataset types for the translator.</preference_description>
+          <context name="Teamcenter">
+            <value>CATPart</value>
+          </context>
+    </preference>
+    <preference name="ETS.PRIORITY.SIEMENS.CATPARTTOCGR" type="String" array="false" disabled="false">
+          <preference_description>This preference lists the priority for the translator.</preference_description>
+          <context name="Teamcenter">
+            <value>3</value>
+          </context>
+    </preference>
+    <preference name="ETS.TRANSLATOR_ARGS.SIEMENS.CATPARTTOCGR" type="String" array="true" disabled="false">
+          <preference_description>This preference lists the arguments for the translator.</preference_description>
+          <context name="Teamcenter">
+          </context>
+    </preference>
+    <preference name="ETS.REPEATING_UI.SIEMENS.CATPARTTOCGR" type="String" array="false" disabled="false">
+          <preference_description>Specifies if repeating UI should show up in the Single Selection Dialogue.</preference_description>
+          <context name="Teamcenter">
+            <value>true</value>
+          </context>
+    </preference>    
+	<!-- END SINGLE SELECTION PREFERENCES -->
+	
+	
+  </category>
+</preferences>
+
+preferences_manager 사용방법(TC Path 설정 필요)
+preferences_manager -u=infodba -p=infodba -g=dba -mode=import -scope=SITE -action=MERGE -context=Teamcenter -file=D:\SIEMENS\DP\Module\Translators\catparttocgr\catparttocgr_env.xml
+
+
+
+#####
+# 3 # catparttocgr.jar 복사
+#####
+
+3. Dipatcher설치폴더에 DispatcherClient 폴더의 lib 폴더로 commons-net-3.3.jar, catparttocgr.jar를 복사
+
+
+
+#####
+# 4 # translator.xml 파일 추가
+#####
+
+4.Dipatcher설치폴더에 Module폴더의 conf 폴더의 translator.xml 파일에  다음 내용 추가
+
+<!-- *********************************************************************** -->
+<!-- CATPartToCgr                                                                             -->
+<!-- *********************************************************************** -->
+  <catparttocgr provider="SIEMENS" service="catparttocgr" isactive="true">
+    <TransExecutable dir="&MODULEBASE;/Translators/catparttocgr" name="catparttocgr.bat" />
+    <Options>
+      <Option name="inputdir" string="-dir"
+              description="Full path to the input directory."/>
+      <Option name="outputdir" string="-outputDirectory"
+              description="Full path to the output directory."/>
+    </Options>
+    <FileExtensions>
+      <InputExtensions nitem="1">
+        <InputExtension extension=".CATPart"/>
+      </InputExtensions>
+      <OutputExtensions nitem="1">
+        <OutputExtension extension=".cgr"/>
+      </OutputExtensions>
+    </FileExtensions>
+    <!-- Postprocess provider="SIEMENS" service="previewservice"/ -->
+  </catparttocgr>  
+  
+!!주의!! 파일 끝에 붙여 넣으면 에러 나므로
+
+</Translators>
+
+위로 복사한다.
+
+
+
+#####
+# 5 # 실행 폴더 생성 및 파일 생성
+#####
+
+5.Dipatcher설치폴더에 Module폴더의 Translators 폴더로 다음 내용을 생성.
+
+5.1 Translaotrs 폴더에 catparttocgr 폴더 생성
+
+5.2 catparttocgr.bat 파일 붙여넣기
+
+5.3 catparttocgr.properties 파일 생성
+
+--- catparttocgr.properties 파일 내용 ---
+#Debug를 위해 로그 출력
+isDebug=true
+
+cadFTP.ip=10.80.57.184
+cadFTP.port=21
+cadFTP.login=SYMC
+cadFTP.pass=123qwer@
+cadFTP.cadFtpPath=CATCache
+
+#After FTP Upload, insert a row to IF_PE_FILE_PATH
+#private local Server for Test
+#servlet.url=http://10.80.57.228:8080/symcweb/remote/invoke.do
+#symcweb(DEV)
+servlet.url=http://10.80.1.99/symcweb/remote/invoke.do
+
+-------- WorkFlow Handler 추가(결재시 실행되게 하기 위해) -------------
+SYMC_ECO ==> Add Status ==> Complete
+TSTK-CreateTranslationRequest
+#Argument
+-ProviderName		SIEMENS
+-ServiceName		catparttocgr
+-Priority			1
+-DatasetTypeName	CATPart
+
