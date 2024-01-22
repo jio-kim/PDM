@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<!-- View 정의 -->
+	<bean id="symc.view.searchTypedItemPopup" class="org.sdv.core.beans.ViewPaneStubBean">
+        <property name="implement"
+            value="com.symc.plm.me.sdv.view.common.SearchTypedItemView"></property>
+    </bean>
+
+<!--<bean id="symc.view.reviseSearchMECOView" class="org.sdv.core.beans.ViewPaneStubBean">
+        <property name="implement"
+            value="com.symc.plm.me.sdv.view.body.SelectedMECOView"></property>
+    </bean> -->
+        
+	<!-- MECO 선택 View -->
+    <!-- [CF-3537] [20230131] 기존 검색 화면에서 반려된 MECO가 검색 안되는 문제가 있어서 아래 내용으로 수정 
+    isWorkingStatus와 반려된 MECO도 나올 수 있게 수정 기존 SearchTypeItemView에서 MecoSearchView 검색창으로 변경 -->	
+	<bean id="symc.view.meco.mecoSelectView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="MECO" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.meco.MecoSelectView"></property>
+	</bean>
+
+
+	<bean id="symc.view.reviseView" class="org.sdv.core.beans.ViewPaneStubBean">
+        <property name="implement"
+            value="com.symc.plm.me.sdv.view.common.ReviseView"></property>
+    </bean>
+
+  	<bean id="symc.view.changeOptionsetView" class="org.sdv.core.beans.ViewPaneStubBean">
+        <property name="implement"
+            value="com.symc.plm.me.sdv.view.common.ChangeOptionsetView"></property>
+    </bean>
+
+	<!-- [SR140724-013][20140725] shcho, Product와 M-Product Function Sync 기능 추가 -->
+    <!-- MProduct BOM Function Sync View -->
+	<bean id="symc.view.SyncFunctionsetVsMProductView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="Sync Function" />
+		<property name="implement"
+			value="com.symc.plm.me.sdv.view.common.SyncFunctionsetVsMProductView"></property>
+	</bean>
+	
+		
+    <!-- Dialog 정의 -->
+    <bean id="symc.me.bop.SearchTypedItemDialog" class="org.sdv.core.beans.DialogStubBean">
+        <property name="implement"
+            value="com.symc.plm.me.sdv.dialog.common.SearchTypedItemDialog"></property>
+        <property name="views">
+            <map>
+                <entry key="searchTypedView" value-ref="symc.view.searchTypedItemPopup" />
+            </map>
+        </property>
+        <property name="width" value="500" />
+        <property name="height" value="400" />
+        <property name="layoutXml">
+            <value>
+                <![CDATA[
+                  <?xml version="1.0" encoding="UTF-8"?>
+                    <layout id="fillTest" type="fillLayout">
+                        <layout id="borderTest" type="borderLayoutView">
+                            <view id="searchTypedView" order="CENTER" />
+                        </layout>
+                    </layout>
+                ]]>
+            </value>
+        </property>
+        <!-- Dialog, View -->
+        <!-- Dialog only -->
+        <property name="commandBarActions">
+            <map>
+            	<entry key="ACTION_CONFIG" value="1" />
+                <!-- entry key="Ok" value="sdv.okOperaion" /-->
+            </map>
+        </property>
+    </bean>
+
+    <bean id="symc.me.bop.ReviseDialog" class="org.sdv.core.beans.DialogStubBean">
+        <property name="implement"
+            value="com.symc.plm.me.sdv.dialog.common.ReviseDialog"></property>
+        <property name="views">
+            <map>
+			    <!-- [CF-3537] [20230131] 기존 검색 화면에서 반려된 MECO가 검색 안되는 문제가 있어서 아래 내용으로 수정 
+			    isWorkingStatus와 반려된 MECO도 나올 수 있게 수정 기존 SearchTypeItemView에서 MecoSearchView 검색창으로 변경 -->            
+                <entry key="reviseMecoView" value-ref="symc.view.meco.mecoSelectView" />
+                <entry key="reviseView" value-ref="symc.view.reviseView" />
+            </map>
+        </property>
+        <property name="width" value="500" />
+        <property name="height" value="300" />
+        <property name="layoutXml">
+            <value>
+                <![CDATA[
+                  <?xml version="1.0" encoding="UTF-8"?>
+                    <layout id="fillTest" type="fillLayout">
+                        <layout id="borderTest" type="borderLayoutView">
+                            <view id="reviseMecoView" order="NORTH" />
+                            <view id="reviseView" order="CENTER" />
+                        </layout>
+                    </layout>
+                ]]>
+            </value>
+        </property>
+        <!-- Dialog, View -->
+        <!-- Dialog only -->
+        <property name="commandBarActions">
+            <map>
+            	<entry key="ACTION_CONFIG" value="1" />
+                <entry key="Ok" value="com.symc.plm.me.sdv.operation.common.ReviseActionOperation" />
+            </map>
+        </property>
+    </bean>
+
+    <!-- MProduct BOM 옵션 Update -->
+	<bean id="symc.me.bop.SyncOptionsetVsMProductDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="M-Product Option Set Sync with Product" />
+		<property name="implement"
+			value="com.symc.plm.me.sdv.dialog.common.SyncOptionsetVsMProductDialog"></property>
+		<property name="views">
+			<map>
+				<entry key="updateOption" value-ref="symc.view.assembly.syncOptionsetVsBOMView" />
+			</map>
+		</property>
+		<property name="width" value="430" />
+		<property name="height" value="200" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillLayout" type="fillLayout">
+						<view id="updateOption"/>
+					</layout>
+				]]>
+			</value>
+		</property>
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="1" />
+				<entry key="Ok"
+					value="com.symc.plm.me.sdv.operation.common.SyncOptionsetVsMProductOperation" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- MProduct BOM 옵션의 Is External 값을 바꾸어 준다  (implements <> uses) -->
+	<bean id="symc.me.bop.ChangeSyncOptionsetDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="M-Product Option Change" />
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+		<property name="views">
+			<map>
+				<entry key="changeOption" value-ref="symc.view.changeOptionsetView" />
+			</map>
+		</property>
+		<property name="width" value="430" />
+		<property name="height" value="200" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillLayout" type="fillLayout">
+						<view id="changeOption"/>
+					</layout>
+				]]>
+			</value>
+		</property>
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="1" />
+				<entry key="Ok"
+					value="com.symc.plm.me.sdv.operation.common.ChangeSyncOptionsetOperation" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- [SR140724-013][20140725] shcho, Product와 M-Product Function Sync 기능 추가 -->
+    <!-- MProduct BOM Function Sync Operation -->
+	<bean id="symc.me.bop.SyncFunctionsetVsMProductDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="M-Product Function Set Sync with Product" />
+		<property name="implement"
+			value="com.symc.plm.me.sdv.dialog.common.SyncFunctionsetVsMProductDialog"></property>
+		<property name="views">
+			<map>
+				<entry key="syncFunction" value-ref="symc.view.SyncFunctionsetVsMProductView" />
+			</map>
+		</property>
+		<property name="width" value="430" />
+		<property name="height" value="200" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillLayout" type="fillLayout">
+						<view id="syncFunction"/>
+					</layout>
+				]]>
+			</value>
+		</property>
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="1" />
+				<entry key="Ok"
+					value="com.symc.plm.me.sdv.operation.common.SyncFunctionsetVsMProductOperation" />
+			</map>
+		</property>
+	</bean>
+
+    <!-- Operation 정의 -->
+	<!-- Revise -->
+    <bean scope="prototype"
+        id="com.symc.plm.me.sdv.operation.common.ReviseActionOperation"
+        class="com.symc.plm.me.sdv.operation.common.ReviseActionOperation">
+    </bean>
+
+    <!-- Revise 화면 -->
+	<bean
+        id="symc.me.bop.ReviseUpperBopItemOperation"
+        class="org.sdv.core.ui.operation.SimpleDialogOperation">
+        <property name="dialogId" value="symc.me.bop.ReviseDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.CheckUpperItemReviseTargetSDVValidator"/>
+            </list>
+        </property>
+    </bean>
+    <bean
+        id="symc.me.bop.ReviseBodyBopItemOperation"
+        class="org.sdv.core.ui.operation.SimpleDialogOperation">
+        <property name="dialogId" value="symc.me.bop.ReviseDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.CheckBodyItemReviseTargetSDVValidator"/>
+            </list>
+        </property>
+    </bean>
+    <bean
+        id="symc.me.bop.ReviseAssyBopItemOperation"
+        class="org.sdv.core.ui.operation.SimpleDialogOperation">
+        <property name="dialogId" value="symc.me.bop.ReviseDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.CheckAssyItemReviseTargetSDVValidator"/>
+            </list>
+        </property>
+    </bean>
+    <bean
+        id="symc.me.bop.RevisePaintBopItemOperation"
+        class="org.sdv.core.ui.operation.SimpleDialogOperation">
+        <property name="dialogId" value="symc.me.bop.ReviseDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.CheckPaintItemReviseTargetSDVValidator"/>
+            </list>
+        </property>
+    </bean>
+   <!--M-Product 옵션 Update -->
+	<bean id="symc.me.bop.SyncOptionsetVsMProductOperation"
+		class="org.sdv.core.ui.operation.SimpleDialogOperation">
+		<property name="dialogId" value="symc.me.bop.SyncOptionsetVsMProductDialog" />
+		<property name="validators">
+            <list>
+            	<ref  bean="com.symc.plm.me.validator.MProductSelectedTypeValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedRevisionWriteableSDValidator"/>
+            </list>
+        </property>
+	</bean>
+    <!-- MProduct BOM 옵션의 Is External 값을 바꾸어 준다  (implements <> uses) -->
+	<bean id="symc.me.bop.ChangeSyncOptionsetOperation"
+		class="org.sdv.core.ui.operation.SimpleDialogOperation">
+		<property name="dialogId" value="symc.me.bop.ChangeSyncOptionsetDialog" />
+		<property name="validators">
+            <list>
+            	<ref  bean="com.symc.plm.me.validator.MProductSelectedTypeValidator"/>
+                <!-- <ref  bean="com.symc.plm.me.sdv.validate.SelectedRevisionWriteableSDValidator"/>  -->
+            </list>
+        </property>
+	</bean>
+	<!-- [SR140724-013][20140725] shcho, Product와 M-Product Function Sync 기능 추가 -->
+	<!-- M-Product Function Sync -->
+	<bean id="symc.me.bop.SyncFunctionSetVsMProductOperation"
+		class="org.sdv.core.ui.operation.SimpleDialogOperation">
+		<property name="dialogId" value="symc.me.bop.SyncFunctionsetVsMProductDialog" />
+		<property name="validators">
+            <list>
+            	<ref  bean="com.symc.plm.me.validator.MProductSelectedTypeValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedRevisionWriteableSDValidator"/>
+            </list>
+        </property>
+	</bean>
+	<!-- [SR141120-033][20141120] shcho, M-Product의 Find No. 와 BOP의 M7_ENDITEM_SEQ_NO 컬럼 Sync 기능 추가 -->
+    <!-- Sync E/Item Find No. -->
+	<bean id="symc.me.bop.SyncEndItemFindNoOperation"
+		class="com.symc.plm.me.sdv.operation.common.SyncEndItemFindNoOperation"/>
+
+	<!-- 20150202 Replace 관련 추가 기능 개발 Start -->
+	<bean
+		id="symc.me.bop.FindReplacedEndItemOperation"
+		class="com.symc.plm.me.sdv.operation.common.FindReplacedEndItemOperation">
+		<property name="validators">
+            <list>
+            	<ref  bean="com.symc.plm.me.validator.BOPSelectedTypeValidator"/>
+            </list>
+        </property>
+	</bean>
+	<bean
+		id="symc.me.bop.ClearReplacedEndItemOperation"
+		class="com.symc.plm.me.sdv.operation.common.ClearReplacedEndItemOperation">
+	</bean>
+	<!-- 20150202 Replace 관련 추가 기능 개발 End -->
+	
+</beans>

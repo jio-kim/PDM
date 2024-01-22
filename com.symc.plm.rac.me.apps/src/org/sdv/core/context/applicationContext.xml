@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+	<!-- 사용법 : <property name="name" value="${context.name}"/> -->
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:com/symc/plm/me/sdv/context/customApplicationContext.properties</value>
+				<value>classpath:org/sdv/core/context/applicationContext.properties</value>
+			</list>
+		</property>
+	</bean>
+
+	<import resource="classpath:com/symc/plm/me/sdv/context/*.xml" />
+
+	<bean id="UIManager" class="org.sdv.core.ui.SimpleUIManagerImpl" />
+</beans>

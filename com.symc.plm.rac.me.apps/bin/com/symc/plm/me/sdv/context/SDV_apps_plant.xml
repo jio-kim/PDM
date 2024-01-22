@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+  
+  
+  
+<!-- View 정의 -->
+  	<bean id="symc.view.CreatePlantView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="implement" value="com.symc.plm.me.sdv.view.plant.CreatePlantView"></property>
+	</bean>
+  	<bean id="symc.view.CopyAlternativeStationView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="implement" value="com.symc.plm.me.sdv.view.plant.CopyAlternativeStationView"></property>
+	</bean>
+  	<bean id="symc.view.ApplyAlternativeStationView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="implement" value="com.symc.plm.me.sdv.view.plant.ApplyAlternativeStationView"></property>
+	</bean>
+
+  
+<!-- Dialog 정의 -->
+	<!--SelectResourceDialog  -->
+    <bean
+    	id="symc.me.bop.CreateShopItemDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+        <property name="title" value="${SDV_apps_me_NewPlantShop.title}" />
+		<property name="views">
+			<map>
+				<entry key="CreatePlantView" value-ref="symc.view.CreatePlantView" />
+			</map>
+		</property>
+		<property name="width" value="400" />
+		<property name="height" value="160" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+						 <view id="CreatePlantView"/> 
+					</layout>		
+				]]>
+			</value>
+		</property>		
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+			    <entry key="ACTION_CONFIG" value="3" />
+			    <entry key="Ok" value="com.symc.plm.me.sdv.operation.plant.CreatePlantOkOperation" />
+			    <entry key="Apply" value="com.symc.plm.me.sdv.operation.plant.CreatePlantOkOperation" />
+			</map>
+		</property>
+    </bean>
+    <bean
+    	id="symc.me.bop.CreateLineItemDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+        <property name="title" value="${SDV_apps_me_NewPlantLine.title}" />
+		<property name="views">
+			<map>
+				<entry key="CreatePlantView" value-ref="symc.view.CreatePlantView" />
+			</map>
+		</property>
+		<property name="width" value="400" />
+		<property name="height" value="200" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+						 <view id="CreatePlantView"/> 
+					</layout>		
+				]]>
+			</value>
+		</property>		
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+			    <entry key="ACTION_CONFIG" value="3" />
+			    <entry key="Ok" value="com.symc.plm.me.sdv.operation.plant.CreatePlantOkOperation" />
+			    <entry key="Apply" value="com.symc.plm.me.sdv.operation.plant.CreatePlantOkOperation" />
+			</map>
+		</property>
+    </bean>
+    <bean
+    	id="symc.me.bop.CreateStationItemDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+        <property name="title" value="${SDV_apps_me_NewPlantStation.title}" />
+		<property name="views">
+			<map>
+				<entry key="CreatePlantView" value-ref="symc.view.CreatePlantView" />
+			</map>
+		</property>
+		<property name="width" value="400" />
+		<property name="height" value="230" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+						 <view id="CreatePlantView"/> 
+					</layout>		
+				]]>
+			</value>
+		</property>		
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+			    <entry key="ACTION_CONFIG" value="3" />
+			    <entry key="Ok" value="com.symc.plm.me.sdv.operation.plant.CreatePlantOkOperation" />
+			    <entry key="Apply" value="com.symc.plm.me.sdv.operation.plant.CreatePlantOkOperation" />
+			</map>
+		</property>
+    </bean>
+    <bean
+    	id="symc.me.bop.CreateWorkareaItemDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+        <property name="title" value="${SDV_apps_me_NewPlantOPArea.title}" />
+		<property name="views">
+			<map>
+				<entry key="CreatePlantView" value-ref="symc.view.CreatePlantView" />
+			</map>
+		</property>
+		<property name="width" value="400" />
+		<property name="height" value="230" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+						 <view id="CreatePlantView"/> 
+					</layout>		
+				]]>
+			</value>
+		</property>		
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+			    <entry key="ACTION_CONFIG" value="3" />
+			    <entry key="Ok" value="com.symc.plm.me.sdv.operation.plant.CreatePlantOkOperation" />
+			    <entry key="Apply" value="com.symc.plm.me.sdv.operation.plant.CreatePlantOkOperation" />
+			</map>
+		</property>
+    </bean>
+    <bean
+    	id="symc.me.bop.CopyAlternativeStationDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+        <property name="title" value="${SDV_apps_me_CopyAlternativeStation.title}" />
+		<property name="views">
+			<map>
+				<entry key="CopyAlternativeStationView" value-ref="symc.view.CopyAlternativeStationView" />
+			</map>
+		</property>
+		<property name="width" value="400" />
+		<property name="height" value="130" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+						 <view id="CopyAlternativeStationView"/> 
+					</layout>		
+				]]>
+			</value>
+		</property>		
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+			    <entry key="ACTION_CONFIG" value="2" />
+			    <entry key="Ok" value="com.symc.plm.me.sdv.operation.plant.CopyProductionToAlternativeStationOkOperation" />		
+			</map>
+		</property>
+    </bean>
+    <bean
+    	id="symc.me.bop.ApplyAlternativeStationDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+        <property name="title" value="${SDV_apps_me_ApplyAlternativeStation.title}" />
+		<property name="views">
+			<map>
+				<entry key="ApplyAlternativeStationView" value-ref="symc.view.ApplyAlternativeStationView" />
+			</map>
+		</property>
+		<property name="width" value="430" />
+		<property name="height" value="130" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+						 <view id="ApplyAlternativeStationView"/> 
+					</layout>		
+				]]>
+			</value>
+		</property>		
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+			    <entry key="ACTION_CONFIG" value="2" />
+			    <entry key="Ok" value="com.symc.plm.me.sdv.operation.plant.ApplyProductionToAlternativeStationOkOperation" />		
+			</map>
+		</property>
+    </bean>
+
+<!--  Operation 정의 -->	
+    <!-- Plant(Shop, Line) 생성 (BOP Admin) -->
+    <bean
+        id="symc.me.bop.CreateWorkareaShopOperation"
+        class="com.symc.plm.me.sdv.operation.plant.CreateShopDialogOperation">
+        <property name="dialogId" value="symc.me.bop.CreateShopItemDialog"/>
+        <!-- property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+            </list>
+        </property-->
+    </bean>      
+    <bean
+        id="symc.me.bop.CreateWorkareaLineOperation"
+        class="com.symc.plm.me.sdv.operation.plant.CreateLineDialogOperation">
+        <property name="dialogId" value="symc.me.bop.CreateLineItemDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+            </list>
+        </property>
+    </bean>      
+    
+    <!-- Plant(Shop, Line) Release (BOP Admin) -->
+    <bean
+        id="symc.me.bop.ReleaseUpperWorkareaItemOperation"
+   		class="com.symc.plm.me.sdv.operation.plant.ReleaseDialogOperation">
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedReleasedSDVValidator"/>
+            </list>
+        </property>
+    </bean>  
+
+    <!-- Plant(Shop, Line) Revise (BOP Admin) -->
+    <bean
+        id="symc.me.bop.ReviseUpperWorkareaItemOperation"
+   		class="org.sdv.core.ui.operation.SimpleDialogOperation">
+        <property name="dialogId" value="symc.me.bop.ReviseDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedNotReleasedSDVValidator"/>
+            </list>
+        </property>
+    </bean>    
+    
+    
+    <!-- Plant(Station, Workarea)  생성 (차체, 조립)  -->   
+    <bean
+        id="symc.me.bop.CreateLowerWorkareaItemOperation"
+        class="com.symc.plm.me.sdv.operation.plant.CreatePlantDialogOperation">
+        <property name="dialogId" value="symc.me.bop.CreateStationItemDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+            </list>
+        </property>
+    </bean>
+    <bean
+        id="symc.me.bop.CreateLowerWorkareaStationOperation"
+        class="com.symc.plm.me.sdv.operation.plant.CreateStationDialogOperation">
+        <property name="dialogId" value="symc.me.bop.CreateStationItemDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+            </list>
+        </property>
+    </bean>
+    <bean
+        id="symc.me.bop.CreateLowerWorkareaOPAreaOperation"
+        class="com.symc.plm.me.sdv.operation.plant.CreateOPAreaDialogOperation">
+        <property name="dialogId" value="symc.me.bop.CreateWorkareaItemDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+            </list>
+        </property>
+    </bean> 
+    
+    <!-- Plant(Station, Workarea)  Release (차체, 조립)  --> 
+    <bean
+        id="symc.me.bop.ReleaseLowerWorkareaItemOperation"
+   		class="com.symc.plm.me.sdv.operation.plant.ReleaseDialogOperation">
+   		<property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedPlantShopSDVValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedPlantLineSDVValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedReleasedSDVValidator"/>
+            </list>
+        </property>
+    </bean>    
+    
+    <!-- Plant(Station, Workarea)  Revise (차체, 조립)  --> 
+    <bean
+        id="symc.me.bop.ReviseLowerWorkareaItemOperation"
+   		class="org.sdv.core.ui.operation.SimpleDialogOperation">
+        <property name="dialogId" value="symc.me.bop.ReviseDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedPlantShopSDVValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedPlantLineSDVValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedNotReleasedSDVValidator"/>
+            </list>
+        </property>
+    </bean>    
+    
+    <!-- Alternative Plant(Station)  CopyProductionToAlternative (차체)  -->    
+    <bean
+        id="symc.me.bop.CopyProductionToAlternativeStationOperation"
+        class="com.symc.plm.me.sdv.operation.plant.AlternativeStationDialogOperation">
+        <property name="dialogId" value="symc.me.bop.CopyAlternativeStationDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- Alternative Plant(Station)  ApplyAlternativeToProductionStation (차체)  -->    
+    <bean
+        id="symc.me.bop.ApplyAlternativeToProductionStationOperation"
+        class="com.symc.plm.me.sdv.operation.plant.AlternativeStationDialogOperation">
+        <property name="dialogId" value="symc.me.bop.ApplyAlternativeStationDialog"/>
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.sdv.validate.PlantLoadedSDVValidator"/>
+            </list>
+        </property>
+    </bean>
+</beans>

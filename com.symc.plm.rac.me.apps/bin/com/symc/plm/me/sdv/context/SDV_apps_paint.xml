@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<!--###########View 정의########## -->
+	<!-- 도장 Shop View -->
+	<bean id="symc.view.paint.shopView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="Shop" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.paint.PaintShopView"></property>
+	</bean>
+	<!-- 도장 Line View -->
+    <bean id="symc.view.paint.lineView" class="org.sdv.core.beans.ViewPaneStubBean">
+        <property name="title" value="Line" />
+        <property name="implement" value="com.symc.plm.me.sdv.view.paint.PaintLineView"></property>
+    </bean>
+    <!-- 도장 Station View -->
+    <bean id="symc.view.paint.processView" class="org.sdv.core.beans.ViewPaneStubBean">
+        <property name="title" value="Process" />
+        <property name="implement" value="com.symc.plm.me.sdv.view.paint.PaintProcessView"></property>
+    </bean>
+	<!-- 도장 공법 View -->
+	<bean id="symc.view.paint.opView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="Operation" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.paint.PaintOpView"></property>
+	</bean>
+	<!--###########View 정의 END########## -->
+
+	<!--###########Dialog 정의 ########## -->
+
+	<!-- 도장 Shop 생성 -->
+	<bean id="symc.me.bop.CreatePaintShopDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="Create Paint Shop" />
+		<property name="implement"
+			value="com.symc.plm.me.sdv.dialog.paint.CreatePaintShopDialog"></property>
+		<property name="views">
+			<map>
+				<entry key="shopInform" value-ref="symc.view.paint.shopView" />
+				<entry key="mecoSelect" value-ref="symc.view.meco.mecoSelectView" />
+			</map>
+		</property>
+		<property name="width" value="560" />
+		<property name="height" value="400" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillLayout" type="fillLayout">
+						<layout id="borderLayout" type="borderLayoutView">
+							<view id="mecoSelect" order="NORTH"/> 
+							<view id="shopInform" order="CENTER"/>  
+						</layout>
+					</layout>		
+				]]>
+			</value>
+		</property>
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="1" />
+                <entry key="Ok" value="com.symc.plm.me.sdv.operation.paint.CreatePaintShopOperation" />
+			</map>
+		</property>
+	</bean>
+	<!-- 도장 Line 생성 -->
+    <bean id="symc.me.bop.CreatePaintLineDialog" class="org.sdv.core.beans.DialogStubBean">
+        <property name="title" value="Create Paint Line" />
+        <property name="implement"
+            value="com.symc.plm.me.sdv.dialog.paint.CreatePaintLineDialog"></property>
+        <property name="views">
+            <map>
+                <entry key="lineInform" value-ref="symc.view.paint.lineView" />
+                <entry key="mecoSelect" value-ref="symc.view.meco.mecoSelectView" />
+            </map>
+        </property>
+        <property name="width" value="560" />
+        <property name="height" value="400" />
+        <property name="layoutXml">
+            <value>
+                <![CDATA[
+                  <?xml version="1.0" encoding="UTF-8"?>
+                    <layout id="fillLayout" type="fillLayout">
+                        <layout id="borderLayout" type="borderLayoutView">
+                            <view id="mecoSelect" order="NORTH"/> 
+                            <view id="lineInform" order="CENTER"/>  
+                        </layout>
+                    </layout>       
+                ]]>
+            </value>
+        </property>
+        <!-- Dialog only -->
+        <property name="commandBarActions">
+            <map>
+                <entry key="ACTION_CONFIG" value="3" />
+                <entry key="Ok" value="com.symc.plm.me.sdv.operation.paint.CreatePaintLineOperation" />
+                <entry key="Apply" value="com.symc.plm.me.sdv.operation.paint.CreatePaintLineOperation" />
+            </map>
+        </property>
+    </bean>
+    <!-- 도장 Station 생성  -->
+    <bean id="symc.me.bop.CreatePaintProcessDialog" class="org.sdv.core.beans.DialogStubBean">
+        <property name="title" value="Create Paint Process" />
+        <property name="implement" value="com.symc.plm.me.sdv.dialog.paint.CreatePaintProcessDialog"></property>
+        <property name="views">
+            <map>
+                <entry key="processInform" value-ref="symc.view.paint.processView" />
+                <entry key="mecoSelect" value-ref="symc.view.meco.mecoSelectView" />
+            </map>
+        </property>
+        <property name="width" value="550" />
+        <property name="height" value="320" />
+        <property name="layoutXml">
+            <value>
+                <![CDATA[
+                  <?xml version="1.0" encoding="UTF-8"?>
+                    <layout id="fillLayout" type="fillLayout">
+                        <layout id="borderLayout" type="borderLayoutView">
+                            <view id="mecoSelect" order="NORTH"/> 
+                            <view id="processInform" order="CENTER"/>  
+                        </layout>
+                    </layout>       
+                ]]>
+            </value>
+        </property>
+        <!-- Dialog only -->
+        <property name="commandBarActions">
+            <map>
+                <entry key="ACTION_CONFIG" value="3" />
+                <entry key="Apply" value="com.symc.plm.me.sdv.operation.paint.CreatePaintProcessOperation" />
+                <entry key="Ok" value="com.symc.plm.me.sdv.operation.paint.CreatePaintProcessOperation" />
+            </map>
+        </property>
+    </bean>
+	<!-- 도장 공법 생성 -->
+	<bean id="symc.me.bop.CreatePaintOPDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="Creat Paint Operation" />
+		<property name="implement"
+			value="com.symc.plm.me.sdv.dialog.paint.CreatePaintOPDialog"></property>
+		<property name="views">
+			<map>
+				<entry key="opInform" value-ref="symc.view.paint.opView" />
+				<entry key="mecoSelect" value-ref="symc.view.meco.mecoSelectView" />
+			</map>
+		</property>
+		<property name="width" value="560" />
+		<property name="height" value="470" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillLayout" type="fillLayout">
+						<layout id="borderLayout" type="borderLayoutView">
+							<view id="mecoSelect" order="NORTH"/> 
+							<view id="opInform" configId="0" order="CENTER"/>  
+						</layout>
+					</layout>		
+				]]>
+			</value>
+		</property>
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="1" />
+				<entry key="Ok"
+					value="com.symc.plm.me.sdv.operation.paint.CreatePaintOPOperation" />
+			</map>
+		</property>
+	</bean>
+	<!-- 도장 공법 복제 -->
+	<bean id="symc.me.bop.SaveAsPaintOPDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="Save As Paint Operation" />
+		<property name="implement"
+			value="com.symc.plm.me.sdv.dialog.paint.SaveAsPaintOPDialog"></property>
+		<property name="views">
+			<map>
+				<entry key="opInform" value-ref="symc.view.paint.opView" />
+				<entry key="mecoSelect" value-ref="symc.view.meco.mecoSelectView" />
+			</map>
+		</property>
+		<property name="width" value="560" />
+		<property name="height" value="470" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillLayout" type="fillLayout">
+						<layout id="borderLayout" type="borderLayoutView">
+							<view id="mecoSelect" order="NORTH"/> 
+							<view id="opInform" configId="1" order="CENTER" />  
+						</layout>
+					</layout>		
+				]]>
+			</value>
+		</property>
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="1" />
+				<entry key="Ok"
+					value="com.symc.plm.me.sdv.operation.paint.SaveAsPaintOPOperation" />
+			</map>
+		</property>
+	</bean>
+	<!--###########Dialog 정의 END ########## -->
+
+	<!--###########Operation 정의 ########## -->
+
+	<!-- 도장 Shop Operation -->
+	<bean id="symc.me.bop.CreatePaintShopOperation"
+		class="com.symc.plm.me.sdv.operation.paint.CreatePaintShopDialogOperation">
+		<property name="dialogId" value="symc.me.bop.CreatePaintShopDialog" />
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.validator.MProductSelectedTypeValidator"/>
+            </list>
+        </property>
+	</bean>
+	<!-- 도장 Line Operation -->
+    <bean id="symc.me.bop.CreatePaintLineOperation"
+        class="com.symc.plm.me.sdv.operation.paint.CreatePaintLineDialogOperation">
+        <property name="dialogId" value="symc.me.bop.CreatePaintLineDialog" />
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.validator.ShopSelectedTypeValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedPaintBOPValidator"/>
+            </list>
+        </property>
+    </bean>    
+    <!-- 도장 공정 Station -->
+ 	<bean id="symc.me.bop.CreatePaintProcessOperation"
+		class="com.symc.plm.me.sdv.operation.paint.CreatePaintProcessDialogOperation">
+		<property name="dialogId" value="symc.me.bop.CreatePaintProcessDialog" />
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.validator.LineSelectedTypeValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedPaintBOPValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedReleasedSDVValidator"/>
+            </list>
+        </property>
+	</bean>   
+	<!-- 도장 공법 생성 Operation -->
+	<bean id="symc.me.bop.CreatePaintOPOperation"
+		class="com.symc.plm.me.sdv.operation.paint.CreatePaintOPDialogOperation">
+		<property name="dialogId" value="symc.me.bop.CreatePaintOPDialog" />
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.validator.StationSelectedTypeValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedPaintBOPValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedReleasedSDVValidator"/>
+            </list>
+        </property>
+	</bean>
+	<!-- 도장 공법 복제 Operation -->
+	<bean id="symc.me.bop.SaveAsPaintOPOperation"
+		class="com.symc.plm.me.sdv.operation.paint.SaveAsPaintOPDialogOperation">
+		<property name="dialogId" value="symc.me.bop.SaveAsPaintOPDialog" />
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.validator.PaintOperationSelectedTypeValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedPaintBOPValidator"/>
+            </list>
+        </property>
+	</bean>
+
+	<!-- Action Operation -->
+	<bean scope="prototype"
+		id="com.symc.plm.me.sdv.operation.paint.CreatePaintShopOperation"
+		class="com.symc.plm.me.sdv.operation.paint.CreatePaintShopOperation">
+	</bean>
+	<bean scope="prototype"
+		id="com.symc.plm.me.sdv.operation.paint.CreatePaintOPOperation"
+		class="com.symc.plm.me.sdv.operation.paint.CreatePaintShopOperation">
+	</bean>
+	<bean scope="prototype"
+		id="com.symc.plm.me.sdv.operation.paint.SaveAsPaintOPOperation"
+		class="com.symc.plm.me.sdv.operation.paint.SaveAsPaintOPOperation">
+	</bean>
+	<!--###########Operation 정의 END ########## -->
+</beans>

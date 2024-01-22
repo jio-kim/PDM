@@ -1,0 +1,47 @@
+■ 배포 방법
+
+◆ 1. jar 파일 생성
+ build.xml 선택 후  Popup 메뉴의 Run As... > Ant Build.. 선택
+  build가 종료되면 jar 파일 확인.
+    jar 파일 생성 위치 : C:\eclipse_cf\workspace\0_Export_JAR\com.symc.plm.rac.me.apps\2020-09-17 10\com.symc.plm.rac.me.apps_1.0.0.1.jar
+
+◆ 2-1. 개발 서버에 적용
+
+    .99번 서버에 원격 접속.
+     > BOP 배포 폴더 : D:\TC_INSTALL_CD\SYMC_BOP
+    .BOP 배포 폴더에 날짜 폴더를 하나 만들고 BOP 배포 폴더 아래에 있는 symc_bop.icd, symc_bop.zip 파일을 복사한다.
+    .1번에서 생성한 jar 파일을 D:\TC_INSTALL_CD\SYMC_BOP\symc_bop\symc_bop\plugins 폴더에 덮어쓰기 한다.
+    .D:\TC_INSTALL_CD\SYMC_BOP\symc_bop\symc_bop.zip 파일을 삭제한다.
+    .D:\TC_INSTALL_CD\SYMC_BOP\symc_bop 아래에 symc_bop 폴더를 압축한다.(폴더 선택 > popup 메뉴 > 보내기 > 압축(ZIP) 폴더)
+    .새로 생성된 D:\TC_INSTALL_CD\SYMC_BOP\symc_bop\symc_bop.zip 파일을 D:\TC_INSTALL_CD\SYMC_BOP 폴더에 덮어쓰기 한다.
+    .symc_bop.icd 파일을 노트패드로 편집 한다.
+     > 편집 내용 : BOP of NewPLM for Ssangyong Motor:2020.0909.1438 > BOP of NewPLM for Ssangyong Motor:2020.0917.1600
+                                                                                                 .날짜 정보를 오늘 날짜로 변경한다.
+    .수정한 icd 파일을 D:\SIEMENS\WEB_ROOT_TC10\icd 폴더에 복사한다.
+    .insweb을 통해 배포를 수행한다.(배포 방법)
+     > Teamcenter OTW ME, Teamcenter OTW2 ME, Teamcenter OTW3 ME 에 배포.
+     > 각 instance를 선택하고 수정 버튼을 클릭한다.
+     > 수정창이 뜨면 ICD 파일 복사... 버튼을 클릭한다.
+     > 솔루션 다시 설치... 버튼을 클릭하고 확인 > 예 > 확인..
+     > 수정 창에서 확인 버튼을 클릭하고 빠져나온다.
+
+◆ 2-2. 운영 서버에 적용
+
+    .94번 서버에 원격 접속.
+     > BOP 배포 폴더 : D:\TC_INSTALL_CD\SYMC_TC10_BOP
+    .BOP 배포 폴더에 날짜 폴더를 하나 만들고 BOP 배포 폴더 아래에 있는 symc_bop.icd, symc_bop.zip 파일을 복사한다.
+    .1번에서 생성한 jar 파일을 D:\TC_INSTALL_CD\SYMC_TC10_BOP\symc_bop\symc_bop\plugins 폴더에 덮어쓰기 한다.
+    .D:\TC_INSTALL_CD\SYMC_TC10_BOP\symc_bop\symc_bop.zip 파일을 삭제한다.
+    .D:\TC_INSTALL_CD\SYMC_TC10_BOP\symc_bop 아래에 symc_bop 폴더를 압축한다.(폴더 선택 > popup 메뉴 > 보내기 > 압축(ZIP) 폴더)
+    .새로 생성된 D:\TC_INSTALL_CD\SYMC_TC10_BOP\symc_bop\symc_bop.zip 파일을 D:\TC_INSTALL_CD\SYMC_TC10_BOP\ 폴더에 덮어쓰기 한다.
+    .symc_bop.icd 파일을 노트패드로 편집 한다.
+     > 편집 내용 : BOP of NewPLM for Ssangyong Motor:2020.0909.1438 > BOP of NewPLM for Ssangyong Motor:2020.0917.1600
+                                                                                                 .날짜 정보를 오늘 날짜로 변경한다.
+    .수정한 icd 파일을 D:\SIEMENS\WEB_ROOT_10\icd 폴더에 복사한다.
+    .insweb을 통해 배포를 수행한다.(배포 방법)
+     > Teamcenter OTW ME, Teamcenter OTW2 ME, Teamcenter OTW3 ME 에 배포.
+     > 각 instance를 선택하고 수정 버튼을 클릭한다.
+     > 수정창이 뜨면 ICD 파일 복사... 버튼을 클릭한다.
+     > 솔루션 다시 설치... 버튼을 클릭하고 확인 > 예 > 확인..
+     > 수정 창에서 확인 버튼을 클릭하고 빠져나온다.
+

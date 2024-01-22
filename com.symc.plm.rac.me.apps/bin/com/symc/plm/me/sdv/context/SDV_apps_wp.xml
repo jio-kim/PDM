@@ -1,0 +1,335 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+<!-- 용접조건표  -->
+	<bean id="symc.view.weldExcelView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="WeldConditionSheet" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.weld.WeldExcelView" />
+		<property name="toolbarActions">
+			<map>
+				<entry key="AddSheet;Add;true" value="local:addSheet" />
+				<entry key="RemoveSheet;Remove;true" value="local:removeSheet" />
+				<entry key="ShowHideRibbon;ShowHideRibbon;true" value="local:showHideRibbon" />
+				<entry key="UpdateTeamcenter;Save;true" value="local:saveWorkbook" />
+				<entry key="Close;Close;true" value="local:closeExcelView" />
+				<entry key="OpenExcel;OpenExcel;true" value="local:openExcel" />
+				<entry key="Unlock;Unlock;true" value="local:unlock" />
+			</map>
+		</property>
+	</bean>
+
+<!-- 용점조건표 검색 -->
+	<bean id="symc.view.listView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="List" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.weld.search.ListView" />
+		<property name="toolbarActions">
+			<map>
+                <entry key="Download;Download" value="com.symc.plm.me.sdv.operation.wp.search.SearchWeldConditionSheetDownloadOperation" />
+                <!-- <entry key="Preview;Preview" value="local:weldConditionSheetPreview" /> -->
+                <entry key="Open;OpenExcel" value="local:weldConditionSheetOpen" />
+                <!-- <entry key="Reset;Reset" value="local:weldConditionSearchReset" /> -->
+            </map>
+        </property>
+	</bean>
+
+	<bean id="symc.view.searchCriteriaView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="Search" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.weld.search.SearchCriteriaView" />
+		<property name="toolbarAlign" value="RIGHT" />
+        <property name="toolbarLocation" value="BOTTOM" />
+		<property name="toolbarActions">
+			<map>
+				<entry key="Search;Search" value="com.symc.plm.me.sdv.operation.wp.search.SearchWeldConditionSheetSearchOperation;targetId=listView" />
+			</map>
+		</property>
+	</bean>
+	
+	<!-- Update Weld Cond. Sheet View S -->
+    <bean id="symc.view.UpdateWeldCondSheetView" class="org.sdv.core.beans.ViewPaneStubBean">
+        <property name="title" value="Update Weld Condition Sheets" />
+        <property name="implement"
+            value="com.symc.plm.me.sdv.view.body.UpdateWeldCondSheetView" />
+    </bean>
+    <!-- Update Weld Cond. Sheet View E -->
+
+<!-- 용접공법 생성 -->
+	<bean id="symc.view.searchMECO" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="MECO" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.body.SelectedMECOView" />
+	</bean>
+	<bean id="symc.view.CreateWeldOP" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="CreateWeldOP" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.body.CreateWeldOPView" />
+	</bean>
+
+	<bean id="symc.dialog.WeldConditionSheetDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="Preview Weld Cond. Sheet" />
+		<property name="views">
+			<map>
+				 <entry key="weldExcelView" value-ref="symc.view.weldExcelView" />
+			</map>
+		</property>
+		<property name="width" value="800" />
+		<property name="height" value="1000" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+					<?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="borderLayoutView">
+						<view id="weldExcelView" />
+					</layout>
+				]]>
+			</value>
+		</property>
+	    <property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="0" />
+			</map>
+		</property>
+	</bean>
+
+	<bean id="symc.dialog.SearchWeldConditionSheetsDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="Search Weld Cond. Sheet" />
+		<property name="views">
+			<map>
+				 <entry key="listView" value-ref="symc.view.listView" />
+				 <entry key="searchCriteriaView" value-ref="symc.view.searchCriteriaView" />
+			</map>
+		</property>
+		<property name="width" value="1030" />
+		<property name="height" value="610" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+						<layout id="borderTest" type="borderLayoutView">
+						    <view id="searchCriteriaView" order="NORTH" />
+						    <view id="listView" order="CENTER" />
+						</layout>
+					</layout>
+				]]>
+			</value>
+		</property>
+		<property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="0" />
+			</map>
+		</property>
+	</bean>
+
+		<bean id="symc.me.bop.CreateWeldOPDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="New Weld Operation" />
+		<property name="implement"
+            value="com.symc.plm.me.sdv.dialog.body.CreateWeldOPDialog"></property>
+		<property name="views">
+			<map>
+				 <entry key="searchMECO" value-ref="symc.view.searchMECO" />
+				 <entry key="createWeldOP" value-ref="symc.view.CreateWeldOP" />
+			</map>
+		</property>
+		<property name="width" value="500" />
+		<property name="height" value="365" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+						<layout id="borderTest" type="borderLayoutView">
+						    <view id="searchMECO" order="NORTH" />
+						    <view id="createWeldOP" order="CENTER" />
+						</layout>
+					</layout>
+				]]>
+			</value>
+		</property>
+		<property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="3" />
+				<entry key="Ok" value="com.symc.plm.me.sdv.operation.body.CreateWeldOPActionOperation" />
+				<entry key="Apply" value="com.symc.plm.me.sdv.operation.body.CreateWeldOPActionOperation" />
+			</map>
+		</property>
+	</bean>
+	
+	<!-- Weld Cond. Sheet Update Dialog S -->
+    <bean id="symc.me.bop.UpdateWeldCondSheetDialog" class="org.sdv.core.beans.DialogStubBean">
+        <property name="title" value="${SDV_apps_wlddCondUpdate.title}" />
+        <property name="implement"
+            value="com.symc.plm.me.sdv.dialog.body.UpdateWeldCondSheetDialog"></property>
+        <property name="views">
+            <map>
+                <entry key="mecoView" value-ref="symc.view.searchMECOView" />
+                <entry key="UpdateWeldCondSheetView" value-ref="symc.view.UpdateWeldCondSheetView" />
+            </map>
+        </property>
+        <property name="width" value="430" />
+        <property name="height" value="350" />
+        <property name="layoutXml">
+            <value>
+                <![CDATA[
+                  <?xml version="1.0" encoding="UTF-8"?>
+                    <layout id="fillTest" type="fillLayout">
+                        <layout id="borderTest" type="borderLayoutView">
+                            <view id="mecoView" order="NORTH" />
+                            <view id="UpdateWeldCondSheetView" order="CENTER" />
+                        </layout>
+                    </layout>
+                ]]>
+            </value>
+        </property>
+        <property name="commandBarActions">
+            <map>
+                <entry key="ACTION_CONFIG" value="3" />
+                <entry key="Ok" value="com.symc.plm.me.sdv.operation.body.UpdateWeldCondSheetActionOperation" />
+                <entry key="Apply" value="com.symc.plm.me.sdv.operation.body.UpdateWeldCondSheetActionOperation" />
+            </map>
+        </property>
+    </bean>
+    <!-- Weld Cond. Sheet Update Dialog E -->
+
+	<!-- OccGroupUpdate  -->
+	<bean id="symc.view.OccGroupUpdate" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="Occurrence Group Update" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.occgroup.OccGroupUpdateView" />
+	</bean>
+
+	<bean id="symc.dialog.OccGroupUpdateDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="Occurrence Group Update" />
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+		<property name="views">
+			<map>
+				 <entry key="occGroupView" value-ref="symc.view.OccGroupUpdate" />
+			</map>
+		</property>
+		<property name="width" value="800" />
+		<property name="height" value="300" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+					<?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="borderLayoutView">
+						<view id="occGroupView" />
+					</layout>
+				]]>
+			</value>
+		</property>
+	    <property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="1" />
+				<entry key="Ok" value="com.symc.plm.me.sdv.operation.occgroup.OccGroupUpdateActionOperation" />
+			</map>
+		</property>
+	</bean>
+
+    <!-- OccGroupCreateUpdate (PS ON TC 사용자를 위한 OccGroup 생성 및 업데이트) -->
+	<bean id="symc.view.OccGroupCreateUpdate" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="Occurrence Group Create/Update" />
+		<property name="implement" value="com.symc.plm.me.sdv.view.occgroup.OccGroupCreateUpdateView" />
+	</bean>
+
+	<bean id="symc.dialog.OccGroupCreateUpdateDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="title" value="Occurrence Group Create/Update" />
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+		<property name="views">
+			<map>
+				 <entry key="occGroupCreateUpdateView" value-ref="symc.view.OccGroupCreateUpdate" />
+			</map>
+		</property>
+		<property name="width" value="500" />
+		<property name="height" value="350" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+					<?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="borderLayoutView">
+						<view id="occGroupCreateUpdateView" />
+					</layout>
+				]]>
+			</value>
+		</property>
+ 	    <property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="1" />
+				<entry key="Ok" value="com.symc.plm.me.sdv.operation.occgroup.OccGroupCreateUpdateActionOperation" />
+			</map>
+		</property>
+	</bean>
+
+    <bean
+		id="symc.me.weld.PreviewWeldConditionSheetOperation"
+		class="com.symc.plm.me.sdv.operation.SimpleTCSDVDialogOperation">
+		<property name="dialogId" value="symc.dialog.WeldConditionSheetDialog" />
+		<property name="validators">
+	        <list>
+	        	<ref  bean="com.symc.plm.me.validator.WeldOpSelectedTypeValidator"/>
+	        </list>
+        </property>
+	</bean>
+
+	<bean
+		id="symc.me.weld.SearchWeldConditionSheetsOperation"
+		class="com.symc.plm.me.sdv.operation.SimpleTCSDVDialogOperation">
+		<property name="dialogId" value="symc.dialog.SearchWeldConditionSheetsDialog" />
+	</bean>
+
+	<bean
+		id="symc.me.occGroup.OccGroupUpdateOperation"
+		class="com.symc.plm.me.sdv.operation.SimpleTCSDVDialogOperation">
+		<property name="dialogId" value="symc.dialog.OccGroupUpdateDialog" />
+		<property name="validators">
+	        <list>
+	        	<ref  bean="com.symc.plm.me.validator.StationSelectedTypeValidator"/>
+	        	<ref  bean="com.symc.plm.me.sdv.validate.MProductAssemblyTreeOptionSDVValidator"/>
+	        </list>
+        </property >
+	</bean>
+
+    <bean
+		id="symc.me.occGroup.OccGroupCreateUpdateOperation"
+		class="com.symc.plm.me.sdv.operation.SimpleTCSDVDialogOperation">
+		<property name="dialogId" value="symc.dialog.OccGroupCreateUpdateDialog" />
+		<property name="validators">
+	        <list>
+	        	<ref  bean="com.symc.plm.me.validator.UpperBOPSelectedTypeValidator"/>
+	        	<ref  bean="com.symc.plm.me.sdv.validate.OccGroupWindowSelectCheckSDVValidator"/>
+	        	<ref  bean="com.symc.plm.me.sdv.validate.PertInfoCheckSDVValidator"/>
+	        </list>
+        </property >
+	</bean>
+
+    <bean
+		id="symc.me.bop.CreateWeldOPOperation"
+		class="com.symc.plm.me.sdv.operation.SimpleTCSDVDialogOperation">
+		<property name="dialogId" value="symc.me.bop.CreateWeldOPDialog" />
+		<property name="validators">
+	        <list>
+	        	<ref  bean="com.symc.plm.me.validator.BodyOperationSelectedTypeValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedReleasedSDVValidator"/>
+	        </list>
+        </property>
+	</bean>
+
+<!-- 	<bean
+		id="symc.me.bop.body.CreateWeldOPInitOperation"
+		class="com.symc.plm.me.sdv.operation.body.CreateWeldOPInitOperation">
+	</bean> -->
+	
+    <!-- 차체 용접조건표 Update 화면 S -->
+    <bean id="symc.me.weld.UpdateWeldConditionSheetOperation" class="org.sdv.core.ui.operation.SimpleDialogOperation">
+        <property name="dialogId" value="symc.me.bop.UpdateWeldCondSheetDialog" />
+        <property name="validators">
+            <list>
+                <ref  bean="com.symc.plm.me.validator.ShopSelectedTypeValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedBodyBOPValidator"/>
+                <ref  bean="com.symc.plm.me.sdv.validate.SelectedTargetViewModifiableSDVValidator"/>
+            </list>
+        </property>
+    </bean>
+    <!-- 차체 용접조건표 Update 화면 E -->
+
+</beans>

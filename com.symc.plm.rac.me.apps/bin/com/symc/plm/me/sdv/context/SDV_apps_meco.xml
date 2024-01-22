@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+    xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+ <bean id="symc.me.meco.CreateMECOOperation"  class="com.symc.plm.me.sdv.operation.meco.CreateMECODialogOperation" />
+ <bean id="symc.me.meco.MECODetailReportOperation"  class="com.symc.plm.me.sdv.operation.meco.MECODetailReportOperation" />
+ <bean id="symc.me.meco.ListPartChangedECOOperation" class="com.symc.plm.me.sdv.operation.meco.ECOChangeHistoryOperation" />
+ <bean id="symc.me.meco.UpdateEffectivityOperation" class="com.symc.plm.me.sdv.operation.meco.UpdateEffectivityOperation" />
+
+ <!-- Change MECO View -->
+ <bean id="symc.view.changeMecoView" class="org.sdv.core.beans.ViewPaneStubBean">
+	<property name="implement" value="com.symc.plm.me.sdv.view.meco.ChangeMecoNoView"></property>
+ </bean>
+ <!-- Change MECO Dialog -->
+ <bean id="symc.me.bop.ChangeMecoNoDialog" class="org.sdv.core.beans.DialogStubBean">
+	<property name="title" value="Change Meco No." />
+	<property name="implement"
+		value="com.symc.plm.me.sdv.dialog.meco.ChangeMecoNoDialog"></property>
+	<property name="views">
+		<map>
+			<entry key="inform" value-ref="symc.view.changeMecoView" />
+		</map>
+	</property>
+	<property name="width" value="470" />
+	<property name="height" value="400" />
+	<property name="layoutXml">
+		<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillLayout" type="fillLayout">
+						<view id="inform"/>  
+					</layout>		
+				]]>
+		</value>
+	</property>
+	<property name="commandBarActions">
+		<map>
+			<entry key="ACTION_CONFIG" value="1" />
+			<entry key="Ok"
+				value="com.symc.plm.me.sdv.operation.meco.ChangeMecoNoOperation" />
+		</map>
+	</property>
+ </bean>
+ 
+ <bean id="symc.me.bop.ChangeMecoNoOperation" class="org.sdv.core.ui.operation.SimpleDialogOperation">
+	<property name="dialogId" value="symc.me.bop.ChangeMecoNoDialog" />
+	<property name="validators">
+		<list>
+			<ref bean="com.symc.plm.me.sdv.validate.SelectedRevisionWriteableSDValidator" />
+		</list>
+	</property>
+ </bean>
+ 
+</beans>

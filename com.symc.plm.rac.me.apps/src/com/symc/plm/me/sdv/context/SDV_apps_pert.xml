@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util" 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+
+	<bean id="symc.view.SetSubDecessorView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="toolbarActions">
+			<map>
+				<entry key="Reset;Refresh;true" value="local:reset" />
+				<entry key="Save" value="local:saveExtDecessors" />
+			</map>
+		</property>
+		<property name="implement" 	value="com.symc.plm.me.sdv.view.pert.SetSubDecessorView"></property>
+		<property name="toolbarAlign" value="RIGHT" />
+	</bean>
+
+	<bean id="symc.dialog.SetSubDecessorDialog" class="org.sdv.core.beans.DialogStubBean">
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+		<property name="title" value="Set Sub Line Decessor" />
+		<property name="views">
+			<map>
+				<entry key="mainView" value-ref="symc.view.SetSubDecessorView" />
+			</map>
+		</property>
+		<property name="width" value="1000" />
+		<property name="height" value="500" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+					    <view id="mainView" />
+					</layout>
+				]]>
+			</value>
+		</property>
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+				<entry key="ACTION_CONFIG" value="0" />
+			</map>
+		</property>
+	</bean>
+
+	<!-- TC API Opeartion Sample -->
+	<bean
+        id="symc.me.pert.SetSubDecessorOperation"
+        class="com.symc.plm.me.sdv.operation.SimpleTCSDVDialogOperation">
+        <property name="dialogId" value="symc.dialog.SetSubDecessorDialog"/>
+		<property name="validators">
+	        <list>
+	        	<ref  bean="com.symc.plm.me.validator.LineSelectedTypeValidator"/>
+	        </list>
+        </property>
+    </bean>
+</beans>

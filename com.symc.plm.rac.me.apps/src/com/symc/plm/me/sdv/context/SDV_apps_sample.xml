@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="
+http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+	<bean id="symc.view.sampleView" class="org.sdv.core.beans.ViewPaneStubBean">
+		<property name="title" value="${SDV_apps_sample.title}" />
+		<property name="toolbarActions">
+			<map>
+				<entry key="Export;Export;true" value="local:callAction1" />
+				<entry key="Import;Import;true" value="local:callAction2" />
+				<entry key="Edit;Edit;true" value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+				<entry key="OK;OK_16;true" value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+				<entry key="Search;Search;true" value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+			</map>
+		</property>
+		<property name="implement" value="com.symc.plm.me.sdv.view.sdvsample.SDVSampleView"></property>
+	</bean>
+
+	<bean id="symc.dialog.sampleDialog" class="org.sdv.core.beans.DialogStubBean">		
+		<property name="implement" value="org.sdv.core.ui.dialog.SimpleSDVDialog" />
+		<property name="title" value="${SDV_apps_sample.title}" />
+		<property name="views">
+			<map>
+				<entry key="sampleView1" value-ref="symc.view.sampleView" />
+				<entry key="sampleView2" value-ref="symc.view.sampleView" />
+				<entry key="sampleView3" value-ref="symc.view.sampleView" />
+				<entry key="sampleView4" value-ref="symc.view.sampleView" />
+				<entry key="sampleView5" value-ref="symc.view.sampleView" />
+				<entry key="sampleView6" value-ref="symc.view.sampleView" />
+			</map>
+		</property>
+		<property name="width" value="1200" />
+		<property name="height" value="800" />
+		<property name="layoutXml">
+			<value>
+				<![CDATA[
+				  <?xml version="1.0" encoding="UTF-8"?>
+					<layout id="fillTest" type="fillLayout">
+						<layout id="borderTest" type="borderLayoutView">
+						    <view id="sampleView1" order="NORTH" />    
+						    <view id="sampleView4" order="WEST"/>
+						    <layout id="borderTest2" type="borderLayoutView" order="CENTER">
+						      <view id="sampleView3" order="CENTER" />
+							  <view id="sampleView2" order="EAST" />
+							  <view id="sampleView6" order="WEST" />					    
+						    </layout>
+						    <view id="sampleView5" order="SOUTH" />						        						    
+						</layout>
+					</layout>		
+				]]>
+			</value>
+		</property>		
+		<property name="toolbarActions">
+			<map>
+				<entry key="AddSheet;Add" value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+				<entry key="RemoveSheet;Remove_16" value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+				<entry key="Clear" 		value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+				<entry key="Refresh" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+				<entry key="Revise" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+				<entry key="Upload" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+				<entry key="Download" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+				<entry key="CopyExcel" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleExcelOperation;Copy" />
+				<entry key="[label]:TestLabel1" 	value="* message for test of lable text;Red;Black" />
+				<entry key="test2" 		value="local:test" />
+			</map>
+		</property>
+		<!-- Dialog only -->
+		<property name="commandBarActions">
+			<map>
+			    <entry key="ACTION_CONFIG" value="2" />
+			    <entry key="Search;Search_16" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+			    <entry key="Publish" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+			    <entry key="Print" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+			    <entry key="OpenExcel" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleExcelOperation;Open" />
+                <entry key="SaveAs" 	value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+			    <entry key="Close" 		value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+                <entry key="Save" 		value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+                <entry key="Open" 		value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+                <entry key="Apply" 		value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+			    <entry key="Ok" 		value="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation" />
+			</map>
+		</property>
+	</bean>
+	
+	<util:map id="sampleOperations" map-class="java.util.HashMap">
+        <entry key="com.symc.plm.me.sdv.command.sdvsample.SDVSample" value="com.symc.plm.me.sdv.operation.SimpleTCSDVDialogOperation" />
+        <entry key="com.symc.plm.me.sdv.command.sdvsample.SDVSample2" value="com.symc.plm.me.sdv.operation.SimpleTCSDVDialogOperation" />
+    </util:map>
+
+    <!-- CORE API Opeartion Sample -->
+    <!-- 
+	<bean
+		id="com.symc.plm.me.sdv.command.sdvsample.SDVSampleCommand_operation"
+		class="org.sdv.core.ui.operation.SimpleDialogOperation">
+		<constructor-arg index="0" value="symc.dialog.sampleDialog"/>
+	</bean>
+	-->
+	
+	<!-- TC API Opeartion Sample -->
+	<bean
+        id="com.symc.plm.me.sdv.command.sdvsample.SDVSampleOperation"
+        class="com.symc.plm.me.sdv.operation.SimpleTCSDVDialogOperation">
+        <property name="dialogId" value="symc.dialog.sampleDialog"/>
+        <!-- 
+        <property name="validators">
+	        <list>
+	        	<ref  bean="com.symc.plm.me.validator.SampleValidator"/>
+	        </list>
+        </property>
+	         -->
+    </bean>  
+
+    <!-- Action, Command Operation -->
+    <bean scope="prototype"
+        id="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation"
+        class="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation">       
+    </bean>
+    
+    <!-- Action, Command Operation -->
+    <bean scope="prototype" id="symc.plm.me.sdv.view.action.publishOperation"
+        class="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation">        
+    </bean>    
+
+    <bean scope="prototype" id="symc.plm.me.sdv.view.action.DownloadOperation"
+        class="com.symc.plm.me.sdv.operation.sdvsample.SDVSampleOkOperation">   
+    </bean>   
+    
+     
+    
+</beans>
