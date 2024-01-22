@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- WARNING: Eclipse auto-generated file.
+              Any modifications will be overwritten.
+              To include a user specific buildfile here, simply create one in the same
+              directory with the processing instruction <?eclipse.ant.import?>
+              as the first entry and export the buildfile again. -->
+<project basedir="." default="build" name="dwgtopdf">
+    <property environment="env"/>
+    <property name="ECLIPSE_HOME" value="C:/PLM83/Client_4Tier/portal"/>
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.6"/>
+    <property name="source" value="1.6"/>
+    <path id="Plug-in Dependencies.libraryclasspath">
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui_3.5.0.I20090604-2000.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt_3.5.0.v3550b.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt.nl1_3.2.0.v200606220026.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt.nl2a_3.2.0.v200606220026.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt.nl2_3.2.0.v200606220026.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt.nlBidi_3.2.0.v200606220026.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.swt.win32.win32.x86_3.5.0.v3550b.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.jface_3.5.0.I20090525-2000.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.commands_3.5.0.I20090525-2000.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.ui.workbench_3.5.0.I20090603-2000.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.runtime_3.5.0.v20090525.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.osgi_3.5.0.v20090520.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.common_3.5.0.v20090520-1800.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.jobs_3.4.100.v20090429-1800.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry_3.4.100.v20090520-1800.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry.nl1_3.2.0.v200606220026.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry.nl2a_3.2.0.v200606220026.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry.nl2_3.2.0.v200606220026.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.registry.nlBidi_3.2.0.v200606220026.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.preferences_3.2.300.v20090520-1800.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.core.contenttype_3.4.0.v20090429-1800.jar"/>
+        <pathelement location="${ECLIPSE_HOME}/plugins/org.eclipse.equinox.app_1.2.0.v20090520-1800.jar"/>
+    </path>
+    <path id="TC_SOA.userclasspath">
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/xml-apis.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/avalon-framework-4.1.5.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/com.teamcenter.rac.aif.registryeditor_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/com.teamcenter.rac.aifrcp_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/com.teamcenter.rac.kernel_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/com.teamcenter.rac.util_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/commons-codec.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/commons-httpclient-3.1.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/commons-logging.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/jacorb.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/log4j.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/logkit-1.2.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/resolver.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/tcgatewaystubs.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAdministrationLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAdministrationStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAdministrationTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAiLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAiStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAiTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAllocationsLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAllocationsStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAllocationsTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAsbAsmAlignmentLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAsbAsmAlignmentStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAsbAsmAlignmentTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAsBuiltLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAsBuiltStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAsBuiltTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAsMaintainedLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAsMaintainedStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAsMaintainedTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAuthorizedDataAccessLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAuthorizedDataAccessStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaAuthorizedDataAccessTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaBomLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaBomStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaBomTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaBusinessModelerLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaBusinessModelerStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaBusinessModelerTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCadBomAlignmentLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCadBomAlignmentStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCadBomAlignmentTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCadLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCadStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCadTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCaeLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCaeStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCaeTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCalendarManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCalendarManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCalendarManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaChangeManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaChangeManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaChangeManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaClassificationLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaClassificationStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaClassificationTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaClient_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCommon_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaConfigurationLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaConfigurationStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaConfigurationTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCoreLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCoreStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaCoreTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaDocumentManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaDocumentManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaDocumentManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaGlobalMultiSiteLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaGlobalMultiSiteStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaGlobalMultiSiteTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaImportExportLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaImportExportStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaImportExportTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaIssueManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaIssueManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaIssueManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaManufacturingLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaManufacturingStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaManufacturingTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaMESLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaMESStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaMESTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaMultisiteLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaMultisiteStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaMultisiteTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaParameterManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaParameterManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaParameterManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaProductionManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaProductionManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaProductionManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaProjectManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaProjectManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaProjectManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaQueryLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaQueryStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaQueryTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaRdvLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaRdvStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaRdvTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaReportsLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaReportsStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaReportsTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaRequirementsManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaRequirementsManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaRequirementsManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaSrmIntegrationLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaSrmIntegrationStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaSrmIntegrationTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModel_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelAcadGmo_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelAdsFoundation_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelAsBuilt_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelAsMaintained_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelBrndMgmt_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelCba_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelCcdm_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelCm_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelCmtEbop_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelCmtEmserver_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelCmtPadTwp_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelContmgmtBase_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelContmgmtDita_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelContmgmtS1000d_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelCpgMaterials_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelDpv_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelEdaLibrary_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelEdaServer_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelEmps_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelEsddm_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelEsddmScm_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelEsmBase_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelEsmProcessor_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelEsmSoftware_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelFpMgmt_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelGmdpv_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelGmo_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelHrn_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelIssueManagement_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelMES_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelMROCore_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelPkgArt_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelProductVariant_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelScdt_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelScmCc_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelServiceEventManagement_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelServiceProcessing_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelServiceRequest_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelSpecMgr_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelTcae_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelTransactionProcessing_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStrongModelVendorManagement_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStructureManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStructureManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaStructureManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaSvcProcessingLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaSvcProcessingStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaSvcProcessingTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaSvcRequestLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaSvcRequestStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaSvcRequestTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaTranslationLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaTranslationStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaTranslationTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaValidationLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaValidationStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaValidationTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaVendorManagementLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaVendorManagementStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaVendorManagementTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaWireHarnessLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaWireHarnessStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaWireHarnessTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaWorkflowLoose_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaWorkflowStrong_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/TcSoaWorkflowTypes_8000.3.0.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/teamcenter_sso_applib.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/teamcenter_sso_common.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/teamcenter_sso_proxy.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/teamcenter_sso_webtoolkit.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/xerces.jar"/>
+        <pathelement location="C:/TC_Install/TC83_WIN/soa_client/java/libs/xercesImpl.jar"/>
+    </path>
+    <path id="dwgtopdf.classpath">
+        <path refid="Plug-in Dependencies.libraryclasspath"/>
+        <pathelement location="bin"/>
+        <pathelement location="lib/DCCore.jar"/>
+        <pathelement location="lib/DCTransSvcs.jar"/>
+        <pathelement location="lib/DispatcherClient.jar"/>
+        <pathelement location="lib/DispatcherClientTask.jar"/>
+        <pathelement location="lib/TcSoaClient_8000.3.0.jar"/>
+        <pathelement location="lib/TcSoaCommon_8000.3.0.jar"/>
+        <pathelement location="lib/TcSoaCoreStrong_8000.3.0.jar"/>
+        <pathelement location="lib/TcSoaStrongModel_8000.3.0.jar"/>
+        <pathelement location="lib/transclient.jar"/>
+        <pathelement location="C:/PLM83/DISP_ROOT/Module/Translators/ideastojt/ideastojt.jar"/>
+        <pathelement location="C:/PLM83/DISP_ROOT/Module/Translators/proetojt/proetojt.jar"/>
+        <pathelement location="C:/PLM83/Client_4Tier/portal/plugins/com.teamcenter.rac.dispatcher.customization_8000.3.0.jar"/>
+        <pathelement location="C:/PLM83/Client_4Tier/portal/plugins/com.teamcenter.rac.ets_8000.3.0.jar"/>
+        <path refid="TC_SOA.userclasspath"/>
+        <pathelement location="C:/PLM83/Client_4Tier/portal/plugins/com.teamcenter.rac.ets.translator.singleselection_8000.3.0.jar"/>
+    </path>
+    <target name="init">
+        <mkdir dir="bin"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.launch"/>
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+    <target name="clean">
+        <delete dir="bin"/>
+    </target>
+    <target depends="clean" name="cleanall"/>
+    <target depends="build-subprojects,build-project" name="build"/>
+    <target name="build-subprojects"/>
+    <target depends="init" name="build-project">
+        <echo message="${ant.project.name}: ${ant.file}"/>
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="dwgtopdf.classpath"/>
+        </javac>
+    </target>
+    <target description="Build all projects which reference this project. Useful to propagate changes." name="build-refprojects"/>
+    <target description="copy Eclipse compiler jars to ant lib directory" name="init-eclipse-compiler">
+        <copy todir="${ant.library.dir}">
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </copy>
+        <unzip dest="${ant.library.dir}">
+            <patternset includes="jdtCompilerAdapter.jar"/>
+            <fileset dir="${ECLIPSE_HOME}/plugins" includes="org.eclipse.jdt.core_*.jar"/>
+        </unzip>
+    </target>
+    <target description="compile project with Eclipse compiler" name="build-eclipse-compiler">
+        <property name="build.compiler" value="org.eclipse.jdt.core.JDTCompilerAdapter"/>
+        <antcall target="build"/>
+    </target>
+</project>
