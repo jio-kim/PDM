@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+
+		$("#tabs").tabs();
+
+		$(".td_code").dblclick(function() {
+			var code = $.trim($(this).text());
+			var description = $(this).attr("title");
+
+			if(code == "CF1_2") {
+				hide_dialog();
+
+				MTMnavigate(1, code, "", "", 1.67 / 0.036, description);
+
+				return;
+			}
+
+			$(".code_info").text(code);
+
+			var row_name;
+			if(code == "CF1_1") {
+				row_name = "사양지 확인란의 수량";
+			} else if(code == "CF1_3") {
+				row_name = "비교대상 부품수량";
+			} else if(code == "CF1_4") {
+				row_name = "자주검사 POINT";
+			} else if(code == "CF1_5") {
+				row_name = "확인하는 글자의 수량";
+			}
+			$("#row_name").text(row_name);
+
+			$("#code").val(code);
+			$("#description").val(description);
+
+			// dialog top위치를 table 위치에 맞추기
+			var top = $(this).parents(".MTMFormula").position().top;
+			$("#dialog_common").show().draggable({handle: ".code_info"}).css("top", top + 15);
+
+			$("#quantity").focus();
+		});
+
+		$("#button_ok").click(function() {
+			// validation check
+			if($("#quantity").val() == "") {
+				alert($("#row_name").text() + "을 입력해주세요.");
+				$("#quantity").focus();
+				return;
+			}
+
+			var code = $("#code").val();
+			var description = $("#description").val();
+			var quantity = $("#quantity").val() * 1;
+			var display_code = code + "-" + quantity;
+			var time;
+
+			// code 별 시간 계산
+			if(code == "CF1_1") {
+				time = 0.903 + (0.774 * (quantity - 1));
+			} else if(code == "CF1_3") {
+				time = 0.903 + (0.516 * (quantity - 2));
+			} else if(code == "CF1_4") {
+				time = 0.903 + (0.516 * (quantity - 1));
+			} else if(code == "CF1_5") {
+				time = 0.903 + (0.258 * (quantity - 2));
+			}
+
+			MTMnavigate(1, display_code, "", "", time / 0.036, description);
+
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+		$("#button_cancel").click(function() {
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+	/* Dialog 숨기기 */
+	function hide_dialog()
+	{
+		$(".dialog_common").hide();
+	}
+
+	/* Dialog input 필드 초기화 */
+	function reset_dialogInputField()
+	{
+		$(".dialog_common").find("input[type=text]").val("");
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">13-1. 사양지/부품사양/조립상태 확인 작업 (하기참조)</a></li>
+		</ul>
+
+		<!-- 13-1. 사양지/부품사양/조립상태 확인 작업 (하기참조) -->
+		<div id="tabs-1">
+			<div class="div_subject1">13-1. 사양지/부품사양/조립상태 확인 작업 (하기참조)</div>
+			<div class="div_subject2">(정율/비정율 부대공수)</div>
+
+			<table class="MTMFormula">
+				<tr>
+					<td>사양지 확인</td>
+					<td class="td_code" title='사양지 확인'>CF1_1</td>
+				</tr>
+				<tr>
+					<td>ALC CODE 확인</td>
+					<td class="td_code" title='㉮의 ALC 코드 확인'>CF1_2</td>
+				</tr>
+				<tr>
+					<td>부품사양 확인</td>
+					<td class="td_code" title='①-1개의 사양 확인'>CF1_3</td>
+				</tr>
+				<tr>
+					<td>조립상태 확인(자주검사)</td>
+					<td class="td_code" title='㉮에 ①-1개 삽입량 확인'>CF1_4</td>
+				</tr>
+				<tr>
+					<td>글자읽기</td>
+					<td class="td_code" title='확인필요'>CF1_5</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>사양지 확인이나 ALC CODE 확인 시간은 정율 부대공수에 포함한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>부품의 사양확인, 자주검사, 기타의 글자읽기 시간은 비정율 부대공수로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="dialog_common" id="dialog_common">
+		<table>
+			<tr>
+				<td class="code_info" colspan="2"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="wp160" id="row_name"></td>
+				<td><input type="text" id="quantity" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="2">
+					<input type="hidden" id="code" name="code" value="">
+					<input type="hidden" id="description" name="description" value="">
+					<input type="button" id="button_ok" name="button_ok" value="확인">
+					<input type="button" id="button_cancel" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

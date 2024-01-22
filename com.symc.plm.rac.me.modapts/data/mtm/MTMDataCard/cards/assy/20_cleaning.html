@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+
+		$("#tabs").tabs();
+
+		$(".td_code").dblclick(function() {
+			var code = $.trim($(this).text());
+			var description = $(this).attr("title");
+
+			$(".code_info").text(code);
+			$("#code").val(code);
+			$("#description").val(description);
+
+			// dialog top위치를 table 위치에 맞추기
+			var top = $(this).parents(".MTMFormula").position().top;
+			$("#dialog_common").show().draggable({handle: ".code_info"}).css("top", top + 15);
+
+			$("#tr_area").show();
+			$("#tr_length").show();
+			if(code == "CX1_1") {
+				$("#tr_length").hide();
+				$("#area").focus();
+			} else if(code == "CX1_2") {
+				$("#tr_area").hide();
+				$("#length").focus();
+			}
+		});
+
+		$("#button_ok").click(function() {
+			var code = $("#code").val();
+			var description = $("#description").val();
+			var area;
+			var length;
+			var display_code;
+			var time;
+
+			// validation check 및 code 별 시간 계산
+			if(code == "CX1_1") {
+				if($("#area").val() == "") {
+					alert("세척면적을 입력해주세요.");
+					$("#area").focus();
+					return;
+				}
+				area = $("#area").val() * 1.5;
+				display_code = code + "," + area;
+				time = 2.193 + (0.516 * (area / 200));
+			} else if(code == "CX1_2") {
+				if($("#length").val() == "") {
+					alert("세척길이를 입력해주세요.");
+					$("#length").focus();
+					return;
+				}
+				length = $("#length").val() * 1;
+				display_code = code + "," + length;
+				time = 2.193 + (0.516 * (length / 300));
+			}
+
+			MTMnavigate(1, display_code, "", "", time / 0.036, description);
+
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+		$("#button_cancel").click(function() {
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+	/* Dialog 숨기기 */
+	function hide_dialog()
+	{
+		$(".dialog_common").hide();
+	}
+
+	/* Dialog input 필드 초기화 */
+	function reset_dialogInputField()
+	{
+		$(".dialog_common").find("input[type=text]").val("");
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">20-1. 청소/세척작업 (하기참조)</a></li>
+		</ul>
+
+		<!-- 20-1. 청소/세척작업 (하기참조) -->
+		<div id="tabs-1">
+			<div class="div_subject1">20-1. 청소/세척작업 (하기참조)</div>
+			<div class="div_subject2">(비정율 부대공수)</div>
+
+			<table class="MTMFormula">
+				<tr>
+					<td>EMBLEM, LABEL, STICKER 부착부위 세척</td>
+					<td class="td_code" title='㉮부위를 세척'>CX1_1</td>
+				</tr>
+				<tr>
+					<td>MOLD'G/GLASS 장착부위 이물질 제거</td>
+					<td class="td_code" title='㉮부위 이물질 제거'>CX1_2</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>A : 세척면적(cm²)=접착면적X1.5 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L : 세척길이(mm)</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>헝겁에 세척액이 묻어있는 상태에서 세척하는 시간이며, 세척액을 묻히는 시간은 정율 부대공수에 포함한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>면적으로 산출시 세척면적은 부착면적의 1.5배로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="dialog_common" id="dialog_common">
+		<table>
+			<tr>
+				<td class="code_info" colspan="3"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr id="tr_area">
+				<td class="wp160">세척면적(cm²)</td>
+				<td>
+					<input type="text" id="area" name="area" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;">
+				</td>
+				<td>X 1.5</td>
+			</tr>
+			<tr id="tr_length">
+				<td class="wp160">세척길이(mm)</td>
+				<td colspan="2"><input type="text" id="length" name="length" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="3">
+					<input type="hidden" id="code" name="code" value="">
+					<input type="hidden" id="description" name="description" value="">
+					<input type="button" id="button_ok" name="button_ok" value="확인">
+					<input type="button" id="button_cancel" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

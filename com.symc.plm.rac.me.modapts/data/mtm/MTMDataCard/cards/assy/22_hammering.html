@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+
+		$("#tabs").tabs({
+			activate: function(event, ui) {
+				reset_dialogInputField();
+				hide_dialog();
+			}
+		});
+
+		$(".td_code").dblclick(function() {
+			var code = $.trim($(this).text());
+			var description = $(this).attr("title");
+			var dialogId = "dialog_" + code.split("_")[0];
+
+			$("#" + dialogId).find(".code_info").text(code);
+			$("#" + dialogId).find("input[name=code]").val(code);
+			$("#" + dialogId).find("input[name=description]").val(description);
+
+			// dialog top위치를 table 위치에 맞추기
+			var top = $(this).parents(".MTMFormula").position().top;
+			$("#" + dialogId).show().draggable({handle: ".code_info"}).css("top", top + 15);
+
+			if(code == "HM2_1") {
+				$("#tr_length").show();
+				$("#tr_bat").hide();
+				$("#" + dialogId).find("input[name=length]").focus();
+			} else if(code == "HM2_2") {
+				$("#tr_bat").show();
+				$("#tr_length").hide();
+				$("#" + dialogId).find("input[name=bat]").focus();
+			} else {
+				$("#" + dialogId).find("input[name=length]").focus();
+			}
+
+		});
+
+		$("input[name=button_ok]").click(function() {
+			var code = $(this).siblings("input[name=code]").val();
+			var description = $(this).siblings("input[name=description]").val();
+			var length;
+			var bat;
+			var time;
+			var display_code;
+
+			// validation check
+			if(code.split("_")[0] == "HM1") {
+				if($("#dialog_HM1 input[name=length]").val() == "") {
+					alert("W/STRIP의 길이를 입력해주세요.");
+					$("#dialog_HM1 input[name=length]").focus();
+					return;
+				}
+			} else if(code == "HM2_1") {
+				if($("#dialog_HM2 input[name=length]").val() == "") {
+					alert("접착부의 길이를 입력해주세요.");
+					$("#dialog_HM2 input[name=length]").focus();
+					return;
+				}
+			} else if(code == "HM2_2") {
+				if($("#dialog_HM2 input[name=bat]").val() == "") {
+					alert("타수를 입력해주세요.");
+					$("#dialog_HM2 input[name=bat]").focus();
+					return;
+				}
+			}
+
+			// code 별 시간 계산
+			if(code == "HM1_1") {
+				length = $("#dialog_HM1").find("input[name=length]").val() * 1;
+				display_code = code + "," + length;
+				time = 1.677 + 0.774 * (length / 150);
+			} else if(code == "HM1_2") {
+				length = $("#dialog_HM1").find("input[name=length]").val() * 1;
+				display_code = code + "," + length;
+				time = 1.677 + 0.774 * (length / 100);
+			} else if(code == "HM1_3") {
+				length = $("#dialog_HM1").find("input[name=length]").val() * 1;
+				display_code = code + "," + length;
+				time = 1.677 + 1.032 * (length / 300);
+			} else if(code == "HM2_1") {
+				length = $("#dialog_HM2").find("input[name=length]").val() * 1;
+				display_code = code + "," + length;
+				time = 0.258 + 1.032 * (length / 200);
+			} else if(code == "HM2_2") {
+				bat = $("#dialog_HM2").find("input[name=bat]").val() * 1;
+				display_code = code + "," + bat;
+				time = 0.258 + 1.032 * bat;
+			}
+
+			MTMnavigate(1, display_code, "", "", time / 0.036, description);
+
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+		$("input[name=button_cancel]").click(function() {
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+	/* Dialog 숨기기 */
+	function hide_dialog()
+	{
+		$(".dialog_common").hide();
+	}
+
+	/* Dialog input 필드 초기화 */
+	function reset_dialogInputField()
+	{
+		$(".dialog_common").find("input[type=text]").val("");
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">22-1. 공구를 사용한 타격 작업 (하기참조)</a></li>
+			<li><a href="#tabs-2">22-2. 손 또는 손가락으로 누르거나 두드리는 작업 (HM2)</a></li>
+			<li><a href="#tabs-3">22-3. 필기구로 글씨쓰기 (HM3)</a></li>
+		</ul>
+
+		<!-- 22-1. 공구를 사용한 타격 작업 (하기참조) -->
+		<div id="tabs-1">
+			<div class="div_subject1" style="float: none;">22-1. 공구를 사용한 타격 작업 (하기참조)</div>
+			<!-- HM1_0 -->
+			<div class="div_subject1">(HM1_0)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td colspan="2">적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td rowspan="2">위치맞춤</td>
+					<td class="td_subject">망치 3.0kG미만</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="2.45, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-1', '', '', 68.05555555555557, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">1</td>
+					<td class="td_value" title="3.23, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-2', '', '', 89.72222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">2</td>
+					<td class="td_value" title="4.00, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-3', '', '', 111.11111111111111, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">3</td>
+					<td class="td_value" title="4.77, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-4', '', '', 132.5, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">4</td>
+					<td class="td_value" title="5.55, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-5', '', '', 154.16666666666668, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">5</td>
+					<td class="td_value" title="6.32, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-6', '', '', 175.55555555555557, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">6</td>
+					<td class="td_value" title="7.10, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-7', '', '', 197.22222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">7</td>
+					<td class="td_value" title="7.87, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-8', '', '', 218.61111111111114, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">8</td>
+					<td class="td_value" title="8.64, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-9', '', '', 240.00000000000003, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">9</td>
+					<td class="td_value" title="9.42, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-10', '', '', 261.6666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">10</td>
+					<td class="td_value" title="10.19, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-11', '', '', 283.05555555555554, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">11</td>
+					<td class="td_value" title="10.97, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-12', '', '', 304.7222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">12</td>
+					<td class="td_value" title="11.74, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-13', '', '', 326.11111111111114, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">13</td>
+					<td class="td_value" title="12.51, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-14', '', '', 347.5, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">14</td>
+					<td class="td_value" title="13.29, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-15', '', '', 369.1666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">15</td>
+					<td class="td_value" title="14.06, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-16', '', '', 390.5555555555556, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">16</td>
+					<td class="td_value" title="14.84, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-17', '', '', 412.22222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">17</td>
+					<td class="td_value" title="15.61, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-18', '', '', 433.61111111111114, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">18</td>
+					<td class="td_value" title="16.38, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-19', '', '', 455, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">19</td>
+					<td class="td_value" title="17.16, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-000-20', '', '', 476.6666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">20</td>
+					<td class="td_alpha">0.774</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">망치 3.0kG이상</td>
+					<td class="td_weight">001</td>
+					<td class="td_value" title="2.58, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-1', '', '', 71.66666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">1</td>
+					<td class="td_value" title="3.48, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-2', '', '', 96.66666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">2</td>
+					<td class="td_value" title="4.39, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-3', '', '', 121.94444444444444, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">3</td>
+					<td class="td_value" title="5.29, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-4', '', '', 146.94444444444446, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">4</td>
+					<td class="td_value" title="6.19, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-5', '', '', 171.94444444444446, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">5</td>
+					<td class="td_value" title="7.10, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-6', '', '', 197.22222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">6</td>
+					<td class="td_value" title="8.00, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-7', '', '', 222.22222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">7</td>
+					<td class="td_value" title="8.90, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-8', '', '', 247.22222222222226, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">8</td>
+					<td class="td_value" title="9.80, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-9', '', '', 272.2222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">9</td>
+					<td class="td_value" title="10.71, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-10', '', '', 297.50000000000005, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">10</td>
+					<td class="td_value" title="11.61, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-11', '', '', 322.5, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">11</td>
+					<td class="td_value" title="12.51, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-12', '', '', 347.5, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">12</td>
+					<td class="td_value" title="13.42, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-13', '', '', 372.7777777777778, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">13</td>
+					<td class="td_value" title="14.32, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-14', '', '', 397.7777777777778, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">14</td>
+					<td class="td_value" title="15.22, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-15', '', '', 422.7777777777778, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">15</td>
+					<td class="td_value" title="16.13, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-16', '', '', 448.05555555555554, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">16</td>
+					<td class="td_value" title="17.03, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-17', '', '', 473.0555555555556, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">17</td>
+					<td class="td_value" title="17.93, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-18', '', '', 498.0555555555556, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">18</td>
+					<td class="td_value" title="18.83, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-19', '', '', 523.0555555555555, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">19</td>
+					<td class="td_value" title="19.74, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-001-20', '', '', 548.3333333333334, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">20</td>
+					<td class="td_alpha">0.903</td>
+				</tr>
+				<tr align="center">
+					<td rowspan="2">위치맞춤</td>
+					<td class="td_subject">망치 3.0kG미만</td>
+					<td class="td_weight">004</td>
+					<td class="td_value" title="2.97, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-1', '', '', 82.50000000000001, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">1</td>
+					<td class="td_value" title="4.26, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-2', '', '', 118.33333333333334, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">2</td>
+					<td class="td_value" title="5.55, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-3', '', '', 154.16666666666668, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">3</td>
+					<td class="td_value" title="6.84, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-4', '', '', 190, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">4</td>
+					<td class="td_value" title="8.13, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-5', '', '', 225.83333333333337, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">5</td>
+					<td class="td_value" title="9.42, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-6', '', '', 261.6666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">6</td>
+					<td class="td_value" title="10.71, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-7', '', '', 297.50000000000005, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">7</td>
+					<td class="td_value" title="12.00, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-8', '', '', 333.33333333333337, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">8</td>
+					<td class="td_value" title="13.29, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-9', '', '', 369.1666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">9</td>
+					<td class="td_value" title="14.58, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-10', '', '', 405.00000000000005, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">10</td>
+					<td class="td_value" title="15.87, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-11', '', '', 440.83333333333337, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">11</td>
+					<td class="td_value" title="17.16, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-12', '', '', 476.6666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">12</td>
+					<td class="td_value" title="18.45, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-13', '', '', 512.5, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">13</td>
+					<td class="td_value" title="19.74, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-14', '', '', 548.3333333333334, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">14</td>
+					<td class="td_value" title="21.03, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-15', '', '', 584.1666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">15</td>
+					<td class="td_value" title="22.32, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-16', '', '', 620, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">16</td>
+					<td class="td_value" title="23.61, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-17', '', '', 655.8333333333334, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">17</td>
+					<td class="td_value" title="24.90, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-18', '', '', 691.6666666666666, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">18</td>
+					<td class="td_value" title="26.19, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-19', '', '', 727.5000000000001, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">19</td>
+					<td class="td_value" title="27.48, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-004-20', '', '', 763.3333333333334, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">20</td>
+					<td class="td_alpha">1.290</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">망치 3.0kG이상</td>
+					<td class="td_weight">005</td>
+					<td class="td_value" title="3.10, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-1', '', '', 86.11111111111111, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">1</td>
+					<td class="td_value" title="4.52, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-2', '', '', 125.55555555555556, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">2</td>
+					<td class="td_value" title="5.93, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-3', '', '', 164.72222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">3</td>
+					<td class="td_value" title="7.35, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-4', '', '', 204.16666666666668, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">4</td>
+					<td class="td_value" title="8.77, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-5', '', '', 243.61111111111111, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">5</td>
+					<td class="td_value" title="10.19, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-6', '', '', 283.05555555555554, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">6</td>
+					<td class="td_value" title="11.61, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-7', '', '', 322.5, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">7</td>
+					<td class="td_value" title="13.03, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-8', '', '', 361.94444444444445, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">8</td>
+					<td class="td_value" title="14.45, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-9', '', '', 401.3888888888889, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">9</td>
+					<td class="td_value" title="15.87, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-10', '', '', 440.83333333333337, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">10</td>
+					<td class="td_value" title="17.29, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-11', '', '', 480.27777777777777, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">11</td>
+					<td class="td_value" title="18.71, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-12', '', '', 519.7222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">12</td>
+					<td class="td_value" title="20.12, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-13', '', '', 558.8888888888889, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">13</td>
+					<td class="td_value" title="21.54, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-14', '', '', 598.3333333333334, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">14</td>
+					<td class="td_value" title="22.96, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-15', '', '', 637.7777777777778, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">15</td>
+					<td class="td_value" title="24.38, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-16', '', '', 677.2222222222223, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">16</td>
+					<td class="td_value" title="25.80, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-17', '', '', 716.6666666666667, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">17</td>
+					<td class="td_value" title="27.22, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-18', '', '', 756.1111111111111, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">18</td>
+					<td class="td_value" title="28.64, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-19', '', '', 795.5555555555556, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">19</td>
+					<td class="td_value" title="30.06, ㉮에 ㉯를 ①-1개로 망치로 타격하여 고정" onclick="MTMnavigate(1, 'HM1_0-005-20', '', '', 835, '㉮에 ㉯를 ①-1개로 망치로 타격하여 고정')">20</td>
+					<td class="td_alpha">1.419</td>
+				</tr>
+			</table>
+
+			<!-- HM1_1 -->
+			<br>
+			<div class="div_subject1" style="float: none;">(HM1_1)</div>
+			<table class="MTMFormula">
+				<tr>
+					<td>W/STRIP 연속타격(AIR TOOL)</td>
+					<td class="td_code" title='㉮에 ㉯를 ①-1개로 연속 타격하여 고정'>HM1_1</td>
+				</tr>
+			</table>
+
+			<!-- HM1_2 -->
+			<br>
+			<div class="div_subject1" style="float: none;">(HM1_2)</div>
+			<table class="MTMFormula">
+				<tr>
+					<td>W/STRIP 연속타격(망치)</td>
+					<td class="td_code" title='㉮에 ㉯를 ①-1개로 망치로 연속 타격하여 고정'>HM1_2</td>
+				</tr>
+			</table>
+
+			<!-- HM1_3 -->
+			<br>
+			<div class="div_subject1" style="float: none;">(HM1_3)</div>
+			<table class="MTMFormula">
+				<tr>
+					<td>W/STRIP 연속누름(망치)</td>
+					<td class="td_code" title='㉮에 ㉯를 ①-1개로 연속하여 눌러 고정'>HM1_3</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>L : W/STRIP의 길이(mm)</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>망치를 한번 가볍게 조정하는 시간을 포함하고 있으며 실제로 필요한 타격횟수는 담당자가 판단하여야 한다.(기준:CLIP 1개는 1회)</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 22-2. 손 또는 손가락으로 누르거나 두드리는 작업 (HM2) -->
+		<div id="tabs-2">
+			<div class="div_subject1" style="float: none;">22-2. 손 또는 손가락으로 누르거나 두드리는 작업 (HM2)</div>
+			<!-- HM2_0 -->
+			<div class="div_subject1">(HM2_0)</div>
+			<div class="div_subject2">(정미공수/비정율 부대공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">손/손가락으로 누름</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="1.29, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-1', '', '', 35.833333333333336, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">1</td>
+					<td class="td_value" title="2.32, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-2', '', '', 64.44444444444444, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">2</td>
+					<td class="td_value" title="3.35, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-3', '', '', 93.05555555555557, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">3</td>
+					<td class="td_value" title="4.39, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-4', '', '', 121.94444444444444, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">4</td>
+					<td class="td_value" title="5.42, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-5', '', '', 150.55555555555557, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">5</td>
+					<td class="td_value" title="6.45, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-6', '', '', 179.16666666666668, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">6</td>
+					<td class="td_value" title="7.48, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-7', '', '', 207.7777777777778, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">7</td>
+					<td class="td_value" title="8.51, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-8', '', '', 236.3888888888889, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">8</td>
+					<td class="td_value" title="9.55, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-9', '', '', 265.2777777777778, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">9</td>
+					<td class="td_value" title="10.58, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-10', '', '', 293.8888888888889, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">10</td>
+					<td class="td_value" title="11.61, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-11', '', '', 322.5, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">11</td>
+					<td class="td_value" title="12.64, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-12', '', '', 351.11111111111114, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">12</td>
+					<td class="td_value" title="13.67, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-13', '', '', 379.72222222222223, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">13</td>
+					<td class="td_value" title="14.71, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-14', '', '', 408.61111111111114, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">14</td>
+					<td class="td_value" title="15.74, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-15', '', '', 437.2222222222223, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">15</td>
+					<td class="td_value" title="16.77, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-16', '', '', 465.83333333333337, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">16</td>
+					<td class="td_value" title="17.80, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-17', '', '', 494.4444444444445, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">17</td>
+					<td class="td_value" title="18.83, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-18', '', '', 523.0555555555555, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">18</td>
+					<td class="td_value" title="19.87, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-19', '', '', 551.9444444444445, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">19</td>
+					<td class="td_value" title="20.90, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-000-20', '', '', 580.5555555555555, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">20</td>
+					<td class="td_alpha">1.032</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">강한 가압</td>
+					<td class="td_weight">002</td>
+					<td class="td_value" title="1.55, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-1', '', '', 43.05555555555556, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">1</td>
+					<td class="td_value" title="2.84, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-2', '', '', 78.88888888888888, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">2</td>
+					<td class="td_value" title="4.13, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-3', '', '', 114.72222222222223, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">3</td>
+					<td class="td_value" title="5.42, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-4', '', '', 150.55555555555557, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">4</td>
+					<td class="td_value" title="6.71, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-5', '', '', 186.3888888888889, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">5</td>
+					<td class="td_value" title="8.00, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-6', '', '', 222.22222222222223, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">6</td>
+					<td class="td_value" title="9.29, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-7', '', '', 258.05555555555554, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">7</td>
+					<td class="td_value" title="10.58, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-8', '', '', 293.8888888888889, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">8</td>
+					<td class="td_value" title="11.87, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-9', '', '', 329.72222222222223, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">9</td>
+					<td class="td_value" title="13.16, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-10', '', '', 365.5555555555556, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">10</td>
+					<td class="td_value" title="14.45, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-11', '', '', 401.3888888888889, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">11</td>
+					<td class="td_value" title="15.74, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-12', '', '', 437.2222222222223, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">12</td>
+					<td class="td_value" title="17.03, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-13', '', '', 473.0555555555556, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">13</td>
+					<td class="td_value" title="18.32, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-14', '', '', 508.8888888888889, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">14</td>
+					<td class="td_value" title="19.61, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-15', '', '', 544.7222222222223, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">15</td>
+					<td class="td_value" title="20.90, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-16', '', '', 580.5555555555555, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">16</td>
+					<td class="td_value" title="22.19, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-17', '', '', 616.3888888888889, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">17</td>
+					<td class="td_value" title="23.48, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-18', '', '', 652.2222222222223, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">18</td>
+					<td class="td_value" title="24.77, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-19', '', '', 688.0555555555555, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">19</td>
+					<td class="td_value" title="26.06, ㉮의 ㉠에 ①의 ⓐ를 두두려 끼움" onclick="MTMnavigate(1, 'HM2_0-002-20', '', '', 723.8888888888889, '㉮의 ㉠에 ①의 ⓐ를 두두려 끼움')">20</td>
+					<td class="td_alpha">1.290</td>
+				</tr>
+			</table>
+
+			<!-- HM2_1 -->
+			<br>
+			<div class="div_subject1" style="float: none;">(HM2_1)</div>
+			<table class="MTMFormula">
+				<tr>
+					<td>부품에 서브된 테이프를 눌러 붙임</td>
+					<td class="td_code" title='㉮에 ①-1개를 부착'>HM2_1</td>
+				</tr>
+			</table>
+
+			<!-- HM2_2 -->
+			<br>
+			<div class="div_subject1" style="float: none;">(HM2_2)</div>
+			<table class="MTMFormula">
+				<tr>
+					<td>KEY-BOARD 입력</td>
+					<td class="td_code" title='키보드 입력'>HM2_2</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>L : 접착부의 길이(mm) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n : 타수(EX:쌍용-7타)</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>사양관리를 위한 KEY-BOARD 입력은 비정율 부대공수 임.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 22-3. 필기구로 글씨쓰기 (HM3) -->
+		<div id="tabs-3">
+			<div class="div_subject1">22-3. 필기구로 글씨쓰기 (HM3)</div>
+			<div class="div_subject2">(비정율 부대공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">글씨쓰기(숫자)</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="3.23, 쓰기" onclick="MTMnavigate(1, 'HM3-000-1', '', '', 89.72222222222223, '쓰기')">1</td>
+					<td class="td_value" title="4.26, 쓰기" onclick="MTMnavigate(1, 'HM3-000-2', '', '', 118.33333333333334, '쓰기')">2</td>
+					<td class="td_value" title="5.29, 쓰기" onclick="MTMnavigate(1, 'HM3-000-3', '', '', 146.94444444444446, '쓰기')">3</td>
+					<td class="td_value" title="6.32, 쓰기" onclick="MTMnavigate(1, 'HM3-000-4', '', '', 175.55555555555557, '쓰기')">4</td>
+					<td class="td_value" title="7.35, 쓰기" onclick="MTMnavigate(1, 'HM3-000-5', '', '', 204.16666666666668, '쓰기')">5</td>
+					<td class="td_value" title="8.39, 쓰기" onclick="MTMnavigate(1, 'HM3-000-6', '', '', 233.0555555555556, '쓰기')">6</td>
+					<td class="td_value" title="9.42, 쓰기" onclick="MTMnavigate(1, 'HM3-000-7', '', '', 261.6666666666667, '쓰기')">7</td>
+					<td class="td_value" title="10.45, 쓰기" onclick="MTMnavigate(1, 'HM3-000-8', '', '', 290.27777777777777, '쓰기')">8</td>
+					<td class="td_value" title="11.48, 쓰기" onclick="MTMnavigate(1, 'HM3-000-9', '', '', 318.8888888888889, '쓰기')">9</td>
+					<td class="td_value" title="12.51, 쓰기" onclick="MTMnavigate(1, 'HM3-000-10', '', '', 347.5, '쓰기')">10</td>
+					<td class="td_value" title="13.55, 쓰기" onclick="MTMnavigate(1, 'HM3-000-11', '', '', 376.3888888888889, '쓰기')">11</td>
+					<td class="td_value" title="14.58, 쓰기" onclick="MTMnavigate(1, 'HM3-000-12', '', '', 405.00000000000005, '쓰기')">12</td>
+					<td class="td_value" title="15.61, 쓰기" onclick="MTMnavigate(1, 'HM3-000-13', '', '', 433.61111111111114, '쓰기')">13</td>
+					<td class="td_value" title="16.64, 쓰기" onclick="MTMnavigate(1, 'HM3-000-14', '', '', 462.2222222222223, '쓰기')">14</td>
+					<td class="td_value" title="17.67, 쓰기" onclick="MTMnavigate(1, 'HM3-000-15', '', '', 490.8333333333334, '쓰기')">15</td>
+					<td class="td_value" title="18.71, 쓰기" onclick="MTMnavigate(1, 'HM3-000-16', '', '', 519.7222222222223, '쓰기')">16</td>
+					<td class="td_value" title="19.74, 쓰기" onclick="MTMnavigate(1, 'HM3-000-17', '', '', 548.3333333333334, '쓰기')">17</td>
+					<td class="td_value" title="20.77, 쓰기" onclick="MTMnavigate(1, 'HM3-000-18', '', '', 576.9444444444445, '쓰기')">18</td>
+					<td class="td_value" title="21.80, 쓰기" onclick="MTMnavigate(1, 'HM3-000-19', '', '', 605.5555555555556, '쓰기')">19</td>
+					<td class="td_value" title="22.83, 쓰기" onclick="MTMnavigate(1, 'HM3-000-20', '', '', 634.1666666666666, '쓰기')">20</td>
+					<td class="td_alpha">1.032</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">글씨쓰기(영문)</td>
+					<td class="td_weight">001</td>
+					<td class="td_value" title="3.35, 쓰기" onclick="MTMnavigate(1, 'HM3-001-1', '', '', 93.05555555555557, '쓰기')">1</td>
+					<td class="td_value" title="4.52, 쓰기" onclick="MTMnavigate(1, 'HM3-001-2', '', '', 125.55555555555556, '쓰기')">2</td>
+					<td class="td_value" title="5.68, 쓰기" onclick="MTMnavigate(1, 'HM3-001-3', '', '', 157.77777777777777, '쓰기')">3</td>
+					<td class="td_value" title="6.84, 쓰기" onclick="MTMnavigate(1, 'HM3-001-4', '', '', 190, '쓰기')">4</td>
+					<td class="td_value" title="8.00, 쓰기" onclick="MTMnavigate(1, 'HM3-001-5', '', '', 222.22222222222223, '쓰기')">5</td>
+					<td class="td_value" title="9.16, 쓰기" onclick="MTMnavigate(1, 'HM3-001-6', '', '', 254.44444444444446, '쓰기')">6</td>
+					<td class="td_value" title="10.32, 쓰기" onclick="MTMnavigate(1, 'HM3-001-7', '', '', 286.6666666666667, '쓰기')">7</td>
+					<td class="td_value" title="11.48, 쓰기" onclick="MTMnavigate(1, 'HM3-001-8', '', '', 318.8888888888889, '쓰기')">8</td>
+					<td class="td_value" title="12.64, 쓰기" onclick="MTMnavigate(1, 'HM3-001-9', '', '', 351.11111111111114, '쓰기')">9</td>
+					<td class="td_value" title="13.80, 쓰기" onclick="MTMnavigate(1, 'HM3-001-10', '', '', 383.33333333333337, '쓰기')">10</td>
+					<td class="td_value" title="14.96, 쓰기" onclick="MTMnavigate(1, 'HM3-001-11', '', '', 415.5555555555556, '쓰기')">11</td>
+					<td class="td_value" title="16.13, 쓰기" onclick="MTMnavigate(1, 'HM3-001-12', '', '', 448.05555555555554, '쓰기')">12</td>
+					<td class="td_value" title="17.29, 쓰기" onclick="MTMnavigate(1, 'HM3-001-13', '', '', 480.27777777777777, '쓰기')">13</td>
+					<td class="td_value" title="18.45, 쓰기" onclick="MTMnavigate(1, 'HM3-001-14', '', '', 512.5, '쓰기')">14</td>
+					<td class="td_value" title="19.61, 쓰기" onclick="MTMnavigate(1, 'HM3-001-15', '', '', 544.7222222222223, '쓰기')">15</td>
+					<td class="td_value" title="20.77, 쓰기" onclick="MTMnavigate(1, 'HM3-001-16', '', '', 576.9444444444445, '쓰기')">16</td>
+					<td class="td_value" title="21.93, 쓰기" onclick="MTMnavigate(1, 'HM3-001-17', '', '', 609.1666666666667, '쓰기')">17</td>
+					<td class="td_value" title="23.09, 쓰기" onclick="MTMnavigate(1, 'HM3-001-18', '', '', 641.3888888888889, '쓰기')">18</td>
+					<td class="td_value" title="24.25, 쓰기" onclick="MTMnavigate(1, 'HM3-001-19', '', '', 673.6111111111112, '쓰기')">19</td>
+					<td class="td_value" title="25.41, 쓰기" onclick="MTMnavigate(1, 'HM3-001-20', '', '', 705.8333333333334, '쓰기')">20</td>
+					<td class="td_alpha">1.161</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">글씨쓰기(한글)</td>
+					<td class="td_weight">003</td>
+					<td class="td_value" title="3.61, 쓰기" onclick="MTMnavigate(1, 'HM3-003-1', '', '', 100.27777777777778, '쓰기')">1</td>
+					<td class="td_value" title="5.03, 쓰기" onclick="MTMnavigate(1, 'HM3-003-2', '', '', 139.72222222222223, '쓰기')">2</td>
+					<td class="td_value" title="6.45, 쓰기" onclick="MTMnavigate(1, 'HM3-003-3', '', '', 179.16666666666668, '쓰기')">3</td>
+					<td class="td_value" title="7.87, 쓰기" onclick="MTMnavigate(1, 'HM3-003-4', '', '', 218.61111111111114, '쓰기')">4</td>
+					<td class="td_value" title="9.29, 쓰기" onclick="MTMnavigate(1, 'HM3-003-5', '', '', 258.05555555555554, '쓰기')">5</td>
+					<td class="td_value" title="10.71, 쓰기" onclick="MTMnavigate(1, 'HM3-003-6', '', '', 297.50000000000005, '쓰기')">6</td>
+					<td class="td_value" title="12.13, 쓰기" onclick="MTMnavigate(1, 'HM3-003-7', '', '', 336.9444444444445, '쓰기')">7</td>
+					<td class="td_value" title="13.55, 쓰기" onclick="MTMnavigate(1, 'HM3-003-8', '', '', 376.3888888888889, '쓰기')">8</td>
+					<td class="td_value" title="14.96, 쓰기" onclick="MTMnavigate(1, 'HM3-003-9', '', '', 415.5555555555556, '쓰기')">9</td>
+					<td class="td_value" title="16.38, 쓰기" onclick="MTMnavigate(1, 'HM3-003-10', '', '', 455, '쓰기')">10</td>
+					<td class="td_value" title="17.80, 쓰기" onclick="MTMnavigate(1, 'HM3-003-11', '', '', 494.4444444444445, '쓰기')">11</td>
+					<td class="td_value" title="19.22, 쓰기" onclick="MTMnavigate(1, 'HM3-003-12', '', '', 533.8888888888889, '쓰기')">12</td>
+					<td class="td_value" title="20.64, 쓰기" onclick="MTMnavigate(1, 'HM3-003-13', '', '', 573.3333333333334, '쓰기')">13</td>
+					<td class="td_value" title="22.06, 쓰기" onclick="MTMnavigate(1, 'HM3-003-14', '', '', 612.7777777777778, '쓰기')">14</td>
+					<td class="td_value" title="23.48, 쓰기" onclick="MTMnavigate(1, 'HM3-003-15', '', '', 652.2222222222223, '쓰기')">15</td>
+					<td class="td_value" title="24.90, 쓰기" onclick="MTMnavigate(1, 'HM3-003-16', '', '', 691.6666666666666, '쓰기')">16</td>
+					<td class="td_value" title="26.32, 쓰기" onclick="MTMnavigate(1, 'HM3-003-17', '', '', 731.1111111111112, '쓰기')">17</td>
+					<td class="td_value" title="27.74, 쓰기" onclick="MTMnavigate(1, 'HM3-003-18', '', '', 770.5555555555555, '쓰기')">18</td>
+					<td class="td_value" title="29.15, 쓰기" onclick="MTMnavigate(1, 'HM3-003-19', '', '', 809.7222222222223, '쓰기')">19</td>
+					<td class="td_value" title="30.57, 쓰기" onclick="MTMnavigate(1, 'HM3-003-20', '', '', 849.1666666666667, '쓰기')">20</td>
+					<td class="td_alpha">1.419</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>사양관리를 위하여 기입하는 시간은 비정율 부대공수이며, 글씨를 읽는 시간은 별도로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="dialog_common" id="dialog_HM1">
+		<table>
+			<tr>
+				<td class="code_info" colspan="2"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="wp160">W/STRIP의 길이(mm)</td>
+				<td><input type="text" name="length" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="2">
+					<input type="hidden" name="code" value="">
+					<input type="hidden" name="description" value="">
+					<input type="button" name="button_ok" value="확인">
+					<input type="button" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="dialog_common" id="dialog_HM2">
+		<table>
+			<tr>
+				<td class="code_info" colspan="2"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr id="tr_length">
+				<td class="wp160">접착부의 길이(mm)</td>
+				<td><input type="text" name="length" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr id="tr_bat">
+				<td class="wp160">타수(EX:쌍용-7타)</td>
+				<td><input type="text" name="bat" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="2">
+					<input type="hidden" name="code" value="">
+					<input type="hidden" name="description" value="">
+					<input type="button" name="button_ok" value="확인">
+					<input type="button" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

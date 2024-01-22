@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+
+		$("#tabs").tabs({
+			activate: function(event, ui) {
+				reset_dialogInputField();
+				hide_dialog();
+			}
+		});
+
+		$(".td_code").dblclick(function() {
+			var code = $.trim($(this).text());
+			var description = $(this).attr("title");
+			var dialogId = "dialog_" + code.split("_")[0];
+
+			$("#" + dialogId).find(".code_info").text(code);
+			$("#" + dialogId).find("input[name=code]").val(code);
+			$("#" + dialogId).find("input[name=description]").val(description);
+
+			// dialog top위치를 table 위치에 맞추기
+			var top = $(this).parents(".MTMFormula").position().top;
+			$("#" + dialogId).show().draggable({handle: ".code_info"}).css("top", top + 15);
+
+			if(dialogId == "dialog_AD1") {
+				$("#area").focus();
+			} else if(dialogId == "dialog_AD2") {
+				$("#count").focus();
+			}
+		});
+
+		$("input[name=button_ok]").click(function() {
+			var code = $(this).siblings("input[name=code]").val();
+			var description = $(this).siblings("input[name=description]").val();
+			var area;
+			var count;
+			var length;
+			var quantity;
+			var display_code;
+			var time;
+
+			// validation check
+			if(code.split("_")[0] == "AD1") {
+				if($("#area").val() == "") {
+					alert("접착면적을 입력해주세요.");
+					$("#area").focus();
+					return;
+				}
+			} else if(code.split("_")[0] == "AD2") {
+				if($("#count").val() == "") {
+					alert("절단/위치결정 횟수를 입력해주세요.");
+					$("#count").focus();
+					return;
+				}
+				if($("#length").val() == "") {
+					alert("접착길이를 입력해주세요.");
+					$("#length").focus();
+					return;
+				}
+				if($("#quantity").val() == "") {
+					alert("모서리부 수량을 입력해주세요.");
+					$("#quantity").focus();
+					return;
+				}
+			}
+
+			// code 별 시간 계산
+			if(code == "AD1_1") {
+				area = $("#area").val() * 1;
+				time = 2.967 + (0.516 * (area / 15));
+				display_code = code + "," + area;
+			} else if(code == "AD1_2") {
+				area = $("#area").val() * 1;
+				time = 2.967 + (0.516 * (area / 15)) + (0.516 * (area / 20));
+				display_code = code + "," + area;
+			} else if(code == "AD1_3") {
+				area = $("#area").val() * 1;
+				time = 2.967 + (0.516 * (area / 20));
+				display_code = code + "," + area;
+			} else if(code == "AD2_1_1") {
+				count = $("#count").val() * 1;
+				length = $("#length").val() * 1;
+				quantity = $("#quantity").val() * 1;
+				time = 1.419 + (2.58 * count) + (0.516 * (length / 70)) + (1.032 * quantity);
+				display_code = code + "-" + quantity + "," + length;
+			} else if(code == "AD2_1_2") {
+				count = $("#count").val() * 1;
+				length = $("#length").val() * 1;
+				quantity = $("#quantity").val() * 1;
+				time = 2.58 + (0.516 * (length / 70)) + (1.032 * quantity);
+				display_code = code + "-" + quantity + "," + length;
+			} else if(code == "AD2_2") {
+				count = $("#count").val() * 1;
+				length = $("#length").val() * 1;
+				quantity = $("#quantity").val() * 1;
+				time = 1.419 + (2.58 * count) + (0.516 * (length / 100));
+				display_code = code + "-" + quantity + "," + length;
+			}
+
+			MTMnavigate(1, display_code, "", "", time / 0.036, description);
+
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+		$("input[name=button_cancel]").click(function() {
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+	/* Dialog 숨기기 */
+	function hide_dialog()
+	{
+		$(".dialog_common").hide();
+	}
+
+	/* Dialog input 필드 초기화 */
+	function reset_dialogInputField()
+	{
+		$(".dialog_common").find("input[type=text]").val("");
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">14-1. LABEL(STICKER)/EMBLEM(ORNARMENT) 접착 (하기참조)</a></li>
+			<li><a href="#tabs-2">14-2. GUM(BUTYL) TAPE, 양면 TAPE, DAM 접착 (하기참조)</a></li>
+		</ul>
+
+		<!-- 14-1. LABEL(STICKER)/EMBLEM(ORNARMENT) 접착 (하기참조) -->
+		<div id="tabs-1">
+			<div class="div_subject1">14-1. LABEL(STICKER)/EMBLEM(ORNARMENT) 접착 (하기참조)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMFormula">
+				<tr>
+					<td>엠블렘(테이프형) 접착</td>
+					<td class="td_code" title='㉮에 ①- 1개를 부착'>AD1_1</td>
+				</tr>
+				<tr>
+					<td>라벨(테이프형) 접착</td>
+					<td class="td_code" title='㉮에 ①- 1개를 부착'>AD1_2</td>
+				</tr>
+				<tr>
+					<td>패드/HARNESS TAPE/매직 테이프 접착</td>
+					<td class="td_code" title='㉮에 ①- 1개를 부착'>AD1_3</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>부품을 잡는시간, 위치결정시간, 기포제거 시간을 포함한 시간치임.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>이형지 제거시간, JIG의 위치결정 시간, 세척시간 등은 별도로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 14-2. GUM(BUTYL) TAPE, 양면 TAPE, DAM 접착 (하기참조) -->
+		<div id="tabs-2">
+			<div class="div_subject1">14-2. GUM(BUTYL) TAPE, 양면 TAPE, DAM 접착 (하기참조)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMFormula">
+				<tr>
+					<td>BUTYLE TAPE/GLASS DAM/양면 TAPE 접착 : 손으로 절단포함</td>
+					<td class="td_code" title='㉮에 ①- 1개를 접착'>AD2_1_1</td>
+				</tr>
+				<tr>
+					<td>BUTYLE TAPE/GLASS DAM/양면 TAPE 접착 : 절단된 테이프의 접착</td>
+					<td class="td_code" title='㉮에 ①- 1개를 접착'>AD2_1_2</td>
+				</tr>
+				<tr>
+					<td>청 TAPE 접착</td>
+					<td class="td_code" title='㉮에 청 테이프를 접착'>AD2_2</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>N : 절단/위치결정 횟수 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L : 접착길이(mm) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n : 모서리부 수량</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>공구를 사용하여 절단하는 시간은 24-1항을 사용하여 별도로 산정한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>이형지 제거시간, JIG의 위치결정 시간, 세척시간 등은 별도로 산정한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>TAPE가 서브된 부품을 조립하는 경우 부품의 위치결정작업(16-2항)과 누름작업(23-2항)으로 구분하여 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="dialog_common" id="dialog_AD1">
+		<table>
+			<tr>
+				<td class="code_info" colspan="2"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="wp160">접착면적(cm²)</td>
+				<td><input type="text" id="area" name="area" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="2">
+					<input type="hidden" name="code" value="">
+					<input type="hidden" name="description" value="">
+					<input type="button" name="button_ok" value="확인">
+					<input type="button" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="dialog_common" id="dialog_AD2">
+		<table>
+			<tr>
+				<td class="code_info" colspan="2"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="wp160">절단/위치결정 횟수</td>
+				<td><input type="text" id="count" name="count" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr>
+				<td>접착길이(mm)</td>
+				<td><input type="text" id="length" name="length" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr>
+				<td>모서리부 수량</td>
+				<td><input type="text" id="quantity" name="quantity" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="2">
+					<input type="hidden" name="code" value="">
+					<input type="hidden" name="description" value="">
+					<input type="button" name="button_ok" value="확인">
+					<input type="button" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

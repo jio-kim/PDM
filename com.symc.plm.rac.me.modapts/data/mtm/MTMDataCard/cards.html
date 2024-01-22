@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Data cards</title>
+
+<style type="text/css">
+
+body {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 12px;
+	color: navy;
+	background-color: white;
+	white-space: nowrap;
+}
+
+.parent {
+	cursor: pointer;
+	cursor: hand;
+}
+
+.branch {
+	display: none;
+	margin-left: 12px;
+}
+
+a { color: black; }
+a:VISITED {	color: black; }
+a:HOVER { color: orange; }
+
+</style>
+
+<script type="text/javascript">
+
+	function toggleExpansion(brn, img) {
+		var objBrn = document.getElementById(brn).style;
+		if (objBrn.display == "block")
+			objBrn.display = "none";
+		else
+			objBrn.display = "block";
+
+		var objImg = document.getElementById(img);
+		if (objImg.src.indexOf("plus.gif") >= 0)
+			objImg.src = "./icons/minus.gif";
+		else
+			objImg.src = "./icons/plus.gif";
+	}
+
+</script>
+
+</head>
+<body leftmargin="6" topmargin="6" marginwidth="6" marginheight="6"	onContextMenu="return false;">
+
+	<span class="parent" onClick="toggleExpansion('brn_ASSY', 'img_ASSY')">
+		<img src="./icons/plus.gif" id="img_ASSY">조립<br>
+	</span>
+	<span class="branch" id="brn_ASSY">
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/1_tightening.html">체결(TIGHTENING:TT)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/2_provisional_tightening.html">가조립(PROVISIONAL TIGHTENING:PT)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/3_riveting.html">리벳팅(RIVETING:RV)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/4_fixing.html">고정(FIXING:FX)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/5_fitting.html">끼움(FITTING:FT)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/6_binding.html">묶음(BINDING:BD)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/7_clamping.html">클램핑(CLAMPING:CP)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/8_filling.html">주입(FILLING:FL)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/9_application.html">도포(APPLICATION:AP)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/10_locking.html">잠금(LOCKING:LK)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/11_adjusting.html">조정(ADJUSTING:AJ)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/12_torque_check.html">체결력확인(TORQUE CHECK:TC)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/13_confirmation.html">확인(CONFIRMATION:CF)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/14_adhesing.html">접착(ADHESING:AD)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/15_material_handling.html">운반(MATERIAL HANDLING:MH)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/16_setting.html">위치결정(SETTING:ST)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/17_routing.html">정렬(ROUTING:RU)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/18_connecting.html">결선(CONNECTING:CN)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/19_unboxing.html">해포(UNBOXING:UB)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/20_cleaning.html">청소/세척(CLEANING:CX)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/21_removal.html">제거(REMOVAL:RM)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/22_hammering.html">타격(HAMMERING:HM)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/23_cutting.html">절단(CUTTING:CT)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/24_disassembling.html">분해(DISASSEMBLING:DA)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/25_symmetry.html">반복[대칭](SYMMETRY:SY)</a><br>
+		<img src="icons/card.gif"><a style="text-decoration: none;" target="content" href="cards/assy/26_zz.html">미정의 공법(ZZ)</a><br>
+	</span>
+
+</body>
+</html>

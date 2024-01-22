@@ -1,0 +1,74 @@
+
+/* Table */
+.basicTable { clear: both; width: 100%;	font-family: Verdana, Arial, sans-serif; font-size: 8pt; border-collapse: collapse; }
+.basicTable td:HOVER { color: #FFCC00; cursor: pointer; }
+
+.MTMGeneral { clear: both; width: 100%;	font-family: Verdana, Arial, sans-serif; font-size: 8pt; border-collapse: collapse; }
+.MTMGeneral td { height: 25px; border: 1px solid #000000; }
+.MTMGeneral td.td_subject {	text-align: left; padding-left: 5px; }
+.MTMGeneral td.td_value { width: 25px; }
+.MTMGeneral td.td_value:HOVER {	background-color: #FFCC00; cursor: pointer; }
+.MTMGeneral td.move_time:HOVER { background-color: #FFCC00; cursor: pointer; }
+.MTMGeneral td.td_weight { width: 50px; }
+.MTMGeneral td.td_alpha { width: 50px; }
+
+.MTMFormula { clear: both; width: 40%; font-family: Verdana, Arial, sans-serif; font-size: 8pt; border-collapse: collapse; }
+.MTMFormula td { height: 25px; border: 1px solid #000000; padding: 0px 5px; }
+.MTMFormula td.td_code { text-align: center; width: 50px; }
+.MTMFormula td.td_code:HOVER { background-color: #FFCC00; cursor: pointer; }
+
+.div_subject1 { float: left; font-size: 8pt; font-weight: bold; }
+.div_subject2 { float: right; font-size: 8pt; }
+
+.description { font-size: 8pt; }
+.description table { width: 100%; }
+
+.headerRed { font-weight: bold; color: #FF0000; }
+.headerBlue { font-weight: bold; color: #FFFFFF; background-color: #0064FF; }
+.headerGray { background-color: #E6E6E6; }
+
+/* Dialog */
+.dialog_common {
+	display : none;
+	position: absolute;
+	left: 42.5%;
+	padding: 10px;
+	background: white;
+	border: 5px solid #aaaaaa;
+	border-collapse: collapse;
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 8pt;
+	font-weight: bold;
+}
+
+.dialog_common td.code_info {
+	background-color: #FFCC00;
+	border-bottom: 2px solid #aaaaaa;
+}
+
+/* align */
+.left { text-align: left; }
+.right { text-align: right; }
+.center { text-align: center; }
+
+/* width */
+.wp10 { width: 10px; }
+.wp15 { width: 15px; }
+.wp25 { width: 25px; }
+.wp50 { width: 50px; }
+.wp60 { width: 60px; }
+.wp70 { width: 70px; }
+.wp80 { width: 80px; }
+.wp90 { width: 90px; }
+.wp100 { width: 100px; }
+.wp120 { width: 120px; }
+.wp150 { width: 150px; }
+.wp160 { width: 160px; }
+.wp170 { width: 170px; }
+.wp180 { width: 180px; }
+.wp190 { width: 190px; }
+.wp200 { width: 200px; }
+
+/* jquery ui */
+.ui-tabs .ui-tabs-nav li a { font-size: 8pt !important; }
+.ui-tabs-nav li { width: 320px; overflow: hidden; }

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+
+		$("#tabs").tabs();
+
+		$(".td_code").dblclick(function() {
+			var code = $.trim($(this).text()).substr(1, 3);
+			var description = $(this).attr("title");
+
+			$(".code_info").text(code);
+			$("#code").val(code);
+			$("#description").val(description);
+
+			// dialog top위치를 table 위치에 맞추기
+			var top = $(this).parents(".basicTable").position().top;
+			$(".dialog_common").show().draggable({handle: ".code_info"}).css("top", top + 15);
+
+			$("#input_time").focus();
+		});
+
+		$("#button_ok").click(function() {
+			// validation check
+			if($("#input_time").val() == "") {
+				alert("Unit Time(sec)을 입력해주세요.");
+				$("#input_time").focus();
+				return;
+			}
+
+			var display_code = $("#code").val();
+			var description = $("#description").val();
+			var time = $("#input_time").val();
+
+			MTMnavigate(1, display_code, "", "", time / 0.036, description);
+
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+		$("#button_cancel").click(function() {
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+	/* Dialog 숨기기 */
+	function hide_dialog()
+	{
+		$(".dialog_common").hide();
+	}
+
+	/* Dialog input 필드 초기화 */
+	function reset_dialogInputField()
+	{
+		$(".dialog_common").find("input[type=text]").val("");
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">25-1. 반복[대칭] 작업 (하기참조)</a></li>
+		</ul>
+
+		<!-- 25-1. 반복[대칭] 작업 (하기참조) -->
+		<div id="tabs-1">
+			<div class="div_subject1">25-1. 반복[대칭] 작업 (하기참조)</div>
+			<div class="div_subject2"></div>
+
+			<br><br>
+
+			<table class="basicTable">
+				<tr>
+					<td class = "td_code" title="10~30 작업을 회 반복">(SY1) 1. 반복[대칭] 작업 중 정미 공수의 합계를 적용한다. (정미공수)</td>
+				</tr>
+				<tr>
+					<td class = "td_code" title="10~30 작업을 회 반복">(SY2) 2. 반복[대칭] 작업 중 보조 공수의 합계를 적용한다. (보조공수)</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>작업표준서 작성 시 반복작업인 경우 여러개의 항목을 통합하여 표현한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="dialog_common" id="dialog_common">
+		<table>
+			<tr>
+				<td class="code_info" colspan="2"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="wp160">Unit Time(sec)</td>
+				<td><input type="text" id="input_time" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="2">
+					<input type="hidden" id="code" name="code" value="">
+					<input type="hidden" id="description" name="description" value="">
+					<input type="button" id="button_ok" name="button_ok" value="확인">
+					<input type="button" id="button_cancel" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

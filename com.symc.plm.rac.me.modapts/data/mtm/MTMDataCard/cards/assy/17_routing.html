@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+
+		$("#tabs").tabs({
+			activate: function(event, ui) {
+				reset_dialogInputField();
+				hide_dialog();
+			}
+		});
+
+		$(".td_code").dblclick(function() {
+			var code = $.trim($(this).text());
+			var description = $(this).attr("title");
+
+			$(".code_info").text(code);
+			$("#code").val(code);
+			$("#description").val(description);
+
+			// dialog top위치를 table 위치에 맞추기
+			var top = $(this).parents(".MTMFormula").position().top;
+			$("#dialog_common").show().draggable({handle: ".code_info"}).css("top", top + 15);
+
+			$("#length").focus();
+		});
+
+		$("#button_ok").click(function() {
+			var code = $("#code").val();
+			var description = $("#description").val();
+			var length;
+			var quantity;
+			var display_code;
+			var time;
+
+			// validation check
+			if($("#length").val() == "") {
+				alert("통과된 WIR'G의 길이를 입력해주세요.");
+				$("#length").focus();
+				return;
+			}
+			if($("#quantity").val() == "") {
+				alert("통과된 콘넥터의 수량을 입력해주세요.");
+				$("#quantity").focus();
+				return;
+			}
+
+			length = $("#length").val() * 1;
+			quantity = $("#quantity").val() * 1;
+			display_code = code + "-" + quantity + "," + length;
+			time = 3.096 + 0.516 * (length / 300) + 0.516 * (quantity / 2);
+
+			MTMnavigate(1, display_code, "", "", time / 0.036, description);
+
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+		$("#button_cancel").click(function() {
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+	/* Dialog 숨기기 */
+	function hide_dialog()
+	{
+		$(".dialog_common").hide();
+	}
+
+	/* Dialog input 필드 초기화 */
+	function reset_dialogInputField()
+	{
+		$(".dialog_common").find("input[type=text]").val("");
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">17-1. WIR'G류의 전개작업 (RU1)</a></li>
+			<li><a href="#tabs-2">17-2. SUB된 CLIP을 사용한 WIR'G의 정렬작업 (RU2)</a></li>
+			<li><a href="#tabs-3">17-3. WIR'G/HOSE/CABLE류의 HOLE 통과작업 (RU3)</a></li>
+		</ul>
+
+		<!-- 17-1. WIR'G류의 전개작업 (RU1) -->
+		<div id="tabs-1">
+			<div class="div_subject1">17-1. WIR'G류의 전개작업 (RU1)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">전개작업</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="2.06, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-1', '', '', 57.22222222222223, '①-1개를 전개')">1</td>
+					<td class="td_value" title="3.23, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-2', '', '', 89.72222222222223, '①-1개를 전개')">2</td>
+					<td class="td_value" title="4.39, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-3', '', '', 121.94444444444444, '①-1개를 전개')">3</td>
+					<td class="td_value" title="5.55, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-4', '', '', 154.16666666666668, '①-1개를 전개')">4</td>
+					<td class="td_value" title="6.71, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-5', '', '', 186.3888888888889, '①-1개를 전개')">5</td>
+					<td class="td_value" title="7.87, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-6', '', '', 218.61111111111114, '①-1개를 전개')">6</td>
+					<td class="td_value" title="9.03, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-7', '', '', 250.83333333333334, '①-1개를 전개')">7</td>
+					<td class="td_value" title="10.19, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-8', '', '', 283.05555555555554, '①-1개를 전개')">8</td>
+					<td class="td_value" title="11.35, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-9', '', '', 315.27777777777777, '①-1개를 전개')">9</td>
+					<td class="td_value" title="12.51, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-10', '', '', 347.5, '①-1개를 전개')">10</td>
+					<td class="td_value" title="13.67, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-11', '', '', 379.72222222222223, '①-1개를 전개')">11</td>
+					<td class="td_value" title="14.84, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-12', '', '', 412.22222222222223, '①-1개를 전개')">12</td>
+					<td class="td_value" title="16.00, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-13', '', '', 444.44444444444445, '①-1개를 전개')">13</td>
+					<td class="td_value" title="17.16, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-14', '', '', 476.6666666666667, '①-1개를 전개')">14</td>
+					<td class="td_value" title="18.32, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-15', '', '', 508.8888888888889, '①-1개를 전개')">15</td>
+					<td class="td_value" title="19.48, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-16', '', '', 541.1111111111112, '①-1개를 전개')">16</td>
+					<td class="td_value" title="20.64, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-17', '', '', 573.3333333333334, '①-1개를 전개')">17</td>
+					<td class="td_value" title="21.80, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-18', '', '', 605.5555555555556, '①-1개를 전개')">18</td>
+					<td class="td_value" title="22.96, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-19', '', '', 637.7777777777778, '①-1개를 전개')">19</td>
+					<td class="td_value" title="24.12, ①-1개를 전개" onclick="MTMnavigate(1, 'RU1-000-20', '', '', 670.0000000000001, '①-1개를 전개')">20</td>
+					<td class="td_alpha">1.161</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>작업 POINT : WIR'G 길이 400mm당 1POINT로 산정한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>WIR'G의 길이는 MAIN ROUTE의 길이에 큰 분기의 길이를 더한 길이로 한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>큰 분기의 조건 : 콘넥터가 5개 이상이고 길이가 400mm이상인 분기.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>본 항은 와이어링을 조립하기 전에 펼치는 작업에 대하여 적용한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 17-2. SUB된 CLIP을 사용한 WIR'G의 정렬작업 (RU2) -->
+		<div id="tabs-2">
+			<div class="div_subject1">17-2. SUB된 CLIP을 사용한 WIR'G의 정렬작업 (RU2)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">Φ20미만</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="1.94, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-1', '', '', 53.88888888888889, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">1</td>
+					<td class="td_value" title="3.87, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-2', '', '', 107.50000000000001, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">2</td>
+					<td class="td_value" title="5.81, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-3', '', '', 161.38888888888888, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">3</td>
+					<td class="td_value" title="7.74, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-4', '', '', 215.00000000000003, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">4</td>
+					<td class="td_value" title="9.68, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-5', '', '', 268.8888888888889, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">5</td>
+					<td class="td_value" title="11.61, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-6', '', '', 322.5, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">6</td>
+					<td class="td_value" title="13.55, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-7', '', '', 376.3888888888889, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">7</td>
+					<td class="td_value" title="15.48, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-8', '', '', 430.00000000000005, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">8</td>
+					<td class="td_value" title="17.42, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-9', '', '', 483.88888888888897, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">9</td>
+					<td class="td_value" title="19.35, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-10', '', '', 537.5000000000001, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">10</td>
+					<td class="td_value" title="21.29, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-11', '', '', 591.3888888888889, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">11</td>
+					<td class="td_value" title="23.22, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-12', '', '', 645, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">12</td>
+					<td class="td_value" title="25.15, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-13', '', '', 698.6111111111111, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">13</td>
+					<td class="td_value" title="27.09, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-14', '', '', 752.5, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">14</td>
+					<td class="td_value" title="29.03, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-15', '', '', 806.388888888889, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">15</td>
+					<td class="td_value" title="30.96, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-16', '', '', 860.0000000000001, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">16</td>
+					<td class="td_value" title="32.90, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-17', '', '', 913.8888888888889, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">17</td>
+					<td class="td_value" title="34.83, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-18', '', '', 967.5, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">18</td>
+					<td class="td_value" title="36.77, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-19', '', '', 1021.388888888889, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">19</td>
+					<td class="td_value" title="38.70, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-000-20', '', '', 1075.0000000000002, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">20</td>
+					<td class="td_alpha">1.935</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">Φ20이상</td>
+					<td class="td_weight">004</td>
+					<td class="td_value" title="2.45, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-1', '', '', 68.05555555555557, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">1</td>
+					<td class="td_value" title="4.90, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-2', '', '', 136.11111111111114, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">2</td>
+					<td class="td_value" title="7.35, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-3', '', '', 204.16666666666668, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">3</td>
+					<td class="td_value" title="9.80, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-4', '', '', 272.2222222222223, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">4</td>
+					<td class="td_value" title="12.26, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-5', '', '', 340.5555555555556, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">5</td>
+					<td class="td_value" title="14.71, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-6', '', '', 408.61111111111114, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">6</td>
+					<td class="td_value" title="17.16, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-7', '', '', 476.6666666666667, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">7</td>
+					<td class="td_value" title="19.61, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-8', '', '', 544.7222222222223, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">8</td>
+					<td class="td_value" title="22.06, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-9', '', '', 612.7777777777778, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">9</td>
+					<td class="td_value" title="24.51, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-10', '', '', 680.8333333333335, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">10</td>
+					<td class="td_value" title="26.96, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-11', '', '', 748.8888888888889, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">11</td>
+					<td class="td_value" title="29.41, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-12', '', '', 816.9444444444445, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">12</td>
+					<td class="td_value" title="31.86, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-13', '', '', 885, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">13</td>
+					<td class="td_value" title="34.31, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-14', '', '', 953.0555555555556, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">14</td>
+					<td class="td_value" title="36.77, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-15', '', '', 1021.388888888889, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">15</td>
+					<td class="td_value" title="39.22, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-16', '', '', 1089.4444444444445, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">16</td>
+					<td class="td_value" title="41.67, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-17', '', '', 1157.5000000000002, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">17</td>
+					<td class="td_value" title="44.12, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-18', '', '', 1225.5555555555556, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">18</td>
+					<td class="td_value" title="46.57, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-19', '', '', 1293.6111111111113, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">19</td>
+					<td class="td_value" title="49.02, ㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬" onclick="MTMnavigate(1, 'RU2-004-20', '', '', 1361.666666666667, '㉮의 ㉠-개소에 ㉯의 ㉡을 끼우며 정렬')">20</td>
+					<td class="td_alpha">2.451</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>작업 POINT는 CLIP의 수량으로 하고 CLIP이 없는 경우는 400mm당 1POINT를 정렬하는 것으로 산출한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>MAIN, ENG, FLR WIR'G등 Φ20이상의 경우는 상기의 표와같이 가중치를 적용할것.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 17-3. WIR'G/HOSE/CABLE류의 HOLE 통과작업 (RU3) -->
+		<div id="tabs-3">
+			<div class="div_subject1">17-3. WIR'G/HOSE/CABLE류의 HOLE 통과작업 (RU3)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMFormula">
+				<tr>
+					<td>HOLE 통과작업</td>
+					<td class="td_code" title='㉮에 ㉠홀에 ①-1개를 통과시켜 정렬'>RU3</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>L : 통과된 WIR'G의 길이 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; n : 통과된 콘넥터의 수량</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>HOLE SIZE 및 형상, 통과된 분기수량, 피복의 종류 등 작업의 조건에 따라 난이도계수(27항)를 적절히 부가한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>본 항은 폐쇄된 HOLE을 통과시키는 작업이므로 한쪽이 터진 경우는 위치결정 시간으로 산정한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>JIG를 사용하는 경우에는 JIG를 통과시키는 시간도 본항과 동일하게 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="dialog_common" id="dialog_common">
+		<table>
+			<tr>
+				<td class="code_info" colspan="2"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="wp160">통과된 WIR'G의 길이</td>
+				<td><input type="text" id="length" name="length" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr>
+				<td class="wp160">통과된 콘넥터의 수량</td>
+				<td><input type="text" id="quantity" name="quantity" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="2">
+					<input type="hidden" id="code" name="code" value="">
+					<input type="hidden" id="description" name="description" value="">
+					<input type="button" id="button_ok" name="button_ok" value="확인">
+					<input type="button" id="button_cancel" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

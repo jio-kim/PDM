@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+		$("#tabs").tabs();
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">2-1. 손으로 SCREW/BOLT/NUT 가조립 (하단 Table 참조)</a></li>
+			<li><a href="#tabs-2">2-2. 손으로 플레어너트 가조립 (PT2)</a></li>
+			<li><a href="#tabs-3">2-3. 공구로 BOLT/NUT/SCREW 가조립 (하단 Table 참조)</a></li>
+		</ul>
+
+		<!-- 2-1. 손으로 SCREW/BOLT/NUT 가조립 (하단 Table 참조) -->
+		<div id="tabs-1">
+			<div class="div_subject1">2-1. 손으로 SCREW/BOLT/NUT 가조립 (하단 Table 참조)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td colspan="2" style="border: none;"></td>
+					<td>PDM Code</td>
+					<td>PT1(1)</td>
+					<td colspan="20">PT1(&gt;=2)</td>
+				</tr>
+				<tr align="center">
+					<td colspan="2">적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td rowspan="3">손만 사용</td>
+					<td class="td_subject">M10 미만</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="2.97, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-01', '', '', 82.50000000000001, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">1</td>
+					<td class="td_value" title="5.55, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-02', '', '', 154.16666666666668, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">2</td>
+					<td class="td_value" title="7.87, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-03', '', '', 218.61111111111114, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">3</td>
+					<td class="td_value" title="10.19, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-04', '', '', 283.05555555555554, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">4</td>
+					<td class="td_value" title="12.51, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-05', '', '', 347.5, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">5</td>
+					<td class="td_value" title="14.83, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-06', '', '', 411.94444444444445, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">6</td>
+					<td class="td_value" title="17.16, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-07', '', '', 476.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">7</td>
+					<td class="td_value" title="19.48, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-08', '', '', 541.1111111111112, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">8</td>
+					<td class="td_value" title="21.80, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-09', '', '', 605.5555555555556, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">9</td>
+					<td class="td_value" title="24.12, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-10', '', '', 670.0000000000001, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">10</td>
+					<td class="td_value" title="26.45, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-11', '', '', 734.7222222222223, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">11</td>
+					<td class="td_value" title="28.77, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-12', '', '', 799.1666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">12</td>
+					<td class="td_value" title="31.09, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-13', '', '', 863.6111111111112, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">13</td>
+					<td class="td_value" title="33.41, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-14', '', '', 928.0555555555555, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">14</td>
+					<td class="td_value" title="35.73, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-15', '', '', 992.5, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">15</td>
+					<td class="td_value" title="38.06, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-16', '', '', 1057.2222222222224, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">16</td>
+					<td class="td_value" title="40.38, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-17', '', '', 1121.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">17</td>
+					<td class="td_value" title="42.70, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-18', '', '', 1186.1111111111113, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">18</td>
+					<td class="td_value" title="45.02, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-19', '', '', 1250.5555555555556, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">19</td>
+					<td class="td_value" title="47.34, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-000-20', '', '', 1315.0000000000002, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">20</td>
+					<td class="td_alpha">2.322</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">M10 이상</td>
+					<td class="td_weight">002</td>
+					<td class="td_value" title="3.23, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-01', '', '', 89.72222222222223, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">1</td>
+					<td class="td_value" title="6.06, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-02', '', '', 168.33333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">2</td>
+					<td class="td_value" title="8.64, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-03', '', '', 240.00000000000003, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">3</td>
+					<td class="td_value" title="11.22, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-04', '', '', 311.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">4</td>
+					<td class="td_value" title="13.80, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-05', '', '', 383.33333333333337, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">5</td>
+					<td class="td_value" title="16.38, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-06', '', '', 455, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">6</td>
+					<td class="td_value" title="18.96, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-07', '', '', 526.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">7</td>
+					<td class="td_value" title="21.54, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-08', '', '', 598.3333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">8</td>
+					<td class="td_value" title="24.12, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-09', '', '', 670.0000000000001, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">9</td>
+					<td class="td_value" title="26.70, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-10', '', '', 741.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">10</td>
+					<td class="td_value" title="29.28, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-11', '', '', 813.3333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">11</td>
+					<td class="td_value" title="31.86, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-12', '', '', 885, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">12</td>
+					<td class="td_value" title="34.44, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-13', '', '', 956.6666666666666, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">13</td>
+					<td class="td_value" title="37.02, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-14', '', '', 1028.3333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">14</td>
+					<td class="td_value" title="39.60, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-15', '', '', 1100.0000000000002, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">15</td>
+					<td class="td_value" title="42.18, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-16', '', '', 1171.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">16</td>
+					<td class="td_value" title="44.76, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-17', '', '', 1243.3333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">17</td>
+					<td class="td_value" title="47.34, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-18', '', '', 1315.0000000000002, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">18</td>
+					<td class="td_value" title="49.92, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-19', '', '', 1386.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">19</td>
+					<td class="td_value" title="52.50, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-002-20', '', '', 1458.3333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">20</td>
+					<td class="td_alpha">2.580</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">수공구 체결전</td>
+					<td class="td_weight">014</td>
+					<td class="td_value" title="4.77, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-01', '', '', 132.5, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">1</td>
+					<td class="td_value" title="9.16, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-02', '', '', 254.44444444444446, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">2</td>
+					<td class="td_value" title="13.29, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-03', '', '', 369.1666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">3</td>
+					<td class="td_value" title="17.42, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-04', '', '', 483.88888888888897, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">4</td>
+					<td class="td_value" title="21.54, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-05', '', '', 598.3333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">5</td>
+					<td class="td_value" title="25.67, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-06', '', '', 713.0555555555556, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">6</td>
+					<td class="td_value" title="29.80, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-07', '', '', 827.7777777777778, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">7</td>
+					<td class="td_value" title="33.93, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-08', '', '', 942.5000000000001, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">8</td>
+					<td class="td_value" title="38.06, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-09', '', '', 1057.2222222222224, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">9</td>
+					<td class="td_value" title="42.18, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-10', '', '', 1171.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">10</td>
+					<td class="td_value" title="46.31, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-11', '', '', 1286.3888888888891, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">11</td>
+					<td class="td_value" title="50.44, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-12', '', '', 1401.111111111111, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">12</td>
+					<td class="td_value" title="54.57, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-13', '', '', 1515.8333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">13</td>
+					<td class="td_value" title="58.70, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-14', '', '', 1630.5555555555556, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">14</td>
+					<td class="td_value" title="62.82, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-15', '', '', 1745.0000000000002, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">15</td>
+					<td class="td_value" title="66.95, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-16', '', '', 1859.7222222222224, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">16</td>
+					<td class="td_value" title="71.08, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-17', '', '', 1974.4444444444445, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">17</td>
+					<td class="td_value" title="75.21, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-18', '', '', 2089.1666666666665, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">18</td>
+					<td class="td_value" title="79.34, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-19', '', '', 2203.888888888889, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">19</td>
+					<td class="td_value" title="83.46, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-014-20', '', '', 2318.3333333333335, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">20</td>
+					<td class="td_alpha">4.128</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject" colspan="2">SOCKET 사용</td>
+					<td class="td_weight">010</td>
+					<td class="td_value" title="4.26, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-01', '', '', 118.33333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">1</td>
+					<td class="td_value" title="8.13, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-02', '', '', 225.83333333333337, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">2</td>
+					<td class="td_value" title="11.74, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-03', '', '', 326.11111111111114, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">3</td>
+					<td class="td_value" title="15.35, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-04', '', '', 426.3888888888889, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">4</td>
+					<td class="td_value" title="18.96, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-05', '', '', 526.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">5</td>
+					<td class="td_value" title="22.58, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-06', '', '', 627.2222222222222, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">6</td>
+					<td class="td_value" title="26.19, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-07', '', '', 727.5000000000001, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">7</td>
+					<td class="td_value" title="29.80, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-08', '', '', 827.7777777777778, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">8</td>
+					<td class="td_value" title="33.41, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-09', '', '', 928.0555555555555, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">9</td>
+					<td class="td_value" title="37.02, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-10', '', '', 1028.3333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">10</td>
+					<td class="td_value" title="40.64, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-11', '', '', 1128.888888888889, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">11</td>
+					<td class="td_value" title="44.25, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-12', '', '', 1229.1666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">12</td>
+					<td class="td_value" title="47.86, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-13', '', '', 1329.4444444444445, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">13</td>
+					<td class="td_value" title="51.47, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-14', '', '', 1429.7222222222224, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">14</td>
+					<td class="td_value" title="55.08, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-15', '', '', 1530, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">15</td>
+					<td class="td_value" title="58.70, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-16', '', '', 1630.5555555555556, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">16</td>
+					<td class="td_value" title="62.31, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-17', '', '', 1730.8333333333334, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">17</td>
+					<td class="td_value" title="65.92, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-18', '', '', 1831.1111111111113, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">18</td>
+					<td class="td_value" title="69.53, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-19', '', '', 1931.3888888888891, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">19</td>
+					<td class="td_value" title="73.14, ㉮의 ㉠에 ①-1개를 ②-1개로 가조립" onclick="MTMnavigate(1, 'PT1-010-20', '', '', 2031.6666666666667, '㉮의 ㉠에 ①-1개를 ②-1개로 가조립')">20</td>
+					<td class="td_alpha">3.612</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>수공구로 체결하기 전에는 손으로 최대한 조인후 수공구를 사용한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>M10(AF14) 이상의 하드웨어, 연질의 대상물에 체결하는 경우, 부품의 자동거취 구조가 적용되지 않은 경우는 반드시 가조립후 체결한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>M10(AF14) 이하, 부품의 자동거취 구조가 적용되지 않은 경우 가조립 수량.</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>1개소 조립 : 1  2~5개소 조립 : 2  6개소이상 조립 : 4</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>볼트를 끼우는 시간, 와셔를 끼우는 시간은 별도로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 2-2. 손으로 플레어너트 가조립 (PT2) -->
+		<div id="tabs-2">
+			<div class="div_subject1">2-2. 손으로 플레어너트 가조립 (PT2)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td colspan="2">적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td rowspan="4">일 반</td>
+					<td class="td_subject">AF10~11</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="4.64, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-01', '', '', 128.88888888888888, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">1</td>
+					<td class="td_value" title="9.29, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-02', '', '', 258.05555555555554, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">2</td>
+					<td class="td_value" title="13.93, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-03', '', '', 386.94444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">3</td>
+					<td class="td_value" title="18.58, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-04', '', '', 516.1111111111111, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">4</td>
+					<td class="td_value" title="23.22, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-05', '', '', 645, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">5</td>
+					<td class="td_value" title="27.86, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-06', '', '', 773.8888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">6</td>
+					<td class="td_value" title="32.51, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-07', '', '', 903.0555555555555, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">7</td>
+					<td class="td_value" title="37.15, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-08', '', '', 1031.9444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">8</td>
+					<td class="td_value" title="41.80, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-09', '', '', 1161.111111111111, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">9</td>
+					<td class="td_value" title="46.44, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-10', '', '', 1290, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">10</td>
+					<td class="td_value" title="51.08, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-11', '', '', 1418.888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">11</td>
+					<td class="td_value" title="55.73, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-12', '', '', 1548.0555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">12</td>
+					<td class="td_value" title="60.37, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-13', '', '', 1676.9444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">13</td>
+					<td class="td_value" title="65.02, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-14', '', '', 1806.111111111111, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">14</td>
+					<td class="td_value" title="69.66, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-15', '', '', 1935, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">15</td>
+					<td class="td_value" title="74.30, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-16', '', '', 2063.888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">16</td>
+					<td class="td_value" title="78.95, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-17', '', '', 2193.0555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">17</td>
+					<td class="td_value" title="83.59, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-18', '', '', 2321.944444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">18</td>
+					<td class="td_value" title="88.24, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-19', '', '', 2451.1111111111113, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">19</td>
+					<td class="td_value" title="92.88, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-000-20', '', '', 2580, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">20</td>
+					<td class="td_alpha">4.644</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">AF12~13</td>
+					<td class="td_weight">004</td>
+					<td class="td_value" title="5.16, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-01', '', '', 143.33333333333334, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">1</td>
+					<td class="td_value" title="10.32, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-02', '', '', 286.6666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">2</td>
+					<td class="td_value" title="15.48, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-03', '', '', 430.00000000000005, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">3</td>
+					<td class="td_value" title="20.64, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-04', '', '', 573.3333333333334, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">4</td>
+					<td class="td_value" title="25.80, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-05', '', '', 716.6666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">5</td>
+					<td class="td_value" title="30.96, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-06', '', '', 860.0000000000001, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">6</td>
+					<td class="td_value" title="36.12, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-07', '', '', 1003.3333333333334, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">7</td>
+					<td class="td_value" title="41.28, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-08', '', '', 1146.6666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">8</td>
+					<td class="td_value" title="46.44, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-09', '', '', 1290, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">9</td>
+					<td class="td_value" title="51.60, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-10', '', '', 1433.3333333333334, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">10</td>
+					<td class="td_value" title="56.76, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-11', '', '', 1576.6666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">11</td>
+					<td class="td_value" title="61.92, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-12', '', '', 1720.0000000000002, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">12</td>
+					<td class="td_value" title="67.08, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-13', '', '', 1863.3333333333334, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">13</td>
+					<td class="td_value" title="72.24, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-14', '', '', 2006.6666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">14</td>
+					<td class="td_value" title="77.40, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-15', '', '', 2150.0000000000004, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">15</td>
+					<td class="td_value" title="82.56, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-16', '', '', 2293.3333333333335, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">16</td>
+					<td class="td_value" title="87.72, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-17', '', '', 2436.666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">17</td>
+					<td class="td_value" title="92.88, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-18', '', '', 2580, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">18</td>
+					<td class="td_value" title="98.04, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-19', '', '', 2723.333333333334, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">19</td>
+					<td class="td_value" title="103.20, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-004-20', '', '', 2866.666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">20</td>
+					<td class="td_alpha">5.160</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">AF14~17</td>
+					<td class="td_weight">008</td>
+					<td class="td_value" title="5.68, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-01', '', '', 157.77777777777777, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">1</td>
+					<td class="td_value" title="11.35, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-02', '', '', 315.27777777777777, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">2</td>
+					<td class="td_value" title="17.03, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-03', '', '', 473.0555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">3</td>
+					<td class="td_value" title="22.70, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-04', '', '', 630.5555555555555, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">4</td>
+					<td class="td_value" title="28.38, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-05', '', '', 788.3333333333334, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">5</td>
+					<td class="td_value" title="34.06, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-06', '', '', 946.1111111111112, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">6</td>
+					<td class="td_value" title="39.73, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-07', '', '', 1103.611111111111, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">7</td>
+					<td class="td_value" title="45.41, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-08', '', '', 1261.388888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">8</td>
+					<td class="td_value" title="51.08, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-09', '', '', 1418.888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">9</td>
+					<td class="td_value" title="56.76, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-10', '', '', 1576.6666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">10</td>
+					<td class="td_value" title="62.44, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-11', '', '', 1734.4444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">11</td>
+					<td class="td_value" title="68.11, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-12', '', '', 1891.9444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">12</td>
+					<td class="td_value" title="73.79, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-13', '', '', 2049.7222222222226, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">13</td>
+					<td class="td_value" title="79.46, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-14', '', '', 2207.222222222222, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">14</td>
+					<td class="td_value" title="85.14, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-15', '', '', 2365, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">15</td>
+					<td class="td_value" title="90.82, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-16', '', '', 2522.777777777778, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">16</td>
+					<td class="td_value" title="96.49, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-17', '', '', 2680.277777777778, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">17</td>
+					<td class="td_value" title="102.17, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-18', '', '', 2838.0555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">18</td>
+					<td class="td_value" title="107.84, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-19', '', '', 2995.5555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">19</td>
+					<td class="td_value" title="113.52, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-008-20', '', '', 3153.3333333333335, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">20</td>
+					<td class="td_alpha">5.676</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">AF19이상</td>
+					<td class="td_weight">012</td>
+					<td class="td_value" title="6.19, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-01', '', '', 171.94444444444446, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">1</td>
+					<td class="td_value" title="12.38, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-02', '', '', 343.8888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">2</td>
+					<td class="td_value" title="18.58, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-03', '', '', 516.1111111111111, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">3</td>
+					<td class="td_value" title="24.77, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-04', '', '', 688.0555555555555, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">4</td>
+					<td class="td_value" title="30.96, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-05', '', '', 860.0000000000001, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">5</td>
+					<td class="td_value" title="37.15, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-06', '', '', 1031.9444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">6</td>
+					<td class="td_value" title="43.34, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-07', '', '', 1203.8888888888891, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">7</td>
+					<td class="td_value" title="49.54, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-08', '', '', 1376.111111111111, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">8</td>
+					<td class="td_value" title="55.73, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-09', '', '', 1548.0555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">9</td>
+					<td class="td_value" title="61.92, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-10', '', '', 1720.0000000000002, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">10</td>
+					<td class="td_value" title="68.11, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-11', '', '', 1891.9444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">11</td>
+					<td class="td_value" title="74.30, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-12', '', '', 2063.888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">12</td>
+					<td class="td_value" title="80.50, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-13', '', '', 2236.1111111111113, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">13</td>
+					<td class="td_value" title="86.69, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-14', '', '', 2408.0555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">14</td>
+					<td class="td_value" title="92.88, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-15', '', '', 2580, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">15</td>
+					<td class="td_value" title="99.07, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-16', '', '', 2751.9444444444443, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">16</td>
+					<td class="td_value" title="105.26, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-17', '', '', 2923.888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">17</td>
+					<td class="td_value" title="111.46, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-18', '', '', 3096.1111111111113, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">18</td>
+					<td class="td_value" title="117.65, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-19', '', '', 3268.055555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">19</td>
+					<td class="td_value" title="123.84, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-012-20', '', '', 3440.0000000000004, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">20</td>
+					<td class="td_alpha">6.192</td>
+				</tr>
+				<tr align="center">
+					<td rowspan="4">수공구 체결전</td>
+					<td class="td_subject">AF10~11</td>
+					<td class="td_weight">016</td>
+					<td class="td_value" title="6.71, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-01', '', '', 186.3888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">1</td>
+					<td class="td_value" title="13.42, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-02', '', '', 372.7777777777778, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">2</td>
+					<td class="td_value" title="20.12, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-03', '', '', 558.8888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">3</td>
+					<td class="td_value" title="26.83, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-04', '', '', 745.2777777777778, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">4</td>
+					<td class="td_value" title="33.54, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-05', '', '', 931.6666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">5</td>
+					<td class="td_value" title="40.25, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-06', '', '', 1118.0555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">6</td>
+					<td class="td_value" title="46.96, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-07', '', '', 1304.4444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">7</td>
+					<td class="td_value" title="53.66, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-08', '', '', 1490.5555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">8</td>
+					<td class="td_value" title="60.37, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-09', '', '', 1676.9444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">9</td>
+					<td class="td_value" title="67.08, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-10', '', '', 1863.3333333333334, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">10</td>
+					<td class="td_value" title="73.79, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-11', '', '', 2049.7222222222226, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">11</td>
+					<td class="td_value" title="80.50, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-12', '', '', 2236.1111111111113, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">12</td>
+					<td class="td_value" title="87.20, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-13', '', '', 2422.2222222222226, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">13</td>
+					<td class="td_value" title="93.91, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-14', '', '', 2608.6111111111113, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">14</td>
+					<td class="td_value" title="100.62, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-15', '', '', 2795.0000000000004, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">15</td>
+					<td class="td_value" title="107.33, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-16', '', '', 2981.388888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">16</td>
+					<td class="td_value" title="114.04, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-17', '', '', 3167.7777777777783, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">17</td>
+					<td class="td_value" title="120.74, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-18', '', '', 3353.888888888889 , '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">18</td>
+					<td class="td_value" title="127.45, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-19', '', '', 3540.2777777777783, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">19</td>
+					<td class="td_value" title="134.16, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-016-20', '', '', 3726.666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">20</td>
+					<td class="td_alpha">6.708</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">AF12~13</td>
+					<td class="td_weight">020</td>
+					<td class="td_value" title="7.22, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-01', '', '', 200.55555555555557, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">1</td>
+					<td class="td_value" title="14.45, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-02', '', '', 401.3888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">2</td>
+					<td class="td_value" title="21.67, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-03', '', '', 601.9444444444446, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">3</td>
+					<td class="td_value" title="28.90, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-04', '', '', 802.7777777777778, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">4</td>
+					<td class="td_value" title="36.12, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-05', '', '', 1003.3333333333334, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">5</td>
+					<td class="td_value" title="43.34, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-06', '', '', 1203.8888888888891, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">6</td>
+					<td class="td_value" title="50.57, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-07', '', '', 1404.7222222222224, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">7</td>
+					<td class="td_value" title="57.79, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-08', '', '', 1605.2777777777778, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">8</td>
+					<td class="td_value" title="65.02, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-09', '', '', 1806.111111111111, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">9</td>
+					<td class="td_value" title="72.24, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-10', '', '', 2006.6666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">10</td>
+					<td class="td_value" title="79.46, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-11', '', '', 2207.222222222222, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">11</td>
+					<td class="td_value" title="86.69, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-12', '', '', 2408.0555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">12</td>
+					<td class="td_value" title="93.91, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-13', '', '', 2608.6111111111113, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">13</td>
+					<td class="td_value" title="101.14, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-14', '', '', 2809.444444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">14</td>
+					<td class="td_value" title="108.36, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-15', '', '', 3010, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">15</td>
+					<td class="td_value" title="115.58, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-16', '', '', 3210.5555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">16</td>
+					<td class="td_value" title="122.81, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-17', '', '', 3411.388888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">17</td>
+					<td class="td_value" title="130.03, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-18', '', '', 3611.944444444445, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">18</td>
+					<td class="td_value" title="137.26, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-19', '', '', 3812.777777777778, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">19</td>
+					<td class="td_value" title="144.48, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-020-20', '', '', 4013.3333333333335, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">20</td>
+					<td class="td_alpha">7.224</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">AF14~17</td>
+					<td class="td_weight">024</td>
+					<td class="td_value" title="7.74, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-01', '', '', 215.00000000000003, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">1</td>
+					<td class="td_value" title="15.48, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-02', '', '', 430.00000000000005, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">2</td>
+					<td class="td_value" title="23.22, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-03', '', '', 645, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">3</td>
+					<td class="td_value" title="30.96, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-04', '', '', 860.0000000000001, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">4</td>
+					<td class="td_value" title="38.70, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-05', '', '', 1075.0000000000002, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">5</td>
+					<td class="td_value" title="46.44, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-06', '', '', 1290, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">6</td>
+					<td class="td_value" title="54.18, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-07', '', '', 1505, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">7</td>
+					<td class="td_value" title="61.92, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-08', '', '', 1720.0000000000002, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">8</td>
+					<td class="td_value" title="69.66, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-09', '', '', 1935, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">9</td>
+					<td class="td_value" title="77.40, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-10', '', '', 2150.0000000000004, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">10</td>
+					<td class="td_value" title="85.14, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-11', '', '', 2365, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">11</td>
+					<td class="td_value" title="92.88, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-12', '', '', 2580, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">12</td>
+					<td class="td_value" title="100.62, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-13', '', '', 2795.0000000000004, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">13</td>
+					<td class="td_value" title="108.36, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-14', '', '', 3010, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">14</td>
+					<td class="td_value" title="116.10, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-15', '', '', 3225, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">15</td>
+					<td class="td_value" title="123.84, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-16', '', '', 3440.0000000000004, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">16</td>
+					<td class="td_value" title="131.58, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-17', '', '', 3655.0000000000004, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">17</td>
+					<td class="td_value" title="139.32, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-18', '', '', 3870, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">18</td>
+					<td class="td_value" title="147.06, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-19', '', '', 4085.0000000000004, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">19</td>
+					<td class="td_value" title="154.80, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-024-20', '', '', 4300.000000000001, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">20</td>
+					<td class="td_alpha">7.740</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">AF19이상</td>
+					<td class="td_weight">028</td>
+					<td class="td_value" title="8.26, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-01', '', '', 229.44444444444446, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">1</td>
+					<td class="td_value" title="16.51, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-02', '', '', 458.6111111111112, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">2</td>
+					<td class="td_value" title="24.77, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-03', '', '', 688.0555555555555, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">3</td>
+					<td class="td_value" title="33.02, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-04', '', '', 917.2222222222224, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">4</td>
+					<td class="td_value" title="41.28, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-05', '', '', 1146.6666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">5</td>
+					<td class="td_value" title="49.54, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-06', '', '', 1376.111111111111, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">6</td>
+					<td class="td_value" title="57.79, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-07', '', '', 1605.2777777777778, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">7</td>
+					<td class="td_value" title="66.05, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-08', '', '', 1834.7222222222221, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">8</td>
+					<td class="td_value" title="74.30, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-09', '', '', 2063.888888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">9</td>
+					<td class="td_value" title="82.56, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-10', '', '', 2293.3333333333335, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">10</td>
+					<td class="td_value" title="90.82, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-11', '', '', 2522.777777777778, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">11</td>
+					<td class="td_value" title="99.07, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-12', '', '', 2751.9444444444443, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">12</td>
+					<td class="td_value" title="107.33, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-13', '', '', 2981.388888888889, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">13</td>
+					<td class="td_value" title="115.58, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-14', '', '', 3210.5555555555556, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">14</td>
+					<td class="td_value" title="123.84, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-15', '', '', 3440.0000000000004, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">15</td>
+					<td class="td_value" title="132.10, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-16', '', '', 3669.4444444444443, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">16</td>
+					<td class="td_value" title="140.35, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-17', '', '', 3898.6111111111113, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">17</td>
+					<td class="td_value" title="148.61, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-18', '', '', 4128.055555555557, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">18</td>
+					<td class="td_value" title="156.86, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-19', '', '', 4357.222222222223, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">19</td>
+					<td class="td_value" title="165.12, ㉮의 ㉠에 ①-1개를 ②-2개로 가조립" onclick="MTMnavigate(1, 'PT2-028-20', '', '', 4586.666666666667, '㉮의 ㉠에 ①-1개를 ②-2개로 가조립')">20</td>
+					<td class="td_alpha">8.256</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>수공구로 체결하기 전에는 손으로 최대한 조인후 수공구를 사용한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 2-3. 공구로 BOLT/NUT/SCREW 가조립 (하단 Table 참조) -->
+		<div id="tabs-3">
+			<div class="div_subject1">2-3. 공구로 BOLT/NUT/SCREW 가조립 (하단 Table 참조)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td colspan="2" style="border: none;"></td>
+					<td>PDM Code</td>
+					<td>PT3(1)</td>
+					<td colspan="20">PT3(&gt;=2)</td>
+				</tr>
+				<tr align="center">
+					<td colspan="2">적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td rowspan="2">AIR TOOL</td>
+					<td class="td_subject">일반</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="2.58, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-01', '', '', 71.66666666666667, '㉮에 ①-1개를 ②-1개로 가체결')">1</td>
+					<td class="td_value" title="4.77, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-02', '', '', 132.5, '㉮에 ①-1개를 ②-1개로 가체결')">2</td>
+					<td class="td_value" title="6.71, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-03', '', '', 186.3888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">3</td>
+					<td class="td_value" title="8.64, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-04', '', '', 240.00000000000003, '㉮에 ①-1개를 ②-1개로 가체결')">4</td>
+					<td class="td_value" title="10.58, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-05', '', '', 293.8888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">5</td>
+					<td class="td_value" title="12.51, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-06', '', '', 347.5, '㉮에 ①-1개를 ②-1개로 가체결')">6</td>
+					<td class="td_value" title="14.45, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-07', '', '', 401.3888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">7</td>
+					<td class="td_value" title="16.38, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-08', '', '', 455, '㉮에 ①-1개를 ②-1개로 가체결')">8</td>
+					<td class="td_value" title="18.32, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-09', '', '', 508.8888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">9</td>
+					<td class="td_value" title="20.25, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-10', '', '', 562.5, '㉮에 ①-1개를 ②-1개로 가체결')">10</td>
+					<td class="td_value" title="22.19, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-11', '', '', 616.3888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">11</td>
+					<td class="td_value" title="24.12, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-12', '', '', 670.0000000000001, '㉮에 ①-1개를 ②-1개로 가체결')">12</td>
+					<td class="td_value" title="26.06, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-13', '', '', 723.8888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">13</td>
+					<td class="td_value" title="27.99, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-14', '', '', 777.5, '㉮에 ①-1개를 ②-1개로 가체결')">14</td>
+					<td class="td_value" title="29.93, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-15', '', '', 831.3888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">15</td>
+					<td class="td_value" title="31.86, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-16', '', '', 885, '㉮에 ①-1개를 ②-1개로 가체결')">16</td>
+					<td class="td_value" title="33.80, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-17', '', '', 938.8888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">17</td>
+					<td class="td_value" title="35.73, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-18', '', '', 992.5, '㉮에 ①-1개를 ②-1개로 가체결')">18</td>
+					<td class="td_value" title="37.67, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-19', '', '', 1046.388888888889, '㉮에 ①-1개를 ②-1개로 가체결')">19</td>
+					<td class="td_value" title="39.60, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-000-20', '', '', 1100.0000000000002, '㉮에 ①-1개를 ②-1개로 가체결')">20</td>
+					<td class="td_alpha">1.935</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">EXTENTION</td>
+					<td class="td_weight">002</td>
+					<td class="td_value" title="2.84, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-01', '', '', 78.88888888888888, '㉮에 ①-1개를 ②-1개로 가체결')">1</td>
+					<td class="td_value" title="5.29, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-02', '', '', 146.94444444444446, '㉮에 ①-1개를 ②-1개로 가체결')">2</td>
+					<td class="td_value" title="7.48, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-03', '', '', 207.7777777777778, '㉮에 ①-1개를 ②-1개로 가체결')">3</td>
+					<td class="td_value" title="9.68, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-04', '', '', 268.8888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">4</td>
+					<td class="td_value" title="11.87, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-05', '', '', 329.72222222222223, '㉮에 ①-1개를 ②-1개로 가체결')">5</td>
+					<td class="td_value" title="14.06, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-06', '', '', 390.5555555555556, '㉮에 ①-1개를 ②-1개로 가체결')">6</td>
+					<td class="td_value" title="16.25, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-07', '', '', 451.3888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">7</td>
+					<td class="td_value" title="18.45, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-08', '', '', 512.5, '㉮에 ①-1개를 ②-1개로 가체결')">8</td>
+					<td class="td_value" title="20.64, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-09', '', '', 573.3333333333334, '㉮에 ①-1개를 ②-1개로 가체결')">9</td>
+					<td class="td_value" title="22.83, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-10', '', '', 634.1666666666666, '㉮에 ①-1개를 ②-1개로 가체결')">10</td>
+					<td class="td_value" title="25.03, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-11', '', '', 695.2777777777778, '㉮에 ①-1개를 ②-1개로 가체결')">11</td>
+					<td class="td_value" title="27.22, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-12', '', '', 756.1111111111111, '㉮에 ①-1개를 ②-1개로 가체결')">12</td>
+					<td class="td_value" title="29.41, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-13', '', '', 816.9444444444445, '㉮에 ①-1개를 ②-1개로 가체결')">13</td>
+					<td class="td_value" title="31.61, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-14', '', '', 878.0555555555556, '㉮에 ①-1개를 ②-1개로 가체결')">14</td>
+					<td class="td_value" title="33.80, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-15', '', '', 938.8888888888889, '㉮에 ①-1개를 ②-1개로 가체결')">15</td>
+					<td class="td_value" title="35.99, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-16', '', '', 999.7222222222224, '㉮에 ①-1개를 ②-1개로 가체결')">16</td>
+					<td class="td_value" title="38.18, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-17', '', '', 1060.5555555555556, '㉮에 ①-1개를 ②-1개로 가체결')">17</td>
+					<td class="td_value" title="40.38, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-18', '', '', 1121.6666666666667, '㉮에 ①-1개를 ②-1개로 가체결')">18</td>
+					<td class="td_value" title="42.57, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-19', '', '', 1182.5, '㉮에 ①-1개를 ②-1개로 가체결')">19</td>
+					<td class="td_value" title="44.76, ㉮에 ①-1개를 ②-1개로 가체결" onclick="MTMnavigate(1, 'PT3-002-20', '', '', 1243.3333333333334, '㉮에 ①-1개를 ②-1개로 가체결')">20</td>
+					<td class="td_alpha">2.193</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>M10(AF14) 이상의 하드웨어, 연질의 대상물에 체결하는 경우, 부품의 자동거취 구조가 적용되지 않은 경우는 반드시 가조립후 체결한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>M10(AF14) 이하, 부품의 자동거취 구조가 적용되지 않은 경우 가조립 수량.</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>1개소 조립 : 1  2~5개소 조립 : 2  6개소이상 조립 : 4</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>볼트를 끼우는 시간, 와셔를 끼우는 시간은 별도로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

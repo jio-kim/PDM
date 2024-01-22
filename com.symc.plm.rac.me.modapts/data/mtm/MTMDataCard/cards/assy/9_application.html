@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+
+		$("#tabs").tabs({
+			activate: function(event, ui) {
+				reset_dialogInputField();
+				hide_dialog();
+			}
+		});
+
+		$(".td_code").dblclick(function() {
+			var code = $.trim($(this).text());
+			var description = $(this).attr("title");
+			var dialogId = "dialog_" + code.split("_")[0];
+
+			$("#" + dialogId).find(".code_info").text(code);
+			$("#" + dialogId).find("input[name=code]").val(code);
+			$("#" + dialogId).find("input[name=description]").val(description);
+
+			// dialog top위치를 table 위치에 맞추기
+			var top = $(this).parents(".MTMFormula").position().top;
+			$("#" + dialogId).show().draggable({handle: ".code_info"}).css("top", top + 15);
+
+			if(dialogId == "dialog_AP2") {
+				$("#" + dialogId).find("input[name=length]").focus();
+			} else if(dialogId == "dialog_AP3") {
+				$("#" + dialogId).find("input[name=quantity]").focus();
+			}
+		});
+
+		$("input[name=button_ok]").click(function() {
+			var code = $(this).siblings("input[name=code]").val();
+			var description = $(this).siblings("input[name=description]").val();
+			var length;
+			var area;
+			var quantity;
+			var time;
+			var display_code;
+
+			// validation check
+			if(code.split("_")[0] == "AP2") {
+				if($("#dialog_AP2 input[name=length]").val() == "") {
+					alert("도포길이를 입력해주세요.");
+					$("#dialog_AP2 input[name=length]").focus();
+					return;
+				}
+				if($("#dialog_AP2 input[name=area]").val() == "") {
+					alert("도포면적을 입력해주세요.");
+					$("#dialog_AP2 input[name=area]").focus();
+					return;
+				}
+			} else if(code.split("_")[0] == "AP3") {
+				if($("#dialog_AP3 input[name=quantity]").val() == "") {
+					alert("모서리부의 수량을 입력해주세요.");
+					$("#dialog_AP3 input[name=quantity]").focus();
+					return;
+				}
+				if($("#dialog_AP3 input[name=length]").val() == "") {
+					alert("도포길이를 입력해주세요.");
+					$("#dialog_AP3 input[name=length]").focus();
+					return;
+				}
+			}
+
+			// code 별 시간 계산
+			if(code == "AP2_1") {
+				length = $("#dialog_AP2").find("input[name=length]").val() * 1;
+				area = $("#dialog_AP2").find("input[name=area]").val() * 1;
+				time = 1.161 + (1.032 * (length / 150));
+				display_code = code + "," + area + "," + length;
+			} else if(code == "AP2_2") {
+				length = $("#dialog_AP2").find("input[name=length]").val() * 1;
+				area = $("#dialog_AP2").find("input[name=area]").val() * 1;
+				time = 1.161 + (1.032 * (length / 100));
+				display_code = code + "," + area + "," + length;
+			} else if(code == "AP2_3") {
+				length = $("#dialog_AP2").find("input[name=length]").val() * 1;
+				area = $("#dialog_AP2").find("input[name=area]").val() * 1;
+				time = 1.161 + (1.032 * (area / 75));
+				display_code = code + "," + area + "," + length;
+			} else if(code == "AP2_4") {
+				length = $("#dialog_AP2").find("input[name=length]").val() * 1;
+				area = $("#dialog_AP2").find("input[name=area]").val() * 1;
+				time = 1.161 + (1.032 * (area / 50));
+				display_code = code + "," + area + "," + length;
+			} else if(code == "AP3_1") {
+				quantity = $("#dialog_AP3").find("input[name=quantity]").val() * 1;
+				length = $("#dialog_AP3").find("input[name=length]").val() * 1;
+				time = 3.612 + (0.516 * (length / 80)) + (0.516 * quantity);
+				display_code = code + "," + quantity + "," + length;
+			} else if(code == "AP3_2") {
+				quantity = $("#dialog_AP3").find("input[name=quantity]").val() * 1;
+				length = $("#dialog_AP3").find("input[name=length]").val() * 1;
+				time = 3.612 + (0.516 * (length / 50)) + (0.516 * quantity);
+				display_code = code + "," + quantity + "," + length;
+			}
+
+			MTMnavigate(1, display_code, "", "", time / 0.036, description);
+
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+		$("input[name=button_cancel]").click(function() {
+			reset_dialogInputField();
+			hide_dialog();
+		});
+
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+	/* Dialog 숨기기 */
+	function hide_dialog()
+	{
+		$(".dialog_common").hide();
+	}
+
+	/* Dialog input 필드 초기화 */
+	function reset_dialogInputField()
+	{
+		$(".dialog_common").find("input[type=text]").val("");
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">9-1. GREASE/접착제/비눗물/콩기름/냉동유 도포-단속 (AP1)</a></li>
+			<li><a href="#tabs-2">9-2. GREASE/접착제/PRIMMER/비눗물 도포-연속 (하기참조)</a></li>
+			<li><a href="#tabs-3">9-3. 수동건으로 SEALER 도포 작업-연속 (하기참조)</a></li>
+			<li><a href="#tabs-4">9-4. 체결부에 페인트마카 도포 (AP4)</a></li>
+		</ul>
+
+		<!-- 9-1. GREASE/접착제/비눗물/콩기름/냉동유 도포-단속 (AP1) -->
+		<div id="tabs-1">
+			<div class="div_subject1">9-1. GREASE/접착제/비눗물/콩기름/냉동유 도포-단속 (AP1)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td colspan="2">적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td rowspan="2">비눗물/콩</td>
+					<td class="td_subject">일반</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="2.45, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-1', '', '', 68.05555555555557, '㉮에 비눗물 도포')">1</td>
+					<td class="td_value" title="3.74, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-2', '', '', 103.8888888888889, '㉮에 비눗물 도포')">2</td>
+					<td class="td_value" title="5.03, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-3', '', '', 139.72222222222223, '㉮에 비눗물 도포')">3</td>
+					<td class="td_value" title="6.32, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-4', '', '', 175.55555555555557, '㉮에 비눗물 도포')">4</td>
+					<td class="td_value" title="7.61, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-5', '', '', 211.3888888888889, '㉮에 비눗물 도포')">5</td>
+					<td class="td_value" title="8.90, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-6', '', '', 247.22222222222226, '㉮에 비눗물 도포')">6</td>
+					<td class="td_value" title="10.19, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-7', '', '', 283.05555555555554, '㉮에 비눗물 도포')">7</td>
+					<td class="td_value" title="11.48, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-8', '', '', 318.8888888888889, '㉮에 비눗물 도포')">8</td>
+					<td class="td_value" title="12.77, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-9', '', '', 354.72222222222223, '㉮에 비눗물 도포')">9</td>
+					<td class="td_value" title="14.06, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-10', '', '', 390.5555555555556, '㉮에 비눗물 도포')">10</td>
+					<td class="td_value" title="15.35, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-11', '', '', 426.3888888888889, '㉮에 비눗물 도포')">11</td>
+					<td class="td_value" title="16.64, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-12', '', '', 462.2222222222223, '㉮에 비눗물 도포')">12</td>
+					<td class="td_value" title="17.93, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-13', '', '', 498.0555555555556, '㉮에 비눗물 도포')">13</td>
+					<td class="td_value" title="19.22, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-14', '', '', 533.8888888888889, '㉮에 비눗물 도포')">14</td>
+					<td class="td_value" title="20.51, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-15', '', '', 569.7222222222223, '㉮에 비눗물 도포')">15</td>
+					<td class="td_value" title="21.80, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-16', '', '', 605.5555555555556, '㉮에 비눗물 도포')">16</td>
+					<td class="td_value" title="23.09, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-17', '', '', 641.3888888888889, '㉮에 비눗물 도포')">17</td>
+					<td class="td_value" title="24.38, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-18', '', '', 677.2222222222223, '㉮에 비눗물 도포')">18</td>
+					<td class="td_value" title="25.67, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-19', '', '', 713.0555555555556, '㉮에 비눗물 도포')">19</td>
+					<td class="td_value" title="26.96, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-000-20', '', '', 748.8888888888889, '㉮에 비눗물 도포')">20</td>
+					<td class="td_alpha">1.290</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">봉/홀</td>
+					<td class="td_weight">004</td>
+					<td class="td_value" title="2.97, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-1', '', '', 82.50000000000001, '㉮에 비눗물 도포')">1</td>
+					<td class="td_value" title="4.77, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-2', '', '', 132.5, '㉮에 비눗물 도포')">2</td>
+					<td class="td_value" title="6.58, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-3', '', '', 182.7777777777778, '㉮에 비눗물 도포')">3</td>
+					<td class="td_value" title="8.39, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-4', '', '', 233.0555555555556, '㉮에 비눗물 도포')">4</td>
+					<td class="td_value" title="10.19, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-5', '', '', 283.05555555555554, '㉮에 비눗물 도포')">5</td>
+					<td class="td_value" title="12.00, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-6', '', '', 333.33333333333337, '㉮에 비눗물 도포')">6</td>
+					<td class="td_value" title="13.80, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-7', '', '', 383.33333333333337, '㉮에 비눗물 도포')">7</td>
+					<td class="td_value" title="15.61, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-8', '', '', 433.61111111111114, '㉮에 비눗물 도포')">8</td>
+					<td class="td_value" title="17.42, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-9', '', '', 483.88888888888897, '㉮에 비눗물 도포')">9</td>
+					<td class="td_value" title="19.22, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-10', '', '', 533.8888888888889, '㉮에 비눗물 도포')">10</td>
+					<td class="td_value" title="21.03, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-11', '', '', 584.1666666666667, '㉮에 비눗물 도포')">11</td>
+					<td class="td_value" title="22.83, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-12', '', '', 634.1666666666666, '㉮에 비눗물 도포')">12</td>
+					<td class="td_value" title="24.64, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-13', '', '', 684.4444444444445, '㉮에 비눗물 도포')">13</td>
+					<td class="td_value" title="26.45, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-14', '', '', 734.7222222222223, '㉮에 비눗물 도포')">14</td>
+					<td class="td_value" title="28.25, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-15', '', '', 784.7222222222223, '㉮에 비눗물 도포')">15</td>
+					<td class="td_value" title="30.06, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-16', '', '', 835, '㉮에 비눗물 도포')">16</td>
+					<td class="td_value" title="31.86, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-17', '', '', 885, '㉮에 비눗물 도포')">17</td>
+					<td class="td_value" title="33.67, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-18', '', '', 935.2777777777779, '㉮에 비눗물 도포')">18</td>
+					<td class="td_value" title="35.48, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-19', '', '', 985.5555555555555, '㉮에 비눗물 도포')">19</td>
+					<td class="td_value" title="37.28, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-20', '', '', 1035.5555555555556, '㉮에 비눗물 도포')">20</td>
+					<td class="td_alpha">1.806</td>
+				</tr>
+				<tr align="center">
+					<td rowspan="2">GREASE/</td>
+					<td class="td_subject">일반</td>
+					<td class="td_weight">004</td>
+					<td class="td_value" title="2.97, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-1', '', '', 82.50000000000001, '㉮에 비눗물 도포')">1</td>
+					<td class="td_value" title="4.77, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-2', '', '', 132.5, '㉮에 비눗물 도포')">2</td>
+					<td class="td_value" title="6.58, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-3', '', '', 182.7777777777778, '㉮에 비눗물 도포')">3</td>
+					<td class="td_value" title="8.39, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-4', '', '', 233.0555555555556, '㉮에 비눗물 도포')">4</td>
+					<td class="td_value" title="10.19, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-5', '', '', 283.05555555555554, '㉮에 비눗물 도포')">5</td>
+					<td class="td_value" title="12.00, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-6', '', '', 333.33333333333337, '㉮에 비눗물 도포')">6</td>
+					<td class="td_value" title="13.80, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-7', '', '', 383.33333333333337, '㉮에 비눗물 도포')">7</td>
+					<td class="td_value" title="15.61, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-8', '', '', 433.61111111111114, '㉮에 비눗물 도포')">8</td>
+					<td class="td_value" title="17.42, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-9', '', '', 483.88888888888897, '㉮에 비눗물 도포')">9</td>
+					<td class="td_value" title="19.22, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-10', '', '', 533.8888888888889, '㉮에 비눗물 도포')">10</td>
+					<td class="td_value" title="21.03, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-11', '', '', 584.1666666666667, '㉮에 비눗물 도포')">11</td>
+					<td class="td_value" title="22.83, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-12', '', '', 634.1666666666666, '㉮에 비눗물 도포')">12</td>
+					<td class="td_value" title="24.64, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-13', '', '', 684.4444444444445, '㉮에 비눗물 도포')">13</td>
+					<td class="td_value" title="26.45, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-14', '', '', 734.7222222222223, '㉮에 비눗물 도포')">14</td>
+					<td class="td_value" title="28.25, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-15', '', '', 784.7222222222223, '㉮에 비눗물 도포')">15</td>
+					<td class="td_value" title="30.06, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-16', '', '', 835, '㉮에 비눗물 도포')">16</td>
+					<td class="td_value" title="31.86, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-17', '', '', 885, '㉮에 비눗물 도포')">17</td>
+					<td class="td_value" title="33.67, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-18', '', '', 935.2777777777779, '㉮에 비눗물 도포')">18</td>
+					<td class="td_value" title="35.48, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-19', '', '', 985.5555555555555, '㉮에 비눗물 도포')">19</td>
+					<td class="td_value" title="37.28, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-004-20', '', '', 1035.5555555555556, '㉮에 비눗물 도포')">20</td>
+					<td class="td_alpha">1.806</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">봉/홀</td>
+					<td class="td_weight">008</td>
+					<td class="td_value" title="3.48, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-1', '', '', 96.66666666666667, '㉮에 비눗물 도포')">1</td>
+					<td class="td_value" title="5.81, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-2', '', '', 161.38888888888888, '㉮에 비눗물 도포')">2</td>
+					<td class="td_value" title="8.13, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-3', '', '', 225.83333333333337, '㉮에 비눗물 도포')">3</td>
+					<td class="td_value" title="10.45, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-4', '', '', 290.27777777777777, '㉮에 비눗물 도포')">4</td>
+					<td class="td_value" title="12.77, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-5', '', '', 354.72222222222223, '㉮에 비눗물 도포')">5</td>
+					<td class="td_value" title="15.09, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-6', '', '', 419.1666666666667, '㉮에 비눗물 도포')">6</td>
+					<td class="td_value" title="17.42, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-7', '', '', 483.88888888888897, '㉮에 비눗물 도포')">7</td>
+					<td class="td_value" title="19.74, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-8', '', '', 548.3333333333334, '㉮에 비눗물 도포')">8</td>
+					<td class="td_value" title="22.06, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-9', '', '', 612.7777777777778, '㉮에 비눗물 도포')">9</td>
+					<td class="td_value" title="24.38, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-10', '', '', 677.2222222222223, '㉮에 비눗물 도포')">10</td>
+					<td class="td_value" title="26.70, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-11', '', '', 741.6666666666667, '㉮에 비눗물 도포')">11</td>
+					<td class="td_value" title="29.03, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-12', '', '', 806.388888888889, '㉮에 비눗물 도포')">12</td>
+					<td class="td_value" title="31.35, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-13', '', '', 870.8333333333335, '㉮에 비눗물 도포')">13</td>
+					<td class="td_value" title="33.67, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-14', '', '', 935.2777777777779, '㉮에 비눗물 도포')">14</td>
+					<td class="td_value" title="35.99, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-15', '', '', 999.7222222222224, '㉮에 비눗물 도포')">15</td>
+					<td class="td_value" title="38.31, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-16', '', '', 1064.1666666666667, '㉮에 비눗물 도포')">16</td>
+					<td class="td_value" title="40.64, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-17', '', '', 1128.888888888889, '㉮에 비눗물 도포')">17</td>
+					<td class="td_value" title="42.96, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-18', '', '', 1193.3333333333334, '㉮에 비눗물 도포')">18</td>
+					<td class="td_value" title="45.28, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-19', '', '', 1257.7777777777778, '㉮에 비눗물 도포')">19</td>
+					<td class="td_value" title="47.60, ㉮에 비눗물 도포" onclick="MTMnavigate(1, 'AP1-008-20', '', '', 1322.2222222222224, '㉮에 비눗물 도포')">20</td>
+					<td class="td_alpha">2.322</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>본 항은 POINT별 작업에 적용하고 연속작업은 9-2항으로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 9-2. GREASE/접착제/PRIMMER/비눗물 도포-연속 (하기참조) -->
+		<div id="tabs-2">
+			<div class="div_subject1">9-2. GREASE/접착제/PRIMMER/비눗물 도포-연속 (하기참조)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMFormula">
+				<tr>
+					<td>프라이머 도포 (폭 50mm미만)</td>
+					<td class="td_code" title='㉮에 비눗물 도포'>AP2_1</td>
+				</tr>
+				<tr>
+					<td>그리이스/접착제 도포 (폭 50mm미만)</td>
+					<td class="td_code" title='㉮에 비눗물 도포'>AP2_2</td>
+				</tr>
+				<tr>
+					<td>프라이머 도포 (폭 50mm이상)</td>
+					<td class="td_code" title='㉮에 비눗물 도포'>AP2_3</td>
+				</tr>
+				<tr>
+					<td>프라이머 도포 (폭 50MM이상)</td>
+					<td class="td_code" title='㉮에 비눗물 도포'>AP2_4</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>L : 도포길이(mm) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; A : 도포면적(cm²)</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>붓이 한번 지나가면 되는 경우는 도포길이로 산출하고, 여러번 지나가야 할 경우 면적으로 산출한다.(도포하는 붓의 폭에따라 기준면적은 변경 가능)</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 9-3. 수동건으로 SEALER 도포 작업-연속 (하기참조) -->
+		<div id="tabs-3">
+			<div class="div_subject1">9-3. 수동건으로 SEALER 도포 작업-연속 (하기참조)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMFormula">
+				<tr>
+					<td>AIR건 도포</td>
+					<td class="td_code" title='실러 도포'>AP3_1</td>
+				</tr>
+				<tr>
+					<td>수동건 도포</td>
+					<td class="td_code" title='실러 도포'>AP3_2</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>n : 모서리부의 수량 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; L : 도포길이(mm)</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>자동도포장치를 사용하는 경우에는 장비의 작동시간을 참고치로만 기입한다.</td>
+					</tr>
+					<tr>
+						<td></td>
+						<td>단, 작업자의 감시가 필요한 경우는 비정율 부대공수로 한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 9-4. 체결부에 페인트마카 도포 (AP4) -->
+		<div id="tabs-4">
+			<div class="div_subject1">9-4. 체결부에 페인트마카 도포 (AP4)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject" rowspan="2">체결부에 페인트마카 도포</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="3.10, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-1', '', '', 86.11111111111111, '①-1개에 페인트 마킹')">1</td>
+					<td class="td_value" title="4.26, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-2', '', '', 118.33333333333334, '①-1개에 페인트 마킹')">2</td>
+					<td class="td_value" title="5.42, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-3', '', '', 150.55555555555557, '①-1개에 페인트 마킹')">3</td>
+					<td class="td_value" title="6.58, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-4', '', '', 182.7777777777778, '①-1개에 페인트 마킹')">4</td>
+					<td class="td_value" title="7.74, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-5', '', '', 215.00000000000003, '①-1개에 페인트 마킹')">5</td>
+					<td class="td_value" title="8.90, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-6', '', '', 247.22222222222226, '①-1개에 페인트 마킹')">6</td>
+					<td class="td_value" title="10.06, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-7', '', '', 279.44444444444445, '①-1개에 페인트 마킹')">7</td>
+					<td class="td_value" title="11.22, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-8', '', '', 311.6666666666667, '①-1개에 페인트 마킹')">8</td>
+					<td class="td_value" title="12.38, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-9', '', '', 343.8888888888889, '①-1개에 페인트 마킹')">9</td>
+					<td class="td_value" title="13.55, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-10', '', '', 376.3888888888889, '①-1개에 페인트 마킹')">10</td>
+					<td class="td_value" title="14.71, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-11', '', '', 408.61111111111114, '①-1개에 페인트 마킹')">11</td>
+					<td class="td_value" title="15.87, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-12', '', '', 440.83333333333337, '①-1개에 페인트 마킹')">12</td>
+					<td class="td_value" title="17.03, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-13', '', '', 473.0555555555556, '①-1개에 페인트 마킹')">13</td>
+					<td class="td_value" title="18.19, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-14', '', '', 505.2777777777778, '①-1개에 페인트 마킹')">14</td>
+					<td class="td_value" title="19.35, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-15', '', '', 537.5000000000001, '①-1개에 페인트 마킹')">15</td>
+					<td class="td_value" title="20.51, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-16', '', '', 569.7222222222223, '①-1개에 페인트 마킹')">16</td>
+					<td class="td_value" title="21.67, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-17', '', '', 601.9444444444446, '①-1개에 페인트 마킹')">17</td>
+					<td class="td_value" title="22.83, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-18', '', '', 634.1666666666666, '①-1개에 페인트 마킹')">18</td>
+					<td class="td_value" title="23.99, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-19', '', '', 666.3888888888889, '①-1개에 페인트 마킹')">19</td>
+					<td class="td_value" title="25.16, ①-1개에 페인트 마킹" onclick="MTMnavigate(1, 'AP4-000-20', '', '', 698.8888888888889, '①-1개에 페인트 마킹')">20</td>
+					<td class="td_alpha">1.161</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>붓으로 마킹하는 경우는 9-1항으로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+	<div class="dialog_common" id="dialog_AP2">
+		<table>
+			<tr>
+				<td class="code_info" colspan="2"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="wp160">도포길이(mm)</td>
+				<td><input type="text" name="length" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr>
+				<td>도포면적(cm²)</td>
+				<td><input type="text" name="area" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="2">
+					<input type="hidden" name="code" value="">
+					<input type="hidden" name="description" value="">
+					<input type="button" name="button_ok" value="확인">
+					<input type="button" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="dialog_common" id="dialog_AP3">
+		<table>
+			<tr>
+				<td class="code_info" colspan="2"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="wp160">모서리부의 수량</td>
+				<td><input type="text" name="quantity" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr>
+				<td>도포길이(mm)</td>
+				<td><input type="text" name="length" value="" style="ime-mode: disabled" onkeypress="if(event.keyCode < 48 || event.keyCode > 57) event.returnValue = false;"></td>
+			</tr>
+			<tr></tr><tr></tr>
+			<tr>
+				<td class="right" colspan="2">
+					<input type="hidden" name="code" value="">
+					<input type="hidden" name="description" value="">
+					<input type="button" name="button_ok" value="확인">
+					<input type="button" name="button_cancel" value="취소">
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</body>
+</html>

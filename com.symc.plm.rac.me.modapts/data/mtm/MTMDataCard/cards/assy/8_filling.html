@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+		$("#tabs").tabs();
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">8-1. 장비 주입건의 위치결정 및 스위치 작동 (FL1)</a></li>
+			<li><a href="#tabs-2">8-2. 장비 주입건의 언클램핑 및 원위치 (FL2)</a></li>
+			<li><a href="#tabs-3">8-3. 수동건으로 GREASE 주입 (FL3)</a></li>
+		</ul>
+
+		<!-- 8-1. 장비 주입건의 위치결정 및 스위치 작동 (FL1) -->
+		<div id="tabs-1">
+			<div class="div_subject1">8-1. 장비 주입건의 위치결정 및 스위치 작동 (FL1)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">클램핑 불요</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="3.23, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-000-1', '', '', 89.72222222222223, '㉯를 ㉮의 ㉠에 위치 결정')">1</td>
+					<td class="td_value" title="6.45, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-000-2', '', '', 179.16666666666668, '㉯를 ㉮의 ㉠에 위치 결정')">2</td>
+					<td class="td_value" title="9.68, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-000-3', '', '', 268.8888888888889, '㉯를 ㉮의 ㉠에 위치 결정')">3</td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="td_alpha">3.225</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">스위치를 눌러 클램핑</td>
+					<td class="td_weight">006</td>
+					<td class="td_value" title="4.00, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-006-1', '', '', 111.11111111111111, '㉯를 ㉮의 ㉠에 위치 결정')">1</td>
+					<td class="td_value" title="8.00, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-006-2', '', '', 222.22222222222223, '㉯를 ㉮의 ㉠에 위치 결정')">2</td>
+					<td class="td_value" title="12.00, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-006-3', '', '', 333.33333333333337, '㉯를 ㉮의 ㉠에 위치 결정')">3</td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="td_alpha">3.999</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">압입하여 클램핑</td>
+					<td class="td_weight">010</td>
+					<td class="td_value" title="4.52, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-010-1', '', '', 125.55555555555556, '㉯를 ㉮의 ㉠에 위치 결정')">1</td>
+					<td class="td_value" title="9.03, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-010-2', '', '', 250.83333333333334, '㉯를 ㉮의 ㉠에 위치 결정')">2</td>
+					<td class="td_value" title="13.55, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-010-3', '', '', 376.3888888888889, '㉯를 ㉮의 ㉠에 위치 결정')">3</td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="td_alpha">4.515</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">돌려서 끼움</td>
+					<td class="td_weight">016</td>
+					<td class="td_value" title="5.29, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-016-1', '', '', 146.94444444444446, '㉯를 ㉮의 ㉠에 위치 결정')">1</td>
+					<td class="td_value" title="10.58, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-016-2', '', '', 293.8888888888889, '㉯를 ㉮의 ㉠에 위치 결정')">2</td>
+					<td class="td_value" title="15.87, ㉯를 ㉮의 ㉠에 위치 결정" onclick="MTMnavigate(1, 'FL1-016-3', '', '', 440.83333333333337, '㉯를 ㉮의 ㉠에 위치 결정')">3</td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="td_alpha">5.289</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>장비를 핸들링하기 위하여 이동하는 시간은 별도로 산정하고 공정가편성시 비정율 부대공수로 편성한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>정량주입장비의 경우 장비의 작동시간은 실측하여 참고치로만 기입한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>정량주입장비가 아닌경우 장비의 작동시간은 실측하고 공정가편성시 비정율 부대공수로 편성한다.</td>
+					</tr>
+					<tr>
+						<td>※</td>
+						<td>캡을 열고 닫는 시간은 10-1항을 사용하여 별도로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 8-2. 장비 주입건의 언클램핑 및 원위치 (FL2) -->
+		<div id="tabs-2">
+			<div class="div_subject1">8-2. 장비 주입건의 언클램핑 및 원위치 (FL2)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">레버잠금/스위치 누름</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="3.35, ㉯를 ㉠에서 분리 및 원위치" onclick="MTMnavigate(1, 'FL2-000-1', '', '', 93.05555555555557, '㉯를 ㉠에서 분리 및 원위치')">1</td>
+					<td class="td_value" title="6.71, ㉯를 ㉠에서 분리 및 원위치" onclick="MTMnavigate(1, 'FL2-000-2', '', '', 186.3888888888889, '㉯를 ㉠에서 분리 및 원위치')">2</td>
+					<td class="td_value" title="10.06, ㉯를 ㉠에서 분리 및 원위치" onclick="MTMnavigate(1, 'FL2-000-3', '', '', 279.44444444444445, '㉯를 ㉠에서 분리 및 원위치')">3</td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="td_alpha">3.354</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">압입 해제</td>
+					<td class="td_weight">004</td>
+					<td class="td_value" title="3.87, ㉯를 ㉠에서 분리 및 원위치" onclick="MTMnavigate(1, 'FL2-004-1', '', '', 107.50000000000001, '㉯를 ㉠에서 분리 및 원위치')">1</td>
+					<td class="td_value" title="7.74, ㉯를 ㉠에서 분리 및 원위치" onclick="MTMnavigate(1, 'FL2-004-2', '', '', 215.00000000000003, '㉯를 ㉠에서 분리 및 원위치')">2</td>
+					<td class="td_value" title="11.61, ㉯를 ㉠에서 분리 및 원위치" onclick="MTMnavigate(1, 'FL2-004-3', '', '', 322.5, '㉯를 ㉠에서 분리 및 원위치')">3</td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="td_alpha">3.870</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">돌려서 언클램핑</td>
+					<td class="td_weight">010</td>
+					<td class="td_value" title="4.64, ㉯를 ㉠에서 분리 및 원위치" onclick="MTMnavigate(1, 'FL2-010-1', '', '', 128.88888888888888, '㉯를 ㉠에서 분리 및 원위치')">1</td>
+					<td class="td_value" title="9.29, ㉯를 ㉠에서 분리 및 원위치" onclick="MTMnavigate(1, 'FL2-010-2', '', '', 258.05555555555554, '㉯를 ㉠에서 분리 및 원위치')">2</td>
+					<td class="td_value" title="13.93, ㉯를 ㉠에서 분리 및 원위치" onclick="MTMnavigate(1, 'FL2-010-3', '', '', 386.94444444444445, '㉯를 ㉠에서 분리 및 원위치')">3</td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="wp25"></td>
+					<td class="td_alpha">4.644</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>장비를 핸들링하기 위하여 이동하는 시간은 공정가편성시 비정율 부대공수로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 8-3. 수동건으로 GREASE 주입 (FL3) -->
+		<div id="tabs-3">
+			<div class="div_subject1">8-3. 수동건으로 GREASE 주입 (FL3)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">1~2회누름</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="3.61" onclick="MTMnavigate(1, 'FL3-000-1', '', '', 100.27777777777778, '주입')">1</td>
+					<td class="td_value" title="5.81" onclick="MTMnavigate(1, 'FL3-000-2', '', '', 161.38888888888888, '주입')">2</td>
+					<td class="td_value" title="8.00" onclick="MTMnavigate(1, 'FL3-000-3', '', '', 222.22222222222223, '주입')">3</td>
+					<td class="td_value" title="10.19" onclick="MTMnavigate(1, 'FL3-000-4', '', '', 283.05555555555554, '주입')">4</td>
+					<td class="td_value" title="12.38" onclick="MTMnavigate(1, 'FL3-000-5', '', '', 343.8888888888889, '주입')">5</td>
+					<td class="td_value" title="14.58" onclick="MTMnavigate(1, 'FL3-000-6', '', '', 405.00000000000005, '주입')">6</td>
+					<td class="td_value" title="16.77" onclick="MTMnavigate(1, 'FL3-000-7', '', '', 465.83333333333337, '주입')">7</td>
+					<td class="td_value" title="18.96" onclick="MTMnavigate(1, 'FL3-000-8', '', '', 526.6666666666667, '주입')">8</td>
+					<td class="td_value" title="21.16" onclick="MTMnavigate(1, 'FL3-000-9', '', '', 587.7777777777778, '주입')">9</td>
+					<td class="td_value" title="23.35" onclick="MTMnavigate(1, 'FL3-000-10', '', '', 648.6111111111112, '주입')">10</td>
+					<td class="td_value" title="25.54" onclick="MTMnavigate(1, 'FL3-000-11', '', '', 709.4444444444445, '주입')">11</td>
+					<td class="td_value" title="27.74" onclick="MTMnavigate(1, 'FL3-000-12', '', '', 770.5555555555555, '주입')">12</td>
+					<td class="td_value" title="29.93" onclick="MTMnavigate(1, 'FL3-000-13', '', '', 831.3888888888889, '주입')">13</td>
+					<td class="td_value" title="32.12" onclick="MTMnavigate(1, 'FL3-000-14', '', '', 892.2222222222222, '주입')">14</td>
+					<td class="td_value" title="34.31" onclick="MTMnavigate(1, 'FL3-000-15', '', '', 953.0555555555556, '주입')">15</td>
+					<td class="td_value" title="36.51" onclick="MTMnavigate(1, 'FL3-000-16', '', '', 1014.1666666666667, '주입')">16</td>
+					<td class="td_value" title="38.70" onclick="MTMnavigate(1, 'FL3-000-17', '', '', 1075.0000000000002, '주입')">17</td>
+					<td class="td_value" title="40.89" onclick="MTMnavigate(1, 'FL3-000-18', '', '', 1135.8333333333334, '주입')">18</td>
+					<td class="td_value" title="43.09" onclick="MTMnavigate(1, 'FL3-000-19', '', '', 1196.9444444444445, '주입')">19</td>
+					<td class="td_value" title="45.28" onclick="MTMnavigate(1, 'FL3-000-20', '', '', 1257.7777777777778, '주입')">20</td>
+					<td class="td_alpha">2.193</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">3~4회누름</td>
+					<td class="td_weight">008</td>
+					<td class="td_value" title="4.64" onclick="MTMnavigate(1, 'FL3-008-1', '', '', 128.88888888888888, '주입')">1</td>
+					<td class="td_value" title="7.87" onclick="MTMnavigate(1, 'FL3-008-2', '', '', 218.61111111111114, '주입')">2</td>
+					<td class="td_value" title="11.09" onclick="MTMnavigate(1, 'FL3-008-3', '', '', 308.0555555555556, '주입')">3</td>
+					<td class="td_value" title="14.32" onclick="MTMnavigate(1, 'FL3-008-4', '', '', 397.7777777777778, '주입')">4</td>
+					<td class="td_value" title="17.54" onclick="MTMnavigate(1, 'FL3-008-5', '', '', 487.22222222222223, '주입')">5</td>
+					<td class="td_value" title="20.77" onclick="MTMnavigate(1, 'FL3-008-6', '', '', 576.9444444444445, '주입')">6</td>
+					<td class="td_value" title="23.99" onclick="MTMnavigate(1, 'FL3-008-7', '', '', 666.3888888888889, '주입')">7</td>
+					<td class="td_value" title="27.22" onclick="MTMnavigate(1, 'FL3-008-8', '', '', 756.1111111111111, '주입')">8</td>
+					<td class="td_value" title="30.44" onclick="MTMnavigate(1, 'FL3-008-9', '', '', 845.5555555555556, '주입')">9</td>
+					<td class="td_value" title="33.67" onclick="MTMnavigate(1, 'FL3-008-10', '', '', 935.2777777777779, '주입')">10</td>
+					<td class="td_value" title="36.89" onclick="MTMnavigate(1, 'FL3-008-11', '', '', 1024.7222222222224, '주입')">11</td>
+					<td class="td_value" title="40.12" onclick="MTMnavigate(1, 'FL3-008-12', '', '', 1114.4444444444445, '주입')">12</td>
+					<td class="td_value" title="43.34" onclick="MTMnavigate(1, 'FL3-008-13', '', '', 1203.8888888888891, '주입')">13</td>
+					<td class="td_value" title="46.57" onclick="MTMnavigate(1, 'FL3-008-14', '', '', 1293.6111111111113, '주입')">14</td>
+					<td class="td_value" title="49.79" onclick="MTMnavigate(1, 'FL3-008-15', '', '', 1383.0555555555556, '주입')">15</td>
+					<td class="td_value" title="53.02" onclick="MTMnavigate(1, 'FL3-008-16', '', '', 1472.777777777778, '주입')">16</td>
+					<td class="td_value" title="56.24" onclick="MTMnavigate(1, 'FL3-008-17', '', '', 1562.2222222222224, '주입')">17</td>
+					<td class="td_value" title="59.47" onclick="MTMnavigate(1, 'FL3-008-18', '', '', 1651.9444444444445, '주입')">18</td>
+					<td class="td_value" title="62.69" onclick="MTMnavigate(1, 'FL3-008-19', '', '', 1741.388888888889, '주입')">19</td>
+					<td class="td_value" title="65.92" onclick="MTMnavigate(1, 'FL3-008-20', '', '', 1831.1111111111113, '주입')">20</td>
+					<td class="td_alpha">3.225</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">5~6회누름</td>
+					<td class="td_weight">016</td>
+					<td class="td_value" title="5.68" onclick="MTMnavigate(1, 'FL3-016-1', '', '', 157.77777777777777, '주입')">1</td>
+					<td class="td_value" title="9.93" onclick="MTMnavigate(1, 'FL3-016-2', '', '', 275.83333333333337, '주입')">2</td>
+					<td class="td_value" title="14.19" onclick="MTMnavigate(1, 'FL3-016-3', '', '', 394.1666666666667, '주입')">3</td>
+					<td class="td_value" title="18.45" onclick="MTMnavigate(1, 'FL3-016-4', '', '', 512.5, '주입')">4</td>
+					<td class="td_value" title="22.70" onclick="MTMnavigate(1, 'FL3-016-5', '', '', 630.5555555555555, '주입')">5</td>
+					<td class="td_value" title="26.96" onclick="MTMnavigate(1, 'FL3-016-6', '', '', 748.8888888888889, '주입')">6</td>
+					<td class="td_value" title="31.22" onclick="MTMnavigate(1, 'FL3-016-7', '', '', 867.2222222222223, '주입')">7</td>
+					<td class="td_value" title="35.48" onclick="MTMnavigate(1, 'FL3-016-8', '', '', 985.5555555555555, '주입')">8</td>
+					<td class="td_value" title="39.73" onclick="MTMnavigate(1, 'FL3-016-9', '', '', 1103.611111111111, '주입')">9</td>
+					<td class="td_value" title="43.99" onclick="MTMnavigate(1, 'FL3-016-10', '', '', 1221.9444444444445, '주입')">10</td>
+					<td class="td_value" title="48.25" onclick="MTMnavigate(1, 'FL3-016-11', '', '', 1340.2777777777778, '주입')">11</td>
+					<td class="td_value" title="52.50" onclick="MTMnavigate(1, 'FL3-016-12', '', '', 1458.3333333333334, '주입')">12</td>
+					<td class="td_value" title="56.76" onclick="MTMnavigate(1, 'FL3-016-13', '', '', 1576.6666666666667, '주입')">13</td>
+					<td class="td_value" title="61.02" onclick="MTMnavigate(1, 'FL3-016-14', '', '', 1695.0000000000002, '주입')">14</td>
+					<td class="td_value" title="65.27" onclick="MTMnavigate(1, 'FL3-016-15', '', '', 1813.0555555555556, '주입')">15</td>
+					<td class="td_value" title="69.53" onclick="MTMnavigate(1, 'FL3-016-16', '', '', 1931.3888888888891, '주입')">16</td>
+					<td class="td_value" title="73.79" onclick="MTMnavigate(1, 'FL3-016-17', '', '', 2049.7222222222226, '주입')">17</td>
+					<td class="td_value" title="78.05" onclick="MTMnavigate(1, 'FL3-016-18', '', '', 2168.0555555555556, '주입')">18</td>
+					<td class="td_value" title="82.30" onclick="MTMnavigate(1, 'FL3-016-19', '', '', 2286.1111111111113, '주입')">19</td>
+					<td class="td_value" title="86.56" onclick="MTMnavigate(1, 'FL3-016-20', '', '', 2404.444444444445, '주입')">20</td>
+					<td class="td_alpha">4.257</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>붓으로 그리이스를 도포하는 작업은 9항을 사용하여 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+
+		// 코드
+		var code = "PT3";
+		// 작업약어
+		var description = ["㉮에 ①-1개를 ②-1개로 가체결",
+		                   "㉮에 ①-1개를 ②-1개로 가체결"
+		                   ];
+		// Basic Time
+		var basic_time = 2.838;
+		// Weight Time
+		var weight_time = 0.129;
+		// alpha
+		var alpha = [1.935, 2.193];
+		// 가중치
+		var weight = ["000", "002"];
+		// 총 개수
+		var max_quantity = 20;
+
+		for(var i = 0; i < weight.length; i++) {
+			console.log("-----가중치 : " + weight[i] + "-----" + "-----alpha : " + alpha[i] + "-----");
+			console.log("-----Start-----");
+
+			for(var quantity = 1; quantity <= max_quantity; quantity++) {
+				var result = (basic_time + weight_time * weight[i]) + (alpha[i] * (quantity - 1));
+				var value1 = result.toFixed(2);
+				var value2 = result.toFixed(2) / 0.036;
+				var display_quantity = quantity < 10 ? "0" + quantity : quantity;
+				console.log('<td class="td_value" title="' + value1 + ', ' + description[i] + '"' + ' onclick="MTMnavigate(1, ' + "'" + code + '-' + weight[i] + '-' + display_quantity + "', " + "'', " + "'', " + value2 + ", '" + description[i] + "')" + '">' + quantity + '</td>');
+			}
+
+			console.log("-----End-----\n");
+		}
+
+	});
+
+</script>
+
+</head>
+<body>
+	td 태크 만드는 계산식
+</body>
+</html>

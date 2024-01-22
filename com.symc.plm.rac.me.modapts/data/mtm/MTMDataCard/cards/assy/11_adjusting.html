@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Insert title here</title>
+
+<link href="../css/jquery-ui-1.9.2.custom.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
+
+<script src="../js/jquery-1.8.3.js"></script>
+<script src="../js/jquery-ui-1.9.2.custom.js"></script>
+<script type="text/javascript">
+
+	$(function() {
+		$("#tabs").tabs();
+	});
+
+	/* Teamcenter Activity 생성 */
+	function MTMnavigate(navcode, code, index, variant, time, descr)
+	{
+		document.location.href = encodeURI("usercode://" + code + "|" + index + "|" + variant + "|" + time + "|" + descr);
+	}
+
+</script>
+
+</head>
+<body>
+
+	<div id="tabs">
+		<ul>
+			<li><a href="#tabs-1">11-1. ACCEL CABLE 조정(AJ1)</a></li>
+			<li><a href="#tabs-2">11-2. NUT 체결상태 조정작업 (AJ2)</a></li>
+		</ul>
+
+		<!-- 11-1. ACCEL CABLE 조정(AJ1) -->
+		<div id="tabs-1">
+			<div class="div_subject1">11-1. ACCEL CABLE 조정(AJ1)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">DOUBLE NUT TYPE 조정</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="3.61, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-1', '', '', 100.27777777777778, '악셀 케이블 정렬')">1</td>
+					<td class="td_value" title="7.22, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-2', '', '', 200.55555555555557, '악셀 케이블 정렬')">2</td>
+					<td class="td_value" title="10.84, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-3', '', '', 301.11111111111114, '악셀 케이블 정렬')">3</td>
+					<td class="td_value" title="14.45, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-4', '', '', 401.3888888888889, '악셀 케이블 정렬')">4</td>
+					<td class="td_value" title="18.06, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-5', '', '', 501.6666666666667, '악셀 케이블 정렬')">5</td>
+					<td class="td_value" title="21.67, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-6', '', '', 601.9444444444446, '악셀 케이블 정렬')">6</td>
+					<td class="td_value" title="25.28, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-7', '', '', 702.2222222222223, '악셀 케이블 정렬')">7</td>
+					<td class="td_value" title="28.90, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-8', '', '', 802.7777777777778, '악셀 케이블 정렬')">8</td>
+					<td class="td_value" title="32.51, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-9', '', '', 903.0555555555555, '악셀 케이블 정렬')">9</td>
+					<td class="td_value" title="36.12, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-10', '', '', 1003.3333333333334, '악셀 케이블 정렬')">10</td>
+					<td class="td_value" title="39.73, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-11', '', '', 1103.611111111111, '악셀 케이블 정렬')">11</td>
+					<td class="td_value" title="43.34, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-12', '', '', 1203.8888888888891, '악셀 케이블 정렬')">12</td>
+					<td class="td_value" title="46.96, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-13', '', '', 1304.4444444444445, '악셀 케이블 정렬')">13</td>
+					<td class="td_value" title="50.57, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-14', '', '', 1404.7222222222224, '악셀 케이블 정렬')">14</td>
+					<td class="td_value" title="54.18, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-15', '', '', 1505, '악셀 케이블 정렬')">15</td>
+					<td class="td_value" title="57.79, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-16', '', '', 1605.2777777777778, '악셀 케이블 정렬')">16</td>
+					<td class="td_value" title="61.40, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-17', '', '', 1705.5555555555556, '악셀 케이블 정렬')">17</td>
+					<td class="td_value" title="65.02, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-18', '', '', 1806.111111111111, '악셀 케이블 정렬')">18</td>
+					<td class="td_value" title="68.63, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-19', '', '', 1906.388888888889, '악셀 케이블 정렬')">19</td>
+					<td class="td_value" title="72.24, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-000-20', '', '', 2006.6666666666667, '악셀 케이블 정렬')">20</td>
+					<td class="td_alpha">3.612</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">SCREW TYPE 조정</td>
+					<td class="td_weight">006</td>
+					<td class="td_value" title="4.39, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-1', '', '', 121.94444444444444, '악셀 케이블 정렬')">1</td>
+					<td class="td_value" title="8.77, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-2', '', '', 243.61111111111111, '악셀 케이블 정렬')">2</td>
+					<td class="td_value" title="13.16, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-3', '', '', 365.5555555555556, '악셀 케이블 정렬')">3</td>
+					<td class="td_value" title="17.54, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-4', '', '', 487.22222222222223, '악셀 케이블 정렬')">4</td>
+					<td class="td_value" title="21.93, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-5', '', '', 609.1666666666667, '악셀 케이블 정렬')">5</td>
+					<td class="td_value" title="26.32, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-6', '', '', 731.1111111111112, '악셀 케이블 정렬')">6</td>
+					<td class="td_value" title="30.70, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-7', '', '', 852.7777777777778, '악셀 케이블 정렬')">7</td>
+					<td class="td_value" title="35.09, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-8', '', '', 974.7222222222224, '악셀 케이블 정렬')">8</td>
+					<td class="td_value" title="39.47, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-9', '', '', 1096.388888888889, '악셀 케이블 정렬')">9</td>
+					<td class="td_value" title="43.86, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-10', '', '', 1218.3333333333334, '악셀 케이블 정렬')">10</td>
+					<td class="td_value" title="48.25, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-11', '', '', 1340.2777777777778, '악셀 케이블 정렬')">11</td>
+					<td class="td_value" title="52.63, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-12', '', '', 1461.9444444444445, '악셀 케이블 정렬')">12</td>
+					<td class="td_value" title="57.02, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-13', '', '', 1583.8888888888891, '악셀 케이블 정렬')">13</td>
+					<td class="td_value" title="61.40, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-14', '', '', 1705.5555555555556, '악셀 케이블 정렬')">14</td>
+					<td class="td_value" title="65.79, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-15', '', '', 1827.5000000000002, '악셀 케이블 정렬')">15</td>
+					<td class="td_value" title="70.18, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-16', '', '', 1949.4444444444448, '악셀 케이블 정렬')">16</td>
+					<td class="td_value" title="74.56, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-17', '', '', 2071.1111111111113, '악셀 케이블 정렬')">17</td>
+					<td class="td_value" title="78.95, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-18', '', '', 2193.0555555555556, '악셀 케이블 정렬')">18</td>
+					<td class="td_value" title="83.33, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-19', '', '', 2314.722222222222, '악셀 케이블 정렬')">19</td>
+					<td class="td_value" title="87.72, 악셀 케이블 정렬" onclick="MTMnavigate(1, 'AJ1-006-20', '', '', 2436.666666666667, '악셀 케이블 정렬')">20</td>
+					<td class="td_alpha">4.386</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>부품을 조립위치에 끼우는 시간, 체결하는 시간은 별도로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+		<!-- 11-2. NUT 체결상태 조정작업 (AJ2) -->
+		<div id="tabs-2">
+			<div class="div_subject1">11-2. NUT 체결상태 조정작업 (AJ2)</div>
+			<div class="div_subject2">(정미공수)</div>
+
+			<table class="MTMGeneral">
+				<tr align="center">
+					<td>적용 CASE</td>
+					<td class="headerRed">가중치</td>
+					<td class="headerRed" colspan="20">수 량</td>
+					<td>α</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">SPLIT PIN HOLE 맞춤</td>
+					<td class="td_weight">000</td>
+					<td class="td_value" title="4.39, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-1', '', '', 121.94444444444444, '너트 체결 조정')">1</td>
+					<td class="td_value" title="8.77, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-2', '', '', 243.61111111111111, '너트 체결 조정')">2</td>
+					<td class="td_value" title="13.16, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-3', '', '', 365.5555555555556, '너트 체결 조정')">3</td>
+					<td class="td_value" title="17.54, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-4', '', '', 487.22222222222223, '너트 체결 조정')">4</td>
+					<td class="td_value" title="21.93, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-5', '', '', 609.1666666666667, '너트 체결 조정')">5</td>
+					<td class="td_value" title="26.32, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-6', '', '', 731.1111111111112, '너트 체결 조정')">6</td>
+					<td class="td_value" title="30.70, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-7', '', '', 852.7777777777778, '너트 체결 조정')">7</td>
+					<td class="td_value" title="35.09, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-8', '', '', 974.7222222222224, '너트 체결 조정')">8</td>
+					<td class="td_value" title="39.47, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-9', '', '', 1096.388888888889, '너트 체결 조정')">9</td>
+					<td class="td_value" title="43.86, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-10', '', '', 1218.3333333333334, '너트 체결 조정')">10</td>
+					<td class="td_value" title="48.25, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-11', '', '', 1340.2777777777778, '너트 체결 조정')">11</td>
+					<td class="td_value" title="52.63, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-12', '', '', 1461.9444444444445, '너트 체결 조정')">12</td>
+					<td class="td_value" title="57.02, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-13', '', '', 1583.8888888888891, '너트 체결 조정')">13</td>
+					<td class="td_value" title="61.40, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-14', '', '', 1705.5555555555556, '너트 체결 조정')">14</td>
+					<td class="td_value" title="65.79, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-15', '', '', 1827.5000000000002, '너트 체결 조정')">15</td>
+					<td class="td_value" title="70.18, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-16', '', '', 1949.4444444444448, '너트 체결 조정')">16</td>
+					<td class="td_value" title="74.56, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-17', '', '', 2071.1111111111113, '너트 체결 조정')">17</td>
+					<td class="td_value" title="78.95, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-18', '', '', 2193.0555555555556, '너트 체결 조정')">18</td>
+					<td class="td_value" title="83.33, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-19', '', '', 2314.722222222222, '너트 체결 조정')">19</td>
+					<td class="td_value" title="87.72, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-000-20', '', '', 2436.666666666667, '너트 체결 조정')">20</td>
+					<td class="td_alpha">4.386</td>
+				</tr>
+				<tr align="center">
+					<td class="td_subject">장력조정 작업</td>
+					<td class="td_weight">035</td>
+					<td class="td_value" title="8.90, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-1', '', '', 247.22222222222226, '너트 체결 조정')">1</td>
+					<td class="td_value" title="17.54, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-2', '', '', 487.22222222222223, '너트 체결 조정')">2</td>
+					<td class="td_value" title="26.19, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-3', '', '', 727.5000000000001, '너트 체결 조정')">3</td>
+					<td class="td_value" title="34.83, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-4', '', '', 967.5, '너트 체결 조정')">4</td>
+					<td class="td_value" title="43.47, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-5', '', '', 1207.5, '너트 체결 조정')">5</td>
+					<td class="td_value" title="52.12, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-6', '', '', 1447.7777777777778, '너트 체결 조정')">6</td>
+					<td class="td_value" title="60.76, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-7', '', '', 1687.7777777777778, '너트 체결 조정')">7</td>
+					<td class="td_value" title="69.40, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-8', '', '', 1927.777777777778, '너트 체결 조정')">8</td>
+					<td class="td_value" title="78.05, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-9', '', '', 2168.0555555555556, '너트 체결 조정')">9</td>
+					<td class="td_value" title="86.69, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-10', '', '', 2408.0555555555556, '너트 체결 조정')">10</td>
+					<td class="td_value" title="95.33, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-11', '', '', 2648.0555555555556, '너트 체결 조정')">11</td>
+					<td class="td_value" title="103.97, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-12', '', '', 2888.0555555555556, '너트 체결 조정')">12</td>
+					<td class="td_value" title="112.62, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-13', '', '', 3128.3333333333335, '너트 체결 조정')">13</td>
+					<td class="td_value" title="121.26, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-14', '', '', 3368.333333333334, '너트 체결 조정')">14</td>
+					<td class="td_value" title="129.90, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-15', '', '', 3608.333333333334, '너트 체결 조정')">15</td>
+					<td class="td_value" title="138.55, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-16', '', '', 3848.6111111111117, '너트 체결 조정')">16</td>
+					<td class="td_value" title="147.19, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-17', '', '', 4088.6111111111113, '너트 체결 조정')">17</td>
+					<td class="td_value" title="155.83, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-18', '', '', 4328.611111111112, '너트 체결 조정')">18</td>
+					<td class="td_value" title="164.48, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-19', '', '', 4568.888888888889, '너트 체결 조정')">19</td>
+					<td class="td_value" title="173.12, 너트 체결 조정" onclick="MTMnavigate(1, 'AJ2-035-20', '', '', 4808.88888888889, '너트 체결 조정')">20</td>
+					<td class="td_alpha">8.643</td>
+				</tr>
+			</table>
+
+			<br>
+
+			<div class="description">
+				<table>
+					<tr>
+						<td class="wp15">※</td>
+						<td>일단 체결이 완료된 상태에서 조정하는 시간이므로 체결시간은 별도로 산정한다.</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
