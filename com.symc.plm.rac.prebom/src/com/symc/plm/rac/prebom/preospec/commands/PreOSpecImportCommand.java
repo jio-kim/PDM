@@ -1,0 +1,57 @@
+package com.symc.plm.rac.prebom.preospec.commands;
+
+import com.ssangyong.common.utils.CustomUtil;
+import com.symc.plm.rac.prebom.common.TypeConstant;
+import com.symc.plm.rac.prebom.preospec.dialog.PreOSpecImportDlg;
+import com.teamcenter.rac.aif.AbstractAIFCommand;
+import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;
+import com.teamcenter.rac.aifrcp.AIFUtility;
+import com.teamcenter.rac.kernel.TCComponentBOMLine;
+import com.teamcenter.rac.kernel.TCComponentItemRevision;
+import com.teamcenter.rac.util.MessageBox;
+
+public class PreOSpecImportCommand extends AbstractAIFCommand {
+
+	TCComponentItemRevision ospec = null;
+	InterfaceAIFComponent []targets = null;
+	
+//	@Override
+//	protected void executeCommand() throws Exception {
+//		if (! targetCheck())
+//		    return;
+//		ospecImport();
+//		super.executeCommand();
+//	}
+
+	private boolean targetCheck() throws Exception {
+	    try
+	    {
+	        targets = CustomUtil.getTargets();
+
+    	    if (targets == null || targets.length != 1 || ! (targets[0] instanceof TCComponentBOMLine) || ! ((TCComponentBOMLine) targets[0]).getItem().getType().equals(TypeConstant.S7_PREPRODUCTTYPE))
+    	    {
+                MessageBox.post(AIFUtility.getActiveDesktop(), "Select a Pre-Product item", "INFO", MessageBox.INFORMATION);
+    	        return false;
+    	    }
+
+    	    return true;
+	    }
+	    catch (Exception ex)
+	    {
+	        throw ex;
+	    }
+    }
+
+    private void ospecImport() throws Exception{
+		
+		final PreOSpecImportDlg dlg = new PreOSpecImportDlg(AIFUtility.getActiveDesktop().getFrame(), targets);
+		dlg.setModal(true);
+		setRunnable(dlg);
+	}
+    
+    public PreOSpecImportCommand() throws Exception{
+    	if (! targetCheck())
+		    return;
+		ospecImport();
+    }
+}

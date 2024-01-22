@@ -1,0 +1,527 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.weld">
+
+	<select id="getWeldGroupToUpdate" resultType="java.util.HashMap">
+	 	select * from WELD_POINT_EXPORT where stat is null
+	</select>
+
+	<update id="updateWeldGroupStat" >
+		update WELD_POINT_EXPORT set stat=#{stat, jdbcType=VARCHAR} where item_ID=#{item_ID, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR}
+	</update>
+
+	<delete id="deleteWeldGroupInfo" >
+		delete from WELD_POINT_EXPORT where item_ID=#{item_ID, jdbcType=VARCHAR} and item_rev_id=#{item_rev_id, jdbcType=VARCHAR}
+	</delete>
+
+	<delete id="clearUpdatedWeldGroupInfo" >
+		delete from WELD_POINT_EXPORT where Stat='SUCCESS'
+	</delete>
+
+	<insert id="insertWeldPointServiceTime">
+		MERGE INTO CUSTOM_WEB_ENV
+		    USING DUAL
+		ON (Key = 'LATEST_WELD_POINT_SERVICE_START_TIME')
+		WHEN MATCHED THEN
+		    update set VALUE= #{CURRENT_TIME, jdbcType=VARCHAR}
+		WHEN NOT MATCHED THEN
+		insert (KEY,VALUE)
+		values('LATEST_WELD_POINT_SERVICE_START_TIME',#{CURRENT_TIME, jdbcType=VARCHAR})
+	</insert>
+
+	<select id="getLatestServiceTime" resultType="java.lang.String">
+		select value from CUSTOM_WEB_ENV where key='LATEST_WELD_POINT_SERVICE_START_TIME'
+	</select>
+
+    <!-- [용점접 2차 개선안] [20150907][ymjang] 용접점 처리시 각 대상 Part 별로 상태를 기록하기 위해 상태 테이블에 데이터를 생성한다. -->
+    <!-- [20151215][ymjang] 1회 Shceduler 실행시 1개의 ECO 만 처리하도록 변경함. -->
+    <!-- [20170111][ymjang] S201 ECO 제외 -->
+ <select id="getEcoFromLatestServiceTime" resultType="map">
+	SELECT ECO_NO, AFFECTED_PROJECT
+	  FROM (
+	        SELECT ITEM.PITEM_ID ECO_NO
+	             , ECOREVISION.PS7_AFFECTED_PROJECT AFFECTED_PROJECT
+	          FROM INFODBA.PITEM ITEM, INFODBA.PITEMREVISION REVISION
+	             , INFODBA.PS7_ECOREVISION ECOREVISION, INFODBA.PWORKSPACEOBJECT WSO
+	         WHERE ITEM.PUID = REVISION.RITEMS_TAGU
+	           AND REVISION.PUID = ECOREVISION.PUID
+	           AND ECOREVISION.PUID = WSO.PUID
+	           AND REVISION.PITEM_REVISION_ID = '000'
+	           AND WSO.PACTIVE_SEQ = 1
+	           AND WSO.PDATE_RELEASED IS NOT NULL
+	           AND ITEM.PITEM_ID NOT LIKE 'CM%'
+	           AND UPPER( SUBSTR(ITEM.PITEM_ID,3,1)) = 'B'
+	           AND NOT EXISTS ( SELECT 'X'
+	                              FROM JOB_TRANS_LOG
+	                             WHERE TARGET_ID = ITEM.PITEM_ID
+	                               AND WHAT_JOB = 'WELDPOINT' )
+	        ORDER BY WSO.PDATE_RELEASED ASC
+	       )
+	 WHERE ROWNUM = 1
+	</select>
+
+	<!-- SM 용 -->	
+    <!-- 
+	<select id="getEcoFromLatestServiceTime" resultType="map">
+		SELECT ITEM.PITEM_ID ECO_NO, ECOREVISION.PS7_AFFECTED_PROJECT AFFECTED_PROJECT 
+		  FROM INFODBA.PITEM ITEM, INFODBA.PITEMREVISION REVISION
+		     , INFODBA.PS7_ECOREVISION ECOREVISION, INFODBA.PWORKSPACEOBJECT WSO
+		 WHERE ITEM.PUID = REVISION.RITEMS_TAGU
+		   AND REVISION.PUID = ECOREVISION.PUID
+		   AND ECOREVISION.PUID = WSO.PUID
+		   AND REVISION.PITEM_REVISION_ID = '000'
+		   AND WSO.PACTIVE_SEQ = 1
+		   AND WSO.PDATE_RELEASED IS NOT NULL
+		   AND UPPER( SUBSTR(ITEM.PITEM_ID,3,1)) = 'B'
+		   AND ITEM.PITEM_ID = '37BK021'
+		ORDER BY WSO.PDATE_RELEASED ASC
+	</select>
+   -->
+	 
+	
+    <!-- [용점접 2차 개선안] [20150907][ymjang] 용접점 처리시 각 대상 Part 별로 상태를 기록하기 위해 상태 테이블에 데이터를 생성한다.
+	<select id="getEcoFromLatestServiceTime" resultType="map">
+		select ITEM.PITEM_ID ECO_NO, ecoRevision.pS7_Affected_Project AFFECTED_PROJECT from infodba.pItem item, infodba.pItemRevision revision, INFODBA.PS7_ECOREVISION ecoRevision, infodba.pWorkSpaceObject wso
+		where item.puid = revision.rItems_tagu
+		and revision.puid = ecoRevision.puid
+		and ecoRevision.puid = wso.puid
+		and revision.pItem_Revision_ID = '000'
+		and WSO.PACTIVE_SEQ=1
+		and WSO.PDATE_RELEASED is not null
+		and upper( substr(item.pItem_ID,3,1)) = 'B'
+		and WSO.PDATE_RELEASED >= to_date(#{latest_service_time, jdbcType=VARCHAR}, 'YYYYMMddHH24MISS') - 9/24
+		order by WSO.PDATE_RELEASED asc
+	</select>
+ 	-->
+ 	
+ 	<!-- [20150925][ymjang] 용접대상 PART 조회 속도 개선  -->
+	<select id="getEcoEplInfo" resultType="map">
+		SELECT E.EPL_ID, E.ECO_NO, E.PARENT_NO, E.PARENT_REV, E.NEW_PART_NO, E.NEW_PART_REV, E.NEW_SMODE, E.NEW_VC, E.CT, E.OLD_PART_NO, E.OLD_PART_REV
+		     , GET_RELATED_NONIF_FUNC_BYREV(E.PARENT_NO, E.PARENT_REV, 'N') FUNC
+		  FROM ECO_BOM_LIST E
+		 WHERE E.EPL_YN = 'Y'
+   	       AND (E.OLD_PART_TYPE = 'S7_Vehpart' OR E.NEW_PART_TYPE = 'S7_Vehpart')
+		<if test="ECO_NO != null">
+			AND E.ECO_NO = #{ECO_NO, jdbcType=VARCHAR}
+		</if>
+		<if test="EPL_ID != null">
+			AND E.EPL_ID = #{EPL_ID, jdbcType=VARCHAR}
+		</if>
+		<if test="PROJECT_CODE != null">
+   		    AND (INSTR(E.OLD_PROJECT, #{PROJECT_CODE, jdbcType=VARCHAR}) > 0 OR INSTR(E.NEW_PROJECT, #{PROJECT_CODE, jdbcType=VARCHAR}) > 0)
+		</if>
+      ORDER BY E.PARENT_NO, E.PARENT_REV
+	</select>
+	<!-- <select id="getEcoEplInfo" resultType="map">
+		SELECT E.EPL_ID, E.ECO_NO, E.PARENT_NO, E.PARENT_REV, E.NEW_PART_NO, E.NEW_PART_REV, E.NEW_SMODE, E.NEW_VC, E.CT, E.OLD_PART_NO, E.OLD_PART_REV
+		     , GET_RELATED_NONIF_FUNCTION(E.PARENT_NO) FUNC
+		  FROM ECO_BOM_LIST E
+		 WHERE E.EPL_YN = 'Y'
+   	       AND (E.OLD_PART_TYPE = 'S7_Vehpart' OR E.NEW_PART_TYPE = 'S7_Vehpart')
+		<if test="ECO_NO != null">
+			AND E.ECO_NO = #{ECO_NO, jdbcType=VARCHAR}
+		</if>
+		<if test="EPL_ID != null">
+			AND E.EPL_ID = #{EPL_ID, jdbcType=VARCHAR}
+		</if>
+		<if test="PROJECT_CODE != null">
+   		    AND (INSTR(E.OLD_PROJECT, #{PROJECT_CODE, jdbcType=VARCHAR}) > 0 OR INSTR(E.NEW_PROJECT, #{PROJECT_CODE, jdbcType=VARCHAR}) > 0)
+		</if>
+      ORDER BY E.PARENT_NO, E.PARENT_REV
+	</select>   -->
+ 	<!-- 
+	<select id="getEcoEplInfo" resultType="map">
+		SELECT E.EPL_ID, E.ECO_NO, E.PARENT_NO, E.PARENT_REV, E.NEW_PART_NO, E.NEW_PART_REV, E.NEW_SMODE, E.NEW_VC, E.CT, E.OLD_PART_NO, E.OLD_PART_REV
+		, DECODE(E.CT, 'D', GET_RELATED_FUNCTION(E.OLD_PART_NO), GET_RELATED_FUNCTION(E.NEW_PART_NO)) FUNC
+		FROM ECO_BOM_LIST E
+		WHERE E.EPL_YN = 'Y'
+		<if test="ECO_NO != null">
+			AND ECO_NO = #{ECO_NO, jdbcType=VARCHAR}
+		</if>
+		<if test="EPL_ID != null">
+			AND EPL_ID = #{EPL_ID, jdbcType=VARCHAR}
+		</if>
+		AND 
+		( 
+			E.OLD_PART_NO IN 
+			(
+				SELECT IT.PITEM_ID
+				FROM INFODBA.PWORKSPACEOBJECT PWO
+				, INFODBA.PITEM IT
+				WHERE PWO.PUID = IT.PUID
+				AND PWO.POBJECT_TYPE = 'S7_Vehpart'
+			)
+			OR 
+			E.NEW_PART_NO IN 
+			(
+				SELECT IT.PITEM_ID
+				FROM INFODBA.PWORKSPACEOBJECT PWO
+				, INFODBA.PITEM IT
+				WHERE PWO.PUID = IT.PUID
+				AND PWO.POBJECT_TYPE = 'S7_Vehpart'
+			)
+		)
+		ORDER BY PARENT_NO, PARENT_REV
+	</select>
+ 	-->
+
+	<select id="getEcoWeldParentEplInfo" resultType="map">
+		SELECT E.EPL_ID, E.ECO_NO, E.PARENT_NO, E.PARENT_REV, E.NEW_PART_NO, E.NEW_PART_REV, E.NEW_SMODE, E.NEW_VC, E.CT, E.OLD_PART_NO, E.OLD_PART_REV
+		     , GET_RELATED_NONIF_FUNC_BYREV(E.PARENT_NO, E.PARENT_REV, 'N') FUNC
+		  FROM ECO_BOM_LIST E
+		 WHERE E.EPL_YN = 'Y'
+		   AND E.ECO_NO = #{ECO_NO, jdbcType=VARCHAR}
+		   AND E.PARENT_NO = #{PARENT_NO, jdbcType=VARCHAR}
+		   AND E.PARENT_REV = #{PARENT_REV, jdbcType=VARCHAR}
+		   AND (INSTR(E.OLD_PROJECT, #{PROJECT_CODE, jdbcType=VARCHAR}) > 0 OR INSTR(E.NEW_PROJECT, #{PROJECT_CODE, jdbcType=VARCHAR}) > 0)
+	</select>
+
+	<select id="getProduct" resultType="java.lang.String">
+		select GET_PRODUCT_BY_PROJECT (#{project_code, jdbcType=VARCHAR}) product from dual
+	</select>
+
+	<select id="getLatestRevision" resultType="map">
+	<![CDATA[
+	select *
+	  from (
+	        select item.pItem_id item_id
+	             , revision.PITEM_REVISION_ID item_rev_id
+	             , revision.puid puid
+	             , revision.pS7_Project_code project
+	             , REVISION.RS7_ECO_NOU eco_puid
+	          from infodba.pItem item, infodba.pItemRevision revision, infodba.pWorkSpaceObject wso
+	         where wso.pactive_seq = 1
+	           and wso.puid = revision.puid
+	           and item.puid = revision.ritems_tagu
+	           and item.pitem_ID =  #{item_id, jdbcType=VARCHAR}
+	      order by item_rev_id desc
+	        )
+	 where rownum < 2    
+	 ]]>     
+	</select>
+	<!--
+	<select id="getLatestRevision" resultType="map">
+		with rev_info as (
+		select item.pItem_id item_id, revision.PITEM_REVISION_ID item_rev_id, revision.puid puid
+		, revision.pS7_Project_code project, REVISION.RS7_ECO_NOU eco_puid
+		from infodba.pItem item, infodba.pItemRevision revision, infodba.pWorkSpaceObject wso
+		where item.puid = revision.ritems_tagu
+		and revision.puid = wso.puid
+		and WSO.PACTIVE_SEQ = 1)
+		select * from (
+		select item.item_id, item.item_rev_id, item.project, eco.item_id eco_no from rev_info item, rev_info eco
+		where item.eco_puid = eco.puid(+)
+		and item.item_ID = #{item_id, jdbcType=VARCHAR}
+		order by item_rev_id desc)
+		where rownum <![CDATA[<]]> 2
+	</select>
+  	-->
+  	
+	<select id="getPreRevisionID" resultType="java.lang.String">
+		select GET_PRE_REVISION_ID(#{item_id, jdbcType=VARCHAR}, #{item_rev_id, jdbcType=VARCHAR}) pre_revision_id from dual
+	</select>
+
+	<select id="getChildren" resultType="map">
+		select parent_revision.PS7_PART_TYPE p_origin,  child_item.pitem_id child_id
+		, child_REVISION.PITEM_REVISION_ID child_rev_id
+		, child_REVISION.PS7_PROJECT_CODE project_code, obj.pObject_type child_rev_type, child_revision.PS7_PART_TYPE origin
+		, OBJ.POBJECT_NAME child_name, a.*
+		from
+		(
+		    select F_GET_DATE_REVISION(occ.rChild_itemu, #{date_str, jdbcType=VARCHAR},'0')  child_rev_puid,
+		        basic.*, occ.puid occ_puid, OCC.ROCC_THREADU occ_thread, OCC.PORDER_NO order_no, occ.pSeq_no seq, OCC.RCHILD_BVU child_view_puid, occ.RNOTES_REFU occ_note_ref_puid,
+		        case when occ.pQty_value <![CDATA[<]]> 1 then 1 else occ.pQty_value  end  qty
+		        , mvl.data condition
+		    from
+		    (
+		       select item.pItem_id parent_id, REVISION.PITEM_REVISION_ID parent_rev_id, STRREV.PUID parent_rev_puid, obj.pObject_type parent_rev_type, STRREV.PVALU_0 parent_rev_view_puid
+		          from infodba.PSTRUCTURE_REVISIONS strRev
+		                , infodba.ppsbomviewrevision bvr
+		                , infodba.ppsbomview bv
+		                , infodba.pworkspaceobject obj
+		                , infodba.pItemRevision revision
+		                , infodba.pItem item
+		        where
+		           STRREV.pvalu_0 = bvr.puid    --BOM view revision PUID
+		           and bv.puid = bvr.rbom_viewu        --BOM view PUID
+		           and STRREV.PUID = obj.puid
+		           and STRREV.puid = revision.puid
+		           and revision.rItems_tagu = item.puid
+		           and item.pItem_ID = #{parent_id, jdbcType=VARCHAR}
+		           and revision.pItem_Revision_ID = #{parent_rev_id, jdbcType=VARCHAR}
+		    ) basic, infodba.PPSOCCURRENCE occ, INFODBA.IMAN_MVLBLOB mvl
+		    where OCC.RPARENT_BVRU = basic.parent_rev_view_puid and occ.puid = mvl.name(+)
+		) a, infodba.pWorkspaceObject obj, infodba.pitem child_item, infodba.pitemRevision child_revision
+		, infodba.pItemRevision parent_revision
+		where parent_revision.puid = a.parent_rev_puid
+		and a.child_rev_puid = obj.puid
+		and a.child_rev_puid = child_revision.puid
+		and child_revision.ritems_tagu = child_item.puid
+		<if test="condition != null">
+			and DBMS_LOB.compare( replace(trim(condition),' ', ''), replace(trim(#{condition, jdbcType=VARCHAR}),' ','')) = 0
+		</if>
+	 	<if test="child_id != null">
+		   AND child_item.pitem_id=#{child_id, jdbcType=VARCHAR}
+		</if>
+	 	<if test="child_rev_id != null">
+		   AND child_REVISION.PITEM_REVISION_ID=#{child_rev_id, jdbcType=VARCHAR}
+		</if>
+		order by seq, child_item.pitem_id
+
+	</select>
+
+	<update id="updateDateReleasedWithEco" statementType="CALLABLE">
+	    {call UPDATE_DATE_RELEASED_WITH_ECO(#{release_status_puid, jdbcType=VARCHAR}, #{eco_rev_puid, jdbcType=VARCHAR})}
+	</update>
+
+	<select id="getCurrentTime" resultType="java.lang.String">
+		select to_char(sysdate,'YYYYMMddHH24MISS') current_time from dual
+	</select>
+	
+    <!-- [용점접 2차 개선안] [20150907][ymjang] 용접점 처리시 각 대상 Part 별로 상태를 기록하기 위해 상태 테이블에 데이터를 생성한다. -->
+    <insert id="insertWeldPointTransLog" parameterType="java.util.HashMap">
+        INSERT INTO WELD_POINT_TRANS_LOG (ECO_NO, FMP_ID, PROJECT_CODE, CHANGE_TYPE, EPL_ID, PARENT_NO, PARENT_REVISION_ID, PART_NO, PART_REVISION_ID)
+             VALUES ( #{ECO_NO, jdbcType=VARCHAR}, #{FMP_ID, jdbcType=VARCHAR}, #{PROJECT_CODE, jdbcType=VARCHAR}, #{CHANGE_TYPE, jdbcType=VARCHAR}
+                    , #{EPL_ID, jdbcType=VARCHAR}, #{PARENT_NO, jdbcType=VARCHAR}, #{PARENT_REVISION_ID, jdbcType=VARCHAR}
+                    , #{PART_NO, jdbcType=VARCHAR}, #{PART_REVISION_ID, jdbcType=VARCHAR} )
+    </insert>
+	
+    <!-- [20160115][ymjang] 처리 대상 ECO 로그 생성 -->
+    <insert id="insertJobTransLog" parameterType="java.util.HashMap">
+        INSERT INTO JOB_TRANS_LOG (JOB_PUID, WHO_USER_ID, WHAT_JOB, START_JOB_TIME, TRNAS_FLAG, TARGET_ID)
+             VALUES ( #{JOB_PUID, jdbcType=VARCHAR}
+                    , #{WHO_USER_ID, jdbcType=VARCHAR}, #{WHAT_JOB, jdbcType=VARCHAR}
+                    , #{START_JOB_TIME, jdbcType=VARCHAR}
+                    , #{TRNAS_FLAG, jdbcType=VARCHAR}
+                    , #{TARGET_ID, jdbcType=VARCHAR} )
+    </insert>
+    
+    <!-- [20160115][ymjang] 처리 대상 ECO 처리 상태 갱신 -->
+	<update id="updateJobTransLog" >
+		UPDATE JOB_TRANS_LOG 
+		   SET END_JOB_TIME=#{END_JOB_TIME, jdbcType=VARCHAR}
+		     , TRNAS_FLAG=#{TRNAS_FLAG, jdbcType=VARCHAR} 
+		     , TRNAS_MSG=#{TRNAS_MSG, jdbcType=VARCHAR}
+		 WHERE WHAT_JOB = 'WELDPOINT'
+		   AND TARGET_ID=#{TARGET_ID, jdbcType=VARCHAR}
+	</update>
+	
+	<!-- [20160115][ymjang] 처리 로그 Puid Get -->
+    <select id="getJobPuid" resultType="java.lang.String">
+    	SELECT TO_CHAR ( SYSDATE, 'YYYYMMDDHH24MISS' ) || '-' || SYS_GUID() AS LIST_ID FROM DUAL
+    </select>
+    
+    <!-- [20181219] 용접점 미 변환 대상 찾는 쿼리 추가   '%'|| #{PROJECT_CODE, jdbcType=VARCHAR} ||'%' -->
+  <!--   <select id="notTransformPartList" resultType="map">
+         WITH NotTransWeldPoint AS (   SELECT B.*
+                              FROM (
+                                    SELECT PARENT_NO, PARENT_REVISION_ID, MAX(CREATE_DATE) AS CREATE_DATE
+                                      FROM WELD_POINT_TRANS_LOG
+                                    GROUP BY PARENT_NO, PARENT_REVISION_ID
+                                   ) A
+                                   ,WELD_POINT_TRANS_LOG B
+                            WHERE 1 = 1
+                              AND A.PARENT_NO = B.PARENT_NO
+                              AND A.PARENT_REVISION_ID = B.PARENT_REVISION_ID
+                              AND A.CREATE_DATE = B.CREATE_DATE
+                              <if test="PROJECT_CODE != null">
+                              AND B.PROJECT_CODE LIKE '%' || #{PROJECT_CODE, jdbcType=VARCHAR} ||'%'
+                              </if>
+                              AND B.trans_flag <![CDATA[<>]]> 'S' )
+      , NotTransWeldPointLatestRev AS (
+                        SELECT NotTrans.* 
+                            , ( SELECT max(rev.pitem_revision_id )
+                                  FROM  infodba.pitem  item
+                                      , infodba.pitemrevision  rev
+                                      , infodba.pworkspaceobject obj
+                                   WHERE 1 = 1
+                                     AND item.PUID = rev.RITEMS_TAGU
+                                     AND rev.puid = obj.puid
+                                     AND OBJ.PDATE_RELEASED IS NOT NULL
+                                     AND item.pitem_id = NotTrans.parent_no  )  parent_latest_rev
+                             ,  ( SELECT max(rev.pitem_revision_id )
+                                  FROM  infodba.pitem  item
+                                      , infodba.pitemrevision  rev
+                                      , infodba.pworkspaceobject obj
+                                   WHERE 1 = 1
+                                     AND item.PUID = rev.RITEMS_TAGU
+                                     AND rev.puid = obj.puid
+                                     AND OBJ.PDATE_RELEASED IS NOT NULL
+                                     AND item.pitem_id = NotTrans.part_no  )  part_latest_rev
+
+                          FROM NotTransWeldPoint NotTrans 
+                          )
+          
+      , notTransWeldPointAttribute AS ( 
+                         SELECT rev.* 
+                              , eco_list.epl_id parent_latest_epl_id
+                              , ECO_LIST.NEW_PROJECT
+                              , eco_list.eco_no latest_eco_no
+                              , ECO_LIST.OLD_PART_NO
+                              , ECO_LIST.OLD_PART_REV
+                              , eco_list.new_part_no
+                              , eco_list.new_part_rev
+                           FROM NotTransWeldPointLatestRev rev
+                              , eco_bom_list  eco_list
+                           WHERE  1 = 1
+                             AND eco_list.epl_yn = 'Y'
+                             <if test="PROJECT_CODE != null">
+                             AND ECO_LIST.NEW_PROJECT LIKE  '%'|| #{PROJECT_CODE, jdbcType=VARCHAR} ||'%'
+                             </if>
+                             AND rev.parent_no = ECO_LIST.PARENT_NO
+                             AND rev.parent_latest_rev = ECO_LIST.PARENT_REV 
+                             AND rev.part_no = ECO_LIST.NEW_PART_NO
+                             AND rev.part_latest_rev = ECO_LIST.NEW_PART_REV
+                             
+                  )
+                      
+                   SELECT  DISTINCT  Weld_log.parent_no 
+                        , Weld_log.parent_revision_id parent_rev
+                        , WELD_LOG.FMP_ID
+                        , WELD_LOG.PROJECT_CODE
+                        , NotTrans.parent_latest_rev
+                        , weld_log.eco_no
+                        , WELD_LOG.TRANS_FLAG
+                        , NotTrans.parent_latest_epl_id 
+                        , Weld_log.epl_id
+                        , NotTrans.old_part_no
+                        , NotTrans.old_part_rev
+                        , NotTrans.new_part_no
+                        , NotTrans.new_part_rev
+                        , WELD_LOG.CHANGE_TYPE CT
+                     FROM notTransWeldPointAttribute NotTrans
+                        , WELD_POINT_TRANS_LOG Weld_log 
+                    WHERE 1 = 1
+                      AND NotTrans.parent_no = Weld_log.parent_no
+                      AND NotTrans.parent_latest_rev = Weld_log.parent_revision_id
+                      AND NotTrans.latest_eco_no = weld_log.eco_no
+                      AND WELD_LOG.TRANS_FLAG <![CDATA[<>]]> 'S'
+                      AND NotTrans.parent_latest_epl_id = Weld_log.epl_id 
+    
+    </select>   -->
+    
+    <select id="notTransformPartList" resultType="map">
+                  WITH NotTransWeldPoint AS (   SELECT B.*
+                                      FROM (
+                                            SELECT PARENT_NO, PARENT_REVISION_ID, MAX(CREATE_DATE) AS CREATE_DATE
+                                              FROM WELD_POINT_TRANS_LOG
+                                            GROUP BY PARENT_NO, PARENT_REVISION_ID
+                                           ) A
+                                           ,WELD_POINT_TRANS_LOG B
+                                    WHERE 1 = 1
+                                      AND A.PARENT_NO = B.PARENT_NO
+                                      AND A.PARENT_REVISION_ID = B.PARENT_REVISION_ID
+                                      AND A.CREATE_DATE = B.CREATE_DATE
+                                      AND B.trans_flag <![CDATA[<>]]> 'S' )
+     , NotTransWeldPointLatestRev AS (
+                                        SELECT NotTrans.* 
+                                            , ( SELECT max(rev.pitem_revision_id )
+                                                  FROM  infodba.pitem  item
+                                                      , infodba.pitemrevision  rev
+                                                      , infodba.pworkspaceobject obj
+                                                   WHERE 1 = 1
+                                                     AND item.PUID = rev.RITEMS_TAGU
+                                                     AND rev.puid = obj.puid
+                                                     AND OBJ.PDATE_RELEASED IS NOT NULL
+                                                     AND item.pitem_id = NotTrans.parent_no  )  parent_latest_rev
+                                             ,  ( SELECT max(rev.pitem_revision_id )
+                                                  FROM  infodba.pitem  item
+                                                      , infodba.pitemrevision  rev
+                                                      , infodba.pworkspaceobject obj
+                                                   WHERE 1 = 1
+                                                     AND item.PUID = rev.RITEMS_TAGU
+                                                     AND rev.puid = obj.puid
+                                                     AND OBJ.PDATE_RELEASED IS NOT NULL
+                                                     AND item.pitem_id = NotTrans.part_no  )  part_latest_rev
+
+                                          FROM NotTransWeldPoint NotTrans 
+                                         WHERE 1 = 1
+                      
+                                    )
+                                    
+             SELECT  DISTINCT
+             		  WELD.eco_no
+                    , WELD.epl_id
+                    , WELD.change_type CT
+                    , WELD.fmp_id
+                    , WELD.parent_no 
+                    , WELD.parent_revision_id parent_rev
+                    , latest.parent_latest_rev
+                    , ECO_LIST.OLD_PART_NO
+                    , ECO_LIST.OLD_PART_REV
+                    , WELD.part_no  new_part_no
+                    , WELD.part_revision_id new_part_rev
+                    , latest.part_latest_rev
+                    , WELD.trans_flag
+                    , WELD.trans_msg
+                    , WELD.project_code
+                    , WELD.create_date
+                  FROM NotTransWeldPointLatestRev latest
+                     , weld_point_trans_log weld
+                     , eco_bom_list  eco_list
+                WHERE latest.part_revision_id =  latest.part_latest_rev 
+                  AND latest.part_no = WELD.PART_NO
+                  AND latest.part_revision_id = WELD.PART_REVISION_ID
+                  AND WELD.TRANS_FLAG = 'I'
+                  AND weld.epl_id = ECO_LIST.EPL_ID  
+    
+    </select>
+    
+    <update id="updateWeldPointSuccessLog">
+      UPDATE WELD_POINT_TRANS_LOG
+         SET TRANS_FLAG = #{TRANS_FLAG, jdbcType=VARCHAR}
+           , TRANS_MSG = #{TRANS_MSG, jdbcType=VARCHAR}
+       WHERE ECO_NO = #{ECO_NO, jdbcType=VARCHAR}
+         AND FMP_ID = #{FMP_ID, jdbcType=VARCHAR}
+         AND PROJECT_CODE = #{PROJECT_CODE, jdbcType=VARCHAR}
+           AND CHANGE_TYPE = #{CHANGE_TYPE, jdbcType=VARCHAR}   
+         AND EPL_ID = #{EPL_ID, jdbcType=VARCHAR}
+         AND PARENT_NO = #{PARENT_NO, jdbcType=VARCHAR}
+         AND PARENT_REVISION_ID = #{PARENT_REVISION_ID, jdbcType=VARCHAR}
+         AND PART_NO = #{PART_NO, jdbcType=VARCHAR}
+         AND PART_REVISION_ID = #{PART_REVISION_ID, jdbcType=VARCHAR}
+    </update>
+    
+    <!-- 아이템 하위 목록 조회 쿼리 -->
+    <select id="getChildrenItemID" parameterType="java.lang.String" resultType="java.lang.String" >
+      SELECT DISTINCT PITEM_ID CHILD_ID
+      FROM INFODBA.PPSOCCURRENCE, (
+          SELECT PPSBOMVIEWREVISION.PUID AS BOM_VEW_PUID,
+              PITEM.PITEM_ID AS ITEM_ID,
+              PITEMREVISION.PITEM_REVISION_ID AS REV_ID,
+              PITEMREVISION.PUID AS ITEM_REV_PUID
+          FROM INFODBA.PITEM, INFODBA.PITEMREVISION,
+              INFODBA.PSTRUCTURE_REVISIONS, INFODBA.PPSBOMVIEWREVISION
+          WHERE PITEMREVISION.RITEMS_TAGU=PITEM.PUID
+              AND PITEMREVISION.PUID=PSTRUCTURE_REVISIONS.PUID
+              AND PSTRUCTURE_REVISIONS.PVALU_0=PPSBOMVIEWREVISION.PUID
+              AND PITEM.PITEM_ID=#{PARENT_ID, jdbcType=VARCHAR}
+      ) PARENT_VIEW, INFODBA.PITEM, INFODBA.PWORKSPACEOBJECT 
+      WHERE PPSOCCURRENCE.RPARENT_BVRU IN (
+          SELECT PUID
+          FROM infodba.PPSBOMVIEWREVISION
+          WHERE PUID IN (
+              SELECT PVALU_0
+              FROM infodba.PSTRUCTURE_REVISIONS
+              WHERE PUID IN (
+                  SELECT PITEMREVISION.PUID
+                  FROM INFODBA.PITEM, INFODBA.PITEMREVISION
+                  WHERE PITEM.PUID=PITEMREVISION.RITEMS_TAGU
+                      AND (PITEM.PITEM_ID , PITEMREVISION.PITEM_REVISION_ID) IN (
+                          SELECT DISTINCT PITEM.PITEM_ID AS ITEM_ID, MAX(PITEMREVISION.PITEM_REVISION_ID) AS REVISION_ID
+                          FROM INFODBA.PITEM, INFODBA.PITEMREVISION, INFODBA.PWORKSPACEOBJECT
+                          WHERE PITEM.PUID=PITEMREVISION.RITEMS_TAGU
+                              AND PITEM.PUID=PWORKSPACEOBJECT.PUID
+                          GROUP BY PITEM.PITEM_ID
+                      )
+              )
+          )
+      )
+      AND PPSOCCURRENCE.RPARENT_BVRU=PARENT_VIEW.BOM_VEW_PUID
+      AND PPSOCCURRENCE.RCHILD_ITEMU=PITEM.PUID
+      AND PITEM.PUID=PWORKSPACEOBJECT.PUID
+    </select>
+	    
+</mapper>

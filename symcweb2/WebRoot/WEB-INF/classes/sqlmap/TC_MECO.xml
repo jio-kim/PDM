@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.meco">
+ 	 <select id="searchDistributor" parameterType="java.lang.String" resultType="java.util.HashMap">
+		<![CDATA[	 
+ 		/* [SR141218-036][20141231] shcho, 해외생기 DISTRIBUTOR 에 메일 발송이 안되는 오류 수정. */
+ 		
+		 	 SELECT
+				U.PUSER_ID
+		FROM 
+				infodba.pworkspaceobject w,
+		        infodba.PPOM_application_object a,
+		        infodba.ppom_user u
+		WHERE 
+		              A.ROWNING_USERU = U.PUID
+				and  W.PUID = A.PUID
+				AND W.PACTIVE_SEQ=1                     
+		        AND W.POBJECT_NAME = #{mecoRevPuid, jdbcType=VARCHAR}
+		union        
+		SELECT 
+				   u.puser_id AS USER_ID
+		FROM 
+				infodba.PPOM_MEMBER m,
+		        ECO_APPROVAL_LINE e,
+		        infodba.ppom_user u
+		WHERE 
+				
+					e.TC_MEMBER_PUID = M.PUID(+)
+		        AND M.RUSERU = u.puid
+		        AND e.TC_MEMBER_PUID IS NOT NULL
+				AND e.eco_no = #{mecoRevPuid, jdbcType=VARCHAR}
+		UNION
+		SELECT 
+				e.TC_MEMBER_PUID USER_ID
+		FROM 
+				ECO_APPROVAL_LINE e
+		WHERE 
+					LENGTH(e.TC_MEMBER_PUID) !=14
+				AND e.TC_MEMBER_PUID IS NOT NULL
+		        AND e.eco_no = #{mecoRevPuid, jdbcType=VARCHAR}
+
+		UNION
+
+		SELECT  
+            U.PUSER_ID
+		     
+		FROM  
+		      infodba.PPOM_MEMBER M 
+		     ,infodba.PPOM_USER U 
+		     ,infodba.PPOM_GROUP G
+             ,infodba.PGROUPMEMBER gm
+             ,infodba.PROLE r
+             ,infodba.PM7_MECOREVISION mec
+			 ,infodba.PITEM pi
+			 ,infodba.PITEMREVISION pir
+		WHERE 
+		   M.RUSERU = U.PUID 
+		   AND M.RGROUPU = G.PUID
+           AND M.PUID = GM.PUID
+           AND GM.RROLEU = R.PUID
+           AND MEC.PUID = pir.PUID
+		   AND pir.RITEMS_TAGU = pi.PUID
+		   AND pi.PITEM_ID = #{mecoRevPuid, jdbcType=VARCHAR}
+           AND R.PROLE_NAME = 
+           								(
+                                        	CASE WHEN	 MEC.PM7_ORG_CODE = 'PB' THEN 'BODY_DISTRIBUTOR'
+                                        	    WHEN   MEC.PM7_ORG_CODE = 'PA' THEN 'ASSY_DISTRIBUTOR'
+                                                WHEN   MEC.PM7_ORG_CODE = 'PP' THEN 'PAINT_DISTRIBUTOR'
+                                            	ELSE NULL
+                                            END 
+           								)				        
+		]]>		        
+ 	 </select>
+ 	 
+     <select id="searchWorkflowReadyToComplete" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select
+				I.PITEM_ID AS MECO_NO,
+				IRW.PUID AS MECO_UID
+		  from
+	<if test="TABLE_NAME == 'MECOREVISION'" >
+		  	   infodba.PM7_MECOREVISION mecoir
+	</if>
+	<if test="TABLE_NAME == 'STDWORKMETHODREVISION'" >
+		  	   infodba.PM7_STDWORKMETHODREVISION mecoir
+	</if>
+		     , infodba.PITEMREVISION ir
+		     , infodba.PWORKSPACEOBJECT irw
+		     , infodba.PPOM_APPLICATION_OBJECT ira
+		     , infodba.PITEM i
+             , INFODBA.PEPMTASKTEMPLATE et
+             , INFODBA.PEPMTASK ep
+             , INFODBA.PPROCESS_STAGE_LIST ps
+		 where mecoir.puid = ir.puid
+		   and ir.puid = irw.puid
+		   and irw.pdate_released is null
+		   and irw.pactive_seq = 1
+		   and irw.puid = ira.puid
+		   and ir.ritems_tagu = i.puid
+           AND PS.PUID = mecoir.PUID
+           AND PS.PVALU_0 = ep.PUID
+	       AND EP.RTASK_TEMPLATEU = ET.PUID
+           AND ET.PTEMPLATE_NAME ='SYSTEM'
+	<if test="TABLE_NAME == 'MECOREVISION' and IS_COMPLETED == null">
+           AND MECOIR.PM7_IS_COMPLETED IS NULL
+    </if>
+	<if test="TABLE_NAME == 'MECOREVISION' and IS_COMPLETED != null">
+           AND MECOIR.PM7_IS_COMPLETED = #{IS_COMPLETED, jdbcType=VARCHAR}
+    </if>
+	<if test=" TABLE_NAME == 'STDWORKMETHODREVISION' and MATURITY == null">
+		   AND ir.PS7_MATURITY = 'In Work'
+	</if>
+	<if test=" TABLE_NAME == 'STDWORKMETHODREVISION' and MATURITY != null">
+		   AND ir.PS7_MATURITY is not null
+	</if>
+    </select>
+
+
+   <update id="updateMEcoEffectivitDate" parameterType="java.util.HashMap">
+	   	UPDATE INFODBA.PM7_MECO_TYPEDREFERENCE MR
+		SET MR.PM7_EFFECT_DATE=TO_CHAR(SYSDATE, 'YYYY-MM-DD')
+		WHERE MR.PM7_EFFECT_DATE IS NOT NULL
+		  AND   TO_CHAR(SYSDATE, 'YYYY-MM-DD') > MR.PM7_EFFECT_DATE 
+		 AND MR.PUID = #{mecoRevPuid, jdbcType=VARCHAR}
+   </update>
+
+
+
+	<select id="selectMECOEplList" parameterType="java.lang.String" resultMap="BIND_MECOBOMEditData">
+			SELECT
+			LEVEL,
+			E.MECONO,E.SHOPNO,E.PAREUNTPUID,E.PARENTTYPE,E.PARENTNO,E.PARENTREV,E.PARENTNAME,
+			E.OLD_CHILD_PUID,E.OLD_CHILD_TYPE,E.OLD_CHILD_NO,E.OLD_CHILD_REV,E.OLD_CHILD_NAME,E.OLD_SHOWN_ON_NO,E.OLD_QTY,E.OLD_VC,E.OLD_OCC_UID,
+			E.NEW_CHILD_PUID,E.NEW_CHILD_TYPE,E.NEW_CHILD_NO,E.NEW_CHILD_REV,E.NEW_CHILD_NAME,E.NEW_SHOWN_ON_NO,E.NEW_QTY,E.NEW_VC,E.NEW_OCC_UID,
+			E.ECO_NO,E.SEQ,E.EPL_ID,E.PARENT_MOD_DATE,E.USERID
+			FROM
+					MECO_EPL E
+
+			WHERE
+			        E.MECONO = #{mecoNo, jdbcType=VARCHAR}
+			         START WITH  E.PARENTNO IN
+			         (
+	                    SELECT
+	                          DISTINCT EP.PARENTNO
+	                    FROM
+	                            MECO_EPL EP
+	                    WHERE
+	                            EP.MECONO = #{mecoNo, jdbcType=VARCHAR} AND
+	                            EP.PARENTNO NOT IN
+	                            (
+	                                 SELECT
+	                                 DISTINCT EP1.NEW_CHILD_NO
+	                                 FROM MECO_EPL EP1
+	                                 WHERE
+	                                 EP1.MECONO =#{mecoNo, jdbcType=VARCHAR} AND
+	                                 EP1.NEW_CHILD_NO IS NOT NULL
+	                            )
+			         )
+				CONNECT BY PRIOR E.NEW_CHILD_NO = E.PARENTNO
+				ORDER SIBLINGS BY TO_NUMBER(E.SEQ)
+	</select>
+
+	<!-- MECO EPL List -->
+	<resultMap id="BIND_MECOBOMEditData" type="com.symc.work.model.SYMCBOPEditData">
+        <result property="mecoNo" column="MECONO"/>
+        <result property="shopNo" column="SHOPNO"/>
+        <result property="parentPuid" column="PAREUNTPUID"/>
+        <result property="parentType" column="PARENTTYPE"/>
+        <result property="parentNo" column="PARENTNO"/>
+        <result property="parentRev" column="PARENTREV"/>
+        <result property="parentName" column="PARENTNAME"/>
+        <result property="old_child_puid" column="OLD_CHILD_PUID"/>
+        <result property="old_child_type" column="OLD_CHILD_TYPE"/>
+        <result property="old_child_no" column="OLD_CHILD_NO"/>
+        <result property="old_child_rev" column="OLD_CHILD_REV"/>
+        <result property="old_child_name" column="OLD_CHILD_NAME"/>
+        <result property="old_shown_no_no" column="OLD_SHOWN_ON_NO"/>
+        <result property="old_qty" column="OLD_QTY"/>
+        <result property="old_vc" column="OLD_VC"/>
+        <result property="new_child_puid" column="NEW_CHILD_PUID"/>
+        <result property="new_child_type" column="NEW_CHILD_TYPE"/>
+        <result property="new_child_no" column="NEW_CHILD_NO"/>
+        <result property="new_child_rev" column="NEW_CHILD_REV"/>
+        <result property="new_child_name" column="NEW_CHILD_NAME"/>
+        <result property="new_shown_no_no" column="NEW_SHOWN_ON_NO"/>
+        <result property="new_qty" column="NEW_QTY"/>
+        <result property="new_vc" column="NEW_VC"/>
+        <result property="ecoNo" column="ECO_NO"/>
+        <result property="userId" column="USERID"/>
+        <result property="seq" column="SEQ"/>
+        <result property="parent_mod_date" column="PARENT_MOD_DATE"/>
+        <result property="old_occ_uid" column="OLD_OCC_UID"/>
+        <result property="new_occ_uid" column="NEW_OCC_UID"/>
+        <result property="eplId" column="EPL_ID"/>
+
+    </resultMap>
+    
+   <update id="sendMail" statementType="CALLABLE">
+   		{call CALS.MAILSEND@LINK_001_VNET(#{the_sysid},#{the_sabun},#{the_title},#{the_remark},#{the_tsabun})}
+   </update>
+   
+   <!-- SYMC 인트라넷을 통한 메일 발송 (through EAI) -->
+   <select id="sendMailEai">
+   INSERT INTO IF_USER.IF_EMAIL (SEQ_NO, SYSTEM_ID, FROM_USERS, TITLE, REMARK, TO_USERS, CREATE_DATE ) 
+        SELECT ( SELECT GET_NEXT_MAIL_SEQ() FROM DUAL ) AS SEQ_NO
+             , #{the_sysid,jdbcType=VARCHAR,mode=IN}, #{the_sabun,jdbcType=VARCHAR,mode=IN}
+             , #{the_title,jdbcType=VARCHAR,mode=IN}
+             , #{the_remark,jdbcType=VARCHAR,mode=IN}
+             , #{the_tsabun,jdbcType=VARCHAR,mode=IN}
+             , SYSDATE
+          FROM DUAL
+   </select>
+   
+</mapper>

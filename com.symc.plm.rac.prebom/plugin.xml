@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+    <!-- Command Start -->
+    <extension
+        point="org.eclipse.ui.commands">
+        <category
+            name="PreBOM Category"
+            id="com.symc.plm.rac.prebom.commands.category">
+        </category>
+        <!-- PreBOM Start -->
+        <command
+            name="Create Project"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.prebom.commands.CreatePreProjectCommand">
+        </command>
+        <command
+            name="Create Product"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.prebom.commands.CreatePreProductCommand">
+        </command>
+        <command
+            name="Create Function"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.prebom.commands.CreatePreFunctionCommand">
+        </command>
+        <command
+            name="Create FunctionMaster"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.prebom.commands.CreatePreFuncMasterCommand">
+        </command>
+        <!--
+        <command
+            name="Create VehiclePart"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.prebom.commands.CreatePreVehiclePartCommand">
+        </command>
+        -->
+      <command
+            name="Mapping to Pre VehPart"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.ssangyong.commands.prebommapping.VehPartMappingCommand">
+      </command> 
+        <command
+            name="Master List Manager (MLM)"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.masterlist.commands.CreateMasterListCommand">
+        </command>
+        <!--
+        	Pre-BOM Full list 엑셀 출력 기능
+        -->
+        <command
+            name="All Pre-BOM Master List Export"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.masterlist.commands.AllPreBOMUssageExportCommand">
+        </command>
+        <command
+            name="Compare MLM"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.masterlist.commands.ComparePreBOMCommand">
+        </command>
+        <command
+            name="Weight Master List Manager (WMLM) - Function"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.prebom.commands.WeightMasterListCommand">
+        </command>
+        <command
+            name="Pre O/Spec Importer"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.preospec.commands.PreOSpecImportCommand">
+        </command> 
+        <command
+            name="Target/Prd Investment Cost Importer"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.costUpdate.TargetCostImportCommand">
+        </command>
+        <command
+            name="FMP Option Editor"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.optionedit.commands.PreFmpOptionSetCommand">
+        </command>                   
+        <command
+            name="Revise Pre Parts"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.prebom.commands.PreReviseCommand">
+        </command>
+        <command
+            name="Update Est. Weight Pre Part"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.prebom.commands.UpdateEstWeightCommand">
+        </command>
+        <command
+            name="Pre O/Spec Mandatory Option Manager"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.preospec.commands.PreOSpecMandatoryCommand">
+        </command>
+        <command
+            name="Weight Master List Manager (WMLM) - Full"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.prebom.commands.LatestWeightMasterListCommand">
+        </command>
+        
+        <!-- PreBOM End -->
+        
+        <!-- CCN Start -->
+        <command
+            name="Create CCN"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.ccn.commands.CreatePreCCNCommand">
+        </command>
+        <command
+            name="Report CCN"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.ccn.commands.ReportPreCCNCommand">
+        </command>
+        <command
+            name="Self Release(CSR)"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.release.commands.SelfCSRReleaseCommand">
+        </command>        
+        <!-- CCN End -->
+        
+        <!-- PreBomLine Start -->
+        <command
+            name="PreFunction Part Upload(Excel)"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.migprebom.commands.ImportPreFunctionCommand">
+        </command>
+        <command
+            name="PreFunctionMaster Part Upload(Excel)"
+            categoryId="com.symc.plm.rac.prebom.commands.category"
+            id="com.symc.plm.rac.prebom.migprebom.commands.ImportPreFunctionMastCommand">
+        </command>
+        <!-- PreBomLine End -->
+        
+    </extension>
+    <!-- Command End -->
+    
+    
+    <!-- Handler Start -->
+    <extension
+        point="org.eclipse.ui.handlers">
+        <!-- PreBOM Start -->
+        <handler
+            commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreProjectCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <handler
+            commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreProductCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <handler
+            commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreFunctionCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <handler
+            commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreFuncMasterCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <!--
+        <handler
+            commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreVehiclePartCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        -->
+      <handler
+            class="com.ssangyong.handlers.SYMCCommonHandler"
+            commandId="com.ssangyong.commands.prebommapping.VehPartMappingCommand">
+      </handler>   
+        <handler
+            commandId="com.symc.plm.rac.prebom.masterlist.commands.CreateMasterListCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+                <handler
+            commandId="com.symc.plm.rac.prebom.masterlist.commands.AllPreBOMUssageExportCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>    
+        <handler
+            commandId="com.symc.plm.rac.prebom.masterlist.commands.ComparePreBOMCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>   
+        <handler
+            commandId="com.symc.plm.rac.prebom.prebom.commands.WeightMasterListCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>      
+        <handler
+            commandId="com.symc.plm.rac.prebom.preospec.commands.PreOSpecImportCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler> 
+        <handler
+            commandId="com.symc.plm.rac.prebom.costUpdate.TargetCostImportCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler> 
+        <handler
+            commandId="com.symc.plm.rac.prebom.optionedit.commands.PreFmpOptionSetCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>      
+        <handler
+            commandId="com.symc.plm.rac.prebom.prebom.commands.PreReviseCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>      
+        <handler
+            commandId="com.symc.plm.rac.prebom.prebom.commands.UpdateEstWeightCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>      
+        <handler
+            commandId="com.symc.plm.rac.prebom.preospec.commands.PreOSpecMandatoryCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <handler
+            commandId="com.symc.plm.rac.prebom.prebom.commands.LatestWeightMasterListCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>        
+        <!-- PreBOM End -->
+        
+        <!-- CCN Start -->
+        <handler
+            commandId="com.symc.plm.rac.prebom.ccn.commands.CreatePreCCNCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <handler
+            commandId="com.symc.plm.rac.prebom.ccn.commands.ReportPreCCNCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <!-- CCN End -->
+        
+        <!-- PreBomLine End -->
+        <handler
+            commandId="com.symc.plm.rac.prebom.migprebom.commands.ImportPreFunctionCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <handler
+            commandId="com.symc.plm.rac.prebom.migprebom.commands.ImportPreFunctionMastCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <!-- PreBomLine End -->
+        
+        <!-- SelfRelease Start -->
+        <handler
+            commandId="com.symc.plm.rac.prebom.release.commands.SelfCSRReleaseCommand"
+            class="com.symc.plm.rac.prebom.handlers.CommonHandler">
+        </handler>
+        <!-- SelfRelease End -->
+    </extension>
+    <!-- Handler End -->
+    
+
+    <!-- Menu Start -->
+    <extension
+        point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+            <!-- PreBOM Start -->
+            <menu label="PreBOM" mnemonic="M" id="com.symc.plm.rac.prebom.prebom.menus.preBOMMenu">
+                <menu label="Create" id="com.symc.plm.rac.prebom.create">
+                    <command
+                        commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreProjectCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.prebom.menus.CreatePreProjectCommand"
+                        icon="icons/newitem_16.png">
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreProductCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.prebom.menus.CreatePreProductCommand"
+                        icon="icons/newitem_16.png">
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreFunctionCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.prebom.menus.CreatePreFunctionCommand"
+                        icon="icons/newitem_16.png">
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreFuncMasterCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.prebom.menus.CreatePreFuncMasterCommand"
+                        icon="icons/newitem_16.png">
+                    </command>
+                    <!--
+                    <command
+                        commandId="com.symc.plm.rac.prebom.prebom.commands.CreatePreVehiclePartCommand_"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.prebom.menus.CreatePreVehiclePartCommand"
+                        icon="icons/newitem_16.png">
+                    </command>
+                    -->
+                    <command
+                        commandId="com.symc.plm.rac.prebom.ccn.commands.CreatePreCCNCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.ccn.menus.CreatePreCCNCommand"
+                        icon="icons/newitem_16.png">
+                    </command>
+                </menu>
+                <menu label="Upload" id="com.symc.plm.rac.prebom.upload">
+                    <command
+                        commandId="com.symc.plm.rac.prebom.preospec.commands.PreOSpecImportCommand"
+                        id="com.symc.plm.rac.prebom.preospec.commands.PreOSpecImportCommand">
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.migprebom.commands.ImportPreFunctionCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.migprebom.menus.ImportPreFunctionCommand"
+                        icon="icons/masterdata_16.png">
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.migprebom.commands.ImportPreFunctionMastCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.migprebom.menus.ImportPreFunctionMastCommand"
+                        icon="icons/masterdata_16.png">
+                    </command> 
+                    <command
+                        commandId="com.symc.plm.rac.prebom.costUpdate.TargetCostImportCommand"
+                        id="com.symc.plm.rac.prebom.costUpdate.TargetCostImportCommand">
+                    </command>
+                </menu>
+                <menu label="Utility" id="com.symc.plm.rac.prebom.utility">
+                    <command
+                        commandId="com.symc.plm.rac.prebom.masterlist.commands.CreateMasterListCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.masterlist.commands.CreateMasterListCommand"
+                        icon="icons/executesearch_16.png">                    
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.masterlist.commands.ComparePreBOMCommand"
+                        id="com.symc.plm.rac.prebom.masterlist.commands.ComparePreBOMCommand">                    
+                    </command>
+                    <command
+                        commandId="com.ssangyong.commands.prebommapping.VehPartMappingCommand"
+                        mnemonic="M"
+                        id="com.ssangyong.commands.prebommapping.VehPartMappingCommand"
+                        icon="icons/newitem_16.png">
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.optionedit.commands.PreFmpOptionSetCommand"
+                        id="com.symc.plm.rac.prebom.optionedit.commands.PreFmpOptionSetCommand">    
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.preospec.commands.PreOSpecMandatoryCommand"
+                        id="com.symc.plm.rac.prebom.preospec.commands.PreOSpecMandatoryCommand">
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.prebom.commands.UpdateEstWeightCommand"
+                        id="com.symc.plm.rac.prebom.prebbom.commands.UpdateEstWeightCommand">
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.release.commands.SelfCSRReleaseCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.prebom.menus.SelfCSRReleaseCommand"
+                        icon="icons/completedstate_16.png">
+		                <visibleWhen checkEnabled="true">
+		                  <and>
+		                     <reference definitionId="com.symc.plm.rac.prebom.preBomMenuView"></reference>
+		                     <with variable="rac_command_suppression">
+		                        <not>
+		                           <iterate operator="or">
+		                              <equals value="com.symc.plm.rac.prebom.release.commands.SelfCSRReleaseCommand"> </equals>
+		                           </iterate>
+		                        </not>
+		                     </with>
+		                  </and>
+		               </visibleWhen>
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.prebom.commands.PreReviseCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.prebbom.commands.PreReviseCommand"
+                        icon="icons/revise_16.png">                    
+                    </command>  
+                </menu>
+                <menu label="Report" id="com.symc.plm.rac.prebom.report">
+                    <command
+                       commandId="com.symc.plm.rac.prebom.ccn.commands.ReportPreCCNCommand"
+                       mnemonic="S"
+                       id="com.symc.plm.rac.prebom.ccn.menus.ReportPreCCNCommand"
+                       icon="icons/newitem_16.png">
+                    </command>
+                    <command
+                        commandId="com.symc.plm.rac.prebom.prebom.commands.WeightMasterListCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.prebom.commands.WeightMasterListCommand"
+                        icon="icons/executesearch_16.png">                    
+                    </command>  
+                    <command
+                        commandId="com.symc.plm.rac.prebom.prebom.commands.LatestWeightMasterListCommand"
+                        mnemonic="S"
+                        id="com.symc.plm.rac.prebom.prebom.commands.LatestWeightMasterListCommand"
+                        icon="icons/executesearch_16.png">                    
+                    </command> 
+                    <command
+                        commandId="com.symc.plm.rac.prebom.masterlist.commands.AllPreBOMUssageExportCommand"
+                        id="com.symc.plm.rac.prebom.masterlist.commands.AllPreBOMUssageExportCommand"
+                        icon="icons/executesearch_16.png">                    
+                    </command>
+                </menu> 
+            </menu>
+            <!-- PreBOM End -->
+        </menuContribution>
+        <!-- Toolbar 정의 - Start -->
+        <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+            <toolbar id="org.sdv.core.ui.menu.toolbars.preBomToolbar">
+                <visibleWhen>
+                    <reference definitionId="com.symc.plm.rac.prebom.preBomMenuView"></reference>
+                </visibleWhen>
+                <command commandId="com.symc.plm.rac.prebom.prebom.commands.PreReviseCommand" icon="icons/revise_16.png" tooltip="PreBom Revise" >
+                    <visibleWhen>
+                        <reference definitionId="com.symc.plm.rac.prebom.preBomMenuView"></reference>
+                    </visibleWhen>
+                </command>
+            </toolbar>
+        </menuContribution>
+        <!-- Toolbar 정의 - End -->
+    </extension>
+    <!-- Menu End -->
+
+    <extension point="org.eclipse.core.expressions.definitions">
+        <definition
+            id="com.symc.plm.rac.prebom.preBomMenuView">
+            <or>
+                <reference definitionId="com.teamcenter.rac.pse.inMainView"/>
+                <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+            </or>
+        </definition>
+    </extension>
+
+    <!-- TC Viewer 연결 Start -->
+    <extension point="com.teamcenter.rac.viewer.ViewerViewRegistry">
+        <viewer
+            autoCheckout="false"
+            factoryClassName="com.symc.plm.rac.prebom.common.viewer.PreSYMCPropertyViewerFactory"
+            id="PreSYMCPropertyViewer"
+            isSwing="false"
+            priority="100">
+            <enableWhen
+                checkEnabled="false">
+            </enableWhen>
+        </viewer>
+    </extension>
+    <!-- TC Viewer 연결 End -->
+    
+    <!-- 단축기 기능 추가 Start
+    <extension point="org.eclipse.ui.bindings">
+        <key commandId="com.symc.plm.rac.prebom.masterlist.commands.CreateMasterListCommand"
+            schemeId="com.teamcenter.rac.scheme" sequence="M1+Q"/>
+    </extension> -->
+    <!-- 단축기 기능 추가 End -->
+    
+</plugin>

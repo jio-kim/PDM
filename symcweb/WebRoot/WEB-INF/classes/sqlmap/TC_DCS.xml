@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- [DCS 현업 사용문제 신고내역] [20150708][ymjang] 메일 문서 정보 및 소유 정보 표시 -->
+<!-- [DCS 현업 사용문제 신고내역] [20150708][ymjang] 당일 결재 요청일 로 부터 +1일 이후부터 메일 발송 -->
+<!-- [DCS 현업 사용문제 신고내역] [20150716][ymjang] 문서 정보에 결재구분 표시 추가  -->
+<mapper namespace="com.symc.dcs">
+<!-- [20171121] DB LINK DELETE 
+	<select id="searchStandbyPerformTaskInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	<![CDATA[
+	 SELECT I.PITEM_ID as itemId,
+	        IR.PITEM_REVISION_ID as revId,
+            ( SELECT v.team team_name
+	            FROM INFODBA.PGROUP g
+	               , cals.sysa01tb@LINK_001_VNET v
+	           WHERE v.tmcod = g.PDESCRIPTION
+	             AND g.PUID = PM.RGROUPU ) as groupName,
+	        HBOM_CM_PACKAGE.GET_LOV_DESCRIPTION(DCSI.PS7_SYSTEM_CODE, 'S7_SYSTEM_CODE') AS SYSTEM_NAME,
+	        PU.PUSER_ID as userId,
+	        PU.PUSER_NAME as userName,
+	        ( SELECT v.team team_name
+	            FROM INFODBA.PGROUP g
+	               , cals.sysa01tb@LINK_001_VNET v
+	           WHERE v.tmcod = g.PDESCRIPTION
+	             AND g.PUID = PAO.ROWNING_GROUPU ) as owning_group,
+	        ( SELECT u.PUSER_NAME FROM INFODBA.PPOM_USER u WHERE u.PUID = PAO.ROWNING_USERU ) as owning_user,
+            CASE WHEN ATCW.POBJECT_NAME = 'SYMC_DCS' THEN '작성'
+                 WHEN INSTR(JOBW.POBJECT_NAME, '협의') > 0 THEN '협의'
+                 WHEN INSTR(JOBW.POBJECT_NAME, '참조') > 0 THEN '참조'
+                 ELSE ''
+            END AS EPMJOB_GB,
+	        JOB.*
+	   FROM INFODBA.PITEM            I,
+	        INFODBA.PITEMREVISION    IR,
+	        INFODBA.PWORKSPACEOBJECT W,
+	        INFODBA.PPOM_APPLICATION_OBJECT PAO, 
+	        INFODBA.PS7_DESIGNCONCEPT DCSI,
+	        INFODBA.PATTACHMENTS     ATC,
+	        INFODBA.PATTACHMENTS     CCATC,
+	        INFODBA.PWORKSPACEOBJECT ATCW,
+	        INFODBA.PEPMTASK         ET,
+	        INFODBA.PEPMTASK         CET,
+	        INFODBA.PEPMTASK         CCET,
+	        INFODBA.PPOM_APPLICATION_OBJECT PAO1,
+	        INFODBA.PEPMJOB          JOB,
+	        INFODBA.PWORKSPACEOBJECT JOBW,
+	        INFODBA.PEPMTASKTEMPLATE ETT,
+	        INFODBA.PEPMTASKTEMPLATE CETT,
+	        INFODBA.PEPMTASKTEMPLATE CCETT,
+	        INFODBA.PSIGNOFF         SO,
+	        INFODBA.PPOM_USER        PU,
+	        INFODBA.PPOM_MEMBER      PM,
+	        INFODBA.PPOM_GROUP       PG
+	  WHERE DCSI.PUID = I.PUID
+	    AND PAO.PUID = IR.PUID
+	    AND I.PUID = IR.RITEMS_TAGU
+	    AND IR.PUID = W.PUID
+	    AND W.POBJECT_TYPE = 'S7_DesignConceptRevision'
+	    AND ATC.PVALU_0 = IR.PUID
+	    AND ATC.PUID = ATCW.PUID
+	    AND ATCW.POBJECT_NAME LIKE 'SYMC_DCS%'
+	    AND ATC.PUID = ET.PUID
+	    AND TO_CHAR(PAO1.PCREATION_DATE + 9 / 24, 'YYYYMMDD') < #{TODAY, jdbcType=VARCHAR}
+	    AND CCET.PUID = PAO1.PUID
+	    AND CCATC.PUID = CCET.PUID
+	    AND CCATC.PVALU_0 = SO.PUID
+	    AND PU.PUSER_ID = #{PUSER_ID, jdbcType=VARCHAR}
+	    AND SO.RGROUP_MEMBERU = PM.PUID
+	    AND PM.RUSERU = PU.PUID
+	    AND PM.RGROUPU = PG.PUID
+	    AND ET.RPARENT_PROCESSU = JOB.PUID
+	    AND JOB.PUID = JOBW.PUID
+	    AND CET.RPARENT_TASKU = ET.PUID
+	    AND CCET.RPARENT_TASKU = CET.PUID
+	    AND ET.RTASK_TEMPLATEU = ETT.PUID
+	    AND CET.RTASK_TEMPLATEU = CETT.PUID
+	    AND CCET.RTASK_TEMPLATEU = CCETT.PUID
+	    AND CCETT.PTEMPLATE_NAME = 'perform-signoffs'
+	    AND CCET.PTASK_RESULT = 'Unset'
+	ORDER BY itemId
+	]]>
+	</select>
+  -->
+  <!-- [20171121] DB LINK DELETE -->
+  <select id="searchStandbyPerformTaskInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  <![CDATA[
+   SELECT I.PITEM_ID as itemId,
+          IR.PITEM_REVISION_ID as revId,
+            ( SELECT v.team team_name
+              FROM INFODBA.PGROUP g
+                 , if_user.sysa01tb v
+             WHERE v.tmcod = g.PDESCRIPTION
+               AND g.PUID = PM.RGROUPU ) as groupName,
+          HBOM_CM_PACKAGE.GET_LOV_DESCRIPTION(DCSI.PS7_SYSTEM_CODE, 'S7_SYSTEM_CODE') AS SYSTEM_NAME,
+          PU.PUSER_ID as userId,
+          PU.PUSER_NAME as userName,
+          ( SELECT v.team team_name
+              FROM INFODBA.PGROUP g
+                 , if_user.sysa01tb v
+             WHERE v.tmcod = g.PDESCRIPTION
+               AND g.PUID = PAO.ROWNING_GROUPU ) as owning_group,
+          ( SELECT u.PUSER_NAME FROM INFODBA.PPOM_USER u WHERE u.PUID = PAO.ROWNING_USERU ) as owning_user,
+            CASE WHEN ATCW.POBJECT_NAME = 'SYMC_DCS' THEN '작성'
+                 WHEN INSTR(JOBW.POBJECT_NAME, '협의') > 0 THEN '협의'
+                 WHEN INSTR(JOBW.POBJECT_NAME, '참조') > 0 THEN '참조'
+                 ELSE ''
+            END AS EPMJOB_GB,
+          JOB.*
+     FROM INFODBA.PITEM            I,
+          INFODBA.PITEMREVISION    IR,
+          INFODBA.PWORKSPACEOBJECT W,
+          INFODBA.PPOM_APPLICATION_OBJECT PAO, 
+          INFODBA.PS7_DESIGNCONCEPT DCSI,
+          INFODBA.PATTACHMENTS     ATC,
+          INFODBA.PATTACHMENTS     CCATC,
+          INFODBA.PWORKSPACEOBJECT ATCW,
+          INFODBA.PEPMTASK         ET,
+          INFODBA.PEPMTASK         CET,
+          INFODBA.PEPMTASK         CCET,
+          INFODBA.PPOM_APPLICATION_OBJECT PAO1,
+          INFODBA.PEPMJOB          JOB,
+          INFODBA.PWORKSPACEOBJECT JOBW,
+          INFODBA.PEPMTASKTEMPLATE ETT,
+          INFODBA.PEPMTASKTEMPLATE CETT,
+          INFODBA.PEPMTASKTEMPLATE CCETT,
+          INFODBA.PSIGNOFF         SO,
+          INFODBA.PPOM_USER        PU,
+          INFODBA.PPOM_MEMBER      PM,
+          INFODBA.PPOM_GROUP       PG
+    WHERE DCSI.PUID = I.PUID
+      AND PAO.PUID = IR.PUID
+      AND I.PUID = IR.RITEMS_TAGU
+      AND IR.PUID = W.PUID
+      AND W.POBJECT_TYPE = 'S7_DesignConceptRevision'
+      AND ATC.PVALU_0 = IR.PUID
+      AND ATC.PUID = ATCW.PUID
+      AND ATCW.POBJECT_NAME LIKE 'SYMC_DCS%'
+      AND ATC.PUID = ET.PUID
+      AND TO_CHAR(PAO1.PCREATION_DATE + 9 / 24, 'YYYYMMDD') < #{TODAY, jdbcType=VARCHAR}
+      AND CCET.PUID = PAO1.PUID
+      AND CCATC.PUID = CCET.PUID
+      AND CCATC.PVALU_0 = SO.PUID
+      AND PU.PUSER_ID = #{PUSER_ID, jdbcType=VARCHAR}
+      AND SO.RGROUP_MEMBERU = PM.PUID
+      AND PM.RUSERU = PU.PUID
+      AND PM.RGROUPU = PG.PUID
+      AND ET.RPARENT_PROCESSU = JOB.PUID
+      AND JOB.PUID = JOBW.PUID
+      AND CET.RPARENT_TASKU = ET.PUID
+      AND CCET.RPARENT_TASKU = CET.PUID
+      AND ET.RTASK_TEMPLATEU = ETT.PUID
+      AND CET.RTASK_TEMPLATEU = CETT.PUID
+      AND CCET.RTASK_TEMPLATEU = CCETT.PUID
+      AND CCETT.PTEMPLATE_NAME = 'perform-signoffs'
+      AND CCET.PTASK_RESULT = 'Unset'
+  ORDER BY itemId
+  ]]>
+  </select>
+	<!-- [DCS 현업 사용문제 신고내역] [20150714][ymjang] 메일 제목에 문서 정보 표시 -->
+  <!-- DB LINK DELETE 
+  
+	<select id="searchStandbyPerformUserInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT USERID, USERNAME, GROUPNAME
+	     , ITEMID, REVID
+	     , SYSTEM_NAME
+	     , OWNING_GROUP, OWNING_USER
+	     , TO_CHAR(RNUM_MAX - 1) AS RCNT
+	  FROM (
+	        SELECT X.USERID, X.USERNAME, X.GROUPNAME
+	             , X.ITEMID, X.REVID, X.SYSTEM_NAME
+	             , X.OWNING_GROUP, X.OWNING_USER
+	             , X.RNUM
+	             , MAX(RNUM) OVER (PARTITION BY X.USERID) AS RNUM_MAX
+	          FROM (
+	                 SELECT PU.PUSER_ID as userId,
+	                        PU.PUSER_NAME as userName,
+	                         ( SELECT v.team team_name
+	                             FROM INFODBA.PGROUP g
+	                                , cals.sysa01tb@LINK_001_VNET v
+	                            WHERE v.tmcod = g.PDESCRIPTION
+	                              AND g.PUID = PM.RGROUPU ) as groupName,
+	                        ROW_NUMBER() OVER (PARTITION BY PU.PUSER_ID ORDER BY I.PITEM_ID, IR.PITEM_REVISION_ID) AS RNUM,
+	                        I.PITEM_ID as itemId,
+	                        IR.PITEM_REVISION_ID as revId,
+	                        HBOM_CM_PACKAGE.GET_LOV_DESCRIPTION(DCSI.PS7_SYSTEM_CODE, 'S7_SYSTEM_CODE') AS SYSTEM_NAME,
+	                        ( SELECT v.team team_name
+	                            FROM INFODBA.PGROUP g
+	                               , cals.sysa01tb@LINK_001_VNET v
+	                           WHERE v.tmcod = g.PDESCRIPTION
+	                             AND g.PUID = PAO.ROWNING_GROUPU ) as owning_group,
+	                        ( SELECT u.PUSER_NAME FROM INFODBA.PPOM_USER u WHERE u.PUID = PAO.ROWNING_USERU ) as owning_user
+	                   FROM INFODBA.PITEM            I,
+	                        INFODBA.PITEMREVISION    IR,
+	                        INFODBA.PWORKSPACEOBJECT W,
+	                        INFODBA.PPOM_APPLICATION_OBJECT PAO, 
+	                        INFODBA.PS7_DESIGNCONCEPT DCSI,
+	                        INFODBA.PATTACHMENTS     ATC,
+	                        INFODBA.PATTACHMENTS     CCATC,
+	                        INFODBA.PWORKSPACEOBJECT ATCW,
+	                        INFODBA.PEPMTASK         ET,
+	                        INFODBA.PEPMTASK         CET,
+	                        INFODBA.PEPMTASK         CCET,
+	                        INFODBA.PPOM_APPLICATION_OBJECT PAO1,
+	                        INFODBA.PEPMJOB          JOB,
+	                        INFODBA.PWORKSPACEOBJECT JOBW,
+	                        INFODBA.PEPMTASKTEMPLATE ETT,
+	                        INFODBA.PEPMTASKTEMPLATE CETT,
+	                        INFODBA.PEPMTASKTEMPLATE CCETT,
+	                        INFODBA.PSIGNOFF         SO,
+	                        INFODBA.PPOM_USER        PU,
+	                        INFODBA.PPOM_MEMBER      PM,
+	                        INFODBA.PPOM_GROUP       PG
+	                  WHERE DCSI.PUID = I.PUID
+	                    AND PAO.PUID = IR.PUID
+	                    AND I.PUID = IR.RITEMS_TAGU
+	                    AND IR.PUID = W.PUID
+	                    AND W.POBJECT_TYPE = 'S7_DesignConceptRevision'
+	                    AND ATC.PVALU_0 = IR.PUID
+	                    AND ATC.PUID = ATCW.PUID
+	                    AND ATCW.POBJECT_NAME LIKE 'SYMC_DCS%'
+	                    AND ATC.PUID = ET.PUID
+	                    AND TO_CHAR(PAO1.PCREATION_DATE + 9 / 24, 'YYYYMMDD') < #{TODAY, jdbcType=VARCHAR}
+	                    AND CCET.PUID = PAO1.PUID
+	                    AND CCATC.PUID = CCET.PUID
+	                    AND CCATC.PVALU_0 = SO.PUID
+	                    AND SO.RGROUP_MEMBERU = PM.PUID
+	                    AND PM.RUSERU = PU.PUID
+	                    AND PM.RGROUPU = PG.PUID
+	                    AND ET.RPARENT_PROCESSU = JOB.PUID
+	                    AND JOB.PUID = JOBW.PUID
+	                    AND CET.RPARENT_TASKU = ET.PUID
+	                    AND CCET.RPARENT_TASKU = CET.PUID
+	                    AND ET.RTASK_TEMPLATEU = ETT.PUID
+	                    AND CET.RTASK_TEMPLATEU = CETT.PUID
+	                    AND CCET.RTASK_TEMPLATEU = CCETT.PUID
+	                    AND CCETT.PTEMPLATE_NAME = 'perform-signoffs'
+	                    AND CCET.PTASK_RESULT = 'Unset'
+	                ) X
+	      )
+	 WHERE RNUM = RNUM_MAX
+	]]>
+	</select>
+  -->
+  <select id="searchStandbyPerformUserInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+  <![CDATA[
+  SELECT USERID, USERNAME, GROUPNAME
+       , ITEMID, REVID
+       , SYSTEM_NAME
+       , OWNING_GROUP, OWNING_USER
+       , TO_CHAR(RNUM_MAX - 1) AS RCNT
+    FROM (
+          SELECT X.USERID, X.USERNAME, X.GROUPNAME
+               , X.ITEMID, X.REVID, X.SYSTEM_NAME
+               , X.OWNING_GROUP, X.OWNING_USER
+               , X.RNUM
+               , MAX(RNUM) OVER (PARTITION BY X.USERID) AS RNUM_MAX
+            FROM (
+                   SELECT PU.PUSER_ID as userId,
+                          PU.PUSER_NAME as userName,
+                           ( SELECT v.team team_name
+                               FROM INFODBA.PGROUP g
+                                  , if_user.sysa01tb v
+                              WHERE v.tmcod = g.PDESCRIPTION
+                                AND g.PUID = PM.RGROUPU ) as groupName,
+                          ROW_NUMBER() OVER (PARTITION BY PU.PUSER_ID ORDER BY I.PITEM_ID, IR.PITEM_REVISION_ID) AS RNUM,
+                          I.PITEM_ID as itemId,
+                          IR.PITEM_REVISION_ID as revId,
+                          HBOM_CM_PACKAGE.GET_LOV_DESCRIPTION(DCSI.PS7_SYSTEM_CODE, 'S7_SYSTEM_CODE') AS SYSTEM_NAME,
+                          ( SELECT v.team team_name
+                              FROM INFODBA.PGROUP g
+                                 , if_user.sysa01tb v
+                             WHERE v.tmcod = g.PDESCRIPTION
+                               AND g.PUID = PAO.ROWNING_GROUPU ) as owning_group,
+                          ( SELECT u.PUSER_NAME FROM INFODBA.PPOM_USER u WHERE u.PUID = PAO.ROWNING_USERU ) as owning_user
+                     FROM INFODBA.PITEM            I,
+                          INFODBA.PITEMREVISION    IR,
+                          INFODBA.PWORKSPACEOBJECT W,
+                          INFODBA.PPOM_APPLICATION_OBJECT PAO, 
+                          INFODBA.PS7_DESIGNCONCEPT DCSI,
+                          INFODBA.PATTACHMENTS     ATC,
+                          INFODBA.PATTACHMENTS     CCATC,
+                          INFODBA.PWORKSPACEOBJECT ATCW,
+                          INFODBA.PEPMTASK         ET,
+                          INFODBA.PEPMTASK         CET,
+                          INFODBA.PEPMTASK         CCET,
+                          INFODBA.PPOM_APPLICATION_OBJECT PAO1,
+                          INFODBA.PEPMJOB          JOB,
+                          INFODBA.PWORKSPACEOBJECT JOBW,
+                          INFODBA.PEPMTASKTEMPLATE ETT,
+                          INFODBA.PEPMTASKTEMPLATE CETT,
+                          INFODBA.PEPMTASKTEMPLATE CCETT,
+                          INFODBA.PSIGNOFF         SO,
+                          INFODBA.PPOM_USER        PU,
+                          INFODBA.PPOM_MEMBER      PM,
+                          INFODBA.PPOM_GROUP       PG
+                    WHERE DCSI.PUID = I.PUID
+                      AND PAO.PUID = IR.PUID
+                      AND I.PUID = IR.RITEMS_TAGU
+                      AND IR.PUID = W.PUID
+                      AND W.POBJECT_TYPE = 'S7_DesignConceptRevision'
+                      AND ATC.PVALU_0 = IR.PUID
+                      AND ATC.PUID = ATCW.PUID
+                      AND ATCW.POBJECT_NAME LIKE 'SYMC_DCS%'
+                      AND ATC.PUID = ET.PUID
+                      AND TO_CHAR(PAO1.PCREATION_DATE + 9 / 24, 'YYYYMMDD') < #{TODAY, jdbcType=VARCHAR}
+                      AND CCET.PUID = PAO1.PUID
+                      AND CCATC.PUID = CCET.PUID
+                      AND CCATC.PVALU_0 = SO.PUID
+                      AND SO.RGROUP_MEMBERU = PM.PUID
+                      AND PM.RUSERU = PU.PUID
+                      AND PM.RGROUPU = PG.PUID
+                      AND ET.RPARENT_PROCESSU = JOB.PUID
+                      AND JOB.PUID = JOBW.PUID
+                      AND CET.RPARENT_TASKU = ET.PUID
+                      AND CCET.RPARENT_TASKU = CET.PUID
+                      AND ET.RTASK_TEMPLATEU = ETT.PUID
+                      AND CET.RTASK_TEMPLATEU = CETT.PUID
+                      AND CCET.RTASK_TEMPLATEU = CCETT.PUID
+                      AND CCETT.PTEMPLATE_NAME = 'perform-signoffs'
+                      AND CCET.PTASK_RESULT = 'Unset'
+                  ) X
+        )
+   WHERE RNUM = RNUM_MAX
+  ]]>
+  </select>
+	<select id="getHolidayYN" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT HOLY FROM IF_HOLIDAY WHERE PDATE = #{TODAY, jdbcType=VARCHAR}
+	</select>
+ 
+</mapper>

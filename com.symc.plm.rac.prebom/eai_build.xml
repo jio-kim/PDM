@@ -1,0 +1,13 @@
+<project default="wsimport">
+	<target name="wsimport">
+		<exec executable="C:\Java\jdk1.7.0_71\bin\wsimport">
+			<!-- 개발 
+			<arg line="-keep -s ./src -p com.symc.plm.rac.prebom.dcs.eai -d ./bin http://150.1.154.232:5510/ws/CommProvider.L_H08:H08P010wsp?WSDL" />
+			-->
+
+			<!-- 운영 -->
+			<arg line="-keep -s ./src -p com.symc.plm.rac.prebom.dcs.eai -d ./bin http://150.1.154.215:5010/ws/CommProvider.L_H08:H08P010wsp?WSDL" />
+			<!-- 운영 -->
+		</exec>
+	</target>
+</project>

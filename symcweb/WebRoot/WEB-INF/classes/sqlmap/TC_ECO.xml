@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.tc.eco">
+
+	<!-- 2016-05-30 taeku.jeong ECO_BOM_LIST.PARENT_PROJECT -> ECO_BOM_LIST.NEW_PROJECT 로 수정 -->
+    <!-- IF_PE_PRODUCT - ResultMap -->
+     <resultMap id="ECO_BOM_VO_RESULT" type="com.symc.work.model.EcoBomVO">
+        <result property="ecoNo" column="eco_no"/>
+        <result property="eplYn" column="epl_yn"/>
+        <result property="occThreads" column="occ_threads"/>
+        <result property="oldOccs" column="OLD_OCCS"/>
+        <result property="ct" column="ct"/>
+        <result property="parentNo" column="parent_no"/>
+        <result property="parentRev" column="parent_rev"/>
+        <result property="parentType" column="parent_type"/>
+        <result property="parentProject" column="NEW_PROJECT"/>
+        <result property="oldPartNo" column="old_part_no"/>
+        <result property="oldPartRev" column="old_part_rev"/>
+        <result property="oldPartType" column="old_part_type"/>
+        <result property="newPartNo" column="new_part_no"/>
+        <result property="newPartRev" column="new_part_rev"/>
+        <result property="newPartType" column="new_part_type"/>
+        <result property="oldSeq" column="old_seq"/>
+        <result property="newSeq" column="new_seq"/>
+        <result property="oldQty" column="old_qty"/>
+        <result property="newQty" column="new_qty"/>
+        <result property="oldSmode" column="old_smode"/>
+        <result property="newSmode" column="new_smode"/>
+        <result property="oldApart" column="old_apart"/>
+        <result property="newApart" column="new_apart"/>
+        <result property="oldMcode" column="old_mcode"/>
+        <result property="newMcode" column="new_mcode"/>
+        <result property="oldVc" column="old_vc"/>
+        <result property="newVc" column="new_vc"/>
+        <result property="oldIc" column="old_ic"/>
+        <result property="newIc" column="new_ic"/>
+        <result property="oldPltStk" column="old_plt_stk"/>
+        <result property="oldAsStk" column="old_as_stk"/>
+        <result property="newCost" column="new_cost"/>
+        <result property="newTool" column="new_tool"/>
+        <result property="chgDesc" column="chg_desc"/>
+        <result property="oldDesc" column="old_desc"/>
+        <result property="creDate" column="cre_date"/>
+        <result property="updUserId" column="upd_user_id"/>
+        <result property="updDate" column="upd_date"/>
+        <result property="eplId" column="epl_id"/>
+     </resultMap>
+
+    <!-- TC ECO_BOM_LIST 리스트를 가지고온다.  -->
+    <select id="getEcoBomList" parameterType="java.util.HashMap" resultMap="ECO_BOM_VO_RESULT">
+        SELECT * FROM ECO_BOM_LIST WHERE ECO_NO = #{ecoNo, jdbcType=VARCHAR}
+        ORDER BY CRE_DATE
+    </select>
+</mapper>

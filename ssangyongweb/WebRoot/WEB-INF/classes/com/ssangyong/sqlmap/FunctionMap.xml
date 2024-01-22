@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+  
+<mapper namespace="com.ssangyong.mapper.FunctionMapper">
+    
+    <select id="serchProductFunction" resultType="java.util.HashMap">
+    	SELECT
+			PRODUCT_ID
+			,ITEM_ID
+			,ITEM_REV_ID
+			,PROJECT_CODE
+			,ITEM_NAME
+    	FROM 
+    		TABLE(MBOM_IF_PACKAGE.GET_FUNCTIONS_COMPLEX(#{PRODUCT_ID}, NULL))
+    </select>
+</mapper>

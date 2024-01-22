@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.checkwiringpart">
+
+
+	<!-- 하루전 수정된 지정 프로젝트의 모든 Spec 정보를 가져오는 부분 -->
+	<select id="getUpdatedSpecList" resultType="java.util.HashMap">
+		SELECT M.PROJECT_NO "PROJECT",
+		       M.SPEC_NO "SPEC",
+		       D.CATE_NO || D.OPTION_NO "STANDARD OPTION",
+               GET_PRODUCT_BY_PROJECT(M.PROJECT_NO) "PRODUCT"
+		FROM   HBOM.PSPEC_MASTER@LINK_003_HBOM M,
+		       HBOM.PSPEC_DETAIL@LINK_003_HBOM D
+		WHERE  M.SPEC_NO = D.SPEC_NO
+		AND    M.PROJECT_NO = D.PROJECT_NO
+		AND    M.GMODEL = D.GMODEL
+		AND    D.ITNO IS NOT NULL
+		AND    M.USE_CD = 'E' --수출 ######
+		AND    M.STATUS = 'CURR' --운영스펙 ######
+		AND    M.PROJECT_NO IN (SELECT DISTINCT PROJECT_CODE FROM WIRING_CATEGORY_NO) -- 지정 프로젝트 리스트 #####
+		AND    TO_CHAR(M.LAST_MODIFY_DATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE-1, 'YYYY-MM-DD') -- 어제 날짜에 해당하는 데이터 ################
+		ORDER BY 1, 2, 3
+	</select>
+
+	<!-- Wiring BOM 전개... 데이터  -->
+	<select id="getWiringBOMList" resultType="java.util.HashMap">
+		WITH WIRINGBOM AS
+		(
+		        SELECT DISTINCT
+		               CI.PITEM_ID CHILE_ID,
+		               CIRW.POBJECT_NAME CHILD_NAME,
+		               OCC.PUID OCCUID
+		        FROM INFODBA.PITEM PI
+		           , INFODBA.PITEMREVISION PIR
+		           , INFODBA.PSTRUCTURE_REVISIONS PSR
+		           , INFODBA.PPSOCCURRENCE OCC
+		           , INFODBA.PITEM CI
+		           , INFODBA.PITEMREVISION CIR
+		           , INFODBA.PWORKSPACEOBJECT CIRW
+		        WHERE OCC.RCHILD_ITEMU = CI.PUID
+		        AND   OCC.RPARENT_BVRU = PSR.PVALU_0
+		        AND   PSR.PUID = PIR.PUID
+		        AND   PIR.RITEMS_TAGU = PI.PUID
+		        AND   CIR.PUID = CIRW.PUID
+		        AND   CIRW.POBJECT_TYPE = 'S7_VehpartRevision'
+		        AND   CIRW.POBJECT_NAME IN ('WIRING ASSY-MAIN','WIRING ASSY-ENGINE','WIRING ASSY-FLOOR','WIRING ASSY-FLOOR-LH','WIRING ASSY-FLOOR-RH')
+		        AND   CIR.PUID = GETLATESTRELEASEDREVISION(CI.PUID)
+		        AND   PIR.PUID = GETLATESTRELEASEDREVISION(PI.PUID)
+		        START WITH PI.PITEM_ID = #{PRODUCT_NO, jdbcType=VARCHAR}
+		        CONNECT BY NOCYCLE PRIOR CIR.PUID = PIR.PUID
+		        AND   ((CIRW.POBJECT_TYPE = 'S7_FunctionRevision' AND SUBSTR(CI.PITEM_ID, 0, 4) IN ('F80A', 'F80B', 'F80C'))
+		              OR  CIRW.POBJECT_TYPE != 'S7_FunctionRevision')
+		)
+		SELECT CHILE_ID,
+		       CHILD_NAME,
+		       (SELECT DATA FROM INFODBA.IMAN_MVLBLOB WHERE NAME = OCCUID) "PART OPTION"
+		FROM   WIRINGBOM
+		ORDER BY 1,2
+	</select>
+
+	<!-- Wiring part가 존재하지 않을 경우  -->
+	<select id="getReportSpecList" resultType="java.util.HashMap">
+		SELECT PROJECT_NO AS PROJECT,
+		       SPEC_NO AS "SPEC",
+		       WIRING_TYPE AS "WIRING TYPE",
+		       SUBSTR(XMLAGG(XMLELEMENT("OP", ' AND ', OP) ORDER BY OP).EXTRACT('//text()').GETSTRINGVAL(), LENGTH(' AND ')+1) AS "STANDARD OPTION"
+		FROM   (
+		        SELECT M.PROJECT_NO,
+		               M.SPEC_NO,
+		               WIRING_TYPE,
+		               D.CATE_NO || D.OPTION_NO OP
+		        FROM   HBOM.PSPEC_MASTER@LINK_003_HBOM M,
+		               HBOM.PSPEC_DETAIL@LINK_003_HBOM D,
+		               WIRING_CATEGORY_NO WOC
+		        WHERE  M.SPEC_NO = D.SPEC_NO
+		        AND    M.PROJECT_NO = D.PROJECT_NO
+		        AND    D.ITNO IS NOT NULL
+		        AND    D.PROJECT_NO = WOC.PROJECT_CODE
+		        AND    D.CATE_NO = WOC.CATEGORY_NO
+		        AND    M.USE_CD = 'E' --수출
+		        AND    M.STATUS = 'CURR' --운영스펙
+		        AND    M.SPEC_NO = #{SPEC_NO, jdbcType=VARCHAR}
+		        <if test="WIRING_TYPE != null">
+		        AND    WOC.WIRING_TYPE = #{WIRING_TYPE, jdbcType=VARCHAR}
+		        </if>
+		       )
+		GROUP BY PROJECT_NO, SPEC_NO, WIRING_TYPE
+		ORDER BY 1,2,3
+	</select>
+
+	<!-- Wiring part 메일 발송 리스트  -->
+	<select id="getMailList" resultType="java.util.HashMap">
+		SELECT RTRIM(XMLAGG(XMLELEMENT("USER_ID", USER_ID, ',') ORDER BY USER_ID).EXTRACT('//text()').GETSTRINGVAL(), ',') MAIL_LIST
+		FROM   WIRING_MAIL_LIST
+	</select>
+
+</mapper>
