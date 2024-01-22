@@ -1,0 +1,10 @@
+weldpointexport.properties 파일에 서버 주소 반드시 확인.
+
+개발
+   servlet.url=http://10.80.1.99:7090/ssangyongweb/HomeServlet
+운영
+   servlet.url=http://10.80.1.89:7090/ssangyongweb/HomeServlet
+  
+관리자 메일 정보
+# Send Error Mail to Admin
+Admin.User=208748

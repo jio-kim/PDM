@@ -1,0 +1,163 @@
+catparttocgr deploy 방법
+
+#####
+# 1  # Service.preperties 추가
+#####
+
+1. Dipatcher설치폴더에서 Service.preperties 파일에 다음 내용을 추가
+
+###############################################################################
+#
+#     T R A N S L A T O R S
+#
+
+# Provider Name  : SIEMENS
+# Translator Name: weldpointexport
+Translator.SIEMENS.weldpointexport.Prepare=com.teamcenter.ets.translator.ugs.weldpointexport.TaskPrep
+Translator.SIEMENS.weldpointexport.Load=com.teamcenter.ets.translator.ugs.weldpointexport.DatabaseOperation
+
+
+
+#####
+# 2 # Prefernece 등록
+#####
+
+2. 다음 xml 파일을 weldpointexport_env.xml로 만들어서 preference_manager로 preference를 등록
+   (TC Preferences에서도 설정 가능)
+<?xml version="1.0" encoding="UTF-8"?>
+
+<preferences>
+  <category name="General">
+    <category_description>Teamcenter Preferences</category_description>
+
+	<!-- START SINGLE SELECTION PREFERENCES -->
+    <preference name="ETS.TRANSLATORS.SIEMENS" type="String" array="true" disabled="false">
+          <preference_description>This preference lists the available translators for a given provider for the translation services.</preference_description>
+          <context name="Teamcenter">
+            <value>weldpointexport</value>
+          </context>
+    </preference>
+    <preference name="ETS.DATASETTYPES.SIEMENS.WELDPOINTEXPORT" type="String" array="true" disabled="false">
+          <preference_description>This preference lists the applicable dataset types for the translator.</preference_description>
+          <context name="Teamcenter">
+            <value>CATPart</value>
+          </context>
+    </preference>
+    <preference name="ETS.PRIORITY.SIEMENS.WELDPOINTEXPORT" type="String" array="false" disabled="false">
+          <preference_description>This preference lists the priority for the translator.</preference_description>
+          <context name="Teamcenter">
+            <value>3</value>
+          </context>
+    </preference>
+    <preference name="ETS.TRANSLATOR_ARGS.SIEMENS.WELDPOINTEXPORT" type="String" array="true" disabled="false">
+          <preference_description>This preference lists the arguments for the translator.</preference_description>
+          <context name="Teamcenter">
+          </context>
+    </preference>
+    <preference name="ETS.REPEATING_UI.SIEMENS.WELDPOINTEXPORT" type="String" array="false" disabled="false">
+          <preference_description>Specifies if repeating UI should show up in the Single Selection Dialogue.</preference_description>
+          <context name="Teamcenter">
+            <value>true</value>
+          </context>
+    </preference>    
+	<!-- END SINGLE SELECTION PREFERENCES -->
+	
+	
+  </category>
+</preferences>
+
+preferences_manager 사용방법(TC Path 설정 필요)
+preferences_manager -u=infodba -p=infodba -g=dba -mode=import -scope=SITE -action=MERGE -context=Teamcenter -file=c:\weldpointexport_env.xml
+
+
+
+#####
+# 3 # weldpointexport.jar 복사
+#####
+
+3. Dipatcher설치폴더에 DispatcherClient 폴더의 lib 폴더로 weldpointexport.jar(Module)
+	, icctstubs.jar, TcSoaCoreLoose_9000.1.0.jar, TcSoaQueryStrong_9000.1.0.jar, TcSoaQueryTypes_9000.1.0.jar
+	, TcSoaStructureManagementStrong_9000.1.0.jar, TcSoaStructureManagementTypes_9000.1.0.jar 를 복사
+
+
+
+#####
+# 4 # translator.xml 파일 추가
+#####
+
+4.Dipatcher설치폴더에 Module폴더의 conf 폴더의 translator.xml 파일에  다음 내용 추가
+
+<!-- *********************************************************************** -->
+<!-- WeldPointExport                                                                             -->
+<!-- *********************************************************************** -->
+  <weldpointexport provider="SIEMENS" service="weldpointexport" isactive="true">
+    <TransExecutable dir="&MODULEBASE;/Translators/weldpointexport" name="weldpointexport.bat" />
+    <Options>
+      <Option name="inputdir" string="-dir"
+              description="Full path to the input directory."/>
+      <Option name="outputdir" string="-outputDirectory"
+              description="Full path to the output directory."/>
+    </Options>
+    <FileExtensions>
+      <InputExtensions nitem="1">
+        <InputExtension extension=".CATPart"/>
+      </InputExtensions>
+      <OutputExtensions nitem="1">
+        <OutputExtension extension=".csv"/>
+      </OutputExtensions>
+    </FileExtensions>
+    <!-- Postprocess provider="SIEMENS" service="previewservice"/ -->
+  </weldpointexport>  
+  
+!!주의!! 파일 끝에 붙여 넣으면 에러 나므로
+
+</Translators>
+
+위로 복사한다.
+
+
+
+#####
+# 5 # 실행 폴더 생성 및 파일 생성
+#####
+
+5.Dipatcher설치폴더에 Module폴더의 Translators 폴더로 다음 내용을 생성.
+
+5.1 Translaotrs 폴더에 weldpointexport 폴더 생성
+
+5.2 변환 Program 및 weldpointexport.bat 파일 붙여넣기
+
+5.3 weldpointexport.properties 파일 생성(Option)
+
+-------------  Catia 관련 라이브러리 설치 -------------------------
+\\10.80.8.205\catia\R21\media\64\V5R21_P3_code_64bit\1\VBA\vba6.msi
+VBA Library 설치 필요.
+
+------------ weldpointexport.properties 파일 내용 ---------------
+#Debug를 위해 로그 출력
+isDebug=true
+
+#After FTP Upload, insert a row to IF_PE_FILE_PATH
+#private local Server for Test
+#servlet.url=http://10.80.57.228:8080/symcweb/remote/invoke.do
+#symcweb(DEV)
+servlet.url=http://10.80.1.99/symcweb/remote/invoke.do
+weld.2=WELDPOINT-SPOT-2-CO
+weld.3=WELDPOINT-SPOT-3-CO
+weld.4=WELDPOINT-SPOT-4-CO
+weld.2s=WELDPOINT-SPOT-2-DR
+weld.3s=WELDPOINT-SPOT-3-DR
+weld.4s=WELDPOINT-SPOT-4-DR
+
+
+
+
+#해당없음#
+-------- WorkFlow Handler 추가(결재시 실행되게 하기 위해) -------------
+SYMC_ECO ==> Add Status ==> Complete
+TSTK-CreateTranslationRequest
+#Argument
+-ProviderName		SIEMENS
+-ServiceName		weldpointexport
+-Priority			1
+-DatasetTypeName	CATPart
