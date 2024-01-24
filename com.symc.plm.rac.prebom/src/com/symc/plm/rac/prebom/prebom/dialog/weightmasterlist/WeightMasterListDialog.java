@@ -470,7 +470,19 @@ public class WeightMasterListDialog extends AbstractAIFDialog {
                     waitBar.start();
                     try
                     {
-                        final WeightMasterListExcelExportOperation exportOp = new WeightMasterListExcelExportOperation(selectedFile, tableModel.getIdentifier(), tableModel.getDataVector(), selectedProductItem);
+                    	// [20240125] [전성옥] 수정
+						// WeightMasterListExcelExportOperation(File, Vector<Object>, Vector<Vector>, TCComponentItem) 생성자가 정의X
+						// tableModel.getDataVector(); ==> Vector<Vector> 타입임
+						// Vector<Vector> => Vector<Vector<Object>> 타입으로 캐스팅
+                    	Vector<Vector> originalDataVector = tableModel.getDataVector();
+						
+						Vector<Vector<Object>> convertedDataVector = new Vector<>();
+						for(Vector row : originalDataVector) {
+							Vector<Object> newRow = new Vector<>(row);
+							convertedDataVector.add(newRow);
+						}
+						
+                        final WeightMasterListExcelExportOperation exportOp = new WeightMasterListExcelExportOperation(selectedFile, tableModel.getIdentifier(), convertedDataVector, selectedProductItem);
                         exportOp.addOperationListener(new InterfaceAIFOperationListener() {
                             @Override
                             public void startOperation(String paramString) {

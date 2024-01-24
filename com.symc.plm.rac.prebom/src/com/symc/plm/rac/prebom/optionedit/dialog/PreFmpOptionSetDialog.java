@@ -19,6 +19,9 @@ import java.util.Enumeration;
 import java.util.List;
 import java.util.Vector;
 
+// 테스트
+import java.util.Iterator;
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
@@ -863,12 +866,12 @@ public class PreFmpOptionSetDialog extends AbstractAIFDialog {
 					}
 				}
 
-				Enumeration<VariantNode> enums = node.children();
-//				ArrayList<VariantValue> tmpList = new ArrayList();
-				
-				//현재의 테이블 모델에 Row추가
-				while( enums.hasMoreElements()){
-					VariantNode childNode = enums.nextElement();
+				// [20240125] [전성옥] 유형 불일치 에러 수정
+				// 에러 :  Enumeration<TreeNode>에서 Enumeration<VariantNode>로 변환할 수 없습니다.
+				// Enumeration 대신 Iterator를 사용
+				Iterator<VariantNode> enums = (Iterator<VariantNode>) (Iterator<?>) node.children();
+				while(enums.hasNext()) {
+					VariantNode childNode = enums.next();
 					VariantValue value = (VariantValue)childNode.getUserObject();
 					if( isValidAndCheck(value, model.getDataVector())){
 						
@@ -885,6 +888,29 @@ public class PreFmpOptionSetDialog extends AbstractAIFDialog {
 //						tmpList.add(value);
 					}
 				}
+				
+//				Enumeration<VariantNode> enums = node.children();
+//				ArrayList<VariantValue> tmpList = new ArrayList();
+				
+				//현재의 테이블 모델에 Row추가
+//				while( enums.hasMoreElements()){
+//					VariantNode childNode = enums.nextElement();
+//					VariantValue value = (VariantValue)childNode.getUserObject();
+//					if( isValidAndCheck(value, model.getDataVector())){
+//						
+//						value.setNew(true);
+//						value.setValueStatus(VariantValue.VALUE_USE);
+//						
+//						Vector row = new Vector();
+//						row.add(value);
+//						row.add(option.getOptionName());
+//						row.add(option.getOptionDesc());
+//						row.add(value.getValueName());
+//						row.add(value.getValueDesc());
+//						model.addRow(row);
+//						tmpList.add(value);
+//					}
+//				}
 				
 				//저장시에 사용되는 allData에 Row추가
 				if(option.hasValues()){
