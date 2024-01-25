@@ -66,12 +66,12 @@ import com.teamcenter.rac.workflow.commands.newperformsignoff.SignoffDecisionOpe
 //import com.symc.plm.me.sdv.dialog.meco.ValidationResultDialog;
 
 /**
- * ���� ECO ��� �� ECO ���μ��� ���� �� �ݷ� �� �� ��� �� ȣ�� ��.
- * [SR140820-050][20140808] shcho, MEW�� Team Leader ���縸 �ϹǷ� Validate���� BOPADMIN�� �ʼ��� ã�� �� ����(Ȯ����:�����(������))
- * [SR150605-007][20150605] shcho, Reject�� �� ��Ž� ��� ����  The Task "Creator" has not yet completed. �߻� �ϴ� ���� �ذ�
-                                         (Creator Task�� ������ ���� perform-signoffs Task�� �������� ����)
- * [SR150715-017][20150717] shcho, ��ü MECO ��Ž� �����ð� ���� �ҿ� ������ Checking MECO EPL�� ����. 
- *                                       �� ��ſ�, ��� Process ���� �� �����ϵ��� ����. (������ ������ ������ ����� ���� �����.)
+ * 최초 ECO 상신 및 ECO 프로세스 진행 중 반려 후 재 상신 시 호출 됨.
+ * [SR140820-050][20140808] shcho, MEW는 Team Leader 결재만 하므로 Validate에서 BOPADMIN을 필수로 찾는 것 제외(확인함:이장원(정윤재))
+ * [SR150605-007][20150605] shcho, Reject후 재 상신시 상신 오류  The Task "Creator" has not yet completed. 발생 하는 문제 해결
+                                         (Creator Task를 던지던 것을 perform-signoffs Task를 던지도록 수정)
+ * [SR150715-017][20150717] shcho, 차체 MECO 상신시 검증시간 과다 소요 문제로 Checking MECO EPL을 제거. 
+ *                                       그 대신에, 상신 Process 진행 전 수행하도록 변경. (정윤재 수석과 윤순식 차장님 협의 결과임.)
  * @author DJKIM
  *
  */
@@ -96,7 +96,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	private CustomMECODao dao = new CustomMECODao();
 	private SYMCDecisionDialog parent;
 	
-	private final static String EVENT_START = "  ��";
+	private final static String EVENT_START = "  ▶";
 	private DataSet ds = null;
 	
 	private boolean isOkValidation = true;
@@ -104,7 +104,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	private String msg = "";
 	private TCComponentTask rootTask;
 	
-	// ���� ���� ���
+	// 수정 삭제 요망
 	String existWorkingChildrenList = "";
 	
 	DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm");
@@ -142,20 +142,20 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 
 			mecoNo = changeRevision.getProperty("item_id");
 
-			// # 0. FIXED, 2013.06.01, Ÿ�ٸ���Ʈ���� ECORevision�� ������ ��� ã�Ƽ� �ٿ� �ְ�, CreateWorkflow�� ���� �޽�¡
+			// # 0. FIXED, 2013.06.01, 타겟리스트에서 ECORevision이 떨어진 경우 찾아서 붙여 주고, CreateWorkflow인 경우는 메시징
 			progress.setStatus(EVENT_START + "Checking MECO has Workflow...", false);
 			System.out.println("1.checkHasWorkflow");
 			checkHasWorkflow();
 			progress.setStatus("is done!");
 
-			// # 3. ���缱 Ȯ��
+			// # 3. 결재선 확인
 			progress.setStatus(EVENT_START + "Checking approval line...", false);
 			System.out.println("2.checkReviewer");
 			checkReviewer();
 			progress.setStatus("is done!");
 
-			// # 5. ECO �۾� ����[C��]�� ���� �ַ�Ǿ����� ��ũ ����
-			//���� ����... ����������, �ַ�Ǿ������� ��� �ٽ� ã�Ƴ��� MECO ������ ���̰ų� ����....
+			// # 5. ECO 작업 내용[C지]을 보고 솔루션아이템 링크 생성
+			//순서 변경... 문제아이템, 솔루션아이템을 모두 다시 찾아내어 MECO 하위에 붙이거나 떼냄....
 			progress.setStatus(EVENT_START + "Checking Solution Item(s)...", false);
 			System.out.println("3.getSolutionItemsAfterReGenerate");
 			solutionList = CustomUtil.getSolutionItemsAfterReGenerate(changeRevision);
@@ -170,8 +170,8 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			if (bopType.equals(BOPTYPE.ASSEMBLY) || bopType.equals(BOPTYPE.BODY) || bopType.equals(BOPTYPE.PAINT))
 			{
 				CustomUtil customUtil = new CustomUtil();
-				//�ַ�� �������� �ٽ� �������� ����.... false ���� ����.
-				//���ʿ��� �̹� ���� �ַ�� ������ �� ���� �������� ���鵵�� ����.
+				//솔루션 아이템을 다시 생성하지 않음.... false 값을 넣음.
+				//위쪽에서 이미 먼저 솔루션 아이템 및 문제 아이템을 만들도록 했음.
 				ArrayList<SYMCBOPEditData> arrResultEPL = customUtil.buildMEPL(changeRevision, false);
 			}
 			progress.setStatus("is done!");
@@ -181,7 +181,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			checkPublishedProcessSheet();
 			progress.setStatus("is done!");
 
-			// # 6. Solution Items�� ���� �� ������� ������ ������ �ٸ� MECO�� ���� ���� ���� �ִ��� üũ
+			// # 6. Solution Items에 포함 된 설변대상 리비전 하위에 다른 MECO로 진행 중인 것이 있는지 체크
 			progress.setStatus(EVENT_START + "Checking Exist working children(s)...", false);
 			System.out.println("6.checkExistWorkingChildren");
 			checkExistWorkingChildren();
@@ -206,25 +206,25 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			checkBOPValidate();
 			progress.setStatus("is done!");
 
-			// ## ���μ��� Ÿ�� ����
+			// ## 프로세스 타겟 설정
 			progress.setStatus(EVENT_START + "Checking targets...", false);
 			System.out.println("9.getTargets");
 			getTargets();
 			progress.setStatus("is done!");
 
-			// ## ���� ����
+			// ## 상태 변경
 			progress.setStatus(EVENT_START + "Change Status...", false);
 			System.out.println("10.changeStatus");
 			changeStatus();
 			progress.setStatus("is done!");
 
-			// ## ���μ��� ����
+			// ## 프로세스 생성
 			progress.setStatus(EVENT_START + "Creating process...", false);
 			System.out.println("11.createProcess");
 			createProcess();
 			progress.setStatus("is done!");
 
-			// ## Ÿ��ũ �Ҵ�
+			// ## 타스크 할당
 			progress.setStatus(EVENT_START + "Assigning...", false);
 			System.out.println("12.Assigning");
 			if (updateSignOffs)
@@ -236,7 +236,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			}
 			progress.setStatus("is done!");
 
-			// ## ���� �߼� 
+			// ## 메일 발송 
 			progress.setStatus(EVENT_START + "Mailing...", false);
 			System.out.println("13.sendMail");
 			sendMail();
@@ -248,7 +248,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			{
 				progress.setShowButton(true);
 				progress.setStatus("is fail!");
-				progress.setStatus("�� Error Message : ");
+				progress.setStatus("＠ Error Message : ");
 				message = " " + e.getMessage();
 				rollback();
 			}
@@ -271,7 +271,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		}
 	}
 	
-	// Ÿ�ٸ���Ʈ���� MECORevision�� ������ ��� ã�Ƽ� �ٿ� �ְ�, CreateWorkflow�� ���� �޽�¡
+	// 타겟리스트에서 MECORevision이 떨어진 경우 찾아서 붙여 주고, CreateWorkflow인 경우는 메시징
 	private void checkHasWorkflow() throws Exception {
 
 		TCComponent[] process_stage_list = changeRevision.getReferenceListProperty(SDVPropertyConstant.PROP_PROCESS_STAGE_LIST);
@@ -304,7 +304,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			}
 		}
 		
-		// Workflow �˻�
+		// Workflow 검색
 //		if(!dao.workflowCount(changeRevision.getProperty("item_id")).equals("0")){
 		if(isDuplicatedProcess) {
 //			throw (new Exception("Workflow has been created already.\nCheck the task to perfrom folder in My Worklist, and please proceed by approval."));
@@ -325,7 +325,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			{
 				org.eclipse.swt.widgets.MessageBox box = new org.eclipse.swt.widgets.MessageBox(shell, SWT.ICON_INFORMATION | SWT.OK);
 				box.setText("Information");
-				box.setMessage("���� ��û�� �Ϸ�Ǿ����ϴ�");
+				box.setMessage("결재 요청이 완료되었습니다");
 				box.open();
 			}
 
@@ -333,7 +333,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 	
 	/**
-	 * ���� �߻� �� ��� ���� �ʱ�ȭ
+	 * 오류 발생 시 상신 시점 초기화
 	 * @throws Exception
 	 */
 	private void rollback() {
@@ -366,7 +366,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 
 	/**
-	 * ECO Affected Project ���� ����
+	 * ECO Affected Project 정보 셋팅
 	 * @throws Exception
 	 */
 //	private void setArrectedProject() throws Exception {
@@ -392,9 +392,9 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //	}
 
 	/**
-	 * ���� ����
-	 * IitemRevision�� Maturity��
-	 * EcoRevision�� Eco Maturity�� ������Ʈ ��.
+	 * 상태 변경
+	 * IitemRevision의 Maturity와
+	 * EcoRevision의 Eco Maturity를 업데이트 함.
 	 * @throws Exception
 	 */
 	private void changeStatus() throws Exception {
@@ -432,7 +432,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 
 	/**
-	 * MECO EPL üũ
+	 * MECO EPL 체크
 	 * @throws Exception 
 	 */
 	private void checkExistMEPL() throws Exception{
@@ -440,21 +440,21 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //		ds.put("mecoNo", mecoNo);
 //		boolean resultList = dao.checkExistMEPL(ds);
 		
-		//viewer â���� ��ư Ŭ�� �� �����ϴ� ���� �������� �Űܼ� �����ϰ� ��.
+		//viewer 창에서 버튼 클릭 시 동작하던 것을 이쪽으로 옮겨서 수행하게 함.
 		String org_code = changeRevision.getProperty(SDVPropertyConstant.MECO_ORG_CODE);
 		BOPTYPE bopType = getBopType(org_code);
 		if (bopType.equals(BOPTYPE.ASSEMBLY) || bopType.equals(BOPTYPE.BODY) || bopType.equals(BOPTYPE.PAINT))
 		{
 			CustomUtil customUtil = new CustomUtil();
-			//�ַ�� �������� �ٽ� �������� ����.... false ���� ����.
-			//���ʿ��� �̹� ���� �ַ�� ������ �� ���� �������� ���鵵�� ����.
+			//솔루션 아이템을 다시 생성하지 않음.... false 값을 넣음.
+			//위쪽에서 이미 먼저 솔루션 아이템 및 문제 아이템을 만들도록 했음.
 			ArrayList<SYMCBOPEditData> arrResultEPL = customUtil.buildMEPL(changeRevision, false);
 		}
 
     	Vector<String> notPublishedV = new Vector<String>();
-    	// [NON-SR][20160829] taeku.jeong ������ �������� ������ �ִµ�
-    	// Operation�� �׸��� ����� ��� �߰����� Ȯ���� �ʿ��ϴ�.
-    	// EPL ������ �ʿ��ѵ� ������ ���� ������ �˷� ��� �Ѵ�.
+    	// [NON-SR][20160829] taeku.jeong 좀많이 복잡해진 경향이 있는데
+    	// Operation의 그림만 변경된 경우 추가적인 확인이 필요하다.
+    	// EPL 생성이 필요한데 누락한 것이 있으면 알려 줘야 한다.
     	int missCount = 0;
 		String mecoId = null;
 		MECOCreationUtil aMECOCreationUtil = null;
@@ -462,7 +462,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			
 			mecoId = changeRevision.getItem().getProperty(SDVPropertyConstant.ITEM_ITEM_ID);
 			aMECOCreationUtil = new MECOCreationUtil(changeRevision);
-			//MEPL ���̺� ���� �ַ�ǿ� �����ϴ� ���������� parent�� ������� ���� �͵��� ã�ƿ´�.
+			//MEPL 테이블에 현재 솔루션에 존재하는 리비전들이 parent에 들어있지 않은 것들을 찾아온다.
 			ArrayList<HashMap> resultList = aMECOCreationUtil.getMissingMEPLObjectList(mecoId);
 			for (int i = 0; resultList!=null && i < resultList.size(); i++) {
 				HashMap rowHash = resultList.get(i);
@@ -496,8 +496,8 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 						}else{
 							oldRevId = "";
 						}
-						//mepl�� parent�� ������� ���� �������ε� ������ ����� �������� �����ϸ� ���� �̻���.
-						//������ ����� �������� ���� �� MECO�� �ƴϸ� �����ϰ� ���� �� MECO�� �ش��ϴ°Ÿ� ������ ����.
+						//mepl의 parent에 들어있지 않은 아이템인데 하위에 변경된 아이템이 존재하면 뭔가 이상함.
+						//하위에 변경된 아이템이 내가 낸 MECO가 아니면 무시하고 내가 낸 MECO에 해당하는거면 에러인 것임.
 						ArrayList<CompResultDiffInfo> diffListArray = aMECOCreationUtil.getDifrentList(currentItemId, oldRevId, currentRevId);
 						//m7_MECO_NO
 						if(diffListArray != null)
@@ -553,7 +553,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 
 	/**
-	 * BOM Structure �󿡼� end item �ؿ� end item�� �����ϸ� �ʵȴ�
+	 * BOM Structure 상에서 end item 밑에 end item이 존재하면 않된다
 	 * @throws TCException
 	 * @throws Exception
 	 */
@@ -569,7 +569,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //	}
 
 	/**
-	 * ���缱�� ���ø��� �°� ���� �Ǿ� �ִ��� Ȯ��
+	 * 결재선이 템플릿에 맞게 구성 되어 있는지 확인
 	 * @return
 	 * @throws Exception
 	 */
@@ -577,10 +577,10 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		ApprovalLineData theLine = new ApprovalLineData();
 		theLine.setEco_no(changeRevision.getProperty("item_id"));
 		
-		// ���� �ÿ����� ���缱 üũ ����
+		// 재상신 시에서는 결재선 체크 구분
 		ArrayList<ApprovalLineData> paramList = null;
 		if(parent == null){
-			//���缱 ���� ����
+			//결재선 정보 쿼리
 			paramList = dao.getApprovalLine(theLine);
 			
 		}else{
@@ -633,7 +633,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		}
 		
 		ArrayList<String> taskList = CustomUtil.getWorkflowTask(changeRevision.getProperty(SDVPropertyConstant.MECO_WORKFLOW_TYPE), session); 
-		//Ÿ��ũ�� TCComponentGroupMember���� ���� �� �ʼ� ���� ���缱 Ȯ��
+		//타스크별 TCComponentGroupMember생성 맵핑 및 필수 지정 결재선 확인
 		ArrayList<String> requiredAssingTask = new ArrayList<String>();
 
 		for(String task : taskList){
@@ -650,7 +650,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		for(ApprovalLineData map : paramList){
 			mapTask = map.getTask();
 			
-			// FIXED 2013.05.14, DJKIM, �ڼ��� CJ: ������� ���� ������ �߻� �Ҽ� �����Ƿ� ����� ���� Ȯ���Ͽ� �������� ����ڰ� ���缱�� �Ҵ� ���� �ʵ��� ��.
+			// FIXED 2013.05.14, DJKIM, 박수경 CJ: 사용자의 상태 변경이 발생 할수 있으므로 사용자 상태 확인하여 부적절한 사용자가 결재선에 할당 되지 않도록 함.
 			try{
 				if("References".equals(map.getTask()) || "Creator".equals(map.getTask())){
 					isSkip = true;
@@ -691,14 +691,14 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			throw (new Exception("Workflow task checking information.\nPlease, Add the following tasks.\n"+addTasks));
 		}
 		
-		// FIXED ���缱�� �����ȹ[BOPADMIN], �����[TEAM_LEADER]�� �ϳ� �̻����� üũ ��.
+		// FIXED 결재선에 생산기획[BOPADMIN], 팀장롤[TEAM_LEADER]이 하나 이상인지 체크 함.
 		PreferenceService.createService(session);
 		String checkRole = PreferenceService.getValue("SYMC_MECO_WF_CHECK_ROLE"); // COST_ENGINEER,BOMADMIN,TEAM_LEADER
 		if(checkRole.equals("")){
 			checkRole = "BOPADMIN,TEAM_LEADER";
 		}
 		
-		// [SR140820-050][20140808] shcho, MEW�� Team Leader ���縸 �ϹǷ� Validate���� BOPADMIN�� �ʼ��� ã�� �� ����(Ȯ����:�����(������))
+		// [SR140820-050][20140808] shcho, MEW는 Team Leader 결재만 하므로 Validate에서 BOPADMIN을 필수로 찾는 것 제외(확인함:이장원(정윤재))
 		String mecoType = changeRevision.getProperty(SDVPropertyConstant.MECO_TYPE);
 		if(mecoType.equalsIgnoreCase("MEW")) {
             checkRole = "TEAM_LEADER";
@@ -734,10 +734,10 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     }
     
     /**
-     * �ű� ��Ʈ�� EPL�� Category�� DR1/2�� ������ ��Ʈ�� ���� �ϸ� �������� �ʼ��� �����Ǿ�� ��.
+     * 신규 파트중 EPL의 Category가 DR1/2로 지정된 파트가 존재 하면 인증팀이 필수로 지정되어야 함.
      * 2013.01.10
-     * REQ. �۴뿵
-     * REF. ������
+     * REQ. 송대영
+     * REF. 정상일
      * @return
      * @throws Exception
      */
@@ -787,7 +787,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     	boolean isOk = false;
     	
     	if(itemrevision!=null && itemrevision instanceof TCComponentMEProcessRevision) {
-    	     //[SR��ȣ����][20140929] shcho, ����ȭ ã�ƴԲ� BOP_PROCESS_SHOP_ITEM_REV ���� ���� Ȯ���ϱ�
+    	     //[SR번호없음][20140929] shcho, 이종화 찾아님께 BOP_PROCESS_SHOP_ITEM_REV 넣은 내용 확인하기
     		 String  type = itemrevision.getType();
     		 
     		 System.out.println("type = "+type);
@@ -852,10 +852,10 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     @SuppressWarnings("null")
     private void checkUsed() throws Exception {
     	
-    	// EMCO ��� ������ Parent Node�� MECO No�� Ȯ�� �ϴ� �κ���
-    	// ���⼭ Validation �Ҷ� Parent Node���� �߰� �ϰų� ������ Station, Operation�� �ƴѰ��
-    	// Parent Node�� MECO No�� Child Node�� Station �Ǵ� Operation�� MECO No�� ���� ���� �ʾƵ� �ǵ��� ����� �Ѵ�.
-    	// Validation �ð��� ���� �ɸ��� �����鼭 �ش� Validation�� �� �� �ֵ��� ����� �����ؾ� �Ѵ�.
+    	// EMCO 상신 과정에 Parent Node의 MECO No를 확인 하는 부분임
+    	// 여기서 Validation 할때 Parent Node에서 추가 하거나 삭제한 Station, Operation이 아닌경우
+    	// Parent Node의 MECO No와 Child Node인 Station 또는 Operation의 MECO No가 동일 하지 않아도 되도록 해줘야 한다.
+    	// Validation 시간이 오래 걸리지 않으면서 해당 Validation을 할 수 있도록 기능을 수정해야 한다.
     	
     	String noWhereUsedList = "";
     	String unMatchMecoList = "";
@@ -900,41 +900,41 @@ public class MECOProcessOperation extends AbstractAIFOperation {
         					}
         					
 
-        					// [NON-SR][20160219] taeku.jeong Parent MECO No Check ���� �߰� (MECO �и� ������ ����)
-        					// ���⼭ Parent Revision�� Child Node�� solutionItemrevision�� �߰� �ǰų� ���ŵ� Item Revision���� Ȯ���� �ʿ��ϴ�.
-        					// Parent Item Revision�� Working ���ΰ�� MECO No Ȯ�� �����
-        					// 1. Parent Item Revision�� 000�ΰ�� -> ��� �߰��Ǵ� Item��.
-        					// 2. Parent Item Revision�� 000�� �ƴѰ�� -> ���� Item�� �߰� �ǰų� ���ŵ� Item���� Ȯ���ʿ���.
-        					//     a. BaseOnRevision�� �������� �ʴ� Item�� ��� �߰��� Item�̹Ƿ� Parent Node�� MECO�� ���ƾ���.
+        					// [NON-SR][20160219] taeku.jeong Parent MECO No Check 조건 추가 (MECO 분리 진행을 위함)
+        					// 여기서 Parent Revision의 Child Node인 solutionItemrevision이 추가 되거나 제거된 Item Revision인지 확인이 필요하다.
+        					// Parent Item Revision이 Working 중인경우 MECO No 확인 대상임
+        					// 1. Parent Item Revision이 000인경우 -> 모두 추가되는 Item임.
+        					// 2. Parent Item Revision이 000가 아닌경우 -> 현재 Item이 추가 되거나 제거된 Item인지 확인필요함.
+        					//     a. BaseOnRevision에 존재하지 않는 Item인 경우 추가된 Item이므로 Parent Node의 MECO와 같아야함.
         					boolean isParentReleased = SYMTcUtil.isReleased(aWhereUsedResultItemRevision);
         					boolean isParentNodeMecoNoCompTarget = false;
         					TCComponentItemRevision baseOnItemRevision = null;
         					String tempMessage = null;
         					if(isParentReleased==false){
         						
-        						// Parent Node�� Released Status�� ���� ���� �ű��� ���� ���� Revision�� ���� ���� �߰�(����)�� ��쿡 ���ؼ���
-        						// Child Node�� Parent Node�� MECO No�� ���� �ؾ� �Ѵ�.
+        						// Parent Node가 Released Status가 없는 경우는 신규인 경우와 이전 Revision에 없는 것이 추가(변경)된 경우에 대해서는
+        						// Child Node와 Parent Node의 MECO No가 동일 해야 한다.
         						
         						baseOnItemRevision = aWhereUsedResultItemRevision.basedOn();
             					if(baseOnItemRevision!=null){
-            						// Working ���� Revision�̹Ƿ� �߰��� Child �ΰ�� Child Node�� Parent Node�� MECO�� �����ؾ� �Ѵ�.
+            						// Working 중인 Revision이므로 추가된 Child 인경우 Child Node와 Parent Node의 MECO는 동일해야 한다.
             						String currentParentItemId = aWhereUsedResultItemRevision.getItem().getProperty(SDVPropertyConstant.ITEM_ITEM_ID);
             						String baseOnItemItemId = baseOnItemRevision.getItem().getProperty(SDVPropertyConstant.ITEM_ITEM_ID);
             						
             						if(currentParentItemId!=null && baseOnItemItemId!=null && baseOnItemItemId.trim().equalsIgnoreCase(currentParentItemId.trim())==true){
-            							// Item�� Version Up �� ��� �̹Ƿ� Parent Node�� Old�� New �߿� ������ Item�� �߰� �Ǵ� ���ŵ� ��Ȳ���� Ȯ�� �ؾ� �Ѵ�.
-            							// ���࿡ currentSolutionItemrevision�� Parent Node�� aWhereUsedResultItemRevision��  
+            							// Item이 Version Up 된 경우 이므로 Parent Node의 Old와 New 중에 현재의 Item이 추가 또는 제거된 상황인지 확인 해야 한다.
+            							// 만약에 currentSolutionItemrevision이 Parent Node인 aWhereUsedResultItemRevision의  
             							String newRevId = aWhereUsedResultItemRevision.getProperty(SDVPropertyConstant.ITEM_REVISION_ID);
             							String oldRevId = baseOnItemRevision.getProperty(SDVPropertyConstant.ITEM_REVISION_ID);
             							Vector<String> changedNewItemIdV = aCustomMECODao.getChangedNewItemIdList(currentParentItemId, newRevId, oldRevId);
             							if(changedNewItemIdV!=null && changedNewItemIdV.contains(currentSolutionItemId)==true){
-            								// Parent Node Meco Id�� �����ؾ� �Ѵ�.
+            								// Parent Node Meco Id가 동일해야 한다.
             								isParentNodeMecoNoCompTarget = true;
             								tempMessage = "Child Node Added";
             							}
             						}
             					}else{
-            						// ������ Revision�̹Ƿ� Child Node�� Parent Node�� MECO�� �����ؾ� �Ѵ�.
+            						// 최초의 Revision이므로 Child Node와 Parent Node의 MECO는 동일해야 한다.
             						isParentNodeMecoNoCompTarget = true;
             						tempMessage = "Newly created Parent Node";
             					}
@@ -973,20 +973,20 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 											isDifferentMeco = true;
 										}
 									}else{
-										// �̰� ��� ó�� �ؾ� ����....
+										// 이건 어떻게 처리 해야 할지....
 									}
 								}
     						}
     						
     						if(isDifferentMeco==true){
     							unMatchMecoList = unMatchMecoList + "MECO Number Mismatch : "+aWhereUsedResultItemRevision +"("+parentNodeMECONo+")  <-> "+currentSolutionItemrevision+"("+childNodeMECONo+") Target MECO : "+targetMECONo+ "\n";
-    							//System.out.println("���� �ɸ��ǵ�.....\n"+unMatchMecoList);
+    							//System.out.println("여기 걸린건데.....\n"+unMatchMecoList);
     						}
 
-							// ������ ���� �ڵ�
-    						// [NON-SR][20160222] taeku.jeong MECO ��� ������ Parent Node�� Child Node�� MECO No �������� �����ϴ� ���� ����
+							// 변경전 기존 코드
+    						// [NON-SR][20160222] taeku.jeong MECO 상신 과정에 Parent Node와 Child Node의 MECO No 동일한지 검토하는 조건 변경
 							//if(null !=mecoRevision) {
-							//	// Parent Node�� Child Node�� MECO�� �ٸ� ��츦 Ȯ����.
+							//	// Parent Node와 Child Node의 MECO가 다른 경우를 확인함.
 							//	if(!((changeRevision.getItem()).getProperty(SDVPropertyConstant.ITEM_ITEM_ID)).equals((mecoRevision.getItem()).getProperty(SDVPropertyConstant.ITEM_ITEM_ID))) {
 							//	unMatchMecoList = unMatchMecoList + currentSolutionItemrevision + " is used by bop: "+aWhereUsedResultItemRevision +" meco: "+mecoRevision+ "\n";
 							//	}
@@ -1003,10 +1003,10 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 
     	}
     	
-    	// ���ŵ� Item�߿����� Parent Node�� MECO No
-    	// �̰��� �ʿ������ ����.
-    	// Child Node�� ���ŵǴ� ������ ��� Parent Node�� Solution Items�� ���Եǰ�
-    	// Parent Node MECO�� ���ԵǾ� ���� ���̹Ƿ� �ߺ� Check �ϰԵǴ� ����� �ȴ�.
+    	// 제거된 Item중에서도 Parent Node의 MECO No
+    	// 이것은 필요없을것 같다.
+    	// Child Node가 제거되는 설변의 경우 Parent Node가 Solution Items에 포함되고
+    	// Parent Node MECO에 포함되어 있을 것이므로 중복 Check 하게되는 결과가 된다.
     	// [NON-SR][20160219] taeku.jeong
     	//for (int i = 0; i < problemList.length; i++) {
     	//	TCComponent problemItemComponent = problemList[i];
@@ -1046,7 +1046,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			ArrayList<HashMap> resultList = MECOCreationUtil.getBOPChildErrorList(mecoId, parentItemId, parentRevId);
 			for (HashMap<String, String> errorHashmap : resultList)
 			{
-				existWorkingChildrenList = existWorkingChildrenList + "���� ��� MECO Solution Item : " + solutioncomponent + ", " + "���� ��� MECO : " + errorHashmap.get("MECO_ID") + ", " + "�� ���� Item : " + errorHashmap.get("PITEM_ID") + "/" + errorHashmap.get("PITEM_REVISION_ID") + "-" + errorHashmap.get("POBJECT_NAME") + "\n";
+				existWorkingChildrenList = existWorkingChildrenList + "결재 상신 MECO Solution Item : " + solutioncomponent + ", " + "결재 상신 MECO : " + errorHashmap.get("MECO_ID") + ", " + "미 결재 Item : " + errorHashmap.get("PITEM_ID") + "/" + errorHashmap.get("PITEM_REVISION_ID") + "-" + errorHashmap.get("POBJECT_NAME") + "\n";
 				;
 			}
 		}
@@ -1086,9 +1086,9 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 				e.printStackTrace();
 			}
 			
-			//TCTaskState.COMPLETED �� ��
+			//TCTaskState.COMPLETED 와 비교
 			if(state!=null && state.getIntValue()==TCTaskState.COMPLETED.getIntValue() ){
-				// Complete ��.
+				// Complete 임.
 				isWorkflowComplete = true;
 			}
 		}
@@ -1098,9 +1098,9 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	
 	
     /**
-     * ���� Ÿ�� Ȯ��
-     * check out ���ε� ���� Ȯ��
-     * dataset �Ӽ��� eco no�� �Է�
+     * 결재 타켓 확인
+     * check out 여부도 같이 확인
+     * dataset 속성에 eco no도 입력
      * @throws TCException
      */
     private void getTargets() throws TCException, Exception{
@@ -1112,7 +1112,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     		process = changeRevision.getCurrentJob();
     		rootTask = process.getRootTask();
 
-    		// �ߺ� ���� ����
+    		// 중복 방지 삭제
     		TCComponent[] oldTargetList = rootTask.getRelatedComponents("root_target_attachments");
     		if(oldTargetList != null && oldTargetList.length > 0){
     			rootTask.remove("root_target_attachments", oldTargetList);
@@ -1150,7 +1150,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //        		if(view.isCheckedOut()){
 //        			checkOutlist = checkOutlist + view + "\n";
 //        		}else{
-//        			// FIXED, 2013.06.01, DJKIM ���� ������ �ִ��� ������ üũ
+//        			// FIXED, 2013.06.01, DJKIM 하위 구조가 있는지 없는지 체크
 //        			if(dao.childrenCount(view.getUid()).equals("0")){
 //        				noChildrenBVRList = noChildrenBVRList + solutionItemrevision + "\n";
 //        			}else{
@@ -1183,7 +1183,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     		retrunMessage = "Check-out Componet is exist.\nCheck belows and fix it.\n"+checkOutlist;
     	}
     	
-    	// FIXED, 2013.06.01, DJKIM ���� ������ �ִ��� ������ üũ
+    	// FIXED, 2013.06.01, DJKIM 하위 구조가 있는지 없는지 체크
     	if(!noChildrenBVRList.equals("")){
     		retrunMessage = retrunMessage + "\nThe item that does not have a sub-structure exists.\nCheck BOMViewResion of below items.\n"+noChildrenBVRList;
     	}
@@ -1194,15 +1194,15 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			isOkValidation = false;
     	}
 
-    	// �ݷ� �� ���  Ÿ�� �缳��
+    	// 반려 일 경우  타켓 재설정
     	if(parent != null && rootTask != null){   		
-    		// Ÿ�� �缳��
+    		// 타겟 재설정
     		rootTask.add("root_target_attachments", targetList);
     	}
     }
     
     /**
-     * ���μ��� ����
+     * 프로세스 생성
      * @throws Exception
      */
     private void createProcess() throws Exception{
@@ -1275,7 +1275,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     }
     
     /**
-     * ���缱 �Ҵ�
+     * 결재선 할당
      * @throws TCException
      */
 	private void assignSignoffs() throws Exception {
@@ -1400,8 +1400,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //					selectSignoffTeam.getTCProperty("done").setLogicalValue(true);
 					selectSignoffTeam.getTCProperty("task_result").setStringValue("Completed");
 					TCComponentSignoff signoffObj = selectSignoffTeam.getValidSignoffs()[0];
-					//[SR150605-007][20150605] shcho, Reject�� �� ��Ž� ��� ����  The Task "Creator" has not yet completed. �߻� �ϴ� ���� �ذ�
-					//Creator Task�� ������ ���� perform-signoffs Task�� �������� ����
+					//[SR150605-007][20150605] shcho, Reject후 재 상신시 상신 오류  The Task "Creator" has not yet completed. 발생 하는 문제 해결
 					//[2024.01.23]수정
 					//TCCRDecision.APPROVE_DECISION -> signoffObj.getApproveDecision()
 					//getCurrentDesktop() -> this.parent
@@ -1458,7 +1457,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		
 		//-----------------------------
 
-        // Process Type(����,����,��ü ����)�� ������
+        // Process Type(조립,도장,차체 유무)를 가져옴
 //        if (itemType.equals(SDVTypeConstant.BOP_PROCESS_LINE_ITEM)) {
 //            String processType = targetItemRevision.getProperty(SDVPropertyConstant.LINE_REV_PROCESS_TYPE);
 //            if (processType.isEmpty()) {
@@ -1480,7 +1479,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
         	
         	System.out.println( "["+i+"/"+solutionList.length+"] ("+df.format(new Date())+") : "+tcComponent.toString() );
         	
-            //��� tcComponent�� parent�� solutionList�� ������� ��� tcComponent�� SKIP �Ѵ�. (parent�� validate�Ҷ� ������ �Բ� �ǹǷ�)
+            //대상 tcComponent의 parent가 solutionList에 있을경우 대상 tcComponent는 SKIP 한다. (parent가 validate할때 하위도 함께 되므로)
             if(checkSolutionList(tcComponent)) {
                 continue;
             }
@@ -1497,7 +1496,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 	
 	/**
-	 *  Parent�� ã�� solutionList�� �����ϴ��� üũ�ϴ� �Լ�
+	 *  Parent를 찾아 solutionList에 존재하는지 체크하는 함수
 	 * @param childComponent
 	 * @return
 	 * @throws Exception
@@ -1510,7 +1509,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
             for(TCComponent parentComponent : imanComps) {  
                 String parentCompType =  ((TCComponentItemRevision)parentComponent).getType();
                 String parentItemID = ((TCComponentItemRevision)parentComponent).getProperty(SDVPropertyConstant.ITEM_ITEM_ID);
-                //Parent�� Shop�ΰ�� �� ���� (Shop�� Validate���� �ʴ´�. ������ SolutionList�� �����ϴ��� �ǹ� ����.)
+                //Parent가 Shop인경우 는 제외 (Shop은 Validate하지 않는다. 때문에 SolutionList에 존재하더라도 의미 없음.)
                 if(parentCompType.equals(SDVTypeConstant.BOP_PROCESS_SHOP_ITEM_REV)) {
                     return false;
                 }
@@ -1528,22 +1527,22 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     }
     
     /**
-     * [NON-SR][20160822] taeku.jeong EPL ������ Operation������ ���� �ǵ����ϰ� ��Ű����� EPL Reload (Shop, Line, Station) �ڵ���������
-     * ����Ǿ����Ƿ� Publish �� Check �ϵ��� �ϸ� �ɰ����� �Ǵܵ�.
-     * 1) EPL Load�� Preview�� �ǽ��ϸ� �ڵ����� EPL Load�� (W/F ���� �� Release ��)
+     * [NON-SR][20160822] taeku.jeong EPL 생성을 Operation단위로 생성 되도록하고 상신과정에 EPL Reload (Shop, Line, Station) 자동수행으로
+     * 변경되었으므로 Publish 만 Check 하도록 하면 될것으로 판단됨.
+     * 1) EPL Load는 Preview를 실시하면 자동으로 EPL Load됨 (W/F 생성 및 Release 전)
      * 2) 
      * @throws Exception
      */
 	private void checkPublishedProcessSheet() throws Exception {
 		
-		// [NON-SR][20160520] taeku.jeong MECO ����� ��������� �۾�ǥ�ؼ����� �����ȣ�� ������ ���� �߰ߵǾ� Validation ������ ������.
-		//                              EPL ������ Publish �������� �ʴ� ��찡 ������ �Ǿ���.
-		//                              �ҽ��ڵ� �����ϴ� ������ �ҽ��ڵ� ������ ���� ��������.
+		// [NON-SR][20160520] taeku.jeong MECO 상신후 검토과정에 작업표준서에서 변경기호가 누락된 것이 발견되어 Validation 조건을 수정함.
+		//                              EPL 생성이 Publish 시점보다 늦는 경우가 원인이 되었음.
+		//                              소스코드 수정하는 과정에 소스코드 정리도 같이 수행했음.
     	String neededPublishList = "";
     	String neededPublishAfterEPLLoad = "";
     	String returnMessage = "";
     	
-		// Publish Date�� Hash Table�� ��� Publish ������ Publish Date Ȯ�ο� ����Ѵ�.
+		// Publish Date를 Hash Table에 담아 Publish 유무와 Publish Date 확인에 사용한다.
 		Hashtable<String, Date> publishedDateHash = new Hashtable<String, Date>();
 		TCComponent[] process_sheet_list = changeRevision.getRelatedComponents(SDVTypeConstant.PROCESS_SHEET_KO_RELATION);
 		for (int i = 0; i < process_sheet_list.length; i++) {
@@ -1563,7 +1562,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			aMECOCreationUtil = new MECOCreationUtil(this.changeRevision);
 		}
 
-		// [SR150106-027][20150107] ymjang, MECO ���� ���� ����(��ǥ ����) --> �۾� ǥ�ؼ��� Publishing ���� ���� ���, MECO ���� ��û �Ұ�
+		// [SR150106-027][20150107] ymjang, MECO 검증 로직 보완(작표 유무) --> 작업 표준서가 Publishing 되지 않은 경우, MECO 결재 요청 불가
 		for (int i = 0;solutionList!=null && i <solutionList.length; i++) {
     		
     		TCComponent solutionComponent = solutionList[i];
@@ -1573,7 +1572,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     			continue;
     		}
     		
-    		// Operation Item Revision�� ���ؼ��� Publish ���¸� Ȯ���Ѵ�.
+    		// Operation Item Revision에 대해서만 Publish 상태를 확인한다.
 			if(solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_BODY_OPERATION_ITEM_REV)  
 					|| solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_ASSY_OPERATION_ITEM_REV) 
 					|| solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_PAINT_OPERATION_ITEM_REV) ) {
@@ -1618,8 +1617,8 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 				
 				Date instructionPublishDate = publishedDateHash.get(operationItemId);
 
-				// [NON-SR][20160824] taeku.jeong Operation ������ MECO EPL ����ó�� �� �߰ߵ� Validation���� �ذ�
-				// Operation�� ���� �ߴ����� Child Node ������ ���°�쿡 ���� ó�� �߰�
+				// [NON-SR][20160824] taeku.jeong Operation 단위로 MECO EPL 생성처리 후 발견된 Validation문제 해결
+				// Operation을 개정 했는지만 Child Node 변경이 없는경우에 대한 처리 추가
 				if(diffCount<1){
 					if(instructionPublishDate!=null){
 						continue;
@@ -1674,15 +1673,15 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
     
 	/**
-	 * [NON-SR][20160822] taeku.jeong Operation������ MECO EPL ����, ��Ű����� Shop, Line, Station MECO EPL �ڵ�����
-	 * ������ ����ϴ� ������� ���̻� ������� ����.
+	 * [NON-SR][20160822] taeku.jeong Operation단위로 MECO EPL 생성, 상신과정에 Shop, Line, Station MECO EPL 자동생성
+	 * 예전에 사용하던 기능으로 더이상 사용하지 않음.
 	 * 	 * @throws Exception
 	 */
 	private void checkPublishedProcessSheet_OLD20160822() throws Exception {
 		
-		// [NON-SR][20160520] taeku.jeong MECO ����� ��������� �۾�ǥ�ؼ����� �����ȣ�� ������ ���� �߰ߵǾ� Validation ������ ������.
-		//                              EPL ������ Publish �������� �ʴ� ��찡 ������ �Ǿ���.
-		//                              �ҽ��ڵ� �����ϴ� ������ �ҽ��ڵ� ������ ���� ��������.
+		// [NON-SR][20160520] taeku.jeong MECO 상신후 검토과정에 작업표준서에서 변경기호가 누락된 것이 발견되어 Validation 조건을 수정함.
+		//                              EPL 생성이 Publish 시점보다 늦는 경우가 원인이 되었음.
+		//                              소스코드 수정하는 과정에 소스코드 정리도 같이 수행했음.
     	String neededPublishList = "";
     	String neededPublishAfterEPLLoad = "";
     	String returnMessage = "";
@@ -1701,7 +1700,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			returnMessage = returnMessage + "\n You must generat a \"MECO_EPL\".";
 		}
 		
-		// Publish Date�� Hash Table�� ��� Publish ������ Publish Date Ȯ�ο� ����Ѵ�.
+		// Publish Date를 Hash Table에 담아 Publish 유무와 Publish Date 확인에 사용한다.
 		Hashtable<String, Date> publishedDateHash = new Hashtable<String, Date>();
 		TCComponent[] process_sheet_list = changeRevision.getRelatedComponents(SDVTypeConstant.PROCESS_SHEET_KO_RELATION);
 		for (int i = 0; i < process_sheet_list.length; i++) {
@@ -1714,7 +1713,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			}
 		}
 
-		// [SR150106-027][20150107] ymjang, MECO ���� ���� ����(��ǥ ����) --> �۾� ǥ�ؼ��� Publishing ���� ���� ���, MECO ���� ��û �Ұ�
+		// [SR150106-027][20150107] ymjang, MECO 검증 로직 보완(작표 유무) --> 작업 표준서가 Publishing 되지 않은 경우, MECO 결재 요청 불가
 		for (int i = 0;solutionList!=null && i <solutionList.length; i++) {
     		
     		TCComponent solutionComponent = solutionList[i];
@@ -1723,13 +1722,13 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     			continue;
     		}
     		
-    		// Operation Item Revision�� ���ؼ��� Publish ���¸� Ȯ���Ѵ�.
+    		// Operation Item Revision에 대해서만 Publish 상태를 확인한다.
 			if(solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_BODY_OPERATION_ITEM_REV)  
 					|| solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_ASSY_OPERATION_ITEM_REV) 
 					|| solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_PAINT_OPERATION_ITEM_REV) ) {
 
-				// [NON-SR][20160621] taeku.jeong ��Ž� EPL �� Publish ���� ���� �߰� ����
-				// �Ʒ� �κ� �� ���� ���� �ϴ� �κ� ��� ����Ǿ���.
+				// [NON-SR][20160621] taeku.jeong 상신시 EPL 및 Publish 순서 검증 추가 수정
+				// 아래 부분 중 조건 검증 하는 부분 모두 변경되었음.
 				
 		    	Date revisionLastModifyDate = null;
 		    	Date instructionImageLastModifyDate = null;
@@ -1760,23 +1759,23 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 				System.out.println("instructionImageLastModifyDate = "+df.format(instructionImageLastModifyDate)+" [ "+operationItemId+"]");
 				System.out.println("instructionPublishDate = "+df.format(instructionPublishDate)+" [ "+operationItemId+"]");
 				
-				// EPL Load ����
+				// EPL Load 조건
 		        if(lastEPLLoadDate.after(revisionLastModifyDate) &&
 		        		lastEPLLoadDate.after(instructionImageLastModifyDate) &&
 		        		lastEPLLoadDate.after(bomViewLastModifyDate) ){
 		        	
-		        	// Publish ����
+		        	// Publish 조건
 		        	if(instructionPublishDate.after(lastEPLLoadDate)){
-		        		// ������� EPL Load, Publish ������ ���� ����.
+		        		// 검증결과 EPL Load, Publish 순서에 문제 없음.
 		        		 ;
 		        		 System.out.println("OK---- (Case1) : "+operationItemId);
 		        	}else{
-		        		// Publisth�� �ٽ� �ؾ� �մϴ�.
+		        		// Publisth를 다시 해야 합니다.
 		        		needRepublish = true;
 		        		System.out.println("Error---- (Case2) : "+operationItemId);
 		        	}
 		        }else{
-		        	// EPL Load �ؾ� �մϴ�.
+		        	// EPL Load 해야 합니다.
 		        	needEPLReload = true;
 		        	System.out.println("Error---- (Case3) : "+operationItemId);
 		        }
@@ -1892,8 +1891,8 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 	
 	/**
-	 * ���� �߼�
-	 * Vision-Net�� CALS ���ν��� ȣ��
+	 * 메일 발송
+	 * Vision-Net의 CALS 프로시져 호출
 	 * @throws Exception
 	 */
 	private void sendMail() throws Exception{
@@ -1901,21 +1900,21 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		String changeDesc = changeRevision.getProperty("object_desc");
 		
         String fromUser = session.getUser().getUserId();
-        String title = "New PLM : MECO[" + mecoNo + "] ���� ��û";
+        String title = "New PLM : MECO[" + mecoNo + "] 결재 요청";
         
 		String body = "<PRE>";
-		body += "New PLM���� �Ʒ��� ���� ���� ��û �Ǿ����� Ȯ�� �� ���� �ٶ��ϴ�." + "<BR>";
+		body += "New PLM에서 아래와 같이 결재 요청 되었으니 확인 후 결재 바랍니다." + "<BR>";
 		body += " -MECO NO. : " + mecoNo + "<BR>";
 		body += " -Project : " + project + "<BR>";
 		body += " -Change Desc. : " + changeDesc + "<BR>";
-		body += " -��û�μ� : " + changeRevision.getTCProperty("owning_group") + "<BR>";
-		body += " -��û��  : " + changeRevision.getTCProperty("owning_user") + "<BR>";
+		body += " -요청부서 : " + changeRevision.getTCProperty("owning_group") + "<BR>";
+		body += " -요청자  : " + changeRevision.getTCProperty("owning_user") + "<BR>";
 		body += "</PRE>";
 		
 		// SR150604-024
-		// taeku.jeong MECO ���� ��û Vision mail ���� ���� ������.
-		// ������ �ڵ带 Test �� �� ��� �迭�� ù��°�� �׻� ù��° Review Task��� ���� �� �� ������ Ȯ��.
-		// Template�� W/F�帧�� ���� �˻��Ǵ� ù��° Review Task�� Return �ϴ� �Լ��� ���� �ۼ���.
+		// taeku.jeong MECO 결재 요청 Vision mail 공지 오류 수정건.
+		// 기존의 코드를 Test 해 본 결과 배열의 첫번째가 항상 첫번째 Review Task라고 간주 할 수 없음을 확인.
+		// Template의 W/F흐름에 따라 검색되는 첫번째 Review Task를 Return 하는 함수를 새로 작성함.
 		
 		//ArrayList<String> taskList  = CustomUtil.getWorkflowTask(changeRevision.getProperty(SDVPropertyConstant.MECO_WORKFLOW_TYPE), session);
 		//ArrayList<TCComponentGroupMember> receivedUserList = reviewers.get(taskList.get(0)); //1st task.

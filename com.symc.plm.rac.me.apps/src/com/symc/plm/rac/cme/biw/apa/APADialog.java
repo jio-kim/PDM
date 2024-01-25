@@ -77,11 +77,11 @@ import com.teamcenter.rac.util.dialog.AbstractSWTDialog;
 
 
 /**
- * [SR140611-032][20140611] jwlee �����ǳ� �˻� ������ 15������ 25���� ����.
- *  �����ǳ� Dialog�� ǥ�õǴ� ������ Preference�� ������ �� �ֵ��� ����.
- *  �����ǳ� Dialog�� ǥ�õǴ� ������ �˻���󿡼� Assay Item�� ���� (Part ID�� �ټ���° �ڸ��� 0�̸� Assay Item�̴� �̰͵��� �˻���󿡼� ���� ó����)
- * [SR140721-004][20140729] shcho, �����ǳ� Dialog�� ǥ�õǴ� ������ Dialog���� ����ڰ� �Է��� ������ ���� �� �� �ֵ��� ����.
- * [NON-SR][20150703] shcho, �˻� ����� ȭ�鿡 �ùٷ� �ݿ����� �ʴ� ��찡 ���������� �߻��Ͽ� ����ȭ ó�� ���� �߰�
+ * [SR140611-032][20140611] jwlee 결합판넬 검색 개수를 15개에서 25개로 변경.
+ *  결합판넬 Dialog에 표시되는 개수를 Preference로 조절할 수 있도로 변경.
+ *  결합판넬 Dialog에 표시되는 개수를 검색대상에서 Assay Item은 제외 (Part ID의 다섯번째 자리가 0이면 Assay Item이니 이것들은 검색대상에서 제외 처리함)
+ * [SR140721-004][20140729] shcho, 결합판넬 Dialog에 표시되는 개수를 Dialog에서 사용자가 입력한 값으로 조절 할 수 있도로 변경.
+ * [NON-SR][20150703] shcho, 검색 결과가 화면에 올바로 반영되지 않는 경우가 간헐적으로 발생하여 동기화 처리 로직 추가
  */
 @SuppressWarnings("restriction")
 public class APADialog extends AbstractSWTDialog
@@ -91,7 +91,7 @@ public class APADialog extends AbstractSWTDialog
     public static final String APA_COOKIE = "MEAPACookie";
     public static final int COLUMN_INDEX_WELD_NAME = 0;
     public static final int COLUMN_INDEX_WELD_NUMBER_OF_SHEET = 1;
-    // [SR151207-042][20151209] taeku.jeong Find No �߰�
+    // [SR151207-042][20151209] taeku.jeong Find No 추가
     public static final int COLUMN_INDEX_FIND_NO = 2;
     public static final int COLUMN_INDEX_WELD_TYPE = 3;
     
@@ -99,7 +99,7 @@ public class APADialog extends AbstractSWTDialog
     public static final int COLUMN_INDEX_PART2 = 5;
     public static final int COLUMN_INDEX_PART3 = 6;
     public static final int COLUMN_INDEX_PART4 = 7;
-    // jwlee �ҽ� ���� ����
+    // jwlee 소스 변경 시작
     public static final int COLUMN_INDEX_PART5 = 8;
     public static final int COLUMN_INDEX_PART6 = 9;
     public static final int COLUMN_INDEX_PART7 = 10;
@@ -111,7 +111,7 @@ public class APADialog extends AbstractSWTDialog
     public static final int COLUMN_INDEX_PART13 = 16;
     public static final int COLUMN_INDEX_PART14 = 17;
     public static final int COLUMN_INDEX_PART15 = 18;
-    // [SR140611-032][20140611] jwlee �����ǳ� �˻� ������ 15������ 25���� ����.
+    // [SR140611-032][20140611] jwlee 결합판넬 검색 개수를 15개에서 25개로 변경.
     public static final int COLUMN_INDEX_PART16 = 19;
     public static final int COLUMN_INDEX_PART17 = 120;
     public static final int COLUMN_INDEX_PART18 = 21;
@@ -124,25 +124,25 @@ public class APADialog extends AbstractSWTDialog
     public static final int COLUMN_INDEX_PART25 = 28;
     //public static final int MAX_COLUMN_INDEX = 5;
     public static final int MAX_COLUMN_INDEX = 29;
-    // jwlee �ҽ� ���� ��
+    // jwlee 소스 변경 끝
     
     public static final int CusomAddedColumnCount = 3;
 
     private final String defaultColumnWidth = "120";
-     // [SR151207-042][20151209] taeku.jeong Find No �߰�
+     // [SR151207-042][20151209] taeku.jeong Find No 추가
     private final String columnTitles[] = {
         getReg().getString("MFGName_Header"), getReg().getString("MFGType_Number_of_Sheet"), getReg().getString("MFGFindNo_Header"), getReg().getString("MFGType_Header"), getReg().getString("Part1_Header"),
         getReg().getString("Part2_Header"), getReg().getString("Part3_Header"), getReg().getString("Part4_Header"),
-        // jwlee �ҽ����� ����
+        // jwlee 소스변경 시작
         getReg().getString("Part5_Header"), getReg().getString("Part6_Header"), getReg().getString("Part7_Header"),
         getReg().getString("Part8_Header"), getReg().getString("Part9_Header"), getReg().getString("Part10_Header"),
         getReg().getString("Part11_Header"), getReg().getString("Part12_Header"), getReg().getString("Part13_Header"),
         getReg().getString("Part14_Header"), getReg().getString("Part15_Header")
-        // [SR140611-032][20140611] jwlee �����ǳ� �˻� ������ 15������ 25���� ����.
+        // [SR140611-032][20140611] jwlee 결합판넬 검색 개수를 15개에서 25개로 변경.
         ,getReg().getString("Part16_Header"), getReg().getString("Part17_Header"),getReg().getString("Part18_Header"), getReg().getString("Part19_Header")
         ,getReg().getString("Part20_Header"),getReg().getString("Part21_Header"),getReg().getString("Part22_Header"),getReg().getString("Part23_Header")
         ,getReg().getString("Part24_Header"),getReg().getString("Part25_Header")
-        // jwlee �ҽ����� ��
+        // jwlee 소스변경 끝
     };
 
     private Shell shell;
@@ -170,15 +170,15 @@ public class APADialog extends AbstractSWTDialog
 
     public boolean setDialogVisible;
 
-    // jwlee �ҽ����� ����
+    // jwlee 소스변경 시작
     //String columnWidths[];
-    // [SR151207-042][20151209] taeku.jeong Find No �߰�
+    // [SR151207-042][20151209] taeku.jeong Find No 추가
     protected String columnWidths[] = {"100", "30", "30", "100", "100", "100", "100", "100", "100", "100", "100", "100",
-            // [SR140611-032][20140611] jwlee �����ǳ� �˻� ������ 15������ 25���� ����.
+            // [SR140611-032][20140611] jwlee 결합판넬 검색 개수를 15개에서 25개로 변경.
                              "100", "100", "100", "100", "100", "100", "100"
                              ,"100", "100", "100", "100", "100", "100", "100", "100", "100", "100"};
             //---------------------------------------------------------------------------
-    // jwlee �ҽ����� ��
+    // jwlee 소스변경 끝
     protected GridItem selectedItem;
     protected List<GridItem> selectedItems;
     protected int selectedColumn;
@@ -207,7 +207,7 @@ public class APADialog extends AbstractSWTDialog
         shell = shell1;
         session = abstractaifsession;
         selectedComponent = tccomponentbomline;
-        //jwlee ���õ� BOMLine ����
+        //jwlee 선택된 BOMLine 정보
         rootBomline = productBOMLine;
     }
 
@@ -260,10 +260,10 @@ public class APADialog extends AbstractSWTDialog
     public int open()
     {
         viewerApp = (AbstractBOMLineViewerApplication)AIFUtility.getCurrentApplication();
-        // jwlee Dialog(Connected to) �� ������ ������ view �� ����� E-BOM view ������ ���� �����´�
+        // jwlee Dialog(Connected to) 를 띄우기전 선택한 view 와 연결된 E-BOM view 정보를 같이 가져온다
         //rootBomline = getContentProvider().setBOMLine(selectedComponent);
 
-        //MProduct �ڵ� Expand ��� �߰�
+        //MProduct 자동 Expand 기능 추가
         /*
         AbstractViewableTreeTable[] abstractViewableTreeTables = viewerApp.getViewableTreeTables();
         for(AbstractViewableTreeTable treeTable : abstractViewableTreeTables) {
@@ -286,7 +286,7 @@ public class APADialog extends AbstractSWTDialog
 
     }
 
-    //[SR140721-004][20140729] shcho, �����ǳ� Dialog�� ǥ�õǴ� ������ Dialog���� ����ڰ� �Է��� ������ ���� �� �� �ֵ��� ����.
+    //[SR140721-004][20140729] shcho, 결합판넬 Dialog에 표시되는 개수를 Dialog에서 사용자가 입력한 값으로 조절 할 수 있도로 변경.
     protected void createDialogWindow(Composite composite) {
         Composite secondComposite = new Composite(composite, SWT.NONE);
         GridData gdSubComposite = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
@@ -436,7 +436,7 @@ public class APADialog extends AbstractSWTDialog
             if(s1 == null || s1.length() <= 0)
                 continue;
             setEnabledToolBarItem(1031, true);
-            // jwlee �ҽ����� Part4�������� üũ �ϴ����� part17 �� �ø�
+            // jwlee 소스변경 Part4개까지만 체크 하던것을 part17 로 늘림
             if(getReg().getString("Part1_Header").equals(s) || getReg().getString("Part2_Header").equals(s) || getReg().getString("Part3_Header").equals(s) || getReg().getString("Part4_Header").equals(s) ||
                getReg().getString("Part5_Header").equals(s) || getReg().getString("Part6_Header").equals(s) ||
                getReg().getString("Part7_Header").equals(s) || getReg().getString("Part8_Header").equals(s) ||
@@ -445,7 +445,7 @@ public class APADialog extends AbstractSWTDialog
                getReg().getString("Part13_Header").equals(s) || getReg().getString("Part14_Header").equals(s) ||
                getReg().getString("Part15_Header").equals(s) || getReg().getString("Part16_Header").equals(s) ||
                getReg().getString("Part17_Header").equals(s) || getReg().getString("Part18_Header").equals(s)
-               // [SR140611-032][20140611] jwlee �����ǳ� �˻� ������ 15������ 25���� ����.
+               // [SR140611-032][20140611] jwlee 결합판넬 검색 개수를 15개에서 25개로 변경.
                ||getReg().getString("Part19_Header").equals(s) || getReg().getString("Part20_Header").equals(s)
                ||getReg().getString("Part21_Header").equals(s)||getReg().getString("Part22_Header").equals(s)
                ||getReg().getString("Part23_Header").equals(s)||getReg().getString("Part24_Header").equals(s)
@@ -508,7 +508,7 @@ public class APADialog extends AbstractSWTDialog
         addColumn(apatablecomparator, gridcolumn4, columnTitles[4], 4);
         GridColumn gridcolumn5 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn5, columnTitles[5], 5);
-        // jwlee �ҽ����� ����
+        // jwlee 소스변경 시작
         GridColumn gridcolumn6 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn6, columnTitles[6], 6);
         GridColumn gridcolumn7 = new GridColumn(grid, SWT.LEFT);
@@ -534,7 +534,7 @@ public class APADialog extends AbstractSWTDialog
         GridColumn gridcolumn17 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn17, columnTitles[17], 17);
 
-        //[SR140611-032][20140611] jwlee �����ǳ� �˻� ������ 15������ 25���� ����.
+        //[SR140611-032][20140611] jwlee 결합판넬 검색 개수를 15개에서 25개로 변경.
         GridColumn gridcolumn18 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn18, columnTitles[18], 18);
         GridColumn gridcolumn19 = new GridColumn(grid, SWT.LEFT);
@@ -555,11 +555,11 @@ public class APADialog extends AbstractSWTDialog
         addColumn(apatablecomparator, gridcolumn26, columnTitles[26], 26);
         GridColumn gridcolumn27 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn27, columnTitles[27], 27);
-        // [SR151207-042][20151209] taeku.jeong Find No �߰�
+        // [SR151207-042][20151209] taeku.jeong Find No 추가
         GridColumn gridcolumn28 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn28, columnTitles[28], 28);
         //---------------------------------------------------------------------
-        // jwlee �ҽ����� ��
+        // jwlee 소스변경 끝
         tableViewer.setComparator(apatablecomparator);
     }
 
@@ -691,8 +691,8 @@ public class APADialog extends AbstractSWTDialog
 
     protected void createButtonsForButtonBar(Composite composite)
     {
-        // jwlee ���� �ҽ� �κ�
-        //[SR140721-004][20140729] shcho, �����ǳ� Dialog�� ǥ�õǴ� ������ Dialog���� ����ڰ� �Է��� ������ ���� �� �� �ֵ��� ����.
+        // jwlee 수정 소스 부분
+        //[SR140721-004][20140729] shcho, 결합판넬 Dialog에 표시되는 개수를 Dialog에서 사용자가 입력한 값으로 조절 할 수 있도로 변경.
         // searchButton = createButton(composite, 1026, getReg().getString("APADialog.search"), false);
         // searchButton.setToolTipText(getReg().getString("APADialog.searchButton.ToolTip"));
         assignButton = createButton(composite, 1034, getReg().getString("APADialog.assign"), false);
@@ -729,23 +729,23 @@ public class APADialog extends AbstractSWTDialog
         int i = ((Integer)selectionevent.widget.getData()).intValue();
         if(1025 == i) {
             filterPressed(selectionevent);
-            // ����� �ǳ� ������ ����� ���Ͽ� ���� �ٲ۴�
+            // 저장된 판넬 갯수와 겹수를 비교하여 색을 바꾼다
             modifyTableView();
         }else if(1027 == i){
             settingsPressed();
-            // ����� �ǳ� ������ ����� ���Ͽ� ���� �ٲ۴�
+            // 저장된 판넬 갯수와 겹수를 비교하여 색을 바꾼다
             modifyTableView();
         }else if(1028 == i){
             filterOutAssignedPressed();
-            // ����� �ǳ� ������ ����� ���Ͽ� ���� �ٲ۴�
+            // 저장된 판넬 갯수와 겹수를 비교하여 색을 바꾼다
             modifyTableView();
         }else if(1029 == i){
             removePartPressed();
-            // ����� �ǳ� ������ ����� ���Ͽ� ���� �ٲ۴�
+            // 저장된 판넬 갯수와 겹수를 비교하여 색을 바꾼다
             modifyTableView();
         }else if(1030 == i){
             addPartPressed();
-            // ����� �ǳ� ������ ����� ���Ͽ� ���� �ٲ۴�
+            // 저장된 판넬 갯수와 겹수를 비교하여 색을 바꾼다
             modifyTableView();
         }else if(1031 == i){
             displayPressed();
@@ -949,8 +949,8 @@ public class APADialog extends AbstractSWTDialog
         });
     }
 
-    // jwlee ���� �ҽ� �κ�
-    //[SR140721-004][20140729] shcho, �����ǳ� Dialog�� ǥ�õǴ� ������ Dialog���� ����ڰ� �Է��� ������ ���� �� �� �ֵ��� ����.
+    // jwlee 수정 소스 부분
+    //[SR140721-004][20140729] shcho, 결합판넬 Dialog에 표시되는 개수를 Dialog에서 사용자가 입력한 값으로 조절 할 수 있도로 변경.
     private void searchPressed() {
 //        String strSearchCondition = searchConditionText.getText();
 //        if(strSearchCondition.length() == 0 || strSearchCondition.equals("0")) {
@@ -1126,8 +1126,8 @@ public class APADialog extends AbstractSWTDialog
     }
 
     /**
-     * Table �� ����� �����͸� ������ ����� ���� ����� �ǳڿ� ������ ���Ͽ�
-     * ���� �ٲپ� �ش�
+     * Table 에 저장된 데이터를 가지고 겹수와 실제 저장된 판넬에 갯수를 비교하여
+     * 색을 바꾸어 준다
      *
      * @method modifyTableView
      * @date 2014. 4. 4.
@@ -1156,7 +1156,7 @@ public class APADialog extends AbstractSWTDialog
                             rearSheet++;
                         }
                     }
-                    // ��� ���� ���� ����� ����� ������ ����, ������ �Ķ����� ǥ���Ѵ�
+                    // 겹수 보다 실제 저장될 대상이 많으면 빨강, 적으면 파랑으로 표시한다
                     if (rearSheet > numberSheet) {
                         grid.getItem(i).setBackground(COLUMN_INDEX_WELD_NAME, redColor);
                     }else if (rearSheet < numberSheet){

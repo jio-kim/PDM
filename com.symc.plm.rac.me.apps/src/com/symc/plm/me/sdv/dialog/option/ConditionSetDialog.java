@@ -60,9 +60,9 @@ import com.teamcenter.rac.util.Registry;
 
 /**
  * 
- * Function�� ������ �ɼ��� �������� ���� ������ BOM line�� ������� �����Ѵ�.
+ * Function에 설정된 옵션의 조합으로 현재 선택한 BOM line에 컨디션을 설정한다.
  * 
- * [SR150521-012][20150522] shcho, �ɼ� ����� ��Ƽ���� �ǵ��� ��� ����
+ * [SR150521-012][20150522] shcho, 옵션 적용시 멀티적용 되도록 기능 개선
  * 
  * @author slobbie
  * 
@@ -190,9 +190,9 @@ public class ConditionSetDialog extends AbstractAIFDialog {
                             };
                             button.setBackground(Color.WHITE);
 
-                            // �߰� ���̺��� ���� ���̺�� ==> ���
-                            // 1. selectedLineOptionSet���� �ִ��� üũ�Ͽ�, �ִٸ� �� �ɼ��� �����´�.
-                            // 2. �������� �ʴ´ٸ� �ɼ��� ����.
+                            // 중간 테이블에서 우측 테이블로 ==> 기능
+                            // 1. selectedLineOptionSet에서 있는지 체크하여, 있다면 그 옵션을 가져온다.
+                            // 2. 존재하지 않는다면 옵션을 생성.
                             button.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent arg0) {
                                     add();
@@ -211,7 +211,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
 
                             };
                             button.setBackground(Color.WHITE);
-                            // ���� ���̺��� ���� ���̺�� <== ���
+                            // 우측 테이블에서 좌측 테이블로 <== 기능
                             button.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent actionevent) {
                                     remove();
@@ -307,7 +307,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    // ����� ���� ���̺� ������ �ɼ��� ��������� �߰���.
+                    // 컨디션 조합 테이블에 수집된 옵션을 컨디션으로 추가함.
                     try {
                         DefaultTableModel model = (DefaultTableModel) detailTable.getModel();
                         //[2024.01.24]수정
@@ -331,7 +331,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    // Combination Results ���̺��� ���õ� �ɼ� ������ ������.
+                    // Combination Results 테이블에서 선택된 옵션 조합을 제거함.
 //                    Object[] selectedObj = combinationResultList.getSelectedValues();
 //
 //                    DefaultListModel listModel = (DefaultListModel) combinationResultList.getModel();
@@ -355,7 +355,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    // ����� ���� ���̺� ������ �ɼ��� ��� ������.
+                    // 컨디션 조합 테이블에 수집된 옵션을 모두 제거함.
                     DefaultTableModel model = (DefaultTableModel) detailTable.getModel();
                     for (int i = model.getRowCount() - 1; model != null && i >= 0; i--) {
                         model.removeRow(i);
@@ -479,12 +479,12 @@ public class ConditionSetDialog extends AbstractAIFDialog {
         VariantCheckBoxTableCellEditor.unUsedValueList.clear();
         
         if(selectedBOMLines.length > 1) {
-            MessageBox.post(AIFDesktop.getActiveDesktop().getShell(), "2�� �̻��� BOPLine�� ���õǾ����ϴ�.", "INFORMATION", MessageBox.INFORMATION);
+            MessageBox.post(AIFDesktop.getActiveDesktop().getShell(), "2개 이상의 BOPLine이 선택되었습니다.", "INFORMATION", MessageBox.INFORMATION);
         }
     }
 
     /**
-     * Condition�� ������.
+     * Condition을 적용함.
      * 
      * @throws TCException
      */
@@ -513,7 +513,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * ��밡���� �ɼ��� �����ִ� Tree�� �ʱ�ȭ ��.(Function�� ���ǵ� �ɼǸ� ��밡��)
+     * 사용가능한 옵션을 보여주는 Tree를 초기화 함.(Function에 정의된 옵션만 사용가능)
      * 
      * @return
      */
@@ -528,7 +528,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
                 VariantNode optionNode = new VariantNode(option);
                 List<VariantValue> values = option.getValues();
 
-                // ��밡���� �ɼ��� �����ϴ°�츸 Option�� �߰��Ѵ�.
+                // 사용가능한 옵션이 존재하는경우만 Option을 추가한다.
                 if (values != null && !values.isEmpty()) {
                     int enableChildCount = 0;
                     for (VariantValue value : values) {
@@ -562,7 +562,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * �ش� �ɼ��� �̹� ���ԵǾ� �ִ��� Ȯ��
+     * 해당 옵션이 이미 포함되어 있는지 확인
      * 
      * @param value
      * @param data
@@ -599,7 +599,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * �÷� ������ �ʱ�ȭ
+     * 컬럼 사이즈 초기화
      */
     public void columnInit() {
         TableColumnModel columnModel = detailTable.getColumnModel();
@@ -612,7 +612,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * Condition �������̺� �ɼǰ��� �߰���.
+     * Condition 조합테이블에 옵션값을 추가함.
      */
     @SuppressWarnings({ "unchecked" })
     private void add() {
@@ -643,7 +643,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * �߰��� Conditiond�� ������.
+     * 추가된 Conditiond을 제거함.
      */
     @SuppressWarnings({ "unused", "unchecked" })
     private void remove() {
@@ -664,7 +664,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
                     }
                 }
 
-                // ������ ���̺� �𵨿��� ��� Value�� ��� ���� ������ �ʴ� �ɼ��� AllData���� ������.
+                // 현재의 테이블 모델에서 모든 Value를 모두 빼면 사용되지 않는 옵션은 AllData에서 빼야함.
                 boolean bNeedDataRemove = true;
                 for (Vector row : (Vector<Vector>) model.getDataVector()) {
                     if (row.get(1).equals(option.getOptionName())) {
