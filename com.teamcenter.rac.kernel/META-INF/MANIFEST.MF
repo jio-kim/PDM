@@ -123,5 +123,6 @@ Import-Package: com.teamcenter.fms.clientcache.proxy,
  org.apache.axis.transport.http,
  org.apache.axis.utils,
  org.apache.commons.discovery.tools,
+ org.apache.commons.httpclient,
  org.apache.log4j,
  org.osgi.service.event
