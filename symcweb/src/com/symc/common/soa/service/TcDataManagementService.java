@@ -9,6 +9,7 @@ import com.teamcenter.soa.client.model.ModelObject;
 import com.teamcenter.soa.client.model.ServiceData;
 import com.teamcenter.soa.client.model.strong.Fnd0StaticTable;
 import com.teamcenter.soa.client.model.strong.ImanType;
+import com.teamcenter.soa.client.model.strong.POM_object;
 import com.teamcenter.soa.client.model.strong.Table;
 import com.teamcenter.soa.client.model.strong.WorkspaceObject;
 
@@ -402,7 +403,7 @@ public class TcDataManagementService extends DataManagementService {
 	}
 
 	@Override
-	public SaveAsObjectsResponse saveAsObjects(SaveAsIn[] arg0)
+	public SaveAsObjectsResponse saveAsObjects(com.teamcenter.services.strong.core._2011_06.DataManagement.SaveAsIn[] arg0)
 			throws ServiceException {
 		return getService().saveAsObjects(arg0);
 	}
@@ -529,7 +530,7 @@ public class TcDataManagementService extends DataManagementService {
 	}
 
     @Override
-	public SaveAsObjectsResponse saveAsObjectAndRelate(SaveAsIn[] arg0,
+	public SaveAsObjectsResponse saveAsObjectAndRelate(com.teamcenter.services.strong.core._2011_06.DataManagement.SaveAsIn[] arg0,
 			RelateInfoIn[] arg1) {
 		return getService().saveAsObjectAndRelate(arg0, arg1);
 	}
@@ -591,6 +592,119 @@ public class TcDataManagementService extends DataManagementService {
 	@Override
 	public ServiceData removeChildren(ChildrenInputData[] arg0) {
 		return getService().removeChildren(arg0);
+	}
+	@Override
+	public GenerateIdsResponse generateIdsUsingIDGenerationRules(GenerateIdInput[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public com.teamcenter.services.strong.core._2014_10.DataManagement.GetDeepCopyDataResponse getDeepCopyData(com.teamcenter.services.strong.core._2014_10.DataManagement.DeepCopyDataInput[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public GetPasteRelationsResponse2 getPasteRelations2(GetPasteRelationsInputData[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ServiceData pruneNamedReferences(POM_object[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public SaveAsObjectsResponse saveAsObjectsAndRelate(
+			com.teamcenter.services.strong.core._2014_10.DataManagement.SaveAsIn[] arg0, RelateInfoIn[] arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public CreateResponse createRelateAndSubmitObjects2(CreateIn2[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public GenerateNextValuesResponse generateNextValuesForProperties(PropertyNamingruleInfo[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public CreatableSubBONamesResponse getCreatbleSubBuisnessObjectNames(CreatableSubBONamesInput[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public com.teamcenter.services.strong.core._2015_07.DataManagement.GetDeepCopyDataResponse getDeepCopyData(
+			com.teamcenter.services.strong.core._2015_07.DataManagement.DeepCopyDataInput arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public DomainOfObjectOrTypeResponse getDomainOfObjectOrType(GetDomainInput[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public LocalizedPropertyValuesResponse getLocalizedProperties2(PropertyInfo[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ReassignParticipantResponse reassignParticipants(ReassignParticipantInfo[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public GenerateContextSpecificIDsResponse generateContextSpecificIDs(GenerateContextIDsInput[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ServiceData resetContextID(String[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public SetPropsAndDetectOverwriteResponse setPropertiesAndDetectOverwrite(PropData[] arg0,
+			Map<String, String[]> arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public CreateAttachResponse createAttachAndSubmitObjects(CreateIn2[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public CreateResponse createObjectsInBulkAndRelate(CreateIn3[] arg0) throws ServiceException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ServiceData unlinkAndDeleteObjects(DeleteIn[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ServiceData createIdDisplayRules(IDDispRuleCreateIn[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public IDContextOutput getIdContexts(WorkspaceObject[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public IdentifierTypesOut getIdentifierTypes(IdentifierTypesIn[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public GenerateContextSpecificIDsResponse generateContextSpecificIDs2(GenerateContextIDsInput2[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }
