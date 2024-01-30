@@ -114,7 +114,7 @@ public class SDVNewProcessDialog extends AbstractProcessDialog {
     boolean inheritTargetsEnabled = false;
     boolean inheritTargetsSelected = false;
 
-    // template �̸��� ��ϵ� Preference Name
+    // template 이름이 등록된 Preference Name
     private String templatePrefName;
 
     public SDVNewProcessDialog(Frame frame, SDVNewProcessCommand command, String templatePrefName) {
@@ -567,7 +567,13 @@ public class SDVNewProcessDialog extends AbstractProcessDialog {
     public TCComponent getCreatorTask() {
         return this.creatorTask;
     }
-
+    
+	//[2024.01.25]수정
+    //추상 메소드 누락으로 인한 추가
+	public TCComponent[] getAttachmentComponentsByTypes(int[] arg0) {
+		return this.attachmentsPanel.getAttachmentsByTypes(arg0);
+	}
+	
     private void addInheritedTargets() {
         if ((!(this.inheritTargetsEnabled)) || (!(this.inheritTargetsSelected)))
             return;

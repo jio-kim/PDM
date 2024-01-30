@@ -66,12 +66,12 @@ import com.teamcenter.rac.workflow.commands.newperformsignoff.SignoffDecisionOpe
 //import com.symc.plm.me.sdv.dialog.meco.ValidationResultDialog;
 
 /**
- * ÃÖÃÊ ECO »ó½Å ¹× ECO ÇÁ·Î¼¼½º ÁøÇà Áß ¹İ·Á ÈÄ Àç »ó½Å ½Ã È£Ãâ µÊ.
- * [SR140820-050][20140808] shcho, MEW´Â Team Leader °áÀç¸¸ ÇÏ¹Ç·Î Validate¿¡¼­ BOPADMINÀ» ÇÊ¼ö·Î Ã£´Â °Í Á¦¿Ü(È®ÀÎÇÔ:ÀÌÀå¿ø(Á¤À±Àç))
- * [SR150605-007][20150605] shcho, RejectÈÄ Àç »ó½Å½Ã »ó½Å ¿À·ù  The Task "Creator" has not yet completed. ¹ß»ı ÇÏ´Â ¹®Á¦ ÇØ°á
-                                         (Creator Task¸¦ ´øÁö´ø °ÍÀ» perform-signoffs Task¸¦ ´øÁöµµ·Ï ¼öÁ¤)
- * [SR150715-017][20150717] shcho, Â÷Ã¼ MECO »ó½Å½Ã °ËÁõ½Ã°£ °ú´Ù ¼Ò¿ä ¹®Á¦·Î Checking MECO EPLÀ» Á¦°Å. 
- *                                       ±× ´ë½Å¿¡, »ó½Å Process ÁøÇà Àü ¼öÇàÇÏµµ·Ï º¯°æ. (Á¤À±Àç ¼ö¼®°ú À±¼ø½Ä Â÷Àå´Ô ÇùÀÇ °á°úÀÓ.)
+ * ìµœì´ˆ ECO ìƒì‹  ë° ECO í”„ë¡œì„¸ìŠ¤ ì§„í–‰ ì¤‘ ë°˜ë ¤ í›„ ì¬ ìƒì‹  ì‹œ í˜¸ì¶œ ë¨.
+ * [SR140820-050][20140808] shcho, MEWëŠ” Team Leader ê²°ì¬ë§Œ í•˜ë¯€ë¡œ Validateì—ì„œ BOPADMINì„ í•„ìˆ˜ë¡œ ì°¾ëŠ” ê²ƒ ì œì™¸(í™•ì¸í•¨:ì´ì¥ì›(ì •ìœ¤ì¬))
+ * [SR150605-007][20150605] shcho, Rejectí›„ ì¬ ìƒì‹ ì‹œ ìƒì‹  ì˜¤ë¥˜  The Task "Creator" has not yet completed. ë°œìƒ í•˜ëŠ” ë¬¸ì œ í•´ê²°
+                                         (Creator Taskë¥¼ ë˜ì§€ë˜ ê²ƒì„ perform-signoffs Taskë¥¼ ë˜ì§€ë„ë¡ ìˆ˜ì •)
+ * [SR150715-017][20150717] shcho, ì°¨ì²´ MECO ìƒì‹ ì‹œ ê²€ì¦ì‹œê°„ ê³¼ë‹¤ ì†Œìš” ë¬¸ì œë¡œ Checking MECO EPLì„ ì œê±°. 
+ *                                       ê·¸ ëŒ€ì‹ ì—, ìƒì‹  Process ì§„í–‰ ì „ ìˆ˜í–‰í•˜ë„ë¡ ë³€ê²½. (ì •ìœ¤ì¬ ìˆ˜ì„ê³¼ ìœ¤ìˆœì‹ ì°¨ì¥ë‹˜ í˜‘ì˜ ê²°ê³¼ì„.)
  * @author DJKIM
  *
  */
@@ -96,7 +96,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	private CustomMECODao dao = new CustomMECODao();
 	private SYMCDecisionDialog parent;
 	
-	private final static String EVENT_START = "  ¢º";
+	private final static String EVENT_START = "  â–¶";
 	private DataSet ds = null;
 	
 	private boolean isOkValidation = true;
@@ -104,7 +104,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	private String msg = "";
 	private TCComponentTask rootTask;
 	
-	// ¼öÁ¤ »èÁ¦ ¿ä¸Á
+	// ìˆ˜ì • ì‚­ì œ ìš”ë§
 	String existWorkingChildrenList = "";
 	
 	DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm");
@@ -142,20 +142,20 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 
 			mecoNo = changeRevision.getProperty("item_id");
 
-			// # 0. FIXED, 2013.06.01, Å¸°Ù¸®½ºÆ®¿¡¼­ ECORevisionÀÌ ¶³¾îÁø °æ¿ì Ã£¾Æ¼­ ºÙ¿© ÁÖ°í, CreateWorkflowÀÎ °æ¿ì´Â ¸Ş½ÃÂ¡
+			// # 0. FIXED, 2013.06.01, íƒ€ê²Ÿë¦¬ìŠ¤íŠ¸ì—ì„œ ECORevisionì´ ë–¨ì–´ì§„ ê²½ìš° ì°¾ì•„ì„œ ë¶™ì—¬ ì£¼ê³ , CreateWorkflowì¸ ê²½ìš°ëŠ” ë©”ì‹œì§•
 			progress.setStatus(EVENT_START + "Checking MECO has Workflow...", false);
 			System.out.println("1.checkHasWorkflow");
 			checkHasWorkflow();
 			progress.setStatus("is done!");
 
-			// # 3. °áÀç¼± È®ÀÎ
+			// # 3. ê²°ì¬ì„  í™•ì¸
 			progress.setStatus(EVENT_START + "Checking approval line...", false);
 			System.out.println("2.checkReviewer");
 			checkReviewer();
 			progress.setStatus("is done!");
 
-			// # 5. ECO ÀÛ¾÷ ³»¿ë[CÁö]À» º¸°í ¼Ö·ç¼Ç¾ÆÀÌÅÛ ¸µÅ© »ı¼º
-			//¼ø¼­ º¯°æ... ¹®Á¦¾ÆÀÌÅÛ, ¼Ö·ç¼Ç¾ÆÀÌÅÛÀ» ¸ğµÎ ´Ù½Ã Ã£¾Æ³»¾î MECO ÇÏÀ§¿¡ ºÙÀÌ°Å³ª ¶¼³¿....
+			// # 5. ECO ì‘ì—… ë‚´ìš©[Cì§€]ì„ ë³´ê³  ì†”ë£¨ì…˜ì•„ì´í…œ ë§í¬ ìƒì„±
+			//ìˆœì„œ ë³€ê²½... ë¬¸ì œì•„ì´í…œ, ì†”ë£¨ì…˜ì•„ì´í…œì„ ëª¨ë‘ ë‹¤ì‹œ ì°¾ì•„ë‚´ì–´ MECO í•˜ìœ„ì— ë¶™ì´ê±°ë‚˜ ë–¼ëƒ„....
 			progress.setStatus(EVENT_START + "Checking Solution Item(s)...", false);
 			System.out.println("3.getSolutionItemsAfterReGenerate");
 			solutionList = CustomUtil.getSolutionItemsAfterReGenerate(changeRevision);
@@ -170,8 +170,8 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			if (bopType.equals(BOPTYPE.ASSEMBLY) || bopType.equals(BOPTYPE.BODY) || bopType.equals(BOPTYPE.PAINT))
 			{
 				CustomUtil customUtil = new CustomUtil();
-				//¼Ö·ç¼Ç ¾ÆÀÌÅÛÀ» ´Ù½Ã »ı¼ºÇÏÁö ¾ÊÀ½.... false °ªÀ» ³ÖÀ½.
-				//À§ÂÊ¿¡¼­ ÀÌ¹Ì ¸ÕÀú ¼Ö·ç¼Ç ¾ÆÀÌÅÛ ¹× ¹®Á¦ ¾ÆÀÌÅÛÀ» ¸¸µéµµ·Ï ÇßÀ½.
+				//ì†”ë£¨ì…˜ ì•„ì´í…œì„ ë‹¤ì‹œ ìƒì„±í•˜ì§€ ì•ŠìŒ.... false ê°’ì„ ë„£ìŒ.
+				//ìœ„ìª½ì—ì„œ ì´ë¯¸ ë¨¼ì € ì†”ë£¨ì…˜ ì•„ì´í…œ ë° ë¬¸ì œ ì•„ì´í…œì„ ë§Œë“¤ë„ë¡ í–ˆìŒ.
 				ArrayList<SYMCBOPEditData> arrResultEPL = customUtil.buildMEPL(changeRevision, false);
 			}
 			progress.setStatus("is done!");
@@ -181,7 +181,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			checkPublishedProcessSheet();
 			progress.setStatus("is done!");
 
-			// # 6. Solution Items¿¡ Æ÷ÇÔ µÈ ¼³º¯´ë»ó ¸®ºñÀü ÇÏÀ§¿¡ ´Ù¸¥ MECO·Î ÁøÇà ÁßÀÎ °ÍÀÌ ÀÖ´ÂÁö Ã¼Å©
+			// # 6. Solution Itemsì— í¬í•¨ ëœ ì„¤ë³€ëŒ€ìƒ ë¦¬ë¹„ì „ í•˜ìœ„ì— ë‹¤ë¥¸ MECOë¡œ ì§„í–‰ ì¤‘ì¸ ê²ƒì´ ìˆëŠ”ì§€ ì²´í¬
 			progress.setStatus(EVENT_START + "Checking Exist working children(s)...", false);
 			System.out.println("6.checkExistWorkingChildren");
 			checkExistWorkingChildren();
@@ -206,25 +206,25 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			checkBOPValidate();
 			progress.setStatus("is done!");
 
-			// ## ÇÁ·Î¼¼½º Å¸°Ù ¼³Á¤
+			// ## í”„ë¡œì„¸ìŠ¤ íƒ€ê²Ÿ ì„¤ì •
 			progress.setStatus(EVENT_START + "Checking targets...", false);
 			System.out.println("9.getTargets");
 			getTargets();
 			progress.setStatus("is done!");
 
-			// ## »óÅÂ º¯°æ
+			// ## ìƒíƒœ ë³€ê²½
 			progress.setStatus(EVENT_START + "Change Status...", false);
 			System.out.println("10.changeStatus");
 			changeStatus();
 			progress.setStatus("is done!");
 
-			// ## ÇÁ·Î¼¼½º »ı¼º
+			// ## í”„ë¡œì„¸ìŠ¤ ìƒì„±
 			progress.setStatus(EVENT_START + "Creating process...", false);
 			System.out.println("11.createProcess");
 			createProcess();
 			progress.setStatus("is done!");
 
-			// ## Å¸½ºÅ© ÇÒ´ç
+			// ## íƒ€ìŠ¤í¬ í• ë‹¹
 			progress.setStatus(EVENT_START + "Assigning...", false);
 			System.out.println("12.Assigning");
 			if (updateSignOffs)
@@ -236,7 +236,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			}
 			progress.setStatus("is done!");
 
-			// ## ¸ŞÀÏ ¹ß¼Û 
+			// ## ë©”ì¼ ë°œì†¡ 
 			progress.setStatus(EVENT_START + "Mailing...", false);
 			System.out.println("13.sendMail");
 			sendMail();
@@ -248,7 +248,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			{
 				progress.setShowButton(true);
 				progress.setStatus("is fail!");
-				progress.setStatus("£À Error Message : ");
+				progress.setStatus("ï¼  Error Message : ");
 				message = " " + e.getMessage();
 				rollback();
 			}
@@ -271,7 +271,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		}
 	}
 	
-	// Å¸°Ù¸®½ºÆ®¿¡¼­ MECORevisionÀÌ ¶³¾îÁø °æ¿ì Ã£¾Æ¼­ ºÙ¿© ÁÖ°í, CreateWorkflowÀÎ °æ¿ì´Â ¸Ş½ÃÂ¡
+	// íƒ€ê²Ÿë¦¬ìŠ¤íŠ¸ì—ì„œ MECORevisionì´ ë–¨ì–´ì§„ ê²½ìš° ì°¾ì•„ì„œ ë¶™ì—¬ ì£¼ê³ , CreateWorkflowì¸ ê²½ìš°ëŠ” ë©”ì‹œì§•
 	private void checkHasWorkflow() throws Exception {
 
 		TCComponent[] process_stage_list = changeRevision.getReferenceListProperty(SDVPropertyConstant.PROP_PROCESS_STAGE_LIST);
@@ -304,7 +304,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			}
 		}
 		
-		// Workflow °Ë»ö
+		// Workflow ê²€ìƒ‰
 //		if(!dao.workflowCount(changeRevision.getProperty("item_id")).equals("0")){
 		if(isDuplicatedProcess) {
 //			throw (new Exception("Workflow has been created already.\nCheck the task to perfrom folder in My Worklist, and please proceed by approval."));
@@ -325,7 +325,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			{
 				org.eclipse.swt.widgets.MessageBox box = new org.eclipse.swt.widgets.MessageBox(shell, SWT.ICON_INFORMATION | SWT.OK);
 				box.setText("Information");
-				box.setMessage("°áÀç ¿äÃ»ÀÌ ¿Ï·áµÇ¾ú½À´Ï´Ù");
+				box.setMessage("ê²°ì¬ ìš”ì²­ì´ ì™„ë£Œë˜ì—ˆìŠµë‹ˆë‹¤");
 				box.open();
 			}
 
@@ -333,7 +333,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 	
 	/**
-	 * ¿À·ù ¹ß»ı ½Ã »ó½Å ½ÃÁ¡ ÃÊ±âÈ­
+	 * ì˜¤ë¥˜ ë°œìƒ ì‹œ ìƒì‹  ì‹œì  ì´ˆê¸°í™”
 	 * @throws Exception
 	 */
 	private void rollback() {
@@ -366,7 +366,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 
 	/**
-	 * ECO Affected Project Á¤º¸ ¼ÂÆÃ
+	 * ECO Affected Project ì •ë³´ ì…‹íŒ…
 	 * @throws Exception
 	 */
 //	private void setArrectedProject() throws Exception {
@@ -392,9 +392,9 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //	}
 
 	/**
-	 * »óÅÂ º¯°æ
-	 * IitemRevisionÀÇ Maturity¿Í
-	 * EcoRevisionÀÇ Eco Maturity¸¦ ¾÷µ¥ÀÌÆ® ÇÔ.
+	 * ìƒíƒœ ë³€ê²½
+	 * IitemRevisionì˜ Maturityì™€
+	 * EcoRevisionì˜ Eco Maturityë¥¼ ì—…ë°ì´íŠ¸ í•¨.
 	 * @throws Exception
 	 */
 	private void changeStatus() throws Exception {
@@ -432,7 +432,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 
 	/**
-	 * MECO EPL Ã¼Å©
+	 * MECO EPL ì²´í¬
 	 * @throws Exception 
 	 */
 	private void checkExistMEPL() throws Exception{
@@ -440,21 +440,21 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //		ds.put("mecoNo", mecoNo);
 //		boolean resultList = dao.checkExistMEPL(ds);
 		
-		//viewer Ã¢¿¡¼­ ¹öÆ° Å¬¸¯ ½Ã µ¿ÀÛÇÏ´ø °ÍÀ» ÀÌÂÊÀ¸·Î ¿Å°Ü¼­ ¼öÇàÇÏ°Ô ÇÔ.
+		//viewer ì°½ì—ì„œ ë²„íŠ¼ í´ë¦­ ì‹œ ë™ì‘í•˜ë˜ ê²ƒì„ ì´ìª½ìœ¼ë¡œ ì˜®ê²¨ì„œ ìˆ˜í–‰í•˜ê²Œ í•¨.
 		String org_code = changeRevision.getProperty(SDVPropertyConstant.MECO_ORG_CODE);
 		BOPTYPE bopType = getBopType(org_code);
 		if (bopType.equals(BOPTYPE.ASSEMBLY) || bopType.equals(BOPTYPE.BODY) || bopType.equals(BOPTYPE.PAINT))
 		{
 			CustomUtil customUtil = new CustomUtil();
-			//¼Ö·ç¼Ç ¾ÆÀÌÅÛÀ» ´Ù½Ã »ı¼ºÇÏÁö ¾ÊÀ½.... false °ªÀ» ³ÖÀ½.
-			//À§ÂÊ¿¡¼­ ÀÌ¹Ì ¸ÕÀú ¼Ö·ç¼Ç ¾ÆÀÌÅÛ ¹× ¹®Á¦ ¾ÆÀÌÅÛÀ» ¸¸µéµµ·Ï ÇßÀ½.
+			//ì†”ë£¨ì…˜ ì•„ì´í…œì„ ë‹¤ì‹œ ìƒì„±í•˜ì§€ ì•ŠìŒ.... false ê°’ì„ ë„£ìŒ.
+			//ìœ„ìª½ì—ì„œ ì´ë¯¸ ë¨¼ì € ì†”ë£¨ì…˜ ì•„ì´í…œ ë° ë¬¸ì œ ì•„ì´í…œì„ ë§Œë“¤ë„ë¡ í–ˆìŒ.
 			ArrayList<SYMCBOPEditData> arrResultEPL = customUtil.buildMEPL(changeRevision, false);
 		}
 
     	Vector<String> notPublishedV = new Vector<String>();
-    	// [NON-SR][20160829] taeku.jeong Á»¸¹ÀÌ º¹ÀâÇØÁø °æÇâÀÌ ÀÖ´Âµ¥
-    	// OperationÀÇ ±×¸²¸¸ º¯°æµÈ °æ¿ì Ãß°¡ÀûÀÎ È®ÀÎÀÌ ÇÊ¿äÇÏ´Ù.
-    	// EPL »ı¼ºÀÌ ÇÊ¿äÇÑµ¥ ´©¶ôÇÑ °ÍÀÌ ÀÖÀ¸¸é ¾Ë·Á Áà¾ß ÇÑ´Ù.
+    	// [NON-SR][20160829] taeku.jeong ì¢€ë§ì´ ë³µì¡í•´ì§„ ê²½í–¥ì´ ìˆëŠ”ë°
+    	// Operationì˜ ê·¸ë¦¼ë§Œ ë³€ê²½ëœ ê²½ìš° ì¶”ê°€ì ì¸ í™•ì¸ì´ í•„ìš”í•˜ë‹¤.
+    	// EPL ìƒì„±ì´ í•„ìš”í•œë° ëˆ„ë½í•œ ê²ƒì´ ìˆìœ¼ë©´ ì•Œë ¤ ì¤˜ì•¼ í•œë‹¤.
     	int missCount = 0;
 		String mecoId = null;
 		MECOCreationUtil aMECOCreationUtil = null;
@@ -462,7 +462,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			
 			mecoId = changeRevision.getItem().getProperty(SDVPropertyConstant.ITEM_ITEM_ID);
 			aMECOCreationUtil = new MECOCreationUtil(changeRevision);
-			//MEPL Å×ÀÌºí¿¡ ÇöÀç ¼Ö·ç¼Ç¿¡ Á¸ÀçÇÏ´Â ¸®ºñÀüµéÀÌ parent¿¡ µé¾îÀÖÁö ¾ÊÀº °ÍµéÀ» Ã£¾Æ¿Â´Ù.
+			//MEPL í…Œì´ë¸”ì— í˜„ì¬ ì†”ë£¨ì…˜ì— ì¡´ì¬í•˜ëŠ” ë¦¬ë¹„ì „ë“¤ì´ parentì— ë“¤ì–´ìˆì§€ ì•Šì€ ê²ƒë“¤ì„ ì°¾ì•„ì˜¨ë‹¤.
 			ArrayList<HashMap> resultList = aMECOCreationUtil.getMissingMEPLObjectList(mecoId);
 			for (int i = 0; resultList!=null && i < resultList.size(); i++) {
 				HashMap rowHash = resultList.get(i);
@@ -496,8 +496,8 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 						}else{
 							oldRevId = "";
 						}
-						//meplÀÇ parent¿¡ µé¾îÀÖÁö ¾ÊÀº ¾ÆÀÌÅÛÀÎµ¥ ÇÏÀ§¿¡ º¯°æµÈ ¾ÆÀÌÅÛÀÌ Á¸ÀçÇÏ¸é ¹º°¡ ÀÌ»óÇÔ.
-						//ÇÏÀ§¿¡ º¯°æµÈ ¾ÆÀÌÅÛÀÌ ³»°¡ ³½ MECO°¡ ¾Æ´Ï¸é ¹«½ÃÇÏ°í ³»°¡ ³½ MECO¿¡ ÇØ´çÇÏ´Â°Å¸é ¿¡·¯ÀÎ °ÍÀÓ.
+						//meplì˜ parentì— ë“¤ì–´ìˆì§€ ì•Šì€ ì•„ì´í…œì¸ë° í•˜ìœ„ì— ë³€ê²½ëœ ì•„ì´í…œì´ ì¡´ì¬í•˜ë©´ ë­”ê°€ ì´ìƒí•¨.
+						//í•˜ìœ„ì— ë³€ê²½ëœ ì•„ì´í…œì´ ë‚´ê°€ ë‚¸ MECOê°€ ì•„ë‹ˆë©´ ë¬´ì‹œí•˜ê³  ë‚´ê°€ ë‚¸ MECOì— í•´ë‹¹í•˜ëŠ”ê±°ë©´ ì—ëŸ¬ì¸ ê²ƒì„.
 						ArrayList<CompResultDiffInfo> diffListArray = aMECOCreationUtil.getDifrentList(currentItemId, oldRevId, currentRevId);
 						//m7_MECO_NO
 						if(diffListArray != null)
@@ -553,7 +553,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 
 	/**
-	 * BOM Structure »ó¿¡¼­ end item ¹Ø¿¡ end itemÀÌ Á¸ÀçÇÏ¸é ¾ÊµÈ´Ù
+	 * BOM Structure ìƒì—ì„œ end item ë°‘ì— end itemì´ ì¡´ì¬í•˜ë©´ ì•Šëœë‹¤
 	 * @throws TCException
 	 * @throws Exception
 	 */
@@ -569,7 +569,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //	}
 
 	/**
-	 * °áÀç¼±ÀÌ ÅÛÇÃ¸´¿¡ ¸Â°Ô ±¸¼º µÇ¾î ÀÖ´ÂÁö È®ÀÎ
+	 * ê²°ì¬ì„ ì´ í…œí”Œë¦¿ì— ë§ê²Œ êµ¬ì„± ë˜ì–´ ìˆëŠ”ì§€ í™•ì¸
 	 * @return
 	 * @throws Exception
 	 */
@@ -577,10 +577,10 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		ApprovalLineData theLine = new ApprovalLineData();
 		theLine.setEco_no(changeRevision.getProperty("item_id"));
 		
-		// Àç»ó½Å ½Ã¿¡¼­´Â °áÀç¼± Ã¼Å© ±¸ºĞ
+		// ì¬ìƒì‹  ì‹œì—ì„œëŠ” ê²°ì¬ì„  ì²´í¬ êµ¬ë¶„
 		ArrayList<ApprovalLineData> paramList = null;
 		if(parent == null){
-			//°áÀç¼± Á¤º¸ Äõ¸®
+			//ê²°ì¬ì„  ì •ë³´ ì¿¼ë¦¬
 			paramList = dao.getApprovalLine(theLine);
 			
 		}else{
@@ -633,7 +633,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		}
 		
 		ArrayList<String> taskList = CustomUtil.getWorkflowTask(changeRevision.getProperty(SDVPropertyConstant.MECO_WORKFLOW_TYPE), session); 
-		//Å¸½ºÅ©º° TCComponentGroupMember»ı¼º ¸ÊÇÎ ¹× ÇÊ¼ö ÁöÁ¤ °áÀç¼± È®ÀÎ
+		//íƒ€ìŠ¤í¬ë³„ TCComponentGroupMemberìƒì„± ë§µí•‘ ë° í•„ìˆ˜ ì§€ì • ê²°ì¬ì„  í™•ì¸
 		ArrayList<String> requiredAssingTask = new ArrayList<String>();
 
 		for(String task : taskList){
@@ -650,7 +650,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		for(ApprovalLineData map : paramList){
 			mapTask = map.getTask();
 			
-			// FIXED 2013.05.14, DJKIM, ¹Ú¼ö°æ CJ: »ç¿ëÀÚÀÇ »óÅÂ º¯°æÀÌ ¹ß»ı ÇÒ¼ö ÀÖÀ¸¹Ç·Î »ç¿ëÀÚ »óÅÂ È®ÀÎÇÏ¿© ºÎÀûÀıÇÑ »ç¿ëÀÚ°¡ °áÀç¼±¿¡ ÇÒ´ç µÇÁö ¾Êµµ·Ï ÇÔ.
+			// FIXED 2013.05.14, DJKIM, ë°•ìˆ˜ê²½ CJ: ì‚¬ìš©ìì˜ ìƒíƒœ ë³€ê²½ì´ ë°œìƒ í• ìˆ˜ ìˆìœ¼ë¯€ë¡œ ì‚¬ìš©ì ìƒíƒœ í™•ì¸í•˜ì—¬ ë¶€ì ì ˆí•œ ì‚¬ìš©ìê°€ ê²°ì¬ì„ ì— í• ë‹¹ ë˜ì§€ ì•Šë„ë¡ í•¨.
 			try{
 				if("References".equals(map.getTask()) || "Creator".equals(map.getTask())){
 					isSkip = true;
@@ -691,14 +691,14 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			throw (new Exception("Workflow task checking information.\nPlease, Add the following tasks.\n"+addTasks));
 		}
 		
-		// FIXED °áÀç¼±¿¡ »ı»ê±âÈ¹[BOPADMIN], ÆÀÀå·Ñ[TEAM_LEADER]ÀÌ ÇÏ³ª ÀÌ»óÀÎÁö Ã¼Å© ÇÔ.
+		// FIXED ê²°ì¬ì„ ì— ìƒì‚°ê¸°íš[BOPADMIN], íŒ€ì¥ë¡¤[TEAM_LEADER]ì´ í•˜ë‚˜ ì´ìƒì¸ì§€ ì²´í¬ í•¨.
 		PreferenceService.createService(session);
 		String checkRole = PreferenceService.getValue("SYMC_MECO_WF_CHECK_ROLE"); // COST_ENGINEER,BOMADMIN,TEAM_LEADER
 		if(checkRole.equals("")){
 			checkRole = "BOPADMIN,TEAM_LEADER";
 		}
 		
-		// [SR140820-050][20140808] shcho, MEW´Â Team Leader °áÀç¸¸ ÇÏ¹Ç·Î Validate¿¡¼­ BOPADMINÀ» ÇÊ¼ö·Î Ã£´Â °Í Á¦¿Ü(È®ÀÎÇÔ:ÀÌÀå¿ø(Á¤À±Àç))
+		// [SR140820-050][20140808] shcho, MEWëŠ” Team Leader ê²°ì¬ë§Œ í•˜ë¯€ë¡œ Validateì—ì„œ BOPADMINì„ í•„ìˆ˜ë¡œ ì°¾ëŠ” ê²ƒ ì œì™¸(í™•ì¸í•¨:ì´ì¥ì›(ì •ìœ¤ì¬))
 		String mecoType = changeRevision.getProperty(SDVPropertyConstant.MECO_TYPE);
 		if(mecoType.equalsIgnoreCase("MEW")) {
             checkRole = "TEAM_LEADER";
@@ -734,10 +734,10 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     }
     
     /**
-     * ½Å±Ô ÆÄÆ®Áß EPLÀÇ Category°¡ DR1/2·Î ÁöÁ¤µÈ ÆÄÆ®°¡ Á¸Àç ÇÏ¸é ÀÎÁõÆÀÀÌ ÇÊ¼ö·Î ÁöÁ¤µÇ¾î¾ß ÇÔ.
+     * ì‹ ê·œ íŒŒíŠ¸ì¤‘ EPLì˜ Categoryê°€ DR1/2ë¡œ ì§€ì •ëœ íŒŒíŠ¸ê°€ ì¡´ì¬ í•˜ë©´ ì¸ì¦íŒ€ì´ í•„ìˆ˜ë¡œ ì§€ì •ë˜ì–´ì•¼ í•¨.
      * 2013.01.10
-     * REQ. ¼Û´ë¿µ
-     * REF. Á¤»óÀÏ
+     * REQ. ì†¡ëŒ€ì˜
+     * REF. ì •ìƒì¼
      * @return
      * @throws Exception
      */
@@ -787,7 +787,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     	boolean isOk = false;
     	
     	if(itemrevision!=null && itemrevision instanceof TCComponentMEProcessRevision) {
-    	     //[SR¹øÈ£¾øÀ½][20140929] shcho, ÀÌÁ¾È­ Ã£¾Æ´Ô²² BOP_PROCESS_SHOP_ITEM_REV ³ÖÀº ³»¿ë È®ÀÎÇÏ±â
+    	     //[SRë²ˆí˜¸ì—†ìŒ][20140929] shcho, ì´ì¢…í™” ì°¾ì•„ë‹˜ê»˜ BOP_PROCESS_SHOP_ITEM_REV ë„£ì€ ë‚´ìš© í™•ì¸í•˜ê¸°
     		 String  type = itemrevision.getType();
     		 
     		 System.out.println("type = "+type);
@@ -852,10 +852,10 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     @SuppressWarnings("null")
     private void checkUsed() throws Exception {
     	
-    	// EMCO »ó½Å °úÁ¤¿¡ Parent NodeÀÇ MECO No¸¦ È®ÀÎ ÇÏ´Â ºÎºĞÀÓ
-    	// ¿©±â¼­ Validation ÇÒ¶§ Parent Node¿¡¼­ Ãß°¡ ÇÏ°Å³ª »èÁ¦ÇÑ Station, OperationÀÌ ¾Æ´Ñ°æ¿ì
-    	// Parent NodeÀÇ MECO No¿Í Child NodeÀÎ Station ¶Ç´Â OperationÀÇ MECO No°¡ µ¿ÀÏ ÇÏÁö ¾Ê¾Æµµ µÇµµ·Ï ÇØÁà¾ß ÇÑ´Ù.
-    	// Validation ½Ã°£ÀÌ ¿À·¡ °É¸®Áö ¾ÊÀ¸¸é¼­ ÇØ´ç ValidationÀ» ÇÒ ¼ö ÀÖµµ·Ï ±â´ÉÀ» ¼öÁ¤ÇØ¾ß ÇÑ´Ù.
+    	// EMCO ìƒì‹  ê³¼ì •ì— Parent Nodeì˜ MECO Noë¥¼ í™•ì¸ í•˜ëŠ” ë¶€ë¶„ì„
+    	// ì—¬ê¸°ì„œ Validation í• ë•Œ Parent Nodeì—ì„œ ì¶”ê°€ í•˜ê±°ë‚˜ ì‚­ì œí•œ Station, Operationì´ ì•„ë‹Œê²½ìš°
+    	// Parent Nodeì˜ MECO Noì™€ Child Nodeì¸ Station ë˜ëŠ” Operationì˜ MECO Noê°€ ë™ì¼ í•˜ì§€ ì•Šì•„ë„ ë˜ë„ë¡ í•´ì¤˜ì•¼ í•œë‹¤.
+    	// Validation ì‹œê°„ì´ ì˜¤ë˜ ê±¸ë¦¬ì§€ ì•Šìœ¼ë©´ì„œ í•´ë‹¹ Validationì„ í•  ìˆ˜ ìˆë„ë¡ ê¸°ëŠ¥ì„ ìˆ˜ì •í•´ì•¼ í•œë‹¤.
     	
     	String noWhereUsedList = "";
     	String unMatchMecoList = "";
@@ -900,41 +900,41 @@ public class MECOProcessOperation extends AbstractAIFOperation {
         					}
         					
 
-        					// [NON-SR][20160219] taeku.jeong Parent MECO No Check Á¶°Ç Ãß°¡ (MECO ºĞ¸® ÁøÇàÀ» À§ÇÔ)
-        					// ¿©±â¼­ Parent RevisionÀÇ Child NodeÀÎ solutionItemrevisionÀÌ Ãß°¡ µÇ°Å³ª Á¦°ÅµÈ Item RevisionÀÎÁö È®ÀÎÀÌ ÇÊ¿äÇÏ´Ù.
-        					// Parent Item RevisionÀÌ Working ÁßÀÎ°æ¿ì MECO No È®ÀÎ ´ë»óÀÓ
-        					// 1. Parent Item RevisionÀÌ 000ÀÎ°æ¿ì -> ¸ğµÎ Ãß°¡µÇ´Â ItemÀÓ.
-        					// 2. Parent Item RevisionÀÌ 000°¡ ¾Æ´Ñ°æ¿ì -> ÇöÀç ItemÀÌ Ãß°¡ µÇ°Å³ª Á¦°ÅµÈ ItemÀÎÁö È®ÀÎÇÊ¿äÇÔ.
-        					//     a. BaseOnRevision¿¡ Á¸ÀçÇÏÁö ¾Ê´Â ItemÀÎ °æ¿ì Ãß°¡µÈ ItemÀÌ¹Ç·Î Parent NodeÀÇ MECO¿Í °°¾Æ¾ßÇÔ.
+        					// [NON-SR][20160219] taeku.jeong Parent MECO No Check ì¡°ê±´ ì¶”ê°€ (MECO ë¶„ë¦¬ ì§„í–‰ì„ ìœ„í•¨)
+        					// ì—¬ê¸°ì„œ Parent Revisionì˜ Child Nodeì¸ solutionItemrevisionì´ ì¶”ê°€ ë˜ê±°ë‚˜ ì œê±°ëœ Item Revisionì¸ì§€ í™•ì¸ì´ í•„ìš”í•˜ë‹¤.
+        					// Parent Item Revisionì´ Working ì¤‘ì¸ê²½ìš° MECO No í™•ì¸ ëŒ€ìƒì„
+        					// 1. Parent Item Revisionì´ 000ì¸ê²½ìš° -> ëª¨ë‘ ì¶”ê°€ë˜ëŠ” Itemì„.
+        					// 2. Parent Item Revisionì´ 000ê°€ ì•„ë‹Œê²½ìš° -> í˜„ì¬ Itemì´ ì¶”ê°€ ë˜ê±°ë‚˜ ì œê±°ëœ Itemì¸ì§€ í™•ì¸í•„ìš”í•¨.
+        					//     a. BaseOnRevisionì— ì¡´ì¬í•˜ì§€ ì•ŠëŠ” Itemì¸ ê²½ìš° ì¶”ê°€ëœ Itemì´ë¯€ë¡œ Parent Nodeì˜ MECOì™€ ê°™ì•„ì•¼í•¨.
         					boolean isParentReleased = SYMTcUtil.isReleased(aWhereUsedResultItemRevision);
         					boolean isParentNodeMecoNoCompTarget = false;
         					TCComponentItemRevision baseOnItemRevision = null;
         					String tempMessage = null;
         					if(isParentReleased==false){
         						
-        						// Parent Node°¡ Released Status°¡ ¾ø´Â °æ¿ì´Â ½Å±ÔÀÎ °æ¿ì¿Í ÀÌÀü Revision¿¡ ¾ø´Â °ÍÀÌ Ãß°¡(º¯°æ)µÈ °æ¿ì¿¡ ´ëÇØ¼­´Â
-        						// Child Node¿Í Parent NodeÀÇ MECO No°¡ µ¿ÀÏ ÇØ¾ß ÇÑ´Ù.
+        						// Parent Nodeê°€ Released Statusê°€ ì—†ëŠ” ê²½ìš°ëŠ” ì‹ ê·œì¸ ê²½ìš°ì™€ ì´ì „ Revisionì— ì—†ëŠ” ê²ƒì´ ì¶”ê°€(ë³€ê²½)ëœ ê²½ìš°ì— ëŒ€í•´ì„œëŠ”
+        						// Child Nodeì™€ Parent Nodeì˜ MECO Noê°€ ë™ì¼ í•´ì•¼ í•œë‹¤.
         						
         						baseOnItemRevision = aWhereUsedResultItemRevision.basedOn();
             					if(baseOnItemRevision!=null){
-            						// Working ÁßÀÎ RevisionÀÌ¹Ç·Î Ãß°¡µÈ Child ÀÎ°æ¿ì Child Node¿Í Parent NodeÀÇ MECO´Â µ¿ÀÏÇØ¾ß ÇÑ´Ù.
+            						// Working ì¤‘ì¸ Revisionì´ë¯€ë¡œ ì¶”ê°€ëœ Child ì¸ê²½ìš° Child Nodeì™€ Parent Nodeì˜ MECOëŠ” ë™ì¼í•´ì•¼ í•œë‹¤.
             						String currentParentItemId = aWhereUsedResultItemRevision.getItem().getProperty(SDVPropertyConstant.ITEM_ITEM_ID);
             						String baseOnItemItemId = baseOnItemRevision.getItem().getProperty(SDVPropertyConstant.ITEM_ITEM_ID);
             						
             						if(currentParentItemId!=null && baseOnItemItemId!=null && baseOnItemItemId.trim().equalsIgnoreCase(currentParentItemId.trim())==true){
-            							// ItemÀÌ Version Up µÈ °æ¿ì ÀÌ¹Ç·Î Parent NodeÀÇ Old¿Í New Áß¿¡ ÇöÀçÀÇ ItemÀÌ Ãß°¡ ¶Ç´Â Á¦°ÅµÈ »óÈ²ÀÎÁö È®ÀÎ ÇØ¾ß ÇÑ´Ù.
-            							// ¸¸¾à¿¡ currentSolutionItemrevisionÀÌ Parent NodeÀÎ aWhereUsedResultItemRevisionÀÇ  
+            							// Itemì´ Version Up ëœ ê²½ìš° ì´ë¯€ë¡œ Parent Nodeì˜ Oldì™€ New ì¤‘ì— í˜„ì¬ì˜ Itemì´ ì¶”ê°€ ë˜ëŠ” ì œê±°ëœ ìƒí™©ì¸ì§€ í™•ì¸ í•´ì•¼ í•œë‹¤.
+            							// ë§Œì•½ì— currentSolutionItemrevisionì´ Parent Nodeì¸ aWhereUsedResultItemRevisionì˜  
             							String newRevId = aWhereUsedResultItemRevision.getProperty(SDVPropertyConstant.ITEM_REVISION_ID);
             							String oldRevId = baseOnItemRevision.getProperty(SDVPropertyConstant.ITEM_REVISION_ID);
             							Vector<String> changedNewItemIdV = aCustomMECODao.getChangedNewItemIdList(currentParentItemId, newRevId, oldRevId);
             							if(changedNewItemIdV!=null && changedNewItemIdV.contains(currentSolutionItemId)==true){
-            								// Parent Node Meco Id°¡ µ¿ÀÏÇØ¾ß ÇÑ´Ù.
+            								// Parent Node Meco Idê°€ ë™ì¼í•´ì•¼ í•œë‹¤.
             								isParentNodeMecoNoCompTarget = true;
             								tempMessage = "Child Node Added";
             							}
             						}
             					}else{
-            						// ÃÖÃÊÀÇ RevisionÀÌ¹Ç·Î Child Node¿Í Parent NodeÀÇ MECO´Â µ¿ÀÏÇØ¾ß ÇÑ´Ù.
+            						// ìµœì´ˆì˜ Revisionì´ë¯€ë¡œ Child Nodeì™€ Parent Nodeì˜ MECOëŠ” ë™ì¼í•´ì•¼ í•œë‹¤.
             						isParentNodeMecoNoCompTarget = true;
             						tempMessage = "Newly created Parent Node";
             					}
@@ -973,20 +973,20 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 											isDifferentMeco = true;
 										}
 									}else{
-										// ÀÌ°Ç ¾î¶»°Ô Ã³¸® ÇØ¾ß ÇÒÁö....
+										// ì´ê±´ ì–´ë–»ê²Œ ì²˜ë¦¬ í•´ì•¼ í• ì§€....
 									}
 								}
     						}
     						
     						if(isDifferentMeco==true){
     							unMatchMecoList = unMatchMecoList + "MECO Number Mismatch : "+aWhereUsedResultItemRevision +"("+parentNodeMECONo+")  <-> "+currentSolutionItemrevision+"("+childNodeMECONo+") Target MECO : "+targetMECONo+ "\n";
-    							//System.out.println("¿©±â °É¸°°Çµ¥.....\n"+unMatchMecoList);
+    							//System.out.println("ì—¬ê¸° ê±¸ë¦°ê±´ë°.....\n"+unMatchMecoList);
     						}
 
-							// º¯°æÀü ±âÁ¸ ÄÚµå
-    						// [NON-SR][20160222] taeku.jeong MECO »ó½Å °úÁ¤¿¡ Parent Node¿Í Child NodeÀÇ MECO No µ¿ÀÏÇÑÁö °ËÅäÇÏ´Â Á¶°Ç º¯°æ
+							// ë³€ê²½ì „ ê¸°ì¡´ ì½”ë“œ
+    						// [NON-SR][20160222] taeku.jeong MECO ìƒì‹  ê³¼ì •ì— Parent Nodeì™€ Child Nodeì˜ MECO No ë™ì¼í•œì§€ ê²€í† í•˜ëŠ” ì¡°ê±´ ë³€ê²½
 							//if(null !=mecoRevision) {
-							//	// Parent Node¿Í Child NodeÀÇ MECO°¡ ´Ù¸¥ °æ¿ì¸¦ È®ÀÎÇÔ.
+							//	// Parent Nodeì™€ Child Nodeì˜ MECOê°€ ë‹¤ë¥¸ ê²½ìš°ë¥¼ í™•ì¸í•¨.
 							//	if(!((changeRevision.getItem()).getProperty(SDVPropertyConstant.ITEM_ITEM_ID)).equals((mecoRevision.getItem()).getProperty(SDVPropertyConstant.ITEM_ITEM_ID))) {
 							//	unMatchMecoList = unMatchMecoList + currentSolutionItemrevision + " is used by bop: "+aWhereUsedResultItemRevision +" meco: "+mecoRevision+ "\n";
 							//	}
@@ -1003,10 +1003,10 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 
     	}
     	
-    	// Á¦°ÅµÈ ItemÁß¿¡¼­µµ Parent NodeÀÇ MECO No
-    	// ÀÌ°ÍÀº ÇÊ¿ä¾øÀ»°Í °°´Ù.
-    	// Child Node°¡ Á¦°ÅµÇ´Â ¼³º¯ÀÇ °æ¿ì Parent Node°¡ Solution Items¿¡ Æ÷ÇÔµÇ°í
-    	// Parent Node MECO¿¡ Æ÷ÇÔµÇ¾î ÀÖÀ» °ÍÀÌ¹Ç·Î Áßº¹ Check ÇÏ°ÔµÇ´Â °á°ú°¡ µÈ´Ù.
+    	// ì œê±°ëœ Itemì¤‘ì—ì„œë„ Parent Nodeì˜ MECO No
+    	// ì´ê²ƒì€ í•„ìš”ì—†ì„ê²ƒ ê°™ë‹¤.
+    	// Child Nodeê°€ ì œê±°ë˜ëŠ” ì„¤ë³€ì˜ ê²½ìš° Parent Nodeê°€ Solution Itemsì— í¬í•¨ë˜ê³ 
+    	// Parent Node MECOì— í¬í•¨ë˜ì–´ ìˆì„ ê²ƒì´ë¯€ë¡œ ì¤‘ë³µ Check í•˜ê²Œë˜ëŠ” ê²°ê³¼ê°€ ëœë‹¤.
     	// [NON-SR][20160219] taeku.jeong
     	//for (int i = 0; i < problemList.length; i++) {
     	//	TCComponent problemItemComponent = problemList[i];
@@ -1046,7 +1046,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			ArrayList<HashMap> resultList = MECOCreationUtil.getBOPChildErrorList(mecoId, parentItemId, parentRevId);
 			for (HashMap<String, String> errorHashmap : resultList)
 			{
-				existWorkingChildrenList = existWorkingChildrenList + "°áÀç »ó½Å MECO Solution Item : " + solutioncomponent + ", " + "°áÀç »ó½Å MECO : " + errorHashmap.get("MECO_ID") + ", " + "¹Ì °áÀç Item : " + errorHashmap.get("PITEM_ID") + "/" + errorHashmap.get("PITEM_REVISION_ID") + "-" + errorHashmap.get("POBJECT_NAME") + "\n";
+				existWorkingChildrenList = existWorkingChildrenList + "ê²°ì¬ ìƒì‹  MECO Solution Item : " + solutioncomponent + ", " + "ê²°ì¬ ìƒì‹  MECO : " + errorHashmap.get("MECO_ID") + ", " + "ë¯¸ ê²°ì¬ Item : " + errorHashmap.get("PITEM_ID") + "/" + errorHashmap.get("PITEM_REVISION_ID") + "-" + errorHashmap.get("POBJECT_NAME") + "\n";
 				;
 			}
 		}
@@ -1086,9 +1086,9 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 				e.printStackTrace();
 			}
 			
-			//TCTaskState.COMPLETED ¿Í ºñ±³
+			//TCTaskState.COMPLETED ì™€ ë¹„êµ
 			if(state!=null && state.getIntValue()==TCTaskState.COMPLETED.getIntValue() ){
-				// Complete ÀÓ.
+				// Complete ì„.
 				isWorkflowComplete = true;
 			}
 		}
@@ -1098,9 +1098,9 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	
 	
     /**
-     * °áÀç Å¸ÄÏ È®ÀÎ
-     * check out ¿©ºÎµµ °°ÀÌ È®ÀÎ
-     * dataset ¼Ó¼º¿¡ eco noµµ ÀÔ·Â
+     * ê²°ì¬ íƒ€ì¼“ í™•ì¸
+     * check out ì—¬ë¶€ë„ ê°™ì´ í™•ì¸
+     * dataset ì†ì„±ì— eco noë„ ì…ë ¥
      * @throws TCException
      */
     private void getTargets() throws TCException, Exception{
@@ -1112,7 +1112,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     		process = changeRevision.getCurrentJob();
     		rootTask = process.getRootTask();
 
-    		// Áßº¹ ¹æÁö »èÁ¦
+    		// ì¤‘ë³µ ë°©ì§€ ì‚­ì œ
     		TCComponent[] oldTargetList = rootTask.getRelatedComponents("root_target_attachments");
     		if(oldTargetList != null && oldTargetList.length > 0){
     			rootTask.remove("root_target_attachments", oldTargetList);
@@ -1150,7 +1150,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //        		if(view.isCheckedOut()){
 //        			checkOutlist = checkOutlist + view + "\n";
 //        		}else{
-//        			// FIXED, 2013.06.01, DJKIM ÇÏÀ§ ±¸Á¶°¡ ÀÖ´ÂÁö ¾ø´ÂÁö Ã¼Å©
+//        			// FIXED, 2013.06.01, DJKIM í•˜ìœ„ êµ¬ì¡°ê°€ ìˆëŠ”ì§€ ì—†ëŠ”ì§€ ì²´í¬
 //        			if(dao.childrenCount(view.getUid()).equals("0")){
 //        				noChildrenBVRList = noChildrenBVRList + solutionItemrevision + "\n";
 //        			}else{
@@ -1183,7 +1183,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     		retrunMessage = "Check-out Componet is exist.\nCheck belows and fix it.\n"+checkOutlist;
     	}
     	
-    	// FIXED, 2013.06.01, DJKIM ÇÏÀ§ ±¸Á¶°¡ ÀÖ´ÂÁö ¾ø´ÂÁö Ã¼Å©
+    	// FIXED, 2013.06.01, DJKIM í•˜ìœ„ êµ¬ì¡°ê°€ ìˆëŠ”ì§€ ì—†ëŠ”ì§€ ì²´í¬
     	if(!noChildrenBVRList.equals("")){
     		retrunMessage = retrunMessage + "\nThe item that does not have a sub-structure exists.\nCheck BOMViewResion of below items.\n"+noChildrenBVRList;
     	}
@@ -1194,15 +1194,15 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			isOkValidation = false;
     	}
 
-    	// ¹İ·Á ÀÏ °æ¿ì  Å¸ÄÏ Àç¼³Á¤
+    	// ë°˜ë ¤ ì¼ ê²½ìš°  íƒ€ì¼“ ì¬ì„¤ì •
     	if(parent != null && rootTask != null){   		
-    		// Å¸°Ù Àç¼³Á¤
+    		// íƒ€ê²Ÿ ì¬ì„¤ì •
     		rootTask.add("root_target_attachments", targetList);
     	}
     }
     
     /**
-     * ÇÁ·Î¼¼½º »ı¼º
+     * í”„ë¡œì„¸ìŠ¤ ìƒì„±
      * @throws Exception
      */
     private void createProcess() throws Exception{
@@ -1275,7 +1275,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     }
     
     /**
-     * °áÀç¼± ÇÒ´ç
+     * ê²°ì¬ì„  í• ë‹¹
      * @throws TCException
      */
 	private void assignSignoffs() throws Exception {
@@ -1400,10 +1400,12 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 //					selectSignoffTeam.getTCProperty("done").setLogicalValue(true);
 					selectSignoffTeam.getTCProperty("task_result").setStringValue("Completed");
 					TCComponentSignoff signoffObj = selectSignoffTeam.getValidSignoffs()[0];
-					//[SR150605-007][20150605] shcho, RejectÈÄ Àç »ó½Å½Ã »ó½Å ¿À·ù  The Task "Creator" has not yet completed. ¹ß»ı ÇÏ´Â ¹®Á¦ ÇØ°á
-					//Creator Task¸¦ ´øÁö´ø °ÍÀ» perform-signoffs Task¸¦ ´øÁöµµ·Ï ¼öÁ¤
+					//[SR150605-007][20150605] shcho, Rejectí›„ ì¬ ìƒì‹ ì‹œ ìƒì‹  ì˜¤ë¥˜  The Task "Creator" has not yet completed. ë°œìƒ í•˜ëŠ” ë¬¸ì œ í•´ê²°
+					//[2024.01.23]ìˆ˜ì •
+					//TCCRDecision.APPROVE_DECISION -> signoffObj.getApproveDecision()
+					//getCurrentDesktop() -> this.parent
 					SignoffDecisionOperation decisionOp = 
-							new SignoffDecisionOperation(session, getCurrentDesktop(),  subTask.getSubtask("perform-signoffs"), signoffObj, TCCRDecision.APPROVE_DECISION, "Request Approval");
+							new SignoffDecisionOperation(session, this.parent,  subTask.getSubtask("perform-signoffs"), signoffObj, signoffObj.getApproveDecision(), "Request Approval");
 					decisionOp.executeOperation();
 				}
 /*
@@ -1455,7 +1457,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		
 		//-----------------------------
 
-        // Process Type(Á¶¸³,µµÀå,Â÷Ã¼ À¯¹«)¸¦ °¡Á®¿È
+        // Process Type(ì¡°ë¦½,ë„ì¥,ì°¨ì²´ ìœ ë¬´)ë¥¼ ê°€ì ¸ì˜´
 //        if (itemType.equals(SDVTypeConstant.BOP_PROCESS_LINE_ITEM)) {
 //            String processType = targetItemRevision.getProperty(SDVPropertyConstant.LINE_REV_PROCESS_TYPE);
 //            if (processType.isEmpty()) {
@@ -1477,7 +1479,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
         	
         	System.out.println( "["+i+"/"+solutionList.length+"] ("+df.format(new Date())+") : "+tcComponent.toString() );
         	
-            //´ë»ó tcComponentÀÇ parent°¡ solutionList¿¡ ÀÖÀ»°æ¿ì ´ë»ó tcComponent´Â SKIP ÇÑ´Ù. (parent°¡ validateÇÒ¶§ ÇÏÀ§µµ ÇÔ²² µÇ¹Ç·Î)
+            //ëŒ€ìƒ tcComponentì˜ parentê°€ solutionListì— ìˆì„ê²½ìš° ëŒ€ìƒ tcComponentëŠ” SKIP í•œë‹¤. (parentê°€ validateí• ë•Œ í•˜ìœ„ë„ í•¨ê»˜ ë˜ë¯€ë¡œ)
             if(checkSolutionList(tcComponent)) {
                 continue;
             }
@@ -1494,7 +1496,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 	
 	/**
-	 *  Parent¸¦ Ã£¾Æ solutionList¿¡ Á¸ÀçÇÏ´ÂÁö Ã¼Å©ÇÏ´Â ÇÔ¼ö
+	 *  Parentë¥¼ ì°¾ì•„ solutionListì— ì¡´ì¬í•˜ëŠ”ì§€ ì²´í¬í•˜ëŠ” í•¨ìˆ˜
 	 * @param childComponent
 	 * @return
 	 * @throws Exception
@@ -1507,7 +1509,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
             for(TCComponent parentComponent : imanComps) {  
                 String parentCompType =  ((TCComponentItemRevision)parentComponent).getType();
                 String parentItemID = ((TCComponentItemRevision)parentComponent).getProperty(SDVPropertyConstant.ITEM_ITEM_ID);
-                //Parent°¡ ShopÀÎ°æ¿ì ´Â Á¦¿Ü (ShopÀº ValidateÇÏÁö ¾Ê´Â´Ù. ¶§¹®¿¡ SolutionList¿¡ Á¸ÀçÇÏ´õ¶óµµ ÀÇ¹Ì ¾øÀ½.)
+                //Parentê°€ Shopì¸ê²½ìš° ëŠ” ì œì™¸ (Shopì€ Validateí•˜ì§€ ì•ŠëŠ”ë‹¤. ë•Œë¬¸ì— SolutionListì— ì¡´ì¬í•˜ë”ë¼ë„ ì˜ë¯¸ ì—†ìŒ.)
                 if(parentCompType.equals(SDVTypeConstant.BOP_PROCESS_SHOP_ITEM_REV)) {
                     return false;
                 }
@@ -1525,22 +1527,22 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     }
     
     /**
-     * [NON-SR][20160822] taeku.jeong EPL »ı¼ºÀ» Operation´ÜÀ§·Î »ı¼º µÇµµ·ÏÇÏ°í »ó½Å°úÁ¤¿¡ EPL Reload (Shop, Line, Station) ÀÚµ¿¼öÇàÀ¸·Î
-     * º¯°æµÇ¾úÀ¸¹Ç·Î Publish ¸¸ Check ÇÏµµ·Ï ÇÏ¸é µÉ°ÍÀ¸·Î ÆÇ´ÜµÊ.
-     * 1) EPL Load´Â Preview¸¦ ½Ç½ÃÇÏ¸é ÀÚµ¿À¸·Î EPL LoadµÊ (W/F »ı¼º ¹× Release Àü)
+     * [NON-SR][20160822] taeku.jeong EPL ìƒì„±ì„ Operationë‹¨ìœ„ë¡œ ìƒì„± ë˜ë„ë¡í•˜ê³  ìƒì‹ ê³¼ì •ì— EPL Reload (Shop, Line, Station) ìë™ìˆ˜í–‰ìœ¼ë¡œ
+     * ë³€ê²½ë˜ì—ˆìœ¼ë¯€ë¡œ Publish ë§Œ Check í•˜ë„ë¡ í•˜ë©´ ë ê²ƒìœ¼ë¡œ íŒë‹¨ë¨.
+     * 1) EPL LoadëŠ” Previewë¥¼ ì‹¤ì‹œí•˜ë©´ ìë™ìœ¼ë¡œ EPL Loadë¨ (W/F ìƒì„± ë° Release ì „)
      * 2) 
      * @throws Exception
      */
 	private void checkPublishedProcessSheet() throws Exception {
 		
-		// [NON-SR][20160520] taeku.jeong MECO »ó½ÅÈÄ °ËÅä°úÁ¤¿¡ ÀÛ¾÷Ç¥ÁØ¼­¿¡¼­ º¯°æ±âÈ£°¡ ´©¶ôµÈ °ÍÀÌ ¹ß°ßµÇ¾î Validation Á¶°ÇÀ» ¼öÁ¤ÇÔ.
-		//                              EPL »ı¼ºÀÌ Publish ½ÃÁ¡º¸´Ù ´Ê´Â °æ¿ì°¡ ¿øÀÎÀÌ µÇ¾úÀ½.
-		//                              ¼Ò½ºÄÚµå ¼öÁ¤ÇÏ´Â °úÁ¤¿¡ ¼Ò½ºÄÚµå Á¤¸®µµ °°ÀÌ ¼öÇàÇßÀ½.
+		// [NON-SR][20160520] taeku.jeong MECO ìƒì‹ í›„ ê²€í† ê³¼ì •ì— ì‘ì—…í‘œì¤€ì„œì—ì„œ ë³€ê²½ê¸°í˜¸ê°€ ëˆ„ë½ëœ ê²ƒì´ ë°œê²¬ë˜ì–´ Validation ì¡°ê±´ì„ ìˆ˜ì •í•¨.
+		//                              EPL ìƒì„±ì´ Publish ì‹œì ë³´ë‹¤ ëŠ¦ëŠ” ê²½ìš°ê°€ ì›ì¸ì´ ë˜ì—ˆìŒ.
+		//                              ì†ŒìŠ¤ì½”ë“œ ìˆ˜ì •í•˜ëŠ” ê³¼ì •ì— ì†ŒìŠ¤ì½”ë“œ ì •ë¦¬ë„ ê°™ì´ ìˆ˜í–‰í–ˆìŒ.
     	String neededPublishList = "";
     	String neededPublishAfterEPLLoad = "";
     	String returnMessage = "";
     	
-		// Publish Date¸¦ Hash Table¿¡ ´ã¾Æ Publish À¯¹«¿Í Publish Date È®ÀÎ¿¡ »ç¿ëÇÑ´Ù.
+		// Publish Dateë¥¼ Hash Tableì— ë‹´ì•„ Publish ìœ ë¬´ì™€ Publish Date í™•ì¸ì— ì‚¬ìš©í•œë‹¤.
 		Hashtable<String, Date> publishedDateHash = new Hashtable<String, Date>();
 		TCComponent[] process_sheet_list = changeRevision.getRelatedComponents(SDVTypeConstant.PROCESS_SHEET_KO_RELATION);
 		for (int i = 0; i < process_sheet_list.length; i++) {
@@ -1560,7 +1562,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			aMECOCreationUtil = new MECOCreationUtil(this.changeRevision);
 		}
 
-		// [SR150106-027][20150107] ymjang, MECO °ËÁõ ·ÎÁ÷ º¸¿Ï(ÀÛÇ¥ À¯¹«) --> ÀÛ¾÷ Ç¥ÁØ¼­°¡ Publishing µÇÁö ¾ÊÀº °æ¿ì, MECO °áÀç ¿äÃ» ºÒ°¡
+		// [SR150106-027][20150107] ymjang, MECO ê²€ì¦ ë¡œì§ ë³´ì™„(ì‘í‘œ ìœ ë¬´) --> ì‘ì—… í‘œì¤€ì„œê°€ Publishing ë˜ì§€ ì•Šì€ ê²½ìš°, MECO ê²°ì¬ ìš”ì²­ ë¶ˆê°€
 		for (int i = 0;solutionList!=null && i <solutionList.length; i++) {
     		
     		TCComponent solutionComponent = solutionList[i];
@@ -1570,7 +1572,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     			continue;
     		}
     		
-    		// Operation Item Revision¿¡ ´ëÇØ¼­¸¸ Publish »óÅÂ¸¦ È®ÀÎÇÑ´Ù.
+    		// Operation Item Revisionì— ëŒ€í•´ì„œë§Œ Publish ìƒíƒœë¥¼ í™•ì¸í•œë‹¤.
 			if(solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_BODY_OPERATION_ITEM_REV)  
 					|| solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_ASSY_OPERATION_ITEM_REV) 
 					|| solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_PAINT_OPERATION_ITEM_REV) ) {
@@ -1615,8 +1617,8 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 				
 				Date instructionPublishDate = publishedDateHash.get(operationItemId);
 
-				// [NON-SR][20160824] taeku.jeong Operation ´ÜÀ§·Î MECO EPL »ı¼ºÃ³¸® ÈÄ ¹ß°ßµÈ Validation¹®Á¦ ÇØ°á
-				// OperationÀ» °³Á¤ Çß´ÂÁö¸¸ Child Node º¯°æÀÌ ¾ø´Â°æ¿ì¿¡ ´ëÇÑ Ã³¸® Ãß°¡
+				// [NON-SR][20160824] taeku.jeong Operation ë‹¨ìœ„ë¡œ MECO EPL ìƒì„±ì²˜ë¦¬ í›„ ë°œê²¬ëœ Validationë¬¸ì œ í•´ê²°
+				// Operationì„ ê°œì • í–ˆëŠ”ì§€ë§Œ Child Node ë³€ê²½ì´ ì—†ëŠ”ê²½ìš°ì— ëŒ€í•œ ì²˜ë¦¬ ì¶”ê°€
 				if(diffCount<1){
 					if(instructionPublishDate!=null){
 						continue;
@@ -1671,15 +1673,15 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
     
 	/**
-	 * [NON-SR][20160822] taeku.jeong Operation´ÜÀ§·Î MECO EPL »ı¼º, »ó½Å°úÁ¤¿¡ Shop, Line, Station MECO EPL ÀÚµ¿»ı¼º
-	 * ¿¹Àü¿¡ »ç¿ëÇÏ´ø ±â´ÉÀ¸·Î ´õÀÌ»ó »ç¿ëÇÏÁö ¾ÊÀ½.
+	 * [NON-SR][20160822] taeku.jeong Operationë‹¨ìœ„ë¡œ MECO EPL ìƒì„±, ìƒì‹ ê³¼ì •ì— Shop, Line, Station MECO EPL ìë™ìƒì„±
+	 * ì˜ˆì „ì— ì‚¬ìš©í•˜ë˜ ê¸°ëŠ¥ìœ¼ë¡œ ë”ì´ìƒ ì‚¬ìš©í•˜ì§€ ì•ŠìŒ.
 	 * 	 * @throws Exception
 	 */
 	private void checkPublishedProcessSheet_OLD20160822() throws Exception {
 		
-		// [NON-SR][20160520] taeku.jeong MECO »ó½ÅÈÄ °ËÅä°úÁ¤¿¡ ÀÛ¾÷Ç¥ÁØ¼­¿¡¼­ º¯°æ±âÈ£°¡ ´©¶ôµÈ °ÍÀÌ ¹ß°ßµÇ¾î Validation Á¶°ÇÀ» ¼öÁ¤ÇÔ.
-		//                              EPL »ı¼ºÀÌ Publish ½ÃÁ¡º¸´Ù ´Ê´Â °æ¿ì°¡ ¿øÀÎÀÌ µÇ¾úÀ½.
-		//                              ¼Ò½ºÄÚµå ¼öÁ¤ÇÏ´Â °úÁ¤¿¡ ¼Ò½ºÄÚµå Á¤¸®µµ °°ÀÌ ¼öÇàÇßÀ½.
+		// [NON-SR][20160520] taeku.jeong MECO ìƒì‹ í›„ ê²€í† ê³¼ì •ì— ì‘ì—…í‘œì¤€ì„œì—ì„œ ë³€ê²½ê¸°í˜¸ê°€ ëˆ„ë½ëœ ê²ƒì´ ë°œê²¬ë˜ì–´ Validation ì¡°ê±´ì„ ìˆ˜ì •í•¨.
+		//                              EPL ìƒì„±ì´ Publish ì‹œì ë³´ë‹¤ ëŠ¦ëŠ” ê²½ìš°ê°€ ì›ì¸ì´ ë˜ì—ˆìŒ.
+		//                              ì†ŒìŠ¤ì½”ë“œ ìˆ˜ì •í•˜ëŠ” ê³¼ì •ì— ì†ŒìŠ¤ì½”ë“œ ì •ë¦¬ë„ ê°™ì´ ìˆ˜í–‰í–ˆìŒ.
     	String neededPublishList = "";
     	String neededPublishAfterEPLLoad = "";
     	String returnMessage = "";
@@ -1698,7 +1700,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			returnMessage = returnMessage + "\n You must generat a \"MECO_EPL\".";
 		}
 		
-		// Publish Date¸¦ Hash Table¿¡ ´ã¾Æ Publish À¯¹«¿Í Publish Date È®ÀÎ¿¡ »ç¿ëÇÑ´Ù.
+		// Publish Dateë¥¼ Hash Tableì— ë‹´ì•„ Publish ìœ ë¬´ì™€ Publish Date í™•ì¸ì— ì‚¬ìš©í•œë‹¤.
 		Hashtable<String, Date> publishedDateHash = new Hashtable<String, Date>();
 		TCComponent[] process_sheet_list = changeRevision.getRelatedComponents(SDVTypeConstant.PROCESS_SHEET_KO_RELATION);
 		for (int i = 0; i < process_sheet_list.length; i++) {
@@ -1711,7 +1713,7 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 			}
 		}
 
-		// [SR150106-027][20150107] ymjang, MECO °ËÁõ ·ÎÁ÷ º¸¿Ï(ÀÛÇ¥ À¯¹«) --> ÀÛ¾÷ Ç¥ÁØ¼­°¡ Publishing µÇÁö ¾ÊÀº °æ¿ì, MECO °áÀç ¿äÃ» ºÒ°¡
+		// [SR150106-027][20150107] ymjang, MECO ê²€ì¦ ë¡œì§ ë³´ì™„(ì‘í‘œ ìœ ë¬´) --> ì‘ì—… í‘œì¤€ì„œê°€ Publishing ë˜ì§€ ì•Šì€ ê²½ìš°, MECO ê²°ì¬ ìš”ì²­ ë¶ˆê°€
 		for (int i = 0;solutionList!=null && i <solutionList.length; i++) {
     		
     		TCComponent solutionComponent = solutionList[i];
@@ -1720,13 +1722,13 @@ public class MECOProcessOperation extends AbstractAIFOperation {
     			continue;
     		}
     		
-    		// Operation Item Revision¿¡ ´ëÇØ¼­¸¸ Publish »óÅÂ¸¦ È®ÀÎÇÑ´Ù.
+    		// Operation Item Revisionì— ëŒ€í•´ì„œë§Œ Publish ìƒíƒœë¥¼ í™•ì¸í•œë‹¤.
 			if(solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_BODY_OPERATION_ITEM_REV)  
 					|| solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_ASSY_OPERATION_ITEM_REV) 
 					|| solutionComponent.getType().equals(SDVTypeConstant.BOP_PROCESS_PAINT_OPERATION_ITEM_REV) ) {
 
-				// [NON-SR][20160621] taeku.jeong »ó½Å½Ã EPL ¹× Publish ¼ø¼­ °ËÁõ Ãß°¡ ¼öÁ¤
-				// ¾Æ·¡ ºÎºĞ Áß Á¶°Ç °ËÁõ ÇÏ´Â ºÎºĞ ¸ğµÎ º¯°æµÇ¾úÀ½.
+				// [NON-SR][20160621] taeku.jeong ìƒì‹ ì‹œ EPL ë° Publish ìˆœì„œ ê²€ì¦ ì¶”ê°€ ìˆ˜ì •
+				// ì•„ë˜ ë¶€ë¶„ ì¤‘ ì¡°ê±´ ê²€ì¦ í•˜ëŠ” ë¶€ë¶„ ëª¨ë‘ ë³€ê²½ë˜ì—ˆìŒ.
 				
 		    	Date revisionLastModifyDate = null;
 		    	Date instructionImageLastModifyDate = null;
@@ -1757,23 +1759,23 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 				System.out.println("instructionImageLastModifyDate = "+df.format(instructionImageLastModifyDate)+" [ "+operationItemId+"]");
 				System.out.println("instructionPublishDate = "+df.format(instructionPublishDate)+" [ "+operationItemId+"]");
 				
-				// EPL Load Á¶°Ç
+				// EPL Load ì¡°ê±´
 		        if(lastEPLLoadDate.after(revisionLastModifyDate) &&
 		        		lastEPLLoadDate.after(instructionImageLastModifyDate) &&
 		        		lastEPLLoadDate.after(bomViewLastModifyDate) ){
 		        	
-		        	// Publish Á¶°Ç
+		        	// Publish ì¡°ê±´
 		        	if(instructionPublishDate.after(lastEPLLoadDate)){
-		        		// °ËÁõ°á°ú EPL Load, Publish ¼ø¼­¿¡ ¹®Á¦ ¾øÀ½.
+		        		// ê²€ì¦ê²°ê³¼ EPL Load, Publish ìˆœì„œì— ë¬¸ì œ ì—†ìŒ.
 		        		 ;
 		        		 System.out.println("OK---- (Case1) : "+operationItemId);
 		        	}else{
-		        		// Publisth¸¦ ´Ù½Ã ÇØ¾ß ÇÕ´Ï´Ù.
+		        		// Publisthë¥¼ ë‹¤ì‹œ í•´ì•¼ í•©ë‹ˆë‹¤.
 		        		needRepublish = true;
 		        		System.out.println("Error---- (Case2) : "+operationItemId);
 		        	}
 		        }else{
-		        	// EPL Load ÇØ¾ß ÇÕ´Ï´Ù.
+		        	// EPL Load í•´ì•¼ í•©ë‹ˆë‹¤.
 		        	needEPLReload = true;
 		        	System.out.println("Error---- (Case3) : "+operationItemId);
 		        }
@@ -1889,8 +1891,8 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 	}
 	
 	/**
-	 * ¸ŞÀÏ ¹ß¼Û
-	 * Vision-NetÀÇ CALS ÇÁ·Î½ÃÁ® È£Ãâ
+	 * ë©”ì¼ ë°œì†¡
+	 * Vision-Netì˜ CALS í”„ë¡œì‹œì ¸ í˜¸ì¶œ
 	 * @throws Exception
 	 */
 	private void sendMail() throws Exception{
@@ -1898,21 +1900,21 @@ public class MECOProcessOperation extends AbstractAIFOperation {
 		String changeDesc = changeRevision.getProperty("object_desc");
 		
         String fromUser = session.getUser().getUserId();
-        String title = "New PLM : MECO[" + mecoNo + "] °áÀç ¿äÃ»";
+        String title = "New PLM : MECO[" + mecoNo + "] ê²°ì¬ ìš”ì²­";
         
 		String body = "<PRE>";
-		body += "New PLM¿¡¼­ ¾Æ·¡¿Í °°ÀÌ °áÀç ¿äÃ» µÇ¾úÀ¸´Ï È®ÀÎ ÈÄ °áÀç ¹Ù¶ø´Ï´Ù." + "<BR>";
+		body += "New PLMì—ì„œ ì•„ë˜ì™€ ê°™ì´ ê²°ì¬ ìš”ì²­ ë˜ì—ˆìœ¼ë‹ˆ í™•ì¸ í›„ ê²°ì¬ ë°”ëë‹ˆë‹¤." + "<BR>";
 		body += " -MECO NO. : " + mecoNo + "<BR>";
 		body += " -Project : " + project + "<BR>";
 		body += " -Change Desc. : " + changeDesc + "<BR>";
-		body += " -¿äÃ»ºÎ¼­ : " + changeRevision.getTCProperty("owning_group") + "<BR>";
-		body += " -¿äÃ»ÀÚ  : " + changeRevision.getTCProperty("owning_user") + "<BR>";
+		body += " -ìš”ì²­ë¶€ì„œ : " + changeRevision.getTCProperty("owning_group") + "<BR>";
+		body += " -ìš”ì²­ì  : " + changeRevision.getTCProperty("owning_user") + "<BR>";
 		body += "</PRE>";
 		
 		// SR150604-024
-		// taeku.jeong MECO °áÀç ¿äÃ» Vision mail °øÁö ¿À·ù ¼öÁ¤°Ç.
-		// ±âÁ¸ÀÇ ÄÚµå¸¦ Test ÇØ º» °á°ú ¹è¿­ÀÇ Ã¹¹øÂ°°¡ Ç×»ó Ã¹¹øÂ° Review Task¶ó°í °£ÁÖ ÇÒ ¼ö ¾øÀ½À» È®ÀÎ.
-		// TemplateÀÇ W/FÈå¸§¿¡ µû¶ó °Ë»öµÇ´Â Ã¹¹øÂ° Review Task¸¦ Return ÇÏ´Â ÇÔ¼ö¸¦ »õ·Î ÀÛ¼ºÇÔ.
+		// taeku.jeong MECO ê²°ì¬ ìš”ì²­ Vision mail ê³µì§€ ì˜¤ë¥˜ ìˆ˜ì •ê±´.
+		// ê¸°ì¡´ì˜ ì½”ë“œë¥¼ Test í•´ ë³¸ ê²°ê³¼ ë°°ì—´ì˜ ì²«ë²ˆì§¸ê°€ í•­ìƒ ì²«ë²ˆì§¸ Review Taskë¼ê³  ê°„ì£¼ í•  ìˆ˜ ì—†ìŒì„ í™•ì¸.
+		// Templateì˜ W/Fíë¦„ì— ë”°ë¼ ê²€ìƒ‰ë˜ëŠ” ì²«ë²ˆì§¸ Review Taskë¥¼ Return í•˜ëŠ” í•¨ìˆ˜ë¥¼ ìƒˆë¡œ ì‘ì„±í•¨.
 		
 		//ArrayList<String> taskList  = CustomUtil.getWorkflowTask(changeRevision.getProperty(SDVPropertyConstant.MECO_WORKFLOW_TYPE), session);
 		//ArrayList<TCComponentGroupMember> receivedUserList = reviewers.get(taskList.get(0)); //1st task.

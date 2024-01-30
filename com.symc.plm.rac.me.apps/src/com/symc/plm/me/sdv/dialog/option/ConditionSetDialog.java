@@ -60,9 +60,9 @@ import com.teamcenter.rac.util.Registry;
 
 /**
  * 
- * Function¿¡ ¼³Á¤µÈ ¿É¼ÇÀÇ Á¶ÇÕÀ¸·Î ÇöÀç ¼±ÅÃÇÑ BOM line¿¡ ÄÁµğ¼ÇÀ» ¼³Á¤ÇÑ´Ù.
+ * Functionì— ì„¤ì •ëœ ì˜µì…˜ì˜ ì¡°í•©ìœ¼ë¡œ í˜„ì¬ ì„ íƒí•œ BOM lineì— ì»¨ë””ì…˜ì„ ì„¤ì •í•œë‹¤.
  * 
- * [SR150521-012][20150522] shcho, ¿É¼Ç Àû¿ë½Ã ¸ÖÆ¼Àû¿ë µÇµµ·Ï ±â´É °³¼±
+ * [SR150521-012][20150522] shcho, ì˜µì…˜ ì ìš©ì‹œ ë©€í‹°ì ìš© ë˜ë„ë¡ ê¸°ëŠ¥ ê°œì„ 
  * 
  * @author slobbie
  * 
@@ -190,9 +190,9 @@ public class ConditionSetDialog extends AbstractAIFDialog {
                             };
                             button.setBackground(Color.WHITE);
 
-                            // Áß°£ Å×ÀÌºí¿¡¼­ ¿ìÃø Å×ÀÌºí·Î ==> ±â´É
-                            // 1. selectedLineOptionSet¿¡¼­ ÀÖ´ÂÁö Ã¼Å©ÇÏ¿©, ÀÖ´Ù¸é ±× ¿É¼ÇÀ» °¡Á®¿Â´Ù.
-                            // 2. Á¸ÀçÇÏÁö ¾Ê´Â´Ù¸é ¿É¼ÇÀ» »ı¼º.
+                            // ì¤‘ê°„ í…Œì´ë¸”ì—ì„œ ìš°ì¸¡ í…Œì´ë¸”ë¡œ ==> ê¸°ëŠ¥
+                            // 1. selectedLineOptionSetì—ì„œ ìˆëŠ”ì§€ ì²´í¬í•˜ì—¬, ìˆë‹¤ë©´ ê·¸ ì˜µì…˜ì„ ê°€ì ¸ì˜¨ë‹¤.
+                            // 2. ì¡´ì¬í•˜ì§€ ì•ŠëŠ”ë‹¤ë©´ ì˜µì…˜ì„ ìƒì„±.
                             button.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent arg0) {
                                     add();
@@ -211,7 +211,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
 
                             };
                             button.setBackground(Color.WHITE);
-                            // ¿ìÃø Å×ÀÌºí¿¡¼­ ÁÂÃø Å×ÀÌºí·Î <== ±â´É
+                            // ìš°ì¸¡ í…Œì´ë¸”ì—ì„œ ì¢Œì¸¡ í…Œì´ë¸”ë¡œ <== ê¸°ëŠ¥
                             button.addActionListener(new ActionListener() {
                                 public void actionPerformed(ActionEvent actionevent) {
                                     remove();
@@ -307,10 +307,12 @@ public class ConditionSetDialog extends AbstractAIFDialog {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    // ÄÁµğ¼Ç Á¶ÇÕ Å×ÀÌºí¿¡ ¼öÁıµÈ ¿É¼ÇÀ» ÄÁµğ¼ÇÀ¸·Î Ãß°¡ÇÔ.
+                    // ì»¨ë””ì…˜ ì¡°í•© í…Œì´ë¸”ì— ìˆ˜ì§‘ëœ ì˜µì…˜ì„ ì»¨ë””ì…˜ìœ¼ë¡œ ì¶”ê°€í•¨.
                     try {
                         DefaultTableModel model = (DefaultTableModel) detailTable.getModel();
-                        ConditionVector condition = ConditionSetDialog.this.manager.getConditionSet(model.getDataVector());
+                        //[2024.01.24]ìˆ˜ì •
+                        //getConditionSet(model.getDataVector()) -> getConditionSet(model.getDataVector().firstElement())
+                        ConditionVector condition = ConditionSetDialog.this.manager.getConditionSet(model.getDataVector().firstElement());
                         DefaultListModel listModel = (DefaultListModel) combinationResultList.getModel();
                         if (listModel == null) {
                             listModel = new DefaultListModel();
@@ -329,7 +331,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    // Combination Results Å×ÀÌºí¿¡¼­ ¼±ÅÃµÈ ¿É¼Ç Á¶ÇÕÀ» Á¦°ÅÇÔ.
+                    // Combination Results í…Œì´ë¸”ì—ì„œ ì„ íƒëœ ì˜µì…˜ ì¡°í•©ì„ ì œê±°í•¨.
 //                    Object[] selectedObj = combinationResultList.getSelectedValues();
 //
 //                    DefaultListModel listModel = (DefaultListModel) combinationResultList.getModel();
@@ -353,7 +355,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
 
                 @Override
                 public void actionPerformed(ActionEvent arg0) {
-                    // ÄÁµğ¼Ç Á¶ÇÕ Å×ÀÌºí¿¡ ¼öÁıµÈ ¿É¼ÇÀ» ¸ğµÎ Á¦°ÅÇÔ.
+                    // ì»¨ë””ì…˜ ì¡°í•© í…Œì´ë¸”ì— ìˆ˜ì§‘ëœ ì˜µì…˜ì„ ëª¨ë‘ ì œê±°í•¨.
                     DefaultTableModel model = (DefaultTableModel) detailTable.getModel();
                     for (int i = model.getRowCount() - 1; model != null && i >= 0; i--) {
                         model.removeRow(i);
@@ -477,12 +479,12 @@ public class ConditionSetDialog extends AbstractAIFDialog {
         VariantCheckBoxTableCellEditor.unUsedValueList.clear();
         
         if(selectedBOMLines.length > 1) {
-            MessageBox.post(AIFDesktop.getActiveDesktop().getShell(), "2°³ ÀÌ»óÀÇ BOPLineÀÌ ¼±ÅÃµÇ¾ú½À´Ï´Ù.", "INFORMATION", MessageBox.INFORMATION);
+            MessageBox.post(AIFDesktop.getActiveDesktop().getShell(), "2ê°œ ì´ìƒì˜ BOPLineì´ ì„ íƒë˜ì—ˆìŠµë‹ˆë‹¤.", "INFORMATION", MessageBox.INFORMATION);
         }
     }
 
     /**
-     * ConditionÀ» Àû¿ëÇÔ.
+     * Conditionì„ ì ìš©í•¨.
      * 
      * @throws TCException
      */
@@ -511,7 +513,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * »ç¿ë°¡´ÉÇÑ ¿É¼ÇÀ» º¸¿©ÁÖ´Â Tree¸¦ ÃÊ±âÈ­ ÇÔ.(Function¿¡ Á¤ÀÇµÈ ¿É¼Ç¸¸ »ç¿ë°¡´É)
+     * ì‚¬ìš©ê°€ëŠ¥í•œ ì˜µì…˜ì„ ë³´ì—¬ì£¼ëŠ” Treeë¥¼ ì´ˆê¸°í™” í•¨.(Functionì— ì •ì˜ëœ ì˜µì…˜ë§Œ ì‚¬ìš©ê°€ëŠ¥)
      * 
      * @return
      */
@@ -526,7 +528,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
                 VariantNode optionNode = new VariantNode(option);
                 List<VariantValue> values = option.getValues();
 
-                // »ç¿ë°¡´ÉÇÑ ¿É¼ÇÀÌ Á¸ÀçÇÏ´Â°æ¿ì¸¸ OptionÀ» Ãß°¡ÇÑ´Ù.
+                // ì‚¬ìš©ê°€ëŠ¥í•œ ì˜µì…˜ì´ ì¡´ì¬í•˜ëŠ”ê²½ìš°ë§Œ Optionì„ ì¶”ê°€í•œë‹¤.
                 if (values != null && !values.isEmpty()) {
                     int enableChildCount = 0;
                     for (VariantValue value : values) {
@@ -560,7 +562,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * ÇØ´ç ¿É¼ÇÀÌ ÀÌ¹Ì Æ÷ÇÔµÇ¾î ÀÖ´ÂÁö È®ÀÎ
+     * í•´ë‹¹ ì˜µì…˜ì´ ì´ë¯¸ í¬í•¨ë˜ì–´ ìˆëŠ”ì§€ í™•ì¸
      * 
      * @param value
      * @param data
@@ -597,7 +599,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * ÄÃ·³ »çÀÌÁî ÃÊ±âÈ­
+     * ì»¬ëŸ¼ ì‚¬ì´ì¦ˆ ì´ˆê¸°í™”
      */
     public void columnInit() {
         TableColumnModel columnModel = detailTable.getColumnModel();
@@ -610,7 +612,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * Condition Á¶ÇÕÅ×ÀÌºí¿¡ ¿É¼Ç°ªÀ» Ãß°¡ÇÔ.
+     * Condition ì¡°í•©í…Œì´ë¸”ì— ì˜µì…˜ê°’ì„ ì¶”ê°€í•¨.
      */
     @SuppressWarnings({ "unchecked" })
     private void add() {
@@ -641,7 +643,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
     }
 
     /**
-     * Ãß°¡µÈ ConditiondÀ» Á¦°ÅÇÔ.
+     * ì¶”ê°€ëœ Conditiondì„ ì œê±°í•¨.
      */
     @SuppressWarnings({ "unused", "unchecked" })
     private void remove() {
@@ -662,7 +664,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
                     }
                 }
 
-                // ÇöÀçÀÇ Å×ÀÌºí ¸ğµ¨¿¡¼­ ¸ğµç Value¸¦ ¸ğµÎ »©¸é »ç¿ëµÇÁö ¾Ê´Â ¿É¼ÇÀº AllData¿¡¼­ »©¾ßÇÔ.
+                // í˜„ì¬ì˜ í…Œì´ë¸” ëª¨ë¸ì—ì„œ ëª¨ë“  Valueë¥¼ ëª¨ë‘ ë¹¼ë©´ ì‚¬ìš©ë˜ì§€ ì•ŠëŠ” ì˜µì…˜ì€ AllDataì—ì„œ ë¹¼ì•¼í•¨.
                 boolean bNeedDataRemove = true;
                 for (Vector row : (Vector<Vector>) model.getDataVector()) {
                     if (row.get(1).equals(option.getOptionName())) {

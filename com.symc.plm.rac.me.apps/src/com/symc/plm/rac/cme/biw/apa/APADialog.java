@@ -77,11 +77,11 @@ import com.teamcenter.rac.util.dialog.AbstractSWTDialog;
 
 
 /**
- * [SR140611-032][20140611] jwlee °áÇÕÆÇ³Ú °Ë»ö °³¼ö¸¦ 15°³¿¡¼­ 25°³·Î º¯°æ.
- *  °áÇÕÆÇ³Ú Dialog¿¡ Ç¥½ÃµÇ´Â °³¼ö¸¦ Preference·Î Á¶ÀıÇÒ ¼ö ÀÖµµ·Î º¯°æ.
- *  °áÇÕÆÇ³Ú Dialog¿¡ Ç¥½ÃµÇ´Â °³¼ö¸¦ °Ë»ö´ë»ó¿¡¼­ Assay ItemÀº Á¦¿Ü (Part IDÀÇ ´Ù¼¸¹øÂ° ÀÚ¸®°¡ 0ÀÌ¸é Assay ItemÀÌ´Ï ÀÌ°ÍµéÀº °Ë»ö´ë»ó¿¡¼­ Á¦¿Ü Ã³¸®ÇÔ)
- * [SR140721-004][20140729] shcho, °áÇÕÆÇ³Ú Dialog¿¡ Ç¥½ÃµÇ´Â °³¼ö¸¦ Dialog¿¡¼­ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ °ªÀ¸·Î Á¶Àı ÇÒ ¼ö ÀÖµµ·Î º¯°æ.
- * [NON-SR][20150703] shcho, °Ë»ö °á°ú°¡ È­¸é¿¡ ¿Ã¹Ù·Î ¹İ¿µµÇÁö ¾Ê´Â °æ¿ì°¡ °£ÇæÀûÀ¸·Î ¹ß»ıÇÏ¿© µ¿±âÈ­ Ã³¸® ·ÎÁ÷ Ãß°¡
+ * [SR140611-032][20140611] jwlee ê²°í•©íŒë„¬ ê²€ìƒ‰ ê°œìˆ˜ë¥¼ 15ê°œì—ì„œ 25ê°œë¡œ ë³€ê²½.
+ *  ê²°í•©íŒë„¬ Dialogì— í‘œì‹œë˜ëŠ” ê°œìˆ˜ë¥¼ Preferenceë¡œ ì¡°ì ˆí•  ìˆ˜ ìˆë„ë¡œ ë³€ê²½.
+ *  ê²°í•©íŒë„¬ Dialogì— í‘œì‹œë˜ëŠ” ê°œìˆ˜ë¥¼ ê²€ìƒ‰ëŒ€ìƒì—ì„œ Assay Itemì€ ì œì™¸ (Part IDì˜ ë‹¤ì„¯ë²ˆì§¸ ìë¦¬ê°€ 0ì´ë©´ Assay Itemì´ë‹ˆ ì´ê²ƒë“¤ì€ ê²€ìƒ‰ëŒ€ìƒì—ì„œ ì œì™¸ ì²˜ë¦¬í•¨)
+ * [SR140721-004][20140729] shcho, ê²°í•©íŒë„¬ Dialogì— í‘œì‹œë˜ëŠ” ê°œìˆ˜ë¥¼ Dialogì—ì„œ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ê°’ìœ¼ë¡œ ì¡°ì ˆ í•  ìˆ˜ ìˆë„ë¡œ ë³€ê²½.
+ * [NON-SR][20150703] shcho, ê²€ìƒ‰ ê²°ê³¼ê°€ í™”ë©´ì— ì˜¬ë°”ë¡œ ë°˜ì˜ë˜ì§€ ì•ŠëŠ” ê²½ìš°ê°€ ê°„í—ì ìœ¼ë¡œ ë°œìƒí•˜ì—¬ ë™ê¸°í™” ì²˜ë¦¬ ë¡œì§ ì¶”ê°€
  */
 @SuppressWarnings("restriction")
 public class APADialog extends AbstractSWTDialog
@@ -91,7 +91,7 @@ public class APADialog extends AbstractSWTDialog
     public static final String APA_COOKIE = "MEAPACookie";
     public static final int COLUMN_INDEX_WELD_NAME = 0;
     public static final int COLUMN_INDEX_WELD_NUMBER_OF_SHEET = 1;
-    // [SR151207-042][20151209] taeku.jeong Find No Ãß°¡
+    // [SR151207-042][20151209] taeku.jeong Find No ì¶”ê°€
     public static final int COLUMN_INDEX_FIND_NO = 2;
     public static final int COLUMN_INDEX_WELD_TYPE = 3;
     
@@ -99,7 +99,7 @@ public class APADialog extends AbstractSWTDialog
     public static final int COLUMN_INDEX_PART2 = 5;
     public static final int COLUMN_INDEX_PART3 = 6;
     public static final int COLUMN_INDEX_PART4 = 7;
-    // jwlee ¼Ò½º º¯°æ ½ÃÀÛ
+    // jwlee ì†ŒìŠ¤ ë³€ê²½ ì‹œì‘
     public static final int COLUMN_INDEX_PART5 = 8;
     public static final int COLUMN_INDEX_PART6 = 9;
     public static final int COLUMN_INDEX_PART7 = 10;
@@ -111,7 +111,7 @@ public class APADialog extends AbstractSWTDialog
     public static final int COLUMN_INDEX_PART13 = 16;
     public static final int COLUMN_INDEX_PART14 = 17;
     public static final int COLUMN_INDEX_PART15 = 18;
-    // [SR140611-032][20140611] jwlee °áÇÕÆÇ³Ú °Ë»ö °³¼ö¸¦ 15°³¿¡¼­ 25°³·Î º¯°æ.
+    // [SR140611-032][20140611] jwlee ê²°í•©íŒë„¬ ê²€ìƒ‰ ê°œìˆ˜ë¥¼ 15ê°œì—ì„œ 25ê°œë¡œ ë³€ê²½.
     public static final int COLUMN_INDEX_PART16 = 19;
     public static final int COLUMN_INDEX_PART17 = 120;
     public static final int COLUMN_INDEX_PART18 = 21;
@@ -124,25 +124,25 @@ public class APADialog extends AbstractSWTDialog
     public static final int COLUMN_INDEX_PART25 = 28;
     //public static final int MAX_COLUMN_INDEX = 5;
     public static final int MAX_COLUMN_INDEX = 29;
-    // jwlee ¼Ò½º º¯°æ ³¡
+    // jwlee ì†ŒìŠ¤ ë³€ê²½ ë
     
     public static final int CusomAddedColumnCount = 3;
 
     private final String defaultColumnWidth = "120";
-     // [SR151207-042][20151209] taeku.jeong Find No Ãß°¡
+     // [SR151207-042][20151209] taeku.jeong Find No ì¶”ê°€
     private final String columnTitles[] = {
         getReg().getString("MFGName_Header"), getReg().getString("MFGType_Number_of_Sheet"), getReg().getString("MFGFindNo_Header"), getReg().getString("MFGType_Header"), getReg().getString("Part1_Header"),
         getReg().getString("Part2_Header"), getReg().getString("Part3_Header"), getReg().getString("Part4_Header"),
-        // jwlee ¼Ò½ºº¯°æ ½ÃÀÛ
+        // jwlee ì†ŒìŠ¤ë³€ê²½ ì‹œì‘
         getReg().getString("Part5_Header"), getReg().getString("Part6_Header"), getReg().getString("Part7_Header"),
         getReg().getString("Part8_Header"), getReg().getString("Part9_Header"), getReg().getString("Part10_Header"),
         getReg().getString("Part11_Header"), getReg().getString("Part12_Header"), getReg().getString("Part13_Header"),
         getReg().getString("Part14_Header"), getReg().getString("Part15_Header")
-        // [SR140611-032][20140611] jwlee °áÇÕÆÇ³Ú °Ë»ö °³¼ö¸¦ 15°³¿¡¼­ 25°³·Î º¯°æ.
+        // [SR140611-032][20140611] jwlee ê²°í•©íŒë„¬ ê²€ìƒ‰ ê°œìˆ˜ë¥¼ 15ê°œì—ì„œ 25ê°œë¡œ ë³€ê²½.
         ,getReg().getString("Part16_Header"), getReg().getString("Part17_Header"),getReg().getString("Part18_Header"), getReg().getString("Part19_Header")
         ,getReg().getString("Part20_Header"),getReg().getString("Part21_Header"),getReg().getString("Part22_Header"),getReg().getString("Part23_Header")
         ,getReg().getString("Part24_Header"),getReg().getString("Part25_Header")
-        // jwlee ¼Ò½ºº¯°æ ³¡
+        // jwlee ì†ŒìŠ¤ë³€ê²½ ë
     };
 
     private Shell shell;
@@ -170,15 +170,15 @@ public class APADialog extends AbstractSWTDialog
 
     public boolean setDialogVisible;
 
-    // jwlee ¼Ò½ºº¯°æ ½ÃÀÛ
+    // jwlee ì†ŒìŠ¤ë³€ê²½ ì‹œì‘
     //String columnWidths[];
-    // [SR151207-042][20151209] taeku.jeong Find No Ãß°¡
+    // [SR151207-042][20151209] taeku.jeong Find No ì¶”ê°€
     protected String columnWidths[] = {"100", "30", "30", "100", "100", "100", "100", "100", "100", "100", "100", "100",
-            // [SR140611-032][20140611] jwlee °áÇÕÆÇ³Ú °Ë»ö °³¼ö¸¦ 15°³¿¡¼­ 25°³·Î º¯°æ.
+            // [SR140611-032][20140611] jwlee ê²°í•©íŒë„¬ ê²€ìƒ‰ ê°œìˆ˜ë¥¼ 15ê°œì—ì„œ 25ê°œë¡œ ë³€ê²½.
                              "100", "100", "100", "100", "100", "100", "100"
                              ,"100", "100", "100", "100", "100", "100", "100", "100", "100", "100"};
             //---------------------------------------------------------------------------
-    // jwlee ¼Ò½ºº¯°æ ³¡
+    // jwlee ì†ŒìŠ¤ë³€ê²½ ë
     protected GridItem selectedItem;
     protected List<GridItem> selectedItems;
     protected int selectedColumn;
@@ -207,7 +207,7 @@ public class APADialog extends AbstractSWTDialog
         shell = shell1;
         session = abstractaifsession;
         selectedComponent = tccomponentbomline;
-        //jwlee ¼±ÅÃµÈ BOMLine Á¤º¸
+        //jwlee ì„ íƒëœ BOMLine ì •ë³´
         rootBomline = productBOMLine;
     }
 
@@ -260,10 +260,10 @@ public class APADialog extends AbstractSWTDialog
     public int open()
     {
         viewerApp = (AbstractBOMLineViewerApplication)AIFUtility.getCurrentApplication();
-        // jwlee Dialog(Connected to) ¸¦ ¶ç¿ì±âÀü ¼±ÅÃÇÑ view ¿Í ¿¬°áµÈ E-BOM view Á¤º¸¸¦ °°ÀÌ °¡Á®¿Â´Ù
+        // jwlee Dialog(Connected to) ë¥¼ ë„ìš°ê¸°ì „ ì„ íƒí•œ view ì™€ ì—°ê²°ëœ E-BOM view ì •ë³´ë¥¼ ê°™ì´ ê°€ì ¸ì˜¨ë‹¤
         //rootBomline = getContentProvider().setBOMLine(selectedComponent);
 
-        //MProduct ÀÚµ¿ Expand ±â´É Ãß°¡
+        //MProduct ìë™ Expand ê¸°ëŠ¥ ì¶”ê°€
         /*
         AbstractViewableTreeTable[] abstractViewableTreeTables = viewerApp.getViewableTreeTables();
         for(AbstractViewableTreeTable treeTable : abstractViewableTreeTables) {
@@ -286,7 +286,7 @@ public class APADialog extends AbstractSWTDialog
 
     }
 
-    //[SR140721-004][20140729] shcho, °áÇÕÆÇ³Ú Dialog¿¡ Ç¥½ÃµÇ´Â °³¼ö¸¦ Dialog¿¡¼­ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ °ªÀ¸·Î Á¶Àı ÇÒ ¼ö ÀÖµµ·Î º¯°æ.
+    //[SR140721-004][20140729] shcho, ê²°í•©íŒë„¬ Dialogì— í‘œì‹œë˜ëŠ” ê°œìˆ˜ë¥¼ Dialogì—ì„œ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ê°’ìœ¼ë¡œ ì¡°ì ˆ í•  ìˆ˜ ìˆë„ë¡œ ë³€ê²½.
     protected void createDialogWindow(Composite composite) {
         Composite secondComposite = new Composite(composite, SWT.NONE);
         GridData gdSubComposite = new GridData(GridData.HORIZONTAL_ALIGN_FILL);
@@ -436,7 +436,7 @@ public class APADialog extends AbstractSWTDialog
             if(s1 == null || s1.length() <= 0)
                 continue;
             setEnabledToolBarItem(1031, true);
-            // jwlee ¼Ò½ºº¯°æ Part4°³±îÁö¸¸ Ã¼Å© ÇÏ´ø°ÍÀ» part17 ·Î ´Ã¸²
+            // jwlee ì†ŒìŠ¤ë³€ê²½ Part4ê°œê¹Œì§€ë§Œ ì²´í¬ í•˜ë˜ê²ƒì„ part17 ë¡œ ëŠ˜ë¦¼
             if(getReg().getString("Part1_Header").equals(s) || getReg().getString("Part2_Header").equals(s) || getReg().getString("Part3_Header").equals(s) || getReg().getString("Part4_Header").equals(s) ||
                getReg().getString("Part5_Header").equals(s) || getReg().getString("Part6_Header").equals(s) ||
                getReg().getString("Part7_Header").equals(s) || getReg().getString("Part8_Header").equals(s) ||
@@ -445,7 +445,7 @@ public class APADialog extends AbstractSWTDialog
                getReg().getString("Part13_Header").equals(s) || getReg().getString("Part14_Header").equals(s) ||
                getReg().getString("Part15_Header").equals(s) || getReg().getString("Part16_Header").equals(s) ||
                getReg().getString("Part17_Header").equals(s) || getReg().getString("Part18_Header").equals(s)
-               // [SR140611-032][20140611] jwlee °áÇÕÆÇ³Ú °Ë»ö °³¼ö¸¦ 15°³¿¡¼­ 25°³·Î º¯°æ.
+               // [SR140611-032][20140611] jwlee ê²°í•©íŒë„¬ ê²€ìƒ‰ ê°œìˆ˜ë¥¼ 15ê°œì—ì„œ 25ê°œë¡œ ë³€ê²½.
                ||getReg().getString("Part19_Header").equals(s) || getReg().getString("Part20_Header").equals(s)
                ||getReg().getString("Part21_Header").equals(s)||getReg().getString("Part22_Header").equals(s)
                ||getReg().getString("Part23_Header").equals(s)||getReg().getString("Part24_Header").equals(s)
@@ -508,7 +508,7 @@ public class APADialog extends AbstractSWTDialog
         addColumn(apatablecomparator, gridcolumn4, columnTitles[4], 4);
         GridColumn gridcolumn5 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn5, columnTitles[5], 5);
-        // jwlee ¼Ò½ºº¯°æ ½ÃÀÛ
+        // jwlee ì†ŒìŠ¤ë³€ê²½ ì‹œì‘
         GridColumn gridcolumn6 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn6, columnTitles[6], 6);
         GridColumn gridcolumn7 = new GridColumn(grid, SWT.LEFT);
@@ -534,7 +534,7 @@ public class APADialog extends AbstractSWTDialog
         GridColumn gridcolumn17 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn17, columnTitles[17], 17);
 
-        //[SR140611-032][20140611] jwlee °áÇÕÆÇ³Ú °Ë»ö °³¼ö¸¦ 15°³¿¡¼­ 25°³·Î º¯°æ.
+        //[SR140611-032][20140611] jwlee ê²°í•©íŒë„¬ ê²€ìƒ‰ ê°œìˆ˜ë¥¼ 15ê°œì—ì„œ 25ê°œë¡œ ë³€ê²½.
         GridColumn gridcolumn18 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn18, columnTitles[18], 18);
         GridColumn gridcolumn19 = new GridColumn(grid, SWT.LEFT);
@@ -555,11 +555,11 @@ public class APADialog extends AbstractSWTDialog
         addColumn(apatablecomparator, gridcolumn26, columnTitles[26], 26);
         GridColumn gridcolumn27 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn27, columnTitles[27], 27);
-        // [SR151207-042][20151209] taeku.jeong Find No Ãß°¡
+        // [SR151207-042][20151209] taeku.jeong Find No ì¶”ê°€
         GridColumn gridcolumn28 = new GridColumn(grid, SWT.LEFT);
         addColumn(apatablecomparator, gridcolumn28, columnTitles[28], 28);
         //---------------------------------------------------------------------
-        // jwlee ¼Ò½ºº¯°æ ³¡
+        // jwlee ì†ŒìŠ¤ë³€ê²½ ë
         tableViewer.setComparator(apatablecomparator);
     }
 
@@ -685,8 +685,8 @@ public class APADialog extends AbstractSWTDialog
 
     protected void createButtonsForButtonBar(Composite composite)
     {
-        // jwlee ¼öÁ¤ ¼Ò½º ºÎºĞ
-        //[SR140721-004][20140729] shcho, °áÇÕÆÇ³Ú Dialog¿¡ Ç¥½ÃµÇ´Â °³¼ö¸¦ Dialog¿¡¼­ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ °ªÀ¸·Î Á¶Àı ÇÒ ¼ö ÀÖµµ·Î º¯°æ.
+        // jwlee ìˆ˜ì • ì†ŒìŠ¤ ë¶€ë¶„
+        //[SR140721-004][20140729] shcho, ê²°í•©íŒë„¬ Dialogì— í‘œì‹œë˜ëŠ” ê°œìˆ˜ë¥¼ Dialogì—ì„œ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ê°’ìœ¼ë¡œ ì¡°ì ˆ í•  ìˆ˜ ìˆë„ë¡œ ë³€ê²½.
         // searchButton = createButton(composite, 1026, getReg().getString("APADialog.search"), false);
         // searchButton.setToolTipText(getReg().getString("APADialog.searchButton.ToolTip"));
         assignButton = createButton(composite, 1034, getReg().getString("APADialog.assign"), false);
@@ -723,23 +723,23 @@ public class APADialog extends AbstractSWTDialog
         int i = ((Integer)selectionevent.widget.getData()).intValue();
         if(1025 == i) {
             filterPressed(selectionevent);
-            // ÀúÀåµÈ ÆÇ³Ú °¹¼ö¿Í °ã¼ö¸¦ ºñ±³ÇÏ¿© »öÀ» ¹Ù²Û´Ù
+            // ì €ì¥ëœ íŒë„¬ ê°¯ìˆ˜ì™€ ê²¹ìˆ˜ë¥¼ ë¹„êµí•˜ì—¬ ìƒ‰ì„ ë°”ê¾¼ë‹¤
             modifyTableView();
         }else if(1027 == i){
             settingsPressed();
-            // ÀúÀåµÈ ÆÇ³Ú °¹¼ö¿Í °ã¼ö¸¦ ºñ±³ÇÏ¿© »öÀ» ¹Ù²Û´Ù
+            // ì €ì¥ëœ íŒë„¬ ê°¯ìˆ˜ì™€ ê²¹ìˆ˜ë¥¼ ë¹„êµí•˜ì—¬ ìƒ‰ì„ ë°”ê¾¼ë‹¤
             modifyTableView();
         }else if(1028 == i){
             filterOutAssignedPressed();
-            // ÀúÀåµÈ ÆÇ³Ú °¹¼ö¿Í °ã¼ö¸¦ ºñ±³ÇÏ¿© »öÀ» ¹Ù²Û´Ù
+            // ì €ì¥ëœ íŒë„¬ ê°¯ìˆ˜ì™€ ê²¹ìˆ˜ë¥¼ ë¹„êµí•˜ì—¬ ìƒ‰ì„ ë°”ê¾¼ë‹¤
             modifyTableView();
         }else if(1029 == i){
             removePartPressed();
-            // ÀúÀåµÈ ÆÇ³Ú °¹¼ö¿Í °ã¼ö¸¦ ºñ±³ÇÏ¿© »öÀ» ¹Ù²Û´Ù
+            // ì €ì¥ëœ íŒë„¬ ê°¯ìˆ˜ì™€ ê²¹ìˆ˜ë¥¼ ë¹„êµí•˜ì—¬ ìƒ‰ì„ ë°”ê¾¼ë‹¤
             modifyTableView();
         }else if(1030 == i){
             addPartPressed();
-            // ÀúÀåµÈ ÆÇ³Ú °¹¼ö¿Í °ã¼ö¸¦ ºñ±³ÇÏ¿© »öÀ» ¹Ù²Û´Ù
+            // ì €ì¥ëœ íŒë„¬ ê°¯ìˆ˜ì™€ ê²¹ìˆ˜ë¥¼ ë¹„êµí•˜ì—¬ ìƒ‰ì„ ë°”ê¾¼ë‹¤
             modifyTableView();
         }else if(1031 == i){
             displayPressed();
@@ -943,8 +943,8 @@ public class APADialog extends AbstractSWTDialog
         });
     }
 
-    // jwlee ¼öÁ¤ ¼Ò½º ºÎºĞ
-    //[SR140721-004][20140729] shcho, °áÇÕÆÇ³Ú Dialog¿¡ Ç¥½ÃµÇ´Â °³¼ö¸¦ Dialog¿¡¼­ »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ °ªÀ¸·Î Á¶Àı ÇÒ ¼ö ÀÖµµ·Î º¯°æ.
+    // jwlee ìˆ˜ì • ì†ŒìŠ¤ ë¶€ë¶„
+    //[SR140721-004][20140729] shcho, ê²°í•©íŒë„¬ Dialogì— í‘œì‹œë˜ëŠ” ê°œìˆ˜ë¥¼ Dialogì—ì„œ ì‚¬ìš©ìê°€ ì…ë ¥í•œ ê°’ìœ¼ë¡œ ì¡°ì ˆ í•  ìˆ˜ ìˆë„ë¡œ ë³€ê²½.
     private void searchPressed() {
 //        String strSearchCondition = searchConditionText.getText();
 //        if(strSearchCondition.length() == 0 || strSearchCondition.equals("0")) {
@@ -1120,8 +1120,8 @@ public class APADialog extends AbstractSWTDialog
     }
 
     /**
-     * Table ¿¡ ÀúÀåµÈ µ¥ÀÌÅÍ¸¦ °¡Áö°í °ã¼ö¿Í ½ÇÁ¦ ÀúÀåµÈ ÆÇ³Ú¿¡ °¹¼ö¸¦ ºñ±³ÇÏ¿©
-     * »öÀ» ¹Ù²Ù¾î ÁØ´Ù
+     * Table ì— ì €ì¥ëœ ë°ì´í„°ë¥¼ ê°€ì§€ê³  ê²¹ìˆ˜ì™€ ì‹¤ì œ ì €ì¥ëœ íŒë„¬ì— ê°¯ìˆ˜ë¥¼ ë¹„êµí•˜ì—¬
+     * ìƒ‰ì„ ë°”ê¾¸ì–´ ì¤€ë‹¤
      *
      * @method modifyTableView
      * @date 2014. 4. 4.
@@ -1150,7 +1150,7 @@ public class APADialog extends AbstractSWTDialog
                             rearSheet++;
                         }
                     }
-                    // °ã¼ö º¸´Ù ½ÇÁ¦ ÀúÀåµÉ ´ë»óÀÌ ¸¹À¸¸é »¡°­, ÀûÀ¸¸é ÆÄ¶ûÀ¸·Î Ç¥½ÃÇÑ´Ù
+                    // ê²¹ìˆ˜ ë³´ë‹¤ ì‹¤ì œ ì €ì¥ë  ëŒ€ìƒì´ ë§ìœ¼ë©´ ë¹¨ê°•, ì ìœ¼ë©´ íŒŒë‘ìœ¼ë¡œ í‘œì‹œí•œë‹¤
                     if (rearSheet > numberSheet) {
                         grid.getItem(i).setBackground(COLUMN_INDEX_WELD_NAME, redColor);
                     }else if (rearSheet < numberSheet){
