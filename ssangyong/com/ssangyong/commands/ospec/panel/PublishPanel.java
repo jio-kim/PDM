@@ -351,7 +351,8 @@ public class PublishPanel extends JPanel {
 			//수정 getFilteredDataTable 메소드는 인자로 OSpec, Vector<OpComparableConditionSet> 타입을 받기 때문에 
 			//model.getDataVector() 메소드로 반환된 Vector<Vector>를 Vector<OpComparableConditionSet> 타입으로 캐스팅함.
 			Vector<OpComparableConditionSet> castedModel = new Vector<>();
-			for (Vector vector : model.getDataVector()) {
+			Vector<Vector> rawData = model.getDataVector();
+			for (Vector vector : rawData) {
 				OpComparableConditionSet opComparableConditionSet = (OpComparableConditionSet) vector;
 			    castedModel.add(opComparableConditionSet);
 			}
@@ -1489,7 +1490,8 @@ public class PublishPanel extends JPanel {
 		
 		//수정 getDataVector() 메소드는 Vector<Vector> 타입을 반환. 하지만 Collections.sort() 메소드는 인자로 2차원 배열이나 Vector를 사용하지 않음.
 		Vector sortedVector = new Vector();
-		for(Vector vector : model.getDataVector()) {
+		Vector<Vector> rawData = model.getDataVector();
+		for(Vector vector : rawData) {
 			sortedVector.add(vector);
 		}
 		Collections.sort(sortedVector);

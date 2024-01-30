@@ -371,7 +371,15 @@ public class EBOMWeightMasterListDialog extends AbstractAIFDialog {
 					try {
 						//¼öÁ¤
 						Vector<Vector> rawData = tableModel.getDataVector();
-						Vector<Vector<Object>> dataVec = new Vector<>(rawData);
+//						Vector<Vector<Object>> dataVec = new Vector<>(rawData);
+						Vector<Vector<Object>> dataVec = new Vector<>();
+						for(Vector innerVector : rawData) {
+							Vector<Object> ObjectVector = new Vector<>();
+							for(Object element : innerVector) {
+								ObjectVector.add(element);
+							}
+							dataVec.add(ObjectVector);
+						}
 						final EBOMWeightMasterListExcelExportOperation exportOp = new EBOMWeightMasterListExcelExportOperation( selectedFile,
 								tableModel.getIdentifier(), dataVec, selectedProductItem);
 //						final EBOMWeightMasterListExcelExportOperation exportOp = new EBOMWeightMasterListExcelExportOperation( selectedFile,

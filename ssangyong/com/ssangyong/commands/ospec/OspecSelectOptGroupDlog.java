@@ -318,7 +318,15 @@ public class OspecSelectOptGroupDlog extends AbstractAIFDialog {
 			@SuppressWarnings("unchecked")
 //			Vector<Vector<Object>> dataVec = tableModel.getDataVector();
 			Vector<Vector> rawData = tableModel.getDataVector();
-			Vector<Vector<Object>> dataVec = new Vector<>(rawData);
+//			Vector<Vector<Object>> dataVec = new Vector<>(rawData);
+			Vector<Vector<Object>> dataVec = new Vector<>();
+			for(Vector innerVector : rawData) {
+				Vector<Object> objectVector = new Vector<>();
+				for(Object element : innerVector) {
+					objectVector.add(innerVector);
+				}
+				dataVec.add(objectVector);
+			}
 			
 			for (Vector<Object> data : dataVec) {
 

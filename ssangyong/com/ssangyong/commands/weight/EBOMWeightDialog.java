@@ -355,7 +355,15 @@ public class EBOMWeightDialog extends AbstractAIFDialog {
 //						tableModel.getIdentifier(), tableModel.getDataVector(), title, usageOptionSetList, ospec);
 				//수정 tableModel.getDataVector() = Vector<Vector> 반환함.
 				Vector<Vector> rawData = tableModel.getDataVector();
-				Vector<Vector<Object>> dataVec = new Vector<>(rawData);
+				Vector<Vector<Object>> dataVec = new Vector<>();
+				for(Vector innerVector : rawData) {
+					 Vector<Object> objectVector = new Vector<>();
+					 for(Object element : innerVector) {
+						 objectVector.add(element);
+					 }
+					 dataVec.add(objectVector);
+				}
+//				Vector<Vector<Object>> dataVec = new Vector<>(rawData);
 				final EBOMWeightExcelExportOperation exportOp = new EBOMWeightExcelExportOperation( selectedFile,
 						tableModel.getIdentifier(), dataVec, title, usageOptionSetList, ospec);
 				

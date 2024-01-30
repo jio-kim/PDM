@@ -125,9 +125,12 @@ public class OpUtil {
 	}
 	
 	public static OSpec getOSpec(File file) throws Exception{
-		
+
 		//엑셀의 
 		// Excel Load Start
+		// [20240130] 추가 설명
+		// 엑셀 파일 형태가 'Excel 97-2003 통합 문서'타입으로 저장된 파일만 읽어 올수 있음
+		// 그냥 엑셀 파일을 읽어올 경우 'Unable to recognize OLE stream' 에러 발생
     	Workbook workBook = Workbook.getWorkbook(file);
     	Sheet sheet = workBook.getSheet(0);
     	

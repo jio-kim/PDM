@@ -429,8 +429,8 @@ public class ExportPOIExcel
 							sheet.getRow(firstRow).getCell(firstColumn).setCellValue(gridColumnGroup.getText());
 							columnGroupAddressHash.put(gridColumnGroup, cellRangeAddress);
 						}
-						//GridColumnGroup parentColumnGroup = gridColumnGroup.getParentGroup();
-						GridColumnGroup parentColumnGroup = null;
+						GridColumnGroup parentColumnGroup = gridColumnGroup.getParentGroup();
+						//GridColumnGroup parentColumnGroup = null;
 						//¼öÁ¤ ±è¹Î¼® parentColumnGroup
 						
 						if(parentColumnGroup != null)
