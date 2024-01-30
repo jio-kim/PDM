@@ -866,7 +866,7 @@ public class PreFmpOptionSetDialog extends AbstractAIFDialog {
 					}
 				}
 
-				// [20240125] [전성옥] 유형 불일치 에러 수정
+				// [20240125] [CSO] 유형 불일치 에러 수정
 				// 에러 :  Enumeration<TreeNode>에서 Enumeration<VariantNode>로 변환할 수 없습니다.
 				// Enumeration 대신 Iterator를 사용
 				Iterator<VariantNode> enums = (Iterator<VariantNode>) (Iterator<?>) node.children();

@@ -106,29 +106,23 @@ public class PreOSpecMandatoryTable extends Composite {
 			
 			boolean isNewPassenger = false;
 			if (isNewArea || (gcgPrePassenger == null || !gcgPrePassenger.getText().equals(sPassenger))) {
-				// [20240124] [전성옥] gcgPassenger 선언할때 gcgPreaArea 그룹의 자식으로 설정
-				// GridColumnGroup gcgPassenger = new GridColumnGroup(table, iStyle);
-				GridColumnGroup gcgPassenger = new GridColumnGroup(gcgPreArea.getParent(), iStyle);
+				GridColumnGroup gcgPassenger = new GridColumnGroup(table, iStyle);
 				gcgPassenger.setText(sPassenger);
 				gcgPrePassenger = gcgPassenger;
-				// gcgPassenger.setParentGroup(gcgPreArea);
+				gcgPassenger.setParentGroup(gcgPreArea);
 				isNewPassenger = true;
 			}
 			
 			if (isNewPassenger || (gcgPreEngine == null || !gcgPreEngine.getText().equals(sEngine))) {
-				// [20240124] [전성옥] gcgEngine 선언할때 gcgPrePassenger 그룹의 자식으로 설정
-				// GridColumnGroup gcgEngine = new GridColumnGroup(table, iStyle);
-				GridColumnGroup gcgEngine = new GridColumnGroup(gcgPrePassenger.getParent(), iStyle);
+				GridColumnGroup gcgEngine = new GridColumnGroup(table, iStyle);
 				gcgEngine.setText(sEngine);
 				gcgPreEngine = gcgEngine;
-				// gcgEngine.setParentGroup(gcgPrePassenger);
+				gcgEngine.setParentGroup(gcgPrePassenger);
 			}
 			
-			// [20240124] [전성옥] gcgGrade 선언할때 gcgPreEngine 그룹의 자식으로 설정
-			// GridColumnGroup gcgGrade = new GridColumnGroup(table, iStyle);
-			GridColumnGroup gcgGrade = new GridColumnGroup(gcgPreEngine.getParent(), iStyle);
+			GridColumnGroup gcgGrade = new GridColumnGroup(table, iStyle);
 			gcgGrade.setText(sGrade);
-			// gcgGrade.setParentGroup(gcgPreEngine);
+			gcgGrade.setParentGroup(gcgPreEngine);
 			
 			GridColumn gcTrim = new GridColumn(gcgGrade, iStyle | SWT.CHECK);
 			gcTrim.setText(sTrim);

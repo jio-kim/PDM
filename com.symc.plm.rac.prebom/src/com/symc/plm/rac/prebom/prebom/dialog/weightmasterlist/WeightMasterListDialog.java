@@ -470,7 +470,7 @@ public class WeightMasterListDialog extends AbstractAIFDialog {
                     waitBar.start();
                     try
                     {
-                    	// [20240125] [전성옥] 수정
+                    	// [20240125] [CSO] 수정
 						// WeightMasterListExcelExportOperation(File, Vector<Object>, Vector<Vector>, TCComponentItem) 생성자가 정의X
 						// tableModel.getDataVector(); ==> Vector<Vector> 타입임
 						// Vector<Vector> => Vector<Vector<Object>> 타입으로 캐스팅
