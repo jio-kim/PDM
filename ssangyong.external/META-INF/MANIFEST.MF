@@ -61,7 +61,8 @@ Bundle-ClassPath: calendarcombo-1.0.0.jar,
  xercesImpl.jar,
  axis-1.4_1.jar,
  commons-discovery-0.2.jar,
- javax.xml.rpc-3.1.jar
+ javax.xml.rpc-3.1.jar,
+ org.eclipse.nebula.widgets.grid_10000.1.0.jar
 Export-Package: .,
  com.ebsolutions,
  com.ebsolutions.actions,
@@ -741,6 +742,7 @@ Export-Package: .,
  org.eclipse.nebula.widgets.calendarcombo,
  org.eclipse.nebula.widgets.datechooser,
  org.eclipse.nebula.widgets.formattedtext,
+ org.eclipse.nebula.widgets.grid,
  org.eclipse.nebula.widgets.pgroup,
  org.eclipse.nebula.widgets.pgroup.internal,
  org.eclipse.nebula.widgets.pshelf,
@@ -986,4 +988,4 @@ Export-Package: .,
  schemasMicrosoftComVml,
  schemasMicrosoftComVml.impl,
  swing2swt.layout
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-1.7

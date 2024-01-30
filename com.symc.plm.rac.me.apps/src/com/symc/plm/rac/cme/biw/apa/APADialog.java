@@ -578,11 +578,8 @@ public class APADialog extends AbstractSWTDialog
         final int columnIndex = i;
         if(getReg().getString("MFGName_Header").equals(gridcolumn.getText()))
         {
-        	//[2024.01.24]수정
-        	//setSortDirection과 setSortColumn 메소드가 없어 grid.getColumn(columnIndex).setSort(128)로 대체
-            //grid.setSortDirection(128);
-            //grid.setSortColumn(gridcolumn);
-        	grid.getColumn(columnIndex).setSort(128);
+            grid.setSortDirection(128);
+            grid.setSortColumn(gridcolumn);
             gridcolumn.setSort(128);
             comparator.setAscending(true);
             comparator.setSortColumn(i);
@@ -605,10 +602,7 @@ public class APADialog extends AbstractSWTDialog
                     comparator.setAscending(true);
                 }
                 comparator.setSortColumn(columnIndex);
-            	//[2024.01.24]수정
-            	//setSortColumn 메소드가 없어 grid.getColumn(columnIndex).setSort(128)로 대체
-                //grid.setSortColumn(grid.getColumn(columnIndex));
-                grid.getColumn(columnIndex).setSort(128);
+                grid.setSortColumn(grid.getColumn(columnIndex));
                 tableViewer.refresh();
             }
         });
