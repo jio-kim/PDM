@@ -16,11 +16,12 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
                 <property name="poolMaximumCheckoutTime" value="20000"/>
 				<!-- <property name="driver" value="core.log.jdbc.driver.OracleDriver" /> -->
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
-				<property name="url" value="jdbc:oracle:thin:@10.80.1.90:1521:NEWPLM" /> <!-- Live Server -->
+				<property name="url" value="jdbc:oracle:thin:@10.80.8.52:1521:tc" /> <!-- DEV Server -->				
+				<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.90:1521:NEWPLM" /> --><!-- Live Server -->
 				<!--<property name="url" value="jdbc:oracle:thin:@10.80.1.93:1521:TC" /> --><!-- QA Server -->
 				<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.93:1521:NEWPLM" /> --> <!-- DEV Server -->
                 <property name="username" value="if_user" />
-                <property name="password" value="IF_USER" />
+                <property name="password" value="if_user" />
 				<!-- [SR140611-028][20140611] bskwak,  Connect 끊기는 현상 예방을 위한 조치. 3 lines
 					 [SR없음][20150720] jclee, Connect 끊김 방지 Query 변경. -->
 				<property name="poolPingQuery" value="/* ping */ SELECT 1 FROM DUAL" /> 
