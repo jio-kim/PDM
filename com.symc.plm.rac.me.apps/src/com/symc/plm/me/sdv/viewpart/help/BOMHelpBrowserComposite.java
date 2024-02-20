@@ -20,9 +20,11 @@ import org.eclipse.swt.widgets.ToolItem;
 import com.teamcenter.rac.aif.kernel.IPreferenceService;
 import com.teamcenter.rac.aifrcp.AbstractWelcomeComposite;
 import com.teamcenter.rac.aifrcp.AifrcpPlugin;
-//[2024.01.25]수정
-//import com.teamcenter.rac.aifrcp.BrowserComposite;
-import com.teamcenter.rac.webbrowser.BrowserComposite;
+
+//[2024.02.20]
+import com.teamcenter.rac.aifrcp.BrowserComposite;
+//[2024.01.25]
+//import com.teamcenter.rac.webbrowser.BrowserComposite;
 //import com.teamcenter.rac.aifrcp.registry;
 import com.teamcenter.rac.util.OSGIUtil;
 import com.teamcenter.rac.util.Registry;
