@@ -4,7 +4,7 @@
 		<format property="CURRDATE" pattern="yyyy-MM-dd" />
 	  	<format property="CURRTIME" pattern="HH" />
 	</tstamp>
-	<property name="client.dir" value="C:\Siemens\TC\OTW10\rac"/>	<!-- [20140107][jclee] OTW9에서 OTW10으로 변경 -->
+	<property name="client.dir" value="C:\Siemens\TC13\portal"/>	<!-- [20140107][jclee] OTW9에서 OTW10으로 변경 -->
 	<property name="plugins.dir" value="${client.dir}/plugins"/>
 	<property name="registry.dir" value="${client.dir}/registry"/>
    <property name="jar_dest" value="./../0_Export_JAR/com.symc.plm.rac.me.apps/${CURRDATE} ${CURRTIME}"/>
