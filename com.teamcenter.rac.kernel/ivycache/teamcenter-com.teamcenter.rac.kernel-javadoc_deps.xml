@@ -4,18 +4,18 @@
 	<info
 		organisation="teamcenter"
 		module="com.teamcenter.rac.kernel"
-		revision="working@vAp051621515832"
+		revision="working@cyv6s235"
 		conf="javadoc_deps"
 		confs="javadoc_deps"
-		date="20231116224604"/>
+		date="20230511024413"/>
 	<dependencies>
 		<module organisation="teamcenter" name="TcDoclet">
-			<revision name="20231116222732" status="milestone" pubdate="20231116222740" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="false" default="false" conf="tcjars" position="0">
-				<metadata-artifact status="no" details="" size="1128" time="0" location="E:\udu\tc133013_1116_552759wn\wntx64\ivy\cache\teamcenter\TcDoclet\ivy-20231116222732.xml" searched="false" original-local-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\TcDoclet\20231116222732\ivy.xml" origin-is-local="true" origin-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\TcDoclet\20231116222732\ivy.xml"/>
-				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="javadoc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@vAp051621515832"/>
+			<revision name="20230511010009" status="milestone" pubdate="20230511010020" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="false" default="false" conf="tcjars" position="0">
+				<metadata-artifact status="no" details="" size="1128" time="0" location="D:\workdir\tc132014_win64\wntx64\ivy\cache\teamcenter\TcDoclet\ivy-20230511010009.xml" searched="false" original-local-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\TcDoclet\20230511010009\ivy.xml" origin-is-local="true" origin-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\TcDoclet\20230511010009\ivy.xml"/>
+				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="javadoc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@cyv6s235"/>
 				<artifacts>
-					<artifact name="TcDoclet" type="jar" ext="jar" status="no" details="" size="272549" time="0" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\TcDoclet\20231116222732\TcDoclet.jar">
-						<origin-location is-local="true" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\TcDoclet\20231116222732\TcDoclet.jar"/>
+					<artifact name="TcDoclet" type="jar" ext="jar" status="no" details="" size="272549" time="0" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\TcDoclet\20230511010009\TcDoclet.jar">
+						<origin-location is-local="true" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\TcDoclet\20230511010009\TcDoclet.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>

@@ -4,73 +4,73 @@
 	<info
 		organisation="teamcenter"
 		module="com.teamcenter.rac.kernel"
-		revision="working@vAp051621515832"
+		revision="working@cyv6s235"
 		conf="svc_deps"
 		confs="svc_deps"
-		date="20231116224607"/>
+		date="20230511024519"/>
 	<dependencies>
 		<module organisation="teamcenter" name="tcscmsvc">
-			<revision name="20231116223307" status="milestone" pubdate="20231116223319" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="false" default="false" conf="svc" position="5">
-				<metadata-artifact status="no" details="" size="1185" time="0" location="E:\udu\tc133013_1116_552759wn\wntx64\ivy\cache\teamcenter\tcscmsvc\ivy-20231116223307.xml" searched="false" original-local-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcscmsvc\20231116223307\ivy.xml" origin-is-local="true" origin-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcscmsvc\20231116223307\ivy.xml"/>
-				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@vAp051621515832"/>
+			<revision name="20230511010915" status="milestone" pubdate="20230511010917" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="true" default="false" conf="svc" position="5">
+				<metadata-artifact status="no" details="" size="1185" time="0" location="D:\workdir\tc132014_win64\wntx64\ivy\cache\teamcenter\tcscmsvc\ivy-20230511010915.xml" searched="true" original-local-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcscmsvc\20230511010915\ivy.xml" origin-is-local="true" origin-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcscmsvc\20230511010915\ivy.xml"/>
+				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@cyv6s235"/>
 				<artifacts>
-					<artifact name="tcscmsvc" type="jar" ext="jar" status="no" details="" size="1914" time="0" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcscmsvc\20231116223307\tcscmsvc.jar">
-						<origin-location is-local="true" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcscmsvc\20231116223307\tcscmsvc.jar"/>
+					<artifact name="tcscmsvc" type="jar" ext="jar" status="no" details="" size="1914" time="0" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcscmsvc\20230511010915\tcscmsvc.jar">
+						<origin-location is-local="true" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcscmsvc\20230511010915\tcscmsvc.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="teamcenter" name="tcpsmsvc">
-			<revision name="20231116223307" status="milestone" pubdate="20231116223315" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="false" default="false" conf="svc" position="4">
-				<metadata-artifact status="no" details="" size="1185" time="0" location="E:\udu\tc133013_1116_552759wn\wntx64\ivy\cache\teamcenter\tcpsmsvc\ivy-20231116223307.xml" searched="false" original-local-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcpsmsvc\20231116223307\ivy.xml" origin-is-local="true" origin-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcpsmsvc\20231116223307\ivy.xml"/>
-				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@vAp051621515832"/>
+			<revision name="20230511010915" status="milestone" pubdate="20230511010918" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="true" default="false" conf="svc" position="4">
+				<metadata-artifact status="no" details="" size="1185" time="0" location="D:\workdir\tc132014_win64\wntx64\ivy\cache\teamcenter\tcpsmsvc\ivy-20230511010915.xml" searched="true" original-local-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcpsmsvc\20230511010915\ivy.xml" origin-is-local="true" origin-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcpsmsvc\20230511010915\ivy.xml"/>
+				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@cyv6s235"/>
 				<artifacts>
-					<artifact name="tcpsmsvc" type="jar" ext="jar" status="no" details="" size="4429" time="0" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcpsmsvc\20231116223307\tcpsmsvc.jar">
-						<origin-location is-local="true" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcpsmsvc\20231116223307\tcpsmsvc.jar"/>
+					<artifact name="tcpsmsvc" type="jar" ext="jar" status="no" details="" size="4429" time="0" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcpsmsvc\20230511010915\tcpsmsvc.jar">
+						<origin-location is-local="true" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcpsmsvc\20230511010915\tcpsmsvc.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="teamcenter" name="tcmechatronicssvc">
-			<revision name="20231116223307" status="milestone" pubdate="20231116223314" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="false" default="false" conf="svc" position="3">
-				<metadata-artifact status="no" details="" size="1203" time="0" location="E:\udu\tc133013_1116_552759wn\wntx64\ivy\cache\teamcenter\tcmechatronicssvc\ivy-20231116223307.xml" searched="false" original-local-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcmechatronicssvc\20231116223307\ivy.xml" origin-is-local="true" origin-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcmechatronicssvc\20231116223307\ivy.xml"/>
-				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@vAp051621515832"/>
+			<revision name="20230511010913" status="milestone" pubdate="20230511010916" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="true" default="false" conf="svc" position="3">
+				<metadata-artifact status="no" details="" size="1203" time="0" location="D:\workdir\tc132014_win64\wntx64\ivy\cache\teamcenter\tcmechatronicssvc\ivy-20230511010913.xml" searched="true" original-local-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcmechatronicssvc\20230511010913\ivy.xml" origin-is-local="true" origin-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcmechatronicssvc\20230511010913\ivy.xml"/>
+				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@cyv6s235"/>
 				<artifacts>
-					<artifact name="tcmechatronicssvc" type="jar" ext="jar" status="no" details="" size="1854" time="0" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcmechatronicssvc\20231116223307\tcmechatronicssvc.jar">
-						<origin-location is-local="true" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tcmechatronicssvc\20231116223307\tcmechatronicssvc.jar"/>
+					<artifact name="tcmechatronicssvc" type="jar" ext="jar" status="no" details="" size="1854" time="0" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcmechatronicssvc\20230511010913\tcmechatronicssvc.jar">
+						<origin-location is-local="true" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tcmechatronicssvc\20230511010913\tcmechatronicssvc.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="teamcenter" name="tccoresvc">
-			<revision name="20231116223306" status="milestone" pubdate="20231116223311" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="false" default="false" conf="svc" position="2">
-				<metadata-artifact status="no" details="" size="1187" time="0" location="E:\udu\tc133013_1116_552759wn\wntx64\ivy\cache\teamcenter\tccoresvc\ivy-20231116223306.xml" searched="false" original-local-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccoresvc\20231116223306\ivy.xml" origin-is-local="true" origin-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccoresvc\20231116223306\ivy.xml"/>
-				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@vAp051621515832"/>
+			<revision name="20230511010912" status="milestone" pubdate="20230511010916" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="true" default="false" conf="svc" position="2">
+				<metadata-artifact status="no" details="" size="1187" time="0" location="D:\workdir\tc132014_win64\wntx64\ivy\cache\teamcenter\tccoresvc\ivy-20230511010912.xml" searched="true" original-local-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccoresvc\20230511010912\ivy.xml" origin-is-local="true" origin-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccoresvc\20230511010912\ivy.xml"/>
+				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@cyv6s235"/>
 				<artifacts>
-					<artifact name="tccoresvc" type="jar" ext="jar" status="no" details="" size="14515" time="0" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccoresvc\20231116223306\tccoresvc.jar">
-						<origin-location is-local="true" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccoresvc\20231116223306\tccoresvc.jar"/>
+					<artifact name="tccoresvc" type="jar" ext="jar" status="no" details="" size="14515" time="0" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccoresvc\20230511010912\tccoresvc.jar">
+						<origin-location is-local="true" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccoresvc\20230511010912\tccoresvc.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="teamcenter" name="tccbasvc">
-			<revision name="20231116223307" status="milestone" pubdate="20231116223323" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="false" default="false" conf="svc" position="1">
-				<metadata-artifact status="no" details="" size="1185" time="0" location="E:\udu\tc133013_1116_552759wn\wntx64\ivy\cache\teamcenter\tccbasvc\ivy-20231116223307.xml" searched="false" original-local-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccbasvc\20231116223307\ivy.xml" origin-is-local="true" origin-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccbasvc\20231116223307\ivy.xml"/>
-				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@vAp051621515832"/>
+			<revision name="20230511010920" status="milestone" pubdate="20230511010921" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="true" default="false" conf="svc" position="1">
+				<metadata-artifact status="no" details="" size="1185" time="0" location="D:\workdir\tc132014_win64\wntx64\ivy\cache\teamcenter\tccbasvc\ivy-20230511010920.xml" searched="true" original-local-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccbasvc\20230511010920\ivy.xml" origin-is-local="true" origin-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccbasvc\20230511010920\ivy.xml"/>
+				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@cyv6s235"/>
 				<artifacts>
-					<artifact name="tccbasvc" type="jar" ext="jar" status="no" details="" size="1856" time="0" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccbasvc\20231116223307\tccbasvc.jar">
-						<origin-location is-local="true" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccbasvc\20231116223307\tccbasvc.jar"/>
+					<artifact name="tccbasvc" type="jar" ext="jar" status="no" details="" size="1856" time="0" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccbasvc\20230511010920\tccbasvc.jar">
+						<origin-location is-local="true" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccbasvc\20230511010920\tccbasvc.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>
 		</module>
 		<module organisation="teamcenter" name="tccbaextsvc">
-			<revision name="20231116223307" status="milestone" pubdate="20231116223317" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="false" default="false" conf="svc" position="0">
-				<metadata-artifact status="no" details="" size="1191" time="0" location="E:\udu\tc133013_1116_552759wn\wntx64\ivy\cache\teamcenter\tccbaextsvc\ivy-20231116223307.xml" searched="false" original-local-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccbaextsvc\20231116223307\ivy.xml" origin-is-local="true" origin-location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccbaextsvc\20231116223307\ivy.xml"/>
-				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@vAp051621515832"/>
+			<revision name="20230511010918" status="milestone" pubdate="20230511010920" resolver="ROOT0" artresolver="ROOT0" downloaded="false" searched="true" default="false" conf="svc" position="0">
+				<metadata-artifact status="no" details="" size="1191" time="0" location="D:\workdir\tc132014_win64\wntx64\ivy\cache\teamcenter\tccbaextsvc\ivy-20230511010918.xml" searched="true" original-local-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccbaextsvc\20230511010918\ivy.xml" origin-is-local="true" origin-location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccbaextsvc\20230511010918\ivy.xml"/>
+				<caller organisation="teamcenter" name="com.teamcenter.rac.kernel" conf="svc_deps" rev="latest.integration" rev-constraint-default="latest.integration" rev-constraint-dynamic="latest.integration" callerrev="working@cyv6s235"/>
 				<artifacts>
-					<artifact name="tccbaextsvc" type="jar" ext="jar" status="no" details="" size="1044" time="0" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccbaextsvc\20231116223307\tccbaextsvc.jar">
-						<origin-location is-local="true" location="E:\udu\tc133013_1116_552759wn\out\ivy\teamcenter\tccbaextsvc\20231116223307\tccbaextsvc.jar"/>
+					<artifact name="tccbaextsvc" type="jar" ext="jar" status="no" details="" size="1044" time="0" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccbaextsvc\20230511010918\tccbaextsvc.jar">
+						<origin-location is-local="true" location="D:\workdir\tc132014_win64\out\ivy\teamcenter\tccbaextsvc\20230511010918\tccbaextsvc.jar"/>
 					</artifact>
 				</artifacts>
 			</revision>

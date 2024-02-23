@@ -312,7 +312,19 @@ public class ConditionSetDialog extends AbstractAIFDialog {
                         DefaultTableModel model = (DefaultTableModel) detailTable.getModel();
                         //[2024.01.24]수정
                         //getConditionSet(model.getDataVector()) -> getConditionSet(model.getDataVector().firstElement())
-                        ConditionVector condition = ConditionSetDialog.this.manager.getConditionSet(model.getDataVector().firstElement());
+//                        ConditionVector condition = ConditionSetDialog.this.manager.getConditionSet(model.getDataVector().firstElement());
+                        Vector<Vector<VariantValue>> variantVec = new Vector<Vector<VariantValue>>();
+                        Vector<Vector> tableDataVec = model.getDataVector();
+                        for (Vector tableDatas : tableDataVec) {
+                            Vector<VariantValue> variants = new Vector<VariantValue>();
+                            for (Object element : tableDatas) {
+                                VariantValue variantValue = (VariantValue) element;
+                                variants.add(variantValue);
+                            }
+                            variantVec.add(variants);
+                        }
+                        ConditionVector condition = ConditionSetDialog.this.manager.getConditionSet(variantVec);
+                        
                         DefaultListModel listModel = (DefaultListModel) combinationResultList.getModel();
                         if (listModel == null) {
                             listModel = new DefaultListModel();

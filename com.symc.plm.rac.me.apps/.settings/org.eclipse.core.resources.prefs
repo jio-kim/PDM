@@ -1,2 +1,5 @@
 eclipse.preferences.version=1
-encoding/<project>=MS949
+encoding//src/com/symc/plm/me/sdv/dialog/option/ConditionSetDialog.java=UTF-8
+encoding//src/com/symc/plm/me/sdv/viewpart/help/BOMHelpBrowserComposite.java=UTF-8
+encoding//src/com/symc/plm/me/sdv/viewpart/help/BOPHelpBrowserComposite.java=UTF-8
+encoding/<project>=UTF-8

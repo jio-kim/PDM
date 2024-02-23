@@ -158,7 +158,6 @@
         <entry id="Fnd0ShapeRelation" name="com.teamcenter.rac.kernel.TCComponentFnd0ShapeRelation" type="com.teamcenter.rac.kernel.TCComponentTcRelationType" icct="ICCTTcRelation" />
         <entry id="Fnd0SubscriptionTemplate" name="com.teamcenter.rac.kernel.TCComponentFnd0SubscriptionTemplate" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
         <entry id="Fnd0SubscribeCriteriaConf" name="com.teamcenter.rac.kernel.TCComponentFnd0SubscribeCriteriaConf" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
-        <entry id="Fnd0TableRow" name="com.teamcenter.rac.kernel.TCComponentFnd0TableRow" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
         <entry id="Fnd0VisioDiagram" name="com.teamcenter.rac.kernel.TCComponentFnd0VisioDiagram" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />
         <entry id="Fnd0VisioDiagramRevision" name="com.teamcenter.rac.kernel.TCComponentFnd0VisioDiagramRevision" type="com.teamcenter.rac.kernel.TCComponentItemRevisionType" icct="ICCTItemRevision" />
         <entry id="Fnd0VisioTmpl" name="com.teamcenter.rac.kernel.TCComponentFnd0VisioTmpl" type="com.teamcenter.rac.kernel.TCComponentItemType" icct="ICCTItem" />

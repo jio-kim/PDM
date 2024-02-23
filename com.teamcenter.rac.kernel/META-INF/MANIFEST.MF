@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Teamcenter Kernel Plug-in
 Bundle-SymbolicName: com.teamcenter.rac.kernel;singleton:=true
-Bundle-Version: 13000.3.0
-Bundle-ClassPath: com.teamcenter.rac.kernel_13000.3.0.jar
+Bundle-Version: 13000.2.0
+TC-Version: V13000.2.0.23_20230511.00
 Bundle-Activator: com.teamcenter.rac.kernel.KernelPlugin
 Bundle-Vendor: Siemens PLM Software
 Export-Package: com.ssangyong.common.remote,
@@ -54,6 +54,7 @@ Require-Bundle: org.eclipse.core.runtime;bundle-version="3.15.100",
  TcSoaProjectManagementLoose;bundle-version="13000.2.0",
  tcgatewaystubs;bundle-version="13000.0.0",
  TcSoaAdministrationLoose;bundle-version="13000.2.0"
+Bundle-Vendor: Siemens PLM Software, Inc.
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/AEGMOLicenseHandler.xml,
@@ -100,7 +101,6 @@ Service-Component: OSGI-INF/AEGMOLicenseHandler.xml,
  OSGI-INF/TCVariantService.xml,
  OSGI-INF/TogglePropertiesService.xml,
  OSGI-INF/WriteLogCorrelationEventHandler.xml
-TC-Version: V13000.3.0.22_20231116.00
 Import-Package: com.teamcenter.fms.clientcache.proxy,
  com.teamcenter.fms.servercache,
  com.teamcenter.fms.servercache.proxy,
@@ -125,3 +125,52 @@ Import-Package: com.teamcenter.fms.clientcache.proxy,
  org.apache.commons.httpclient,
  org.apache.log4j,
  org.osgi.service.event
+Require-Bundle: org.eclipse.core.runtime,
+ httpclient,
+ org.eclipse.ui,
+ xmldto,
+ icctstubs;visibility:=reexport,
+ com.teamcenter.rac.external,
+ com.teamcenter.rac.util,
+ com.teamcenter.rac.aifrcp,
+ com.teamcenter.SecurityServices,
+ tcserverjavabinding,
+ TcSoaCommon,
+ TcSoaClient;visibility:=reexport,
+ TcSoaCoreLoose,
+ TcSoaCadBomAlignmentLoose,
+ Fnd0SoaConfigFilterCriteriaLoose,
+ TcSoaStructureManagementLoose,
+ TcSoaAdministrationLoose,
+ TcSoaGlobalMultiSiteLoose,
+ Fnd0SoaDebugMonitorLoose,
+ tcmemjavabinding,
+ TcSoaBusinessModelerLoose,
+ TcSoaBomLoose,
+ TcSoaQueryLoose,
+ TcSoaWorkflowLoose,
+ TcSoaClassificationLoose,
+ TcSoaProjectManagementLoose,
+ TcSoaAdministrationLoose
+Export-Package: com.ssangyong.common.remote,
+ com.ssangyong.dto,
+ com.ssangyong.rac.kernel,
+ com.teamcenter.rac.decorators,
+ com.teamcenter.rac.dialogs.login,
+ com.teamcenter.rac.filetransfer,
+ com.teamcenter.rac.kernel,
+ com.teamcenter.rac.kernel.adapter;x-internal:=true,
+ com.teamcenter.rac.kernel.bom,
+ com.teamcenter.rac.kernel.bom.exceptions,
+ com.teamcenter.rac.kernel.debug,
+ com.teamcenter.rac.kernel.effectivityintent,
+ com.teamcenter.rac.kernel.ics,
+ com.teamcenter.rac.kernel.log,
+ com.teamcenter.rac.kernel.services,
+ com.teamcenter.rac.kernel.services.impl;x-internal:=true,
+ com.teamcenter.rac.kernel.tcservices,
+ com.teamcenter.rac.kernel.textsrv,
+ com.teamcenter.rac.kernel.variants,
+ com.teamcenter.rac.services,
+ icons;x-internal:=true,
+ schema;x-internal:=true

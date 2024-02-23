@@ -1798,43 +1798,8 @@ All Rights Reserved.
               </visibleWhen>
            </command>
         </menuContribution>
-        <menuContribution
-            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
-            <command commandId="com.teamcenter.rac.launchRemoteInbox"
-                mnemonic="R">
-                <visibleWhen>
-                    <and>
-                        <test
-                            property="com.teamcenter.rac.testers.isRemoteSiteConfigured"
-                            value="true">
-                        </test>
-                        <with variable="rac_contextmenu_suppression">
-                            <not>
-                                <iterate operator="or">
-                                    <equals value="com.teamcenter.rac.launchRemoteInbox">
-                                    </equals>
-                                </iterate>
-                            </not>
-                        </with>
-                        <with variable="rac_command_suppression">
-                            <not>
-                                <iterate operator="or">
-                                    <equals
-                                        value="com.teamcenter.rac.launchRemoteInbox"/>
-                                </iterate>
-                            </not>
-                        </with>
-                        <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
-                    </and>
-                </visibleWhen>
-            </command>
-            <separator name="separator" visible="true"/>
-            <separator name="additions"/>
-        </menuContribution>
-        
     </extension>
     <extension point="org.eclipse.ui.commands">
-        <command id="com.teamcenter.rac.launchRemoteInbox" name="%Launch_Remote_Inbox.TITLE"/>
         <command id="com.teamcenter.rac.selectAll" name="%Select_All.TITLE"/>
         <command id="com.teamcenter.rac.selectNone" name="%Select_None.TITLE"/>
         <command id="com.teamcenter.rac.reverseSelection"
@@ -1940,9 +1905,6 @@ All Rights Reserved.
         </command>
     </extension>
     <extension point="org.eclipse.ui.handlers">
-        <handler
-        class="com.teamcenter.rac.workflow.common.LaunchRemoteInboxHandler"
-        commandId="com.teamcenter.rac.launchRemoteInbox"/>
         <handler
             class="com.teamcenter.rac.pse.handlers.Fnd0MarkupPropertiesHandler"
             commandId="org.eclipse.ui.file.properties">
@@ -2076,12 +2038,6 @@ All Rights Reserved.
     </extension>
     <extension
           point="org.eclipse.core.expressions.propertyTesters">
-        <propertyTester
-            class="com.teamcenter.rac.testers.LaunchRemoteInboxTester"
-            id="com.teamcenter.rac.testers.LaunchRemoteInboxTester"
-            namespace="com.teamcenter.rac.testers"
-            properties="isRemoteSiteConfigured" 
-            type="java.lang.Object"/>
         <propertyTester class="com.teamcenter.rac.testers.TVETester"
             id="com.teamcenter.rac.testers.TVETester"
             namespace="com.teamcenter.rac.kernel.TCComponent"

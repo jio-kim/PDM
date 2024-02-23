@@ -141,7 +141,6 @@ All Rights Reserved.
         <entry id="UGMASTER" name="com.teamcenter.rac.interop.TCComponentUGDataset" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
         <entry id="UGPART" name="com.teamcenter.rac.interop.TCComponentUGDataset" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
         <entry id="UGSCENARIO" name="com.teamcenter.rac.interop.TCComponentUGScenario" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
-        <entry id="NX0MotionSim" name="com.teamcenter.rac.interop.TCComponentUGDataset" type="com.teamcenter.rac.kernel.TCComponentDatasetType" icct="ICCTDataset" />
     </extension>
     <extension point="org.eclipse.ui.commands">
         <command id="com.teamcenter.rac.common.tcinfocenter.default" name="%TCInfoCenter.LABEL"/>
