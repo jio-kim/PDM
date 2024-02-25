@@ -137,4 +137,11 @@ public class TcDataManagementInernalService extends DataManagementService {
 		return null;
 	}
 
+
+	@Override
+	public GenerateDatasetNameResponse generateDatasetName(GenerateDsNameInput[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

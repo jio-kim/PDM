@@ -124,5 +124,11 @@ public class TcPreferenceManagementService extends PreferenceManagementService {
 		return getService().setPreferencesDefinition(arg0);
 	}
 
+	@Override
+	public GetPreferencesResponse refreshPreferences2(String[] arg0, boolean arg1) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 
 }
