@@ -13,9 +13,9 @@
 	<classpathentry kind="lib" path="lib/DispatcherClientTask.jar"/>
 	<classpathentry kind="lib" path="lib/log4j-1.2.13.jar"/>
 	<classpathentry kind="lib" path="lib/transclient.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaClient_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaCommon_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaCoreStrong_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaStrongModel_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaClient_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaCommon_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaCoreStrong_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaStrongModel_13000.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -15,16 +15,16 @@
 	<classpathentry kind="lib" path="lib/j3dcore.jar"/>
 	<classpathentry kind="lib" path="lib/j3dutils.jar"/>
 	<classpathentry kind="lib" path="lib/vecmath.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaBomLoose_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaCadStrong_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaClient_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaCommon_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaCoreLoose_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaCoreStrong_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/Siemens/TC13/portal/plugins/TcSoaCoreTypes_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaQueryStrong_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaStructureManagementStrong_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaStrongModel_13000.2.0.jar"/>
-	<classpathentry kind="lib" path="C:/install/Teamcenter/soa_client/soa_client/java/libs/TcSoaWorkflowStrong_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaBomLoose_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaCadStrong_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaClient_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaCommon_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaCoreLoose_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaCoreStrong_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaCoreTypes_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaQueryStrong_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaStrongModel_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaStructureManagementStrong_13000.2.0.jar"/>
+	<classpathentry kind="lib" path="lib/TcSoaWorkflowStrong_13000.2.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
