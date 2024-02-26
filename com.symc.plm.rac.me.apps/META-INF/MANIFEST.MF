@@ -43,7 +43,7 @@ Require-Bundle: com.symc-newplm.external;bundle-version="1.0.0",
  com.teamcenter.rac.external;bundle-version="13000.2.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Eclipse-RegisterBuddy: com.ebsolutions.uiapplication
-Import-Package: com.ssangyong.rac.kernel,
+Import-Package: 
  com.teamcenter.rac.cme.bvr.connect.services.impl,
  com.teamcenter.rac.psebase,
  com.teamcenter.rac.viewer.utils,
