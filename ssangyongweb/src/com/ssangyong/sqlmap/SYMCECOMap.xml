@@ -191,9 +191,10 @@
   		</if>
   		ORDER BY I.PITEM_ID
 	</select> -->
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
 	<select id="searchEOStatus" parameterType="SYMCECOStatusData" resultType="SYMCECOStatusData">
 		SELECT E.PS7_ECR_NO ECRNO,
-		       (SELECT TO_CHAR(WM_CONCAT(TE.PVAL_0))
+		       (SELECT TO_CHAR(LISTAGG(TE.PVAL_0, ','))
 		          FROM INFODBA.PS7_ECI_NO TE
 		         WHERE TE.PUID = ECI.PUID) ECINO,
 		       I.PITEM_ID ECONO,
@@ -459,7 +460,7 @@
 			     ,ECI.PS7_REF_FILE_PATH
 			     ,DECODE(ECI.PS7_REF_FILE_PATH,NULL,NULL,'/pis/'||TO_CHAR(SYSDATE,'YYYY'))
 			     ,ECI.PS7_REF_DEPT
-			     ,U.PUSER_ID||TO_CHAR(TA.PCREATION_DATE+9/24,'YYYYMMDDHH24MISS')||','||( SELECT WM_CONCAT(H.PUSER_ID||TO_CHAR(C.PDECISION_DATE+9/24,'YYYYMMDDHH24MISS'))
+			     ,U.PUSER_ID||TO_CHAR(TA.PCREATION_DATE+9/24,'YYYYMMDDHH24MISS')||','||( SELECT LISTAGG(H.PUSER_ID||TO_CHAR(C.PDECISION_DATE+9/24,'YYYYMMDDHH24MISS'), ',')
 					FROM INFODBA.PEPMTASK A
 					     ,INFODBA.PATTACHMENTS B
 					     ,INFODBA.PATTACHMENTS B1
@@ -939,8 +940,8 @@
    </select>
 	<!-- [SR없음][2015.06.24][jclee] Affected Project Code 추출 속도 개선 -->
    <select id="getAffectedProject" resultType="java.lang.String">
-	SELECT TO_CHAR(WM_CONCAT(DISTINCT COLUMN_VALUE)) affected_project
-	  FROM TABLE(PKG_COMMON.T_SPLIT((SELECT TO_CHAR(WM_CONCAT(PROJECT))
+	SELECT TO_CHAR(LISTAGG(DISTINCT COLUMN_VALUE, ',')) affected_project
+	  FROM TABLE(PKG_COMMON.T_SPLIT((SELECT TO_CHAR(LISTAGG(PROJECT, ','))
 	                                  FROM (SELECT OLD_PROJECT AS PROJECT
 	                                          FROM IF_USER.ECO_BOM_LIST BOM4
 	                                         WHERE BOM4.ECO_NO = #{ecoNo, jdbcType=VARCHAR}
@@ -1147,13 +1148,14 @@
    <update id="updateEcoStatus" statementType="CALLABLE">
    		{call update_eco_status(#{ecoRevPuid, jdbcType=VARCHAR},#{ecoStatus, jdbcType=VARCHAR},#{itemStatus, jdbcType=VARCHAR})}
    </update>
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
    <select id="getEcoInfoEAI" resultType="com.ssangyong.dto.TCEcoModel">
    <![CDATA[
 	WITH ECI AS (
 	            SELECT EN.PUID PUID,
-	                   WM_CONCAT(EN.PVAL_0) PITEM_ID,
-	                   WM_CONCAT(TO_CHAR(IF1.IDATE, 'YYYY-MM-DD')) RELEASED_DATE,
-	                   WM_CONCAT(IF1.TEAM) PNAME
+	                   LISTAGG(EN.PVAL_0, ',') PITEM_ID,
+	                   LISTAGG(TO_CHAR(IF1.IDATE, 'YYYY-MM-DD'), ',') RELEASED_DATE,
+	                   LISTAGG(IF1.TEAM, ',') PNAME
 	              FROM INFODBA.PS7_ECI_NO EN,
 	                   IF_ECI_ECR IF1
 	             WHERE EN.PVAL_0 = IF1.APRVNO
@@ -1161,7 +1163,7 @@
 	          GROUP BY EN.PUID
 	            )                                                                                                                                           
 	   , ECO AS (
-	            SELECT IR.RPRIMARY_OBJECTU PUID, WM_CONCAT(AI.PITEM_ID) PITEM_ID                                                                                                      
+	            SELECT IR.RPRIMARY_OBJECTU PUID, LISTAGG(AI.PITEM_ID, ',') PITEM_ID                                                                                                      
 	              FROM INFODBA.PITEM AI                                                                                                                                                 
 	                 , INFODBA.PITEMREVISION AR                                                                                                                                         
 	                 , INFODBA.PS7_ECOREVISION AV                                                                                                                                       
@@ -1368,13 +1370,14 @@
    </select>
    
    <!--	[20160620][ymjang] DB Link 를 통한 ECI 및 ECR 정보 I/F를 EAI로 변경 개선 -->
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
    <select id="getEcoInfo" resultType="com.ssangyong.dto.TCEcoModel">
    <![CDATA[
 	   WITH ECI AS (
 	      SELECT EN.PUID PUID,
-                 WM_CONCAT(EN.PVAL_0) PITEM_ID,
-                 WM_CONCAT(TO_CHAR(V.IDATE, 'YYYY-MM-DD')) RELEASED_DATE,
-                 WM_CONCAT(V.TEAM) PNAME
+                 LISTAGG(EN.PVAL_0, ',') PITEM_ID,
+                 LISTAGG(TO_CHAR(V.IDATE, 'YYYY-MM-DD'), ',') RELEASED_DATE,
+                 LISTAGG(V.TEAM, ',') PNAME
             FROM INFODBA.PS7_ECI_NO          EN,
                  CALS.PISA03TB@LINK_001_VNET VA,
                  CALS.PISA01TB@LINK_001_VNET V
@@ -1384,7 +1387,7 @@
            GROUP BY EN.PUID
 	        )                                                                                                                                           
 		, ECO AS (
-	            SELECT IR.RPRIMARY_OBJECTU PUID, WM_CONCAT(AI.PITEM_ID) PITEM_ID                                                                                                      
+	            SELECT IR.RPRIMARY_OBJECTU PUID, LISTAGG(AI.PITEM_ID, ',') PITEM_ID                                                                                                      
 	            FROM INFODBA.PITEM AI                                                                                                                                                 
 	                ,INFODBA.PITEMREVISION AR                                                                                                                                         
 	                ,INFODBA.PS7_ECOREVISION AV                                                                                                                                       
@@ -1850,6 +1853,7 @@
 	   SELECT IS_CONNECTED_FUNCTION(#{PART_NO, jdbcType=VARCHAR}) FROM DUAL
    </select>
    
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
    <select id="getCarProjectInEPL" resultType="java.util.HashMap">
    <![CDATA[
 	   WITH PROJECTS AS
@@ -1884,7 +1888,7 @@
 		                                        '[^|]+',
 		                                        1,
 		                                        LEVEL) NEW_PROJECT
-		            FROM (SELECT REPLACE(WM_CONCAT(DISTINCT T.NEW_PROJECT), ',', '|') NEW_PROJECT
+		            FROM (SELECT REPLACE(LISTAGG(DISTINCT T.NEW_PROJECT, ','), ',', '|') NEW_PROJECT
 		                    FROM EPLS T) E
 		          CONNECT BY LEVEL <=
 		                     LENGTH(REGEXP_REPLACE(E.NEW_PROJECT, '[^|]+', '')) + 1) E2
@@ -1959,9 +1963,10 @@
 		           AND T.OLD_PART_REV <> T.NEW_PART_REV)
 	]]>
 	</select>
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
 	<select id="searchECOCorrectionHistory" parameterType="SYMCECOStatusData" resultType="SYMCECOStatusData">
 		SELECT E.PS7_ECR_NO ECRNO,
-		       (SELECT TO_CHAR(WM_CONCAT(TE.PVAL_0))
+		       (SELECT TO_CHAR(LISTAGG(TE.PVAL_0, ','))
 		          FROM INFODBA.PS7_ECI_NO TE
 		         WHERE TE.PUID = ECI.PUID) ECINO,
 		       I.PITEM_ID ECONO,
@@ -2177,8 +2182,9 @@
     ]]>
    </update>
    
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
    <select id="getNMCDUpdatePartList" resultType="java.lang.String">
-        select to_char(wm_concat(distinct new_part_no))
+        select to_char(LISTAGG(distinct new_part_no, ','))
         from eco_bom_list
         where eco_no = #{ECO_NO, jdbcType=VARCHAR}
         and epl_yn = 'Y'

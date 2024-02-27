@@ -303,7 +303,7 @@
 			     ,ECI.PS7_REF_FILE_PATH
 			     ,DECODE(ECI.PS7_REF_FILE_PATH,NULL,NULL,'/pis/'||TO_CHAR(SYSDATE,'YYYY'))
 			     ,ECI.PS7_REF_DEPT
-			     ,U.PUSER_ID||TO_CHAR(TA.PCREATION_DATE+9/24,'YYYYMMDDHH24MISS')||','||( SELECT WM_CONCAT(H.PUSER_ID||TO_CHAR(C.PDECISION_DATE+9/24,'YYYYMMDDHH24MISS'))
+			     ,U.PUSER_ID||TO_CHAR(TA.PCREATION_DATE+9/24,'YYYYMMDDHH24MISS')||','||( SELECT LISTAGG(H.PUSER_ID||TO_CHAR(C.PDECISION_DATE+9/24,'YYYYMMDDHH24MISS'), ',')
 					FROM INFODBA.PEPMTASK A
 					     ,INFODBA.PATTACHMENTS B
 					     ,INFODBA.PATTACHMENTS B1
@@ -639,8 +639,9 @@
    </select>
    
    <!-- 2016-05-30 taeku.jeong ECO_BOM_LIST.PARENT_PROJECT -> ECO_BOM_LIST.NEW_PROJECT 로 수정 -->
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
    <select id="getAffectedProject" resultType="java.lang.String">
-		SELECT WM_CONCAT(DISTINCT(NEW_PROJECT)) 
+		SELECT LISTAGG(DISTINCT(NEW_PROJECT), ',') 
 		FROM ECO_BOM_LIST 
 		WHERE ECO_NO = #{ecoNo}
 		AND   EPL_YN = 'Y'
@@ -763,9 +764,10 @@
    <update id="updateEcoStatus" statementType="CALLABLE">
    		{call update_eco_status(#{ecoRevPuid},#{ecoStatus},#{itemStatus})}
    </update>
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
    <select id="getEcoInfo" resultType="com.ssangyong.dto.TCEcoModel">
 	   WITH ECI AS (                                                                                                                                                                     
-	            SELECT IR.RPRIMARY_OBJECTU PUID, WM_CONCAT(AI.PITEM_ID) PITEM_ID, WM_CONCAT(TO_CHAR(AW.PDATE_RELEASED+9/24, 'YYYY-MM-DD')) RELEASED_DATE, WM_CONCAT(AG.PNAME) PNAME   
+	            SELECT IR.RPRIMARY_OBJECTU PUID, LISTAGG(AI.PITEM_ID, ',') PITEM_ID, LISTAGG(TO_CHAR(AW.PDATE_RELEASED+9/24, 'YYYY-MM-DD'), ',') RELEASED_DATE, LISTAGG(AG.PNAME, ',') PNAME   
 	            FROM INFODBA.PITEM AI                                                                                                                                                 
 	                ,INFODBA.PITEMREVISION AR                                                                                                                                         
 	                ,INFODBA.PS7_ECIREVISION_0 AV                                                                                                                                       
@@ -783,7 +785,7 @@
 	        AND AP.ROWNING_GROUPU = AG.PUID                                                                                                                                           
 	        GROUP BY IR.RPRIMARY_OBJECTU  )                                                                                                                                           
 		, ECO AS (                                                                                                                                                                        
-	            SELECT IR.RPRIMARY_OBJECTU PUID, WM_CONCAT(AI.PITEM_ID) PITEM_ID                                                                                                      
+	            SELECT IR.RPRIMARY_OBJECTU PUID, LISTAGG(AI.PITEM_ID, ',') PITEM_ID                                                                                                      
 	            FROM INFODBA.PITEM AI                                                                                                                                                 
 	                ,INFODBA.PITEMREVISION AR                                                                                                                                         
 	                ,INFODBA.PS7_ECOREVISION_0 AV                                                                                                                                       

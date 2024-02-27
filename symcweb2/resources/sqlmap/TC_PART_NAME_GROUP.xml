@@ -92,9 +92,10 @@
     </select>
      
     <!-- Group ID, Product 별 Part Name Group Master 조회 -->
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
     <select id="getNameGroupMaster" resultType="java.util.HashMap">
       SELECT A.*,
-             (SELECT DBMS_LOB.SUBSTR(WM_CONCAT(PART_NAME), 4000, 1) FROM PNG_NAME_LIST WHERE GROUP_ID = A.GROUP_ID) PART_NAMES
+             (SELECT DBMS_LOB.SUBSTR(LISTAGG(PART_NAME, ','), 4000, 1) FROM PNG_NAME_LIST WHERE GROUP_ID = A.GROUP_ID) PART_NAMES
         FROM PNG_MASTER A, PNG_ASSIGN B
        WHERE A.GROUP_ID = B.GROUP_ID(+)
          AND B.PRODUCT = #{PRODUCT, jdbcType=VARCHAR}

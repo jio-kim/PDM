@@ -337,10 +337,11 @@
 	]]>
 	</select>
      
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
 	<select id="insertMfgSpec">
 	<![CDATA[
     INSERT INTO IF_USER.MFG_SPEC
-         SELECT GMODEL, SPEC_NO, REPLACE(WM_CONCAT(OPTION_NO), ',', ' AND ') AS OPTION_SET
+         SELECT GMODEL, SPEC_NO, REPLACE(LISTAGG(OPTION_NO, ','), ',', ' AND ') AS OPTION_SET
            FROM ( SELECT B.GMODEL, A.SPEC_NO
                        , CASE WHEN LENGTH(A.OPTION_NO) = 4 THEN A.OPTION_NO
                               ELSE A.CATE_NO || A.OPTION_NO

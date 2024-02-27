@@ -31,10 +31,11 @@
 		, #{IS_ENABLED, jdbcType=VARCHAR})
 	</insert>
 	
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
 	<select id="getPngMaster" resultType="java.util.HashMap">
 		select a.* 
 		<if test="SHOW_PART_NAME != null">
-		,(select DBMS_LOB.SUBSTR( wm_concat(part_name), 4000, 1) from PNG_NAME_LIST where group_id=a.group_id) part_names
+		,(select DBMS_LOB.SUBSTR( LISTAGG(part_name, ','), 4000, 1) from PNG_NAME_LIST where group_id=a.group_id) part_names
 		</if>
 		from PNG_MASTER a, png_assign b where a.group_id = b.group_id(+)
 		<if test="GROUP_ID != null">

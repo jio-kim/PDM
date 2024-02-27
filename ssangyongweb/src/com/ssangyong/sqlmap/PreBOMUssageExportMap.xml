@@ -114,6 +114,7 @@
   <!-- [20180406][csh] OSPEC NO 컴럼 추가에 따른 Excel Export시 쿼리 변경 -> OSPEC NO 추가 -->
   <!-- [SR181211-009][20190314][csh] DCS Released Date 가져오는 로직 변경 IF_PREBOM_MASTER_FULL_LIST에서 가져오면 되는데.. 헛짓거리를 하고 있었음.-->
   <!-- [CF-2818] seho MAST_COL10 속성 정보 변경 - 기존에는 공백을 가져오도록 되어 있었으나 old part no 를 가져오도록 수정함. 요청자 송대영책임 -->
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
 	<select id="geProjectMasterDataList" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
       with bomlist as
       (
@@ -182,7 +183,7 @@
              , IF_PREBOM_MASTER_FULL_LIST.PRD_TOTAL                AS MAST_COL52
              , IF_PREBOM_MASTER_FULL_LIST.PUR_TEAM                 AS MAST_COL53
              , PROD_USER.USER_NAME                                              AS MAST_COL54
-             , (select to_char(wm_concat(ei.pitem_id)) 
+             , (select to_char(LISTAGG(ei.pitem_id), ',') 
                 from infodba.pitem ei
                    , infodba.pitem pi
                    , infodba.pworkspaceobject eiw
