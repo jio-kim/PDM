@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.SortedMap;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
@@ -87,7 +88,10 @@ import com.teamcenter.rac.kernel.TCTextService;
 import com.teamcenter.rac.util.Registry;
 import com.teamcenter.rac.util.Utilities;
 import com.teamcenter.services.rac.core.DataManagementService;
-
+import com.teamcenter.services.rac.core._2008_06.DataManagement;
+import com.teamcenter.services.rac.core._2008_06.DataManagement.CreateIn;
+import com.teamcenter.services.rac.core._2008_06.DataManagement.CreateInput;
+import com.teamcenter.services.rac.core._2008_06.DataManagement.CreateResponse;
 public class SYMTcUtil {
     // 표준 결재선 결재기능 코드
     final static String APPLINE_STCPartRevision_STD = "STD"; // 규격화 일괄승인
@@ -2934,6 +2938,59 @@ public class SYMTcUtil {
 //		}
 		
 		return privilegeNameVector;
+    }
+    
+    /**
+     * SOA를 통한 Item 생성
+     * @param session TC Session
+     * @param boName BO Name
+     * @param itemPropMap Item 속성 정보
+     * @param itemRevisionPropMap Item Revision 속성 정보
+     * @return
+     */
+    public static TCComponent createItemObject(TCSession session, String boName, Map<String,String> itemPropMap, Map<String,String> itemRevisionPropMap) {
+        try {
+            CreateResponse response = null;
+            DataManagementService dmService = DataManagementService.getService(session);
+
+            CreateInput itemInputData = new CreateInput();
+            itemInputData.boName = boName;
+            itemInputData.stringProps = itemPropMap;
+            
+            //Revision Compound Inputs
+            Map<String,CreateInput[]> compoundCreateInput = new HashMap<String, DataManagement.CreateInput[]>();
+            
+            CreateInput[] revisionCreateInputs = new CreateInput[1];
+            CreateInput revisionCreateInput = new CreateInput();
+            revisionCreateInput.boName=boName.concat("Revision");
+            revisionCreateInput.stringProps = itemRevisionPropMap;
+           
+            revisionCreateInputs[0] = revisionCreateInput;
+            
+            compoundCreateInput.put("revision", revisionCreateInputs);
+            //Revision Property 속성 입력
+            itemInputData.compoundCreateInput = compoundCreateInput;
+
+            CreateIn createInput = new CreateIn();
+            createInput.clientId = "Create";
+            createInput.data = itemInputData;
+
+            CreateIn creatInputs[] = new CreateIn[1];
+            creatInputs[0] = createInput;
+
+            response = dmService.createObjects(creatInputs);
+
+            TCComponent[] newCreatedComps = null;
+            if (response.serviceData.sizeOfPartialErrors() == 0) {
+                newCreatedComps = response.output[0].objects;
+                return newCreatedComps[0];
+            } else {
+				throw new Exception("Error occurred during item creation");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
 }

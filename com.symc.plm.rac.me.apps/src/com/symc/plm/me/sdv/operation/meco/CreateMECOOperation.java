@@ -2,6 +2,7 @@ package com.symc.plm.me.sdv.operation.meco;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.swt.widgets.TableItem;
 
@@ -87,10 +88,23 @@ public class CreateMECOOperation extends AbstractTCSDVOperation {
 	        }
 			        
 			mecoID = dao.getNextMECOSerial(mecoPrefix, init_no);
-			itemType = (TCComponentItemType)session.getTypeComponent("EngChange");
-			mecoItem = itemType.create(mecoID, SYMCClass.ITEM_REV_ID, SDVTypeConstant.MECO_ITEM, mecoID, (String)mecoInfoMap.get(SDVPropertyConstant.ITEM_OBJECT_DESC), null);
-			mecoItemRevision = (TCComponentChangeItemRevision) mecoItem.getLatestItemRevision();
-			mecoDialog.setMECORevison(mecoItemRevision);
+			
+			//UPGRADE 로  인한 오류 수정 
+			//itemType = (TCComponentItemType)session.getTypeComponent("EngChange");
+			String description = mecoInfoMap.get(SDVPropertyConstant.ITEM_OBJECT_DESC);
+			description = description == null || description.isEmpty() ?mecoID:description;
+			//mecoItem = itemType.create(mecoID, SYMCClass.ITEM_REV_ID, SDVTypeConstant.MECO_ITEM, mecoID, description, null);
+			
+			//Item Property 속성 입력
+			Map<String, String> itemPropMap = new HashMap<>();
+			Map<String, String> itemRevsionPropMap = new HashMap<>();
+			itemPropMap.put(SDVPropertyConstant.ITEM_ITEM_ID, mecoID);
+			itemPropMap.put(SDVPropertyConstant.ITEM_OBJECT_NAME, mecoID);
+			itemPropMap.put(SDVPropertyConstant.ITEM_OBJECT_DESC, description);
+			//Item Revision 속성 입력
+			itemRevsionPropMap.put(SDVPropertyConstant.ITEM_REVISION_ID, SYMCClass.ITEM_REV_ID);
+			//MCO 생성
+			mecoItem = (TCComponentItem)SYMTcUtil.createItemObject(session, SDVTypeConstant.MECO_ITEM, itemPropMap, itemRevsionPropMap);
 			
 			TCComponent	refComp = SYMTcUtil.createApplicationObject(mecoItemRevision.getSession(), SDVTypeConstant.MECO_TYPED_REFERECE, new String[] { "m7_EFFECT_DATE", "m7_EFFECT_EVENT" }, new String[] {
 				(String) mecoInfoMap.get("m7_EFFECT_DATE"), (String) mecoInfoMap.get("m7_EFFECT_EVENT") });

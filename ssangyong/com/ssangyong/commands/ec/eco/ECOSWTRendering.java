@@ -7,6 +7,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 
 import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.swt.SWT;
@@ -61,6 +62,7 @@ import com.teamcenter.rac.aif.AIFDesktop;
 import com.teamcenter.rac.aif.kernel.AIFComponentContext;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;
 import com.teamcenter.rac.aifrcp.AIFUtility;
+import com.teamcenter.rac.kernel.IPropertyName;
 import com.teamcenter.rac.kernel.Markpoint;
 import com.teamcenter.rac.kernel.TCComponent;
 import com.teamcenter.rac.kernel.TCComponentChangeItemRevision;
@@ -417,8 +419,27 @@ public class ECOSWTRendering extends AbstractSYMCViewer{
 					 setItem_id(ecoID);
 					 MessageBox.post(getShell(), oldID+ " is already created.\n"+ecoID+" is a new number.", "Information", MessageBox.INFORMATION);
 				 }
-				itemType = (TCComponentItemType)session.getTypeComponent("EngChange");
-				TCComponentItem item = itemType.create(ecoID, SYMCClass.ITEM_REV_ID, SYMCECConstant.ECOTYPE, ecoID, object_desc.getText(), null);
+				 
+				//UPGRADE 로  인한 오류 수정 				 
+				//itemType = (TCComponentItemType)session.getTypeComponent("EngChange");
+				//TCComponentItem item = itemType.create(ecoID, SYMCClass.ITEM_REV_ID, SYMCECConstant.ECOTYPE, ecoID, object_desc.getText(), null);
+				 
+				String ecoDescription = object_desc.getText();
+				ecoDescription = ecoDescription == null || ecoDescription.isEmpty() ?ecoID:ecoDescription;
+				
+				//Item Property 속성 입력
+				Map<String, String> itemPropMap = new HashMap<>();
+				Map<String, String> itemRevsionPropMap = new HashMap<>();
+				itemPropMap.put(IPropertyName.ITEM_ID, ecoID);
+				itemPropMap.put(IPropertyName.OBJECT_NAME, ecoID);
+				itemPropMap.put(IPropertyName.OBJECT_DESC, ecoDescription);
+				
+				//Item Revision 속성 입력
+				itemRevsionPropMap.put(IPropertyName.ITEM_REVISION_ID, SYMCClass.ITEM_REV_ID);
+				
+				//ECO 생성
+				TCComponentItem item = (TCComponentItem)SYMTcUtil.createItemObject(session, SYMCECConstant.ECOTYPE, itemPropMap, itemRevsionPropMap);
+
 				ecoRevision = (TCComponentChangeItemRevision) item.getLatestItemRevision();
 				
 				ecoNoGenBtn.setVisible(false);
