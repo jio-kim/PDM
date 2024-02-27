@@ -152,15 +152,24 @@ public class ProdPartMasterInfoPanel extends Composite implements IPageComplete 
 
         attributeMap.put("object_name", partNameText.getText());
 
-        attributeMap.put("s7_PROJECT_CODE", projCodeCB.getSelectedString());
-        attributeMap.put("s7_MATURITY", maturityCB.getSelectedString());
+        // [20240227] Select Item 이 null 인 경우 공백으로 대체
+        String projCodeCBValue = projCodeCB.getSelectedString();
+        attributeMap.put("s7_PROJECT_CODE", projCodeCBValue == null ? "" : projCodeCBValue);
+
+        // [20240227] Select Item 이 null 인 경우 공백으로 대체
+        String maturityCBValue = maturityCB.getSelectedString();
+        attributeMap.put("s7_MATURITY", maturityCBValue == null ? "" : maturityCBValue);
+        
         attributeMap.put("object_desc", descText.getText());
 
         // [SR140702-058][20140630] KOG Product Part attributeMap 에 put Value 추가.
         attributeMap.put("s7_GMODEL_CODE", gModelText.getText());
         // [SR181205-063] 기존 오기 Data 유지를 위해 Combobox로 변경
         //attributeMap.put("s7_PRODUCT_TYPE", productTypeText.getText());
-        attributeMap.put("s7_PRODUCT_TYPE", productTypeCombo.getSelectedItem());
+        
+        // [20240227] Select Item 이 null 인 경우 공백으로 대체
+        Object productTypeObj = productTypeCombo.getSelectedItem();
+        attributeMap.put("s7_PRODUCT_TYPE", productTypeObj == null ? "" : productTypeObj);
         
         attributeMap.put("s7_SOP_DATE", CustomUtil.getDateFromStringDate(sopDateText.getText()));
 
