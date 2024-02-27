@@ -9,6 +9,7 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Display;
 
+import com.teamcenter.rac.aif.AIFDesktop;
 import com.teamcenter.rac.kernel.TCComponent;
 import com.teamcenter.rac.kernel.TCComponentItem;
 import com.teamcenter.rac.util.MessageBox;
@@ -76,6 +77,9 @@ public class BOMViewerPanel extends Composite {
 				target = temp.getLatestItemRevision();
 			} else if (component.getType().equals(BOMViewerConstants.TYPE_FUNCTION_REV) || component.getType().equals(BOMViewerConstants.TYPE_FMP_REV) || component.getType().equals(BOMViewerConstants.TYPE_VEHPART_REV)) {
 				target = component;
+			} else {
+				MessageBox.post(AIFDesktop.getActiveDesktop(), "개체가 선택되지 않았습니다.", "확인", MessageBox.INFORMATION);
+				return;
 			}
 			
 			BOMViewerOperation operation = new BOMViewerOperation(target);
