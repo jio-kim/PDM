@@ -1725,8 +1725,9 @@ public abstract class BWXLSImpDialog extends BundleWorkDialog implements BWImpor
             ManualTreeItem treeItem = null;
             
             int nLevel = super.getIntValue(stcItemData.getItemAttrValue(CLASS_TYPE_ITEM, ITEM_ATTR_LEVEL));
-            
-            
+            //UPGRADE 인한 수정
+            if(nLevel < 0)
+            	continue;
             // Level 0 값은 TopPart
             if (nLevel == 0)
             {
@@ -1796,7 +1797,7 @@ public abstract class BWXLSImpDialog extends BundleWorkDialog implements BWImpor
             }
             
             // Revision ID 유효성 Check
-            if( strRevID.equals("") )
+            if(strRevID.equals("") )
             {
                 treeItem.setStatus(STATUS_ERROR, this.getTextBundle("RevisionInvalid", "MSG", dlgClass));
             }
@@ -1946,8 +1947,8 @@ public abstract class BWXLSImpDialog extends BundleWorkDialog implements BWImpor
         
         if (super.strImageRoot == null || super.strImageRoot.equals(""))
             return;
-        
-        super.searchButton.setEnabled(false);
+        //UPGRADE 로 인한 수정. 오류후 다시 선택할 수 있도록 변경
+        //super.searchButton.setEnabled(false);
         
         // Excel Data Loading
         load();
