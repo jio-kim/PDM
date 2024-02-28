@@ -343,7 +343,11 @@
                  AND epl_yn = 'Y'
                  AND ct <![CDATA[<>]]> 'XX'
            )
-           , COMPARE_UPD_OLD AS (
+           SELECT DECODE(count(*), 0, 'FALSE', 'TRUE')
+             FROM SOURCE_ECO se, TARGET_ECO te
+            WHERE se.part_no IN( te.new_part_no, te.old_part_no)
+             AND te.upd_date <![CDATA[>]]> se.upd_date           
+          <!-- 20240228 UPGRADE  , COMPARE_UPD_OLD AS (
            SELECT *
            FROM (
            SELECT NULL AS ECO_UID, NULL AS is_engin 
@@ -370,7 +374,7 @@
             )  
             )  
             SELECT DECODE(count(*), 0, 'FALSE', 'TRUE')
-             FROM COMPARE_UPD_OLD    
+             FROM COMPARE_UPD_OLD  -->  
     </select>
     
     <!-- ECO EPL(BOM) List -->
