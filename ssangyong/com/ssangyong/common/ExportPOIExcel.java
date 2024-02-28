@@ -343,8 +343,7 @@ public class ExportPOIExcel
 
 				//header
 				//column group이 있는 경우 여러줄의 column을 미리 생성해둔다.
-				//int depth = exportTable.getColumnGroupHeaderDepth();
-				int depth = 0;
+				int depth = exportTable.getColumnGroupHeaderDepth();
 				//수정 HeaderDepth 김민석
 				
 				Row[] xssfRowArray = new Row[depth];
