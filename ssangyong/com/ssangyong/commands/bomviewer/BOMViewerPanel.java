@@ -72,6 +72,7 @@ public class BOMViewerPanel extends Composite {
 				return;
 			}
 			
+			// [20240228] 선택한 개체가 없을 경우 MessageBox 표시 
 			if (component.getType().equals(BOMViewerConstants.TYPE_FUNCTION) || component.getType().equals(BOMViewerConstants.TYPE_FMP) || component.getType().equals(BOMViewerConstants.TYPE_VEHPART)) {
 				TCComponentItem temp = (TCComponentItem) component;
 				target = temp.getLatestItemRevision();
