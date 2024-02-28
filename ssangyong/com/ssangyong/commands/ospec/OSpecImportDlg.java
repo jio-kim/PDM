@@ -181,6 +181,8 @@ public class OSpecImportDlg extends AbstractAIFDialog {
 											try{
 												refreshTable();
 											}catch(Exception e){
+												// [20240228] 오류가 발생 시 ProgressBar 를 닫도록 추가
+												waitProgress.dispose();
 												e.printStackTrace();
 												storeOperationResult(e.getMessage());
 											}
