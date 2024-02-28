@@ -30,7 +30,7 @@ import com.teamcenter.rac.ui.services.NavigatorOpenService;
 
 /**
  * [SR140828-015][20140829] shcho, Migration 후 MECO ID 채번을 601 부터 할 수 있도록 변경. (2015년에는 다시 001부터 채번 할 수 있도록 Preference를 이용한 초기값 설정 적용)
- * 
+ * [20240227][UPGRADE] 업그레이드 이후 생성기능 오류 수정		
  * @author 
  *
  */
@@ -89,7 +89,7 @@ public class CreateMECOOperation extends AbstractTCSDVOperation {
 			        
 			mecoID = dao.getNextMECOSerial(mecoPrefix, init_no);
 			
-			//UPGRADE 로  인한 오류 수정 
+			//[20240227][UPGRADE] 업그레이드 이후 생성기능 오류 수정		
 			//itemType = (TCComponentItemType)session.getTypeComponent("EngChange");
 			String description = mecoInfoMap.get(SDVPropertyConstant.ITEM_OBJECT_DESC);
 			description = description == null || description.isEmpty() ?mecoID:description;

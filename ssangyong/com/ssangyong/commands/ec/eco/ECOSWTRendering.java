@@ -101,6 +101,8 @@ import com.teamcenter.soa.client.model.Property;
  * [20170105] CM ECO 일 경우 Module Validate를 하지 않음
  * [20170206] 결재선 추가 SearchUserDialog 호출시 Task 명을 넘겨주도록 변경
  * [CF-2627][20211208] 설계 담당자 3D Saving Dataset 기능 추가
+ * [20240227][UPGRADE] 업그레이드 이후 생성기능 오류 수정
+ * [20240228][UPGRADE] 아무것도 선택하지 않았을 경우, 선택한 항목이 없어서 오류나서 실행되지 않음. 수정함
  */
 public class ECOSWTRendering extends AbstractSYMCViewer{
 	
@@ -420,7 +422,7 @@ public class ECOSWTRendering extends AbstractSYMCViewer{
 					 MessageBox.post(getShell(), oldID+ " is already created.\n"+ecoID+" is a new number.", "Information", MessageBox.INFORMATION);
 				 }
 				 
-				//UPGRADE 로  인한 오류 수정 				 
+				//[20240227][UPGRADE] 업그레이드 이후 생성기능 오류 수정				 
 				//itemType = (TCComponentItemType)session.getTypeComponent("EngChange");
 				//TCComponentItem item = itemType.create(ecoID, SYMCClass.ITEM_REV_ID, SYMCECConstant.ECOTYPE, ecoID, object_desc.getText(), null);
 				 
@@ -957,9 +959,19 @@ public class ECOSWTRendering extends AbstractSYMCViewer{
         
 		try
 		{
-			dss.put("ecoNo", AIFUtility.getCurrentApplication().getTargetComponent().getProperty("item_id"));
-			final ArrayList<SYMCECODwgData> ecoBdata = (ArrayList<SYMCECODwgData>) remote.execute("com.ssangyong.service.ECOHistoryService", "selectECODwgList", dss);
-			ecoBCount = ecoBdata.size();
+			//UPGRADE 시 개선 사항: 선
+//			dss.put("ecoNo", AIFUtility.getCurrentApplication().getTargetComponent().getProperty("item_id"));
+//			final ArrayList<SYMCECODwgData> ecoBdata = (ArrayList<SYMCECODwgData>) remote.execute("com.ssangyong.service.ECOHistoryService", "selectECODwgList", dss);
+//			ecoBCount = ecoBdata.size();
+			InterfaceAIFComponent targetComponent = AIFUtility.getCurrentApplication().getTargetComponent();
+			ArrayList<SYMCECODwgData> ecoBdata = null;
+			if(targetComponent !=null)
+			{
+				dss.put("ecoNo", targetComponent.getProperty("item_id"));
+			    ecoBdata = (ArrayList<SYMCECODwgData>) remote.execute("com.ssangyong.service.ECOHistoryService", "selectECODwgList", dss);
+			}
+			ecoBCount = ecoBdata !=null? ecoBdata.size():0;
+			
 			textGridData = new GridData (120, SWT.DEFAULT);//Text GRID 셋팅
 	    	btnCheckSavingDataSet = new Button(btnGroup, SWT.PUSH);
 			btnCheckSavingDataSet.setText("3D Saving Dataset");
@@ -1083,7 +1095,10 @@ public class ECOSWTRendering extends AbstractSYMCViewer{
 		
 		GridData comboGridData = new GridData (220, SWT.DEFAULT);
 		comboGridData.horizontalSpan = 2;
+		//[20240228][UPGRADE] Plant Code Multi 선택 안되도록함 
+		//plant_code = new SWTComboBox(group, SWT.BORDER | SWT.MULTI);
 		plant_code = new SWTComboBox(group, SWT.BORDER | SWT.MULTI);
+		
 		comboValueSetting(plant_code, "S7_PLANT_CODE");
 		plant_code.setLayoutData(comboGridData);
 		setMadatory(plant_code);

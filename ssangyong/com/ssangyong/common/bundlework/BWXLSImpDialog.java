@@ -102,6 +102,7 @@ import com.teamcenter.rac.util.MessageBox;
  * [20160725][ymjang] Display Part No 속성 Skip 처리 함.
  * [20160725][ymjang] shown_on_no Nullpointer Exception 오류 수정
  * [20161011][ymjang] Original File Name 변경
+ * [20240228] [UPGRADE] 개선사항. 오류 후 다시 선택할 수 있도록 변경개선사항. 오류 후 다시 선택할 수 있도록 변경
  */
 @SuppressWarnings({"unused"})
 public abstract class BWXLSImpDialog extends BundleWorkDialog implements BWImportImpl
@@ -1947,7 +1948,7 @@ public abstract class BWXLSImpDialog extends BundleWorkDialog implements BWImpor
         
         if (super.strImageRoot == null || super.strImageRoot.equals(""))
             return;
-        //UPGRADE 로 인한 수정. 오류후 다시 선택할 수 있도록 변경
+        //[UPGRADE] 개선사항. 오류 후 다시 선택할 수 있도록 변경
         //super.searchButton.setEnabled(false);
         
         // Excel Data Loading
