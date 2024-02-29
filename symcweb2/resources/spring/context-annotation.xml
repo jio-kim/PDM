@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- [20240124] [전성옥] 수정  http:~~.xsd를 https:~~.xsd로 변경 -->
+<!-- [20240116] xsd 앞의 버전 명시 부분 제거 -->
 <beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context" xmlns:aop="http://www.springframework.org/schema/aop"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context-3.0.xsd
-		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
+		http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
 	<!--AOP(Aspect Oriented Programming)-->
 	<aop:aspectj-autoproxy />
-	
-	<bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"> 
+	<!-- [20240216] spring framework 버전 번경으로 DefaultAnnotationHandlerMapping가 없어짐에 따라 RequestMappingHandlerMapping로 변경-->
+	<!-- <bean class="org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping"> -->
+     <bean class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
         <property name="alwaysUseFullPath" value="true" />
         <property name="order" value="0" />
     </bean>

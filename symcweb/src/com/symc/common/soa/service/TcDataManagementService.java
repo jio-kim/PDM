@@ -706,5 +706,15 @@ public class TcDataManagementService extends DataManagementService {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	@Override
+	public ServiceData addNamedReferenceToDatasets(AddNamedReferenceToDatasetInfo[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	@Override
+	public ServiceData removeNamedReferenceFromDataset2(RemoveNamedReferenceFromDataset[] arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 }
