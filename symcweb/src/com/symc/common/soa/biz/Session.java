@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
 
 import com.symc.common.soa.clientx.AppXCredentialManager;
 import com.symc.common.soa.clientx.AppXExceptionHandler;
@@ -35,7 +36,7 @@ public class Session
      */
     private Connection           connection;
     Logger logger = Logger.getLogger(Session.class);
-
+    
     /**
      * The credentialManager is used both by the Session class and the Teamcenter
      * Services Framework to get user credentials.

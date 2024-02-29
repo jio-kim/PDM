@@ -18,7 +18,9 @@ import org.apache.commons.net.ftp.FTP;
 import org.apache.commons.net.ftp.FTPClient;
 import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
-import org.apache.log4j.Logger;
+ //[20240216]openJDK11 사용으로 인한 log4j 버전 변경으로 수정
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * 소켓 네트워크 통신관련 유틸

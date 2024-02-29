@@ -145,16 +145,9 @@ public class IfPeFileMig extends AbstractTcSoaJunit {
     }
 
     private void executeQuery(String query, String[] bindingDatas) {
-    	// DEV
-    	String DB_URL = "jdbc:oracle:thin:@10.80.8.52:1521:tc";
-    	String DB_USER = "if_user";
-    	String DB_PASSWORD = "if_user";
-    	
-    	// REAL
-//        String DB_URL = "jdbc:oracle:thin:@10.80.1.90:1521:NEWPLM";
-//        String DB_USER = "if_user";
-//        String DB_PASSWORD = "IF_USER";
-    	
+        String DB_URL = "jdbc:oracle:thin:@10.80.1.90:1521:NEWPLM";
+        String DB_USER = "if_user";
+        String DB_PASSWORD = "IF_USER";
         Connection conn = null;
         PreparedStatement preparedStatement = null;        
         try {

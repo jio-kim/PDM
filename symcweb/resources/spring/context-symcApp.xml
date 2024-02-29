@@ -3,9 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:util="http://www.springframework.org/schema/util"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
-						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd
-						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
+	xsi:schemaLocation="http://www.springframework.org/schema/beans	http://www.springframework.org/schema/beans/spring-beans.xsd
+						http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+						http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
   	<bean id="tcCommonDao" class="com.symc.common.dao.TcCommonDao" depends-on="tcSqlSession">
         <property name="tcSqlSession" ref="tcSqlSession"></property>
@@ -14,7 +14,16 @@
   	<bean id="envService" class="com.symc.work.service.EnvService" depends-on="tcCommonDao">
         <constructor-arg ref="tcCommonDao" />
     </bean>
+    
+	<bean id="tcSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean" depends-on="tcDataSource">
+		<property name="configLocation" value="classpath:/mybatis/SqlMapConfig.xml"/>
+		<property name="dataSource" ref="tcDataSource" />
+		<property name="mapperLocations" value="classpath:sqlmap/*.xml" />
+	</bean>
 
+	<bean id="tcSqlSession" class="org.mybatis.spring.SqlSessionTemplate" depends-on="tcSqlSessionFactory">
+		<constructor-arg index="0" ref="tcSqlSessionFactory"></constructor-arg>
+	</bean>
     <!-- Call Service -->
     <bean id="tcPeIFService" class="com.symc.work.service.TcPeIFService"/>
     <bean id="tcTopBOMService" class="com.symc.work.service.TcTopBOMService"/>
