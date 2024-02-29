@@ -104,7 +104,7 @@ public class WebServiceCallUtil {
 				// 운영의 경우 서버 연결주소를 localHost로 정의함.
 				//String portalWebServer = "http://10.80.1.89"; // 초기에 설정 했던 운영 버서 부하분산
 				String portalWebServer = "http://localhost";
-				this.strAppletHomeUrl = portalWebServer.trim() + ":7090/"+serviceName+"/HomeServlet";
+				this.strAppletHomeUrl = portalWebServer.trim() + ":7001/"+serviceName+"/HomeServlet";
 			}
 			
 			this.strEncoding = "EUC-KR";
