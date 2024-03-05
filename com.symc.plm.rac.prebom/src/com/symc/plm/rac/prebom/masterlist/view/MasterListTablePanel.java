@@ -3,7 +3,6 @@ package com.symc.plm.rac.prebom.masterlist.view;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Point;
 import java.awt.Rectangle;
@@ -28,7 +27,6 @@ import java.util.Vector;
 import javax.swing.AbstractAction;
 import javax.swing.DefaultCellEditor;
 import javax.swing.ImageIcon;
-import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
@@ -72,11 +70,9 @@ import com.symc.plm.rac.prebom.common.util.lov.LovCombo;
 import com.symc.plm.rac.prebom.masterlist.dialog.MasterListConditionDlg;
 import com.symc.plm.rac.prebom.masterlist.dialog.MasterListDlg;
 import com.symc.plm.rac.prebom.masterlist.dialog.PartNameCreationDlg;
-import com.symc.plm.rac.prebom.masterlist.dialog.ValidationDlg;
 import com.symc.plm.rac.prebom.masterlist.model.CellValue;
 import com.symc.plm.rac.prebom.masterlist.util.WebUtil;
 import com.symc.plm.rac.prebom.masterlist.view.HeaderPopupFilter.CheckBoxNode;
-import com.symc.plm.rac.prebom.masterlist.view.celleditor.CheckboxCellEditor;
 import com.symc.plm.rac.prebom.masterlist.view.celleditor.ComboCellEditor;
 import com.symc.plm.rac.prebom.masterlist.view.celleditor.DateCellEditor;
 import com.symc.plm.rac.prebom.masterlist.view.celleditor.PartConditionCellEditor;
@@ -1475,8 +1471,14 @@ public class MasterListTablePanel extends JPanel {
 					editor.setClickCountToStart(2);
 					table.getColumnModel().getColumn(i).setCellEditor(editor);
 				}else if( MASTER_LIST_RESPONSIBILITY_IDX == i){
+					ArrayList<String> lovs = new ArrayList<String>(); 
 					tmpArray = CustomUtil.getLOVDisplayValues(session, "s7_RESPONSIBILITY");
-					combo = new JComboBox(tmpArray);
+					for(int b=0; b<tmpArray.length; b++){
+						if(!tmpArray[b].startsWith("White Box") && !tmpArray[b].startsWith("Black Box") && !tmpArray[b].startsWith("Gray Box") && !tmpArray[b].startsWith("SYMC")){
+							lovs.add(tmpArray[b]);
+						}
+					}
+					combo = new JComboBox(lovs.toArray(new String[lovs.size()]));
 					editor = new ComboCellEditor(combo);
 					editor.setClickCountToStart(2);
 					table.getColumnModel().getColumn(i).setCellEditor(editor);
@@ -1806,7 +1808,7 @@ public class MasterListTablePanel extends JPanel {
 		}
 		
 		columnGroup = new ColumnGroup("MATERIAL COST");
-		for( int k = 7; k < 9; k++){
+		for( int k = 9; k < 11; k++){
 			tableColumn = getTableColumn(table, fixedColumnPre.length - fixedColumnCount + trimList.size() + k, fixedColumnCount);
 			if( tableColumn != null){
 				columnGroup.add(tableColumn);	
@@ -1828,7 +1830,7 @@ public class MasterListTablePanel extends JPanel {
 //		}
 		
 		columnGroup = new ColumnGroup("DVP SAMPLE");
-		for( int k = 9; k < 12; k++){
+		for( int k = 11; k < 14; k++){
 			tableColumn = getTableColumn(table, fixedColumnPre.length - fixedColumnCount + trimList.size() + k, fixedColumnCount);
 			if( tableColumn != null){
 				columnGroup.add(tableColumn);	
@@ -1844,7 +1846,7 @@ public class MasterListTablePanel extends JPanel {
 //		}
 		
 		columnGroup = new ColumnGroup("CONCEPT DWG");
-		for( int k = 12; k < 16; k++){
+		for( int k = 14; k < 18; k++){
 			tableColumn = getTableColumn(table, fixedColumnPre.length - fixedColumnCount + trimList.size() + k, fixedColumnCount);
 			if( tableColumn != null){
 				columnGroup.add(tableColumn);	
@@ -1855,7 +1857,7 @@ public class MasterListTablePanel extends JPanel {
 		}
 		
 		columnGroup = new ColumnGroup("PRD. DWG");
-		for( int k = 16; k < 19; k++){
+		for( int k = 18; k < 21; k++){
 			tableColumn = getTableColumn(table, fixedColumnPre.length - fixedColumnCount + trimList.size() + k, fixedColumnCount);
 			if( tableColumn != null){
 				columnGroup.add(tableColumn);	
@@ -1866,7 +1868,7 @@ public class MasterListTablePanel extends JPanel {
 		}
 		
 		columnGroup = new ColumnGroup("Design Concept Doc.");
-		for( int k = 19; k < 22; k++){
+		for( int k = 21; k < 24; k++){
 			tableColumn = getTableColumn(table, fixedColumnPre.length - fixedColumnCount + trimList.size() + k, fixedColumnCount);
 			if( tableColumn != null){
 				columnGroup.add(tableColumn);	
@@ -1877,7 +1879,7 @@ public class MasterListTablePanel extends JPanel {
 		}
 		
 		columnGroup = new ColumnGroup("DESIGN CHARGE");
-		for( int k = 22; k < 24; k++){
+		for( int k = 24; k < 26; k++){
 			tableColumn = getTableColumn(table, fixedColumnPre.length - fixedColumnCount + trimList.size() + k, fixedColumnCount);
 			if( tableColumn != null){
 				columnGroup.add(tableColumn);	
@@ -1888,7 +1890,7 @@ public class MasterListTablePanel extends JPanel {
 		}
 		
 		columnGroup = new ColumnGroup("EST. INVESTMENT COST");
-		for( int k = 25; k < 26; k++){
+		for( int k = 27; k < 28; k++){
 			tableColumn = getTableColumn(table, fixedColumnPre.length - fixedColumnCount + trimList.size() + k, fixedColumnCount);
 			if( tableColumn != null){
 				columnGroup.add(tableColumn);	
@@ -1899,7 +1901,7 @@ public class MasterListTablePanel extends JPanel {
 		}
 		
 		columnGroup = new ColumnGroup("PRD INVENSTMENT COST");
-		for( int k = 26; k < 30; k++){
+		for( int k = 28; k < 32; k++){
 			tableColumn = getTableColumn(table, fixedColumnPre.length - fixedColumnCount + trimList.size() + k, fixedColumnCount);
 			if( tableColumn != null){
 				columnGroup.add(tableColumn);	
@@ -1910,7 +1912,7 @@ public class MasterListTablePanel extends JPanel {
 		}
 		
 		columnGroup = new ColumnGroup("PROCUMENT");
-		for( int k = 30; k < 32; k++){
+		for( int k = 32; k < 34; k++){
 			tableColumn = getTableColumn(table, fixedColumnPre.length - fixedColumnCount + trimList.size() + k, fixedColumnCount);
 			if( tableColumn != null){
 				columnGroup.add(tableColumn);	

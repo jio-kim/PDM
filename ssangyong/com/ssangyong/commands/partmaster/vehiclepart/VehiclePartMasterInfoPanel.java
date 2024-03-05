@@ -884,7 +884,7 @@ public class VehiclePartMasterInfoPanel extends Composite implements IPageComple
     	if(isRendering){
     		responCB.setSelectedString(responsibility);
 		}else{
-			if(!responsibility.startsWith("White Box") && !responsibility.startsWith("Black Box") && !responsibility.startsWith("Gray Box")){
+			if(!responsibility.startsWith("White Box") && !responsibility.startsWith("Black Box") && !responsibility.startsWith("Gray Box") && !responsibility.startsWith("SYMC")){
 	    		responCB.setSelectedString(responsibility);
 			}
 	    	else{
@@ -1597,7 +1597,7 @@ public class VehiclePartMasterInfoPanel extends Composite implements IPageComple
 		try {
 			str = lov.getListOfValues().getStringListOfValues();
 			for(int i=0; i<str.length; i++){
-				if(!str[i].startsWith("White Box") && !str[i].startsWith("Black Box") && !str[i].startsWith("Gray Box")){
+				if(!str[i].startsWith("White Box") && !str[i].startsWith("Black Box") && !str[i].startsWith("Gray Box") && !str[i].startsWith("SYMC")){
 					responCB.addItem(str[i]);
 				}
 			}

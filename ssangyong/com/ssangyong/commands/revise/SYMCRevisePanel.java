@@ -302,7 +302,7 @@ public class SYMCRevisePanel extends JPanel implements SYMCInterfaceInfoPanel, A
 			try {
 				str = lov.getListOfValues().getStringListOfValues();
 				for(int i=0; i<str.length; i++){
-					if(!str[i].startsWith("White Box") && !str[i].startsWith("Black Box") && !str[i].startsWith("Gray Box")){
+					if(!str[i].startsWith("White Box") && !str[i].startsWith("Black Box") && !str[i].startsWith("Gray Box") && !str[i].startsWith("SYMC")){
 						dwgCreatorCombo.addItem(str[i]);
 					}
 				}
