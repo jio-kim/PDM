@@ -66,15 +66,17 @@
 	</select>	
 	
 	<!-- [20170117][ymjang] 정렬 순서 추가 -->
+	<!-- [20240306] null 제외 -->
 	<select id="getGModel" resultType="java.lang.String">
-		select pS7_GModel G_MODEL from infodba.PS7_OSPECSET group by pS7_GModel	order by pS7_GModel
+		select pS7_GModel G_MODEL from infodba.PS7_OSPECSET WHERE pS7_GModel IS NOT NULL group by pS7_GModel	order by pS7_GModel
 	</select>	
 
 	<!-- [20170117][ymjang] 정렬 순서 추가 -->
 	<select id="getProject" resultType="java.lang.String">
-		select pS7_Project project from infodba.PS7_OSPECSET 
+		select pS7_Project project from infodba.PS7_OSPECSET
+		 where pS7_Project is not null
 		<if test="G_MODEL != null">
-    	   where pS7_GModel=#{G_MODEL, jdbcType=VARCHAR} 
+    	   and pS7_GModel=#{G_MODEL, jdbcType=VARCHAR} 
   		</if>		
 		group by pS7_Project
 		order by pS7_Project	
