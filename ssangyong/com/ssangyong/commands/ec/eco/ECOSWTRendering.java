@@ -103,6 +103,7 @@ import com.teamcenter.soa.client.model.Property;
  * [CF-2627][20211208] 설계 담당자 3D Saving Dataset 기능 추가
  * [20240227][UPGRADE] 업그레이드 이후 생성기능 오류 수정
  * [20240228][UPGRADE] 아무것도 선택하지 않았을 경우, 선택한 항목이 없어서 오류나서 실행되지 않음. 수정함
+ * [20240306][UPGRADE] Create Workflow 버튼 사이즈 수정
  */
 public class ECOSWTRendering extends AbstractSYMCViewer{
 	
@@ -1044,7 +1045,9 @@ public class ECOSWTRendering extends AbstractSYMCViewer{
 		String sButtonLabel = !isReApproval() ? "Create Workflow" : "Re Approval Req.";
 		
 //		textGridData.horizontalSpan = 2;
-		textGridData = new GridData (100, SWT.DEFAULT);//Text GRID 셋팅
+		//[20240306][UPGRADE] 버튼 사이즈 수정
+		//textGridData = new GridData (100, SWT.DEFAULT);//Text GRID 셋팅
+		textGridData = new GridData(SWT.FILL, SWT.FILL, true, true);
 		requestApprovalTop = new Button(btnGroup, SWT.PUSH);
 		requestApprovalTop.setText(sButtonLabel);
 		requestApprovalTop.setLayoutData(textGridData);

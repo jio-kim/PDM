@@ -37,6 +37,7 @@ import com.teamcenter.rac.util.MessageBox;
 
 /**
  * [20170116][ymjang] ECO D 지 저장 오류 수정
+ * [20240306][UPGRADE] Table Column 사이즈 조절
  */
 public class ECOPartListSWTRendering extends AbstractSYMCViewer {
 
@@ -77,13 +78,16 @@ public class ECOPartListSWTRendering extends AbstractSYMCViewer {
         table.setLinesVisible(true);
         createTableColumn("No", 40);
         createTableColumn("Proj.", 50);
-        createTableColumn("Find No", 57);
-        createTableColumn("C/T", 35);
+        //createTableColumn("Find No", 57);
+        //createTableColumn("C/T", 35);
+        createTableColumn("Find No", 66);
+        createTableColumn("C/T", 36);
         createTableColumn("Parent No", 100);
         createTableColumn("Parent Rev", 70);
         createTableColumn("Part Origin", 25);
         createTableColumn("Part No", 100);
-        createTableColumn("Part Rev", 60);
+        //createTableColumn("Part Rev", 60);
+        createTableColumn("Part Rev", 68);
         createTableColumn("Part Name", 180);
         createTableColumn("Supply Mode", 90);
         createTableColumn("QTY", 35);

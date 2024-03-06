@@ -194,6 +194,10 @@ public class ECOEPLSWTRendering extends AbstractSYMCViewer {
         });
     }*/
 
+	/**
+	 * [20240306][UPGRADE] 컬럼사이즈 조절
+	 * @param parent
+	 */
 	private void initTable(Composite parent) {
 		table = new Table(parent, SWT.MULTI | SWT.BORDER | SWT.FULL_SELECTION);
 		GridData gd = new GridData(SWT.FILL, SWT.FILL, true, true);
@@ -202,8 +206,10 @@ public class ECOEPLSWTRendering extends AbstractSYMCViewer {
 		table.setLinesVisible(true);
 		createTableColumn("No", 40);
 		createTableColumn("Proj.", 50);
-		createTableColumn("Find No", 65);
-		createTableColumn("C/T", 35);
+		//createTableColumn("Find No", 65);
+		//createTableColumn("C/T", 35);
+		createTableColumn("Find No", 66);
+		createTableColumn("C/T", 36);
 		createTableColumn("Parent No", 105);
 		createTableColumn("Parent Rev", 40);
 		createTableColumn("Part Origin", 25);
