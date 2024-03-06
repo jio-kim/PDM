@@ -251,8 +251,28 @@ public class WiringMailListDialog extends Dialog
 			DataSet ds = new DataSet();
 			ds.put("USER_ID", null);
 			resultList = (ArrayList<HashMap>) remoteQuery.execute("com.ssangyong.service.WiringCheckService", "getWiringMailList", ds);
-			if (resultList == null)
+			if (resultList == null || resultList.size() < 1)
 			{
+				// [20240228] 조회 결과가 없는 경우에도 편집가능한 상태로 변경 하도록 추가 
+				Display.getDefault().syncExec(new Runnable()
+				{
+					@Override
+					public void run()
+					{
+						try
+						{
+							if (session.isUserSystemAdmin())
+							{
+								isWritable(true);
+							}
+						} catch (TCException e)
+						{
+							e.printStackTrace();
+							MessageBox.post(shell, e, true);
+							return;
+						}
+					}
+				});
 				return;
 			}
 		} catch (Exception e)
