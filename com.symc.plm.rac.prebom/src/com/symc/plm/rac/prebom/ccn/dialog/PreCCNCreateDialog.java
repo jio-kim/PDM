@@ -44,7 +44,8 @@ public class PreCCNCreateDialog extends SYMCAbstractDialog {
         this.paramMap = paramMap;
 
         // 560, 435
-        setParentDialogCompositeSize(new Point(560, 520));
+        // [20240305] 창 크기 수정
+        setParentDialogCompositeSize(new Point(680, 550));
     }
 
     /**

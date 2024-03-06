@@ -187,6 +187,7 @@ public class PreCCNInfoPanel extends AbstractPreSYMCViewer {
     /**
      * 화면 초기화
      */
+    // [20240305] Layout 내 component 크기 / 위치 수정 
     private void initUI() {
         setLayout(new FillLayout(SWT.HORIZONTAL));
         ccnInfoProperties = new String[] { PropertyConstant.ATTR_NAME_ITEMID, PropertyConstant.ATTR_NAME_PROJCODE, 
@@ -198,24 +199,24 @@ public class PreCCNInfoPanel extends AbstractPreSYMCViewer {
                 PropertyConstant.ATTR_NAME_DEPLOYMENTTARGET};
         
         layoutComposite = new Composite(this, SWT.NONE);
-        layoutComposite.setBounds(0, 0, 557, 384);
+        layoutComposite.setBounds(0, 0, 697, 384);
         layoutComposite.setBackground(new Color(null, 255, 255, 255));
         
         Group ccnInfoGroup = new Group(layoutComposite, SWT.NONE);
-        ccnInfoGroup.setBounds(10, 10, 538, 464);
+        ccnInfoGroup.setBounds(10, 10, 676, 464);
         ccnInfoGroup.setText(registry.getString("CreateCCNView.CCN.Information"));
         
         lblProjcode = new SYMCLabel(ccnInfoGroup, SWT.NONE);
-        lblProjcode.setBounds(10, 37, 86, 15);
+        lblProjcode.setBounds(10, 37, 116, 15);
         lblProjcode.setText(registry.getString("CreateCCNView.CCN.ProjectCode"));
         
         projTxt = new SYMCText(ccnInfoGroup, SWT.BORDER);
-        projTxt.setBounds(102, 34, 114, 21);
+        projTxt.setBounds(132, 34, 114, 21);
         projTxt.setEditable(false);
         projTxt.setMandatory(true);
         
         btnProjSearch = new Button(ccnInfoGroup, SWT.PUSH);
-        btnProjSearch.setBounds(222, 32, 30, 25);
+        btnProjSearch.setBounds(252, 32, 30, 25);
         btnProjSearch.setImage(registry.getImage("Search.ICON2"));
         btnProjSearch.addSelectionListener(new RevSelectionAdapter(projTxt, TypeConstant.S7_PREPROJECTREVISIONTYPE));
         
@@ -230,11 +231,11 @@ public class PreCCNInfoPanel extends AbstractPreSYMCViewer {
         gateText.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW));
         
         lblOspecLabel = new SYMCLabel(ccnInfoGroup, SWT.NONE);
-        lblOspecLabel.setBounds(10, 82, 86, 15);
+        lblOspecLabel.setBounds(10, 82, 116, 15);
         lblOspecLabel.setText(registry.getString("CreateCCNView.CCN.OspecNo"));
         
         ospecText = new SYMCText(ccnInfoGroup, SWT.BORDER);
-        ospecText.setBounds(102, 78, 114, 21);
+        ospecText.setBounds(132, 78, 114, 21);
         ospecText.setMandatory(true);
         ospecText.setEnabled(false);
         ospecText.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW));
@@ -251,94 +252,94 @@ public class PreCCNInfoPanel extends AbstractPreSYMCViewer {
         setMandatory(projTypeCombo);
         
         lblSysLabel = new SYMCLabel(ccnInfoGroup, SWT.NONE);
-        lblSysLabel.setBounds(10, 125, 86, 15);
+        lblSysLabel.setBounds(10, 125, 116, 15);
         lblSysLabel.setText(registry.getString("CreateCCNView.CCN.SystemCode"));
         
         sysCombo = new SWTComboBox(ccnInfoGroup, SWT.BORDER);
-        sysCombo.setBounds(102, 122, 424, 21);
+        sysCombo.setBounds(132, 122, 534, 21);
         sysCombo.setEnabled(true);
         SDVLOVUtils.comboValueSetting(sysCombo, PropertyConstant.ATTR_NAME_SYSTEMCODE);
         setMandatory(sysCombo);
 //        sysCombo.setEditable(true);
         
         lblDecLabel = new SYMCLabel(ccnInfoGroup, SWT.NONE);
-        lblDecLabel.setBounds(10, 167, 86, 15);
+        lblDecLabel.setBounds(10, 167, 116, 15);
         lblDecLabel.setText(registry.getString("CreateCCNView.CCN.Description"));
         
         descTxt = new SYMCText(ccnInfoGroup, SWT.BORDER);
-        descTxt.setBounds(102, 167, 424, 80);
+        descTxt.setBounds(132, 167, 534, 80);
         descTxt.setEnabled(true);
         descTxt.setMandatory(false);
         
         lblCheckpoint = new SYMCLabel(ccnInfoGroup, SWT.NONE);
-        lblCheckpoint.setBounds(10, 265, 86, 15);
+        lblCheckpoint.setBounds(10, 265, 116, 15);
         lblCheckpoint.setText(registry.getString("CreateCCNView.CCN.ChangeReason"));
         
         Group checkGroup = new Group(ccnInfoGroup, SWT.NONE);
-        checkGroup.setBounds(102, 255, 424, 70);
+        checkGroup.setBounds(132, 250, 534, 80);
         setMandatory(checkGroup);
         
         btnRegulation = new Button(checkGroup, SWT.CHECK);
-        btnRegulation.setBounds(10, 11, 153, 16);
+        btnRegulation.setBounds(10, 15, 153, 16);
         btnRegulation.setText(registry.getString("CreateCCNView.CCN.Regulation"));
         btnRegulation.setEnabled(true);
         
         btnCostDown = new Button(checkGroup, SWT.CHECK);
-        btnCostDown.setBounds(169, 11, 134, 16);
+        btnCostDown.setBounds(190, 15, 180, 16);
         btnCostDown.setText(registry.getString("CreateCCNView.CCN.CostDown"));
         btnCostDown.setEnabled(true);
         
         btnOrderingSpec = new Button(checkGroup, SWT.CHECK);
-        btnOrderingSpec.setBounds(309, 11, 105, 16);
+        btnOrderingSpec.setBounds(370, 15, 130, 16);
         btnOrderingSpec.setText(registry.getString("CreateCCNView.CCN.OrderingSpec"));
         btnOrderingSpec.setEnabled(true);
         
         btnQualityImprovement = new Button(checkGroup, SWT.CHECK);
-        btnQualityImprovement.setBounds(10, 31, 153, 16);
+        btnQualityImprovement.setBounds(10, 36, 180, 16);
         btnQualityImprovement.setText(registry.getString("CreateCCNView.CCN.QualityImprovement"));
         btnQualityImprovement.setEnabled(true);
         
         btnCorrectionOfEPL = new Button(checkGroup, SWT.CHECK);
-        btnCorrectionOfEPL.setBounds(169, 31, 134, 16);
+        btnCorrectionOfEPL.setBounds(190, 36, 180, 16);
         btnCorrectionOfEPL.setText(registry.getString("CreateCCNView.CCN.CorrectionOfEPL"));
         btnCorrectionOfEPL.setEnabled(true);
         
         btnStylingUpDate = new Button(checkGroup, SWT.CHECK);
-        btnStylingUpDate.setBounds(309, 31, 105, 16);
+        btnStylingUpDate.setBounds(370, 36, 130, 16);
         btnStylingUpDate.setText(registry.getString("CreateCCNView.CCN.StylingUpDate"));
         btnStylingUpDate.setEnabled(true);
         
         btnWeightChange = new Button(checkGroup, SWT.CHECK);
-        btnWeightChange.setBounds(10, 51, 153, 16);
+        btnWeightChange.setBounds(10, 56, 153, 16);
         btnWeightChange.setText(registry.getString("CreateCCNView.CCN.WeightChange"));
-        btnWeightChange.setEnabled(true);
+        btnWeightChange.setEnabled(true);																																																							
         
         btnMaterialCostChange = new Button(checkGroup, SWT.CHECK);
-        btnMaterialCostChange.setBounds(169, 51, 134, 16);
+        btnMaterialCostChange.setBounds(190, 56, 180, 16);
         btnMaterialCostChange.setText(registry.getString("CreateCCNView.CCN.MaterialCostChange"));
         btnMaterialCostChange.setEnabled(true);
         
         btnTheOthers = new Button(checkGroup, SWT.CHECK);
-        btnTheOthers.setBounds(309, 51, 105, 16);
+        btnTheOthers.setBounds(370, 56, 130, 16);
         btnTheOthers.setText(registry.getString("CreateCCNView.CCN.TheOthers"));
         btnTheOthers.setEnabled(true);
                 
         
         lblSysLabel2 = new SYMCLabel(ccnInfoGroup, SWT.NONE);
-        lblSysLabel2.setBounds(10, 342, 88, 30);
+        lblSysLabel2.setBounds(10, 342, 116, 35);
         lblSysLabel2.setText(registry.getString("CreateCCNView.CCN.AFFECTEDSYSCODE"));
         
         sysCodesTxt = new SYMCText(ccnInfoGroup, SWT.BORDER);
-        sysCodesTxt.setBounds(102, 346, 424, 21);
+        sysCodesTxt.setBounds(132, 346, 534, 21);
         sysCodesTxt.setEnabled(false);
         sysCodesTxt.setBackground(SWTResourceManager.getColor(SWT.COLOR_WIDGET_LIGHT_SHADOW));
         
         lblDTargetLabel = new SYMCLabel(ccnInfoGroup, SWT.NONE);
-        lblDTargetLabel.setBounds(10, 386, 88, 30);
+        lblDTargetLabel.setBounds(10, 386, 116, 35);
         lblDTargetLabel.setText(registry.getString("CreateCCNView.CCN.DeploymentTarget"));
         
         deployTargetTxt = new SYMCText(ccnInfoGroup, SWT.BORDER);
-        deployTargetTxt.setBounds(102, 390, 390, 21);
+        deployTargetTxt.setBounds(132, 390, 500, 21);
         deployTargetTxt.setEnabled(false);
         //20211119 seho CF-2613 CCN 오류
         //이런 미친, 이걸 텍스트 수정하도록 만들면 우짜노.
@@ -346,7 +347,7 @@ public class PreCCNInfoPanel extends AbstractPreSYMCViewer {
         deployTargetTxt.setEditable(false);
         
         btnDTargetSearch = new Button(ccnInfoGroup, SWT.PUSH);
-        btnDTargetSearch.setBounds(497, 388, 30, 25);
+        btnDTargetSearch.setBounds(635, 388, 30, 25);
         btnDTargetSearch.setImage(registry.getImage("Search.ICON2"));
         btnDTargetSearch.addSelectionListener(new SelectionAdapter() {
             @SuppressWarnings("unchecked")
