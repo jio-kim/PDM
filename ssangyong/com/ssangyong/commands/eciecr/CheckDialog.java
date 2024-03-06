@@ -69,7 +69,8 @@ public class CheckDialog extends AbstractAIFDialog {
 		
 		getContentPane().setLayout(new VerticalLayout(5,5,5,5,5));
 		getContentPane().add("unbound.bind.center.center", contentPanel);
-		setPreferredSize(new Dimension(410,210));
+		// [20240229] 창이 짤리는 문제로 인해 크기 조정 410 -> 500, 210 -> 230
+		setPreferredSize(new Dimension(500,230));
 	}
 	
 	private JPanel createPanel() {
@@ -105,7 +106,8 @@ public class CheckDialog extends AbstractAIFDialog {
 		
 		JPanel panel1 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel ecolabel = new JLabel("ECO No : ");
-		ecolabel.setPreferredSize(new Dimension(60,20));
+		// [20240229] 창이 짤리는 문제로 인해 크기 조정 60 -> 80
+		ecolabel.setPreferredSize(new Dimension(80,20));
 		ecolabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		panel1.add(ecolabel);
 		tfEcoNo = new JTextField(100);
@@ -115,7 +117,8 @@ public class CheckDialog extends AbstractAIFDialog {
 		
 		JPanel panel2 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel ecilabel = new JLabel(" ECI No : ");
-		ecilabel.setPreferredSize(new Dimension(60,20));
+		// [20240229] 창이 짤리는 문제로 인해 크기 조정 60 -> 80
+		ecilabel.setPreferredSize(new Dimension(80,20));
 		ecilabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		panel2.add(ecilabel);
 		tfEciNo = new JTextField(100);
@@ -125,7 +128,8 @@ public class CheckDialog extends AbstractAIFDialog {
 	
 		JPanel panel3 = new JPanel(new FlowLayout(FlowLayout.LEFT));
 		JLabel ecrlabel = new JLabel("ECR No : ");
-		ecrlabel.setPreferredSize(new Dimension(60,20));
+		// [20240229] 창이 짤리는 문제로 인해 크기 조정 60 -> 80
+		ecrlabel.setPreferredSize(new Dimension(80,20));
 		ecrlabel.setHorizontalAlignment(SwingConstants.RIGHT);
 		panel3.add(ecrlabel);
 		tfEcrNo = new JTextField(100);
