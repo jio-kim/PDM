@@ -101,10 +101,13 @@ public class CreateMECOOperation extends AbstractTCSDVOperation {
 			itemPropMap.put(SDVPropertyConstant.ITEM_ITEM_ID, mecoID);
 			itemPropMap.put(SDVPropertyConstant.ITEM_OBJECT_NAME, mecoID);
 			itemPropMap.put(SDVPropertyConstant.ITEM_OBJECT_DESC, description);
+			
 			//Item Revision 加己 涝仿
 			itemRevsionPropMap.put(SDVPropertyConstant.ITEM_REVISION_ID, SYMCClass.ITEM_REV_ID);
 			//MCO 积己
 			mecoItem = (TCComponentItem)SYMTcUtil.createItemObject(session, SDVTypeConstant.MECO_ITEM, itemPropMap, itemRevsionPropMap);
+            mecoItemRevision = (TCComponentChangeItemRevision) mecoItem.getLatestItemRevision();
+            mecoDialog.setMECORevison(mecoItemRevision);
 			
 			TCComponent	refComp = SYMTcUtil.createApplicationObject(mecoItemRevision.getSession(), SDVTypeConstant.MECO_TYPED_REFERECE, new String[] { "m7_EFFECT_DATE", "m7_EFFECT_EVENT" }, new String[] {
 				(String) mecoInfoMap.get("m7_EFFECT_DATE"), (String) mecoInfoMap.get("m7_EFFECT_EVENT") });
