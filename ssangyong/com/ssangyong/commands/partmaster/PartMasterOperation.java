@@ -256,9 +256,16 @@ public class PartMasterOperation extends SYMCAbstractCreateOperation
 			if (baseItemRev != null)
 			{
 				// Dataset Revision 승계 여부
-				boolean isSucceeded = ((Boolean) this.pMap.get(Constants.ATTR_NAME_DATASETSUCCEED)).booleanValue();
-				// BaseItem DataSet를 Copy 함
-				CustomUtil.relateDatasetToItemRevision(baseItemRev, itemRev, true, true, true, null, isSucceeded);
+				//boolean isSucceeded = ((Boolean) this.pMap.get(Constants.ATTR_NAME_DATASETSUCCEED)).booleanValue();
+				//[20240307][UPGRADE] Create Product 생성시 오류 수정
+				Object isdatasetSucceedObj = pMap.get(Constants.ATTR_NAME_DATASETSUCCEED);
+				if(isdatasetSucceedObj !=null)
+				{
+					// Dataset Revision 승계 여부
+					boolean isSucceeded = ((Boolean) isdatasetSucceedObj).booleanValue();
+					// BaseItem DataSet를 Copy 함
+					CustomUtil.relateDatasetToItemRevision(baseItemRev, itemRev, true, true, true, null, isSucceeded);
+				}	
 				// Save As(Different)인 경우 Original File Name 변경				
 				if (Constants.ACTIONTYPE_DEFERENT.equals(this.pMap.get(Constants.ATTR_NAME_ACTIONTYPE))) {
 				    CustomUtil.renameDatasetReferenceFile(itemRev);
