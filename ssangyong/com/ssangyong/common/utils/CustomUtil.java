@@ -107,6 +107,7 @@ import com.teamcenter.rac.util.Utilities;
  * => 영문 Rev이 아닌 숫자 rev을 사용하는 logic으로 대체.
  * [SR140324-030][20140625] KOG DEV Veh. Part Revise 할 때 기존 Typed Reference Object에 SES Spec No. 값 복사.
  * [SR141106-036][2014.11.17][jclee] Part Revise 시 Change Description 공란처리
+ * [UPGRADE][20240308] reviseForItemRev 오류  수정
  */
 @SuppressWarnings({"rawtypes", "unchecked", "unused", "restriction"})
 public class CustomUtil {
@@ -3078,7 +3079,10 @@ public class CustomUtil {
              * [20140112][jclee] TC10 Upgrade 관련 수정.
              *  - Dataset 연결 전 Save 수행. (The instance is not locked 에러 대응)
              */
-            newRevision.save();
+            /**
+             * [UPGRADE][20240308] save 시 The instance is not locked 오류발생, setPropery 시 SOA setProperty를 사용해서 save(deprecated) 할 필요없음.
+             */
+            //newRevision.save();
             newRevision = relateDatasetToItemRevision(targetRevision, newRevision, is3DCheck, is2DCheck, isSoftwareCheck, ecoRevision, true);
 //            newRevision.setProperty("s7_STAGE", stage);
 //            newRevision.setProperty("s7_MATURITY", "In Work");
