@@ -1,6 +1,7 @@
 package com.symc.plm.rac.prebom.ccn.operation;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import com.ssangyong.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.ccn.dialog.PreCCNCreateDialog;
@@ -10,6 +11,7 @@ import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.common.util.SDVPreBOMUtilities;
 import com.teamcenter.rac.aif.AbstractAIFOperation;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;
+import com.teamcenter.rac.kernel.IPropertyName;
 import com.teamcenter.rac.kernel.Markpoint;
 import com.teamcenter.rac.kernel.TCComponentFolder;
 import com.teamcenter.rac.kernel.TCComponentItem;
@@ -17,7 +19,10 @@ import com.teamcenter.rac.kernel.TCComponentItemRevision;
 import com.teamcenter.rac.kernel.TCProperty;
 import com.teamcenter.rac.kernel.TCSession;
 import com.teamcenter.rac.ui.services.NavigatorOpenService;
-
+/**
+ * [UPGRADE][20240308] CCN 생성 오류 수정
+ *
+ */
 public class PreCCNCreateOperation extends AbstractAIFOperation{
 
     private HashMap<String, Object> ccnInfoMap;
@@ -52,7 +57,22 @@ public class PreCCNCreateOperation extends AbstractAIFOperation{
             String ccnID = SDVPreBOMUtilities.getCCNId(ccnInfoMap.get(PropertyConstant.ATTR_NAME_PROJCODE).toString(), ccnInfoMap.get(PropertyConstant.ATTR_NAME_SYSTEMCODE).toString());
             String desc = ccnInfoMap.get(PropertyConstant.ATTR_NAME_ITEMDESC).toString();
             
-            ccnItem = CustomUtil.createItem(TypeConstant.S7_PRECCNTYPE, ccnID, CommonConstant.CCNINITREVISIONNO, ccnID, desc);
+            //[UPGRADE][20240308] CCN 생성 오류 수정
+            //ccnItem = CustomUtil.createItem(TypeConstant.S7_PRECCNTYPE, ccnID, CommonConstant.CCNINITREVISIONNO, ccnID, desc);
+            
+            desc = desc == null || desc.isEmpty() ?ccnID:desc;
+			//Item Property 속성 입력
+			Map<String, String> itemPropMap = new HashMap<>();
+			Map<String, String> itemRevsionPropMap = new HashMap<>();
+			itemPropMap.put(IPropertyName.ITEM_ID, ccnID);
+			itemPropMap.put(IPropertyName.OBJECT_NAME, ccnID);
+			itemPropMap.put(IPropertyName.OBJECT_DESC, desc);
+			//Item Revision 속성 입력
+			itemRevsionPropMap.put(IPropertyName.ITEM_REVISION_ID, CommonConstant.CCNINITREVISIONNO);
+            
+			//CCN Item 생성
+			ccnItem = (TCComponentItem) CustomUtil.createItemObject(session, TypeConstant.S7_PRECCNTYPE, itemPropMap, itemRevsionPropMap);
+            
             TCComponentItemRevision ccnRevision = ccnItem.getLatestItemRevision();
             
             ccnRevision.setProperty(PropertyConstant.ATTR_NAME_PROJCODE, (String) ccnInfoMap.get(PropertyConstant.ATTR_NAME_PROJCODE));
