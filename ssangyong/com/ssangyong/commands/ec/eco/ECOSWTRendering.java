@@ -169,7 +169,8 @@ public class ECOSWTRendering extends AbstractSYMCViewer{
 	public ECOSWTRendering(Composite parent, boolean isCreate) {
 		super(parent);
 		initData();
-		ecoRevision = null;
+		// [20240308][UPGRADE] createPanel 에서 ecoRevision 을 할당하기 때문에 주석처리
+//		ecoRevision = null;
 		this.isCreate = isCreate;
 		
 		if (isCreate) {
@@ -887,7 +888,10 @@ public class ECOSWTRendering extends AbstractSYMCViewer{
 		try {
 			// Admin Check Dialog Open
 			String sECONo = "";
-			sECONo = ecoRevision.getProperty("item_id");
+			// [20240311][UPGRADE] ECO Revision 이 존재하는 경우 체크
+			if (ecoRevision != null)
+				sECONo = ecoRevision.getProperty("item_id");
+			
 			if (sECONo == null || sECONo.equals("") || sECONo.length() == 0) {
 				MessageBox.post(getShell(), "Invalid ECO.", "Error", MessageBox.ERROR);
 				return;
