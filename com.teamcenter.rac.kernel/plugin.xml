@@ -58,11 +58,13 @@
         <entry id="BillRate" name="com.teamcenter.rac.kernel.TCComponentBillRate" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
         <entry id="BomChange" name="com.teamcenter.rac.kernel.TCComponentBomChange" type="com.teamcenter.rac.kernel.TCComponentBomChangeType" icct="ICCTBomChange" />
         <entry id="BOMEdit" name="com.teamcenter.rac.kernel.TCComponentBOMEdit" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
-        <entry id="BOMLine" name="com.teamcenter.rac.kernel.TCComponentBOMLine" type="com.teamcenter.rac.kernel.TCComponentBOMLineType" icct="ICCTBOMLine" />
+        <!--<entry id="BOMLine" name="com.teamcenter.rac.kernel.TCComponentBOMLine" type="com.teamcenter.rac.kernel.TCComponentBOMLineType" icct="ICCTBOMLine" />-->
+        <entry id="BOMLine" name="com.teamcenter.rac.kernel.SYMCBOMLine" type="com.teamcenter.rac.kernel.TCComponentBOMLineType" icct="ICCTBOMLine" />
         <entry id="BOMLineMarkup" name="com.teamcenter.rac.kernel.TCComponentBOMLineMarkup" type="com.teamcenter.rac.kernel.TCComponentBOMLineType" icct="ICCTBOMLine" />
         <entry id="BOMSupersedure" name="com.teamcenter.rac.kernel.TCComponentBOMSupersedure" type="com.teamcenter.rac.kernel.TCComponentType" icct="ICCT" />
         <entry id="BOMVariantRule" name="com.teamcenter.rac.kernel.TCComponentVariantRule" type="com.teamcenter.rac.kernel.TCComponentVariantRuleType" icct="ICCTVariantRule" />
-        <entry id="BOMWindow" name="com.teamcenter.rac.kernel.TCComponentBOMWindow" type="com.teamcenter.rac.kernel.TCComponentBOMWindowType" icct="ICCTBOMWindow" />
+        <!--<entry id="BOMWindow" name="com.teamcenter.rac.kernel.TCComponentBOMWindow" type="com.teamcenter.rac.kernel.TCComponentBOMWindowType" icct="ICCTBOMWindow" />-->
+        <entry id="BOMWindow" name="com.teamcenter.rac.kernel.SYMCBOMWindow" type="com.teamcenter.rac.kernel.TCComponentBOMWindowType" icct="ICCTBOMWindow" />
         <entry id="BOPLine" name="com.teamcenter.rac.kernel.TCComponentBOPLine" type="com.teamcenter.rac.kernel.TCComponentBOPLineType" icct="ICCTBOPLine" />
         <entry id="BOPWindow" name="com.teamcenter.rac.kernel.TCComponentBOPWindow" type="com.teamcenter.rac.kernel.TCComponentBOPWindowType" icct="ICCTBOPWindow" />
         <entry id="BOSWindow" name="com.teamcenter.rac.kernel.TCComponentBOSWindow" type="com.teamcenter.rac.kernel.TCComponentBOSWindowType" icct="ICCTBOSWindow" />
