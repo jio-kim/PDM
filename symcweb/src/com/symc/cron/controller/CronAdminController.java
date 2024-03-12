@@ -34,6 +34,7 @@ import com.symc.work.service.EnvService;
 /**
  * [20151216][ymjang] 로그파일사이즈 항목 추가
  * [20240220] [sjh] quartz 라이브러리 버전 변경으로 인한 Trigger 관련 코드 변경
+ * [20240226][UPGRADE] 강제 실행 시 수정
  */
 @Controller
 @RequestMapping("/cron/*")
@@ -285,7 +286,9 @@ public class CronAdminController {
             mv.addObject("status",  "runningPass");
         } else {
             mv.addObject("status",  "execute");
-            schedulerFactoryBean.triggerJob(JobKey.jobKey(trigger.getKey().getName(), "DEFAULT"));
+            //[20240626][UPGRADE] 강제 실행 시 수정
+            //schedulerFactoryBean.triggerJob(JobKey.jobKey(trigger.getKey().getName(), "DEFAULT"));
+            schedulerFactoryBean.triggerJob(trigger.getJobKey());
         }
         mv.setViewName("jsonView");
         return mv;

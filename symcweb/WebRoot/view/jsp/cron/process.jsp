@@ -149,10 +149,10 @@
 	                       <td><c:out value="${task.description}"/></td>
 	                       <td id="StatusTd_<c:out value="${task.triggerId}"/>">
 	                           <c:if test="${task.isExecute != 'true'}">
-                                    <c:if test="${task.status == 0}">
+                                    <c:if test="${task.status == '0'}">
                                                 대기중
                                     </c:if>
-                                    <c:if test="${task.status == 1}">
+                                    <c:if test="${task.status == '1'}">
                                                 스케쥴중단
                                     </c:if>
                                </c:if>
@@ -175,10 +175,10 @@
 	                       <!-- [20151216][ymjang] 로그파일사이즈 항목 추가 -->
 	                       <td id="LogFileSize_<c:out value="${task.triggerId}"/>"><c:out value="${task.logFileSize}"/></td>
 	                       <td>
-	                           <c:if test="${task.status == 0}">
+	                           <c:if test="${task.status == '0'}">
 	                               <input class="button" type="button" id="Pause_Button_<c:out value="${task.triggerId}"/>" name="Pause_Button_<c:out value="${task.triggerId}"/>" value="중단"  onClick="pauseCron('${task.triggerId}'); return false;"/>
 	                           </c:if>
-	                           <c:if test="${task.status == 1}">
+	                           <c:if test="${task.status == '1'}">
                                    <input class="button" type="button" id="Resume_Button_<c:out value="${task.triggerId}"/>" name="Resume_Button_<c:out value="${task.triggerId}"/>" value="대기"  onClick="resumeCron('${task.triggerId}'); return false;"/>
                                </c:if>
 	                       </td>
