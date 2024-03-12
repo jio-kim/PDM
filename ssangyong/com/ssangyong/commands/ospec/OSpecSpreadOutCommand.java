@@ -28,8 +28,9 @@ public class OSpecSpreadOutCommand extends AbstractAIFCommand {
 				if( ospec == null ){
 					return;
 				}
+				// [20240313][UPGRADE] 오류 발생 시 ProgressBar 에 출력하도록 수정
+				WaitProgressBar waitBar = new WaitProgressBar(AIFUtility.getActiveDesktop().getFrame());
 				try {
-					WaitProgressBar waitBar = new WaitProgressBar(AIFUtility.getActiveDesktop().getFrame());
 					waitBar.start();
 					waitBar.setStatus("Loading.......");
 					dialog = new OSpecMainDlg(ospec);
@@ -37,6 +38,8 @@ public class OSpecSpreadOutCommand extends AbstractAIFCommand {
 					dialog.showDialog();
 				} catch (Exception e1) {
 					e1.printStackTrace();
+					waitBar.setStatus(e1.getMessage());
+					waitBar.setShowButton(true);
 				}
 			}
 		});

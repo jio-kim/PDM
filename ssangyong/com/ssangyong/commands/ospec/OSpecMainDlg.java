@@ -147,8 +147,9 @@ public class OSpecMainDlg extends AbstractAIFDialog {
 									OSpecTable ospecTb = new OSpecTable(ospec, null);
 								    
 								    viewDlg = new OSpecViewDlg(ospec.getOspecNo(), ospecTb.getOspecTable());
+								    // [20240313][UPGRADE] 창이 뒤로 숨는 문제를 해결하기 위해 추가
+									viewDlg.setModal(true);
 								    viewDlg.setSize(1200, 700);
-								    viewDlg.setVisible(true);
 								}catch(Exception e){
 									e.printStackTrace();
 								}
