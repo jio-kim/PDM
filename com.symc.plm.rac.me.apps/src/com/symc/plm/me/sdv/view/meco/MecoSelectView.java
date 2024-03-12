@@ -29,6 +29,7 @@ import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVText;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.symc.plm.me.utils.CustomUtil;
+import com.teamcenter.rac.aif.AbstractAIFUIApplication;
 import com.teamcenter.rac.aif.InterfaceAIFOperationListener;
 import com.teamcenter.rac.aifrcp.AIFUtility;
 import com.teamcenter.rac.cme.application.MFGLegacyApplication;
@@ -261,6 +262,11 @@ public class MecoSelectView extends AbstractSDVViewPane {
         @Override
         public void executeOperation() throws Exception {
             IDataMap displayDataMap = new RawDataMap();
+            
+            AbstractAIFUIApplication currentApplication = AIFUtility.getCurrentApplication();
+            //[20240312][UPGRADE] MPP에서만 아래 로직 수행하도록 함
+            if(!(currentApplication instanceof MFGLegacyApplication))
+            	return;
             MFGLegacyApplication mfgApp = (MFGLegacyApplication) AIFUtility.getCurrentApplication();
             try {
 

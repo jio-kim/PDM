@@ -103,6 +103,7 @@ import com.teamcenter.rac.util.Registry;
  *[SR없음][20150217]shcho, PE I/F에서 사용시에는 자동 Replace된 아이템 체크하지 않도록 변경 (ReviseActionOperation을 PE I/F에서도 함께 사용하기 때문)
  *[SR150122-027][20150414] shcho, 공법 할당 E/Item의 설계 DPV에 의한 자동 변경 문제 해결 - Shop과 MProduct Link해제
  *[CF-3537] [20230131]isWorkingStatus와 반려된 MECO도 나올 수 있게 수정 기존 SearchTypeItemView에서 MecoSearchView 검색창으로 변경
+ *[20240312][UPGRADE] BOMLine 확인후 처리하는 로직 추가
  *
  */
 public class ReviseActionOperation extends AbstractSDVActionOperation {
@@ -241,8 +242,12 @@ public class ReviseActionOperation extends AbstractSDVActionOperation {
                      String newRevId = oldRevision.getItem().getNewRev();
                      newRevision = oldRevision.saveAs(newRevId);
                      
-                     ((TCComponentBOMLine) reviseTarget).window().newIrfWhereConfigured(newRevision);
-                     ((TCComponentBOMLine) reviseTarget).window().fireChangeEvent();
+                     //[20240312][UPGRADE] BOMLine이 아닐시 실행 안되도록 함
+                     if(reviseTarget instanceof TCComponentBOMLine)
+                     {
+	                     ((TCComponentBOMLine) reviseTarget).window().newIrfWhereConfigured(newRevision);
+	                     ((TCComponentBOMLine) reviseTarget).window().fireChangeEvent();
+                     }
         		 }
         		 
         		return newRevision; 
