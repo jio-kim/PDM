@@ -44,6 +44,7 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
 import javax.swing.tree.TreePath;
 
 import jxl.Cell;
@@ -82,7 +83,7 @@ import com.teamcenter.rac.util.Registry;
  * Product, Variant, Function의 옵션을 설정.
  * 내부적으로는 Option Validation에 메시지를 추가하여,
  * 해당하는 옵션값만 표기될 수 있도록 함.
- * 
+ * [20240311][UPGRADE] 오류 수정
  * @author slobbie
  *
  */
@@ -866,12 +867,12 @@ public class PreFmpOptionSetDialog extends AbstractAIFDialog {
 					}
 				}
 
-				// [20240125] [CSO] 유형 불일치 에러 수정
-				// 에러 :  Enumeration<TreeNode>에서 Enumeration<VariantNode>로 변환할 수 없습니다.
-				// Enumeration 대신 Iterator를 사용
-				Iterator<VariantNode> enums = (Iterator<VariantNode>) (Iterator<?>) node.children();
-				while(enums.hasNext()) {
-					VariantNode childNode = enums.next();
+				//Enumeration<VariantNode> enums = node.children();
+				//[20240311][UPGRADE] 오류 수정
+				Enumeration<TreeNode> enums = node.children();
+				while( enums.hasMoreElements()){
+					//VariantNode childNode = enums.nextElement();
+					VariantNode childNode = (VariantNode)enums.nextElement();
 					VariantValue value = (VariantValue)childNode.getUserObject();
 					if( isValidAndCheck(value, model.getDataVector())){
 						
