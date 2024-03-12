@@ -1,9 +1,8 @@
 package com.ssangyong.common.swtsearch;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Vector;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.core.runtime.IStatus;
@@ -31,27 +30,26 @@ import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-import swing2swt.layout.BorderLayout;
-import swing2swt.layout.FlowLayout;
-
 import com.ssangyong.common.SYMCClass;
 import com.ssangyong.common.SortListenerFactory;
-import com.ssangyong.common.interfaces.ResultActionListener;
 import com.ssangyong.common.remote.DataSet;
 import com.ssangyong.common.remote.SYMCRemoteUtil;
 import com.ssangyong.common.ui.SimpleProgressBar;
 import com.ssangyong.common.utils.CustomUtil;
 import com.ssangyong.common.utils.SYMDisplayUtil;
 import com.teamcenter.rac.kernel.TCComponent;
-import com.teamcenter.rac.kernel.TCComponentItemRevision;
 import com.teamcenter.rac.kernel.TCException;
 import com.teamcenter.rac.util.MessageBox;
+
+import swing2swt.layout.BorderLayout;
+import swing2swt.layout.FlowLayout;
 
 /**
  * 20230831 cf-4357 seho
  * 1. 아이템 리비전 검색하는 부분을 SQL로 변경하여 속도를 개선
  * 2. owner 조건을 빼고 latest released revision을 조건에 추가함.
  * 3. 검색 결과에서 선택 시 최종 릴리즈리비전을 자동으로 선택되도록 함.
+ * [20240312][UPGRADE] Table Data Map 으로 저장. Sorting 후 입력시 오류 발생
  */
 public class SearchItemRevDialog extends Dialog implements SelectionListener
 {
@@ -460,10 +458,18 @@ public class SearchItemRevDialog extends Dialog implements SelectionListener
 					rowItem.setText(3, owner);
 					rowItem.setText(4, status);
 					rowItem.setText(5, maturity);
-					rowItem.setData("REV_PUID", revPuid);
-					rowItem.setData("LATEST_RELEASED_REVISION", latestReleasedRevisionPuid == null ? "" : latestReleasedRevisionPuid);
-					rowItem.setData("LATEST_REVISION", latestRev);
-					rowItem.setData("LATEST_MATURITY", latestMaturity);
+					//[20240312][UPGRADE] Table Data Map 으로 저장. Sorting 시 못가져옴
+//					rowItem.setData("REV_PUID", revPuid);
+//					rowItem.setData("LATEST_RELEASED_REVISION", latestReleasedRevisionPuid == null ? "" : latestReleasedRevisionPuid);
+//					rowItem.setData("LATEST_REVISION", latestRev);
+//					rowItem.setData("LATEST_MATURITY", latestMaturity);
+					Map<String,String> tableData = new HashMap<>();
+					tableData.put("REV_PUID", revPuid);
+					tableData.put("LATEST_RELEASED_REVISION", latestReleasedRevisionPuid == null ? "" : latestReleasedRevisionPuid);
+					tableData.put("LATEST_REVISION", latestRev);
+					tableData.put("LATEST_MATURITY", latestMaturity);
+					rowItem.setData(tableData);
+
 				}
 			});
 		}
@@ -506,10 +512,16 @@ public class SearchItemRevDialog extends Dialog implements SelectionListener
 		for (int inx = 0; inx < selectRows.length; inx++)
 		{
 			TableItem ti = selectRows[inx];
-			String revisionPuid = (String) ti.getData("REV_PUID");
-			String latestReleasedRevisionPuid = (String) ti.getData("LATEST_RELEASED_REVISION");
-			String latestRevision = (String) ti.getData("LATEST_REVISION");
-			String latestMaturity = (String) ti.getData("LATEST_MATURITY");
+			@SuppressWarnings("unchecked")
+			Map<String,String>tableData = (HashMap<String, String>)ti.getData();
+//			String revisionPuid = (String) ti.getData("REV_PUID");
+//			String latestReleasedRevisionPuid = (String) ti.getData("LATEST_RELEASED_REVISION");
+//			String latestRevision = (String) ti.getData("LATEST_REVISION");
+//			String latestMaturity = (String) ti.getData("LATEST_MATURITY");
+			String revisionPuid = tableData.get("REV_PUID");
+			String latestReleasedRevisionPuid = tableData.get("LATEST_RELEASED_REVISION");
+			String latestRevision = tableData.get("LATEST_REVISION");
+			String latestMaturity = tableData.get("LATEST_MATURITY");
 			String selectedRevisionString = ti.getText(0) + "/" + ti.getText(1) + "-" + ti.getText(2);
 			String latestRevisionString = ti.getText(0) + "/" + latestRevision + "-" + ti.getText(2);
 
