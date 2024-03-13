@@ -291,7 +291,8 @@ public class BuildSpecImportDialog extends AbstractAIFDialog {
 					searchBtn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 							
-							if( comboBox == null || comboBox.getSelectedItems().length < 1 ){
+							// [20240313][UPGRADE] 조건문 수정
+							if( comboBox == null || comboBox.getSelectedItems() == null ){
 								MessageBox.post(BuildSpecImportDialog.this, registry.getString("variant.selectBuildSpec"), "INFORMATION", MessageBox.WARNING);
 								return;
 							}
