@@ -988,4 +988,4 @@ Export-Package: .,
  schemasMicrosoftComVml,
  schemasMicrosoftComVml.impl,
  swing2swt.layout
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-11

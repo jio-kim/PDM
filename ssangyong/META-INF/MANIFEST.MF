@@ -29,7 +29,7 @@ Require-Bundle:  com.symc-newplm.external;bundle-version="1.0.0",
  org.eclipse.nebula.widgets.nattable.core;bundle-version="1.1.0",
  org.eclipse.nebula.widgets.nattable.extension.glazedlists;bundle-version="1.1.0",
  ca.odell.glazedlists;bundle-version="1.8.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Eclipse-RegisterBuddy: com.ebsolutions.uiapplication
 Export-Package: com.ssangyong;uses:="org.osgi.framework,org.eclipse.ui,org.eclipse.ui.plugin",
  com.ssangyong.admin.lovmanage;

@@ -41,7 +41,7 @@ Require-Bundle: com.symc-newplm.external;bundle-version="1.0.0",
  com.teamcenter.rac.cme.accountabilitycheck;bundle-version="13000.2.0",
  com.teamcenter.rac.ets;bundle-version="13000.2.0",
  com.teamcenter.rac.external;bundle-version="13000.2.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Eclipse-RegisterBuddy: com.ebsolutions.uiapplication
 Import-Package: 
  com.teamcenter.rac.cme.bvr.connect.services.impl,

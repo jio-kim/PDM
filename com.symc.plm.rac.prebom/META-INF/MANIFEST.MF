@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.ui;bundle-version="3.111.0",
  TcSoaStructureManagementRac;bundle-version="13000.2.0",
  org.eclipse.nebula.widgets.grid;bundle-version="1.1.0",
  org.junit;bundle-version="4.12.0"
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ActivationPolicy: lazy
 Bundle-ClassPath: .
 Export-Package: com.symc.plm.rac.prebom,
