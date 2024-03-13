@@ -2074,6 +2074,10 @@ public class VehiclePartMasterInfoPanel extends Composite implements IPageComple
 	 */
 	private boolean isSESSpecNoAccessCheck() {
 		InterfaceAIFComponent[] targetComponents = AIFUtility.getCurrentApplication().getTargetComponents();
+
+        if (targetComponents == null || targetComponents.length < 1) {
+        	return false;
+        }
 		String type = targetComponents[0].getType();
 		TCComponentItemRevision revision = null;
 		if (type.equals(SYMCClass.S7_VEHPARTREVISIONTYPE) || type.equals(SYMCClass.S7_STDPARTREVISIONTYPE)) {
