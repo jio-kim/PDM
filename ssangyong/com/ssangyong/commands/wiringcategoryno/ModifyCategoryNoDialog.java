@@ -360,8 +360,11 @@ public class ModifyCategoryNoDialog extends Dialog
 		{
 			for (String catNo : categoryNoArray)
 			{
-				TableItem tableItem = new TableItem(categoryTable, SWT.NONE);
-				tableItem.setText(1, catNo);
+				// [20240313][UPGRADE] catNo 값이 있는경우만 추가하도록 수정
+				if (catNo != null && !catNo.isEmpty()) {
+					TableItem tableItem = new TableItem(categoryTable, SWT.NONE);
+					tableItem.setText(1, catNo);
+				}
 			}
 		}
 		ArrayList<String> enumList = new ArrayList<String>();
