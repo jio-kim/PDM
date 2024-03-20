@@ -45,6 +45,7 @@ import com.teamcenter.rac.kernel.TCComponentUser;
 import com.teamcenter.rac.kernel.TCException;
 import com.teamcenter.rac.kernel.TCPreferenceService;
 import com.teamcenter.rac.kernel.TCPreferenceService.TCPreferenceLocation;
+import com.teamcenter.rac.kernel.TCProperty;
 import com.teamcenter.rac.kernel.TCSession;
 import com.teamcenter.rac.util.FilterDocument;
 import com.teamcenter.rac.util.HorizontalLayout;
@@ -114,7 +115,7 @@ public class SDVNewProcessDialog extends AbstractProcessDialog {
     boolean inheritTargetsEnabled = false;
     boolean inheritTargetsSelected = false;
 
-    // template Ïù¥Î¶ÑÏù¥ Îì±Î°ùÎêú Preference Name
+    // template  Preference Name
     private String templatePrefName;
 
     public SDVNewProcessDialog(Frame frame, SDVNewProcessCommand command, String templatePrefName) {
@@ -165,30 +166,50 @@ public class SDVNewProcessDialog extends AbstractProcessDialog {
 
     }
 
+    /**
+     * [UPGRADE][240320] TC13 ∫Ø∞Ê¿∏∑Œ ¿Œ«— ºˆ¡§
+     * @param paramVector
+     * @return
+     */
     private String[] createRenderIcons(List<? extends TCComponent> paramVector) {
         String[] arrayOfString1 = null;
         int i = paramVector.size();
         if (i > 0) {
             arrayOfString1 = new String[i];
             String[] arrayOfString2 = { "template_stage", "object_name" };
-            String[][] arrayOfString = (String[][]) null;
+//            String[][] arrayOfString = (String[][]) null;
+//            try {
+//                arrayOfString = TCComponentType.getPropertiesSet(paramVector, arrayOfString2);
+//                String str = null;
+//                for (int j = 0; j < i; ++j) {
+//                    str = arrayOfString[j][0];
+//                    //if (str.equals("2")) {
+//                        arrayOfString1[j] = "blank";
+//                    } else {
+//                        if (!(str.equals("1")))
+//                            continue;
+//                        arrayOfString1[j] = "underconstruction";
+//                    }
+//                }
+//            } catch (Exception localException) {
+//                MessageBox localMessageBox = new MessageBox(localException);
+//                localMessageBox.setVisible(true);
+//            }
             try {
-                arrayOfString = TCComponentType.getPropertiesSet(paramVector, arrayOfString2);
-                String str = null;
-                for (int j = 0; j < i; ++j) {
-                    str = arrayOfString[j][0];
-                    if (str.equals("2")) {
-                        arrayOfString1[j] = "blank";
-                    } else {
-                        if (!(str.equals("1")))
-                            continue;
-                        arrayOfString1[j] = "underconstruction";
-                    }
+                TCProperty[][] tcProperties = TCComponentType.getTCPropertiesSet(paramVector, arrayOfString2);
+
+                for(int j = 0; j < i; ++j) {
+                   int intValue = tcProperties[j][0].getIntValue();
+                   if (intValue == 2) {
+                      arrayOfString1[j] = "blank";
+                   } else if (intValue == 1) {
+                      arrayOfString1[j] = "underconstruction";
+                   }
                 }
-            } catch (Exception localException) {
-                MessageBox localMessageBox = new MessageBox(localException);
-                localMessageBox.setVisible(true);
-            }
+             } catch (Exception localException) {
+    			MessageBox localMessageBox = new MessageBox(localException);
+    			localMessageBox.setVisible(true);
+             }            
         }
         return arrayOfString1;
     }
@@ -568,8 +589,8 @@ public class SDVNewProcessDialog extends AbstractProcessDialog {
         return this.creatorTask;
     }
     
-	//[2024.01.25]ÏàòÏ†ï
-    //Ï∂îÏÉÅ Î©îÏÜåÎìú ÎàÑÎùΩÏúºÎ°ú Ïù∏Ìïú Ï∂îÍ∞Ä
+	//[2024.01.25]ºˆ¡§
+    //√ﬂªÛ ∏ﬁº“µÂ ¥©∂Ù¿∏∑Œ ¿Œ«— √ﬂ∞°
 	public TCComponent[] getAttachmentComponentsByTypes(int[] arg0) {
 		return this.attachmentsPanel.getAttachmentsByTypes(arg0);
 	}

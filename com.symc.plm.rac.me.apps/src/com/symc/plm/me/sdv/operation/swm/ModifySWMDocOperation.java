@@ -170,6 +170,9 @@ public class ModifySWMDocOperation extends AbstractSDVActionOperation {
      */
     public void datasetModify() throws Exception {
         File updateFile = updateFile(itemId, referenceItemId, referenceObjectName);
+        //[UPGRADE][240320] NULL 贸府
+        if(updateFile == null)
+        	return ;
         Vector<File> importFiles = new Vector<File>();
         importFiles.add(updateFile);
 
@@ -193,7 +196,9 @@ public class ModifySWMDocOperation extends AbstractSDVActionOperation {
     public File updateFile(String itemId, String referenceItemId, String referenceObjectName) throws Exception {
         TCSession session = CustomUtil.getTCSession();
         File file = getFile(itemRev, session);
-
+        //[UPGRADE][240320] NULL 贸府
+        if(file == null)
+        	return null;
         Workbook workbook = new XSSFWorkbook(new FileInputStream(file));
         Sheet sheet = workbook.getSheetAt(0);
 
@@ -216,6 +221,9 @@ public class ModifySWMDocOperation extends AbstractSDVActionOperation {
     private static File getFile(TCComponentItemRevision itemRevision, TCSession session) throws Exception {
         Vector<TCComponentDataset> datasets = new Vector<TCComponentDataset>();
         datasets = CustomUtil.getDatasets(itemRevision, TcDefinition.TC_SPECIFICATION_RELATION, TcDefinition.DATASET_TYPE_EXCELX);
+        //[UPGRADE][240320] NULL 贸府
+        if(datasets == null || datasets.size() == 0)
+        	return null;
         File[] localfile = null;
         localfile = CustomUtil.exportDataset(datasets.get(0), session.toString());
         return localfile[0];
