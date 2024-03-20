@@ -1,21 +1,20 @@
 package com.ssangyong.commands.partmaster;
 
 import java.util.HashMap;
-import java.util.List;
+import java.util.Map;
 
 import com.ssangyong.commands.ec.search.FileAttachmentComposite;
 import com.ssangyong.common.SYMCClass;
 import com.ssangyong.common.operation.SYMCAbstractCreateOperation;
 import com.ssangyong.common.utils.CustomUtil;
 import com.ssangyong.common.utils.SYMTcUtil;
+import com.teamcenter.rac.kernel.IPropertyName;
 import com.teamcenter.rac.kernel.TCComponent;
+import com.teamcenter.rac.kernel.TCComponentItem;
 import com.teamcenter.rac.kernel.TCComponentItemRevision;
-import com.teamcenter.rac.kernel.TCComponentListOfValues;
-import com.teamcenter.rac.kernel.TCComponentListOfValuesType;
 import com.teamcenter.rac.kernel.TCProperty;
 import com.teamcenter.rac.kernel.TCSession;
 import com.teamcenter.rac.util.dialog.AbstractSWTDialog;
-import com.teamcenter.soa.client.model.LovValue;
 
 /**
  * Part 积己 Operation
@@ -92,7 +91,21 @@ public class PartMasterOperation extends SYMCAbstractCreateOperation
 		// 弊寇 脚痹 Item 积己
 		else
 		{
-			newComp = CustomUtil.createItem(this.strItemType, strPartNo, strPartRev, strPartName, "");
+			// [20240320][UPGRADE] Part 积己 坷幅 荐沥
+//			newComp = CustomUtil.createItem(this.strItemType, strPartNo, strPartRev, strPartName, "");
+            
+			//Item Property 加己 涝仿
+			Map<String, String> itemPropMap = new HashMap<>();
+			Map<String, String> itemRevsionPropMap = new HashMap<>();
+			itemPropMap.put(IPropertyName.ITEM_ID, strPartNo);
+			itemPropMap.put(IPropertyName.OBJECT_NAME, strPartName);
+			itemPropMap.put(IPropertyName.OBJECT_DESC, "");
+			//Item Revision 加己 涝仿
+			itemRevsionPropMap.put(IPropertyName.ITEM_REVISION_ID, strPartRev);
+            
+			//Part Item 积己
+			newComp = (TCComponentItem) CustomUtil.createItemObject(session, this.strItemType, itemPropMap, itemRevsionPropMap);
+			
 			String strUOM = (String) attrMap.get("uom_tag");
 			attrMap.remove("uom_tag");
 
