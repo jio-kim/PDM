@@ -347,11 +347,19 @@
     
     <!-- [SR170707-024][ljg] Product의 OSI No를 가져 오는 쿼리 -->
     <select id="getOSINo" parameterType="java.lang.String" resultType="java.lang.String" >
-    select OSI_NO 
+    <!-- select OSI_NO 
            from IF_OSPEC_MASTER_FROM_HBOM 
            where PRODUCT_NO = #{PRODUCT_NO, jdbcType=VARCHAR} 
            and rownum = 1 
-           order by OSI_NO desc
+           order by OSI_NO desc -->
+		WITH OSI_INFORM AS(
+		     SELECT OSI_NO
+		       	FROM IF_OSPEC_MASTER_FROM_HBOM 
+           	  WHERE PRODUCT_NO = #{PRODUCT_NO, jdbcType=VARCHAR} 
+           	  ORDER BY OSI_NO DESC
+		)
+		SELECT OSI_NO FROM OSI_INFORM
+			WHERE ROWNUM = 1           
     </select>
     
     <!-- [SR170707-024][ljg] E-BOM EPL의 Job ID 가져오기 -->
