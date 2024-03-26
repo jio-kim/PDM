@@ -183,7 +183,9 @@ public class CreateBodyOPView extends AbstractSDVViewPane {
             
             Label lblOpNameKor = new Label(propInfoComp, SWT.NONE);
             lblOpNameKor.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-            lblOpNameKor.setText(SYMTcUtil.getPropertyDisplayName(SDVTypeConstant.BOP_PROCESS_OPERATION_ITEM_REV, SDVPropertyConstant.OPERATION_REV_KOR_NAME));
+            //lblOpNameKor.setText(SYMTcUtil.getPropertyDisplayName(SDVTypeConstant.BOP_PROCESS_OPERATION_ITEM_REV, SDVPropertyConstant.OPERATION_REV_KOR_NAME));
+            //[UPGRADE][0326] Korean Name 이 잘못나옴 수정 
+            lblOpNameKor.setText(registry.getString("OpKorName.NAME"));
             
             textOpNameKor = new SDVText(propInfoComp, SWT.BORDER | SWT.SINGLE);
             // 특별 특성 속성 추가로 LayOut 변경으로 인한 수정 5-> 7
