@@ -4,6 +4,7 @@
 package com.symc.plm.me.sdv.operation.body;
 
 import java.util.HashMap;
+import java.util.Map;
 
 import org.eclipse.core.runtime.IStatus;
 import org.sdv.core.common.data.IDataSet;
@@ -136,10 +137,23 @@ public class CreateBodyShopActionOperation extends AbstractSDVActionOperation {
 //			if( plant_object == null ) {
 //				throw new NullPointerException("Shop 생성에 필요한 Plant Bop가 구성되지 않았습니다. \n Plant BOP를 먼저 구성해 주세요" );
 //			}
-
-			shopItem = SYMTcUtil.createItem(session, item_id, kor_name == null ? "" : kor_name, "", SDVTypeConstant.BOP_PROCESS_SHOP_ITEM, SDVPropertyConstant.ITEM_REV_ID_ROOT);
+			//[20240326][UPGRADE] 업그레이드 이후 생성기능 오류 수정
+			//shopItem = SYMTcUtil.createItem(session, item_id, kor_name == null ? "" : kor_name, "", SDVTypeConstant.BOP_PROCESS_SHOP_ITEM, SDVPropertyConstant.ITEM_REV_ID_ROOT);
+			
+			//Item Property 속성 입력
+			Map<String, String> itemPropMap = new HashMap<>();
+			Map<String, String> itemRevsionPropMap = new HashMap<>();
+			itemPropMap.put(SDVPropertyConstant.ITEM_ITEM_ID, item_id);
+			itemPropMap.put(SDVPropertyConstant.ITEM_OBJECT_NAME, kor_name == null ? "" : kor_name);
+			itemPropMap.put(SDVPropertyConstant.ITEM_OBJECT_DESC, item_id);
+			
+			//Item Revision 속성 입력
+			itemRevsionPropMap.put(SDVPropertyConstant.ITEM_REVISION_ID, SDVPropertyConstant.ITEM_REV_ID_ROOT);
+			
+			shopItem = (TCComponentItem)SYMTcUtil.createItemObject(session, SDVTypeConstant.BOP_PROCESS_SHOP_ITEM, itemPropMap, itemRevsionPropMap);			
+			
 			shopRev = shopItem.getLatestItemRevision();
-			shopItem.lock();
+			//shopItem.lock();
 
 			if (is_alt != null && is_alt.toString().toUpperCase().equals("TRUE"))
 			{
@@ -198,7 +212,7 @@ public class CreateBodyShopActionOperation extends AbstractSDVActionOperation {
 				((TCComponentChangeItemRevision) meco_no).add(SDVTypeConstant.MECO_SOLUTION_ITEM, shopRev);
 			}
 			
-			shopItem.save();
+			//shopItem.save();
 
 			final AbstractAIFOperation openOperation = new AbstractAIFOperation() {
 				
@@ -253,8 +267,8 @@ public class CreateBodyShopActionOperation extends AbstractSDVActionOperation {
 		}
 		finally
 		{
-			if (shopItem != null)
-				shopItem.unlock();
+//			if (shopItem != null)
+//				shopItem.unlock();
 
 			session.setStatus("");
 		}

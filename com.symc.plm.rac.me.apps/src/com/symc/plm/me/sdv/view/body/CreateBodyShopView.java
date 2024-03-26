@@ -208,7 +208,10 @@ public class CreateBodyShopView extends AbstractSDVViewPane {
 
             Label lblKorName = new Label(grpShop, SWT.NONE);
             lblKorName.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
-            lblKorName.setText(SYMTcUtil.getPropertyDisplayName(SDVTypeConstant.BOP_PROCESS_SHOP_ITEM_REV, SDVPropertyConstant.SHOP_REV_KOR_NAME));
+            //lblKorName.setText(SYMTcUtil.getPropertyDisplayName(SDVTypeConstant.BOP_PROCESS_SHOP_ITEM_REV, SDVPropertyConstant.SHOP_REV_KOR_NAME));
+            //[UPGRADE][0326] Korean Name 이 잘못나옴 수정 
+            lblKorName.setText(registry.getString("ShopKorName.NAME"));
+
 
             textKorName = new SDVText(grpShop, SWT.BORDER | SWT.SINGLE);
             textKorName.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, true, false, 4, 1));
