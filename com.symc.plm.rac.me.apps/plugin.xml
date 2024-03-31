@@ -3014,7 +3014,7 @@
 
                     <!-- 라인 공정 후임 설정 -->
                     <command
-                        commandId="symc.me.pert.SetSubDecessorCommand" icon="icons/setDecessor.png" id="symc.me.menus.bodyme.SetSubDecessor">
+                        commandId="symc.me.pert.SetSubDecessorCommand" id="symc.me.menus.bodyme.SetSubDecessor">
                         <visibleWhen>
                         <with variable="rac_command_suppression">
                             <not>
@@ -5173,7 +5173,7 @@
       -->
 	<menuContribution locationURI="popup:org.eclipse.ui.popup.any?before=com.teamcenter.rac.cme.popup.assemblyTree">
 		<!-- 라인 공정 후임 설정 -->
-		<command commandId="symc.me.pert.SetSubDecessorCommand" icon="icons/setDecessor.png">
+		<command commandId="symc.me.pert.SetSubDecessorCommand" >
 			<visibleWhen>
 			<and>
 				<and>
