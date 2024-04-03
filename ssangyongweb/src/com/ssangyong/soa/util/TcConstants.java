@@ -285,7 +285,9 @@ public class TcConstants {
     /** 결재 진행 상태 */
     public static final String PROP_PROCESS_STAGE = "process_stage";
     /** 결재 진행 이력 리스트 */
+    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체 
     public static final String PROP_PROCESS_STAGE_LIST = "process_stage_list";
+    public static final String PROP_STARTED_WORKFLOW_TASKS = "fnd0StartedWorkflowTasks";
 
     public static final String PROP_ROOT_TASK ="root_task";
 

@@ -119,7 +119,9 @@ public class ECOProcessCommand extends AbstractAIFCommand {
 				message.append("You don't have privilage to write.\n");
 
 			/** 결재 여부 **/
-			String[] processProps = changeRevision.getProperties(new String[]{"date_released", "process_stage_list"});
+            // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체
+//			String[] processProps = changeRevision.getProperties(new String[]{"date_released", "process_stage_list"});
+			String[] processProps = changeRevision.getProperties(new String[]{"date_released", "fnd0StartedWorkflowTasks"});
 			if(!processProps[0].equals("") || !processProps[1].equals(""))
 				message.append("Already payment in progress.\n");
 

@@ -178,7 +178,9 @@ public class CCNProcessCommand extends AbstractAIFCommand {
             }
 
             /** 결재 여부 **/
-            String[] processProps = changeRevision.getProperties(new String[]{PropertyConstant.ATTR_NAME_DATERELEASED, PropertyConstant.ATTR_NAME_PROCESSSTAGELIST});
+            // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체
+//            String[] processProps = changeRevision.getProperties(new String[]{PropertyConstant.ATTR_NAME_DATERELEASED, PropertyConstant.ATTR_NAME_PROCESSSTAGELIST});
+            String[] processProps = changeRevision.getProperties(new String[]{PropertyConstant.ATTR_NAME_DATERELEASED, PropertyConstant.ATTR_NAME_STARTEDWORKFLOWTASKS});
             if(!processProps[0].equals("") && !processProps[1].equals("Creator")){
                 message.append(registry.getString("CCNProcessCommand.CCN.ValidationMessage5"));
             }

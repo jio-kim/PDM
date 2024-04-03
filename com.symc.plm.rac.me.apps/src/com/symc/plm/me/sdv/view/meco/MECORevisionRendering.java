@@ -34,7 +34,9 @@ public class MECORevisionRendering extends AbstractSDVViewer {
 	                //if(targetComp.getProperty("release_status_list").equals("") && targetComp.getProperty("process_stage_list").indexOf("Creator") != -1) {
 	                // 작성중 또는 승인 진행중인 경우
 	                if(targetComp.getProperty("release_status_list").equals("")) {
-	                    String stage = targetComp.getProperty("process_stage_list");
+	            	    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체
+//	                    String stage = targetComp.getProperty("process_stage_list");
+	                    String stage = targetComp.getProperty("fnd0StartedWorkflowTasks");
 	                    // Working 또는 프로세스 상태가 거부인 경우
 	                    if(stage.equals("") || stage.indexOf("Creator") != -1) {
 	                        String sessionUser = ((TCSession)AIFUtility.getCurrentApplication().getSession()).getUser().getUserId();

@@ -49,7 +49,9 @@ public class SDVTCDataManager {
     }
 
     public ModelObject[] getProcess(ItemRevision revision) throws NotLoadedException, ServiceException {
-        revision = (ItemRevision) loadObjectWithProperties(revision, new String[] {TcConstants.PROP_PROCESS_STAGE_LIST});
+        // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체 
+//        revision = (ItemRevision) loadObjectWithProperties(revision, new String[] {TcConstants.PROP_PROCESS_STAGE_LIST});
+        revision = (ItemRevision) loadObjectWithProperties(revision, new String[] {TcConstants.PROP_STARTED_WORKFLOW_TASKS});
 
         return revision.get_process_stage_list();
     }

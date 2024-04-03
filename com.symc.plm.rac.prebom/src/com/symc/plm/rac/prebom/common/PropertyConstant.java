@@ -31,7 +31,10 @@ public class PropertyConstant {
 	public static final String ATTR_NAME_MATURITY = "s7_MATURITY";
 
 	public static final String ATTR_NAME_PROCESSSTAGELIST = "process_stage_list";
+    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체 
+	public static final String ATTR_NAME_STARTEDWORKFLOWTASKS = "fnd0StartedWorkflowTasks";
 	public static final String ATTR_NAME_RELEASESTATUSLIST = "release_status_list";
+	
 
 	public static final String ATTR_NAME_PRODUCTTYPE = "s7_PRODUCT_TYPE";
 	public static final String ATTR_NAME_FUNCTIONTYPE = "s7_FUNCTION_TYPE";

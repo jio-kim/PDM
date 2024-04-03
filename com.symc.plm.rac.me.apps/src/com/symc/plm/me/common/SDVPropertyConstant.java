@@ -434,6 +434,8 @@ public class SDVPropertyConstant {
     public static final String PROP_ROOT_TASK = "root_task";
     public static final String PROP_PROCESS_ATTACHEMENTS = "attachments";
     public static final String PROP_PROCESS_PARENT = "parent_process";
+    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedTasks 로 교체  
+    public static final String PROP_STARTED_WORKFLOW_TASK = "fnd0StartedWorkflowTasks";
 
     // Std.WorkMethod Properties
     public static final String SWM_CATEGORY = "m7_CATEGORY";

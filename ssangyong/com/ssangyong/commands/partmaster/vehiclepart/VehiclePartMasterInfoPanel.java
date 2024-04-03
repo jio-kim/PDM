@@ -2120,7 +2120,9 @@ public class VehiclePartMasterInfoPanel extends Composite implements IPageComple
         String sReleaseStatusList = components.getProperty("release_status_list");
         String sProcessStageList = components.getProperty("process_stage_list");
         String sProcessStage = "";
-        TCComponent[] process_stage_list = components.getReferenceListProperty("process_stage_list");
+        // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체
+//        TCComponent[] process_stage_list = components.getReferenceListProperty("process_stage_list");
+        TCComponent[] process_stage_list = components.getReferenceListProperty("fnd0StartedWorkflowTasks");
         
         // 1. Release되어있지 않고 Workflow도 없는 경우
         if (sReleaseStatusList.equalsIgnoreCase("") && sProcessStageList.equalsIgnoreCase("")) {

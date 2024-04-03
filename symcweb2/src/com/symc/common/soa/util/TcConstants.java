@@ -291,7 +291,9 @@ public class TcConstants {
     /** 寃곗옱 吏꾪뻾 �곹깭 */
     public static final String PROP_PROCESS_STAGE = "process_stage";
     /** 寃곗옱 吏꾪뻾 �대젰 由ъ뒪��*/
-    public static final String PROP_PROCESS_STAGE_LIST = "process_stage_list";
+	// [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체 
+//  public static final String PROP_PROCESS_STAGE_LIST = "process_stage_list";
+  public static final String PROP_STARTED_WORKFLOW_TASKS = "fnd0StartedWorkflowTasks";
 
     public static final String PROP_ROOT_TASK ="root_task";
 

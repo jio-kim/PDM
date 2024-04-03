@@ -236,9 +236,12 @@ public class ProcessUtil {
 	 */
 	public static boolean isWorkingStatus(TCComponent components) throws TCException {
 		components.refresh();
-		if (components.getProperty("release_status_list").equalsIgnoreCase("") && 
-				(components.getProperty("process_stage_list").equalsIgnoreCase("")
-					|| components.getProperty("process_stage_list").equalsIgnoreCase("Creator"))) {
+		if (components.getProperty("release_status_list").equalsIgnoreCase("") &&
+		        // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체 
+//				(components.getProperty("process_stage_list").equalsIgnoreCase("")
+//					|| components.getProperty("process_stage_list").equalsIgnoreCase("Creator"))) {
+				(components.getProperty("fnd0StartedWorkflowTasks").equalsIgnoreCase("")
+						|| components.getProperty("fnd0StartedWorkflowTasks").equalsIgnoreCase("Creator"))) {
 			return true;
 		}
 		return false;

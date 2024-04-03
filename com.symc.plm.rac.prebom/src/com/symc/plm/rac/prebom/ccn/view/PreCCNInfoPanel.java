@@ -170,8 +170,9 @@ public class PreCCNInfoPanel extends AbstractPreSYMCViewer {
      */
     private void checkReleased() {
     	String[] processProps = null;
-        try {
-            processProps = ccnRevision.getProperties(new String[] { PropertyConstant.ATTR_NAME_DATERELEASED, PropertyConstant.ATTR_NAME_PROCESSSTAGELIST });
+        try { 
+//            processProps = ccnRevision.getProperties(new String[] { PropertyConstant.ATTR_NAME_DATERELEASED, PropertyConstant.ATTR_NAME_PROCESSSTAGELIST });
+            processProps = ccnRevision.getProperties(new String[] { PropertyConstant.ATTR_NAME_DATERELEASED, PropertyConstant.ATTR_NAME_STARTEDWORKFLOWTASKS });
         } catch (TCException e) {
             e.printStackTrace();
         }

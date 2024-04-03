@@ -44,6 +44,7 @@ import com.teamcenter.rac.common.create.BOCreateDefinitionFactory;
 import com.teamcenter.rac.common.create.CreateInstanceInput;
 import com.teamcenter.rac.common.create.IBOCreateDefinition;
 import com.teamcenter.rac.common.create.SOAGenericCreateHelper;
+import com.teamcenter.rac.kernel.IPropertyName;
 import com.teamcenter.rac.kernel.ListOfValuesInfo;
 import com.teamcenter.rac.kernel.NamedReferenceContext;
 import com.teamcenter.rac.kernel.TCAccessControlService;
@@ -581,9 +582,13 @@ public class SDVPreBOMUtilities {
         
         String sMaturity = components.getProperty("s7_MATURITY");
         String sReleaseStatusList = components.getProperty("release_status_list");
-        String sProcessStageList = components.getProperty("process_stage_list");
+	    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체 
+//        String sProcessStageList = components.getProperty("process_stage_list");
+        String sProcessStageList = components.getProperty("fnd0StartedWorkflowTasks");
         String sProcessStage = "";
-        TCComponent[] process_stage_list = components.getReferenceListProperty("process_stage_list");
+	    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체 
+//        TCComponent[] process_stage_list = components.getReferenceListProperty("process_stage_list");
+        TCComponent[] process_stage_list = components.getReferenceListProperty("fnd0StartedWorkflowTasks");
         
         // 1. Release되어있지 않고 Workflow도 없는 경우
         if (sReleaseStatusList.equalsIgnoreCase("") && sProcessStageList.equalsIgnoreCase("")) {
@@ -617,7 +622,9 @@ public class SDVPreBOMUtilities {
      */
     public static boolean isInProcess(TCComponent components) throws TCException {
         // components.refresh();
-        if (components.getProperty("release_status_list").equalsIgnoreCase("") && !components.getProperty("process_stage_list").equalsIgnoreCase("")) {
+	    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체 
+//        if (components.getProperty("release_status_list").equalsIgnoreCase("") && !components.getProperty("process_stage_list").equalsIgnoreCase("")) {
+    	if (components.getProperty("release_status_list").equalsIgnoreCase("") && !components.getProperty("fnd0StartedWorkflowTasks").equalsIgnoreCase("")) {
             return true;
         }
         return false;
@@ -3232,8 +3239,23 @@ public class SDVPreBOMUtilities {
             
             // [20161014][ymjang] 변경사유 누락 수정
             String object_desc = propMap.get(PropertyConstant.ATTR_NAME_ITEMDESC) == null ? "" : propMap.get(PropertyConstant.ATTR_NAME_ITEMDESC).toString();
+
+            //[UPGRADE][20240308] CCN 생성 오류 수정
+//            TCComponentItem ccnItem = CustomUtil.createItem(TypeConstant.S7_PRECCNTYPE, ccnID, CommonConstant.CCNINITREVISIONNO, ccnID, object_desc);
             
-            TCComponentItem ccnItem = CustomUtil.createItem(TypeConstant.S7_PRECCNTYPE, ccnID, CommonConstant.CCNINITREVISIONNO, ccnID, object_desc);
+			//Item Property 속성 입력
+			Map<String, String> itemPropMap = new HashMap<>();
+			Map<String, String> itemRevsionPropMap = new HashMap<>();
+			itemPropMap.put(IPropertyName.ITEM_ID, ccnID);
+			itemPropMap.put(IPropertyName.OBJECT_NAME, ccnID);
+			itemPropMap.put(IPropertyName.OBJECT_DESC, object_desc);
+			//Item Revision 속성 입력
+			itemRevsionPropMap.put(IPropertyName.ITEM_REVISION_ID, CommonConstant.CCNINITREVISIONNO);
+            
+			//CCN Item 생성
+        	TCSession session = getTCSession();
+			TCComponentItem ccnItem = (TCComponentItem) CustomUtil.createItemObject(session, TypeConstant.S7_PRECCNTYPE, itemPropMap, itemRevsionPropMap);
+			
             TCComponentItemRevision ccnRevision = ccnItem.getLatestItemRevision();
             
             ccnRevision.setProperty(PropertyConstant.ATTR_NAME_PROJCODE, projectCode);

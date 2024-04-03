@@ -305,7 +305,9 @@ public class MecoSearchView extends AbstractSDVViewPane {
         	    /* [CF-3537] [20230131] 기존 검색 화면에서 반려된 MECO가 검색 안되는 문제가 있어서 아래 내용으로 수정 
         	    isWorkingStatus와 반려된 MECO도 나올 수 있게 수정 기존 SearchTypeItemView에서 MecoSearchView 검색창으로 변경 
         	         기존에는 CustomUtil.isWorkingStatus(result)만 사용해서 반려된 MECO가 검색 되지 않아서 result.getProperty("process_stage_list").contains("Creator")를 추가함*/
-                if (CustomUtil.isWorkingStatus(result) || result.getProperty("process_stage_list").contains("Creator")) {
+        	    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체
+//                if (CustomUtil.isWorkingStatus(result) || result.getProperty("process_stage_list").contains("Creator")) {
+            	if (CustomUtil.isWorkingStatus(result) || result.getProperty("fnd0StartedWorkflowTasks").contains("Creator")) {
                     revList.add(result);                    
                 }
             }

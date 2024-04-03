@@ -277,7 +277,8 @@ public class MECOSWTRenderingView extends AbstractSDVViewer {
 
             String[] processProps = null;
             try {
-                processProps = mecoRevision.getProperties(new String[] { "date_released", "process_stage_list" });
+        	    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체
+                processProps = mecoRevision.getProperties(new String[] { "date_released", "fnd0StartedWorkflowTasks" });
             } catch (TCException e) {
                 e.printStackTrace();
             }

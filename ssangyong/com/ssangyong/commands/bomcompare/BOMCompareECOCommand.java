@@ -105,7 +105,9 @@ public class BOMCompareECOCommand extends AbstractAIFCommand {
                     }
 
                     // ECO EPL generate
-                    String procList = ecoIr.getProperty("process_stage_list");
+                    // [20240404][UPGRADE] TC12.2 이후 process_stage_list 는 Root Task 만 표시하도록 되어 있어 fnd0StartedWorkflowTasks 로 교체
+//                    String procList = ecoIr.getProperty("process_stage_list");
+                    String procList = ecoIr.getProperty("fnd0StartedWorkflowTasks");
                     if(ecoIr.getProperty("release_status_list").equals("") && (procList.equals("") || procList.indexOf("Creator") != -1)) {
                         String ecoNo = ecoIr.getProperty("item_id");
                         String sessionUser = bomLine.getSession().getUser().getUserId();
