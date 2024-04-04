@@ -29,6 +29,7 @@ import com.teamcenter.rac.workflow.commands.newperformsignoff.SignoffDecisionOpe
  * [20160727][ymjang] ECO 보정내역은 ECO 최종 결재시에만 표시하도록 변경함.
  * [SR170816-008][LJG] ECO 최종 승인 시 s7_ECO_MATURITY(ECO 속성) 속성에 각각 Completed로 변경을 해주도록 W/F Handler셋팅이 되어있는데,
  * 종종 Handler가 속성변경을 못하는 경우가 있어서, 실패 했을경우 관리자에게 메일보내도록
+ * [20240404][UPGRADE] Decision 타입 체크하는 부분 TC13 변경으로 인한 수정
  * 
  */
 /** 코어의 DecisionDialog 를 상속받아서 재정의 */
@@ -169,7 +170,11 @@ public class SYMCDecisionDialog extends DecisionDialog {
 		//************* Validation 시작 ***********//  
 		// 2024.01.09  TCCRDecision.REJECT_DECISION  -->>  signoffObj.getRejectDecision()
 		try {
-			if(decision == signoffObj.getRejectDecision()){
+			
+			//[UPGRADE][2024.0404] Acknowledge Task 체크 후 수행 
+			boolean isAcknowledgeTask =	psTask != null && psTask.getParent().getTaskType().equals("EPMAcknowledgeTask");
+			
+			if(!isAcknowledgeTask && decision.getIntValue() == signoffObj.getRejectDecision().getIntValue()){
 				if(getComments() == null || getComments().equals("")){
 					MessageBox.post(Registry.getRegistry(this).getString("SYMCDecisionDialog.MESSAGE.CommentsMiss"), "INFORMATION", MessageBox.INFORMATION);
 					this.disposeDialog();
@@ -182,9 +187,8 @@ public class SYMCDecisionDialog extends DecisionDialog {
 			}
 			setEditable(false);
 
-			
-			// 2024.01.09  TCCRDecision.REJECT_DECISION  -->>  signoffObj.getApproveDecision()
-			if(decision == signoffObject.getApproveDecision()){
+			//[UPGRADE][2024.0404] 수정
+			if(decision.getIntValue() == signoffObject.getApproveDecision().getIntValue()){
 				checkReProcess();
 			}else{
 				validation = true;
@@ -297,7 +301,7 @@ public class SYMCDecisionDialog extends DecisionDialog {
 								 */
 								
 								// 2024.01.09  수정   TCCRDecision.APPROVE_DECISION  -->   signoffObj.getApproveDecision()
-								if(signoffObj.getDecision() == signoffObj.getApproveDecision()){
+								if(signoffObj.getDecision().getIntValue() == signoffObj.getApproveDecision().getIntValue()){
 									changeRevision.refresh();
 									String eco_maturity = changeRevision.getStringProperty("s7_ECO_MATURITY");
 									if(!"Completed".equalsIgnoreCase(eco_maturity)){
@@ -309,7 +313,7 @@ public class SYMCDecisionDialog extends DecisionDialog {
 							// [20170901][LJG] Design Team Leader : 결재 완료 시 처리
 							// 2024.01.09  수정   TCCRDecision.APPROVE_DECISION  -->   signoffObj.getApproveDecision()
 							if(thisTaskName.equals("Design Team Leader") ) {
-								if(signoffObj.getDecision() == signoffObj.getApproveDecision()){
+								if(signoffObj.getDecision().getIntValue() == signoffObj.getApproveDecision().getIntValue()){
 									changeRevision.refresh();
 									String eco_maturity = changeRevision.getStringProperty("s7_ECO_MATURITY");
 									if(!"Approved".equalsIgnoreCase(eco_maturity)){
