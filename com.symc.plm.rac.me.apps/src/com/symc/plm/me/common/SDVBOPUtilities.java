@@ -205,7 +205,7 @@ public class SDVBOPUtilities {
             	viewTypeStr = tempComp.getProperty("view_type");
             }
 
-            if(viewTypeStr!=null && viewTypeStr.equals(viewType)==true){
+            if(viewTypeStr!=null && viewTypeStr.equalsIgnoreCase(viewType)==true){
             	returnTarget = bomViewRevision;
             	break;
             }
