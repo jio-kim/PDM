@@ -79,15 +79,19 @@ public class ReplaceOperation extends AbstractAIFOperation {
        */
       if(target instanceof SYMCBOMLine)
       {
+    	  
     	  SYMCBOMLine targetBomLine = (SYMCBOMLine)target;
     	  TCComponentBOMLine parentBOMLine = targetBomLine.parent();
     	   
     	  if (parentBOMLine != null && targetBomLine.isHistoryTarget(parentBOMLine)) {
-    		  if(!targetBomLine.isHistoryChildAddOrReplacable(parentBOMLine, rev)) {
+    		  
+    		  TCComponentItemRevision revisionToReplace = rev == null?item.getLatestItemRevision():rev;
+    		  
+    		  if(!targetBomLine.isHistoryChildAddOrReplacable(parentBOMLine, revisionToReplace )) {
     			  isReplaceAble = false; 
     		  }else
     		  {
-    			  if(!targetBomLine.isAddOrReplacable(parentBOMLine, rev)) {
+    			  if(!targetBomLine.isAddOrReplacable(parentBOMLine, revisionToReplace)) {
     				  isReplaceAble = false; 
     			  }
     		  }
