@@ -162,8 +162,10 @@ public class PartSearch
     public void addMFGToList(TCComponentBOMLine tccomponentbomline) throws TCException
     {
         // jwlee 검색 or 조건 추가 WeldPoint
+    	// [20240412][UPGRADE] WeldPoint Type 을 찾아오는 방법 변경
         if((tccomponentbomline != null && (tccomponentbomline instanceof TCComponentMfgBvrWeldPoint)) ||
-            tccomponentbomline.getProperty(SDVPropertyConstant.BL_OBJECT_TYPE).equals("WeldPoint")){
+//            tccomponentbomline.getProperty(SDVPropertyConstant.BL_OBJECT_TYPE).equals("WeldPoint")){
+            tccomponentbomline.getItem().getType().equals("WeldPoint")){
             weldPointBOMLineList.add(tccomponentbomline);
         }
     }
