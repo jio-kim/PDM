@@ -26,6 +26,7 @@ import com.teamcenter.rac.util.Registry;
 
 /**
  *[SR140820-017][20150209]shcho, BOM Line 수량 표시 일관성 유지 필요의 일환으로 Shop-Line-공정-공법에 수량정보는 공백으로 한다.
+ *[UPGRADE] Mark Point 제거. 에러발생후 다시 진행이 안됨 
  *
  */
 public class CreateBodyOPActionOperation extends AbstractSDVActionOperation {
@@ -104,7 +105,8 @@ public class CreateBodyOPActionOperation extends AbstractSDVActionOperation {
 		ArrayList<?> inst_dwg_no = (ArrayList<?>) dataSet.getListValue("createOPView", SDVPropertyConstant.OPERATION_REV_INSTALL_DRW_NO);
 
 		TCSession session = CustomUtil.getTCSession();
-		Markpoint mp = new Markpoint(session);
+		//[UPGRADE] Mark
+		//Markpoint mp = new Markpoint(session);
 		try
 		{
 			if (op_code == null || op_code.trim().length() == 0)
@@ -238,13 +240,13 @@ public class CreateBodyOPActionOperation extends AbstractSDVActionOperation {
 		}
 		catch (Exception ex)
 		{
-			mp.rollBack();
+			//mp.rollBack();
 			setErrorMessage(ex.getMessage());
 			setExecuteError(ex);
 			throw ex;
 		}
 
-		mp.forget();
+		//mp.forget();
 	}
 	
 	/**
