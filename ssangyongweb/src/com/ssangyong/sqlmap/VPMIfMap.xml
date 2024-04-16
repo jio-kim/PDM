@@ -5,8 +5,13 @@
     
     <!-- //////////////////////////////////////////////////// I/F VALIDATE 관련 쿼리 시작 //////////////////////////////////////////////////////// -->
     <!-- I/F 유효성 체크 대상 리스트 - VPM Report Dialog 리스트용 -->
+    <!-- [20240416][UPGRADE] Date Type 을 String Type 으로 변환 --> 
     <resultMap id="ValidateVPMListMap" type="java.util.HashMap">
-         <result property="OPTION_CONDITION" javaType="java.lang.String" jdbcType="CLOB" column="OPTION_CONDITION"/>               
+         <result property="OPTION_CONDITION" javaType="java.lang.String" jdbcType="CLOB" column="OPTION_CONDITION"/>
+         <result property="IF_DATE" javaType="java.lang.String" jdbcType="DATE" column="IF_DATE"/>
+         <result property="MOD_DATE" javaType="java.lang.String" jdbcType="DATE" column="MOD_DATE"/>
+         <result property="INFORM_DATE" javaType="java.lang.String" jdbcType="DATE" column="INFORM_DATE"/>
+         <result property="END_DATE" javaType="java.lang.String" jdbcType="DATE" column="END_DATE"/>
     </resultMap>
     <select id="getValidateVPMList" parameterType="java.util.HashMap" resultMap="ValidateVPMListMap">  
         <if test="CPNO != null and CPNO != ''">
