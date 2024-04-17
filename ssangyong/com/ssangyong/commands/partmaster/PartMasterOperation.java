@@ -1,6 +1,8 @@
 package com.ssangyong.commands.partmaster;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.ssangyong.commands.ec.search.FileAttachmentComposite;
@@ -243,6 +245,8 @@ public class PartMasterOperation extends SYMCAbstractCreateOperation
 		
 		String[] szKey = attrMap.keySet().toArray(new String[attrMap.size()]);
 		TCProperty[] props = itemRev.getTCProperties(szKey);
+		
+		List<TCProperty> validPropsList = new ArrayList<>();
 
 		for (int i = 0; i < props.length; i++)
 		{
@@ -256,10 +260,16 @@ public class PartMasterOperation extends SYMCAbstractCreateOperation
 			Object value = attrMap.get(props[i].getPropertyName());
 
 			CustomUtil.setObjectToPropertyValue(props[i], value);
+			
+			validPropsList.add(props[i]);
 		}
+		
+		//[UPGRADE][240417] 속성값이 NULL일 경우 오류가 발생을 수정됨
+		TCProperty[] validProps = validPropsList.toArray(new TCProperty[validPropsList.size()]);
 
 		// 속성 일괄 반영
-		itemRev.setTCProperties(props);
+		//itemRev.setTCProperties(props);
+		itemRev.setTCProperties(validProps);
 		itemRev.refresh();
 
 		// SaveAS(Different) 인경우 BaseItem DataSet를 Copy 함
