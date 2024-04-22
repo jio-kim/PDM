@@ -112,9 +112,13 @@ public class ReportSubsidiaryAllListSOAOperation extends AbstractTCSDVOperation 
         
         String ccName = null;
         TCComponentCCObject ccObject = mfgLegacyApplication.getBOMWindow().getCC();
-        System.out.println("ccObject : "+ccObject.toString());
+        // [20240423][UPGRADE] MECollaborationContext 가 없는 경우 이후 로직을 실행하지 않도록 추가 
+//        System.out.println("ccObject : "+ccObject.toString());
         if(ccObject!=null && ccObject.getType().equalsIgnoreCase("MECollaborationContext")==true){
         	ccName = ccObject.getProperty("object_name");
+        } else {
+			MessageBox.post(AIFUtility.getActiveDesktop().getShell(), "There are no MECollaborationContext in Target Item.", "failure", MessageBox.ERROR);		
+        	return;
         }
         
         //System.out.println("userId = "+userId);
