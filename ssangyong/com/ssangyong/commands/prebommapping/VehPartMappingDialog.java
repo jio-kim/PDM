@@ -673,6 +673,11 @@ public class VehPartMappingDialog extends SYMCAbstractDialog {
             
             TableItem[] preSelected = tablePreVehPart.getSelection();
             TableItem[] eSelected = tableVehPart.getSelection();
+            
+            //[UPGRADE]선택된 것이 없을 경우 RETURN 함
+            if(preSelected.length == 0 || eSelected.length==0)
+            	return;         	
+            
             InterfaceAIFComponent selectedPrePart = (TCComponentItemRevision) preSelected[0].getData("CurPart");
             InterfaceAIFComponent selectedEPart = (TCComponentItemRevision) eSelected[0].getData("CurPart");
             selectedPreVehPartRev = (TCComponentItemRevision)selectedPrePart;
