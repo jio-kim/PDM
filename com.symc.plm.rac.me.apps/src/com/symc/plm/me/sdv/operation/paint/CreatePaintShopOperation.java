@@ -77,16 +77,17 @@ public class CreatePaintShopOperation extends AbstractSDVActionOperation {
          * Item 생성
          */
         createRootItem(SDVTypeConstant.BOP_PROCESS_SHOP_ITEM, itemId, shopKorName);
-
+        
         /**
          * 속성정보 입력
          */
         setProperties();
-
+        
         /**
          * MECO에 생성된 Item Revision을 붙임
          */
         AddRevisionToMecoRevision(createdItem);
+        
         /**
          * BOP Window를 Open함
          */
@@ -132,6 +133,8 @@ public class CreatePaintShopOperation extends AbstractSDVActionOperation {
 
             createdItem = (TCComponentItem) createCompList.get(0);
             createdBOPLine = (TCComponentBOMLine) createCompList.get(1);
+            //[UPGRADE] 생성후 속성 저장이 안되어서 수정함. BOPWindow 저장을 해야 속성 저장이 됨
+            createdBOPLine.window().save();
 
         } catch (TCException e) {
             e.printStackTrace();
@@ -187,7 +190,6 @@ public class CreatePaintShopOperation extends AbstractSDVActionOperation {
         
         //[SR140723-010][20140717] shcho, m7_JPH 속성의 타입을 정수에서 부동 소수점으로 변경. 소수점포함5자리까지 입력가능.
         if (!jph.isEmpty())
-            //createdItemRevision.setIntProperty(SDVPropertyConstant.SHOP_REV_JPH, Integer.parseInt(jph));
             createdItemRevision.setDoubleProperty(SDVPropertyConstant.SHOP_REV_JPH, Double.parseDouble(jph));
         if (!allowance.isEmpty())
             createdItemRevision.setDoubleProperty(SDVPropertyConstant.SHOP_REV_ALLOWANCE, Double.parseDouble(allowance));
