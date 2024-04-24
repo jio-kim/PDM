@@ -6,13 +6,14 @@
 
 
 	<!-- 하루전 수정된 지정 프로젝트의 모든 Spec 정보를 가져오는 부분 -->
+	<!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
 	<select id="getUpdatedSpecList" resultType="java.util.HashMap">
 		SELECT M.PROJECT_NO "PROJECT",
 		       M.SPEC_NO "SPEC",
 		       D.CATE_NO || D.OPTION_NO "STANDARD OPTION",
                GET_PRODUCT_BY_PROJECT(M.PROJECT_NO) "PRODUCT"
-		FROM   HBOM.PSPEC_MASTER@LINK_003_HBOM M,
-		       HBOM.PSPEC_DETAIL@LINK_003_HBOM D
+		FROM   HBOM.PSPEC_MASTER M,
+		       HBOM.PSPEC_DETAIL D
 		WHERE  M.SPEC_NO = D.SPEC_NO
 		AND    M.PROJECT_NO = D.PROJECT_NO
 		AND    M.GMODEL = D.GMODEL
@@ -61,6 +62,7 @@
 	</select>
 
 	<!-- Wiring part가 존재하지 않을 경우  -->
+	<!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
 	<select id="getReportSpecList" resultType="java.util.HashMap">
 		SELECT PROJECT_NO AS PROJECT,
 		       SPEC_NO AS "SPEC",
@@ -71,8 +73,8 @@
 		               M.SPEC_NO,
 		               WIRING_TYPE,
 		               D.CATE_NO || D.OPTION_NO OP
-		        FROM   HBOM.PSPEC_MASTER@LINK_003_HBOM M,
-		               HBOM.PSPEC_DETAIL@LINK_003_HBOM D,
+		        FROM   HBOM.PSPEC_MASTER M,
+		               HBOM.PSPEC_DETAIL D,
 		               WIRING_CATEGORY_NO WOC
 		        WHERE  M.SPEC_NO = D.SPEC_NO
 		        AND    M.PROJECT_NO = D.PROJECT_NO

@@ -288,6 +288,7 @@
      </select>
      
      <!-- [SR170707-024][ljg] Product의 Variant 가져 오는 쿼리 -->
+     <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
     <select id="getVariantList" parameterType="java.lang.String" resultType="java.lang.String" >
     SELECT CI.PITEM_ID                                                          
                , CI.PITEM_ID ||' '||V.PS7_ENGINE_NO AS DISP_VARIANT_NO                
@@ -301,7 +302,7 @@
                         , INFODBA.PWORKSPACEOBJECT PIRW                                                                                                    
                         , INFODBA.PS7_PRODUCTREVISION P                                                                                                    
                         , INFODBA.PITEMREVISION PIR                                                                                                        
-                        , HBOM.PRODUCT_VARIANT_MAINT@LINK_003_HBOM HBOM                                                                                    
+                        , HBOM.PRODUCT_VARIANT_MAINT HBOM                                                                                    
                     WHERE PIRW.PUID = PIR.PUID                                                                                                             
                       AND PIRW.PACTIVE_SEQ = '1'                                                                                                           
                       AND PIRW.PDATE_RELEASED IS NOT NULL                                                                                                  

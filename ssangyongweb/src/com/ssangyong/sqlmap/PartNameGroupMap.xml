@@ -193,6 +193,7 @@
 	<!-- 생산 스펙 000 리비젼만 검색 하도록 변경 beenlaho -->
     <!-- SR180209-050 생산스펙의 리비젼 정보 표시 -->
     <!-- 20190412 속도 개선 CSH -->
+    <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
 	<select id="getBuildSpecList" resultType="java.util.HashMap">
       with GMODEL as 
       (
@@ -209,7 +210,7 @@
              , sm.LAST_MODIFY_DATE as LAST_MODIFY_DATE
              , sm.VERSION as VERSION
       FROM GMODEL GM
-         , HBOM.PSPEC_MASTER@LINK_003_HBOM SM
+         , HBOM.PSPEC_MASTER SM
       WHERE sm.GMODEL = gm.gmodel_code
       and sm.status = 'CURR'
       <if test="SPEC_NO != null">
@@ -228,6 +229,7 @@
 	</select>
 
     <!-- Build Spec Option 변경 이력 조회 beenlaho -->
+    <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
   <select id="getSpecOptionChangeInfo" resultType="java.util.HashMap">
     SELECT A.SPEC_NO, 
        A.VERSION,
@@ -236,7 +238,7 @@
             WHEN TRIM(B.OPTION_NO_FROM) <![CDATA[<>]]> TRIM(B.OPTION_NO_TO) THEN 'C'
             WHEN TRIM(B.OPTION_NO_FROM) IS NOT NULL AND TRIM(B.OPTION_NO_TO) IS NULL THEN 'D'
        END AS FLAG
-      FROM HBOM.PSPEC_MASTER@LINK_003_HBOM A, HBOM.PSPEC_VERSION_HISTORY@LINK_003_HBOM B
+      FROM HBOM.PSPEC_MASTER A, HBOM.PSPEC_VERSION_HISTORY B
      WHERE A.SPEC_NO = B.SPEC_NO
        AND A.VERSION = B.VERSION
        AND A.STATUS = 'CURR'
@@ -249,7 +251,8 @@
        
        </if>
   </select>
-	
+  
+	<!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
 	<select id="getPlan15SpecList" resultType="java.util.HashMap">
 		SELECT A.SPECNO PUID,
 		       B.PRODUCT,
@@ -258,7 +261,7 @@
                A.VERSION,
 		       <!-- TO_DATE(A.YYYYMMDD, 'YYYYMMDD') CREATE_DATE -->
 		       (SELECT MAX(TO_CHAR(A1.LAST_MODIFY_DATE, 'YYYY-MM-DD'))
-	              FROM HBOM.PSPEC_MASTER@LINK_003_HBOM A1
+	              FROM HBOM.PSPEC_MASTER A1
 	             WHERE A1.GMODEL = A.GMODEL
 	               AND A1.SPEC_NO = A.SPECNO
 	               AND A1.VERSION = A.VERSION) CREATE_DATE,
@@ -393,6 +396,7 @@
 		 ORDER BY PSTRING_VALUE
 	</select>
 	
+	<!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
 	<select id="getBuildSpecWithCategory" resultType="java.util.HashMap">
 		SELECT CATE_NO, OPTION_NO
 		  FROM (SELECT CATE_NO,
@@ -402,11 +406,12 @@
 		                 ELSE
 		                  CATE_NO || OPTION_NO
 		               END OPTION_NO
-		          FROM HBOM.PSPEC_DETAIL@LINK_003_HBOM
+		          FROM HBOM.PSPEC_DETAIL
 		         WHERE SPEC_NO = #{PUID, jdbcType=VARCHAR})
 		 ORDER BY OPTION_NO
 	</select>
 	
+	<!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
 	<select id="getPlanResultSpecWithCategory" resultType="java.util.HashMap">
 		SELECT A.CATE_NO,
 		       CASE
@@ -415,7 +420,7 @@
 		         ELSE
 		          CATE_NO || OPTION_NO
 		       END AS OPTION_NO
-		  FROM HBOM.PSPEC_DETAIL@LINK_003_HBOM A
+		  FROM HBOM.PSPEC_DETAIL A
 		 WHERE SPEC_NO = #{PUID, jdbcType=VARCHAR}
 		 ORDER BY CASE
 		            WHEN LENGTH(OPTION_NO) = 4 THEN
@@ -425,6 +430,7 @@
 		          END
 	</select>
   <!-- 주간 에러 Report 조회 -->
+  	<!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
     <select id="getPngWeeklyErrorReport" resultType="java.util.HashMap">
     <!-- [CSH][SR181025-028] -->
     <!--  
@@ -457,7 +463,7 @@
               , H.REASON REASON
               , TO_CHAR(H.CREATION_DATE,'YYYY-MM-DD') CREATION_DATE
               , (select cate_no || option_no
-                 from HBOM.PSPEC_DETAIL@LINK_003_HBOM
+                 from HBOM.PSPEC_DETAIL
                  where SPEC_NO = H.SPEC_NO
                  and cate_no = 'A02' ) MY
           FROM PNG_WEEKLY_REPORT_HISTORY H, PNG_MASTER M
@@ -496,6 +502,7 @@
      SELECT TO_CHAR(MAX(H.CREATION_DATE),'YYYY-MM-DD') CREATION_DATE FROM PNG_WEEKLY_REPORT_HISTORY H
     </select>
     
+    <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
      <!-- build spec 별 옵션 코드 리스트 : ljg -->
     <select id="getOptionCodeList" resultType="java.util.HashMap">
      SELECT TMP.OPTION_NO
@@ -506,7 +513,7 @@
                         ELSE CATE_NO || OPTION_NO
                      END
                         AS OPTION_NO
-                FROM HBOM.PSPEC_DETAIL@LINK_003_HBOM 
+                FROM HBOM.PSPEC_DETAIL 
                 WHERE  1=1
                 AND  SPEC_NO = #{SPEC_NO, jdbcType=VARCHAR}
                 ORDER BY CASE WHEN LENGTH(OPTION_NO) = 4 THEN OPTION_NO
@@ -518,6 +525,7 @@
     </select>
     
     <!--[20170614][ljg] build spec 별 옵션 코드 리스트 중 Model Year 코드만 가져옴 -->
+    <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
     <select id="getModelYear" resultType="java.lang.String">
      SELECT TMP.OPTION_NO
         FROM (
@@ -527,7 +535,7 @@
                         ELSE CATE_NO || OPTION_NO
                      END
                         AS OPTION_NO
-                FROM HBOM.PSPEC_DETAIL@LINK_003_HBOM 
+                FROM HBOM.PSPEC_DETAIL 
                 WHERE  1=1
                 AND  SPEC_NO = #{SPEC_NO, jdbcType=VARCHAR}
                 ) TMP

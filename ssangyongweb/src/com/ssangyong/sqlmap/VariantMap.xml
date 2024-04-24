@@ -97,12 +97,14 @@
 	select SPEC_NO, DESCRIPTION from IF_H_BUILD_SPEC_NO_LIST where Variant_no like substr(#{VARIANT_ID}, 1, 7) || '%'  
   </select>
   
+  <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
   <select id="getBuildSpecList" resultType="java.util.HashMap">
-	select trim(spec_no) SPEC_NO, DESCRIPTION from HBOM.PSPEC_VW@LINK_003_HBOM where Variant_no like substr(#{VARIANT_ID}, 1, 7) || '%' group by SPEC_NO, DESCRIPTION  
+	select trim(spec_no) SPEC_NO, DESCRIPTION from HBOM.PSPEC_VW where Variant_no like substr(#{VARIANT_ID}, 1, 7) || '%' group by SPEC_NO, DESCRIPTION  
   </select>
   
+  <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
   <select id="getBuildSpecInfo" resultType="java.util.HashMap">
-	select * from HBOM.PSPEC_VW@LINK_003_HBOM where variant_no like substr(#{VARIANT_ID}, 1, 7) || '%' and PROJECT_NO = #{PROJECT_NO} and
+	select * from HBOM.PSPEC_VW where variant_no like substr(#{VARIANT_ID}, 1, 7) || '%' and PROJECT_NO = #{PROJECT_NO} and
 	SPEC_NO	in
 	  <foreach item="item" index="index" collection="SPEC_NO"
 	      open="(" separator="," close=")">

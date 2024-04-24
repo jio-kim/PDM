@@ -338,6 +338,7 @@
 	</select>
      
 	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
+	<!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
 	<select id="insertMfgSpec">
 	<![CDATA[
     INSERT INTO IF_USER.MFG_SPEC
@@ -346,7 +347,7 @@
                        , CASE WHEN LENGTH(A.OPTION_NO) = 4 THEN A.OPTION_NO
                               ELSE A.CATE_NO || A.OPTION_NO
                          END AS OPTION_NO
-                    FROM HBOM.PSPEC_DETAIL@LINK_003_HBOM A
+                    FROM HBOM.PSPEC_DETAIL A
                        , IF_MFG_SPEC B 
                    WHERE A.SPEC_NO = B.SPECNO
                      AND B.YYYYMMDD = ( SELECT MAX(A1.YYYYMMDD)
@@ -606,6 +607,7 @@
   </select>
   
   
+  <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
   <select id="getSpecInfo"  resultType="java.util.HashMap">
     <![CDATA[
          SELECT SPEC_NO                                        
@@ -622,10 +624,10 @@
             END AS OPTION_NO_1,                                 
             (                                                   
              SELECT CATE_NO_NAME                                
-             FROM HBOM.CATE_NO_MASTER@LINK_003_HBOM X           
+             FROM HBOM.CATE_NO_MASTER X           
              WHERE X.CATE_NO = A.CATE_NO                        
             ) AS CATE_NO_NAME                                   
-          FROM HBOM.PSPEC_DETAIL@LINK_003_HBOM A                
+          FROM HBOM.PSPEC_DETAIL A                
           WHERE SPEC_NO IN ( 'G00H0GR7 SD0046', 'G00H0GR7 SD0047') ORDER BY 1, 2  -- 스펙 정보 입력   ,'G00H0GR7 SD0047'
   
     ]]>

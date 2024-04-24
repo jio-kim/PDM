@@ -21,13 +21,14 @@
     </delete> 
     
     <!-- 15일 생산계획 스펙 조회 -->
+    <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
     <select id="getPlan15SpecList" resultType="java.util.HashMap">
       SELECT A.SPECNO PUID,
              B.PRODUCT,
              A.SPECNO SPEC_NO,
              'PLAN SPEC' "TYPE",
              (SELECT MAX(TO_CHAR(A1.LAST_MODIFY_DATE, 'YYYY-MM-DD'))
-                  FROM HBOM.PSPEC_MASTER@LINK_003_HBOM A1
+                  FROM HBOM.PSPEC_MASTER A1
                  WHERE A1.GMODEL = A.GMODEL
                    AND A1.SPEC_NO = A.SPECNO
                    AND A1.VERSION = A.VERSION) CREATE_DATE,
