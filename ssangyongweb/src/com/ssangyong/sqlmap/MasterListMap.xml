@@ -302,7 +302,7 @@
                         , INFODBA.PWORKSPACEOBJECT PIRW                                                                                                    
                         , INFODBA.PS7_PRODUCTREVISION P                                                                                                    
                         , INFODBA.PITEMREVISION PIR                                                                                                        
-                        , HBOM.PRODUCT_VARIANT_MAINT HBOM                                                                                    
+                        , PRODUCT_VARIANT_MAINT HBOM                                                                                    
                     WHERE PIRW.PUID = PIR.PUID                                                                                                             
                       AND PIRW.PACTIVE_SEQ = '1'                                                                                                           
                       AND PIRW.PDATE_RELEASED IS NOT NULL                                                                                                  

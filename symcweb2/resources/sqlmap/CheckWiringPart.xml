@@ -12,8 +12,8 @@
 		       M.SPEC_NO "SPEC",
 		       D.CATE_NO || D.OPTION_NO "STANDARD OPTION",
                GET_PRODUCT_BY_PROJECT(M.PROJECT_NO) "PRODUCT"
-		FROM   HBOM.PSPEC_MASTER M,
-		       HBOM.PSPEC_DETAIL D
+		FROM   PSPEC_MASTER M,
+		       PSPEC_DETAIL D
 		WHERE  M.SPEC_NO = D.SPEC_NO
 		AND    M.PROJECT_NO = D.PROJECT_NO
 		AND    M.GMODEL = D.GMODEL
@@ -73,8 +73,8 @@
 		               M.SPEC_NO,
 		               WIRING_TYPE,
 		               D.CATE_NO || D.OPTION_NO OP
-		        FROM   HBOM.PSPEC_MASTER M,
-		               HBOM.PSPEC_DETAIL D,
+		        FROM   PSPEC_MASTER M,
+		               PSPEC_DETAIL D,
 		               WIRING_CATEGORY_NO WOC
 		        WHERE  M.SPEC_NO = D.SPEC_NO
 		        AND    M.PROJECT_NO = D.PROJECT_NO

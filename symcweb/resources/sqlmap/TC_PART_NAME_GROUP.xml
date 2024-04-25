@@ -28,7 +28,7 @@
              A.SPECNO SPEC_NO,
              'PLAN SPEC' "TYPE",
              (SELECT MAX(TO_CHAR(A1.LAST_MODIFY_DATE, 'YYYY-MM-DD'))
-                  FROM HBOM.PSPEC_MASTER A1
+                  FROM PSPEC_MASTER A1
                  WHERE A1.GMODEL = A.GMODEL
                    AND A1.SPEC_NO = A.SPECNO
                    AND A1.VERSION = A.VERSION) CREATE_DATE,

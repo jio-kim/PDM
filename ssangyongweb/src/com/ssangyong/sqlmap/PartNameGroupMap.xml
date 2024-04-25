@@ -210,7 +210,7 @@
              , sm.LAST_MODIFY_DATE as LAST_MODIFY_DATE
              , sm.VERSION as VERSION
       FROM GMODEL GM
-         , HBOM.PSPEC_MASTER SM
+         , PSPEC_MASTER SM
       WHERE sm.GMODEL = gm.gmodel_code
       and sm.status = 'CURR'
       <if test="SPEC_NO != null">
@@ -238,7 +238,7 @@
             WHEN TRIM(B.OPTION_NO_FROM) <![CDATA[<>]]> TRIM(B.OPTION_NO_TO) THEN 'C'
             WHEN TRIM(B.OPTION_NO_FROM) IS NOT NULL AND TRIM(B.OPTION_NO_TO) IS NULL THEN 'D'
        END AS FLAG
-      FROM HBOM.PSPEC_MASTER A, HBOM.PSPEC_VERSION_HISTORY B
+      FROM PSPEC_MASTER A, PSPEC_VERSION_HISTORY B
      WHERE A.SPEC_NO = B.SPEC_NO
        AND A.VERSION = B.VERSION
        AND A.STATUS = 'CURR'
@@ -261,7 +261,7 @@
                A.VERSION,
 		       <!-- TO_DATE(A.YYYYMMDD, 'YYYYMMDD') CREATE_DATE -->
 		       (SELECT MAX(TO_CHAR(A1.LAST_MODIFY_DATE, 'YYYY-MM-DD'))
-	              FROM HBOM.PSPEC_MASTER A1
+	              FROM PSPEC_MASTER A1
 	             WHERE A1.GMODEL = A.GMODEL
 	               AND A1.SPEC_NO = A.SPECNO
 	               AND A1.VERSION = A.VERSION) CREATE_DATE,
@@ -406,7 +406,7 @@
 		                 ELSE
 		                  CATE_NO || OPTION_NO
 		               END OPTION_NO
-		          FROM HBOM.PSPEC_DETAIL
+		          FROM PSPEC_DETAIL
 		         WHERE SPEC_NO = #{PUID, jdbcType=VARCHAR})
 		 ORDER BY OPTION_NO
 	</select>
@@ -420,7 +420,7 @@
 		         ELSE
 		          CATE_NO || OPTION_NO
 		       END AS OPTION_NO
-		  FROM HBOM.PSPEC_DETAIL A
+		  FROM PSPEC_DETAIL A
 		 WHERE SPEC_NO = #{PUID, jdbcType=VARCHAR}
 		 ORDER BY CASE
 		            WHEN LENGTH(OPTION_NO) = 4 THEN
@@ -463,7 +463,7 @@
               , H.REASON REASON
               , TO_CHAR(H.CREATION_DATE,'YYYY-MM-DD') CREATION_DATE
               , (select cate_no || option_no
-                 from HBOM.PSPEC_DETAIL
+                 from PSPEC_DETAIL
                  where SPEC_NO = H.SPEC_NO
                  and cate_no = 'A02' ) MY
           FROM PNG_WEEKLY_REPORT_HISTORY H, PNG_MASTER M
@@ -513,7 +513,7 @@
                         ELSE CATE_NO || OPTION_NO
                      END
                         AS OPTION_NO
-                FROM HBOM.PSPEC_DETAIL 
+                FROM PSPEC_DETAIL 
                 WHERE  1=1
                 AND  SPEC_NO = #{SPEC_NO, jdbcType=VARCHAR}
                 ORDER BY CASE WHEN LENGTH(OPTION_NO) = 4 THEN OPTION_NO
@@ -535,7 +535,7 @@
                         ELSE CATE_NO || OPTION_NO
                      END
                         AS OPTION_NO
-                FROM HBOM.PSPEC_DETAIL 
+                FROM PSPEC_DETAIL 
                 WHERE  1=1
                 AND  SPEC_NO = #{SPEC_NO, jdbcType=VARCHAR}
                 ) TMP
