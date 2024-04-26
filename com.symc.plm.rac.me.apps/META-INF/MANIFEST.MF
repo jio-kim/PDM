@@ -5,7 +5,8 @@ Bundle-SymbolicName: com.symc.plm.rac.me.apps;singleton:=true
 Bundle-Version: 1.0.0.1
 Bundle-Activator: com.symc.plm.activator.Activator
 Bundle-Vendor: SYMC
-Require-Bundle: com.symc-newplm.external;bundle-version="1.0.0",
+Require-Bundle:  org.eclipse.nebula.widgets.grid;bundle-version="1.1.0",
+ com.symc-newplm.external;bundle-version="1.0.0",
  com.symc.plm.rac.me.interface;bundle-version="1.0.0",
  com.teamcenter.rac.cme.common;bundle-version="13000.2.0",
  TcSoaClassificationRac;bundle-version="13000.2.0",
@@ -26,7 +27,6 @@ Require-Bundle: com.symc-newplm.external;bundle-version="1.0.0",
  com.teamcenter.rac.cme.biw.module;bundle-version="13000.2.0",
  com.teamcenter.rac.cme.framework;bundle-version="13000.2.0",
  com.teamcenter.rac.util;bundle-version="13000.2.0",
- org.eclipse.nebula.widgets.grid;bundle-version="1.1.0",
  org.eclipse.osgi.services;bundle-version="3.7.100",
  org.eclipse.jface.databinding;bundle-version="1.8.400",
  org.eclipse.core.databinding;bundle-version="1.7.100",
