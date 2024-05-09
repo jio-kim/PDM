@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 
 @Controller
 @RequestMapping("/remote/*")
@@ -65,7 +65,7 @@ public class RemoteController {
 	        if (dataset.size() > 0)
 	        {
 	          aclass = (new Class[]
-	          { Class.forName("com.ssangyong.common.remote.DataSet") });
+	          { Class.forName("com.kgm.common.remote.DataSet") });
 	          adataset = (new DataSet[]
 	          { dataset });
 	        }

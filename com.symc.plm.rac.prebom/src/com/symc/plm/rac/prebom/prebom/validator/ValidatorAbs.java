@@ -3,8 +3,8 @@ package com.symc.plm.rac.prebom.prebom.validator;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.StringUtil;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.StringUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.teamcenter.rac.kernel.TCComponent;
 import com.teamcenter.rac.kernel.TCComponentListOfValues;

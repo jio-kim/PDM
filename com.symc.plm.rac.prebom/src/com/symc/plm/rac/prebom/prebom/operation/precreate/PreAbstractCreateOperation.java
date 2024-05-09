@@ -2,8 +2,8 @@ package com.symc.plm.rac.prebom.prebom.operation.precreate;
 
 import org.eclipse.core.runtime.IStatus;
 
-import com.ssangyong.common.SimpleProgressBar;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.SimpleProgressBar;
+import com.kgm.common.utils.CustomUtil;
 import com.teamcenter.rac.aif.AbstractAIFOperation;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;
 import com.teamcenter.rac.aifrcp.AIFUtility;

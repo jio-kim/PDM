@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.symc.plm.rac.cme.biw.apa.search.FindConnectedPartUtility;
@@ -21,7 +21,7 @@ import com.teamcenter.rac.kernel.TCSession;
 
 public class BOPStructureDataUtility {
 	
-	private final String serviceClassName = "com.ssangyong.service.SYMCBOPStructureService";
+	private final String serviceClassName = "com.kgm.service.SYMCBOPStructureService";
 	private DateFormat df = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss SSS");
 	
 	private TCSession session;

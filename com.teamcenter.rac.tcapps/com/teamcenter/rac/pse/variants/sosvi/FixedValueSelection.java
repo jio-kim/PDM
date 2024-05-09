@@ -16,8 +16,8 @@ import javax.swing.DefaultCellEditor;
 import javax.swing.JComboBox;
 import javax.swing.table.TableCellEditor;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.teamcenter.rac.aif.AbstractAIFOperation;
 import com.teamcenter.rac.kernel.TCComponent;
 import com.teamcenter.rac.kernel.TCComponentBOMLine;
@@ -127,7 +127,7 @@ abstract class FixedValueSelection extends ValueSelection {
         try {
             DataSet ds = new DataSet();
             ds.put("code_name", null);
-            ArrayList<HashMap> list = (ArrayList) remote.execute("com.ssangyong.service.VariantService", "getVariantValueDesc", ds);
+            ArrayList<HashMap> list = (ArrayList) remote.execute("com.kgm.service.VariantService", "getVariantValueDesc", ds);
             if (list != null) {
                 for (HashMap map : list) {
                     valueDescMap.put(map.get("CODE_NAME"), map.get("CODE_DESC"));

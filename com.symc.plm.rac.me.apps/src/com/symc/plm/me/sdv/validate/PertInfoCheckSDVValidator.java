@@ -13,9 +13,9 @@ import org.sdv.core.common.ISDVValidator;
 import org.sdv.core.common.exception.SDVException;
 import org.sdv.core.common.exception.ValidateSDVException;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.StringUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.common.utils.StringUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVStringUtiles;
 import com.symc.plm.me.utils.CustomUtil;
@@ -37,7 +37,7 @@ import com.teamcenter.rac.util.Registry;
 @SuppressWarnings({ "unchecked" })
 public class PertInfoCheckSDVValidator implements ISDVValidator {
     private Registry registry = Registry.getRegistry(PertInfoCheckSDVValidator.class);
-    private final String serviceClassName = "com.ssangyong.service.BopPertService";
+    private final String serviceClassName = "com.kgm.service.BopPertService";
 
     /**
      * Description :

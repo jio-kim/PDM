@@ -11,9 +11,9 @@ import org.sdv.core.common.IViewPane;
 import org.sdv.core.common.data.IDataMap;
 import org.sdv.core.ui.UIManager;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCSoaWebUtil;
-import com.ssangyong.common.remote.SecurityUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCSoaWebUtil;
+import com.kgm.common.remote.SecurityUtil;
 import com.symc.plm.me.sdv.operation.AbstractTCSDVOperation;
 import com.symc.plm.me.sdv.view.report.SOAReportMessageView;
 import com.teamcenter.rac.aif.AIFPortal;
@@ -173,7 +173,7 @@ public class ReportBOPOperationMasterListSOAOperation extends AbstractTCSDVOpera
 		ds.put("selectedValue", localDataMap0.getValue("selectedValue"));
 		/////////////////////////////////////////////////////////////////////////////
 		SYMCSoaWebUtil soaWebUtil = new SYMCSoaWebUtil();
-		String returnVal = (String)soaWebUtil.execute("com.ssangyong.soa.service.BOPReportService",
+		String returnVal = (String)soaWebUtil.execute("com.kgm.soa.service.BOPReportService",
 			"makeReport",
 			ds);
 		

@@ -22,8 +22,8 @@ import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpTrim;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpTrim;
 import com.symc.plm.rac.prebom.ccn.excel.common.ExcelTemplateHelper;
 import com.teamcenter.rac.aif.AbstractAIFOperation;
 

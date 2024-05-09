@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.kgm.mapper.PEInterfaceMapper">
+	
+	<select id="getProductEndItemABSOccPuidList" resultType="java.util.HashMap">
+		WITH APPEARANCE AS (
+		SELECT PMEAPPEARANCEPATHROOT.PUID AS ROOT_PUID 
+		FROM INFODBA.PMEAPPEARANCEPATHROOT, 
+			INFODBA.PITEM
+		WHERE PMEAPPEARANCEPATHROOT.RTRACKED_ITEMU=PITEM.puid
+			AND PITEM.PITEM_ID=#{productItemId, jdbcType=VARCHAR}
+		)
+		SELECT RABS_OCCU AS ABS_OCC_PUID 
+		FROM INFODBA.PMEAPPEARANCEPATHNODE,
+			APPEARANCE 
+		WHERE ROCC_THREADU=#{endItemOccThreadPuid, jdbcType=VARCHAR}
+			AND RPATH_ROOTU=APPEARANCE.ROOT_PUID
+		<if test="parentOccThreadPuid != null">
+			AND RPARENTU IN (
+				SELECT PUID 
+				FROM INFODBA.PMEAPPEARANCEPATHNODE,
+					APPEARANCE 
+				WHERE ROCC_THREADU=#{parentOccThreadPuid, jdbcType=VARCHAR}
+					AND RPATH_ROOTU=APPEARANCE.ROOT_PUID
+			)
+		</if>
+	</select>
+	
+</mapper>

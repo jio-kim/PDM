@@ -3,9 +3,9 @@ package com.symc.plm.rac.prebom.release.commands;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.teamcenter.rac.aif.AbstractAIFCommand;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;

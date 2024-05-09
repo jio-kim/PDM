@@ -52,7 +52,7 @@ public class ProcessSheetSearchEngineNew {
 	private String currentFindKeyStr  = null;
 	private InstructionSheetSearchUtil instructionSheetSearchUtil;
 	
-	private final String serviceClassName = "com.ssangyong.service.OperationSearchQueryService";
+	private final String serviceClassName = "com.kgm.service.OperationSearchQueryService";
 
 	TCSession session;
 	IDataSet dataset;

@@ -651,7 +651,7 @@ public class FindConnectedPartUtility {
 //
 //        ArrayList<HashMap<String, Object>> results;
 //
-//        String serviceClassName = "com.ssangyong.service.BopPertService";
+//        String serviceClassName = "com.kgm.service.BopPertService";
 //        results = (ArrayList<HashMap<String, Object>>) remoteUtil.execute(serviceClassName, "selectStationDecessorsList", ds);
 //        for(HashMap result : results){
 //            decessorsList.add((String) result.get("ID"));

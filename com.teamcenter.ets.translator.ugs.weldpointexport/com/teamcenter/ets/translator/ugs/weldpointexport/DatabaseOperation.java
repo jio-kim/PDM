@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Properties;
 import java.util.Vector;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.teamcenter.ets.load.DefaultDatabaseOperation;
 import com.teamcenter.ets.soa.ConnectionInformation;
 import com.teamcenter.ets.soa.SoaHelper;
@@ -129,7 +129,7 @@ public class DatabaseOperation extends DefaultDatabaseOperation {
 	/**
 	 * DB Query 관련 주요 변경 사항
 	 * ----------------------------------------------------------------------------
-	 *  com.ssangyong.service.WeldPointService 여전히 사용중인 Query
+	 *  com.kgm.service.WeldPointService 여전히 사용중인 Query
 	 *  ---------------------------------------------------------------------------
 	 * 	  updateWeldPointTransLog <Util.updateWeldPointTransLog()>
 	 * 	  getChildren <Util.removeChildLineWithChildId(), Util.getChildren()>
@@ -139,7 +139,7 @@ public class DatabaseOperation extends DefaultDatabaseOperation {
 	 * 
 	 * position Matrix 계산을 위해 j3dcore.jar, j3dutils.jar, vecmath.jar 파일을 Lib에 추가해 줘야 한다.
 	 * 
-	 * 나머지 Query는 com.ssangyong.service.WeldPoint2ndService에
+	 * 나머지 Query는 com.kgm.service.WeldPoint2ndService에
 	 * 신규 등록된 Query들을 사용함.
 	 */
 
@@ -509,7 +509,7 @@ public class DatabaseOperation extends DefaultDatabaseOperation {
 			ds.put("TRANS_MSG", transMsg);
 			
 			String servletUrlStr = prop.getProperty("servlet.url");
-			Util.execute(servletUrlStr,"com.ssangyong.service.WeldPointService", "updateWeldPointTransLog", ds, false);
+			Util.execute(servletUrlStr,"com.kgm.service.WeldPointService", "updateWeldPointTransLog", ds, false);
 		
 		}catch(Exception ex){
 			ByteArrayOutputStream out = new ByteArrayOutputStream();
@@ -1030,7 +1030,7 @@ public class DatabaseOperation extends DefaultDatabaseOperation {
 		ds.put("the_tsabun", tsabun);
     		
 		try {
-    		Util.execute(servletUrlStr,"com.ssangyong.service.ECOService", "sendMail", ds, false);
+    		Util.execute(servletUrlStr,"com.kgm.service.ECOService", "sendMail", ds, false);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

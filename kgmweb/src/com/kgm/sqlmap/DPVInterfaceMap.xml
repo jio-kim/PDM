@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+  
+<mapper namespace="com.kgm.dao.DPVInterfaceMapper">
+	<select id="searchTargetReports" parameterType="java.lang.String" resultType="DPVInterfaceData">
+		SELECT part_no, dpv_no					
+		FROM IF_DPV_PART							
+		WHERE STAT= 'C'
+	</select>
+	<update id="updateInterfaceInfo" parameterType="DPVInterfaceData">
+		UPDATE IF_DPV_PART                   	
+		SET STAT = #{if_status}           
+		WHERE PART_NO = #{part_no}          
+		AND DPV_NO = #{dpv_no}         	
+		AND STAT = 'C'
+	</update>
+	<select id="getItemRevisionPuid" parameterType="java.lang.String" resultType="java.lang.String">
+		SELECT R.PUID part_rev_puid                            	
+		FROM PITEM I                               	
+		    ,PITEMREVISION R                   		
+		    ,PWORKSPACEOBJECT W                    	
+		WHERE I.PUID = R.RITEMS_TAGU               	
+		AND R.PUID = W.PUID                        	
+		AND R.PITEM_REVISION_ID =                  	
+		    (SELECT MAX(IR.PITEM_REVISION_ID)      	
+		     FROM PITEMREVISION IR                 	
+		         ,PWORKSPACEOBJECT IW               	
+		   WHERE IR.RITEMS_TAGU = I.PUID          	
+		   AND IR.PUID = IW.PUID          			
+		   AND IW.PDATE_RELEASED IS NOT NULL)			
+		AND W.PACTIVE_SEQ = '1'	
+		AND I.PITEM_ID = #{part_no}                 
+		AND POBJECT_TYPE = 'S7_VehpartRevision'
+	</select>
+	<update id="updatePartProperty" parameterType="DPVInterfaceData">
+		UPDATE PS7_VEHPARTREVISION                   	
+		SET PS7_DVP_RESULT = #{dpv_no}              
+		WHERE PUID = #{part_rev_puid} 
+	</update>
+</mapper>

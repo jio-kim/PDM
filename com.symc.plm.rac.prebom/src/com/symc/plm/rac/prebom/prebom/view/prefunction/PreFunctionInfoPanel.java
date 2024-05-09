@@ -13,10 +13,10 @@ import org.eclipse.swt.layout.GridLayout;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-import com.ssangyong.common.SYMCLOVComboBox;
-import com.ssangyong.common.SYMCLabel;
-import com.ssangyong.common.SYMCText;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.SYMCLOVComboBox;
+import com.kgm.common.SYMCLabel;
+import com.kgm.common.SYMCText;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.prebom.validator.prefunction.PreFunctionValidator;

@@ -1,4 +1,4 @@
-package com.ssangyong.common.remote;
+package com.kgm.common.remote;
 
 
 import java.util.ArrayList;

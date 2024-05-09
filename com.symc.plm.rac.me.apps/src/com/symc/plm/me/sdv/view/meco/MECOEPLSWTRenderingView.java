@@ -26,10 +26,10 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.progressbar.WaitProgressor;
-import com.ssangyong.rac.kernel.SYMCBOPEditData;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.rac.kernel.SYMCBOPEditData;
+import com.kgm.common.utils.progressbar.WaitProgressor;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.viewer.AbstractSDVViewer;
 import com.symc.plm.me.sdv.command.meco.dao.CustomMECODao;
@@ -43,8 +43,8 @@ import com.teamcenter.rac.kernel.TCComponentChangeItemRevision;
 import com.teamcenter.rac.kernel.TCException;
 import com.teamcenter.rac.kernel.TCSession;
 import com.teamcenter.rac.util.MessageBox;
-//import com.ssangyong.common.remote.DataSet;
-//import com.ssangyong.common.remote.SYMCRemoteUtil;
+//import com.kgm.common.remote.DataSet;
+//import com.kgm.common.remote.SYMCRemoteUtil;
 //import com.teamcenter.rac.kernel.TCComponentBOMWindow;
 /**
  * Class Name : EPL

@@ -369,9 +369,9 @@
 	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<ref bean="checkWiringPartJobTrigger"/>
+				<!-- <ref bean="checkWiringPartJobTrigger"/> -->
 
-<!--                 <ref bean="setTcPeIFJobTrigger"/>
+                <ref bean="setTcPeIFJobTrigger"/>
                 <ref bean="setSupplyModeJobTrigger"/>
                 <ref bean="setVariantValueJobTrigger"/>
                 <ref bean="bpInterfaceJobTrigger"/>
@@ -385,7 +385,7 @@
                 <ref bean="fullBOMTrigger"/>
                 <ref bean="pngVerificationJobTrigger"/>
                 <ref bean="updateVendorTrigger"/>
- -->                
+                
                 <!-- 20171227 eai 전송하지 않는 product 생성 (D300) -->
                 <!-- <ref bean="notEaifullBOMTrigger"/> -->
 				              

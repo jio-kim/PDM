@@ -24,9 +24,9 @@ import org.sdv.core.common.data.RawDataMap;
 import org.sdv.core.common.exception.ExecuteSDVException;
 import org.sdv.core.common.exception.ValidateSDVException;
 
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.SYMDisplayUtil;
-import com.ssangyong.common.utils.SYMStringUtil;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.SYMDisplayUtil;
+import com.kgm.common.utils.SYMStringUtil;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVProcessUtils;
 import com.symc.plm.me.common.SDVPropertyConstant;

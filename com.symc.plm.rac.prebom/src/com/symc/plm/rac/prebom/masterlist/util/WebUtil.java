@@ -3,9 +3,9 @@ package com.symc.plm.rac.prebom.masterlist.util;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.teamcenter.rac.kernel.TCSession;
 
 public class WebUtil {
@@ -16,7 +16,7 @@ public class WebUtil {
 		ds.put("ITEM_ID", itemId);
 		try {
 			
-			ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>)remote.execute("com.ssangyong.service.MasterListService", "getPart", ds);
+			ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>)remote.execute("com.kgm.service.MasterListService", "getPart", ds);
 			
 			if( list != null && !list.isEmpty()){
 				return list.get(0);
@@ -37,7 +37,7 @@ public class WebUtil {
 			String user_ID = session.getUser().getUserId();
 			ds.put("USER_ID", user_ID);
 			
-			return (ArrayList<HashMap>)remote.execute("com.ssangyong.service.MasterListService", "getWorkingCCN", ds);
+			return (ArrayList<HashMap>)remote.execute("com.kgm.service.MasterListService", "getWorkingCCN", ds);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			throw e;
@@ -50,7 +50,7 @@ public class WebUtil {
 		try {
 			ds.put("ITEM_NAME", partName);
 			
-			Object obj = remote.execute("com.ssangyong.service.MasterListService", "getExistPart", ds);
+			Object obj = remote.execute("com.kgm.service.MasterListService", "getExistPart", ds);
 			if( obj != null){
 				return true;
 			}
@@ -68,7 +68,7 @@ public class WebUtil {
 		try {
 			ds.put("ITEM_ID", partNo);
 			
-			Object obj = remote.execute("com.ssangyong.service.MasterListService", "getExistPart", ds);
+			Object obj = remote.execute("com.kgm.service.MasterListService", "getExistPart", ds);
 			if( obj != null){
 				return true;
 			}

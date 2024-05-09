@@ -9,8 +9,8 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.prebom.operation.precreate.PrePartMasterOperation;
 import com.symc.plm.rac.prebom.prebom.validator.preproject.PreProjectValidator;

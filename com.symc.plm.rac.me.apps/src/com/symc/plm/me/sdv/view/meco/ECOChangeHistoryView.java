@@ -31,9 +31,9 @@ import org.sdv.core.util.UIUtil;
 
 import swing2swt.layout.BorderLayout;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.utils.StringUtil;
-import com.ssangyong.rac.kernel.SYMCBOMEditData;
+import com.kgm.common.remote.DataSet;
+import com.kgm.rac.kernel.SYMCBOMEditData;
+import com.kgm.common.utils.StringUtil;
 import com.symc.plm.me.common.SDVLOVUtils;
 import com.symc.plm.me.common.viewer.AbstractSDVViewer;
 import com.symc.plm.me.sdv.command.meco.dao.CustomMECODao;
@@ -68,7 +68,7 @@ public class ECOChangeHistoryView extends AbstractSDVViewer {
 
     @Override
     public void createPanel(Composite parent) {
-        registry = Registry.getRegistry("com.ssangyong.common.common");
+        registry = Registry.getRegistry("com.kgm.common.common");
 
         Display display = parent.getDisplay();
         evenColor = new Color(display, 192, 214, 248);

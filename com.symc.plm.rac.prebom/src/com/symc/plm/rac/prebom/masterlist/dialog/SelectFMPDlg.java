@@ -23,7 +23,7 @@ import javax.swing.JTable;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
 
-import com.ssangyong.common.WaitProgressBar;
+import com.kgm.common.WaitProgressBar;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;
 import com.teamcenter.rac.aif.AbstractAIFDialog;

@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.teamcenter.rac.aif.AIFDesktop;
 import com.teamcenter.rac.aif.kernel.AIFComponentContext;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;
@@ -402,7 +402,7 @@ public class SYMCBOMWindow extends TCComponentBOMWindow {
 		ds.put("the_title", title);
 		ds.put("the_remark", body);
 		ds.put("the_tsabun", toUsers);
-		return (Boolean) remoteQuery.execute("com.ssangyong.service.ECOService", "sendMail", ds);
+		return (Boolean) remoteQuery.execute("com.kgm.service.ECOService", "sendMail", ds);
 	}
     
     public void addRevisionToDeleteList(TCComponentItemRevision revision){
@@ -482,7 +482,7 @@ public class SYMCBOMWindow extends TCComponentBOMWindow {
             return false;
         }--
         
-        Registry registry = Registry.getRegistry("com.ssangyong.commands.ec.history.history");
+        Registry registry = Registry.getRegistry("com.kgm.commands.ec.history.history");
         
         InterfaceSYMCECOSelect bomSave = (InterfaceSYMCECOSelect)registry.newInstanceFor("bomECOSelectDialog", new Object[]{AIFUtility.getActiveDesktop().getShell()});
         String ecoNo = bomSave.getECONo();
@@ -496,7 +496,7 @@ public class SYMCBOMWindow extends TCComponentBOMWindow {
             ds.put("ecoNo", ecoNo);
             ds.put("userId", getSession().getUser().getUserId());
             ds.put("bomEditData", bomChangedData.getChangedBOMEditData());
-            Boolean returnValue = (Boolean)remote.execute("com.ssangyong.service.ECOHistoryService", "insertECOBOMWork", ds);
+            Boolean returnValue = (Boolean)remote.execute("com.kgm.service.ECOHistoryService", "insertECOBOMWork", ds);
             return returnValue.booleanValue();
         } catch (Exception e) {
             e.printStackTrace();

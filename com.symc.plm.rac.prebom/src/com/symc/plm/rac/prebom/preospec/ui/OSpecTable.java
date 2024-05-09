@@ -20,14 +20,14 @@ import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumnModel;
 
-import com.ssangyong.commands.ospec.groupheader.ColumnGroup;
-import com.ssangyong.commands.ospec.groupheader.GroupableTableHeader;
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpTrim;
-import com.ssangyong.commands.ospec.op.Option;
-import com.ssangyong.common.ui.mergetable.AttributiveCellTableModel;
-import com.ssangyong.common.ui.mergetable.CellSpan;
-import com.ssangyong.common.ui.mergetable.MultiSpanCellTable;
+import com.kgm.commands.ospec.groupheader.ColumnGroup;
+import com.kgm.commands.ospec.groupheader.GroupableTableHeader;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpTrim;
+import com.kgm.commands.ospec.op.Option;
+import com.kgm.common.ui.mergetable.AttributiveCellTableModel;
+import com.kgm.common.ui.mergetable.CellSpan;
+import com.kgm.common.ui.mergetable.MultiSpanCellTable;
 
 public class OSpecTable {
 	

@@ -8,7 +8,7 @@ import java.util.HashMap;
 import java.util.Properties;
 import java.util.Vector;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.teamcenter.ets.soa.SoaHelper;
 import com.teamcenter.soa.client.Connection;
 import com.teamcenter.soa.client.model.ModelObject;
@@ -26,7 +26,7 @@ import com.teamcenter.tstk.util.log.ITaskLogger;
 public class WeldPointDataManager {
 	
 	private Properties prop;
-	private String serviceClassName = "com.ssangyong.service.WeldPoint2ndService";
+	private String serviceClassName = "com.kgm.service.WeldPoint2ndService";
 	private String servletUrlStr;
 	private double allowanceDistance = 0.004;
 	

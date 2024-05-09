@@ -6,7 +6,7 @@ package com.symc.plm.rac.prebom.prebom.commands;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.prebom.dialog.revise.PreReviseDialog;

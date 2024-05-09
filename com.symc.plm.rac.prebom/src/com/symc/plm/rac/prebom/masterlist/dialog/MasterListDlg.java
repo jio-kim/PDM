@@ -64,12 +64,12 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpTrim;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.ui.MultiLineToolTip;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.variant.VariantOption;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpTrim;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.ui.MultiLineToolTip;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.variant.VariantOption;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;
 import com.symc.plm.rac.prebom.common.util.OptionManager;

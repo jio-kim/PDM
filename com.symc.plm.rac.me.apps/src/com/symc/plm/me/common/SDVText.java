@@ -14,7 +14,7 @@ import org.eclipse.swt.events.VerifyEvent;
 import org.eclipse.swt.events.VerifyListener;
 import org.eclipse.swt.widgets.Composite;
 
-import com.ssangyong.common.utils.SYMDisplayUtil;
+import com.kgm.common.utils.SYMDisplayUtil;
 
 /**
  * Class Name : SDVText
@@ -153,7 +153,7 @@ public class SDVText extends StyledText{
      * Default, Upper Case, Lower Case 처리
      * @Copyright : S-PALM
      * @author : 권오규
-     * @since : 2013. 1. 9. Package ID : com.ssangyong.common.SDVText.java
+     * @since : 2013. 1. 9. Package ID : com.kgm.common.SDVText.java
      */
     private class SDVVerifyListener implements VerifyListener {
         @Override
@@ -202,7 +202,7 @@ public class SDVText extends StyledText{
      * VerifyListener 에서 백스페이스 바 처리가 안되어 VerifyKeyListener를 따로 생성하여 처리하였음
      * @Copyright : S-PALM
      * @author : 권오규
-     * @since : 2013. 1. 9. Package ID : com.ssangyong.common.SDVText.java
+     * @since : 2013. 1. 9. Package ID : com.kgm.common.SDVText.java
      */
     private class SDVVerifyKeyListener implements VerifyKeyListener {
 

@@ -10,8 +10,8 @@ import org.eclipse.ui.IViewReference;
 import org.sdv.core.common.data.IDataSet;
 import org.sdv.core.ui.operation.AbstractSDVActionOperation;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.activator.Activator;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;
@@ -51,7 +51,7 @@ import com.teamcenter.rac.util.PlatformHelper;
 public class OccGroupCreateUpdateActionOperation extends AbstractSDVActionOperation {
 
     private TCComponentBOMLine mProductBomLine;
-    private final String serviceClassName = "com.ssangyong.service.BopPertService";
+    private final String serviceClassName = "com.kgm.service.BopPertService";
     private TCSession tcsession;
     private String altOccGroupPreFix = "";
     private List<String> bomLineIDList;

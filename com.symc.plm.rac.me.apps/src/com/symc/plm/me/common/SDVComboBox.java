@@ -7,7 +7,7 @@ import org.eclipse.jface.fieldassist.ControlDecoration;
 import org.eclipse.swt.widgets.Combo;
 import org.eclipse.swt.widgets.Composite;
 
-import com.ssangyong.common.utils.SYMDisplayUtil;
+import com.kgm.common.utils.SYMDisplayUtil;
 
 /**
  *

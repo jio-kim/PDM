@@ -17,15 +17,15 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.commands.ec.SYMCECConstant;
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpUtil;
-import com.ssangyong.commands.ospec.op.Option;
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.DatasetService;
-import com.ssangyong.common.utils.SWTUtilities;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.ec.SYMCECConstant;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpUtil;
+import com.kgm.commands.ospec.op.Option;
+import com.kgm.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.utils.DatasetService;
+import com.kgm.common.utils.SWTUtilities;
 import com.symc.plm.rac.prebom.preospec.ui.PreOSpecMandatoryTable;
 import com.teamcenter.rac.aif.kernel.AIFComponentContext;
 import com.teamcenter.rac.aifrcp.AIFUtility;
@@ -248,8 +248,8 @@ public class PreOSpecMandatoryDlg extends SYMCAbstractDialog {
 			DataSet ds = new DataSet();
 			ds.setString("OSPEC_NO", ospec.getOspecNo());
 			
-			remote.execute("com.ssangyong.service.PreOSpecService", "deletePreOSpecMandatoryTrim", ds);
-			remote.execute("com.ssangyong.service.PreOSpecService", "deletePreOSpecMandatoryInfo", ds);
+			remote.execute("com.kgm.service.PreOSpecService", "deletePreOSpecMandatoryTrim", ds);
+			remote.execute("com.kgm.service.PreOSpecService", "deletePreOSpecMandatoryInfo", ds);
 			
 			for (int inx = 0; inx < iRowCount; inx++) {
 				HashMap<String, String> hmMandatoryInfo = table.getMandatoryInfo(inx, false);
@@ -264,7 +264,7 @@ public class PreOSpecMandatoryDlg extends SYMCAbstractDialog {
 					dsMandatoryInfo.setString(sKey, hmMandatoryInfo.get(sKey));
 				}
 				
-				remote.execute("com.ssangyong.service.PreOSpecService", "insertPreOSpecMandatoryInfo", dsMandatoryInfo);
+				remote.execute("com.kgm.service.PreOSpecService", "insertPreOSpecMandatoryInfo", dsMandatoryInfo);
 				
 				ArrayList<HashMap<String, String>> alMandatoryTrim = table.getMandatoryTrim(inx);
 				
@@ -281,7 +281,7 @@ public class PreOSpecMandatoryDlg extends SYMCAbstractDialog {
 						dsMandatoryTrim.setString(sKey, hmMandatoryTrim.get(sKey));
 					}
 					
-					remote.execute("com.ssangyong.service.PreOSpecService", "insertPreOSpecMandatoryTrim", dsMandatoryTrim);
+					remote.execute("com.kgm.service.PreOSpecService", "insertPreOSpecMandatoryTrim", dsMandatoryTrim);
 				}
 			}
 			

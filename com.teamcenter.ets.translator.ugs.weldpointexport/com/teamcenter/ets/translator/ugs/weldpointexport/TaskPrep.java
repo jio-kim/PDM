@@ -28,7 +28,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Properties;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.teamcenter.ets.extract.DefaultTaskPrep;
 import com.teamcenter.ets.request.TranslationRequest;
 import com.teamcenter.ets.soa.SoaHelper;
@@ -496,7 +496,7 @@ public class TaskPrep extends DefaultTaskPrep {
 		ds.put("the_tsabun", tsabun);
     		
 		try {
-    		Util.execute(servletUrlStr,"com.ssangyong.service.ECOService", "sendMail", ds, false);
+    		Util.execute(servletUrlStr,"com.kgm.service.ECOService", "sendMail", ds, false);
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}

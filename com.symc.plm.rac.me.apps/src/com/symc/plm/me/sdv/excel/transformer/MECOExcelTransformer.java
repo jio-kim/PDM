@@ -21,7 +21,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.sdv.core.common.data.IDataMap;
 import org.sdv.core.common.data.IDataSet;
 
-import com.ssangyong.rac.kernel.SYMCBOPEditData;
+import com.kgm.rac.kernel.SYMCBOPEditData;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.teamcenter.rac.kernel.TCComponentPerson;
 

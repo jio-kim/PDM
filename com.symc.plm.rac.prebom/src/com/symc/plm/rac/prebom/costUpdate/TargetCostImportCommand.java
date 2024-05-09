@@ -1,6 +1,6 @@
 package com.symc.plm.rac.prebom.costUpdate;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.teamcenter.rac.aif.AbstractAIFCommand;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;

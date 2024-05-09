@@ -28,7 +28,7 @@ import org.apache.commons.net.ftp.FTPFile;
 import org.apache.commons.net.ftp.FTPReply;
 import org.apache.log4j.Logger;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 
 public class Util {
 	

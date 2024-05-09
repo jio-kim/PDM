@@ -25,7 +25,7 @@ import java.util.Properties;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.teamcenter.ets.soa.SoaHelper;
 import com.teamcenter.schemas.soa._2006_03.exceptions.ServiceException;
 import com.teamcenter.services.internal.loose.core.ICTService;
@@ -138,7 +138,7 @@ public class Util {
 		ds.put("child_rev_id", childRevID);
 		
 		// DB에서 삭제 대상인 것의 목록을 읽어 온다.
-		ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>)Util.execute(servletUrlStr,"com.ssangyong.service.WeldPointService", "getChildren",ds, true);
+		ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>)Util.execute(servletUrlStr,"com.kgm.service.WeldPointService", "getChildren",ds, true);
 		if( list == null || list.isEmpty()){
 			return;
 		}
@@ -295,7 +295,7 @@ public class Util {
 		
 		DataSet ds = new DataSet();
 		ds.put("epl_id", eplId);
-		HashMap<String, Object> map = (HashMap<String, Object>)Util.execute(servletUrlStr, "com.ssangyong.service.WeldPointService", "getEcoEplInfo", ds, true);
+		HashMap<String, Object> map = (HashMap<String, Object>)Util.execute(servletUrlStr, "com.kgm.service.WeldPointService", "getEcoEplInfo", ds, true);
 		if ( map == null ) return;
 		
 		String conditionStr = (String)map.get("NEW_VC");
@@ -964,7 +964,7 @@ public class Util {
 		DataSet ds = new DataSet();
 		if( eplID != null){
 			ds.put("epl_id", eplID);
-			HashMap<String, Object> map = (HashMap<String, Object>)Util.execute(servletUrlStr, "com.ssangyong.service.WeldPointService", "getEcoEplInfo", ds, true);
+			HashMap<String, Object> map = (HashMap<String, Object>)Util.execute(servletUrlStr, "com.kgm.service.WeldPointService", "getEcoEplInfo", ds, true);
 			condition = (String)map.get("NEW_VC");
 		}
 		ds.clear();
@@ -973,7 +973,7 @@ public class Util {
 		ds.put("child_id", childID);
 		ds.put("child_rev_id", childRevID);
 		ds.put("condition", (condition == null ? null:condition.trim()));
-		ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>)Util.execute(servletUrlStr,"com.ssangyong.service.WeldPointService", "getChildren",ds, true);
+		ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>)Util.execute(servletUrlStr,"com.kgm.service.WeldPointService", "getChildren",ds, true);
 		
 		return list;
 	}
@@ -1114,7 +1114,7 @@ public class Util {
 					ds.put("release_status_puid", releaseStatus.getUid());
 					ds.put("eco_rev_puid", ecoRevision.getUid());
 					try {
-						Util.execute(servletUrlStr, "com.ssangyong.service.WeldPointService", "updateDateReleasedWithEco", ds, false);
+						Util.execute(servletUrlStr, "com.kgm.service.WeldPointService", "updateDateReleasedWithEco", ds, false);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
@@ -1289,7 +1289,7 @@ public class Util {
 					ds.put("release_status_puid", releaseStatus.getUid());
 					ds.put("eco_rev_puid", "UPDATE_REF_COMS");
 					try {
-						Util.execute(servletUrlStr, "com.ssangyong.service.WeldPointService", "updateDateReleasedWithEco", ds, false);
+						Util.execute(servletUrlStr, "com.kgm.service.WeldPointService", "updateDateReleasedWithEco", ds, false);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}

@@ -12,9 +12,9 @@ import org.sdv.core.common.data.IDataSet;
 import org.sdv.core.ui.UIManager;
 import org.sdv.core.ui.operation.AbstractSDVActionOperation;
 
-import com.ssangyong.common.SYMCClass;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.common.SYMCClass;
 import com.symc.plm.me.utils.CustomUtil;
 import com.teamcenter.rac.aif.AIFDesktop;
 import com.teamcenter.rac.aif.kernel.AIFComponentContext;
@@ -107,7 +107,7 @@ public class SyncFunctionsetVsMProductOperation extends AbstractSDVActionOperati
         // SYMCRemoteUtil remote = new SYMCRemoteUtil("http://localhost:8080/ssangyongweb/HomeServlet");
         DataSet ds = new DataSet();
         ds.put("PRODUCT_ID", productID);
-        searchResult = (ArrayList<HashMap<String, String>>) remote.execute("com.ssangyong.service.FunctionService", "serchProductFunction", ds);
+        searchResult = (ArrayList<HashMap<String, String>>) remote.execute("com.kgm.service.FunctionService", "serchProductFunction", ds);
         System.out.println(searchResult);
 
         // 검색 결과로 Function Item 찾기

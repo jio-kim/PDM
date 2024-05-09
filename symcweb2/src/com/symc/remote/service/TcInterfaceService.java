@@ -3,7 +3,7 @@ package com.symc.remote.service;
 import java.util.HashMap;
 import java.util.List;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.symc.common.dao.TcCommonDao;
 import com.symc.common.util.StringUtil;
 

@@ -4,8 +4,8 @@ import java.util.List;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import com.ssangyong.common.utils.variant.VariantOption;
-import com.ssangyong.common.utils.variant.VariantValue;
+import com.kgm.common.utils.variant.VariantOption;
+import com.kgm.common.utils.variant.VariantValue;
 
 @SuppressWarnings("serial")
 public class VariantNode extends DefaultMutableTreeNode {

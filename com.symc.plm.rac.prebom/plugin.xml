@@ -40,7 +40,7 @@
       <command
             name="Mapping to Pre VehPart"
             categoryId="com.symc.plm.rac.prebom.commands.category"
-            id="com.ssangyong.commands.prebommapping.VehPartMappingCommand">
+            id="com.kgm.commands.prebommapping.VehPartMappingCommand">
       </command> 
         <command
             name="Master List Manager (MLM)"
@@ -165,8 +165,8 @@
         </handler>
         -->
       <handler
-            class="com.ssangyong.handlers.SYMCCommonHandler"
-            commandId="com.ssangyong.commands.prebommapping.VehPartMappingCommand">
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.prebommapping.VehPartMappingCommand">
       </handler>   
         <handler
             commandId="com.symc.plm.rac.prebom.masterlist.commands.CreateMasterListCommand"
@@ -327,9 +327,9 @@
                         id="com.symc.plm.rac.prebom.masterlist.commands.ComparePreBOMCommand">                    
                     </command>
                     <command
-                        commandId="com.ssangyong.commands.prebommapping.VehPartMappingCommand"
+                        commandId="com.kgm.commands.prebommapping.VehPartMappingCommand"
                         mnemonic="M"
-                        id="com.ssangyong.commands.prebommapping.VehPartMappingCommand"
+                        id="com.kgm.commands.prebommapping.VehPartMappingCommand"
                         icon="icons/newitem_16.png">
                     </command>
                     <command

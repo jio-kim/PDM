@@ -2,9 +2,9 @@ package com.symc.plm.rac.prebom.migprebom.validator;
 
 import java.util.HashMap;
 
-import com.ssangyong.commands.partmaster.validator.ValidatorAbs;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.StringUtil;
+import com.kgm.commands.partmaster.validator.ValidatorAbs;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.StringUtil;
 
 /**
  * PreFunction Part Validation Check Class

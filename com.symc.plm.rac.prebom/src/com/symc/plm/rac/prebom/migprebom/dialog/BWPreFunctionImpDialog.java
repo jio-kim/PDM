@@ -5,9 +5,9 @@ import java.util.HashMap;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TreeItem;
 
-import com.ssangyong.commands.partmaster.validator.FncPartValidator;
-import com.ssangyong.common.bundlework.BWXLSImpDialog;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.commands.partmaster.validator.FncPartValidator;
+import com.kgm.common.bundlework.BWXLSImpDialog;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.migprebom.validator.PreFncPartValidator;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;
 import com.teamcenter.rac.aifrcp.AIFUtility;

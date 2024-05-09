@@ -7,7 +7,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JTable;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.masterlist.model.CellValue;
 
 /**

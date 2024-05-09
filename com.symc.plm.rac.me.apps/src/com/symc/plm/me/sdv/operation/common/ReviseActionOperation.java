@@ -62,8 +62,8 @@ import org.openxmlformats.schemas.spreadsheetml.x2006.main.STUnsignedShortHex;
 import org.sdv.core.common.data.IDataSet;
 import org.sdv.core.ui.operation.AbstractSDVActionOperation;
 
-import com.ssangyong.commands.ec.ecostatus.utility.CopyExcelSheet;
-import com.ssangyong.dto.EndItemData;
+import com.kgm.dto.EndItemData;
+import com.kgm.commands.ec.ecostatus.utility.CopyExcelSheet;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;

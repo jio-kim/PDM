@@ -34,11 +34,11 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumnModel;
 
-import com.ssangyong.commands.commonpartcheck.IconColorCellRenderer;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.commonpartcheck.IconColorCellRenderer;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.preospec.dialog.PreOSpecImportDlg;
@@ -331,7 +331,7 @@ public class TargetCostImportDlg extends AbstractAIFDialog {
 			DataSet ds = new DataSet();
 			ds.put("TARGETPROJECT", target_project);
 			
-			Object eaiObject = remoteQuery.execute("com.ssangyong.service.PreBOMUssageExportService", "getEaiDate", ds);
+			Object eaiObject = remoteQuery.execute("com.kgm.service.PreBOMUssageExportService", "getEaiDate", ds);
 			
 			if(eaiObject == null){
 				area.setText(target_project + "의 최신 eai_create_time을 찾을 수 없습니다.");
@@ -569,7 +569,7 @@ public class TargetCostImportDlg extends AbstractAIFDialog {
 //				ds1.put("MAP", executeMap);
 //				ds1.put("EAIDATE", eaiDate);
 //				ds1.put("TARGETPROJECT", target_project);
-//				remoteQuery.execute("com.ssangyong.service.PreBOMUssageExportService", "updateCost", ds1);
+//				remoteQuery.execute("com.kgm.service.PreBOMUssageExportService", "updateCost", ds1);
 				
 				for(int i=0; i<exeCount; i++){
 	            	updateMap = (HashMap)executeMap.get(String.valueOf(i));
@@ -583,7 +583,7 @@ public class TargetCostImportDlg extends AbstractAIFDialog {
 			        ds1.put("PRDTOOLCOST", prdToolCost);
 			        ds1.put("EAIDATE", eaiDate);
 			        session.setStatus("진행중 : "+uniqNo+" "+(i+1)+"/"+exeCount);
-			        remoteQuery.execute("com.ssangyong.service.PreBOMUssageExportService", "updateCost", ds1);
+			        remoteQuery.execute("com.kgm.service.PreBOMUssageExportService", "updateCost", ds1);
 	            }
 				
 				area.setText("Update Completed...");

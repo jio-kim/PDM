@@ -2691,7 +2691,7 @@
    <extension
          point="org.eclipse.ui.menus">
          <!-- File - S -->
-         <menuContribution locationURI="menu:file.new?before=com.ssangyong.commands.partmaster.SYMCPartManagerCommand">
+         <menuContribution locationURI="menu:file.new?before=com.kgm.commands.partmaster.SYMCPartManagerCommand">
 
             <!-- New -->
                 <!-- MECO -->
@@ -2807,7 +2807,7 @@
 
          <!-- Tools - S -->
          <!-- MECO Report - S -->
-		 <menuContribution locationURI="menu:tools.Reports?after=com.ssangyong.commands.ec.report.ReportEPLCommand">
+		 <menuContribution locationURI="menu:tools.Reports?after=com.kgm.commands.ec.report.ReportEPLCommand">
 			<command
 				commandId="symc.me.report.reportMECOCommand" id="symc.me.report.reportMECO">
 			    <visibleWhen>
@@ -5051,14 +5051,14 @@
 
                     <!-- PE I/F Start -->
                     <command
-                        commandId="com.ssangyong.commands.ifpe.TcToPeInterfaceCommand"
+                        commandId="com.kgm.commands.ifpe.TcToPeInterfaceCommand"
                         icon="icons/FullEBOMProcessToPE.png"
                         id="ifpe.TcToPeInterfaceCommand">
                         <visibleWhen>
                         <with variable="rac_command_suppression">
                             <not>
                                 <iterate operator="or">
-                                    <equals value="com.ssangyong.commands.ifpe.TcToPeInterfaceCommand" />
+                                    <equals value="com.kgm.commands.ifpe.TcToPeInterfaceCommand" />
                                 </iterate>
                             </not>
                         </with>
@@ -5078,7 +5078,7 @@
                                    <iterate
                                          operator="or">
                                       <equals
-                                            value="com.ssangyong.commands.ifpe.TcToPeInterfaceCommand">
+                                            value="com.kgm.commands.ifpe.TcToPeInterfaceCommand">
                                       </equals>
                                    </iterate>
                                 </not>

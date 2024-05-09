@@ -3,9 +3,9 @@ Bundle-ManifestVersion: 2
 Bundle-Name: com.symc.plm.rac.me.interface
 Bundle-SymbolicName: com.symc.plm.rac.me.interface;singleton:=true
 Bundle-Version: 1.0.0.0
-Bundle-Activator: com.ssangyong.Activator
-Require-Bundle: com.symc-newplm;bundle-version="1.0.0",
- com.symc-newplm.external;bundle-version="1.0.0",
+Bundle-Activator: com.kgm.Activator
+Require-Bundle: com.kgm-newplm;bundle-version="1.0.0",
+ com.kgm-newplm.external;bundle-version="1.0.0",
  com.teamcenter.rac.aifrcp;bundle-version="13000.2.0",
  com.teamcenter.rac.kernel;bundle-version="13000.2.0",
  com.teamcenter.rac.util;bundle-version="13000.2.0",
@@ -15,9 +15,9 @@ Require-Bundle: com.symc-newplm;bundle-version="1.0.0",
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Bundle-ClassPath: .
-Export-Package: com.ssangyong,
- com.ssangyong.commands.ifpe,
- com.ssangyong.handler,
+Export-Package: com.kgm,
+ com.kgm.commands.ifpe,
+ com.kgm.handler,
  com.toedter.calendar,
  com.toedter.calendar.demo,
  com.toedter.components,

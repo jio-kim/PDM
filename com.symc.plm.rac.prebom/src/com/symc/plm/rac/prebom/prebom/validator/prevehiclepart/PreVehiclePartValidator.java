@@ -2,8 +2,8 @@ package com.symc.plm.rac.prebom.prebom.validator.prevehiclepart;
 
 import java.util.HashMap;
 
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.StringUtil;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.StringUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.prebom.validator.ValidatorAbs;
 

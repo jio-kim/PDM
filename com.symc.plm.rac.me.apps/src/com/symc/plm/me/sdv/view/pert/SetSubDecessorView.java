@@ -40,7 +40,7 @@ import org.sdv.core.util.UIUtil;
 
 import swing2swt.layout.BorderLayout;
 
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.utils.CustomUtil;
 import com.teamcenter.rac.aif.kernel.AIFComponentContext;
@@ -325,10 +325,10 @@ public class SetSubDecessorView extends AbstractSDVViewPane implements Selection
     public ArrayList<HashMap<String, Object>> getLastStationList(String itemID) throws Exception{
         ArrayList<HashMap<String, Object>> searchResultData = null;
         SYMCRemoteUtil remoteUtil = new SYMCRemoteUtil();
-        com.ssangyong.common.remote.DataSet ds = new com.ssangyong.common.remote.DataSet();
+        com.kgm.common.remote.DataSet ds = new com.kgm.common.remote.DataSet();
         ds.put("STATION_ID", itemID);
 
-        searchResultData = (ArrayList<HashMap<String, Object>>) remoteUtil.execute("com.ssangyong.service.BopPertService", "selectBopStationPertList", ds);
+        searchResultData = (ArrayList<HashMap<String, Object>>) remoteUtil.execute("com.kgm.service.BopPertService", "selectBopStationPertList", ds);
 
         for(int i = searchResultData.size()-1; i >= 0; i--) {
             if(searchResultData.get(i).get("SUCCESSORS") != null) {

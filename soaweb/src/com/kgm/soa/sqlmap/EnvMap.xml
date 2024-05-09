@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+  
+<mapper namespace="com.kgm.soa.mapper.EnvMapper">
+  
+	<select id="getTCWebEnvList" resultType="java.util.HashMap">  
+	SELECT KEY, VALUE FROM CUSTOM_WEB_ENV	   
+	</select>
+	   
+	<select id="getUserInfo" resultType="java.util.HashMap">  
+	SELECT PUSER_ID
+	     , PPASSWORD
+	     , PUSER_NAME
+	     , PSTATUS
+	  FROM INFODBA.PPOM_USER WHERE PUSER_ID = #{PUSER_ID,jdbcType=VARCHAR}
+	</select>
+	
+</mapper>

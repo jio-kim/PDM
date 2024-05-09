@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.kgm.mapper.DCSMigMapper">
+   
+	<select id="selectWorkflowInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM MIG_PRE_DCS_WORKFLOW
+		WHERE
+			DCS_NO = #{itemId}
+			AND DCS_REV = #{revId}
+			AND WORKFLOW_TYPE IN ('1', '2', '4')
+	</select>
+	
+	<select id="selectMyWorkflowInfoList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		SELECT
+			*
+		FROM MIG_PRE_DCS_WORKFLOW
+		WHERE
+			WORKFLOW_TYPE IN ('1', '2', '4')
+			AND (
+				MAKE_USER = #{loginUserId}
+				OR FIRST_CREATE_USER = #{loginUserId}
+				OR SECOND_CREATE_USER = #{loginUserId}
+				)
+	</select>
+
+</mapper>

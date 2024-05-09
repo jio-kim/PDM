@@ -11,8 +11,8 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.Table;
 
-import com.ssangyong.common.SYMCText;
-import com.ssangyong.viewer.AbstractSYMCViewer;
+import com.kgm.common.SYMCText;
+import com.kgm.viewer.AbstractSYMCViewer;
 import com.symc.plm.rac.prebom.common.viewer.AbstractPreSYMCViewer;
 import com.symc.plm.rac.prebom.prebom.view.prevehiclepart.PreVehiclePartInfoPanel;
 import com.teamcenter.rac.util.IPageComplete;
@@ -21,7 +21,7 @@ import com.teamcenter.rac.util.IPageComplete;
  * Vehicle Part ViewerTab에서 사용하는 Rendering Class
  * 
  * ### 설정 방법 #####
- * properties) viewer.properties => S7_VehpartRevision.COMPONENTVIEWER=com.ssangyong.rendering.SYMCVehpartRevisionRendering
+ * properties) viewer.properties => S7_VehpartRevision.COMPONENTVIEWER=com.kgm.rendering.SYMCVehpartRevisionRendering
  * preference) defaultViewerConfig => S7_VehpartRevision.SYMCPropertyViewer
  */
 public class SYMCPreVehiclePartRevisionRendering extends AbstractPreSYMCViewer implements IPageComplete {

@@ -4,7 +4,7 @@ import org.eclipse.swt.SWT;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.rac.prebom.ccn.operation.CCNProcessOperation;
 import com.symc.plm.rac.prebom.ccn.view.PreCCNInfoPanel;
 import com.symc.plm.rac.prebom.common.PropertyConstant;

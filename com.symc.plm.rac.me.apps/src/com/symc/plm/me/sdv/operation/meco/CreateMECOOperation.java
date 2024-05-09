@@ -6,8 +6,8 @@ import java.util.Map;
 
 import org.eclipse.swt.widgets.TableItem;
 
-import com.ssangyong.common.SYMCClass;
-import com.ssangyong.dto.ApprovalLineData;
+import com.kgm.dto.ApprovalLineData;
+import com.kgm.common.SYMCClass;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.symc.plm.me.sdv.command.meco.dao.CustomMECODao;

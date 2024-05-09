@@ -13,8 +13,8 @@ import javax.swing.JDialog;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.common.utils.variant.VariantOption;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.common.utils.variant.VariantOption;
 import com.symc.plm.rac.prebom.common.util.OptionManager;
 import com.symc.plm.rac.prebom.masterlist.view.MasterListReq;
 import com.symc.plm.rac.prebom.masterlist.view.MasterListTablePanel;

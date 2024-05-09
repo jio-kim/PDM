@@ -13,7 +13,7 @@ import org.sdv.core.common.ISDVValidator;
 import org.sdv.core.common.exception.SDVException;
 import org.sdv.core.common.exception.ValidateSDVException;
 
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.symc.plm.me.utils.CustomUtil;

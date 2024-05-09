@@ -2,9 +2,9 @@ package com.symc.plm.rac.prebom.prebom.operation.precreate;
 
 import java.util.HashMap;
 
-import com.ssangyong.commands.ec.search.FileAttachmentComposite;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.commands.ec.search.FileAttachmentComposite;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.teamcenter.rac.kernel.TCComponent;

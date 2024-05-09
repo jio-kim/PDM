@@ -11,9 +11,9 @@ import java.util.Hashtable;
 import java.util.Map;
 import java.util.Vector;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.rac.kernel.SYMCBOPEditData;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.rac.kernel.SYMCBOPEditData;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.utils.CustomUtil;
@@ -44,7 +44,7 @@ public class MECOCreationUtil {
 	
 	private TCComponentItemRevision changeRevision;
 	public static SimpleDateFormat simpleDateFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
-	public static final String MEPL_SERVICE_CLASS = "com.ssangyong.service.SYMCMEPLService";
+	public static final String MEPL_SERVICE_CLASS = "com.kgm.service.SYMCMEPLService";
 	public TCSession session;
 	
 	public static void updateMEPLForReview(){

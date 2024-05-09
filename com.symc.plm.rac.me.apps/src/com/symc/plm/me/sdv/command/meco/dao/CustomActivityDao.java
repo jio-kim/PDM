@@ -1,11 +1,11 @@
 package com.symc.plm.me.sdv.command.meco.dao;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 
 public class CustomActivityDao {
 
-    public static final String ACTIVITY_SERVICE_CLASS = "com.ssangyong.service.SYMCActivityService";
+    public static final String ACTIVITY_SERVICE_CLASS = "com.kgm.service.SYMCActivityService";
 
     private SYMCRemoteUtil remoteQuery;
     private DataSet ds;

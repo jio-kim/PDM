@@ -47,13 +47,13 @@ import javax.swing.table.TableColumn;
 
 import org.eclipse.core.runtime.IStatus;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpValueName;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpValueName;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.rac.prebom.common.MultiLineHeaderRenderer;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;
@@ -116,7 +116,7 @@ public class LatestWeightMasterListDialog extends AbstractAIFDialog {
 
 	public LatestWeightMasterListDialog(Frame parentFrame, TCSession tcSession) throws Exception {
 		super(parentFrame, false);
-		registry = Registry.getRegistry("com.ssangyong.common.common");
+		registry = Registry.getRegistry("com.kgm.common.common");
 
 		this.session = tcSession;
 
@@ -724,7 +724,7 @@ public class LatestWeightMasterListDialog extends AbstractAIFDialog {
 				SYMCRemoteUtil remote = new SYMCRemoteUtil();
 				DataSet ds = new DataSet();
 				ds.put("PUID", com.getUid());
-				ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>) remote.execute("com.ssangyong.service.MasterListService",
+				ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>) remote.execute("com.kgm.service.MasterListService",
 						"getStoredOptionSet", ds);
 				for (int i = 0; list != null && i < list.size(); i++) {
 					HashMap<String, String> resultMap = list.get(i);
@@ -811,7 +811,7 @@ public class LatestWeightMasterListDialog extends AbstractAIFDialog {
 		DataSet ds = new DataSet();
 		ds.put("PROJECT_NO", projectCode);
 
-		HashMap<String, String> result = (HashMap<String, String>) remote.execute("com.ssangyong.service.MasterListService", "getLatestWMLMTargetData", ds);
+		HashMap<String, String> result = (HashMap<String, String>) remote.execute("com.kgm.service.MasterListService", "getLatestWMLMTargetData", ds);
 		String latestCreateTime = result.get("LATEST_M_CREATE_TIME");
 		dataCreatedText.setText(latestCreateTime);
 		result.put("PROJECT_NO", projectCode);

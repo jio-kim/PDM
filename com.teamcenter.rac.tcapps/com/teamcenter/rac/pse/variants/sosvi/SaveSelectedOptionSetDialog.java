@@ -26,8 +26,8 @@ import javax.swing.border.EmptyBorder;
 
 import org.apache.log4j.Logger;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;
 import com.teamcenter.rac.commands.paste.PasteCommand;
 import com.teamcenter.rac.kernel.TCComponent;
@@ -80,7 +80,7 @@ class SaveSelectedOptionSetDialog extends JDialog {
             SYMCRemoteUtil remote = new SYMCRemoteUtil();
             try {
                 DataSet ds = new DataSet();
-                ArrayList<String> list = (ArrayList<String>) remote.execute("com.ssangyong.service.VariantService", "getProjectCodes", ds);
+                ArrayList<String> list = (ArrayList<String>) remote.execute("com.kgm.service.VariantService", "getProjectCodes", ds);
                 if (list != null) {
                     for (String prjectName : list) {
                         projectNameCombo.addItem(prjectName);

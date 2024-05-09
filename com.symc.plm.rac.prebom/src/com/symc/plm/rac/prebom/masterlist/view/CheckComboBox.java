@@ -54,7 +54,7 @@ import javax.swing.JList;
 import javax.swing.ListCellRenderer;
 import javax.swing.UIManager;
 
-import com.ssangyong.common.utils.variant.SteppedComboBox;
+import com.kgm.common.utils.variant.SteppedComboBox;
 
 /**
  * ComboBox containing checkbox

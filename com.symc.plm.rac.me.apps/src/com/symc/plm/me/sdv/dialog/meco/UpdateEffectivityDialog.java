@@ -7,7 +7,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.dialog.SYMCAbstractDialog;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.sdv.view.meco.UpdateEffectivityView;
 import com.symc.plm.me.utils.CustomUtil;

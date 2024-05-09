@@ -9,7 +9,7 @@ import org.sdv.core.common.data.IData;
 import org.sdv.core.common.data.RawDataMap;
 import org.sdv.core.ui.operation.AbstractSDVInitOperation;
 
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
@@ -28,7 +28,7 @@ import com.teamcenter.rac.kernel.TCException;
  * 
  */
 public class OccGroupCreateUpdateInitOperation extends AbstractSDVInitOperation {
-    private final String serviceClassName = "com.ssangyong.service.BopPertService";
+    private final String serviceClassName = "com.kgm.service.BopPertService";
 
     @Override
     public void executeOperation() throws Exception {
@@ -101,7 +101,7 @@ public class OccGroupCreateUpdateInitOperation extends AbstractSDVInitOperation 
     private ArrayList<HashMap<String, Object>> getPredecessorsList(String shopID, String stationID) throws Exception{
         SYMCRemoteUtil remoteUtil = new SYMCRemoteUtil();
 
-        com.ssangyong.common.remote.DataSet ds = new com.ssangyong.common.remote.DataSet();
+        com.kgm.common.remote.DataSet ds = new com.kgm.common.remote.DataSet();
         ds.put("SHOP_ID", shopID);
         ds.put("STATION_ID", stationID);
 
@@ -117,7 +117,7 @@ public class OccGroupCreateUpdateInitOperation extends AbstractSDVInitOperation 
         ArrayList<HashMap<String, Object>> resultDate = null;
         SYMCRemoteUtil remoteUtil = new SYMCRemoteUtil();
 
-        com.ssangyong.common.remote.DataSet ds = new com.ssangyong.common.remote.DataSet();
+        com.kgm.common.remote.DataSet ds = new com.kgm.common.remote.DataSet();
         //((Map<String, Object>) ds).put("SHOP_ID", shopBopLine.getProperty(SDVPropertyConstant.BL_ITEM_ID));
         ds.put("SHOP_ID", shopID);
 

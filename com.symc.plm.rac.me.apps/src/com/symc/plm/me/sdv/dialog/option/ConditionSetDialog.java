@@ -56,7 +56,7 @@ import com.teamcenter.rac.pse.variants.modularvariants.MVLLexer;
 import com.teamcenter.rac.util.MessageBox;
 import com.teamcenter.rac.util.Registry;
 
-//import com.ssangyong.common.utils.table.SortableTableModel;
+//import com.kgm.common.utils.table.SortableTableModel;
 
 /**
  * 
@@ -112,7 +112,7 @@ public class ConditionSetDialog extends AbstractAIFDialog {
         setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 
         // this.registry = Registry.getRegistry(this);
-        this.registry = Registry.getRegistry("com.ssangyong.commands.variantconditionset.variantconditionset");
+        this.registry = Registry.getRegistry("com.kgm.commands.variantconditionset.variantconditionset");
 
         this.enableOptionSet = enableOptionSet;
         this.conditions = conditions;

@@ -7,7 +7,7 @@
 	<property name="client.dir" value="C:\Siemens\TC13\portal"/>
 	<property name="plugins.dir" value="${client.dir}/plugins"/>
 	<property name="registry.dir" value="${client.dir}/registry"/>
-	<property name="jar_dest" value="./dest/${CURRDATE} ${CURRTIME}"/>
+    <property name="jar_dest" value="./../0_Export_JAR/com.symc.plm.rac.me.external/${CURRDATE} ${CURRTIME}"/>
 	<property name="jar_name" value="com.symc.plm.rac.me.external"/>
 	<property name="jar_version" value="1.0.0"/>
 	<property name="jar.name" value="${jar_dest}/${jar_name}_${jar_version}.jar"/>

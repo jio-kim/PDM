@@ -15,7 +15,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.Table;
 
-import com.ssangyong.common.utils.ProgressBar;
+import com.kgm.common.utils.ProgressBar;
 import com.teamcenter.rac.kernel.TCComponent;
 
 public abstract class AbstractPreSYMCViewer extends Composite {

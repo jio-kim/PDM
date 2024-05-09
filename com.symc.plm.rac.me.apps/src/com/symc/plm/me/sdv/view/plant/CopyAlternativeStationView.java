@@ -22,7 +22,7 @@ import org.sdv.core.ui.operation.AbstractSDVInitOperation;
 import org.sdv.core.ui.view.AbstractSDVViewPane;
 import org.sdv.core.util.UIUtil;
 
-import com.ssangyong.common.utils.SYMDisplayUtil;
+import com.kgm.common.utils.SYMDisplayUtil;
 import com.symc.plm.me.common.SDVText;
 import com.teamcenter.rac.util.Registry;
 

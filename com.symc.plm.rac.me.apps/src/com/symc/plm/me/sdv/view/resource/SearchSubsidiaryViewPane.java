@@ -36,9 +36,9 @@ import org.sdv.core.ui.operation.AbstractSDVInitOperation;
 import org.sdv.core.ui.view.AbstractSDVViewPane;
 import org.sdv.core.ui.view.table.model.ColumnInfoModel;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.StringUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.common.utils.StringUtil;
 import com.symc.plm.me.common.SDVText;
 import com.symc.plm.me.sdv.operation.resource.ExportExcelOperation;
 import com.symc.plm.me.sdv.operation.resource.SearchSubsidiaryInitOperation;
@@ -277,7 +277,7 @@ public class SearchSubsidiaryViewPane extends AbstractSDVViewPane {
             // ds.put("SUBSIDIARY_GROUP", subsidiaryGroup.replaceAll("\\*", "%"));
             // -------------------------------------------------------------------
             
-            searchResult = (ArrayList<HashMap<String, String>>) remote.execute("com.ssangyong.service.SYMCSubsidiaryService", "serchSubsidiary", ds);
+            searchResult = (ArrayList<HashMap<String, String>>) remote.execute("com.kgm.service.SYMCSubsidiaryService", "serchSubsidiary", ds);
 
             Iterator<HashMap<String, String>> iterator = searchResult.iterator();
             HashMap<String, String>[] arrHashMap = new HashMap[searchResult.size()];

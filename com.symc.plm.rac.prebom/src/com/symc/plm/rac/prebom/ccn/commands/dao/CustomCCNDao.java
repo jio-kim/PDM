@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.teamcenter.rac.kernel.TCComponentChangeItemRevision;
 import com.teamcenter.rac.kernel.TCComponentGroup;
@@ -18,7 +18,7 @@ import com.teamcenter.rac.kernel.TCComponentUser;
 @SuppressWarnings("unchecked")
 public class CustomCCNDao {
 
-    public static final String CCN_INFO_SERVICE_CLASS = "com.ssangyong.service.CCNService";//com.ssangyong.dao.ECOInfoDao·Î ÇØµµ µÊ
+    public static final String CCN_INFO_SERVICE_CLASS = "com.kgm.service.CCNService";//com.kgm.dao.ECOInfoDao·Î ÇØµµ µÊ
 
     private SYMCRemoteUtil remoteQuery;
     private DataSet ds;

@@ -18,7 +18,7 @@ import org.sdv.core.ui.operation.AbstractSDVInitOperation;
 import org.sdv.core.ui.view.AbstractSDVViewPane;
 import org.sdv.core.util.UIUtil;
 
-import com.ssangyong.common.swtsearch.SearchItemDialog;
+import com.kgm.common.swtsearch.SearchItemDialog;
 import com.teamcenter.rac.kernel.TCComponentItem;
 import com.teamcenter.rac.kernel.TCException;
 

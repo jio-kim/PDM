@@ -3,7 +3,7 @@ package com.symc.plm.rac.prebom.ccn.operation;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.ccn.dialog.PreCCNCreateDialog;
 import com.symc.plm.rac.prebom.common.CommonConstant;
 import com.symc.plm.rac.prebom.common.PropertyConstant;

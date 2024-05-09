@@ -23,8 +23,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableModel;
 
-import com.ssangyong.commands.ospec.op.OpUtil;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.commands.ospec.op.OpUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.preospec.ui.OSpecTable;
 import com.teamcenter.rac.aif.AbstractAIFDialog;
 import com.teamcenter.rac.kernel.TCComponent;

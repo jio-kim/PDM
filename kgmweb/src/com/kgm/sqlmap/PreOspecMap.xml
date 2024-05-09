@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgm.mapper.PreOSpecMapper">
+	<insert id="insertTrim">
+		insert into CCN_PREBOM_OSPEC_TRIM 
+		(TRIM_SEQ, OSPEC_NO, AREA, PASSENGER, ENGINE, GRADE, TRIM, E00, E00_DESC, E10, E10_DESC)
+		values(#{TRIM_SEQ, jdbcType=VARCHAR}, #{OSPEC_NO, jdbcType=VARCHAR}, #{AREA, jdbcType=VARCHAR}
+		, #{PASSENGER, jdbcType=VARCHAR}, #{ENGINE, jdbcType=VARCHAR}
+		, #{GRADE, jdbcType=VARCHAR}, #{TRIM, jdbcType=VARCHAR}
+		, #{E00, jdbcType=VARCHAR}, #{E00_DESC, jdbcType=VARCHAR}
+		, #{E10, jdbcType=VARCHAR}, #{E10_DESC, jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="deleteTrim">
+		delete from CCN_PREBOM_OSPEC_TRIM where OSPEC_NO = #{OSPEC_NO,jdbcType=VARCHAR}
+	</delete>
+	
+	<select id="selectPreOSpecMandatory" parameterType="java.lang.String" resultType="java.util.HashMap">
+		SELECT M.OSPEC_NO, M.OPTION_CATEGORY, M.OPTION_VALUE, M.OSPEC_REMARK, M.REMARK_TYPE, M.REMARK, M.LIST_ID, T.TRIM
+		  FROM PREBOM_OSPEC_MANDATORY M, PREBOM_OSPEC_MANDATORY_TRIM T
+		 WHERE M.LIST_ID = T.LIST_ID
+		   AND M.OSPEC_NO = #{OSPEC_NO, jdbcType=VARCHAR}
+		   AND T.TRIM = #{TRIM, jdbcType=VARCHAR}
+		 ORDER BY M.OPTION_CATEGORY, M.OPTION_VALUE, M.REMARK_TYPE, M.REMARK
+	</select>
+	
+	<select id="selectPreOSpecMandatoryInfo" parameterType="java.lang.String" resultType="java.util.HashMap">
+		SELECT M.OSPEC_NO, M.OPTION_CATEGORY, M.OPTION_VALUE, M.OSPEC_REMARK, M.REMARK_TYPE, M.REMARK, M.LIST_ID
+		  FROM PREBOM_OSPEC_MANDATORY M
+		 WHERE M.OSPEC_NO = #{OSPEC_NO, jdbcType=VARCHAR}
+		 ORDER BY M.OPTION_CATEGORY, M.OPTION_VALUE, M.REMARK_TYPE, M.REMARK
+	</select>
+	
+	<select id="selectPreOSpecMandatoryTrim" parameterType="java.lang.String" resultType="java.util.HashMap">
+		SELECT * FROM PREBOM_OSPEC_MANDATORY_TRIM A WHERE LIST_ID = #{LIST_ID, jdbcType=VARCHAR}
+	</select>
+	
+	<insert id="insertPreOSpecMandatoryInfo" parameterType="java.util.HashMap">
+		INSERT INTO PREBOM_OSPEC_MANDATORY(OSPEC_NO, OPTION_CATEGORY, OPTION_VALUE, OSPEC_REMARK, REMARK_TYPE, REMARK, LIST_ID, CREATE_USER)
+		     VALUES (#{OSPEC_NO, jdbcType=VARCHAR}, #{OPTION_CATEGORY, jdbcType=VARCHAR}, #{OPTION_VALUE, jdbcType=VARCHAR}, #{OSPEC_REMARK, jdbcType=VARCHAR}, #{REMARK_TYPE, jdbcType=VARCHAR}, #{REMARK, jdbcType=VARCHAR}, #{LIST_ID, jdbcType=VARCHAR}, #{CREATE_USER, jdbcType=VARCHAR})
+	</insert>
+	
+	<insert id="insertPreOSpecMandatoryTrim" parameterType="java.util.HashMap">
+		INSERT INTO PREBOM_OSPEC_MANDATORY_TRIM(LIST_ID, TRIM)
+		     VALUES (#{LIST_ID, jdbcType=VARCHAR}, #{TRIM, jdbcType=VARCHAR})
+	</insert>
+	
+	<delete id="deletePreOSpecMandatoryInfo" parameterType="java.util.HashMap">
+		DELETE PREBOM_OSPEC_MANDATORY WHERE OSPEC_NO = #{OSPEC_NO, jdbcType=VARCHAR}
+	</delete>
+	
+	<delete id="deletePreOSpecMandatoryTrim" parameterType="java.util.HashMap">
+		DELETE PREBOM_OSPEC_MANDATORY_TRIM WHERE LIST_ID IN (SELECT LIST_ID FROM PREBOM_OSPEC_MANDATORY WHERE OSPEC_NO = #{OSPEC_NO, jdbcType=VARCHAR})
+	</delete>
+	
+</mapper>

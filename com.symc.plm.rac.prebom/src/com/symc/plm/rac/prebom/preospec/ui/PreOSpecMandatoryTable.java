@@ -23,10 +23,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Text;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpTrim;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpTrim;
 import com.symc.plm.rac.prebom.masterlist.view.clipboard.TextTransfer;
 import com.teamcenter.rac.aifrcp.AIFUtility;
 import com.teamcenter.rac.kernel.Markpoint;
@@ -200,7 +200,7 @@ public class PreOSpecMandatoryTable extends Composite {
 			SYMCRemoteUtil remote = new SYMCRemoteUtil();
 			DataSet ds = new DataSet();
 			ds.setString("OSPEC_NO", ospec.getOspecNo());
-			ArrayList<HashMap<String, String>> alResult = (ArrayList<HashMap<String, String>>)remote.execute("com.ssangyong.service.PreOSpecService", "selectPreOSpecMandatoryInfo", ds);
+			ArrayList<HashMap<String, String>> alResult = (ArrayList<HashMap<String, String>>)remote.execute("com.kgm.service.PreOSpecService", "selectPreOSpecMandatoryInfo", ds);
 			
 			for (int inx = 0; inx < alResult.size(); inx++) {
 				HashMap<String, String> hmResult = (HashMap<String, String>) alResult.get(inx);
@@ -275,7 +275,7 @@ public class PreOSpecMandatoryTable extends Composite {
 		SYMCRemoteUtil remote = new SYMCRemoteUtil();
 		DataSet ds = new DataSet();
         ds.put("PARAM", null);
-		return (String) remote.execute("com.ssangyong.service.MasterListService", "getSysGuid", ds);
+		return (String) remote.execute("com.kgm.service.MasterListService", "getSysGuid", ds);
 	}
 	
 	/**
@@ -315,7 +315,7 @@ public class PreOSpecMandatoryTable extends Composite {
 			SYMCRemoteUtil remote = new SYMCRemoteUtil();
 			DataSet ds = new DataSet();
 			ds.setString("LIST_ID", sListID);
-			result = (ArrayList<HashMap<String, String>>) remote.execute("com.ssangyong.service.PreOSpecService", "selectPreOSpecMandatoryTrim", ds);
+			result = (ArrayList<HashMap<String, String>>) remote.execute("com.kgm.service.PreOSpecService", "selectPreOSpecMandatoryTrim", ds);
 			
 			for (int inx = 0; inx < result.size(); inx++) {
 				HashMap<String, String> hmResult = (HashMap<String, String>)result.get(inx);

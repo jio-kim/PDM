@@ -16,9 +16,9 @@ import org.sdv.core.common.data.RawDataMap;
 import org.sdv.core.ui.UIManager;
 
 import com.ibm.icu.text.DecimalFormat;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.dto.EndItemData;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.dto.EndItemData;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
@@ -1515,7 +1515,7 @@ public class ProcessSheetDataHelper {
 		SYMCRemoteUtil remoteQuery = new SYMCRemoteUtil();
 		try {
 			resultList = (ArrayList<HashMap<String, Object>>) remoteQuery.execute(
-					"com.ssangyong.service.WeldPoint2ndService", 
+					"com.kgm.service.WeldPoint2ndService", 
 					"getChildNodeWeldTypeList", 
 					ds);
 		} catch (Exception e) {

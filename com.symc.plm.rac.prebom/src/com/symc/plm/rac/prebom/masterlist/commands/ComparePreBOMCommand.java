@@ -1,6 +1,6 @@
 package com.symc.plm.rac.prebom.masterlist.commands;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.masterlist.dialog.ComparePreBOMDlg;
 import com.teamcenter.rac.aif.AbstractAIFCommand;

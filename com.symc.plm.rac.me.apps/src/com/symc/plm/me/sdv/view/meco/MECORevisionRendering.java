@@ -7,8 +7,8 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.TabFolder;
 import org.eclipse.swt.widgets.TabItem;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.me.common.viewer.AbstractSDVViewer;
 import com.teamcenter.rac.aifrcp.AIFUtility;
 import com.teamcenter.rac.kernel.TCComponentUser;
@@ -45,11 +45,11 @@ public class MECORevisionRendering extends AbstractSDVViewer {
 	                            SYMCRemoteUtil remote = new SYMCRemoteUtil();
 	                            DataSet ds = new DataSet();
 	                            ds.put("ecoNo", targetComp.getProperty("item_id"));
-//	                            Boolean result = (Boolean)remote.execute("com.ssangyong.service.ECOHistoryService", "isECOEPLChanged", ds);
+//	                            Boolean result = (Boolean)remote.execute("com.kgm.service.ECOHistoryService", "isECOEPLChanged", ds);
 //	                            if(result.booleanValue()) {
 //	                                int response = ConfirmDialog.prompt(getShell(), "ECO EPL", "ECO EPL is Out Of Date!\nRegenerate It?");
 //	                                if(response == 2) {
-//	                                    remote.execute("com.ssangyong.service.ECOHistoryService", "extractEPL", ds);
+//	                                    remote.execute("com.kgm.service.ECOHistoryService", "extractEPL", ds);
 //	                                }
 //	                            }
 	                        }

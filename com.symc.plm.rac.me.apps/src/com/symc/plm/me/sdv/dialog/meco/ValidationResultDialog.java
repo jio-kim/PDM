@@ -19,7 +19,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.dialog.SYMCAbstractDialog;
 
 public class ValidationResultDialog extends SYMCAbstractDialog {
 

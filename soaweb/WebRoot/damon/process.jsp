@@ -19,7 +19,7 @@
 			return;
 		}
 		$.ajax({
-			url : "/ssangyongweb/SYMCTimerServlet",
+			url : "/kgmweb/SYMCTimerServlet",
 			/*data:param,*/
 			type : "POST",
 			dataType : "json",
@@ -32,7 +32,7 @@
 	                $("#ExcuteTimeTd_"+i).text(data["ExcuteTime_"+i]);
 	                if("" != data["EndTime_"+i]) {
 	                    if("" != data.DownloadUrl_0) {
-	                        var downUrl = "/ssangyongweb/" + data["DownloadUrl_"+i];
+	                        var downUrl = "/kgmweb/" + data["DownloadUrl_"+i];
 	                        downloadLogFile("#ExcuteTimeTd_"+i, downUrl);   
 	                    }
 	                }
@@ -49,7 +49,7 @@
 		$("#deleteButton").click(function() {
 		    if (confirm("삭제하시겠습니까?") == true){    //확인
 		    	$.ajax({
-	                url : "/ssangyongweb/SYMCTimerServlet",
+	                url : "/kgmweb/SYMCTimerServlet",
 	                data:{'method':'deleteAllLog'},
 	                type : "POST",
 	                dataType : "json",
@@ -94,7 +94,7 @@
 	function execute(damonName) {
 		$("#container").mask("Waiting...");
 		$.ajax({
-            url : "/ssangyongweb/SYMCTimerServlet",
+            url : "/kgmweb/SYMCTimerServlet",
             data:{'method':'execute', 'damonName':damonName},
             type : "POST",
             dataType : "json",

@@ -1,6 +1,6 @@
 package com.symc.plm.me.sdv.command.assembily;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.me.sdv.operation.assembly.CatpartToCGROperation;
 import com.teamcenter.rac.aif.AbstractAIFCommand;
 import com.teamcenter.rac.kernel.TCSession;

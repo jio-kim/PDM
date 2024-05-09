@@ -369,7 +369,8 @@
 	<bean id="schedulerFactoryBean" class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-                <ref bean="setTcPeIFJobTrigger"/>
+				<!-- 임시 개발서버 사용으로 인한 주석처리 -->
+                <!-- <ref bean="setTcPeIFJobTrigger"/>
                 <ref bean="setSupplyModeJobTrigger"/>
                 <ref bean="setVariantValueJobTrigger"/>
                 <ref bean="bpInterfaceJobTrigger"/>
@@ -382,10 +383,11 @@
                 <ref bean="pSEngJobTrigger"/>
                 <ref bean="fullBOMTrigger"/>
                 <ref bean="pngVerificationJobTrigger"/>
-                <ref bean="updateVendorTrigger"/>
+                <ref bean="updateVendorTrigger"/> -->
                 
                 <!-- 20171227 eai 전송하지 않는 product 생성 (D300) -->
-                <ref bean="notEaifullBOMTrigger"/>
+                <!-- 임시 개발서버 사용으로 인한 주석처리 -->
+                <!-- <ref bean="notEaifullBOMTrigger"/> -->
 				              
                 <!-- 
                 [20151101] [ymjang] BP 정보 Update 스케줄러 중단.

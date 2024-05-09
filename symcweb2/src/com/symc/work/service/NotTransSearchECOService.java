@@ -10,7 +10,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Locale;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.symc.common.dao.TcCommonDao;
 import com.symc.common.soa.biz.Session;
 import com.symc.common.soa.service.TcPreferenceManagementService;

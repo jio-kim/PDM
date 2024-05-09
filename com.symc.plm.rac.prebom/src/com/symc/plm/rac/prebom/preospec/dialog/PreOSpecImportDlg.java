@@ -48,21 +48,21 @@ import javax.swing.table.TableColumnModel;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import com.ssangyong.commands.ec.SYMCECConstant;
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpCategory;
-import com.ssangyong.commands.ospec.op.OpGroup;
-import com.ssangyong.commands.ospec.op.OpTrim;
-import com.ssangyong.commands.ospec.op.OpUtil;
-import com.ssangyong.commands.ospec.op.Option;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.DatasetService;
-import com.ssangyong.common.utils.SYMTcUtil;
-import com.ssangyong.common.utils.variant.VariantOption;
-import com.ssangyong.common.utils.variant.VariantValue;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.ec.SYMCECConstant;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpCategory;
+import com.kgm.commands.ospec.op.OpGroup;
+import com.kgm.commands.ospec.op.OpTrim;
+import com.kgm.commands.ospec.op.OpUtil;
+import com.kgm.commands.ospec.op.Option;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.DatasetService;
+import com.kgm.common.utils.SYMTcUtil;
+import com.kgm.common.utils.variant.VariantOption;
+import com.kgm.common.utils.variant.VariantValue;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;
@@ -1137,7 +1137,7 @@ public class PreOSpecImportDlg extends AbstractAIFDialog {
 				iSeq++;
 			}
 			ds.put("DATA", trims);
-			remote.execute("com.ssangyong.service.PreOSpecService", "insertTrim", ds);
+			remote.execute("com.kgm.service.PreOSpecService", "insertTrim", ds);
 		} catch (Exception e) {
 			throw e;
 		}
@@ -1431,7 +1431,7 @@ public class PreOSpecImportDlg extends AbstractAIFDialog {
 		try {
 			ds.put("NO-PARAM", null);
 			@SuppressWarnings("unchecked")
-            ArrayList<String> gModelList = (ArrayList<String>)remote.execute("com.ssangyong.service.OSpecService", "getGModel", ds);
+            ArrayList<String> gModelList = (ArrayList<String>)remote.execute("com.kgm.service.OSpecService", "getGModel", ds);
 			return gModelList;
 		} catch (Exception e) {
 			throw e;
@@ -1466,7 +1466,7 @@ public class PreOSpecImportDlg extends AbstractAIFDialog {
 		
 		try {
 			@SuppressWarnings("unchecked")
-            ArrayList<String> gModelList = (ArrayList<String>)remote.execute("com.ssangyong.service.OSpecService", "getProject", ds);
+            ArrayList<String> gModelList = (ArrayList<String>)remote.execute("com.kgm.service.OSpecService", "getProject", ds);
 			return gModelList;
 		} catch (Exception e) {
 			throw e;
@@ -2343,7 +2343,7 @@ public class PreOSpecImportDlg extends AbstractAIFDialog {
 		DataSet ds = new DataSet();
 		ds.put("PROJECT_CODE", projectCode);
 		ds.put("SYSTEM_CODE", sysCode);
-		ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>)remote.execute("com.ssangyong.service.OSpecService", "getDCSInfo", ds);
+		ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>)remote.execute("com.kgm.service.OSpecService", "getDCSInfo", ds);
         if(list.size() > 0){
         	dcsMapInfo = list.get(0);
         }
@@ -2365,7 +2365,7 @@ public class PreOSpecImportDlg extends AbstractAIFDialog {
 		DataSet ds = new DataSet();
 		ds.put("ospecNo", sOSpecNo);
 		
-		remote.execute("com.ssangyong.service.OSpecService", "updateOSpecTrimStat", ds);
+		remote.execute("com.kgm.service.OSpecService", "updateOSpecTrimStat", ds);
 	}
 
     private String getGateNo(String projectId) throws Exception {

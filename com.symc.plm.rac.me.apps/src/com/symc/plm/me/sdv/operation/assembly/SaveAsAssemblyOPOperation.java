@@ -188,11 +188,12 @@ public class SaveAsAssemblyOPOperation extends AbstractSDVActionOperation {
                 }
             }
             
-			try {
-				newOpRevision.save();
-			} catch (TCException e) {
-				e.printStackTrace();
-			}
+            // [20240430][UPGRADE] save 시 The instance is not locked 오류발생, setPropery 시 SOA setProperty를 사용해서 save(deprecated) 할 필요없음.
+//			try {
+//				newOpRevision.save();
+//			} catch (TCException e) {
+//				e.printStackTrace();
+//			}
         }
         
         try {

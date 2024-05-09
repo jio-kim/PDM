@@ -13,8 +13,8 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.springframework.util.StringUtils;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.me.utils.BundleUtil;
 import com.symc.plm.me.utils.CustomUtil;
 import com.teamcenter.rac.aif.AIFDesktop;
@@ -410,7 +410,7 @@ public class SDVBOPUtilities {
             ds.put("code_name", value);
 
             try {
-                ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>) remote.execute("com.ssangyong.service.VariantService", "getVariantValueDesc", ds);
+                ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>) remote.execute("com.kgm.service.VariantService", "getVariantValueDesc", ds);
                 if (list != null) {
                     for (HashMap<String, String> map : list) {
                         descriptions.put(map.get("CODE_NAME"), map.get("CODE_DESC"));

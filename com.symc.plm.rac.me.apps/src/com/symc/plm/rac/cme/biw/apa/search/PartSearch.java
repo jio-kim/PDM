@@ -14,8 +14,8 @@ import java.util.Hashtable;
 import java.util.List;
 import java.util.Vector;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.symc.plm.me.utils.BOPStructureDataUtility;
@@ -86,7 +86,7 @@ public class PartSearch
     private TCComponentBOMLine oldTargetOpBOMLine = null;
     private String oldTargetStation = "";
     String connectedItemType = "Vehicle Part";
-    private final String serviceClassName = "com.ssangyong.service.BopPertService";
+    private final String serviceClassName = "com.kgm.service.BopPertService";
     private List<String> decessorsList;
     private List<String> bopVehPartRevPUIDList;
     

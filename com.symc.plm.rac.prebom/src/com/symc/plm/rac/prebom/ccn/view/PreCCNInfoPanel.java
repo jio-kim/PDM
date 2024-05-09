@@ -17,12 +17,12 @@ import org.eclipse.swt.widgets.Control;
 import org.eclipse.swt.widgets.Group;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-import com.ssangyong.common.SYMCLabel;
-import com.ssangyong.common.SYMCText;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.swtsearch.SearchItemDialog;
-import com.ssangyong.common.utils.PreferenceService;
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.SYMCLabel;
+import com.kgm.common.SYMCText;
+import com.kgm.common.swtsearch.SearchItemDialog;
+import com.kgm.common.utils.PreferenceService;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.rac.prebom.ccn.commands.CCNProcessCommand;
 import com.symc.plm.rac.prebom.ccn.validator.PreCCNValidator;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
@@ -729,7 +729,7 @@ public class PreCCNInfoPanel extends AbstractPreSYMCViewer {
     
     private void setMandatory(Control con) {
         ControlDecoration dec = new ControlDecoration(con, SWT.TOP | SWT.RIGHT);
-        Registry registry = Registry.getRegistry("com.ssangyong.common.common");
+        Registry registry = Registry.getRegistry("com.kgm.common.common");
         dec.setImage(registry.getImage("CONTROL_MANDATORY"));
         dec.setDescriptionText("This value will be required.");
         madatoryControls.add(con);

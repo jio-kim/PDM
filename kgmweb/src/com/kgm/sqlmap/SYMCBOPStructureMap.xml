@@ -1,0 +1,451 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.kgm.mapper.SYMCBOPStructureMapper">
+    
+    <!--  [Non-SR : 20180207, bc.kim] 작업 표준서 조회시 중복되는 공법이 생겨 최종 조회 개수가 HBOM 것과 맞지 않아 수정  -->
+    <select id="saveShopStructureData" parameterType="java.util.HashMap">
+		INSERT INTO BOP_STRUCT_DATA (
+		    KEY_CODE,
+		    ROW_NO,
+		    BOM_LEVEL,
+		    PARENT_ID,
+		    PARENT_REV,
+		    PARENT_TYPE,
+		    PARENT_REV_PUID,
+		    PARENT_BVRU,
+		    PARENT_ABS_OCC_PUID,
+		    PARENT_APP_PATH_NODE_PUID,
+		    CHILD_ID,
+		    CHILD_REV,
+		    CHILD_TYPE,
+		    REV_PUID,
+		    OCC_TYPEU,
+		    SEQ_NO,
+		    ORDER_NO,
+		    OCCURRENCE_NAME,
+		    OCC_PUID,
+		    OCC_THREADU,
+		    ABS_OCC_ID,
+		    ABS_OCC_PUID,
+		    PRECEDE_OCC_PUID,
+		    APP_NODE_PUID
+		)
+		WITH
+		    SHOP_ITEM AS (
+		        SELECT  #{shop_Item_Id, jdbcType=VARCHAR} AS SHOP_ITEM_ID FROM DUAL
+		    ),
+		    NEW_KEY_CODE AS (
+		        SELECT #{find_Key, jdbcType=VARCHAR} AS KEY_CODE FROM DUAL
+		    ),
+		    LATEST_ITEM_REV AS (
+		        SELECT PITEM.PUID AS ITEM_PUID,
+		            PITEMREVISION.PUID AS REV_PUID, 
+		            PITEM.PITEM_ID AS ITME_ID, 
+		            PITEMREVISION.PITEM_REVISION_ID AS REVISION_ID,
+		            ITEM_OBJECT.POBJECT_TYPE AS REVISION_TYPE, 
+		            ITEM_REV_OBJECT.POBJECT_NAME AS REVISION_NAME,
+		            PPOM_APPLICATION_OBJECT.PCREATION_DATE AS REVISION_CREATION_DATE
+		        FROM INFODBA.PITEM, INFODBA.PITEMREVISION, 
+		            INFODBA.PPOM_APPLICATION_OBJECT,
+		            INFODBA.PWORKSPACEOBJECT ITEM_OBJECT,
+		            INFODBA.PWORKSPACEOBJECT ITEM_REV_OBJECT
+		        WHERE PITEM.PUID = PITEMREVISION.RITEMS_TAGU
+		            AND PITEMREVISION.PUID=PPOM_APPLICATION_OBJECT.PUID
+		            AND PITEM.PUID=ITEM_OBJECT.PUID
+		            AND PITEMREVISION.PUID=ITEM_REV_OBJECT.PUID
+		            AND (PITEM.PITEM_ID, PPOM_APPLICATION_OBJECT.PCREATION_DATE) IN (
+		                SELECT INFODBA.PITEM.PITEM_ID, MAX(INFODBA.PPOM_APPLICATION_OBJECT.PCREATION_DATE)
+		                FROM INFODBA.PITEM, INFODBA.PITEMREVISION, 
+		                    INFODBA.PPOM_APPLICATION_OBJECT, INFODBA.PWORKSPACEOBJECT
+                            -- 2020-09-02 seho latest release를 체크하기 위해 추가함.
+                                ,INFODBA.PWORKSPACEOBJECT REV_WSO
+		                WHERE PITEM.PUID = PITEMREVISION.RITEMS_TAGU
+		                    AND PITEMREVISION.PUID=PPOM_APPLICATION_OBJECT.PUID
+		                    AND PITEM.PUID = PWORKSPACEOBJECT.PUID
+                        -- 2020-09-02 seho latest release를 체크하기 위해 추가함.
+                            AND INFODBA.PITEMREVISION.PUID = REV_WSO.PUID
+                            <if test="isLatestReleased != null and isLatestReleased == 'true'">
+                            AND (
+                                 (REV_WSO.PDATE_RELEASED IS NOT NULL AND PWORKSPACEOBJECT.POBJECT_TYPE IN ('M7_BOPPaintOp','M7_BOPAssyOp','M7_BOPBodyOp','M7_BOPWeldOP'))
+                                 OR  PWORKSPACEOBJECT.POBJECT_TYPE IN ('M7_BOPShop','M7_BOPLine','M7_BOPStation')
+		                         )
+                            </if>
+		                    AND PWORKSPACEOBJECT.POBJECT_TYPE IN (
+		                        'M7_BOPShop',
+		                         'M7_BOPLine',
+		                         'M7_BOPStation',
+		                         'M7_BOPPaintOp',
+		                         'M7_BOPAssyOp',
+		                         'M7_BOPBodyOp',
+		                         'M7_BOPWeldOP'
+		                         )
+		                GROUP BY INFODBA.PITEM.PITEM_ID
+		            )
+		        ),
+		        BOM_VIEW AS (
+		            SELECT PPSBOMVIEWREVISION.PUID AS BOMVIEW_REV_PUID,
+		                LATEST_ITEM_REV.ITEM_PUID AS ITEM_PUID,
+		                LATEST_ITEM_REV.REV_PUID AS REV_PUID,
+		                LATEST_ITEM_REV.ITME_ID AS ITEM_ID, 
+		                LATEST_ITEM_REV.REVISION_ID AS REVISION_ID
+		            FROM INFODBA.PPSBOMVIEWREVISION,
+		                LATEST_ITEM_REV,
+		                INFODBA.PSTRUCTURE_REVISIONS,
+		                INFODBA.PPSBOMVIEW,
+		                INFODBA.PPSVIEWTYPE
+		            WHERE PSTRUCTURE_REVISIONS.PUID = LATEST_ITEM_REV.REV_PUID
+		                AND PPSBOMVIEWREVISION.PUID = PSTRUCTURE_REVISIONS.PVALU_0
+		                AND PPSBOMVIEW.PUID = PPSBOMVIEWREVISION.RBOM_VIEWU
+		                AND PPSBOMVIEW.RVIEW_TYPEU = PPSVIEWTYPE.PUID
+		                AND PPSVIEWTYPE.PNAME IN ('view')
+		        ),
+		        BOP_BASIC_DATA AS (
+		            SELECT
+		                PMEAPPEARANCEPATHNODE.PUID AS APPEARANCEPATHNODE_PUID,
+		                PARENT_VIEW.ITEM_ID AS PARENT_ID,
+		                PARENT_VIEW.REVISION_ID AS PARENT_REV_ID,
+		                PWORKSPACEOBJECT.POBJECT_TYPE AS PARENT_ITEM_TYPE, 
+		                PARENT_VIEW.REV_PUID AS PARENT_REV_PUID,
+		                PPSOCCURRENCE.RPARENT_BVRU AS PARENT_BVRU,
+		                PMEAPPEARANCEPATHNODE.RPARENT_ABS_OCCU AS PARENT_ABS_OCC_UID,
+		                LATEST_ITEM_REV.ITME_ID AS CHILD_ID,
+		                LATEST_ITEM_REV.REVISION_ID AS CHILD_REV_ID,
+		                LATEST_ITEM_REV.REVISION_TYPE AS CHILD_REV_TYPE,
+		                LATEST_ITEM_REV.REV_PUID AS CHILD_REV_PUID,
+		                PPSOCCURRENCE.RCHILD_BVU AS CHILD_BVRU,
+		                PPSOCCURRENCE.POCCURRENCE_NAME AS OCC_NAME,
+		                PPSOCCURRENCE.PUID AS OCC_PUID,
+		                PPSOCCURRENCE.PSEQ_NO AS SEQ_NO,
+		                PPSOCCURRENCE.PORDER_NO AS ORDER_NO,
+		                PPSOCCURRENCE.PQTY_VALUE AS QTY_VALUE,
+		                PPSOCCURRENCE.ROCC_TYPEU AS OCC_TYPE_PUID,
+		                PPSOCCURRENCE.RNOTES_REFU AS NOTES_REFU, 
+		                PPSOCCURRENCE.ROCC_THREADU AS OCC_THREADU,
+		                PABSOCCURRENCE.PUID AS ABS_OCC_PUID,
+		                PABSOCCURRENCE.PABS_OCC_ID AS ABS_OCC_ID
+		            FROM INFODBA.PPSOCCURRENCE, INFODBA.PMEAPPEARANCEPATHNODE, 
+		                INFODBA.PABSOCCURRENCE, BOM_VIEW PARENT_VIEW,
+		                LATEST_ITEM_REV, INFODBA.PWORKSPACEOBJECT
+		            WHERE PPSOCCURRENCE.RPARENT_BVRU = PARENT_VIEW.BOMVIEW_REV_PUID
+		                AND PARENT_VIEW.ITEM_PUID=PWORKSPACEOBJECT.PUID
+		                --AND PARENT_VIEW.ITEM_ID = TOPNODE_ITEM.ITEM_ID
+		                AND PPSOCCURRENCE.ROCC_THREADU=PMEAPPEARANCEPATHNODE.ROCC_THREADU
+		                AND PMEAPPEARANCEPATHNODE.RPATH_ROOTU IN (
+		                   SELECT DISTINCT PMEAPPEARANCEPATHROOT.PUID AS PUID
+		                   FROM INFODBA.PMEAPPEARANCEPATHROOT, INFODBA.PITEM, SHOP_ITEM
+		                   WHERE PMEAPPEARANCEPATHROOT.RTRACKED_ITEMU = PITEM.PUID
+		                       AND PITEM.PITEM_ID=SHOP_ITEM.SHOP_ITEM_ID
+		               )
+		               AND PABSOCCURRENCE.PUID=PMEAPPEARANCEPATHNODE.RABS_OCCU
+		               AND LATEST_ITEM_REV.ITEM_PUID=PPSOCCURRENCE.RCHILD_ITEMU
+		   )
+                 SELECT A.KEY_CODE
+                    , ROWNUM AS ROW_NO
+                    , A.BOM_LEVEL
+                    , A.PARENT_ID
+                    , A.PARENT_REV
+                    , A.PARENT_TYPE 
+                    , A.PARENT_REV_PUID
+                    , A.PARENT_BVRU
+                    , A.PARENT_ABS_OCC_UID
+                    , A.PARENT_APP_PATH_NODE_PUID
+                    , A.CHILD_ID
+                    , A.CHILD_REV
+                    , A.CHILD_TYPE
+                    , A.CHILD_REV_PUID
+                    , A.CHILD_OCC_TYPEU
+                    , A.SEQ_NO
+                    , A.ORDER_NO
+                    , A.OCCURRENCE_NAME
+                    , A.OCC_PUID
+                    , A.OCC_THREADU
+                    , A.ABS_OCC_ID
+                    , A.ABS_OCC_PUID
+                    , A.PRECEDE_OCC_PUID
+                    , A.APPEARANCEPATHNODE_PUID
+              FROM (
+                SELECT DISTINCT
+                    TRIM(NEW_KEY_CODE.KEY_CODE) AS KEY_CODE,
+                    LEVEL AS BOM_LEVEL,
+                    BOP_BASIC_DATA.PARENT_ID AS PARENT_ID,
+                    BOP_BASIC_DATA.PARENT_REV_ID AS PARENT_REV,
+                    BOP_BASIC_DATA.PARENT_ITEM_TYPE AS PARENT_TYPE, 
+                    BOP_BASIC_DATA.PARENT_REV_PUID AS PARENT_REV_PUID,
+                    BOP_BASIC_DATA.PARENT_BVRU AS PARENT_BVRU,
+                    BOP_BASIC_DATA.PARENT_ABS_OCC_UID AS PARENT_ABS_OCC_UID,
+                    PRIOR TRIM(BOP_BASIC_DATA.APPEARANCEPATHNODE_PUID) AS PARENT_APP_PATH_NODE_PUID,
+                    BOP_BASIC_DATA.CHILD_ID AS CHILD_ID,
+                    BOP_BASIC_DATA.CHILD_REV_ID AS CHILD_REV,
+                    BOP_BASIC_DATA.CHILD_REV_TYPE AS CHILD_TYPE,
+                    BOP_BASIC_DATA.CHILD_REV_PUID AS CHILD_REV_PUID,
+                    BOP_BASIC_DATA.OCC_TYPE_PUID AS CHILD_OCC_TYPEU,
+                    BOP_BASIC_DATA.SEQ_NO AS SEQ_NO,
+                    BOP_BASIC_DATA.ORDER_NO AS ORDER_NO,
+                    BOP_BASIC_DATA.OCC_NAME AS OCCURRENCE_NAME,
+                    BOP_BASIC_DATA.OCC_PUID AS OCC_PUID,
+                    BOP_BASIC_DATA.OCC_THREADU AS OCC_THREADU,
+                    BOP_BASIC_DATA.ABS_OCC_ID AS ABS_OCC_ID,
+                    BOP_BASIC_DATA.ABS_OCC_PUID AS ABS_OCC_PUID,
+                    PPRED_LIST_0.PVALU_0 AS PRECEDE_OCC_PUID,
+                    BOP_BASIC_DATA.APPEARANCEPATHNODE_PUID AS APPEARANCEPATHNODE_PUID
+                FROM BOP_BASIC_DATA,
+                    INFODBA.PPRED_LIST_0,
+                    SHOP_ITEM,
+                    NEW_KEY_CODE
+                WHERE BOP_BASIC_DATA.OCC_PUID = PPRED_LIST_0.PUID(+)
+                START WITH BOP_BASIC_DATA.PARENT_ID=SHOP_ITEM.SHOP_ITEM_ID
+                CONNECT BY PRIOR TRIM(BOP_BASIC_DATA.ABS_OCC_PUID) = TRIM(BOP_BASIC_DATA.PARENT_ABS_OCC_UID)
+                ) A
+    </select>
+
+    <delete id="deleteOldShopStructureData" parameterType="java.util.HashMap">
+    <![CDATA[
+		DELETE BOP_STRUCT_DATA
+		WHERE KEY_CODE IN (
+			SELECT DISTINCT KEY_CODE
+			FROM BOP_STRUCT_DATA
+			WHERE (PARENT_ID, SUBSTR(KEY_CODE, ((LENGTH(KEY_CODE)-12)+1), 12)) NOT IN (
+				SELECT PARENT_ID, MAX(CREATE_DATE) AS CREATE_DATE
+				FROM ( 
+					SELECT DISTINCT PARENT_ID, SUBSTR(KEY_CODE, ((LENGTH(KEY_CODE)-12)+1), 12) AS CREATE_DATE
+					FROM BOP_STRUCT_DATA
+					WHERE PARENT_TYPE='M7_BOPShop'
+				)
+				GROUP BY PARENT_ID
+			)
+			AND PARENT_TYPE='M7_BOPShop'
+		)
+        ]]>
+    </delete>
+
+    <select id="getAllStationCount" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    <![CDATA[
+        SELECT COUNT (DISTINCT CHILD_ID) AS STATION_COUNT
+        FROM BOP_STRUCT_DATA
+        WHERE CHILD_TYPE = 'M7_BOPStation'
+            AND KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+        ]]>
+    </select>
+
+    <select id="getPredecessorLines" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <![CDATA[
+		SELECT DISTINCT CHILD_ID AS LINE_ID, APP_NODE_PUID
+		FROM (
+			SELECT CHILD_ID, APP_NODE_PUID
+			FROM (
+				SELECT CHILD_ID, APP_NODE_PUID, PRECEDE_OCC_PUID, OCC_PUID
+				FROM BOP_STRUCT_DATA
+				WHERE KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+					AND CHILD_TYPE = 'M7_BOPLine'
+		    )
+			START WITH CHILD_ID = #{line_Item_Id, jdbcType=VARCHAR}
+			CONNECT BY PRIOR PRECEDE_OCC_PUID = OCC_PUID
+		)
+		WHERE CHILD_ID <> #{line_Item_Id, jdbcType=VARCHAR}
+        ]]>
+    </select>
+
+    <select id="getPredecessorStationsAtLine" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    <![CDATA[
+        SELECT DISTINCT CHILD_ID AS STATION_ID, APP_NODE_PUID
+        FROM (
+            SELECT A.CHILD_ID, A.APP_NODE_PUID
+            FROM (
+                SELECT CHILD_ID, APP_NODE_PUID, PRECEDE_OCC_PUID, OCC_PUID
+                FROM BOP_STRUCT_DATA
+                WHERE KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+                    AND CHILD_TYPE = 'M7_BOPStation'
+                ) A
+                START WITH A.CHILD_ID = #{station_Item_Id, jdbcType=VARCHAR}
+                CONNECT BY PRIOR A.PRECEDE_OCC_PUID = A.OCC_PUID
+        )
+        WHERE CHILD_ID <> #{station_Item_Id, jdbcType=VARCHAR}
+    ]]>
+    </select>
+
+    <select id="getPredecessorStationsAtAllLine" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+    <![CDATA[
+		SELECT DISTINCT CHILD_ID AS STATION_ID, APP_NODE_PUID
+		FROM BOP_STRUCT_DATA
+		WHERE KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+		AND PARENT_ID IN (
+		    SELECT DISTINCT CHILD_ID
+		    FROM (
+		        SELECT CHILD_ID
+		        FROM (
+		            SELECT CHILD_ID, PRECEDE_OCC_PUID, OCC_PUID
+		            FROM BOP_STRUCT_DATA
+		            WHERE KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+		                AND CHILD_TYPE = 'M7_BOPLine'
+		        )
+		        START WITH CHILD_ID = #{line_Item_Id, jdbcType=VARCHAR}
+		        CONNECT BY PRIOR PRECEDE_OCC_PUID = OCC_PUID
+		    )
+		    WHERE CHILD_ID <> #{line_Item_Id, jdbcType=VARCHAR}
+		)
+		UNION
+		SELECT DISTINCT CHILD_ID AS STATION_ID, APP_NODE_PUID
+		FROM (
+		    SELECT CHILD_ID, APP_NODE_PUID
+		    FROM (
+		        SELECT CHILD_ID, APP_NODE_PUID, PRECEDE_OCC_PUID, OCC_PUID
+		        FROM BOP_STRUCT_DATA
+		        WHERE KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+		            AND CHILD_TYPE = 'M7_BOPStation'
+		    )
+		    START WITH CHILD_ID = #{station_Item_Id, jdbcType=VARCHAR}
+		    CONNECT BY PRIOR PRECEDE_OCC_PUID = OCC_PUID
+		)
+		WHERE CHILD_ID <> #{station_Item_Id, jdbcType=VARCHAR}
+    ]]>
+    </select>
+
+    <select id="getUnPertedStationList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+        <![CDATA[
+        WITH TARGET_LINE AS (
+                SELECT LINE_ID
+                FROM (
+                    SELECT LINE_ID, COUNT (STATION_ID) AS CHILD_STATION_COUNT
+                    FROM (
+                        SELECT DISTINCT
+                            PARENT_ID AS LINE_ID, CHILD_ID AS STATION_ID
+                        FROM BOP_STRUCT_DATA
+                        WHERE KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+                            AND PARENT_TYPE = 'M7_BOPLine'
+                            AND CHILD_TYPE = 'M7_BOPStation'
+                    )
+                GROUP BY LINE_ID
+            )
+            WHERE CHILD_STATION_COUNT >1
+        ),
+        NOT_PERTED_OCC AS (
+            SELECT DISTINCT OCC_PUID AS OCC_PUID
+            FROM BOP_STRUCT_DATA, TARGET_LINE
+            WHERE BOP_STRUCT_DATA.KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+                AND BOP_STRUCT_DATA.CHILD_TYPE = 'M7_BOPStation'
+                AND BOP_STRUCT_DATA.PARENT_ID = TARGET_LINE.LINE_ID
+                AND BOP_STRUCT_DATA.PRECEDE_OCC_PUID IS NULL
+            MINUS
+            SELECT DISTINCT PRECEDE_OCC_PUID AS OCC_PUID
+            FROM BOP_STRUCT_DATA, TARGET_LINE
+            WHERE BOP_STRUCT_DATA.KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+                AND BOP_STRUCT_DATA.CHILD_TYPE = 'M7_BOPStation'
+                AND BOP_STRUCT_DATA.PARENT_ID = TARGET_LINE.LINE_ID
+                AND BOP_STRUCT_DATA.PRECEDE_OCC_PUID IS NOT NULL
+        )
+        SELECT DISTINCT PARENT_ID, CHILD_ID, PARENT_APP_PATH_NODE_PUID, APP_NODE_PUID
+        FROM BOP_STRUCT_DATA, NOT_PERTED_OCC
+        WHERE BOP_STRUCT_DATA.KEY_CODE = #{find_Key, jdbcType=VARCHAR}
+            AND BOP_STRUCT_DATA.OCC_PUID = NOT_PERTED_OCC.OCC_PUID
+        ]]>
+    </select>
+
+    <select id="keyCodeListFind" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
+		SELECT
+			DISTINCT PARENT_ID AS SHOP_ITEM_ID, KEY_CODE
+		FROM BOP_STRUCT_DATA
+		WHERE PARENT_TYPE='M7_BOPShop'
+    </select>
+  
+  <!--   
+	<select id="getLatestKeyCodeForShop" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
+		WITH KEY_CODE_LIST AS (
+			SELECT DISTINCT PARENT_ID,
+			KEY_CODE,
+			SUBSTR(KEY_CODE, 1, (LENGTH(KEY_CODE)-13)) AS USER_NAME,
+			SUBSTR(KEY_CODE, ((LENGTH(KEY_CODE)-12)+1), 12) AS CREATE_DATE,
+			NVL(
+				LENGTH(
+					TRANSLATE(
+							SUBSTR(KEY_CODE, ((LENGTH(KEY_CODE)-12)+1), 12),
+							'A1234567890','A'
+						)
+					)
+				, 0) AS CHAR_COUNT
+			FROM BOP_STRUCT_DATA
+			WHERE PARENT_TYPE='M7_BOPShop'
+				AND PARENT_ID = #{shop_Item_Id, jdbcType=VARCHAR}
+		),
+		TARGET_DATA_LIST AS (
+			SELECT PARENT_ID,
+				KEY_CODE,
+				USER_NAME,
+				CREATE_DATE,
+				CHAR_COUNT
+			FROM KEY_CODE_LIST
+			WHERE CHAR_COUNT <![CDATA[<]]> 1
+			<if test="userId != null and userId != '' ">
+				AND USER_NAME = UPPER( #{userId, jdbcType=VARCHAR} )
+			</if>
+		),
+		MAX_KEY_FOR_SHOP AS (
+			SELECT PARENT_ID, MAX(CREATE_DATE) AS MAX_DATE
+			FROM TARGET_DATA_LIST
+			GROUP BY PARENT_ID
+		)
+		SELECT DISTINCT
+			TARGET_DATA_LIST.KEY_CODE AS KEY_CODE, 
+			TARGET_DATA_LIST.PARENT_ID AS PARENT_ID,
+			TARGET_DATA_LIST.USER_NAME AS USER_NAME,
+			TARGET_DATA_LIST.CREATE_DATE AS CREATE_DATE_STR
+		FROM MAX_KEY_FOR_SHOP, TARGET_DATA_LIST
+		WHERE MAX_KEY_FOR_SHOP.MAX_DATE = TARGET_DATA_LIST.CREATE_DATE
+			    AND MAX_KEY_FOR_SHOP.PARENT_ID = TARGET_DATA_LIST.PARENT_ID
+    </select>  
+    -->
+    
+    <!-- 수정본 -->
+    <!-- [SR: ] bc.kim 
+                KEY_CODE 는  "사용자_현재날짜"  를 이용해서 만드는 기존것은 YYYYMMddhhmm 까지만 생성하여 만드는데 이것이 
+                기능을 1분안에 재 실행 하게 될경우(생성 데이터가 적어 생성시간이 수초인경우) 중복 데이터가 생성됨 
+                이를 방지 하기 위해서 초 단위까지 KEY_CODE를 만들도록 변경 하였나 Connected Part 에서 데이터 생성 후 KEY_CODE의 문자열을 잘라
+                사용자 정보를 가져오는 로직이 있는데 여기서 사용자를 찾을수 없었음 
+                하여 USER_NAME 을 가져 오는 쿼리 변경 -->
+	<select id="getLatestKeyCodeForShop" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
+		WITH KEY_CODE_LIST AS (
+			SELECT DISTINCT PARENT_ID,
+			KEY_CODE,
+			 substr(key_code, 1, (instr(key_code, '_') - 1 )) AS USER_NAME, 
+			 substr(key_code,  (instr(key_code, '_') + 1 )) AS CREATE_DATE,
+			NVL(
+				LENGTH(
+					TRANSLATE(
+							SUBSTR(KEY_CODE, ((LENGTH(KEY_CODE)-12)+1), 12),
+							'A1234567890','A'
+						)
+					)
+				, 0) AS CHAR_COUNT
+			FROM BOP_STRUCT_DATA
+			WHERE PARENT_TYPE='M7_BOPShop'
+				AND PARENT_ID = #{shop_Item_Id, jdbcType=VARCHAR}
+		),
+		TARGET_DATA_LIST AS (
+			SELECT PARENT_ID,
+				KEY_CODE,
+				USER_NAME,
+				CREATE_DATE,
+				CHAR_COUNT
+			FROM KEY_CODE_LIST
+			WHERE CHAR_COUNT <![CDATA[<]]> 1
+			<if test="userId != null and userId != '' ">
+				AND USER_NAME =  UPPER( #{userId, jdbcType=VARCHAR} ) 
+			</if>
+		),
+		MAX_KEY_FOR_SHOP AS (
+			SELECT PARENT_ID, MAX(CREATE_DATE) AS MAX_DATE
+			FROM TARGET_DATA_LIST
+			GROUP BY PARENT_ID
+		)
+		SELECT DISTINCT
+			TARGET_DATA_LIST.KEY_CODE AS KEY_CODE, 
+			TARGET_DATA_LIST.PARENT_ID AS PARENT_ID,
+			TARGET_DATA_LIST.USER_NAME AS USER_NAME,
+			TARGET_DATA_LIST.CREATE_DATE AS CREATE_DATE_STR
+		FROM MAX_KEY_FOR_SHOP, TARGET_DATA_LIST
+		WHERE MAX_KEY_FOR_SHOP.MAX_DATE = TARGET_DATA_LIST.CREATE_DATE
+			    AND MAX_KEY_FOR_SHOP.PARENT_ID = TARGET_DATA_LIST.PARENT_ID
+    </select>
+     
+
+</mapper>

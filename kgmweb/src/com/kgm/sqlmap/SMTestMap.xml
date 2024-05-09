@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.kgm.mapper.SMTestMapper">
+
+	<select id="getEngPSRepublishingTarget" resultType="java.util.HashMap">
+	<![CDATA[
+		SELECT OPERATION_ID, OPERATION_REV_ID
+		     , KPS_ITEM_ID, KPS_ITEM_REVISION_ID
+		     , EPS_ITEM_ID, EPS_ITEM_REVISION_ID
+		     , POBJECT_NAME, SHOP_ITEM_ID
+		  FROM (
+		        SELECT A.OPERATION_ID, A.OPERATION_REV_ID
+		             , D1.PITEM_ID AS KPS_ITEM_ID, C1.PITEM_REVISION_ID AS KPS_ITEM_REVISION_ID
+		             , D2.PITEM_ID AS EPS_ITEM_ID, C2.PITEM_REVISION_ID AS EPS_ITEM_REVISION_ID
+		             , B1.POBJECT_NAME
+		             , GET_UPPER_ITEM_ID(A.OPERATION_ID, 'M7_BOPShopRevision') AS SHOP_ITEM_ID
+		          FROM (
+		               SELECT PARENT_ID AS OPERATION_ID
+		                    , PARENT_REV_ID AS OPERATION_REV_ID
+		                    , 'KPS-' || PARENT_ID AS KPS_ITEM_ID
+		                    , 'EPS-' || PARENT_ID AS EPS_ITEM_ID
+		                 FROM (
+		                       SELECT ITEM.PITEM_ID PARENT_ID
+		                            , REVISION.PITEM_REVISION_ID PARENT_REV_ID, STRREV.PUID PARENT_REV_PUID
+		                            , REVISION.PS7_DISPLAY_PART_NO DISPLAY_P_PART_NO
+		                            , OBJ.POBJECT_TYPE PARENT_REV_TYPE, STRREV.PVALU_0 PARENT_REV_VIEW_PUID
+		                            , OCC.RCHILD_ITEMU
+		                            , OBJ.POBJECT_TYPE AS POBJECT_TYPE
+		                         FROM INFODBA.PPSOCCURRENCE OCC
+		                            , INFODBA.PSTRUCTURE_REVISIONS STRREV
+		                            , INFODBA.PPSBOMVIEWREVISION BVR
+		                            , INFODBA.PPSBOMVIEW BV
+		                            , INFODBA.PWORKSPACEOBJECT OBJ
+		                            , INFODBA.PITEMREVISION REVISION
+		                            , INFODBA.PITEM ITEM
+		                        WHERE OCC.RPARENT_BVRU = BVR.PUID
+		                          AND STRREV.PVALU_0 = BVR.PUID   --BOM view revision PUID
+		                          AND BV.PUID = BVR.RBOM_VIEWU    --BOM view PUID
+		                          AND STRREV.PUID = OBJ.PUID
+		                          AND STRREV.PUID = REVISION.PUID
+		                          AND REVISION.RITEMS_TAGU = ITEM.PUID
+		                          AND OBJ.POBJECT_TYPE IN ('M7_BOPAssyOpRevision', 'M7_BOPBodyOpRevision', 'M7_BOPPaintOpRevision')
+                                  AND OBJ.PDATE_RELEASED IS NOT NULL
+		                          AND REVISION.PITEM_REVISION_ID = ( SELECT MAX(REVISION1.PITEM_REVISION_ID) 
+		                                                               FROM INFODBA.PITEMREVISION REVISION1
+		                                                              WHERE REVISION1.RITEMS_TAGU = ITEM.PUID)
+		                      ) X,
+		                     ( SELECT I.PUID AS CHILD_PUID
+		                            , IR.PITEM_REVISION_ID AS CHILD_REV_ID
+		                            , IR.PUID AS CHILD_REV_PUID 
+		                            , PWO.PDATE_RELEASED AS PDATE_RELEASED
+		                            , PWO.POBJECT_NAME
+		                         FROM INFODBA.PITEM I
+		                            , INFODBA.PITEMREVISION IR
+		                            , INFODBA.PWORKSPACEOBJECT PWO
+		                        WHERE PWO.PUID = IR.PUID
+		                          AND I.PUID = IR.RITEMS_TAGU
+		                          AND PWO.POBJECT_TYPE IN ('M7_GeneralEquipRevision', 'M7_GunRevision', 'M7_JigFixtureRevision', 'M7_RobotRevision', 'M7_ToolRevision')
+		                          AND PWO.PDATE_RELEASED = ( SELECT MAX(PWO1.PDATE_RELEASED)
+		                                                       FROM INFODBA.PITEM I1
+		                                                          , INFODBA.PITEMREVISION IR1
+		                                                          , INFODBA.PWORKSPACEOBJECT PWO1
+		                                                      WHERE PWO1.PUID = IR1.PUID
+		                                                        AND IR1.RITEMS_TAGU = I1.PUID
+		                                                        AND I1.PUID = I.PUID
+		                                                     )
+		                     ) Y 
+		                WHERE Y.CHILD_PUID = X.RCHILD_ITEMU 
+		                GROUP BY PARENT_ID, PARENT_REV_ID
+		             ) A
+		             , INFODBA.PWORKSPACEOBJECT B1
+		             , INFODBA.PITEMREVISION C1
+		             , INFODBA.PITEM D1 
+		             , INFODBA.PWORKSPACEOBJECT B2
+		             , INFODBA.PITEMREVISION C2
+		             , INFODBA.PITEM D2 
+		         WHERE B1.POBJECT_TYPE = 'M7_ProcessSheetRevision'
+		           AND B1.PDATE_RELEASED IS NOT NULL
+		           AND B1.PUID = C1.PUID
+		           AND C1.RITEMS_TAGU = D1.PUID
+		           AND D1.PITEM_ID = A.KPS_ITEM_ID
+		           AND C1.PITEM_REVISION_ID = ( SELECT MAX(C11.PITEM_REVISION_ID)
+		                                          FROM INFODBA.PITEMREVISION C11
+		                                             , INFODBA.PITEM D11
+		                                         WHERE C11.RITEMS_TAGU = D11.PUID
+		                                           AND D11.PUID = D1.PUID
+		                                       )
+		           AND B2.POBJECT_TYPE = 'M7_ProcessSheetRevision'
+		           AND B2.PDATE_RELEASED IS NOT NULL
+		           AND B2.PUID = C2.PUID
+		           AND C2.RITEMS_TAGU = D2.PUID
+		           AND D2.PITEM_ID = A.EPS_ITEM_ID
+		           AND C2.PITEM_REVISION_ID = ( SELECT MAX(C21.PITEM_REVISION_ID)
+		                                          FROM INFODBA.PITEMREVISION C21
+		                                             , INFODBA.PITEM D21
+		                                         WHERE C21.RITEMS_TAGU = D21.PUID
+		                                           AND D21.PUID = D2.PUID
+		                                        )
+		           AND SUBSTR(C1.PITEM_REVISION_ID, 0, 3) = SUBSTR(C2.PITEM_REVISION_ID, 0, 3)  
+		      ) 
+		  WHERE SHOP_ITEM_ID = #{SHOP_ITEM_ID, jdbcType=VARCHAR}
+	   ORDER BY OPERATION_ID
+	]]>
+	</select>
+	
+	<select id="getShopLineInfo" resultType="java.util.HashMap">
+	<![CDATA[
+		SELECT SHOP_ITEM_ID
+		     , MAX(LINE_ITEM_ID) AS LINE_ITEM_ID
+		     , MAX(LINE_ITEM_REVISION_ID) AS LINE_ITEM_REVISION_ID
+		  FROM (
+		        SELECT ( 
+		                SELECT PARENT_ITEM.PITEM_ID
+		                  FROM INFODBA.PSTRUCTURE_REVISIONS STRREV
+		                     , INFODBA.PITEM PARENT_ITEM, INFODBA.PITEMREVISION PARENT_REVISION, INFODBA.PWORKSPACEOBJECT PARENT_OBJ
+		                     , INFODBA.PITEM CHILD_ITEM, INFODBA.PITEMREVISION CHILD_REVISION, INFODBA.PWORKSPACEOBJECT CHILD_OBJ
+		                     , INFODBA.PPSOCCURRENCE OCC
+		                 WHERE STRREV.PUID = PARENT_REVISION.PUID
+		                   AND STRREV.PVALU_0 = OCC.RPARENT_BVRU
+		                   AND PARENT_OBJ.PUID = PARENT_REVISION.PUID
+		                   AND PARENT_OBJ.PACTIVE_SEQ = '1'
+		                   AND PARENT_REVISION.RITEMS_TAGU = PARENT_ITEM.PUID
+		                   AND CHILD_OBJ.PUID = CHILD_REVISION.PUID
+		                   AND CHILD_OBJ.PACTIVE_SEQ = '1'
+		                   AND CHILD_REVISION.RITEMS_TAGU = CHILD_ITEM.PUID
+		                   AND OCC.RCHILD_ITEMU = CHILD_ITEM.PUID
+		                   AND CHILD_ITEM.PITEM_ID = X.PITEM_ID
+		                ) SHOP_ITEM_ID
+		             , X.PITEM_ID AS LINE_ITEM_ID
+		             , X.PITEM_REVISION_ID AS LINE_ITEM_REVISION_ID
+		          FROM (
+		                SELECT PARENT_ITEM.PITEM_ID
+		                     , PARENT_REVISION.PITEM_REVISION_ID
+		                     , PARENT_OBJ.POBJECT_NAME
+		                  FROM INFODBA.PSTRUCTURE_REVISIONS STRREV
+		                     , INFODBA.PITEM PARENT_ITEM, INFODBA.PITEMREVISION PARENT_REVISION, INFODBA.PWORKSPACEOBJECT PARENT_OBJ
+		                     , INFODBA.PITEM CHILD_ITEM, INFODBA.PITEMREVISION CHILD_REVISION, INFODBA.PWORKSPACEOBJECT CHILD_OBJ
+		                     , INFODBA.PPSOCCURRENCE OCC
+		                 WHERE STRREV.PUID = PARENT_REVISION.PUID
+		                   AND STRREV.PVALU_0 = OCC.RPARENT_BVRU
+		                   AND PARENT_OBJ.PUID = PARENT_REVISION.PUID
+		                   AND PARENT_OBJ.PACTIVE_SEQ = '1'
+		                   AND PARENT_REVISION.RITEMS_TAGU = PARENT_ITEM.PUID
+		                   AND CHILD_OBJ.PUID = CHILD_REVISION.PUID
+		                   AND CHILD_OBJ.PACTIVE_SEQ = '1'
+		                   AND CHILD_REVISION.RITEMS_TAGU = CHILD_ITEM.PUID
+		                   AND OCC.RCHILD_ITEMU = CHILD_ITEM.PUID
+		                   AND CHILD_ITEM.PITEM_ID = #{OPERATION_ITEM_ID, jdbcType=VARCHAR}
+		               ) X 
+		       )
+		GROUP BY SHOP_ITEM_ID 
+	]]>
+	</select>
+	
+
+	<select id="getMigEngList" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT ENG_ITEM_ID
+	     , ENG_ITEM_REVISION_ID
+	  FROM MIG_ENG_T
+	 WHERE SHOP_ITEM_ID <> 'PTP-A3-PVC2012'
+	]]>
+	</select>
+
+	<select id="getMigRepublishingList" resultType="java.util.HashMap">
+	<![CDATA[
+    SELECT OP_ITEM_ID AS OPERATION_ID, OP_ITEM_REVISION_ID AS OPERATION_REV_ID
+	     , KOR_ITEM_ID AS KPS_ITEM_ID, KOR_ITEM_REVISION_ID AS KPS_ITEM_REVISION_ID
+	     , ENG_ITEM_ID AS EPS_ITEM_ID, ENG_ITEM_REVISION_ID AS EPS_ITEM_REVISION_ID
+	     , ENG_ITEM_NAME AS POBJECT_NAME, SHOP_ITEM_ID AS SHOP_ITEM_ID
+	  FROM MIG_ENG_T
+	 WHERE PROC = #{PROC, jdbcType=VARCHAR}
+  ORDER BY OP_ITEM_ID	 
+	]]>
+	</select>
+
+	<select id="getWeldOPItemList" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT I.PITEM_ID AS OPERATION_ID
+	  FROM INFODBA.PITEMREVISION IR
+	     , INFODBA.PITEM I
+	     , INFODBA.PWORKSPACEOBJECT IRW
+	 WHERE IRW.PUID = IR.PUID
+	   AND IRW.PDATE_RELEASED IS NOT NULL
+	   AND IRW.POBJECT_TYPE = 'M7_BOPWeldOPRevision'  
+	   AND IRW.PACTIVE_SEQ = 1
+	   AND IR.RITEMS_TAGU = I.PUID
+	   AND (#{PROC, jdbcType=VARCHAR} IS NULL OR I.PITEM_ID >= #{PROC, jdbcType=VARCHAR})
+  GROUP BY I.PITEM_ID
+    HAVING COUNT(IR.PITEM_REVISION_ID) > 1
+  ORDER BY I.PITEM_ID
+	]]>
+	</select>
+
+	<select id="getOperationListForWorkCount" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT PITEM_ID, PITEM_REVISION_ID, PUID
+	     , POBJECT_NAME, POBJECT_TYPE
+	     , NVL(OLD_WORK_COUNT, 0) AS OLD_WORK_COUNT
+	     , NVL(NEW_WORK_COUNT, 0) AS NEW_WORK_COUNT
+	  FROM (
+			SELECT I.PITEM_ID, IR.PITEM_REVISION_ID, IR.PUID
+			     , PWO.POBJECT_NAME, PWO.POBJECT_TYPE
+			     , BO.PM7_WORKER_COUNT AS OLD_WORK_COUNT
+			     , MIG.WORK_COUNT AS NEW_WORK_COUNT
+			  FROM INFODBA.PWORKSPACEOBJECT PWO
+			     , INFODBA.PITEM I, INFODBA.PITEMREVISION IR
+			     , INFODBA.PM7_BOPBODYOPREVISION BO
+			     , IF_USER.MIG_OPERATION MIG
+			 WHERE MIG.OPERATION_NEW_ID = I.PITEM_ID
+			   AND BO.PUID = PWO.PUID
+			   AND IR.PUID = PWO.PUID
+			   AND IR.RITEMS_TAGU = I.PUID
+			   AND PWO.POBJECT_TYPE LIKE 'M7_BOPBodyOpRevision'
+			UNION ALL
+			SELECT I.PITEM_ID, IR.PITEM_REVISION_ID, IR.PUID
+			     , PWO.POBJECT_NAME, PWO.POBJECT_TYPE
+			     , BO.PM7_WORKER_COUNT AS OLD_WORK_COUNT
+			     , MIG.WORK_COUNT AS NEW_WORK_COUNT
+			  FROM INFODBA.PWORKSPACEOBJECT PWO
+			     , INFODBA.PITEM I, INFODBA.PITEMREVISION IR
+			     , INFODBA.PM7_BOPPAINTOPREVISION BO
+			     , IF_USER.MIG_OPERATION MIG
+			 WHERE MIG.OPERATION_NEW_ID = I.PITEM_ID
+			   AND BO.PUID = PWO.PUID
+			   AND IR.PUID = PWO.PUID
+			   AND IR.RITEMS_TAGU = I.PUID
+			   AND PWO.POBJECT_TYPE LIKE 'M7_BOPPaintOpRevision'
+           )
+     WHERE (#{PROC, jdbcType=VARCHAR} IS NULL OR PITEM_ID || PITEM_REVISION_ID >= #{PROC, jdbcType=VARCHAR})
+  ORDER BY PITEM_ID, PITEM_REVISION_ID
+	]]>
+	</select>
+
+	<select id="getFuncListByProduct" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT A.PRODUCT_ID
+	     , A.ITEM_ID AS FUNCTION_NO
+	     , A.ITEM_PUID AS FUNCTION_PUID
+	     , A.ITEM_REV_ID AS FUNCTION_REV_ID
+	     , A.ITEM_REV_PUID AS FUNCTION_REV_PUID
+	     , A.PROJECT_CODE AS PROJECT_CODE
+	     , A.ITEM_NAME AS FUNCTION_NAME
+	  FROM TABLE(HBOM_TC_PACKAGE.GET_FUNCTIONS(#{PROD_NO, jdbcType=VARCHAR}, '')) A 
+	 WHERE (#{FUNC_NO, jdbcType=VARCHAR} IS NULL OR A.ITEM_ID = #{FUNC_NO, jdbcType=VARCHAR})
+	]]>
+	</select>
+
+	<select id="getInEcoBP" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT A.IN_ECO, A.IN_DATE
+	     , A.BP_IN_DATE, A.BP_OUT_DATE
+	     , A.OUT_ECO, A.OUT_DATE 
+	  FROM TABLE(HBOM_CM_PACKAGE_TEST.GET_INOUT_ECO_BP(#{pPARENT_ID, jdbcType=VARCHAR}, #{pPARENT_REV_ID, jdbcType=VARCHAR}
+	                                                 , #{pCHILD_ID, jdbcType=VARCHAR}, #{pCHILD_REV_ID, jdbcType=VARCHAR}
+	                                                 , #{pOCC_THREAD, jdbcType=VARCHAR}, #{pORDER_NO, jdbcType=VARCHAR}
+	                                                 , #{pBASE_DATE, jdbcType=VARCHAR}, #{pIS_WORKING, jdbcType=VARCHAR})) A
+	]]>
+	</select>
+
+	<select id="getDCSWorkflowHistoryMaxSeq" resultType="int">
+	<![CDATA[
+	SELECT NVL(MAX(SEQ), 0) + 1 AS SEQ
+	  FROM MIG_PRE_DCS_WORKFLOW
+	]]>
+	</select>
+
+    <insert id="insertDCSWorkflowHistory" parameterType="java.util.HashMap">      
+	INSERT INTO MIG_PRE_DCS_WORKFLOW (SEQ, DCS_NO, DCS_REV, WORKFLOW_TYPE
+	                                , TEAM_CODE, TEAM_NAME
+	                                , MAKE_USER_NAME, MAKE_USER, MAKE_DATE, MAKE_COMMENT
+	                                , FIRST_CREATE_USER_NAME, FIRST_CREATE_USER, FIRST_CREATE_DATE, FIRST_COMMENT
+	                                , SECOND_CREATE_USER_NAME, SECOND_CREATE_USER, SECOND_CREATE_DATE, SECOND_COMMENT
+	                                , REJECT_COMMENT, REVIEW_RESULT, APPLY_DATE
+	                                , CREATE_USER, CREATE_DATE )
+	     VALUES ( #{SEQ, jdbcType=VARCHAR}, #{DCS_NO, jdbcType=VARCHAR}, #{DCS_REV, jdbcType=VARCHAR}, #{WORKFLOW_TYPE, jdbcType=VARCHAR}
+	            , #{TEAM_CODE, jdbcType=VARCHAR}, #{TEAM_NAME, jdbcType=VARCHAR}
+	            , #{MAKE_USER_NAME, jdbcType=VARCHAR}, #{MAKE_USER, jdbcType=VARCHAR}, #{MAKE_DATE, jdbcType=VARCHAR}, #{MAKE_COMMENT, jdbcType=VARCHAR}
+	            , #{FIRST_CREATE_USER_NAME, jdbcType=VARCHAR}, #{FIRST_CREATE_USER, jdbcType=VARCHAR}, #{FIRST_CREATE_DATE, jdbcType=VARCHAR}, #{FIRST_COMMENT, jdbcType=VARCHAR}
+	            , #{SECOND_CREATE_USER_NAME, jdbcType=VARCHAR}, #{SECOND_CREATE_USER, jdbcType=VARCHAR}, #{SECOND_CREATE_DATE, jdbcType=VARCHAR}, #{SECOND_COMMENT, jdbcType=VARCHAR}
+	            , #{REJECT_COMMENT, jdbcType=VARCHAR}, #{REVIEW_RESULT, jdbcType=VARCHAR}, #{APPLY_DATE, jdbcType=VARCHAR}
+	            , #{CREATE_USER, jdbcType=VARCHAR}, #{CREATE_DATE, jdbcType=VARCHAR} )
+    </insert>
+    
+	<select id="selectVNetUserList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+	SELECT EMPNO AS USER_ID,
+		   TRIM(HNAME) AS USER_NAME,
+		   TMCOD AS TEAM_CODE,
+		   TEAM AS TEAM_NAME,
+		   JWCOD AS ROLE_ID,
+		   JIKWI AS ROLE_NAME,
+		   EMAIL2
+	  FROM CALS.SYSA02TB@LINK_001_VNET
+	 WHERE EMPNO like '%' || #{user_id} || '%'
+  ORDER BY USER_NAME
+	</select>
+     
+	<select id="getProductList" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT PI.PITEM_ID AS PRODUCT_ID, PR.PS7_GMODEL_CODE AS GMODEL
+	  FROM INFODBA.PITEM PI
+	     , INFODBA.PITEMREVISION PIR
+	     , INFODBA.PS7_PRODUCTREVISION PR
+	 WHERE PR.PUID = PIR.PUID
+	   AND PIR.RITEMS_TAGU = PI.PUID
+	   AND (#{PRODUCT_ID} IS NULL OR PI.PITEM_ID = #{PRODUCT_ID})
+	   AND PR.PS7_GMODEL_CODE IN ( SELECT A2.GMODEL
+	                                 FROM IF_MFG_SPEC A2
+	                                WHERE A2.YYYYMMDD = ( SELECT MAX(A3.YYYYMMDD)
+	                                                        FROM IF_MFG_SPEC A3
+	                                                       WHERE A3.GMODEL = A2.GMODEL )
+	                                  AND A2.VERSION = ( SELECT MAX(A3.VERSION)
+	                                                       FROM IF_MFG_SPEC A3
+	                                                      WHERE A3.GMODEL = A2.GMODEL
+	                                                        AND A3.SPECNO = A2.SPECNO )
+	                               )
+	]]>
+	</select>
+     
+	<!-- End Item List를 생성한다. -->
+	<select id="createEndItemList" parameterType="hashmap" statementType="CALLABLE" >
+	<![CDATA[
+ 	{ call PKG_NAME_GROUP_EBOMEPL.P_CREATE_VALID_NM_RSLT( #{PRODUCT_ID,jdbcType=VARCHAR,mode=IN},
+						         					 	  #{SPEC_TYPE,jdbcType=VARCHAR,mode=IN},
+						         					 	  #{DATE_STR,jdbcType=VARCHAR,mode=IN},
+						         					 	  #{SPEC_NO,jdbcType=VARCHAR,mode=IN},
+						         					 	  #{RTN_KEY,jdbcType=VARCHAR,mode=OUT},
+						                             	  #{RTN_MSG,jdbcType=VARCHAR,mode=OUT}
+						                             	 ) }
+    ]]>
+	</select>
+
+	<select id="deleteMfgSpec">
+	<![CDATA[
+    DELETE FROM IF_USER.MFG_SPEC
+	]]>
+	</select>
+     
+	<!-- [20240228] Oracle Version upgrade 로 인한 WM_CONCAT 을 LISTAGG 로 변경 -->
+	<!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
+	<select id="insertMfgSpec">
+	<![CDATA[
+    INSERT INTO IF_USER.MFG_SPEC
+         SELECT GMODEL, SPEC_NO, REPLACE(LISTAGG(OPTION_NO, ','), ',', ' AND ') AS OPTION_SET
+           FROM ( SELECT B.GMODEL, A.SPEC_NO
+                       , CASE WHEN LENGTH(A.OPTION_NO) = 4 THEN A.OPTION_NO
+                              ELSE A.CATE_NO || A.OPTION_NO
+                         END AS OPTION_NO
+                    FROM PSPEC_DETAIL A
+                       , IF_MFG_SPEC B 
+                   WHERE A.SPEC_NO = B.SPECNO
+                     AND B.YYYYMMDD = ( SELECT MAX(A1.YYYYMMDD)
+                                           FROM IF_MFG_SPEC A1
+                                          WHERE A1.GMODEL = B.GMODEL )
+                     AND B.VERSION = ( SELECT MAX(A1.VERSION)
+                                          FROM IF_MFG_SPEC A1
+                                         WHERE A1.GMODEL = B.GMODEL
+                                           AND A1.SPECNO = B.SPECNO )
+                     AND (#{SPEC_NO} IS NULL OR B.SPECNO = #{SPEC_NO})
+                ORDER BY B.GMODEL, A.SPEC_NO
+                       , CASE WHEN LENGTH(A.OPTION_NO) = 4 THEN A.OPTION_NO
+                              ELSE A.CATE_NO || A.OPTION_NO
+                         END
+                )
+       GROUP BY GMODEL, SPEC_NO
+	]]>
+	</select>
+     
+	<select id="getEndItemListforNameValidation" resultType="java.util.HashMap">
+	<![CDATA[
+	SELECT X.FUNCTION_ID, X.PARENT_ID
+	     , X.CHILD_ID, X.CHILD_REV_ID, X.CHILD_NAME, X.CHILD_REV_PUID
+	     , X.SEQ_NO, X.CONDITION, X.MODULE_CODE, X.SUPPLY_MODE, X.LV
+	     , X.PRODUCT_ID, X.GMODEL, Y.SPEC_NO
+	  FROM (
+	          SELECT B.FUNC_NO AS function_id
+	               , B.P_PART_NO AS parent_id
+	               , B.PART_NO AS child_id
+	               , B.VER AS child_rev_id
+	               , B.PART_NAME AS child_name
+	               , B.PART_REV_PUID AS child_rev_puid
+	               , B.SEQ AS Seq_no
+	               , REPLACE(B.OPTIONS, '@', ' OR ') AS condition
+	               , B.MODULE_CODE AS module_code
+	               , B.SUPPMODE AS supply_mode
+	               , B.BOM_LEVEL AS lv
+	               , A.PRODUCT_ID AS product_id
+	               , ( SELECT MAX(PR.PS7_GMODEL_CODE)
+	                     FROM INFODBA.PITEM PI,
+	                          INFODBA.PITEMREVISION PIR,
+	                          INFODBA.PWORKSPACEOBJECT PIW,
+	                          INFODBA.PS7_PRODUCTREVISION PR
+	                    WHERE PR.PUID = PIR.PUID
+	                      AND PIW.PUID = PIR.PUID
+	                      AND PIW.PACTIVE_SEQ = 1
+	                      AND PIR.RITEMS_TAGU = PI.PUID
+	                      AND PIR.PS7_MATURITY = 'Released'
+	                      AND PI.PITEM_ID = A.PRODUCT_ID ) AS GMODEL
+	            FROM HBOM_TC_EPL B, HBOM_TC_EPL_JOB A
+	           WHERE B.JOB_PUID = A.JOB_PUID
+	             AND (#{PRODUCT_ID} IS NULL OR A.PRODUCT_ID = #{PRODUCT_ID})
+	             AND A.WHAT_EPL_JOB IN ('V')
+	             AND SUBSTR(B.FUNC_NO, 1, 4) IN (  select column_value from table(PKG_NAME_GROUP.get_function_preFix) )
+	             AND PKG_NAME_GROUP.is_end_item_n(B.SUPPMODE) = 1
+	             AND A.JOB_PUID = ( SELECT MAX(A1.JOB_PUID)
+	                                  FROM HBOM_TC_EPL_JOB A1
+	                                 WHERE A1.PRODUCT_ID = A.PRODUCT_ID
+	                                   AND A1.WHAT_EPL_JOB IN ('V')
+	                              )
+	        ) X, MFG_SPEC Y
+	  WHERE X.GMODEL = Y.GMODEL
+	    AND PKG_NAME_GROUP.is_include_n(Y.option_set, X.condition) = 1
+	]]>
+	</select>
+     
+	<select id="getDeleteTargetItemList" resultType="java.util.HashMap">
+	<![CDATA[
+	  SELECT DISTINCT OP_ITEM_ID AS NEW_ITEM_ID
+	       , OP_ITEM_REVISION_ID AS NEW_ITEM_REV_ID
+	       , KOR_ITEM_ID AS OLD_ITEM_ID
+	       , KOR_ITEM_REVISION_ID AS OLD_ITEM_REV_ID
+	       , I.PUID AS NEW_ITEM_PUID, IR.PUID AS NEW_ITEM_REV_PUID
+	    FROM MIG_ENG_T T
+	       , infodba.pItem i
+	       , infodba.pitemrevision ir
+	   WHERE ir.ritems_tagu = i.puid
+	     AND i.pitem_id = T.OP_ITEM_ID
+	     AND ir.pitem_revision_id = T.OP_ITEM_REVISION_ID 
+	     AND T.ENG_ITEM_ID = '201605191340'
+	     AND (#{ITEM_ID} IS NULL OR T.OP_ITEM_ID = #{ITEM_ID})
+    ORDER BY OP_ITEM_ID, OP_ITEM_REVISION_ID	     
+	]]>
+	</select>
+	
+   <!-- [20160921][ymjang] ORA-01461 LONG 값은 LONG 열에 삽입할 때만 바인드할 수 있습니다. 오류 수정 -->
+   <select id="sendMail">
+   INSERT INTO IF_USER.IF_EMAIL (SEQ_NO, SYSTEM_ID, FROM_USERS, TITLE, REMARK, TO_USERS, CREATE_DATE ) 
+        SELECT ( SELECT GET_NEXT_MAIL_SEQ() FROM DUAL ) AS SEQ_NO
+             , #{the_sysid,jdbcType=VARCHAR,mode=IN}, #{the_sabun,jdbcType=VARCHAR,mode=IN}
+             , SUBSTR(#{the_title,jdbcType=VARCHAR,mode=IN}, 1, 4000)
+             , SUBSTR(#{the_remark,jdbcType=VARCHAR,mode=IN}, 1, 4000)
+             , #{the_tsabun,jdbcType=VARCHAR,mode=IN}
+             , SYSDATE
+          FROM DUAL
+   </select>
+	
+   <select id="getFunctions" resultType="java.util.HashMap">
+   SELECT A.PRODUCT_ID, A.ITEM_ID, A.ITEM_PUID, A.ITEM_REV_ID
+        , A.ITEM_REV_PUID, A.PROJECT_CODE, A.ITEM_NAME 
+     FROM TABLE(PKG_INECO_MIGRATION.GET_FUNCTIONS(#{PRODUCT_ID, jdbcType=VARCHAR}, '')) A
+ ORDER BY A.ITEM_ID
+   </select>
+   
+	<select id="getJobPuid" resultType="java.lang.String">
+	<![CDATA[
+	SELECT TO_CHAR ( SYSDATE, 'YYYYMMDDHH24MISS' ) || '-' || SYS_GUID() AS JOB_PUID FROM DUAL
+	]]>
+	</select>
+   
+	<!-- EPL 을 생성한다. -->
+	<select id="createEPL" parameterType="hashmap" statementType="CALLABLE" >
+	<![CDATA[
+ 	{ call PKG_INECO_MIGRATION.P_CREATE_EPL( #{PRODUCT_ID,jdbcType=VARCHAR,mode=IN},
+		         					 	     #{JOB_PUID,jdbcType=VARCHAR,mode=IN},
+		         					 	     #{RTN_KEY,jdbcType=VARCHAR,mode=OUT},
+		                             	     #{RTN_MSG,jdbcType=VARCHAR,mode=OUT}
+		                             	    ) }
+    ]]>
+	</select>
+   
+    <!-- 처리된 Parent 를 저장한다.(다시 처리하지 않기 위해서) -->
+    <insert id="insertProcessedParent" parameterType="java.util.HashMap">      
+	INSERT INTO INECO_PROCESSED_PARENT ( P_PART_REV_PUID, P_PART_NO, P_VER, P_PART_NAME
+                                       , CREATE_DATE, JOB_PUID )
+	     VALUES ( #{P_PART_REV_PUID, jdbcType=VARCHAR}, #{P_PART_NO, jdbcType=VARCHAR}, #{P_VER, jdbcType=VARCHAR}, #{P_PART_NAME, jdbcType=VARCHAR}
+	            , SYSDATE, #{JOB_PUID, jdbcType=VARCHAR} )
+    </insert>
+   
+	<select id="getProcessedParent" resultType="java.util.HashMap">
+	<![CDATA[
+	  SELECT * 
+	    FROM INECO_PROCESSED_PARENT 
+	   WHERE JOB_PUID = #{JOB_PUID, jdbcType=VARCHAR}
+	     AND P_PART_REV_PUID = #{P_PART_REV_PUID, jdbcType=VARCHAR}
+	]]>
+	</select>
+   
+	<select id="getEPLInfo" resultType="java.util.HashMap">
+	<![CDATA[
+	  SELECT OCC_THREADS, ECO_NO
+	       , TO_CHAR(BP_IN, 'YYYY-MM-DD HH24:MI:SS') AS BP_IN
+	       , TO_CHAR(BP_OUT, 'YYYY-MM-DD HH24:MI:SS') AS BP_OUT
+	       , COMPID
+	    FROM INECO_MIGRATION_EPL 
+	   WHERE JOB_PUID = #{JOB_PUID, jdbcType=VARCHAR}
+	     AND P_PART_REV_PUID = #{P_PART_REV_PUID, jdbcType=VARCHAR}
+	     AND PART_REV_PUID = #{PART_REV_PUID, jdbcType=VARCHAR}
+	     AND OCC_THREADS = #{OCC_THREADS, jdbcType=VARCHAR}
+	]]>
+	</select>
+  
+  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  <!--  [Non-SR] 박수경 차장님 요청 -->
+  <!--  CKD Item Master I/F 관련 쿼리 -->
+  
+  <!--  JOB PUID 를 가져 온다-->
+  <select id="getJobPUIDNO"  resultType="String">
+    <![CDATA[
+        SELECT JOB_PUID                                                                        
+          FROM IF_USER.HBOM_TC_EPL_JOB                                                                
+         WHERE PRODUCT_ID = #{PRODUCT_ID, jdbcType=VARCHAR}  -- ex PVG2016                                                                 
+           AND WHAT_EPL_JOB = 'V' --> 고정값                                                              
+           AND ROWNUM  = 1  
+           ORDER BY JOB_PUID DESC
+
+    ]]>
+
+  </select>
+  
+  <!--  JOB PUID 를 가져 온다-->
+  <select id="getCountItems"  resultType="String">
+    <![CDATA[
+        SELECT COUNT(A.JOB_PUID) AS EPL_CNT                               
+          FROM HBOM_TC_EPL A, HBOM_TC_EPL_JOB B            
+         WHERE A.JOB_PUID = B.JOB_PUID                     
+           AND B.JOB_PUID = #{JOB_PUID, jdbcType=VARCHAR} -- Product_ID 로 구한 Job_PUID 를 입력                            
+           AND ( ( '' IS NULL ) OR                                               
+                 ( '' = '1' AND A.BOM_LEVEL = 1 ) OR                             
+                 ( '' = 'E' AND SUBSTR(A.ISVALID_SUPPLYMODE, 1, 1) <> 'N' ) OR   
+                 ( '' = 'M' AND SUBSTR(A.ISVALID_SUPPLYMODE, 3, 1) <> 'N' )      
+               )                                                                
+           AND ( '' IS NULL OR A.P_MODULE_CODE = '' )  
+
+    ]]>
+
+  </select>
+  
+  
+  <!--  ItemMaster정보 를 가져 온다-->
+
+
+  <!--  임시방편으로 사용 CGR 파일 전송 실패 리스트 추출 -->
+  <select id="getItemMasterInfo"  resultType="java.util.HashMap">
+    <![CDATA[
+          SELECT  A1.P_ORIGIN AS origin                                         
+                 , A1.PART_NO AS partno                
+                 , A1.VER AS cver                  
+                 , A1.PART_NAME AS cname                                             
+                 , A1.U_UNIT AS unit                                            
+                 , A1.U_COLOR AS coli               
+                 , A1.U_DSZ AS sizei                                      
+                 , A1.U_SHON AS shownon                                
+                 , A1.MT_MASTER AS mtmaster                  
+                 , A1.MT_MASTER_REV AS masterrev            
+                 , A1.MT_DETAIL AS mtdetail                   
+                 , A1.MT_DETAIL_REV AS detailrev                
+                 , A1.U_FINISH AS finish                         
+                 , A1.U_MATERIAL AS material                    
+                 , A1.U_MAT_THICK AS materialthickness          
+                 , A1.U_ALT_MATERIAL AS altmaterial              
+                 , A1.U_ALT_MAT_THICK AS altmaterialthickness    
+                 , A1.U_FORWGT AS estimatedweight               
+                 , A1.U_CALWGT AS calculatedweight              
+                 , A1.U_REALWGT AS actualweight          
+                , (     SELECT puser.pos_username  
+                        FROM infodba.ppom_user  ppom  
+                           , infodba.puser   puser  
+                       WHERE 1=1  
+                         AND PPOM.PUID  = puser.PUID    
+                         AND a1.u_owner_id = ppom.puser_id)    AS in_eco_owner                
+                 , A1.BOM_LEVEL    
+                 , A1.OPTIONS     
+                 , A1.SUPPMODE   
+                 , A1.MODULE_CODE    
+               FROM HBOM_TC_EPL A1                      
+              WHERE A1.JOB_PUID = #{JOB_PUID, jdbcType=VARCHAR}                      
+  --               AND (  ( A1.OPTIONS = '.' AND ( ( '' IS NULL ) OR                                                   
+  --                                               ( '' = '1' AND A1.BOM_LEVEL = 1 ) OR                                
+  --                                               ( '' = 'E' AND SUBSTR(A1.ISVALID_SUPPLYMODE, 1, 1) <> 'N' ) OR      
+  --                                               ( '' = 'M' AND SUBSTR(A1.ISVALID_SUPPLYMODE, 3, 1) <> 'N' )         
+  --                                             )                                                                    
+  --                      ) OR                                                                                        
+  --                      ( A1.OPTIONS <> '.' AND ( '' IS NULL OR A1.P_DEFINED_ITEM_YN = 'N' ) AND                     
+  --                                              ( ( '' IS NULL ) OR                                                  
+  --                                                ( '' = '1' AND A1.BOM_LEVEL = 1 ) OR                               
+  --                                                ( '' = 'E' AND SUBSTR(A1.ISVALID_SUPPLYMODE, 1, 1) <> 'N' ) OR     
+  --                                                ( '' = 'M' AND SUBSTR(A1.ISVALID_SUPPLYMODE, 3, 1) <> 'N' )        
+  --                                              )                                                                   
+  --                     ) OR                                                                                         
+  --                     ( A1.OPTIONS <> '.' AND '' IS NOT NULL AND A1.P_DEFINED_ITEM_YN = 'Y'                         
+  --                                         AND SOS_CONTAINS_VC('',  A1.OPTIONS) = '1'                                
+  --                                         AND ( ( '' IS NULL ) OR                                                   
+  --                                               ( '' = '1' AND A1.BOM_LEVEL = 1 ) OR                                
+  --                                               ( '' = 'E' AND SUBSTR(A1.ISVALID_SUPPLYMODE, 1, 1) <> 'N' ) OR      
+  --                                               ( '' = 'M' AND SUBSTR(A1.ISVALID_SUPPLYMODE, 3, 1) <> 'N' )         
+  --                                             )                                                                    
+  --                      )                                                                                           
+  --                   )                                                                                              
+  --               AND ( '' IS NULL OR A1.P_MODULE_CODE = '' )    
+                AND A1.SUPPMODE IN(  'C0 P7', 'P1', 'P7', 'P7CP8', 'P7MP8', 'P7YP8', 'PD', 'PDMP8', 'PDYP8')                                                        
+           ORDER BY A1.EPL_SEQ    
+  
+ 
+    ]]>
+
+  </select>
+  
+  
+  <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
+  <select id="getSpecInfo"  resultType="java.util.HashMap">
+    <![CDATA[
+         SELECT SPEC_NO                                        
+          , CASE                                                
+              WHEN LENGTH(OPTION_NO) = 4                        
+              THEN OPTION_NO                                    
+              ELSE CATE_NO || OPTION_NO                         
+            END AS OPTION_NO,                                   
+            CATE_NO,                                            
+            CASE                                                
+              WHEN SUBSTR(CATE_NO, 1, 1) IN ('2', '3', '4')     
+              THEN SUBSTR(OPTION_NO, 2)                         
+              ELSE OPTION_NO                                    
+            END AS OPTION_NO_1,                                 
+            (                                                   
+             SELECT CATE_NO_NAME                                
+             FROM CATE_NO_MASTER X           
+             WHERE X.CATE_NO = A.CATE_NO                        
+            ) AS CATE_NO_NAME                                   
+          FROM PSPEC_DETAIL A                
+          WHERE SPEC_NO IN ( 'G00H0GR7 SD0046', 'G00H0GR7 SD0047') ORDER BY 1, 2  -- 스펙 정보 입력   ,'G00H0GR7 SD0047'
+  
+    ]]>
+
+  </select>
+  
+  
+  <!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+  
+  <!--  생기쪽 FTP 로 전송 되지 못한 CGR 파일 조회 쿼리 -->
+  
+      <select id="getNotUploadCGRFile"  resultType="java.util.HashMap">
+    <![CDATA[
+   -- Vehpart latest Released revision catpart 존재, cgr dataset 존재, file 미존재, 20180101 이후 생성
+SELECT it.pitem_id, ir.pitem_revision_id, dw.pobject_name cgr_dataset, appObj.PCREATION_DATE, DW.POBJECT_NAME
+  FROM infodba.pitem it
+     , infodba.pitemrevision ir
+     , infodba.pworkspaceobject irw
+     , INFODBA.PIMANRELATION rel
+     , INFODBA.PIMANTYPE ty
+     , infodba.pworkspaceobject dw
+   --  , INFODBA.PREF_LIST_0 RL1
+   --  , INFODBA.PIMANFILE PI1
+  --   , temp_use_table tt
+     , INFODBA.PPOM_APPLICATION_OBJECT appObj
+  WHERE ir.RITEMS_TAGU = it.puid
+  AND ir.PUID = IRW.PUID
+  AND IRW.PACTIVE_SEQ = 1
+  AND rel.RPRIMARY_OBJECTU = ir.Puid
+  AND rel.RRELATION_TYPEU = TY.PUID
+  AND TY.PTYPE_NAME = 'IMAN_reference'
+  AND REL.RSECONDARY_OBJECTU = DW.PUID
+  AND DW.POBJECT_TYPE = 'CATCache'
+  --AND RL1.PVALU_0 = PI1.PUID
+  --AND RL1.PUID = DW.PUID
+  AND appObj.puid = dw.puid
+  --and it.pitem_id = '6731500032'
+  --and ir.pitem_revision_id = '001'
+  --and it.pitem_id = tt.col1
+  --and ir.pitem_revision_id = tt.col2
+  AND irw.pdate_released IS NOT NULL
+  AND irw.pobject_type = 'S7_VehpartRevision'
+  AND to_char(appObj.pcreation_date,'yyyymmdd') >= '20180101'
+  --AND to_char(appObj.pcreation_date,'yyyymmdd') > '20130101'
+  AND it.pitem_id NOT LIKE 'T%'
+  AND ir.pitem_revision_id = (SELECT max(sir.pitem_revision_id) FROM infodba.pitemrevision sir, infodba.pitem si WHERE si.puid = it.puid AND sir.ritems_tagu = si.puid)
+  --AND  RL1.PVALU_0 = PI1.PUID
+  --AND  RL1.PUID = DW.PUID
+  -- AND  SUBSTR(PI1.PORIGINAL_FILE_NAME, INSTR(PI1.PORIGINAL_FILE_NAME,'.', -1,1) + 1, LENGTH(PI1.PORIGINAL_FILE_NAME)) <> 'CATPart' 
+              AND EXISTS (  SELECT DW1.POBJECT_NAME
+                              FROM INFODBA.PIMANRELATION REL1
+                                  , INFODBA.PIMANTYPE TY1
+                                  , INFODBA.PWORKSPACEOBJECT DW1
+                                 , INFODBA.PREF_LIST_0 RL1
+                                 , INFODBA.PIMANFILE PI1
+                             WHERE 1 = 1
+                               AND REL1.RPRIMARY_OBJECTU = ir.Puid
+                               AND REL1.RRELATION_TYPEU = TY1.PUID
+                               AND (TY1.PTYPE_NAME = 'IMAN_specification'
+                          --     (TY1.PTYPE_NAME = 'IMAN_specification'
+                                   OR TY1.PTYPE_NAME = 'IMAN_reference')
+                               AND REL1.RSECONDARY_OBJECTU = DW1.PUID
+                               AND DW1.POBJECT_TYPE = 'CATPart' 
+                               AND  RL1.PVALU_0 = PI1.PUID
+                               AND  RL1.PUID = DW1.PUID
+                              -- AND  SUBSTR(PI1.PORIGINAL_FILE_NAME, INSTR(PI1.PORIGINAL_FILE_NAME,'.', -1,1) + 1, LENGTH(PI1.PORIGINAL_FILE_NAME)) = 'CATPart' 
+                        )
+           AND NOT EXISTS ( SELECT 'X'
+                             FROM INFODBA.PREF_LIST_0 RL1
+                                , INFODBA.PIMANFILE PI1
+                            WHERE RL1.PVALU_0 = PI1.PUID
+                              AND RL1.PUID = DW.PUID )
+
+    ]]>
+
+  </select>
+
+  <update id="setLicenseLevel">
+      UPDATE INFODBA.PPOM_USER SET PLICENSE_LEVEL = #{license_level, jdbcType=VARCHAR} WHERE PUSER_ID = #{user_id, jdbcType=VARCHAR}
+  </update>
+  
+  <update id="setGroupMemberInactive">
+      UPDATE INFODBA.pgroupmember 
+      SET PSTATUS = 1 
+      WHERE puid in (select gm.puid 
+                     from infodba.pgroupmember gm
+                        , infodba.ppom_member pm
+                        , infodba.ppom_user pu
+                     where pm.puid = gm.puid
+                     and pm.ruseru = pu.puid
+                     and gm.pstatus = '0'
+                     and pu.puser_id = #{user_id, jdbcType=VARCHAR}
+                     )
+  </update>
+  
+  <update id="setUserInactive">
+      UPDATE INFODBA.PPOM_USER SET PSTATUS = 1 WHERE PUSER_ID = #{user_id, jdbcType=VARCHAR}
+  </update>
+  
+  <update id="refreshTCObject">
+     UPDATE INFODBA.PPOM_OBJECT
+     SET PTIMESTAMP = DECODE(SUBSTR(PTIMESTAMP,LENGTH(PTIMESTAMP)),'X',SUBSTR(PTIMESTAMP,1,LENGTH(PTIMESTAMP)-1)||'Z', SUBSTR(PTIMESTAMP,1,LENGTH(PTIMESTAMP)-1)||'X')
+     WHERE PUID = #{puid}
+   </update>
+   
+   <update id="refreshTCTimeStamp">
+    MERGE INTO INFODBA.POM_TIMESTAMP A
+    USING (SELECT PUID TID, PTIMESTAMP, PLSD FROM INFODBA.PPOM_OBJECT WHERE PUID = #{puid}) B
+    ON (A.PUID = B.TID)
+    WHEN MATCHED THEN
+    UPDATE
+    SET A.PTIMESTAMP = DECODE(SUBSTR(A.PTIMESTAMP,LENGTH(A.PTIMESTAMP)),'X',SUBSTR(A.PTIMESTAMP,1,LENGTH(A.PTIMESTAMP)-1)||'Z', SUBSTR(A.PTIMESTAMP,1,LENGTH(A.PTIMESTAMP)-1)||'X')
+    WHEN NOT MATCHED THEN
+    INSERT (PUID, PTIMESTAMP, PDBTIMESTAMP, PDELETED)
+    VALUES (B.TID,  B.PTIMESTAMP, B.PLSD, 1)
+   </update>
+   
+</mapper>

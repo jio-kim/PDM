@@ -10,7 +10,7 @@ import org.eclipse.swt.graphics.RGB;
 import org.eclipse.swt.widgets.FileDialog;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.WaitProgressBar;
+import com.kgm.common.WaitProgressBar;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.symc.plm.rac.cme.biw.apa.search.FindConnectedPartUtility;

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration>
+	<!-- Type alias -->
+ 	<typeAliases>
+  		<typeAlias alias="DownDataSet" type="com.kgm.dto.DownDataSetData"/>
+  		<typeAlias alias="DPVInterfaceData" type="com.kgm.dto.DPVInterfaceData"/>
+  		<typeAlias alias="ApprovalLineData" type="com.kgm.dto.ApprovalLineData"/>
+  		<typeAlias alias="CodeData" type="com.kgm.dto.CodeData"/>
+  		<typeAlias alias="SYMCECOStatusData" type="com.kgm.dto.SYMCECOStatusData"/>
+  		<typeAlias alias="SYMCBOPEditData" type="com.kgm.rac.kernel.SYMCBOPEditData"/>
+  		<typeAlias alias="EndItemData" type="com.kgm.dto.EndItemData"/>
+ 	</typeAliases>
+
+	<environments default="if_user">
+  		<environment id="if_user">
+   			<transactionManager type="JDBC"/>
+   			<dataSource type="POOLED">
+
+				<!-- [SR없음][jhcho, jclee] Connection Pool 증가 -->
+   			    <property name="poolMaximumActiveConnections" value="30"/>
+                <property name="poolMaximumIdleConnections" value="20"/>
+                <property name="poolMaximumCheckoutTime" value="200000"/>
+				<!-- <property name="driver" value="core.log.jdbc.driver.OracleDriver" /> -->
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url" value="jdbc:oracle:thin:@10.50.50.200:1521:NEWPLM" /> <!-- DEV Server -->
+		 		<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.90:1521:NEWPLM" /> -->     <!-- Live Server -->
+				<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.93:1521:TC" /> -->		<!-- QA Server -->
+				<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.93:1521:NEWPLM" /> -->   <!-- DEV Server -->
+                <property name="username" value="if_user" />
+                <property name="password" value="if_user" />
+				<!-- [SR140611-028][20140611] bskwak,  Connect 끊기는 현상 예방을 위한 조치. 3 lines
+					 [SR없음][20150720] jclee, Connect 끊김 방지 Query 변경. -->
+				<property name="poolPingQuery" value="/* ping */ SELECT 1 FROM DUAL" /> 
+                <property name="poolPingEnabled" value="true" /> 
+                <property name="poolPingConnectionsNotUsedFor" value="7200000" /> 
+   			</dataSource>
+  		</environment>
+		<environment id="dev_if_user">
+   			<transactionManager type="JDBC"/>
+   			<dataSource type="POOLED">
+   			    <property name="poolMaximumActiveConnections" value="1"/>
+                <property name="poolMaximumIdleConnections" value="1"/>
+                <property name="poolMaximumCheckoutTime" value="20000"/>
+				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+                <property name="url" value="jdbc:oracle:thin:@10.80.1.93:1521:NEWPLM" />
+                <property name="username" value="if_user" />
+                <property name="password" value="if_user" />
+   			</dataSource>
+  		</environment>
+        <environment id="infodba">
+        <transactionManager type="JDBC"/>
+        <dataSource type="POOLED">
+            <property name="poolMaximumActiveConnections" value="10"/>
+                <property name="poolMaximumIdleConnections" value="10"/>
+                <property name="poolMaximumCheckoutTime" value="20000"/>
+                <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+            	<property name="url" value="jdbc:oracle:thin:@10.50.50.200:1521:NEWPLM" /> <!-- DEV Server -->
+                <!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.90:1521:NEWPLM" />  -->     <!-- Live Server -->
+				<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.93:1521:NEWPLM" />-->   <!-- DEV Server -->
+                <property name="username" value="infodba" />
+                <property name="password" value="infodba" />
+        </dataSource>
+      </environment>
+ 	</environments>
+
+	<!-- UserMap.xml 등록 -->
+ 	<mappers>
+ 		<!-- Common -->
+ 	    <mapper resource="com/kgm/sqlmap/VariantMap.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/DownDataSetMap.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/MigrationMap.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/VPMIfMap.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/EnvMap.xml" />
+ 	 	<!-- For PROD -->
+ 	 	<mapper resource="com/kgm/sqlmap/DPVInterfaceMap.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/ECOHistoryMap.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/SYMCECOMap.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/SYMCMECOMap.xml" />
+ 	 	<!-- For MBOM Interface -->
+ 	 	<mapper resource="com/kgm/sqlmap/MbomInterfaceMap.xml" />
+
+ 	 	<!-- For WeldPoint -->
+ 	 	<mapper resource="com/kgm/sqlmap/WeldPointMap.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/WeldPoint2ndMap.xml" />
+
+ 	 	<!-- For DEV -->
+ 	 	<!--
+ 	 	<mapper resource="com/kgm/sqlmap/DPVInterfaceMap_dev.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/ECOHistoryMap_dev.xml" />
+ 	 	<mapper resource="com/kgm/sqlmap/SYMCECOMap_dev.xml" />
+ 	 	-->
+
+ 	 	<!-- For BOP  -->
+ 	 	<mapper resource="com/kgm/sqlmap/SYMCSubsidiaryMap.xml"/>
+ 	 	<mapper resource="com/kgm/sqlmap/SYMCActivityMap.xml"/>
+ 	 	<mapper resource="com/kgm/sqlmap/SYMCBOPMap.xml"/>
+		<mapper resource="com/kgm/sqlmap/SYMCBOPStructureMap.xml"/>
+		<mapper resource="com/kgm/sqlmap/SYMCMEPLMap.xml"/>
+		<mapper resource="com/kgm/sqlmap/SYMCBOPFindAISDataMap.xml"/>
+		
+		<!-- PE Interface -->
+		<mapper resource="com/kgm/sqlmap/PEInterfaceMap.xml"/>
+		
+ 	 	<!-- Notice -->
+ 	 	<mapper resource="com/kgm/sqlmap/NoticeMap.xml"/>
+ 	 	
+ 	 	<!-- FAQ -->
+ 	 	<mapper resource="com/kgm/sqlmap/FaqMap.xml"/>
+
+ 	 	<!-- ADDFILE -->
+ 	 	<mapper resource="com/kgm/sqlmap/AddfileMap.xml"/>
+
+ 	 	<!-- For SMTest  -->
+ 	 	<mapper resource="com/kgm/sqlmap/SMTestMap.xml"/>
+
+ 	 	<!-- Design Concept System -->
+ 	 	<mapper resource="com/kgm/sqlmap/DCSMap.xml"/>
+ 	 	
+ 	 	<!-- Design Concept System Migration-->
+ 	 	<mapper resource="com/kgm/sqlmap/DCSMigMap.xml"/>
+ 	 	
+ 	 	<!-- Design Concept System Notice -->
+ 	 	<mapper resource="com/kgm/sqlmap/DCSNoticeMap.xml"/>
+ 	 	
+ 	 	<!-- Design Concept System Favorites -->
+ 	 	<mapper resource="com/kgm/sqlmap/DCSFavoritesMap.xml"/>
+ 	 	
+ 	 	<!-- Design Concept System VisionNet -->
+ 	 	<mapper resource="com/kgm/sqlmap/DCSVisionNetMap.xml"/>
+ 	 	
+ 	 	<!-- Design Concept System Hits -->
+ 	 	<mapper resource="com/kgm/sqlmap/DCSHitsMap.xml"/>
+
+ 	 	<!-- BopPert -->
+ 	 	<mapper resource="com/kgm/sqlmap/BopPertMap.xml"/>
+
+		<!-- Module BOM Validation -->
+ 	 	<mapper resource="com/kgm/sqlmap/ModuleBomMap.xml"/>
+ 	 	 	 	
+		<!--For Function  [SR140724-013][20140725] -->
+ 	 	<mapper resource="com/kgm/sqlmap/FunctionMap.xml"/>
+
+		<!--For Get Parent -->
+ 	 	<mapper resource="com/kgm/sqlmap/GetParentMap.xml"/>
+ 	 	
+ 	 	<!--O/Spec info [20141205] -->
+ 	 	<mapper resource="com/kgm/sqlmap/OspecMap.xml"/>
+ 	 	
+ 	 	<!--Part Name Group info [20150116] -->
+ 	 	<mapper resource="com/kgm/sqlmap/PartNameGroupMap.xml"/> 
+ 	 	
+ 	 	<!-- Pre O/Spec info [20150407] -->
+ 	 	<mapper resource="com/kgm/sqlmap/PreOspecMap.xml"/>
+ 	 	
+ 	 	<!--CCN Info [20150407] -->
+ 	 	<mapper resource="com/kgm/sqlmap/CCNInfoMap.xml"/>  
+ 	 	
+ 	 	<!--Master List [20150409] -->
+ 	 	<mapper resource="com/kgm/sqlmap/MasterListMap.xml"/>
+ 	 	
+ 	 	<!--Part Mapping [20150715] -->
+        <mapper resource="com/kgm/sqlmap/PartMappingMap.xml"/>    
+ 	 	
+ 	 	<!--BOM Viewer [20151216] -->
+        <mapper resource="com/kgm/sqlmap/BOMViewerMap.xml"/>
+        
+        <!-- All Pre-BOM Ussage Export  -->
+        <mapper resource="com/kgm/sqlmap/PreBOMUssageExportMap.xml"/>
+        
+        <!-- Common Part Check  -->
+        <mapper resource="com/kgm/sqlmap/CommonPartCheckMap.xml"/>
+
+        <!-- Wiring Check -->
+        <mapper resource="com/kgm/sqlmap/WiringCheckMap.xml"/>
+        <!-- Search Teamcenter -->
+        <mapper resource="com/kgm/sqlmap/SearchTeamcenterMap.xml"/>
+        <!-- ECO Admin Check -->
+        <mapper resource="com/kgm/sqlmap/ECOAdminCheckMap.xml"/>
+ 	</mappers>
+</configuration>

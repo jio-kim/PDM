@@ -31,7 +31,7 @@ import org.sdv.core.ui.dialog.event.SDVInitEvent;
 import org.sdv.core.ui.operation.AbstractSDVInitOperation;
 import org.sdv.core.ui.view.AbstractSDVViewPane;
 
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.symc.plm.me.sdv.operation.common.ReviseInitOperation;

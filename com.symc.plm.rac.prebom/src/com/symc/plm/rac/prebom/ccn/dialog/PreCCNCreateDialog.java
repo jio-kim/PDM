@@ -8,8 +8,8 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.ccn.operation.PreCCNCreateOperation;
 import com.symc.plm.rac.prebom.ccn.validator.PreCCNValidator;
 import com.symc.plm.rac.prebom.ccn.view.PreCCNInfoPanel;

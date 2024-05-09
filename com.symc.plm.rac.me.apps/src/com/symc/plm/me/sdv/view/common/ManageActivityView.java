@@ -48,7 +48,7 @@ import org.sdv.core.util.UIUtil;
 
 import swing2swt.layout.BorderLayout;
 
-import com.ssangyong.common.utils.StringUtil;
+import com.kgm.common.utils.StringUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.sdv.operation.common.ManageActivityInitOperation;
 import com.teamcenter.rac.util.MessageBox;

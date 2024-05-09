@@ -1,0 +1,528 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+  
+<mapper namespace="com.kgm.mapper.VPMIfMapper">
+    
+    <!-- //////////////////////////////////////////////////// I/F VALIDATE 관련 쿼리 시작 //////////////////////////////////////////////////////// -->
+    <!-- I/F 유효성 체크 대상 리스트 - VPM Report Dialog 리스트용 -->
+    <!-- [20240416][UPGRADE] Date Type 을 String Type 으로 변환 --> 
+    <resultMap id="ValidateVPMListMap" type="java.util.HashMap">
+         <result property="OPTION_CONDITION" javaType="java.lang.String" jdbcType="CLOB" column="OPTION_CONDITION"/>
+         <result property="IF_DATE" javaType="java.lang.String" jdbcType="DATE" column="IF_DATE"/>
+         <result property="MOD_DATE" javaType="java.lang.String" jdbcType="DATE" column="MOD_DATE"/>
+         <result property="INFORM_DATE" javaType="java.lang.String" jdbcType="DATE" column="INFORM_DATE"/>
+         <result property="END_DATE" javaType="java.lang.String" jdbcType="DATE" column="END_DATE"/>
+    </resultMap>
+    <select id="getValidateVPMList" parameterType="java.util.HashMap" resultMap="ValidateVPMListMap">  
+        <if test="CPNO != null and CPNO != ''">
+        SELECT *
+          FROM (
+        </if>
+        
+        SELECT *
+		  FROM (  SELECT A.IF_DATE || '|' || A.ECO_NO || '|' || A.NUM || '|' || A.SEQ
+		                    GROUP_KEY,
+		                 (SELECT S7_PART_TYPE
+		                    FROM IF_VEHPART
+		                   WHERE ITEM_ID = TRIM (A.MPNO) AND ROWNUM = 1)
+		                    MPNO_PART_TYPE,
+		                 (SELECT S7_PART_TYPE
+		                    FROM IF_VEHPART
+		                   WHERE ITEM_ID = TRIM (A.CPNO) AND ROWNUM = 1)
+		                    CPNO_PART_TYPE,
+		                 A.*,
+		                 TO_CHAR(INFORM_DATE, 'YYYY-MM-DD') INFORM_DATE_CHAR,
+		                 TO_CHAR(END_DATE, 'YYYY-MM-DD') END_DATE_CHAR
+		            FROM IF_ECO_INFO_FROM_VPM A		        
+		            WHERE                       
+                        IF_STATUS &lt;&gt; 'I'            
+                        AND A.IF_DATE BETWEEN TO_DATE(#{FROM_DATE, jdbcType=VARCHAR} || ' 00:00:00', 'YYYY-MM-DD HH24:MI:SS') AND TO_DATE(#{TO_DATE, jdbcType=VARCHAR} || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+                        <if test="ECO_NO != null and ECO_NO != ''">
+                            AND A.ECO_NO LIKE #{ECO_NO, jdbcType=VARCHAR}
+                        </if>
+                        <if test="IS_VALID != null and IS_VALID != ''">
+                            AND A.IS_VALID = #{IS_VALID, jdbcType=VARCHAR}
+                        </if>
+                        <choose>            
+				            <when test='NOT_INFORMED != null and NOT_INFORMED == "Y"'>
+	                            AND A.INFORM_DATE IS NOT NULL
+		        		    </when>
+		        		    <when test='NOT_INFORMED != null and NOT_INFORMED == "N"'>
+	                            AND A.INFORM_DATE IS NULL
+		        		    </when>
+				        </choose>
+				        <choose>            
+				            <when test='INCOMPLETE_WORK != null and INCOMPLETE_WORK == "Y"'>
+	                            AND A.END_DATE IS NOT NULL
+		        		    </when>
+		        		    <when test='INCOMPLETE_WORK != null and INCOMPLETE_WORK == "N"'>
+	                            AND A.END_DATE IS NULL
+		        		    </when>
+				        </choose>
+                        ORDER BY A.IF_DATE, A.ECO_NO, A.NUM, A.SEQ, A.CHANGE_DIV DESC) ECO
+		  
+		  <if test="CPNO != null and CPNO != ''">
+		       ,(SELECT DISTINCT
+		               IF_DATE || '|' || ECO_NO || '|' || NUM || '|' || SEQ
+		                  CPNO_GROUP_KEY
+		          FROM IF_ECO_INFO_FROM_VPM
+		         WHERE CPNO LIKE #{CPNO, jdbcType=VARCHAR}) ECO_CPNO
+		      WHERE ECO.GROUP_KEY = ECO_CPNO.CPNO_GROUP_KEY
+		      ) ORDER BY IF_DATE, ECO_NO, NUM, SEQ, CHANGE_DIV DESC
+		  </if>
+    </select>
+    
+    <!--  IF_ECO_INFO_FROM_VPM - 작업자 설정 -->
+    <update id="updateVPMCustomSetWorker"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_VPM                      
+        SET 
+            TC_USER = #{TC_USER, jdbcType=VARCHAR},
+            TC_DEPT = #{TC_DEPT, jdbcType=VARCHAR}            
+            
+        WHERE 
+                GUID = #{GUID, jdbcType=VARCHAR}
+    </update>
+    
+    <!--  IF_ECO_INFO_FROM_VPM -통보처리 -->
+    <update id="updateVPMCustomNoticeProcess"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_VPM                      
+        SET             
+            <choose>            
+                <when test='INFORM_DATE != null and INFORM_DATE == "Y"'>
+                    INFORM_DATE = SYSDATE   
+                </when>
+                <otherwise>
+                    INFORM_DATE = NULL
+                </otherwise>
+            </choose>
+        WHERE 
+                GUID = #{GUID, jdbcType=VARCHAR}
+    </update>
+    
+    <!--  IF_ECO_INFO_FROM_VPM - 완료처리 -->
+    <update id="updateVPMCustomCompleteProcess"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_VPM                      
+        SET
+            <choose>            
+                <when test='END_DATE != null and END_DATE == "Y"'>
+                    END_DATE = SYSDATE   
+                </when>
+                <otherwise>
+                    END_DATE = NULL
+                </otherwise>
+            </choose>     
+        WHERE 
+                GUID = #{GUID, jdbcType=VARCHAR}
+    </update>
+    
+    <!-- IF_ECO_INFO_FROM_VPM - 유져 Skip -->
+    <update id="updateVPMCustomUserSkip"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_VPM                      
+        SET
+            <choose>            
+                <when test='USER_SKIP != null and USER_SKIP == "Y"'>
+                    USER_SKIP = #{USER_SKIP, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    USER_SKIP = NULL
+                </otherwise>
+            </choose>     
+        WHERE 
+                GUID = #{GUID, jdbcType=VARCHAR}
+    </update>
+    
+    <!-- Validate 대상 리스트 조회 - SYMCInterfaceVPMValidate 에서 사용 -->
+    <resultMap id="IFVPMListMap" type="java.util.HashMap">
+         <result property="OPTION_CONDITION" javaType="java.lang.String" jdbcType="CLOB" column="OPTION_CONDITION"/>           
+    </resultMap>
+    <select id="getIFValidateVPMList" parameterType="java.util.HashMap" resultMap="IFVPMListMap">  
+        SELECT  
+                IF_DATE || '|' || ECO_NO || '|' || NUM || '|' || SEQ GROUP_KEY,
+                ECO_NO,
+                NUM,
+                SEQ, 
+                CHANGE_TYPE, 
+                MPNO, 
+                MPNO_VER, 
+                CPNO, 
+                CPNO_VER,
+                CHANGE_DIV,
+                IF_DATE,
+                MOD_DATE
+        FROM IF_ECO_INFO_FROM_VPM  
+        WHERE IF_STATUS = 'I' AND IS_VALID IS NULL
+        ORDER BY IF_DATE, ECO_NO, NUM, SEQ, CHANGE_DIV DESC                
+    </select>       
+    
+    <!-- IF_ECO_INFO_FROM_VPM  ECO I/F Part가 VALIDE한지 확인 -->
+    <select id="getECOValideYn" parameterType="java.util.HashMap" resultType="java.lang.String">
+        SELECT IS_VALID FROM IF_ECO_INFO_FROM_VPM 
+        WHERE
+            ECO_NO = #{ECO_NO, jdbcType=VARCHAR}
+            AND NUM = #{NUM, jdbcType=VARCHAR}
+            AND SEQ = #{SEQ, jdbcType=VARCHAR}
+            AND IF_DATE = #{IF_DATE, jdbcType=TIMESTAMP}
+            AND ROWNUM = 1   
+    </select>
+    
+    <!-- Step 1. - ECO Validate 업데이트 (유효 비유효 Check Update) - SYMCInterfaceVPMValidate 에서 사용 -->
+    <update id="updateVPMValide"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_VPM                      
+            SET 
+                IF_STATUS = 'V',                
+                IS_VALID = (
+                    SELECT                 
+                        is_valid_PART_NUMBER(
+                            #{OLD_PARENT_ITEM_ID, jdbcType=VARCHAR},
+                            #{OLD_PARENT_REV_ID, jdbcType=VARCHAR},
+                            #{OLD_CHILD_ITEM_ID, jdbcType=VARCHAR},
+                            #{OLD_CHILD_REV_ID, jdbcType=VARCHAR},
+                            #{NEW_PARENT_ITEM_ID, jdbcType=VARCHAR},
+                            #{NEW_PARENT_REV_ID, jdbcType=VARCHAR},
+                            #{NEW_CHILD_ITEM_ID, jdbcType=VARCHAR},
+                            #{NEW_CHILD_REV_ID, jdbcType=VARCHAR},
+                            #{CHANGE_TYPE, jdbcType=VARCHAR}
+                        )
+                    FROM DUAL
+                )
+            WHERE 
+                ECO_NO = #{ECO_NO, jdbcType=VARCHAR}
+                AND NUM = #{NUM, jdbcType=VARCHAR}
+                AND SEQ = #{SEQ, jdbcType=VARCHAR}
+                AND IF_DATE = #{IF_DATE, jdbcType=TIMESTAMP}
+                AND IF_STATUS = 'I'        
+    </update>
+     
+    <!-- Step 2. - Update 상태 변경 - IF_ECO_INFO_FROM_VPM -->
+    <update id="updateVPMStatus"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_VPM                      
+        SET 
+            IF_STATUS = #{IF_STATUS, jdbcType=VARCHAR},
+            IF_ERROR_MSG = #{IF_ERROR_MSG, jdbcType=VARCHAR}                           
+        WHERE 
+                ECO_NO = #{ECO_NO, jdbcType=VARCHAR}
+                AND NUM = #{NUM, jdbcType=VARCHAR}
+                AND SEQ = #{SEQ, jdbcType=VARCHAR}
+                AND IF_DATE = #{IF_DATE, jdbcType=TIMESTAMP}                
+    </update>
+    
+    <!-- Step 3. - ECO Validate 수행 후  IF_VEHPART 테이블에 유효성 체크 여부를 등록한다. - IF_VEHPART -->
+    <update id="updateECOVehPartValide"  parameterType="java.util.HashMap" >       
+        UPDATE IF_VEHPART                      
+        SET 
+            IS_VALID = #{IS_VALID, jdbcType=VARCHAR},
+            IF_STATUS = 'V',
+            IF_ERROR_MSG = NULL,
+            IF_VPM_ECO_NO = #{IF_VPM_ECO_NO, jdbcType=VARCHAR},
+            IF_VPM_NUM = #{IF_VPM_NUM, jdbcType=VARCHAR},  
+            IF_VPM_SEQ = #{IF_VPM_SEQ, jdbcType=VARCHAR},
+            IF_VPM_CHANGE_TYPE = #{IF_VPM_CHANGE_TYPE, jdbcType=VARCHAR}
+        WHERE 
+                ITEM_ID = #{ITEM_ID, jdbcType=VARCHAR}
+                AND REVISION_ID = #{REVISION_ID, jdbcType=VARCHAR}                
+                AND IF_DATE = #{IF_DATE, jdbcType=TIMESTAMP}
+                AND IF_STATUS = 'I' AND IS_VALID IS NULL 
+    </update>
+    
+    <!-- Step 4. - ECO VEHPART Validate 후 나머지 (NON EPL)VEHPART Validate - IF_VEHPART -->
+    <update id="updateNotECOVehPartValide"  parameterType="java.util.HashMap" >       
+        UPDATE IF_VEHPART A                     
+        SET 
+            A.IF_STATUS = 'V',
+            A.IF_ERROR_MSG = NULL,
+            A.IS_VALID = (
+                    SELECT                 
+                        is_valid_PART_NUMBER(
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            null,
+                            A.ITEM_ID,
+                            A.REVISION_ID,
+                            'R0'
+                        )
+                    FROM DUAL
+                )                           
+        WHERE A.IF_STATUS = 'I' AND A.IS_VALID IS NULL                
+    </update>
+    <!-- //////////////////////////////////////////////////// I/F VALIDATE 관련 쿼리 끝 //////////////////////////////////////////////////////// --> 
+    
+    <!-- //////////////////////////////////////////////////// I/F VehPart 등록 관련 쿼리 시작 /////////////////////////////////////////////////// -->
+    <!-- I/F 유효성 체크 대상 리스트 - VehPart Report Dialog 리스트용 -->
+    <resultMap id="ValidateVehPartListMap" type="java.util.HashMap">       
+         <result property="IF_ERROR_MSG" javaType="java.lang.String" jdbcType="CLOB" column="IF_ERROR_MSG" />
+         <collection property="DATASET_FILE_LIST" column="{partNo=ITEM_ID,revId=REVISION_ID,ifDate=IF_DATE}" javaType="java.util.ArrayList" ofType="java.util.HashMap" select="getIfVehPartFileList"/>        
+    </resultMap>
+    <select id="getValidateVehPartList" parameterType="java.util.HashMap" resultMap="ValidateVehPartListMap">  
+        SELECT * FROM
+        (
+	        SELECT * FROM
+	        (
+		        SELECT
+		            DECODE(VEH.NON_EPL_CNT, 0, 'N', 'Y') NON_EPL,  
+		            VEH.*
+		        FROM
+		        (
+			        SELECT 
+			            A.IF_DATE || '|' || A.ITEM_ID || '|' || A.REVISION_ID GROUP_KEY,
+			            (
+			                SELECT COUNT(*) FROM IF_FILE 
+			                WHERE 
+			                    PART_NO = A.ITEM_ID
+			                    AND REVISION_ID = A.REVISION_ID
+			                    AND IF_DATE = A.IF_DATE
+			                    AND NON_EPL = 'Y' 
+			            ) NON_EPL_CNT,
+			            A.ITEM_ID PART_NO,            
+	                get_display_part_no2(A.s7_part_type, A.ITEM_ID) s7_display_part_no
+	                , A.S7_PROJECT_CODE, A.S7_PART_TYPE, A.ITEM_ID, A.S7_MATURITY, A.NAME
+	                , A.S7_KOR_NAME, A.S7_MAIN_NAME, A.S7_SUB_NAME, A.DESCRIPTION
+	                , A.S7_LOC1_FR, A.S7_LOC2_IO, A.S7_LOC3_UL, A.S7_LOC4_EE, A.S7_LOC5_LR
+	                , A.S7_REFERENCE, A.S7_UNIT, A.S7_ECO_NO, A.S7_COLOR, A.S7_COLOR_ID
+	                , A.S7_REGULATION, A.S7_MATTERIAL, A.S7_ALT_MATERIAL, A.S7_THICKNESS
+	                , A.S7_FINISH, A.S7_DRW_STAT, A.S7_SHOW_PART_NO, A.S7_EST_WEIGHT
+	                , A.S7_CAL_WEIGHT, A.S7_ACT_WEIGHT, A.S7_CAL_SURFACE, A.S7_BOUNDINGBOX
+	                , A.S7_DVP_RESULT, A.S7_RESPONSIBILITY, A.S7_STAGE, A.S7_REGULAR_PART
+	                , A.S7_AS_END_ITEM, A.S7_SELECTIVE_PART, A.S7_CHANGE_DESCRIPTION
+	                , A.S7_DRW_SIZE, A.S7_SYSTEM_CODE, A.S7_SUB_SYSTEM_CODE
+	                , A.REVISION_ID, A.PSTATUS, A.PLAST_MOD_DATE, A.RLAST_MOD_USER
+	                , A.ROWING_GROUP, A.ROWNIG_USER, A.PCREATION_DATE, A.V_CREATOR
+	                , A.S7_ALT_THICKNESS, A.MIG_FLAG, A.MIG_SEQ, A.S7_CAT_V4_TYPE
+	                , A.IF_DATE, A.IS_VALID, A.IF_STATUS, A.IF_ERROR_MSG, A.IF_VPM_ECO_NO
+	                , A.IF_VPM_NUM, A.IF_VPM_SEQ, A.IF_VPM_CHANGE_TYPE, A.VPM_ECO
+			        FROM IF_VEHPART A  
+			        WHERE                                   
+			            A.IF_DATE BETWEEN TO_DATE(#{FROM_DATE, jdbcType=VARCHAR} || ' 00:00:00', 'YYYY-MM-DD HH24:MI:SS') AND TO_DATE(#{TO_DATE, jdbcType=VARCHAR} || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+			        <if test="ITEM_ID != null and ITEM_ID != ''">
+			            AND A.ITEM_ID LIKE #{ITEM_ID, jdbcType=VARCHAR}
+			        </if>
+			        <if test="IS_VALID != null and IS_VALID != ''">
+			            AND A.IS_VALID = #{IS_VALID, jdbcType=VARCHAR}
+			        </if>            
+			        <choose>            
+			            <when test="IF_STATUS == null or IF_STATUS == ''">
+			                AND A.IF_STATUS &lt;&gt; 'I'
+			            </when>
+			            <otherwise>
+			                AND A.IF_STATUS = #{IF_STATUS, jdbcType=VARCHAR}
+			            </otherwise>
+			        </choose>
+	            ) VEH
+	         ) 
+			   <if test="NON_EPL != null and NON_EPL != ''">		   
+			    WHERE NON_EPL = #{NON_EPL, jdbcType=VARCHAR}		   
+			   </if>
+        ) ORDER BY IF_DATE, ITEM_ID, REVISION_ID, PLAST_MOD_DATE
+    </select>    
+    
+    <!-- VehPart I/F 대상 리스트 조회 - SYMCInterfaceIfVehPartDamon 에서 사용 -->
+    <!-- 정의 안된 나머지 컬럼들은 자동맵핑 -->
+    <resultMap id="ItemMap" type="java.util.HashMap" >
+       <result property="ITEM_ID" column="ITEM_ID"/>
+       <result property="IF_ERROR_MSG" javaType="java.lang.String" jdbcType="CLOB" column="IF_ERROR_MSG" />
+       <collection property="DATASET_FILE_LIST" column="{partNo=ITEM_ID,revId=REVISION_ID,ifDate=IF_DATE}" javaType="java.util.ArrayList" ofType="java.util.HashMap" select="getIfVehPartFileList"/>       
+    </resultMap>
+    <select id="getIfVehPart" resultMap="ItemMap">         
+		SELECT * FROM (
+		        SELECT  VEH.IF_DATE || '|' || VEH.ITEM_ID || '|' || VEH.REVISION_ID GROUP_KEY
+		        ,		S7_PROJECT_CODE, veh.S7_PART_TYPE, veh.ITEM_ID
+		        , 		get_display_part_no2(veh.s7_part_type, veh.ITEM_ID) s7_display_part_no
+		        , 		veh.S7_MATURITY, veh.NAME, veh.S7_KOR_NAME, veh.S7_MAIN_NAME, veh.S7_SUB_NAME
+		        , 		veh.DESCRIPTION, veh.S7_LOC1_FR, veh.S7_LOC2_IO, veh.S7_LOC3_UL, veh.S7_LOC4_EE
+		        , 		veh.S7_LOC5_LR, veh.S7_REFERENCE, veh.S7_UNIT, veh.S7_ECO_NO, veh.S7_COLOR
+		        , 		veh.S7_COLOR_ID, veh.S7_REGULATION, veh.S7_MATTERIAL, veh.S7_ALT_MATERIAL
+		        , 		veh.S7_THICKNESS, veh.S7_FINISH, veh.S7_DRW_STAT, veh.S7_SHOW_PART_NO
+		        , 		veh.S7_EST_WEIGHT, veh.S7_CAL_WEIGHT, veh.S7_ACT_WEIGHT, veh.S7_CAL_SURFACE
+		        , 		veh.S7_BOUNDINGBOX, veh.S7_DVP_RESULT, veh.S7_RESPONSIBILITY, veh.S7_STAGE
+		        , 		veh.S7_REGULAR_PART, veh.S7_AS_END_ITEM, veh.S7_SELECTIVE_PART, veh.S7_CHANGE_DESCRIPTION
+		        , 		veh.S7_DRW_SIZE, veh.S7_SYSTEM_CODE, veh.S7_SUB_SYSTEM_CODE, veh.REVISION_ID, veh.PSTATUS
+		        , 		veh.PLAST_MOD_DATE, veh.RLAST_MOD_USER, veh.ROWING_GROUP, veh.ROWNIG_USER
+		        , 		veh.PCREATION_DATE, veh.V_CREATOR, veh.S7_ALT_THICKNESS, veh.MIG_FLAG, veh.MIG_SEQ
+		        , 		veh.S7_CAT_V4_TYPE, veh.IF_DATE, veh.IS_VALID, veh.IF_STATUS, veh.IF_ERROR_MSG
+		        , 		veh.IF_VPM_ECO_NO, veh.IF_VPM_NUM, veh.IF_VPM_SEQ, veh.IF_VPM_CHANGE_TYPE, veh.VPM_ECO
+		        FROM 	IF_VEHPART VEH
+		        WHERE 	VEH.IF_STATUS = 'V' AND VEH.IS_VALID IN ('Y', 'N')
+		) ORDER BY IF_DATE, ITEM_ID, REVISION_ID, PLAST_MOD_DATE  
+    </select>
+    <select id="getIfVehPartFileList" parameterType="java.util.HashMap" resultType="java.util.HashMap">  
+        SELECT  PART_NO,
+                REVISION_ID,
+                CAD_TYPE,
+                NAME DATASET_NAME,
+                FILE_PATH,
+                REVISION_ID FILE_REVISION_ID,
+                V4_TYPE,
+                PART_REV,
+                IF_REF,
+                NON_EPL 
+        FROM IF_FILE A WHERE PART_NO = #{partNo, jdbcType=VARCHAR}
+            AND A.REVISION_ID = #{revId, jdbcType=VARCHAR}  
+            AND IF_DATE = #{ifDate, jdbcType=TIMESTAMP}
+    </select>    
+    
+    <!-- ITEM STATUS List -->
+    <select id="getIfVehPartStatus" parameterType="java.util.HashMap" resultType="String">
+        SELECT IF_STATUS FROM 
+            IF_VEHPART WHERE
+                ITEM_ID = #{ITEM_ID, jdbcType=VARCHAR}
+                <if test='REVISION_ID != null and REVISION_ID != ""'>          
+                    AND REVISION_ID = #{REVISION_ID, jdbcType=VARCHAR}           
+                </if>
+                AND IF_DATE &lt;= #{IF_DATE, jdbcType=TIMESTAMP}
+        
+    </select>
+    
+    <!-- CREATE & REVISE(SYMCInterfaceIfVehPartDamon) 상태 변경 - IF_VEHPART -->
+    <update id="updateVehStatus"  parameterType="java.util.HashMap" >       
+        UPDATE IF_VEHPART                      
+        SET             
+            IF_STATUS = #{IF_STATUS, jdbcType=VARCHAR},
+            IF_ERROR_MSG = #{IF_ERROR_MSG, jdbcType=VARCHAR}
+        WHERE 
+                ITEM_ID = #{ITEM_ID, jdbcType=VARCHAR}
+                AND REVISION_ID = #{REVISION_ID, jdbcType=VARCHAR}                
+                AND IF_DATE = #{IF_DATE, jdbcType=TIMESTAMP}
+    </update>
+    <!-- //////////////////////////////////////////////////// I/F VehPart 등록 관련 쿼리 끝 /////////////////////////////////////////////////// -->
+    
+    <!-- //////////////////////////////////////////////////// I/F TC Report 관련 쿼리 시작 //////////////////////////////////////////////////// -->
+    <!-- I/F 유효성 체크 대상 리스트 - TC Report Dialog 리스트용 -->
+    <resultMap id="ValidateTCListMap" type="java.util.HashMap">
+         <result property="OPTION_CONDITION" javaType="java.lang.String" jdbcType="CLOB" column="OPTION_CONDITION"/>               
+    </resultMap>
+    <select id="getValidateTCList" parameterType="java.util.HashMap" resultMap="ValidateTCListMap">  
+        <if test="CPNO != null and CPNO != ''">
+        SELECT *
+          FROM (
+        </if>
+        
+        SELECT *
+          FROM (  SELECT A.IF_DATE || '|' || A.ECO_NO || '|' || A.NUM || '|' || A.SEQ
+                            GROUP_KEY,
+                         (SELECT S7_PART_TYPE
+                            FROM IF_VEHPART
+                           WHERE ITEM_ID = TRIM (A.MPNO) AND ROWNUM = 1)
+                            MPNO_PART_TYPE,
+                         (SELECT S7_PART_TYPE
+                            FROM IF_VEHPART
+                           WHERE ITEM_ID = TRIM (A.CPNO) AND ROWNUM = 1)
+                            CPNO_PART_TYPE,
+                         A.*,
+                         TO_CHAR(INFORM_DATE, 'YYYY-MM-DD') INFORM_DATE_CHAR,
+                         TO_CHAR(END_DATE, 'YYYY-MM-DD') END_DATE_CHAR
+                    FROM IF_ECO_INFO_FROM_TC A             
+                    WHERE                       
+                        A.IF_DATE BETWEEN TO_DATE(#{FROM_DATE, jdbcType=VARCHAR} || ' 00:00:00', 'YYYY-MM-DD HH24:MI:SS') AND TO_DATE(#{TO_DATE, jdbcType=VARCHAR} || ' 23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+                        <if test="ECO_NO != null and ECO_NO != ''">
+                            AND A.ECO_NO LIKE #{ECO_NO, jdbcType=VARCHAR}
+                        </if>
+                        <if test="IS_VALID != null and IS_VALID != ''">
+                            AND A.IS_VALID = #{IS_VALID, jdbcType=VARCHAR}
+                        </if>
+                        <choose>            
+                            <when test='NOT_INFORMED != null and NOT_INFORMED == "Y"'>
+                                AND A.INFORM_DATE IS NOT NULL
+                            </when>
+                            <when test='NOT_INFORMED != null and NOT_INFORMED == "N"'>
+                                AND A.INFORM_DATE IS NULL
+                            </when>
+                        </choose>
+                        <choose>            
+                            <when test='INCOMPLETE_WORK != null and INCOMPLETE_WORK == "Y"'>
+                                AND A.END_DATE IS NOT NULL
+                            </when>
+                            <when test='INCOMPLETE_WORK != null and INCOMPLETE_WORK == "N"'>
+                                AND A.END_DATE IS NULL
+                            </when>
+                        </choose>
+                        ORDER BY A.IF_DATE, A.ECO_NO, A.NUM, A.SEQ, A.CHANGE_DIV DESC) ECO
+          
+          <if test="CPNO != null and CPNO != ''">
+               ,(SELECT DISTINCT
+                       IF_DATE || '|' || ECO_NO || '|' || NUM || '|' || SEQ
+                          CPNO_GROUP_KEY
+                  FROM IF_ECO_INFO_FROM_TC
+                 WHERE CPNO LIKE #{CPNO, jdbcType=VARCHAR}) ECO_CPNO
+              WHERE ECO.GROUP_KEY = ECO_CPNO.CPNO_GROUP_KEY
+              ) ORDER BY IF_DATE, ECO_NO, NUM, SEQ, CHANGE_DIV DESC
+          </if>
+    </select>
+    
+    <!--  IF_ECO_INFO_FROM_TC - 작업자 설정 -->
+    <update id="updateTCCustomSetWorker"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_TC                      
+        SET 
+            TC_USER = #{TC_USER, jdbcType=VARCHAR},
+            TC_DEPT = #{TC_DEPT, jdbcType=VARCHAR}            
+            
+        WHERE 
+                GUID = #{GUID, jdbcType=VARCHAR}
+    </update>
+    
+    <!--  IF_ECO_INFO_FROM_TC -통보처리 -->
+    <update id="updateTCCustomNoticeProcess"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_TC                      
+        SET             
+            <choose>            
+                <when test='INFORM_DATE != null and INFORM_DATE == "Y"'>
+                    INFORM_DATE = SYSDATE   
+                </when>
+                <otherwise>
+                    INFORM_DATE = NULL
+                </otherwise>
+            </choose>
+        WHERE 
+                GUID = #{GUID, jdbcType=VARCHAR}
+    </update>
+    
+    <!--  IF_ECO_INFO_FROM_TC - 완료처리 -->
+    <update id="updateTCCustomCompleteProcess"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_TC                      
+        SET
+            <choose>            
+                <when test='END_DATE != null and END_DATE == "Y"'>
+                    END_DATE = SYSDATE   
+                </when>
+                <otherwise>
+                    END_DATE = NULL
+                </otherwise>
+            </choose>     
+        WHERE 
+                GUID = #{GUID, jdbcType=VARCHAR}
+    </update>
+    
+    <!-- IF_ECO_INFO_FROM_TC - 유져 Skip -->
+    <update id="updateTCCustomUserSkip"  parameterType="java.util.HashMap" >       
+        UPDATE IF_ECO_INFO_FROM_TC                      
+        SET
+            <choose>            
+                <when test='USER_SKIP != null and USER_SKIP == "Y"'>
+                    USER_SKIP = #{USER_SKIP, jdbcType=VARCHAR}
+                </when>
+                <otherwise>
+                    USER_SKIP = NULL
+                </otherwise>
+            </choose>     
+        WHERE 
+                GUID = #{GUID, jdbcType=VARCHAR}
+    </update>
+    <!-- //////////////////////////////////////////////////// I/F TC Report 관련 쿼리 끝 //////////////////////////////////////////////////// -->
+    
+    <!-- VPM에 PartNo가 존재하는지 확인  --> 
+    <select id="getExistVPMPartCnt" parameterType="java.util.HashMap" resultType="Integer">
+        SELECT COUNT (S_PART_NUMBER)
+            FROM (  SELECT S_PART_NUMBER FROM VEHPART.PART_LIST@LINK_005_VPM
+                    UNION ALL
+                    SELECT S_PART_NUMBER FROM PTPART.PART_LIST@LINK_005_VPM ) PT
+         WHERE TRIM(PT.S_PART_NUMBER) = #{partNo, jdbcType=VARCHAR}
+    </select>    
+    
+     <!-- DR Name 이 존재하는지 확인  --> 
+    <select id="getExistDRNameCnt" parameterType="java.util.HashMap" resultType="Integer">
+        select count(*) from part_check_dr_master where  
+        replace(replace(lower(part_name), ' ','') ,' and ' ,'' ) = replace( replace(lower(#{partName, jdbcType=VARCHAR}), ' ','') ,' and ' ,'' )
+    </select>  
+    
+</mapper>

@@ -17,7 +17,7 @@ import org.eclipse.swt.widgets.Display;
 import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Synchronizer;
 
-import com.ssangyong.common.utils.StringUtil;
+import com.kgm.common.utils.StringUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.sdv.view.migration.NEWPEIFMigrationViewPane;
 import com.teamcenter.rac.cme.kernel.bvr.TCComponentMfgBvrProcess;

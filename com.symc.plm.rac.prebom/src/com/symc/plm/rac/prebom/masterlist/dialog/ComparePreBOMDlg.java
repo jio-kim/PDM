@@ -45,9 +45,9 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpTrim;
-import com.ssangyong.common.WaitProgressBar;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpTrim;
+import com.kgm.common.WaitProgressBar;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.masterlist.model.CellValue;
 import com.symc.plm.rac.prebom.masterlist.model.RevisionIDComboBoxObject;

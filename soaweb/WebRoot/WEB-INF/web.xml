@@ -20,14 +20,14 @@
 	    <description>Main Servlet이며, 모든 요청은 여기로 들어온다.</description>
 	    <display-name>HomeServlet</display-name>
 	    <servlet-name>HomeServlet</servlet-name>
-	    <servlet-class>com.ssangyong.soa.servlet.HomeServlet</servlet-class>
+	    <servlet-class>com.kgm.soa.servlet.HomeServlet</servlet-class>
 	 </servlet>  
 	 
 	 <servlet>  
          <description>Admin Login</description>
          <display-name>AdminLoginServlet</display-name>
          <servlet-name>AdminLoginServlet</servlet-name>  
-         <servlet-class>com.ssangyong.soa.servlet.AdminLoginServlet</servlet-class>           
+         <servlet-class>com.kgm.soa.servlet.AdminLoginServlet</servlet-class>           
      </servlet>  
 	 
    	 <servlet-mapping>

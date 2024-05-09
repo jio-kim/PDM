@@ -60,9 +60,9 @@ import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 import javax.swing.text.PlainDocument;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpTrim;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpTrim;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;
 import com.symc.plm.rac.prebom.common.util.TextFieldFilter;

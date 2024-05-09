@@ -68,7 +68,7 @@ import org.sdv.core.util.UIUtil;
 
 import swing2swt.layout.BorderLayout;
 
-import com.ssangyong.dto.EndItemData;
+import com.kgm.dto.EndItemData;
 import com.symc.plm.activator.Activator;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;

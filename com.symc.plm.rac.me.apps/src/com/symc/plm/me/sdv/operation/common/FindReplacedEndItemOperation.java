@@ -10,7 +10,7 @@ import java.util.Locale;
 
 import javax.swing.tree.ExpandVetoException;
 
-import com.ssangyong.dto.EndItemData;
+import com.kgm.dto.EndItemData;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;

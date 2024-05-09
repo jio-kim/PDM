@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Vector;
 
-import com.ssangyong.common.utils.variant.VariantOption;
+import com.kgm.common.utils.variant.VariantOption;
 import com.symc.plm.rac.prebom.common.util.OptionManager;
 import com.teamcenter.rac.kernel.TCComponentBOMLine;
 import com.teamcenter.rac.kernel.TCComponentItemRevision;

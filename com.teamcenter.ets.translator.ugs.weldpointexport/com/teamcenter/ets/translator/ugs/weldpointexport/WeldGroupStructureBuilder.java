@@ -5,7 +5,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.teamcenter.ets.soa.SoaHelper;
 import com.teamcenter.services.loose.bom._2008_06.StructureManagement;
 import com.teamcenter.services.loose.bom._2008_06.StructureManagement.AddOrUpdateChildrenToParentLineInfo;
@@ -35,7 +35,7 @@ public class WeldGroupStructureBuilder {
 	StringBuffer buffer;
 	boolean isDebug = false;
 	private String servletUrlStr = null;
-	private String serviceClassName = "com.ssangyong.service.WeldPoint2ndService";
+	private String serviceClassName = "com.kgm.service.WeldPoint2ndService";
 	
 	String partItemId  = null;
 	String partRevisionId = null; 

@@ -23,7 +23,7 @@
 		$("#deleteButton").click(function() {
 		    if (confirm("삭제하시겠습니까?") == true){    //확인
 		    	$.ajax({
-	                url : "/ssangyongweb/SYMCTimerServlet",
+	                url : "/kgmweb/SYMCTimerServlet",
 	                data:{'method':'deleteAllLog'},
 	                type : "POST",
 	                dataType : "json",

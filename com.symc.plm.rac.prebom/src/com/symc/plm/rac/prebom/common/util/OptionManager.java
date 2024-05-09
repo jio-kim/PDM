@@ -8,16 +8,16 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
-import com.ssangyong.commands.variantconditionset.ConditionVector;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.TcDefinition;
-import com.ssangyong.common.utils.variant.SymcConditionElement;
-import com.ssangyong.common.utils.variant.VariantErrorCheck;
-import com.ssangyong.common.utils.variant.VariantOption;
-import com.ssangyong.common.utils.variant.VariantValue;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.variantconditionset.ConditionVector;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.TcDefinition;
+import com.kgm.common.utils.variant.SymcConditionElement;
+import com.kgm.common.utils.variant.VariantErrorCheck;
+import com.kgm.common.utils.variant.VariantOption;
+import com.kgm.common.utils.variant.VariantValue;
 import com.teamcenter.rac.aif.kernel.AIFComponentContext;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;
 import com.teamcenter.rac.aifrcp.AIFUtility;
@@ -1071,7 +1071,7 @@ public class OptionManager {
 		try{
 			DataSet ds = new DataSet();
 			ds.put("code_name", null);
-			ArrayList<HashMap> list = (ArrayList)remote.execute("com.ssangyong.service.VariantService", "getVariantValueDesc", ds);
+			ArrayList<HashMap> list = (ArrayList)remote.execute("com.kgm.service.VariantService", "getVariantValueDesc", ds);
 			if( list != null ){
 				for( HashMap map : list){
 					valueDescMap.put(map.get("CODE_NAME"), map.get("CODE_DESC"));

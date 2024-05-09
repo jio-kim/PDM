@@ -19,11 +19,11 @@ import javax.script.ScriptEngineManager;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-import com.ssangyong.commands.ospec.op.OpValueName;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.lov.SYMCLOVLoader;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.ospec.op.OpValueName;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.lov.SYMCLOVLoader;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;
 import com.symc.plm.rac.prebom.masterlist.model.StoredOptionSet;
@@ -364,7 +364,7 @@ public class WeightMasterListSearchOperation extends AbstractAIFOperation {
     	ds.setString("TRIM", sTrim);
     	
     	@SuppressWarnings("unchecked")
-		ArrayList<HashMap<String, String>> alMandatories = (ArrayList<HashMap<String, String>>) remote.execute("com.ssangyong.service.PreOSpecService", "selectPreOSpecMandatory", ds);
+		ArrayList<HashMap<String, String>> alMandatories = (ArrayList<HashMap<String, String>>) remote.execute("com.kgm.service.PreOSpecService", "selectPreOSpecMandatory", ds);
     	
     	// Applying Mandatories
     	for (int inx = 0; inx < alMandatories.size(); inx++) {

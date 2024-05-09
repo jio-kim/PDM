@@ -14,12 +14,12 @@ import java.util.concurrent.Executors;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;

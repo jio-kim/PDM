@@ -27,8 +27,8 @@ import org.sdv.core.util.UIUtil;
 
 import swing2swt.layout.BorderLayout;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.swtsearch.SearchItemDialog;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.swtsearch.SearchItemDialog;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
@@ -83,7 +83,7 @@ public class CompareEbomVsBOPView extends AbstractSDVViewer {
 
 	@Override
 	public void createPanel(Composite parent) {
-		registry = Registry.getRegistry("com.ssangyong.common.common");
+		registry = Registry.getRegistry("com.kgm.common.common");
 
 		setLayout(new FillLayout(SWT.HORIZONTAL));
 

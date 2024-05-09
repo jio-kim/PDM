@@ -19,12 +19,12 @@ import org.eclipse.swt.widgets.Group;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-import com.ssangyong.commands.partmaster.vehiclepart.PartNameDialog;
-import com.ssangyong.common.SYMCLOVComboBox;
-import com.ssangyong.common.SYMCLabel;
-import com.ssangyong.common.SYMCText;
-import com.ssangyong.common.swtsearch.SearchItemRevDialog;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.commands.partmaster.vehiclepart.PartNameDialog;
+import com.kgm.common.SYMCLOVComboBox;
+import com.kgm.common.SYMCLabel;
+import com.kgm.common.SYMCText;
+import com.kgm.common.swtsearch.SearchItemRevDialog;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;

@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.dto.EndItemData;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.dto.EndItemData;
 
 /**
  * [SR150122-027][20150210] shcho, Find automatically replaced end item (공법 할당 E/Item의 설계 DPV에 의한 자동 변경 오류 해결) (10버전에서 개발 된 소스 9으로 이식함)
@@ -15,7 +15,7 @@ import com.ssangyong.dto.EndItemData;
  */
 public class CustomBOPDao {
 
-	public static final String BOP_SERVICE_CLASS = "com.ssangyong.service.SYMCBOPService";
+	public static final String BOP_SERVICE_CLASS = "com.kgm.service.SYMCBOPService";
 
     private SYMCRemoteUtil remoteQuery;
     private DataSet ds;

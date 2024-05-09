@@ -15,7 +15,7 @@ import org.sdv.core.common.data.IDataSet;
 import org.sdv.core.ui.UIManager;
 import org.sdv.core.ui.operation.AbstractSDVActionOperation;
 
-import com.ssangyong.common.WaitProgressBar;
+import com.kgm.common.WaitProgressBar;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;

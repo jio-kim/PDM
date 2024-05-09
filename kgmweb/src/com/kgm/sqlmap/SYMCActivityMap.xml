@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.kgm.mapper.SYMCActivityMapper">
+	<select id="getTimeStamp" resultType="java.lang.String">
+		SELECT ptimestamp
+		FROM INFODBA.PPOM_OBJECT
+		WHERE puid = #{activityUid, jdbcType=VARCHAR}
+	</select>
+
+	<update id="updateTimeStamp">
+		UPDATE INFODBA.PPOM_OBJECT SET
+			ptimestamp = #{ptimestamp, jdbcType=VARCHAR},
+			plsd = (SELECT systimestamp - 9/24 FROM DUAL)
+		WHERE puid = #{activityUid, jdbcType=VARCHAR}
+	</update>
+
+	<update id="updateEnglishName">
+		<if test="target == 'ACTIVITY'">
+			UPDATE INFODBA.PM7_BOPACTIVITY SET
+		</if>
+		<if test="target == 'OPERATION'">
+			UPDATE INFODBA.PM7_BOPOPERATIONREVISION SET
+		</if>
+			pm7_ENG_NAME = #{englishName, jdbcType=VARCHAR},
+			pm7_ENG_NAME_LAST_MOD_DATE = (SELECT plsd FROM INFODBA.PPOM_OBJECT WHERE puid = #{activityUid, jdbcType=VARCHAR}),
+			pm7_ENG_NAME_LAST_MOD_USER = #{userId, jdbcType=VARCHAR}
+		WHERE puid = #{activityUid, jdbcType=VARCHAR}
+	</update>
+
+	<update id="mergeTimeStamp">
+		MERGE INTO INFODBA.POM_TIMESTAMP USING (
+			SELECT ptimestamp TimeStamp, plsd CurrentTime FROM INFODBA.PPOM_OBJECT WHERE puid = #{activityUid, jdbcType=VARCHAR}
+		) ON (puid = #{activityUid, jdbcType=VARCHAR})
+		WHEN MATCHED THEN
+			UPDATE SET
+			ptimestamp = TimeStamp,
+			pdbtimestamp = CurrentTime,
+			pdeleted = 0
+		WHEN NOT MATCHED THEN
+			INSERT (puid, ptimestamp, pdbtimestamp, pdeleted)
+			VALUES (#{activityUid, jdbcType=VARCHAR}, TimeStamp, CurrentTime, 0)
+	</update>
+</mapper>

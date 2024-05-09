@@ -11,7 +11,7 @@ import org.sdv.core.common.data.IDataSet;
 import org.sdv.core.common.data.RawDataMap;
 import org.sdv.core.ui.operation.AbstractSDVInitOperation;
 
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVStringUtiles;
 import com.symc.plm.me.common.SDVTypeConstant;

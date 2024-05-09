@@ -15,7 +15,7 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.symc.plm.me.sdv.excel.transformer.PreviewWeldConditionSheetExcelTransformer;

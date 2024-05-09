@@ -34,10 +34,10 @@ import javax.swing.table.TableRowSorter;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.TreePath;
 
-import com.ssangyong.commands.variantconditionset.ConditionVector;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.variant.VariantOption;
-import com.ssangyong.common.utils.variant.VariantValue;
+import com.kgm.commands.variantconditionset.ConditionVector;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.variant.VariantOption;
+import com.kgm.common.utils.variant.VariantValue;
 import com.symc.plm.rac.prebom.common.util.OptionManager;
 import com.symc.plm.rac.prebom.masterlist.model.CellValue;
 import com.symc.plm.rac.prebom.masterlist.view.MasterListReq;
@@ -91,7 +91,7 @@ public class MasterListConditionDlg extends AbstractAIFDialog {
 		this.parentDlg = parentDlg;
 		this.conditions = conditions;
 		this.manager = manager;
-		this.registry = Registry.getRegistry(com.ssangyong.commands.variantconditionset.ConditionSetDialog.class);
+		this.registry = Registry.getRegistry(com.kgm.commands.variantconditionset.ConditionSetDialog.class);
 		init();
 	}
 	

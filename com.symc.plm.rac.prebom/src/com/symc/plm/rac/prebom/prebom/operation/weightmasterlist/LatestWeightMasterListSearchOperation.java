@@ -16,10 +16,10 @@ import javax.script.ScriptEngineManager;
 import javax.swing.JTable;
 import javax.swing.table.TableCellRenderer;
 
-import com.ssangyong.commands.ospec.op.OpValueName;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.ospec.op.OpValueName;
+import com.kgm.common.WaitProgressBar;
 import com.symc.plm.rac.prebom.masterlist.model.StoredOptionSet;
 import com.symc.plm.rac.prebom.prebom.dialog.weightmasterlist.LatestWeightMasterListDialog.CustomTableModel;
 import com.teamcenter.rac.aif.AbstractAIFOperation;
@@ -440,7 +440,7 @@ public class LatestWeightMasterListSearchOperation extends AbstractAIFOperation 
 		ds.setString("TRIM", sTrim);
 
 		@SuppressWarnings("unchecked")
-		ArrayList<HashMap<String, String>> alMandatories = (ArrayList<HashMap<String, String>>) remote.execute("com.ssangyong.service.PreOSpecService",
+		ArrayList<HashMap<String, String>> alMandatories = (ArrayList<HashMap<String, String>>) remote.execute("com.kgm.service.PreOSpecService",
 				"selectPreOSpecMandatory", ds);
 
 		// Applying Mandatories
@@ -482,7 +482,7 @@ public class LatestWeightMasterListSearchOperation extends AbstractAIFOperation 
 		ds.put("EAI_CREATE_TIME", targetDataSet.get("MASTER_CREATE_TIME"));
 
 		@SuppressWarnings("unchecked")
-		List<HashMap<String, Object>> result = (List<HashMap<String, Object>>) remote.execute("com.ssangyong.service.MasterListService",
+		List<HashMap<String, Object>> result = (List<HashMap<String, Object>>) remote.execute("com.kgm.service.MasterListService",
 				"getWeightMasterDataList", ds);
 		return result;
 	}
@@ -501,7 +501,7 @@ public class LatestWeightMasterListSearchOperation extends AbstractAIFOperation 
 		ds.put("EAI_CREATE_TIME", targetDataSet.get("MASTER_CREATE_TIME"));
 
 		@SuppressWarnings("unchecked")
-		List<HashMap<String, Object>> result = (List<HashMap<String, Object>>) remote.execute("com.ssangyong.service.MasterListService", "getBOMLineTrimList",
+		List<HashMap<String, Object>> result = (List<HashMap<String, Object>>) remote.execute("com.kgm.service.MasterListService", "getBOMLineTrimList",
 				ds);
 		for (HashMap<String, Object> data : result) {
 			String systemRowKey = (String) data.get("SYSTEM_ROW_KEY");

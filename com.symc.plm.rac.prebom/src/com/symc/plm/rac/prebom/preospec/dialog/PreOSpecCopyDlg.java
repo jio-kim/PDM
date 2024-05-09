@@ -26,10 +26,10 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.SWTUtilities;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.utils.SWTUtilities;
 import com.symc.plm.rac.prebom.preospec.ui.PreOSpecMandatoryTable;
 import com.teamcenter.rac.aifrcp.AIFUtility;
 import com.teamcenter.rac.kernel.TCComponent;
@@ -439,7 +439,7 @@ public class PreOSpecCopyDlg extends SYMCAbstractDialog {
 			ds.setString("OSPEC_NO", sOSpecNo);
 			
 			@SuppressWarnings("unchecked")
-			ArrayList<HashMap<String, String>> alResult = (ArrayList<HashMap<String, String>>)remote.execute("com.ssangyong.service.PreOSpecService", "selectPreOSpecMandatoryInfo", ds);
+			ArrayList<HashMap<String, String>> alResult = (ArrayList<HashMap<String, String>>)remote.execute("com.kgm.service.PreOSpecService", "selectPreOSpecMandatoryInfo", ds);
 			
 			for (int inx = 0; inx < alResult.size(); inx++) {
 				HashMap<String, String> hmResult = (HashMap<String, String>) alResult.get(inx);

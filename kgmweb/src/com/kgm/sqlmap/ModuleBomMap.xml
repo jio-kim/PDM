@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="com.symc.module">
+
+	<select id="validateModule" statementType="CALLABLE">
+	    {call PKG_MODULE_VALIDATION.validate_module(#{eco_no, jdbcType=VARCHAR}, #{list, javaType=Object, jdbcType=ARRAY, jdbcTypeName=VALIDATION_TABLE_TYPE, mode=OUT, typeHandler=xxxxxxxxxxx.typehandler.ModuleBomValidationTypeHandler})}
+	</select>
+
+	<select id="getModulePart" resultType="java.util.HashMap">
+		select eco_no,epl_id  from eco_bom_list where epl_yn = 'Y' and ct <![CDATA[<>]]> 'XX' and (new_mcode in ('BIP','BIW','FCM','RCM') or (new_mcode = 'IPM' and new_smode = 'PM') or (new_mcode = 'FEM' and new_smode = 'PF')) and eco_no = #{eco_no, jdbcType=VARCHAR}	
+	</select>
+  
+    <select id="getModuleValidationResult" resultType="java.util.HashMap">
+      select eco_no, epl_id, msg_type, msg  
+      from eco_module_validation 
+      where eco_no = #{eco_no, jdbcType=VARCHAR} 
+    </select>
+</mapper>

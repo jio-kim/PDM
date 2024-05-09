@@ -20,21 +20,21 @@ import java.util.regex.Pattern;
 
 import org.apache.commons.collections.CollectionUtils;
 
-import com.ssangyong.commands.ec.SYMCECConstant;
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpTrim;
-import com.ssangyong.commands.ospec.op.OpUtil;
-import com.ssangyong.commands.ospec.op.Option;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.DatasetService;
-import com.ssangyong.common.utils.SYMTcUtil;
-import com.ssangyong.common.utils.StringUtil;
-import com.ssangyong.common.utils.variant.VariantErrorCheck;
-import com.ssangyong.common.utils.variant.VariantOption;
-import com.ssangyong.common.utils.variant.VariantValue;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.commands.ec.SYMCECConstant;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpTrim;
+import com.kgm.commands.ospec.op.OpUtil;
+import com.kgm.commands.ospec.op.Option;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.DatasetService;
+import com.kgm.common.utils.SYMTcUtil;
+import com.kgm.common.utils.StringUtil;
+import com.kgm.common.utils.variant.VariantErrorCheck;
+import com.kgm.common.utils.variant.VariantOption;
+import com.kgm.common.utils.variant.VariantValue;
 import com.symc.plm.rac.prebom.ccn.commands.dao.CustomCCNDao;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
@@ -1058,7 +1058,7 @@ public class BomUtil {
 		SYMCRemoteUtil remote = new SYMCRemoteUtil();
 		DataSet ds = new DataSet();
 		ds.put("PARAM", null);
-		String sysRowKey = (String)remote.execute("com.ssangyong.service.MasterListService", "getSysGuid", ds);
+		String sysRowKey = (String)remote.execute("com.kgm.service.MasterListService", "getSysGuid", ds);
 
 		return sysRowKey;
 	}
@@ -1067,7 +1067,7 @@ public class BomUtil {
 		SYMCRemoteUtil remote = new SYMCRemoteUtil();
 		DataSet ds = new DataSet();
 		ds.put("PUID", revPuid);
-		String dateStr = (String)remote.execute("com.ssangyong.service.MasterListService", "getDwgDeployableDate", ds);
+		String dateStr = (String)remote.execute("com.kgm.service.MasterListService", "getDwgDeployableDate", ds);
 
 		return dateStr;
 	}
@@ -1076,7 +1076,7 @@ public class BomUtil {
 		SYMCRemoteUtil remote = new SYMCRemoteUtil();
 		DataSet ds = new DataSet();
 		ds.put("PUID", revPuid);
-		Object dateStr = (Object)remote.execute("com.ssangyong.service.CCNService", "getDwgDeployableDate", ds);
+		Object dateStr = (Object)remote.execute("com.kgm.service.CCNService", "getDwgDeployableDate", ds);
 
 		return dateStr;
 	}
@@ -1085,7 +1085,7 @@ public class BomUtil {
 		SYMCRemoteUtil remote = new SYMCRemoteUtil();
 		DataSet ds = new DataSet();
 		ds.put("PUID", revPuid);
-		Object dateStr = (Object)remote.execute("com.ssangyong.service.CCNService", "getDcsReleasedDate", ds);
+		Object dateStr = (Object)remote.execute("com.kgm.service.CCNService", "getDcsReleasedDate", ds);
 
 		return dateStr;
 	}
@@ -1094,7 +1094,7 @@ public class BomUtil {
 		SYMCRemoteUtil remote = new SYMCRemoteUtil();
 		DataSet ds = new DataSet();
 		ds.put("PUID", revPuid);
-		String dateStr = (String)remote.execute("com.ssangyong.service.MasterListService", "getBVRModifyDate", ds);
+		String dateStr = (String)remote.execute("com.kgm.service.MasterListService", "getBVRModifyDate", ds);
 
 		return dateStr;
 	}
@@ -1253,7 +1253,7 @@ public class BomUtil {
 
 		ds.put("DATA", null);
 		try {
-			ArrayList<String> list = (ArrayList<String>)remote.execute("com.ssangyong.service.MasterListService", "getEssentialName", ds);
+			ArrayList<String> list = (ArrayList<String>)remote.execute("com.kgm.service.MasterListService", "getEssentialName", ds);
 
 			return list;
 		} catch (Exception e) {
@@ -2456,7 +2456,7 @@ public class BomUtil {
 			ds.put("PROB_REV", proRev);
 			
 			//solution에 없는 부모 리스트 추출
-			ArrayList<HashMap<String, Object>> arrParentEPLData = (ArrayList<HashMap<String, Object>>)remote.execute("com.ssangyong.service.CCNService", "arrParentEPLData", ds);
+			ArrayList<HashMap<String, Object>> arrParentEPLData = (ArrayList<HashMap<String, Object>>)remote.execute("com.kgm.service.CCNService", "arrParentEPLData", ds);
 			
 			for(int i=0; i<arrParentEPLData.size(); i++){
 				ccnEditData = new HashMap<String, Object>();
@@ -3029,7 +3029,7 @@ public class BomUtil {
 
 			ds.put("ITEM_ID", item_id);
 			ds.put("REVISION_ID", revision_id);
-			ArrayList<String> whereUsedList = (ArrayList<String>)remote.execute("com.ssangyong.service.CCNService", "whereUsed", ds);
+			ArrayList<String> whereUsedList = (ArrayList<String>)remote.execute("com.kgm.service.CCNService", "whereUsed", ds);
 
 			for(int i=0; i<whereUsedList.size(); i++){
 				compsList.add(rev.getSession().getComponentManager().getTCComponent(whereUsedList.get(i)));
@@ -3235,7 +3235,7 @@ public class BomUtil {
 		ds.put("ID", id);
 		ds.put("REV", rev);
 		ds.put("RULE", revision_rule);
-		ArrayList<HashMap<String, Object>> getChildBOMPro = (ArrayList<HashMap<String, Object>>)remote.execute("com.ssangyong.service.CCNService", "getChildBOMPro", ds);
+		ArrayList<HashMap<String, Object>> getChildBOMPro = (ArrayList<HashMap<String, Object>>)remote.execute("com.kgm.service.CCNService", "getChildBOMPro", ds);
 		for(int i=0; i<getChildBOMPro.size(); i++){
 			String cId = getChildBOMPro.get(i).get("ITEM_ID").toString();
 			String occId = getChildBOMPro.get(i).get("OCC_ID").toString();
@@ -3772,7 +3772,7 @@ public class BomUtil {
 	public static void setOldPartTobomEditData_(SYMCRemoteUtil remote, DataSet ds, TCComponentItemRevision revision, HashMap<String,Object> ccnEditData, OSpec ospec, HashMap<String, StoredOptionSet> optionSetMap, String changeType) throws Exception {
 
 		try {
-			ArrayList<HashMap<String, Object>> arrParentEPLDataOld = (ArrayList<HashMap<String, Object>>)remote.execute("com.ssangyong.service.CCNService", "arrParentEPLDataOld", ds);
+			ArrayList<HashMap<String, Object>> arrParentEPLDataOld = (ArrayList<HashMap<String, Object>>)remote.execute("com.kgm.service.CCNService", "arrParentEPLDataOld", ds);
 			if(arrParentEPLDataOld != null && arrParentEPLDataOld.size() > 0){
 				Iterator<String> iterOld = arrParentEPLDataOld.get(0).keySet().iterator();
 				while (iterOld.hasNext()) {
@@ -3948,7 +3948,7 @@ public class BomUtil {
 	public static void setNewPartTobomEditData_(SYMCRemoteUtil remote, DataSet ds, TCComponentItemRevision revision, HashMap<String,Object> ccnEditData, OSpec ospec, HashMap<String, StoredOptionSet> optionSetMap, String changeType) throws Exception {
 
 		try {
-			ArrayList<HashMap<String, Object>> arrParentEPLDataNew = (ArrayList<HashMap<String, Object>>)remote.execute("com.ssangyong.service.CCNService", "arrParentEPLDataNew", ds);
+			ArrayList<HashMap<String, Object>> arrParentEPLDataNew = (ArrayList<HashMap<String, Object>>)remote.execute("com.kgm.service.CCNService", "arrParentEPLDataNew", ds);
 			if(arrParentEPLDataNew != null && arrParentEPLDataNew.size() > 0){
 				Iterator<String> iterNew = arrParentEPLDataNew.get(0).keySet().iterator();
 				while (iterNew.hasNext()) {
@@ -4497,7 +4497,7 @@ public class BomUtil {
 		DataSet ds = new DataSet();
 		ds.put("PROJECT_CODE", projectCode);
 		ds.put("SYSTEM_CODE", sysCode);
-		ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>)remote.execute("com.ssangyong.service.OSpecService", "getDCSInfo", ds);
+		ArrayList<HashMap<String, Object>> list = (ArrayList<HashMap<String, Object>>)remote.execute("com.kgm.service.OSpecService", "getDCSInfo", ds);
 		if(list.size() > 0){
         	dcsMapInfo = list.get(0);
         }
@@ -4637,7 +4637,7 @@ public class BomUtil {
 			ds.put("code_name", value);
 
 			try {
-				ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>) remote.execute("com.ssangyong.service.VariantService", "getVariantValueDesc", ds);
+				ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>) remote.execute("com.kgm.service.VariantService", "getVariantValueDesc", ds);
 				if (list != null) {
 					for (HashMap<String, String> map : list) {
 						descriptions.put(map.get("CODE_NAME"), map.get("CODE_DESC"));

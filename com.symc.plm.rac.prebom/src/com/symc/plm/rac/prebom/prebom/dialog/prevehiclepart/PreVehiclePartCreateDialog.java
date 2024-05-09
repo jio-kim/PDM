@@ -9,8 +9,8 @@ import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.prebom.operation.precreate.PrePartMasterOperation;
@@ -47,7 +47,7 @@ public class PreVehiclePartCreateDialog extends SYMCAbstractDialog
 	public PreVehiclePartCreateDialog(Shell paramShell, HashMap<String, Object> paramMap)
 	{
 		super(paramShell);
-		this.registry = Registry.getRegistry("com.ssangyong.commands.partmaster.validator");
+		this.registry = Registry.getRegistry("com.kgm.commands.partmaster.validator");
 		this.paramMap = paramMap;
 
 		setParentDialogCompositeSize(new Point(720, 445));
@@ -138,7 +138,7 @@ public class PreVehiclePartCreateDialog extends SYMCAbstractDialog
 //					DataSet ds = new DataSet();
 //					ds.put("partNo", strPartNo);
 //
-//					Object result = remote.execute("com.ssangyong.service.VPMIfService", "getExistVPMPartCnt", ds);
+//					Object result = remote.execute("com.kgm.service.VPMIfService", "getExistVPMPartCnt", ds);
 //
 //					if (result instanceof Integer)
 //					{

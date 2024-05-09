@@ -11,10 +11,6 @@ import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Vector;
 
-import jxl.Workbook;
-import jxl.write.WritableSheet;
-import jxl.write.WritableWorkbook;
-
 import org.apache.poi.hssf.usermodel.HSSFCell;
 import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFRow;
@@ -22,12 +18,12 @@ import org.apache.poi.hssf.usermodel.HSSFSheet;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.hssf.util.CellRangeAddress;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.PreferenceService;
-import com.ssangyong.common.utils.SYMTcUtil;
-import com.ssangyong.common.utils.TcDefinition;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.PreferenceService;
+import com.kgm.common.utils.SYMTcUtil;
+import com.kgm.common.utils.TcDefinition;
 import com.symc.plm.rac.prebom.common.util.SDVPreBOMUtilities;
 import com.teamcenter.rac.kernel.TCComponentDataset;
 import com.teamcenter.rac.kernel.TCComponentItem;
@@ -35,6 +31,10 @@ import com.teamcenter.rac.kernel.TCComponentItemRevision;
 import com.teamcenter.rac.kernel.TCComponentTcFile;
 import com.teamcenter.rac.kernel.TCException;
 import com.teamcenter.rac.kernel.TCPreferenceService;
+
+import jxl.Workbook;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
 
 /**
  * [SR160621-031][20160707] taeku.jeong
@@ -61,7 +61,7 @@ public class PreBOMMasterListDataUtil {
 	private static int UssageHeaderStartColumn = 19;  // Column, Row 의 Index는 0부터 시작
 	
 	// Data를 Queyr하기위해 정위된 SQLMap Service
-	private static final String PREBOM_USSAGE_QUERY_SERVICE = "com.ssangyong.service.PreBOMUssageExportService";
+	private static final String PREBOM_USSAGE_QUERY_SERVICE = "com.kgm.service.PreBOMUssageExportService";
 
 	public PreBOMMasterListDataUtil(){
 		

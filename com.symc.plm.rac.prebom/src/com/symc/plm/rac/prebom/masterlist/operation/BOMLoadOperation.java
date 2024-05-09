@@ -10,10 +10,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.variant.VariantOption;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.variant.VariantOption;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;
@@ -298,7 +298,7 @@ public class BOMLoadOperation extends AbstractAIFOperation {
 //					SYMCRemoteUtil remote = new SYMCRemoteUtil();
 //					DataSet ds = new DataSet();
 //					ds.put("PUID", com.getUid());
-//					ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>)remote.execute("com.ssangyong.service.MasterListService", "getStoredOptionSet", ds);
+//					ArrayList<HashMap<String, String>> list = (ArrayList<HashMap<String, String>>)remote.execute("com.kgm.service.MasterListService", "getStoredOptionSet", ds);
 //					for( int i = 0; list != null && i < list.size(); i++){
 //						HashMap<String, String> resultMap = list.get(i);
 //						sos.add(resultMap.get("POPTION"), resultMap.get("PSTRING_VALUE"));

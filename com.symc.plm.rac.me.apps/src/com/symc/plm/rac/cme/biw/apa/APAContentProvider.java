@@ -17,8 +17,8 @@ import org.eclipse.ui.IViewPart;
 import org.eclipse.ui.IViewReference;
 import org.eclipse.ui.IWorkbenchWindow;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVStringUtiles;
 import com.symc.plm.me.utils.CustomUtil;
@@ -591,5 +591,5 @@ public class APAContentProvider
     private Registry registry;
     @SuppressWarnings("unused")
     private static final Logger logger = Logger.getLogger(PartSearch.class);
-    private final String serviceClassName = "com.ssangyong.service.BopPertService";
+    private final String serviceClassName = "com.kgm.service.BopPertService";
 }

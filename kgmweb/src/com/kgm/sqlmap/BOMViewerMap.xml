@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+<mapper namespace="com.kgm.mapper.BOMViewerMapper">
+	<select id="selectBOMViewer" parameterType="java.lang.String" resultType="java.util.HashMap">
+	<![CDATA[
+		SELECT BOM_LEVEL LV,
+		       P_PART_REV_PUID PARENT_UID,
+		       P_PART_NO PARENT_NO,
+		       P_VER PARENT_REV,
+		       (SELECT TIRW.POBJECT_NAME FROM INFODBA.PWORKSPACEOBJECT TIRW WHERE TIRW.PUID = P_PART_REV_PUID) PARENT_NAME,
+		       P_ENV PARENT_TYPE,
+		       (SELECT TIR.PS7_MATURITY FROM INFODBA.PITEMREVISION TIR WHERE TIR.PUID = P_PART_REV_PUID) PARENT_MATURITY,
+		       PART_REV_PUID PART_UID,
+		       PART_NO PART_NO,
+		       VER PART_REV,
+		       PART_NAME PART_NAME,
+		       C_ENV PART_TYPE,
+		       (SELECT TIR.PS7_MATURITY FROM INFODBA.PITEMREVISION TIR WHERE TIR.PUID = PART_REV_PUID) PART_MATURITY,
+		       OCC_THREAD OCC_THREADS,
+		       SEQ SEQ,
+		       POS_DESC POSITION_DESC,
+		       SUPPMODE SMODE,
+		       ALT APART,
+		       MODULE_CODE MCODE,
+		       (SELECT MAX(DS.PUID)
+		          FROM INFODBA.PIMANRELATION REL, INFODBA.PDATASET DS, INFODBA.PWORKSPACEOBJECT DSW
+		         WHERE PART_REV_PUID = REL.RPRIMARY_OBJECTU
+		           AND REL.RSECONDARY_OBJECTU = DS.PUID
+		           AND DS.PUID = DSW.PUID
+		           AND DSW.POBJECT_TYPE = 'CATProduct') CATPRODUCT,
+		       (SELECT MAX(DS.PUID)
+		          FROM INFODBA.PIMANRELATION REL, INFODBA.PDATASET DS, INFODBA.PWORKSPACEOBJECT DSW
+		         WHERE PART_REV_PUID = REL.RPRIMARY_OBJECTU
+		           AND REL.RSECONDARY_OBJECTU = DS.PUID
+		           AND DS.PUID = DSW.PUID
+		           AND DSW.POBJECT_TYPE = 'CATPart') CATPART,
+		       (SELECT MAX(DS.PUID)
+		          FROM INFODBA.PIMANRELATION REL, INFODBA.PDATASET DS, INFODBA.PWORKSPACEOBJECT DSW
+		         WHERE PART_REV_PUID = REL.RPRIMARY_OBJECTU
+		           AND REL.RSECONDARY_OBJECTU = DS.PUID
+		           AND DS.PUID = DSW.PUID
+		           AND DSW.POBJECT_TYPE = 'CATDrawing') CATDRAWING,
+		       (SELECT MAX(DS.PUID)
+		          FROM INFODBA.PIMANRELATION REL, INFODBA.PDATASET DS, INFODBA.PWORKSPACEOBJECT DSW
+		         WHERE PART_REV_PUID = REL.RPRIMARY_OBJECTU
+		           AND REL.RSECONDARY_OBJECTU = DS.PUID
+		           AND DS.PUID = DSW.PUID
+		           AND DSW.POBJECT_TYPE = 'PDF') PDF
+		  FROM TABLE(HBOM_TC_PACKAGE.GET_HBOM_INNER_STRUCTURE('',
+		                                                      #{PARENT_UID, jdbcType=VARCHAR},
+		                                                      (SELECT PDATE_RELEASED
+		                                                         FROM INFODBA.PWORKSPACEOBJECT
+		                                                        WHERE PUID = #{PARENT_UID, jdbcType=VARCHAR}),
+		                                                      (SELECT CASE
+		                                                                WHEN PDATE_RELEASED IS NOT NULL THEN
+		                                                                 '0'
+		                                                                ELSE
+		                                                                 '1'
+		                                                              END
+		                                                         FROM INFODBA.PWORKSPACEOBJECT
+		                                                        WHERE PUID = #{PARENT_UID, jdbcType=VARCHAR}),
+		                                                      1,
+		                                                      '1',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      '',
+		                                                      ''))
+	]]>
+	</select>
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgm.mapper.MbomInterfaceMapper">
+
+  <insert id="insertBpnInfo" >
+  	merge into if_MBOM_BPN
+    using dual
+    on (parent_ID=#{parent_id, jdbcType=VARCHAR} and parent_rev_id=#{parent_rev_id, jdbcType=VARCHAR} and child_id=#{child_id, jdbcType=VARCHAR} and order_no=#{order_no, jdbcType=VARCHAR})
+    when matched then
+        update set eco_id=#{eco_id, jdbcType=VARCHAR}
+       	   <if test="bp_date_from != null">
+	    		, bp_date_from = #{bp_date_from, jdbcType=VARCHAR}
+	  	   </if>
+		   <if test="bp_date_to != null">
+	    		, bp_date_to = #{bp_date_to, jdbcType=VARCHAR}
+	  	   </if>
+	  	   , STAT=''
+    when not matched then
+            insert (parent_id, parent_rev_id, child_id, eco_id
+		   <if test="bp_date_from != null">
+	    		, bp_date_from
+	  	   </if>
+		   <if test="bp_date_to != null">
+	    		, bp_date_to
+	  	   </if>
+	  	    ,order_no
+            )
+            values(#{parent_id, jdbcType=VARCHAR}, #{parent_rev_id, jdbcType=VARCHAR}, #{child_id, jdbcType=VARCHAR}, #{eco_id, jdbcType=VARCHAR}
+		   <if test="bp_date_from != null">
+	    		, #{bp_date_from, jdbcType=VARCHAR}
+	  	   </if>
+		   <if test="bp_date_to != null">
+	    		, #{bp_date_to, jdbcType=VARCHAR}
+	  	   </if>
+	  	   , #{order_no, jdbcType=VARCHAR}
+            )
+  </insert>
+  <parameterMap type="map" id="pgType">
+	  <parameter property="item_id"  jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+	  <parameter property="item_rev_id" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+	  <parameter property="pg_id" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+	  <parameter property="pg_id_version" jdbcType="VARCHAR" javaType="java.lang.String" mode="IN"/>
+	  <parameter property="result_count" jdbcType="INTEGER" javaType="java.lang.Integer" mode="OUT"/>
+  </parameterMap>
+  <update id="updatePgInfo" parameterMap="pgType" statementType="CALLABLE" >
+  	{call MBOM_IF_PACKAGE.update_pg_info(?,?,?,?,?)}
+  </update>
+    
+    
+  <resultMap type="java.util.HashMap" id="ProcessSheetResult">
+	 <result property="STATION_NO" 					column="STATION_NO"/>
+	 <result property="OP_ID" 								column="OP_ID"/>
+	 <result property="OP_REV_ID" 						column="OP_REV_ID"/>
+ 	 <result property="OP_NAME" 							column="OP_NAME"/>
+ 	 <result property="PS_ID"                				column="PS_ID"/>	
+ 	 <result property="PS_REV_ID"         				column="PS_REV_ID"/>
+ 	 <result property="PS_EN_ID"                			column="PS_EN_ID"/>
+ 	 <result property="PS_EN_REV_ID"         			column="PS_EN_REV_ID"/> 	 
+	 <result property="PUBLISH_DATE" 					column="PUBLISH_DATE"/>
+	 <result property="LATEST_PUBLISH_USER" 		column="LATEST_PUBLISH_USER"/>
+	 <result property="OP_EN_ID" 						column="OP_EN_ID"/>
+	 <result property="OP_EN_NAME" 					column="OP_EN_NAME"/>
+	 <result property="PUBLISH_EN_DATE"				column="PUBLISH_EN_DATE"/>
+	 <result property="LATEST_PUBLISH_EN_USER" 	column="LATEST_PUBLISH_EN_USER"/>
+	 <result property="MECO_NO" 						column="MECO_NO"/>
+	 <result property="MECO_DESC"						column="MECO_DESC"/>
+	 <result property="OP_OPTION" 						column="OP_OPTION"/>
+	 <result property="FILE_PUID" 						column="FILE_PUID"/>
+	 <result property="FILE_EN_PUID"				 	column="FILE_EN_PUID"/>
+  </resultMap>
+  <select id="searchProcessSheet" resultMap="ProcessSheetResult">
+	  SELECT * FROM
+		(
+			SELECT * FROM TABLE(MBOM_IF_PACKAGE.get_process_sheet_list(#{TARGET_ID, jdbcType=VARCHAR}, #{SHEET_LANGUAGE, jdbcType=VARCHAR}, to_date(#{TARGET_DATE, jdbcType=VARCHAR} || ' 14:59:59','YYYYMMdd HH24:MI:SS')))
+		)
+	  ORDER BY OP_ID
+  </select>
+</mapper>

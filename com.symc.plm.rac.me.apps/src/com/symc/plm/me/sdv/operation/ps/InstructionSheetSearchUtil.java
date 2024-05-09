@@ -19,8 +19,8 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.utils.BOPStructureDataUtility;
 import com.teamcenter.rac.kernel.TCComponentBOMLine;
@@ -32,7 +32,7 @@ public class InstructionSheetSearchUtil {
 	private  TCComponentBOMLine topBOMLine; 
 	private  HashMap<String, String> structureSearchConditionMap;
 	
-	private static String FINDAISDATASERVICE= "com.ssangyong.service.SYMCBOPFindAISDataService";
+	private static String FINDAISDATASERVICE= "com.kgm.service.SYMCBOPFindAISDataService";
 	
 	private String shopItemId = null;
 	private String processType = null;

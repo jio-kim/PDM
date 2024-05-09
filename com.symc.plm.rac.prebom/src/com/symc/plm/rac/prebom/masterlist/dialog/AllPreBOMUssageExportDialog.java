@@ -37,7 +37,7 @@ public class AllPreBOMUssageExportDialog extends TitleAreaDialog {
 	private String selectedDir = System.getProperty("user.home")+"\\Documents";
 	private Label label;
 	
-	public static final String PREBOM_USSAGE_QUERY_SERVICE = "com.ssangyong.service.PreBOMUssageExportService";
+	public static final String PREBOM_USSAGE_QUERY_SERVICE = "com.kgm.service.PreBOMUssageExportService";
 	Table table;
 
 	public AllPreBOMUssageExportDialog(Shell parent) {

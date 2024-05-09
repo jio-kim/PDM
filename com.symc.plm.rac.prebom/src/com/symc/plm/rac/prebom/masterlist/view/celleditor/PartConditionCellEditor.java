@@ -10,7 +10,7 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import com.ssangyong.commands.variantconditionset.ConditionVector;
+import com.kgm.commands.variantconditionset.ConditionVector;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.util.OptionManager;
 import com.symc.plm.rac.prebom.masterlist.dialog.MasterListConditionDlg;

@@ -5,7 +5,7 @@ package com.symc.plm.rac.prebom.prebom.commands;
 
 import javax.swing.JFrame;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.prebom.dialog.weightmasterlist.WeightMasterListDialog;
 import com.teamcenter.rac.aif.AbstractAIFCommand;
 import com.teamcenter.rac.aif.AbstractAIFOperation;

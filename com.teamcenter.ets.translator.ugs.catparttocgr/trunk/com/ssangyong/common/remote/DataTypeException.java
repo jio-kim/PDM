@@ -1,4 +1,4 @@
-package com.ssangyong.common.remote;
+package com.kgm.common.remote;
 
 
 public class DataTypeException extends Exception

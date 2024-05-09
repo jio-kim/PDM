@@ -20,7 +20,7 @@ import java.io.File;
 import java.util.List;
 import java.util.Properties;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.teamcenter.ets.load.DefaultDatabaseOperation;
 import com.teamcenter.ets.soa.SoaHelper;
 import com.teamcenter.soa.client.model.strong.Dataset;

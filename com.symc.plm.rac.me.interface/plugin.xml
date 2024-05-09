@@ -6,14 +6,14 @@
          point="org.eclipse.ui.commands">
       <command
             name="Full E-BOM to Process Engineer"
-            id="com.ssangyong.commands.ifpe.TcToPeInterfaceCommand">
+            id="com.kgm.commands.ifpe.TcToPeInterfaceCommand">
       </command>
    </extension>
    <extension
          point="org.eclipse.ui.handlers">
       <handler
-            commandId="com.ssangyong.commands.ifpe.TcToPeInterfaceCommand"
-            class="com.ssangyong.handler.PeInterfaceHandler">
+            commandId="com.kgm.commands.ifpe.TcToPeInterfaceCommand"
+            class="com.kgm.handler.PeInterfaceHandler">
       </handler>
    </extension>
    <!--
@@ -37,7 +37,7 @@
                label="BOP"
                id="com.symcbop.bop">
             <command
-                  commandId="com.ssangyong.commands.ifpe.TcToPeInterfaceCommand"
+                  commandId="com.kgm.commands.ifpe.TcToPeInterfaceCommand"
                   mnemonic="S"
                   id="ifpe.TcToPeInterfaceCommand">
 				<visibleWhen
@@ -54,7 +54,7 @@
                            <iterate
                                  operator="or">
                               <equals
-                                    value="com.ssangyong.commands.ifpe.TcToPeInterfaceCommand">
+                                    value="com.kgm.commands.ifpe.TcToPeInterfaceCommand">
                               </equals>
                            </iterate>
                         </not>

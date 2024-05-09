@@ -9,17 +9,15 @@ import org.sdv.core.beans.DialogStubBean;
 import org.sdv.core.common.IDialog;
 import org.sdv.core.ui.UIManager;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCSoaWebUtil;
-import com.ssangyong.common.remote.SecurityUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCSoaWebUtil;
+import com.kgm.common.remote.SecurityUtil;
 import com.symc.plm.me.sdv.operation.AbstractTCSDVOperation;
 import com.teamcenter.rac.aif.AIFPortal;
 import com.teamcenter.rac.aif.AbstractAIFUIApplication;
 import com.teamcenter.rac.aifrcp.AIFUtility;
 import com.teamcenter.rac.cme.application.MFGLegacyApplication;
-import com.teamcenter.rac.kernel.TCComponent;
 import com.teamcenter.rac.kernel.TCComponentCCObject;
-import com.teamcenter.rac.kernel.TCComponentPerson;
 import com.teamcenter.rac.kernel.TCSession;
 import com.teamcenter.rac.util.MessageBox;
 import com.teamcenter.rac.util.Registry;
@@ -138,7 +136,7 @@ public class ReportSubsidiaryListSOAOperation extends AbstractTCSDVOperation {
 		ds.put("ccObjectName", ccName);
 		
 		SYMCSoaWebUtil soaWebUtil = new SYMCSoaWebUtil();
-		String returnVal = (String)soaWebUtil.execute("com.ssangyong.soa.service.BOPReportService",
+		String returnVal = (String)soaWebUtil.execute("com.kgm.soa.service.BOPReportService",
 			"makeReport",
 			ds);
 		

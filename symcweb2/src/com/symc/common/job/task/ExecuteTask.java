@@ -7,7 +7,7 @@ import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.symc.common.dao.TcCommonDao;
 import com.symc.common.exception.JobExecuteException;
 import com.symc.common.job.listener.JobStatusInfo;

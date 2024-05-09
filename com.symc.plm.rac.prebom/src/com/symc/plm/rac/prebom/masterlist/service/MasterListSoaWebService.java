@@ -2,8 +2,8 @@ package com.symc.plm.rac.prebom.masterlist.service;
 
 import java.util.HashMap;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCSoaWebUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCSoaWebUtil;
 
 /**
  * [20160830][ymjang] BOM Load 贸府 肺流 辑滚 捞包
@@ -12,7 +12,7 @@ public class MasterListSoaWebService {
 
 	private SYMCSoaWebUtil soaWebUtil;
 	
-	private final String SERVICE_CLASS_NAME = "com.ssangyong.soa.service.MasterListService";
+	private final String SERVICE_CLASS_NAME = "com.kgm.soa.service.MasterListService";
 
 	public MasterListSoaWebService() {
 		soaWebUtil = new SYMCSoaWebUtil();

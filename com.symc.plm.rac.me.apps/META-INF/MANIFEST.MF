@@ -5,8 +5,8 @@ Bundle-SymbolicName: com.symc.plm.rac.me.apps;singleton:=true
 Bundle-Version: 1.0.0.1
 Bundle-Activator: com.symc.plm.activator.Activator
 Bundle-Vendor: SYMC
-Require-Bundle:  org.eclipse.nebula.widgets.grid;bundle-version="1.1.0",
- com.symc-newplm.external;bundle-version="1.0.0",
+Require-Bundle: org.eclipse.nebula.widgets.grid;bundle-version="1.1.0",
+ com.kgm-newplm.external;bundle-version="1.0.0",
  com.symc.plm.rac.me.interface;bundle-version="1.0.0",
  com.teamcenter.rac.cme.common;bundle-version="13000.2.0",
  TcSoaClassificationRac;bundle-version="13000.2.0",
@@ -36,11 +36,12 @@ Require-Bundle:  org.eclipse.nebula.widgets.grid;bundle-version="1.1.0",
  com.ibm.icu;bundle-version="63.1.0",
  org.eclipse.core.runtime;bundle-version="3.15.100",
  org.eclipse.ui;bundle-version="3.111.0",
- com.symc-newplm;bundle-version="1.0.0",
+ com.kgm-newplm;bundle-version="1.0.0",
  com.teamcenter.rac.ui;bundle-version="13000.2.0",
  com.teamcenter.rac.cme.accountabilitycheck;bundle-version="13000.2.0",
  com.teamcenter.rac.ets;bundle-version="13000.2.0",
- com.teamcenter.rac.external;bundle-version="13000.2.0"
+ com.teamcenter.rac.external;bundle-version="13000.2.0",
+ org.junit
 Bundle-RequiredExecutionEnvironment: JavaSE-11
 Eclipse-RegisterBuddy: com.ebsolutions.uiapplication
 Import-Package: 

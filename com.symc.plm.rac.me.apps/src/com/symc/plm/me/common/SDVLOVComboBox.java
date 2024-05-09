@@ -9,8 +9,8 @@ import org.eclipse.swt.events.TraverseEvent;
 import org.eclipse.swt.events.TraverseListener;
 import org.eclipse.swt.widgets.Composite;
 
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.SYMDisplayUtil;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.SYMDisplayUtil;
 import com.teamcenter.rac.common.controls.LOVComboBox;
 import com.teamcenter.rac.kernel.TCSession;
 

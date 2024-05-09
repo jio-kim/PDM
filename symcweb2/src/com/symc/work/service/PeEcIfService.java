@@ -7,7 +7,7 @@ import java.util.List;
 
 import javax.swing.tree.DefaultMutableTreeNode;
 
-import com.ssangyong.common.remote.DataSet;
+import com.kgm.common.remote.DataSet;
 import com.symc.common.dao.TcCommonDao;
 import com.symc.common.soa.biz.Session;
 import com.symc.common.soa.biz.TcItemUtil;

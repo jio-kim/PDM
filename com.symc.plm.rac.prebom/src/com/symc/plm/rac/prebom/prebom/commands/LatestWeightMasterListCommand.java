@@ -1,6 +1,6 @@
 package com.symc.plm.rac.prebom.prebom.commands;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.prebom.dialog.weightmasterlist.LatestWeightMasterListDialog;
 import com.teamcenter.rac.aif.AbstractAIFCommand;
 import com.teamcenter.rac.aif.AbstractAIFOperation;

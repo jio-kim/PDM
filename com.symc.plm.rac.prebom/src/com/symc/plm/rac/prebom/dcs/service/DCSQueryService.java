@@ -3,8 +3,8 @@ package com.symc.plm.rac.prebom.dcs.service;
 import java.util.List;
 import java.util.Map;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 
 /**
  * [20160510][ymjang] 검색속도개선 - DB 쿼리 방식으로 변경.
@@ -13,7 +13,7 @@ public class DCSQueryService {
 
 	private SYMCRemoteUtil remoteUtil;
 
-	private final String SERVICE_CLASS_NAME = "com.ssangyong.service.DCSService";
+	private final String SERVICE_CLASS_NAME = "com.kgm.service.DCSService";
 
 	public DCSQueryService() {
 		remoteUtil = new SYMCRemoteUtil();

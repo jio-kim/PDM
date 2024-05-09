@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.SYMCDateTimeButton;
+import com.kgm.common.SYMCDateTimeButton;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.viewer.AbstractSDVViewer;
 import com.symc.plm.me.utils.CustomUtil;

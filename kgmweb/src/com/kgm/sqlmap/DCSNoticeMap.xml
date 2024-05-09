@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.kgm.mapper.DCSNoticeMapper">
+
+	<insert id="insertDCSNotice" parameterType="java.util.HashMap">
+		insert into dcs_notice (
+			ouid,
+			board_number,
+			title,
+			notice_type,
+			expiration_date,
+			create_user_id,
+			create_user_name,
+			create_date,
+			modify_user_id,
+			modify_user_name,
+			modify_date,
+			use_flag
+		) values (
+			#{ouid},
+			#{board_number},
+			#{title},
+			#{notice_type},
+			#{expiration_date},
+			#{create_user_id},
+			#{create_user_name},
+			sysdate,
+			#{modify_user_id},
+			#{modify_user_name},
+			sysdate,
+			'1'
+		)
+	</insert>
+
+	<insert id="insertDCSNoticeContents" parameterType="java.util.HashMap">
+		insert into dcs_notice_contents (
+			notice_uid,
+			seq,
+			contents,
+			use_flag
+		) values (
+			#{notice_uid},
+			#{seq},
+			#{contents},
+			'1'
+		)
+	</insert>
+
+	<update id="updateDCSNotice" parameterType="java.util.HashMap">
+		update dcs_notice
+		set
+			title =	#{title},
+			notice_type = #{notice_type},
+			expiration_date = #{expiration_date},
+			modify_date = sysdate
+		where
+			ouid = #{ouid}
+	</update>
+	
+	<update id="updateDCSNoticeContents" parameterType="java.util.HashMap">
+		insert into dcs_notice_contents (
+			notice_uid,
+			seq,
+			contents,
+			use_flag
+		) values (
+			#{notice_uid},
+			(select nvl(max(seq), 0) + 1 from dcs_notice_contents),
+			#{contents},
+			'1'
+		)
+	</update>
+
+	<delete id="deleteDCSNotice" parameterType="java.util.HashMap">
+		update dcs_notice
+		set
+			use_flag = '0'
+		where
+			ouid = #{ouid}
+	</delete>
+
+	<delete id="deleteDCSNoticeContents" parameterType="java.util.HashMap">
+		update dcs_notice_contents
+		set
+			use_flag = '0'
+		where
+			notice_uid = #{notice_uid}
+	</delete>
+
+	<select id="selectDCSNoticeList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select
+			ouid,
+			to_char(board_number) as board_number,
+			title,
+			notice_type,
+			expiration_date,
+			to_char(expiration_date, 'yyyy-MM-dd HH24:MI:SS') as str_expiration_date,
+			create_user_id,
+			create_user_name,
+			create_date,
+			to_char(create_date, 'yyyy-MM-dd HH24:MI:SS') as str_create_date,
+			modify_user_id,
+			modify_user_name,
+			modify_date,
+			to_char(modify_date, 'yyyy-MM-dd HH24:MI:SS') as str_modify_date,
+			use_flag
+		from dcs_notice
+		where
+			use_flag = '1' and
+			expiration_date > sysdate
+		order by notice_type desc, modify_date desc
+	</select>
+
+	<select id="selectDCSNoticeContentsList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from dcs_notice_contents
+		where
+			notice_uid = #{notice_uid} and
+			use_flag = '1'
+		order by seq asc
+	</select>
+
+	<select id="selectNextOUID" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select
+			'NOTICE' || LPAD((select nvl(max(board_number), 0) + 1 from dcs_notice), 8, '0') as ouid,
+			(select nvl(max(board_number), 0) + 1 from dcs_notice) as board_number
+		from dual
+	</select>
+
+</mapper>

@@ -14,11 +14,11 @@ import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Label;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.SYMCLabel;
-import com.ssangyong.common.SYMCText;
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
-import com.ssangyong.common.utils.ProgressBar;
-import com.ssangyong.common.utils.SYMTcUtil;
+import com.kgm.common.SYMCLabel;
+import com.kgm.common.SYMCText;
+import com.kgm.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.utils.ProgressBar;
+import com.kgm.common.utils.SYMTcUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.common.util.SDVPreBOMUtilities;

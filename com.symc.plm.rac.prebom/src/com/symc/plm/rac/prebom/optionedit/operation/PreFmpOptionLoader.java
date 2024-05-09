@@ -3,8 +3,8 @@ package com.symc.plm.rac.prebom.optionedit.operation;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.utils.variant.VariantOption;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.variant.VariantOption;
 import com.symc.plm.rac.prebom.common.util.OptionManager;
 import com.teamcenter.rac.aif.AbstractAIFOperation;
 import com.teamcenter.rac.kernel.TCComponentBOMLine;

@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.variant.VariantOption;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.variant.VariantOption;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;

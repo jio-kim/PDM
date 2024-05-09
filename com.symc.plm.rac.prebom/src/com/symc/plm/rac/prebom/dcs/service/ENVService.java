@@ -2,13 +2,13 @@ package com.symc.plm.rac.prebom.dcs.service;
 
 import java.util.Map;
 
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.SYMCRemoteUtil;
 
 public class ENVService {
 
 	private SYMCRemoteUtil remoteUtil;
 
-	private final String SERVICE_CLASS_NAME = "com.ssangyong.service.EnvService";
+	private final String SERVICE_CLASS_NAME = "com.kgm.service.EnvService";
 
 	public ENVService() {
 		remoteUtil = new SYMCRemoteUtil();

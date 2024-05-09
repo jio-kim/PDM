@@ -1,0 +1,2253 @@
+/**
+ * LovManagerDialog.java
+ * 
+ * 1. bmide_manage_batch_lovs.bat UtilityÎ•? ?Ç¨?ö©?ïò?ó¨ External Lov List XMLÎ°? Ï∂îÏ∂ú?ï©?ãà?ã§.
+ * 2. Ï∂îÏ∂ú?êú Xml?ùÑ Loading?ïò?ó¨ ?ôîÎ©¥Ïóê ?ëú?ãú ?ï©?ãà?ã§.
+ * 3. Í∞? LOV Data ?Éù?Ñ±/?àò?†ï/?Ç≠?†ú Í∏∞Îä•?ùÑ Íµ¨ÌòÑ?ï©?ãà?ã§.
+ * 4. ?Éù?Ñ±/?àò?†ï/?Ç≠?†ú ?êú LOV DataÎ•? XmlÎ°? Î≥??ôò?ï©?ãà?ã§.
+ * 5. Î≥??ôò?êú Xml?ùÑ bmide_manage_batch_lovs.bat UtilityÎ•? ?Ç¨?ö©?ïò?ó¨ TeamCenter?óê Î∞òÏòÅ?ï©?ãà?ã§.
+ */
+package com.kgm.admin.lovmanage;
+
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.Date;
+import java.util.HashMap;
+
+import javax.swing.JButton;
+import javax.swing.JFileChooser;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTable;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.table.AbstractTableModel;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import jxl.SheetSettings;
+import jxl.Workbook;
+import jxl.format.Alignment;
+import jxl.format.Border;
+import jxl.format.BorderLineStyle;
+import jxl.format.Colour;
+import jxl.format.PageOrientation;
+import jxl.format.VerticalAlignment;
+import jxl.write.Label;
+import jxl.write.WritableCellFormat;
+import jxl.write.WritableFont;
+import jxl.write.WritableSheet;
+import jxl.write.WritableWorkbook;
+
+import org.jdom.output.Format;
+import org.jdom.output.XMLOutputter;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NamedNodeMap;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+import org.xml.sax.SAXException;
+
+import com.kgm.common.WaitProgressBar;
+import com.teamcenter.rac.aif.AIFDesktop;
+import com.teamcenter.rac.aif.AIFShell;
+import com.teamcenter.rac.aif.AbstractAIFDialog;
+import com.teamcenter.rac.aif.AbstractAIFOperation;
+import com.teamcenter.rac.aif.InterfaceAIFOperationListener;
+import com.teamcenter.rac.aifrcp.AIFUtility;
+import com.teamcenter.rac.kernel.TCSession;
+import com.teamcenter.rac.util.MessageBox;
+import com.teamcenter.rac.util.Registry;
+
+/**
+ * [20140422][SR140401-044] bskwak, column Î™? ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• Ï∂îÍ?.
+ * [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï.
+ * 
+ * @author bs
+ * 
+ * @param <maxSeq>
+ */
+@SuppressWarnings({ "serial", "unused", "rawtypes", "unchecked" })
+public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
+{
+	/** TeamCenter Session */
+	public TCSession session = null;
+	protected static final String String = null;
+	/** Lov List */
+	ArrayList<LovItem> lovList = null;
+	/** Lov Data List */
+	ArrayList<LovDataItem> dataList = null;
+	/** Lov Table */
+	JTable lovTable = null; // LOV ListÎ•? ???û•?ï† Table
+	/** Lov Data Table */
+	JTable dataTable = null; // LOV?ùò DataÎ•? ???û•?ï† Î¶¨Ïä§?ä∏
+	/** Lov Table Model */
+	LovItemTableModel lovItemTableModel = null; // LOV List
+	/** Lov Data Table Model */
+	LovDataItemTableModel lovDataItemTableModel = null; // LOV?ùò Data List
+
+	private DocumentBuilderFactory dbf;
+	private DocumentBuilder db;
+	private Document document;
+	private Document document_lang;
+	private String lovName = "";
+
+	/**
+	 * LOV Í∞íÏùÑ BMIDE?óê?Ñú ?Éù?Ñ±?ïòÏß? ?ïäÍ≥? Reference(?) ?òï?ÉúÎ°? Í¥?Î¶¨ÌïòÍ∏? ?úÑ?ïú Î∂?Î∂?.
+	 * SET TC_ROOT=C:\Siemens\Teamcenter9
+	 * SET TC_DATA=\\10.80.28.162\d$\Siemens\tcdata
+	 * call %TC_DATA%\tc_profilevars.bat
+	 * call bmide_manage_batch_lovs.bat -u=infodba -p=infodba -g=dba -option=extract -file=C:/temp/lovname20130326/lov_values_201303261041.xml
+	 * ?úÑ?? Í∞ôÏù¥ ?ôòÍ≤ΩSetting?ùÑ ?ïú ?õÑ bmide_manage_batch_lovs.bat ?ùÑ ?ã§?ñâ?ïòÎ©? Ïß??†ï?ïú Í≤ΩÎ°ú?óê xml?åå?ùº?ù¥ ?Éù?Ñ±(?åå?ùºÎ™?.xmlÍ≥? lang/?åå?ùºÎ™?_lang.xml)?êòÍ≥?
+	 * ?ù¥ xml?åå?ùº?ïà?óê LOV?ùò List?? ValueÍ∞? ?ûà?ä¥.
+	 * ?ù¥ Class?äî ?ù¥?ü¨?ïú LOV?óê ?ã§?†ú Í∞íÏùÑ Ï∂îÍ?, ?àò?†ï, ?Ç≠?†ú?ïòÍ≥? Î∞òÏòÅ?ïòÍ∏? ?úÑ?ïú Class?ûÑ.
+	 * LOV ?ûêÏ≤¥Î?? ?Éù?Ñ±?ïòÏß??äî Î™ªÌï®.
+	 */
+
+	/**
+	 * SET TC_ROOT=C:\Siemens\Teamcenter9
+	 * SET TC_DATA=\\10.80.28.162\d$\Siemens\tcdata
+	 * call %TC_DATA%\tc_profilevars.bat
+	 * ?úÑ 3Í∞úÏùò ?ùº?ù∏?? C:\Tc9.properties.txt ?åå?ùº?óê Î∞òÎìú?ãú Í∏∞Î°ù?êò?ñ¥ ?ûà?ñ¥?ïº ?ïú?ã§.
+	 */
+
+	public static String TOP_NODE_ATTR_NAME_XMLNS = "xmlns";
+	public static String TOP_NODE_ATTR_NAME_VERSION = "batchXSDVersion";
+
+	/** xml ?åå?ùº ?ÉÅ?ã®?ùò Í∏∞Î≥∏ ?†ï?ùòÎ•? ?úÑ?ïú Î≥??àò **/
+	private String topNodeAttrXmlns = ""; // xmlns="http://teamcenter.com/BusinessModel/TcBusinessData"
+	private String topNodeAttrVersion = ""; // batchXSDVersion="1.0"
+
+	/** lang/_lang.xml ?åå?ùº ?ÉÅ?ã®?ùò Í∏∞Î≥∏ ?†ï?ùòÎ•? ?úÑ?ïú Î≥??àò **/
+	private String topNodeAttrXmlns_lang = ""; // xmlns="http://teamcenter.com/BusinessModel/TcBusinessDataLocalization"
+	private String topNodeAttrVersion_lang = ""; // batchXSDVersion="1.0"
+
+	/** xml?åå?ùº?ùÑ ?Ç¥?†§Î∞õÍ∏∞ ?úÑ?ïú Í≤ΩÎ°ú **/
+	private String xmlDownloadPath = "C:/Temp/lovname"; // ex) C:\Temp\lovname20130326				 
+	private String xmlDownloadPath_lang = "C:/Temp/lovname"; // ex) C:\Temp\lovname20130326\lang
+
+	/** ?Ç¥?†§Î∞õÏùÑ xml?åå?ùºÎ™? **/
+	private String oldXMLFile = "lov_values"; // BMIDE?óê?Ñú export Î∞õÏ? xml ?åå?ùºÎ™?(lov_values_20130101)
+	private String oldXMLFile_lang = ""; // BMIDE?óê?Ñú export Î∞õÏ? xml Lang ?åå?ùºÎ™?(lov_values_20130101_lang)
+
+	/** Import?ï† xml?åå?ùº Î™?(?Éù?Ñ±, ?àò?†ï, ?Ç≠?†ú?ì±?ùò Î≥?Í≤ΩÏÇ¨?ï≠ ?†Å?ö©) **/
+	private String newXMLFile = ""; // BMIDEÎ°? import ?ï† xml ?åå?ùºÎ™? (XXX_20130101)
+	private String newXMLFile_lang = ""; // BMIDEÎ°? import ?ï† xml Lang?åå?ùºÎ™?(XXX_20130101)
+
+	/** LOV Manager Table?ùÑ Excel?åå?ùºÎ°? Export **/
+	private String strExportExcelFileName = ""; // Export?ï† Excel?åå?ùº Î™?
+
+	/** xml?åå?ùº ?ôï?û•?ûê **/
+	private String strXMLExtension = ".xml"; // ?ôï?û•?ûê
+
+	public Registry registry;
+
+	public ArrayList<LovDataItem> selectedList;
+
+	public String infodbaPassword = "";
+
+	/**
+	 * ?Éù?Ñ±?ûê
+	 */
+	public LovManagerDialog(String _infodbaPassword) throws Exception
+	{
+		super(AIFDesktop.getActiveDesktop().getFrame(), false);
+
+		infodbaPassword = _infodbaPassword;
+		this.lovList = new ArrayList<LovItem>();
+		this.dataList = new ArrayList<LovDataItem>();
+		this.session = (TCSession) AIFDesktop.getActiveDesktop().getCurrentApplication().getSession();
+		this.registry = Registry.getRegistry(this);
+		this.selectedList = new ArrayList<LovDataItem>();
+
+		/** xml?åå?ùº download Í≤ΩÎ°ú Ïß??†ï **/
+		initDownloadDir();
+
+		/** ?ÑúÎ≤ÑÏóê ?ûà?äî LOVÍ∞íÏùÑ xml?åå?ùºÎ°? Í∞??†∏?ò®?ã§. */
+		this.exportFile(); // LOV Í∞íÏùÑ xml ?åå?ùºÎ°? export?ïú?ã§.
+
+		this.init();
+
+		this.setResizable(true);
+		// this.setSize(1000, 800);
+		this.setPreferredSize(new Dimension(1000, 500));
+		centerToScreen();
+
+		this.loadLovList();
+
+	}
+
+	/**
+	 * XML?åå?ùº?ù¥ ???û•?ê† ?è¥?çî?ùò ?úÑÏπòÎ?? ?Éù?Ñ±?ïú?ã§.
+	 */
+	public void initDownloadDir()
+	{
+		xmlDownloadPath = xmlDownloadPath + getTodayDate(true).toString() + "/"; // ex) C:/Temp/lovname20130326	
+		xmlDownloadPath_lang = xmlDownloadPath + "lang/"; // ex) C:/Temp/lovname20130326/lang/
+
+		/** c:\temp\lovnameyyMMdd ?è¥?çîÍ∞? ?óÜ?úºÎ©? ?Éù?Ñ± */
+		File tmpDir = new File(xmlDownloadPath);
+		if (!tmpDir.exists())
+			tmpDir.mkdir();
+
+		try
+		{
+			Thread.sleep(1000);
+		} catch (InterruptedException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * executeTmpBatch.bat ?åå?ùº ?Éù?Ñ± ?õÑ bmide_manage_batch_lovs.bat Î∞∞ÏπòÎ•? ?ã§?ñâ?ïò?ó¨
+	 * BMIDE?óê?Ñú LOV Í∞íÏùÑ XML ?åå?ùºÎ°? export ?ïú?ã§.
+	 * ?åå?ùº ?òï?ãù?? lov_values_201303261041.xml ?òï?ÉúÎ°? ?Éù?Ñ±?êú?ã§.
+	 * C:\\Tc9.properties.txt ?Ç¥?ö© : SET TC_ROOT=C:\Siemens\Teamcenter9
+	 * SET TC_DATA=\\10.80.28.162\d$\Siemens\tcdata
+	 * call %TC_DATA%\tc_profilevars.bat
+	 * 
+	 * @throws Exception
+	 */
+	public void exportFile() throws Exception
+	{
+
+		/** bmide_manage_batch_lovs.bat Î™ÖÎ†π?ùÑ ?ã§?ñâ?ïòÍ∏? ?úÑ?ïú ?ôòÍ≤ΩÎ??àòÍ∞íÏù¥ ?ûà?äî ?åå?ùº */
+//	   File pFile = new File("C:\\Tc9.properties.txt");
+//	   
+//	   if(!pFile.exists()) {
+//		   String message = registry.getString("lovmanage.MESSAGE.Front") + pFile + registry.getString("lovmanage.MESSAGE.Back");
+//		   throw new Exception(message);
+//	   }
+
+		WaitProgressBar simpleProgressBar = new WaitProgressBar(AIFUtility.getActiveDesktop());
+		simpleProgressBar.setWindowSize(500, 300);
+
+		/** bmide_manage_batch_lovs.bat(-> XML?åå?ùº ?Éù?Ñ±?ê®) ?åå?ùº?ùÑ ?ã§?ñâ?ï† batch ?åå?ùº?ùÑ ?Éù?Ñ±?ïú?ã§. **/
+		File path = new File(xmlDownloadPath);
+		File batFile = new File(path, "executeTmpBatch.bat");
+		if (!batFile.exists())
+		{
+			batFile.createNewFile();
+		}
+
+//	   FileInputStream fis = new FileInputStream(pFile);
+//	   Scanner s = new Scanner(fis);
+
+		FileWriter fw = new FileWriter(batFile);
+//	   while (s.hasNext()) {
+		// [20240306] ?ö¥?òÅ TC Server ?ôòÍ≤ΩÏóê ÎßûÏ∂∞ Í≤ΩÎ°ú Î≥?Í≤? ?ïÑ?öî
+		fw.write("SET TC_ROOT=D:\\SIEMENS\\TC13\r\n");
+		fw.write("SET TC_DATA=Y:\\tcdata10\r\n");
+		fw.write("call %TC_DATA%\\tc_profilevars.bat\r\n\r\n");
+//	   }
+//	   s.close();
+
+		/** oldXML ?åå?ùºÎ™? ?Éù?Ñ± */
+		setOldXmlFileName();
+
+		/** oldXML ?åå?ùº?ùò ?†à??Í≤ΩÎ°ú Ïß??†ï */
+		String exportFile = xmlDownloadPath + oldXMLFile + strXMLExtension; // ex) C:\Temp\lovname20130326\lov_values_201303261041.xml
+
+		/** bmide_mamage_batch_lovs.bat ?åå?ùº?ùÑ ?ã§?ñâ?ïòÍ∏? ?úÑ?ïú Î™ÖÎ†π?ñ¥Î•? Î∞õÏïÑ?ò¥ */
+		String command = getExecuteBatch(true, exportFile);
+		fw.write(command);
+		fw.close();
+
+		/** ProgressBar ?ã§?ñâ */
+		simpleProgressBar.start();
+		simpleProgressBar.setStatus("LOV Export is start...", true);
+
+		/** Î∞∞Ïπò ?åå?ùº ?ã§?ñâ */
+		String[] cmd = { "CMD", "/C", batFile.getPath() };
+		Process p = Runtime.getRuntime().exec(cmd);
+
+		/** ?ô∏Î∂? ?îÑÎ°úÍ∑∏?û®?óê ???ïú InputStream ?ùÑ ?Éù?Ñ± */
+		DataInputStream inputstream = new DataInputStream(p.getInputStream());
+		BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
+
+		String strOutput = "";
+
+		while (true)
+		{
+			// ?ô∏Î∂? ?îÑÎ°úÍ∑∏?û®?ù¥ Ï∂úÎ†•?ïò?äî Î©îÏÑ∏Ïß?Î•? ?ïúÏ§ÑÏî© ?ùΩ?ñ¥?ì§?ûÑ
+			strOutput = reader.readLine();
+
+			if (strOutput != null)
+			{
+				simpleProgressBar.setStatus(strOutput, true);
+			}
+
+			if (strOutput == null)
+			{
+				p.destroy();
+				break;
+			}
+		}
+		simpleProgressBar.setStatus("LOV Export is end...", false);
+		simpleProgressBar.close();
+	}
+
+	/**
+	 * xml?åå?ùºÎ™ÖÏùÑ ?Éù?Ñ±?ïú?ã§.
+	 * xml : lov_values_201303261041
+	 * xml_lang : lov_values_201303261041_lang
+	 */
+	public void setOldXmlFileName()
+	{
+		/** ?ò§?äò ?Ç†ÏßúÎ?? Í∞??†∏?ò¥(20130101) */
+		String currentDate = getTodayDate(false);
+		oldXMLFile = oldXMLFile + "_" + currentDate;
+		oldXMLFile_lang = oldXMLFile + "_lang";
+	}
+
+	/**
+	 * LOV DialogÎ•? Ï¥àÍ∏∞?ôî?ïú?ã§.
+	 * 
+	 * @throws Exception
+	 */
+	private void init() throws Exception
+	{
+//	  Registry reg = Registry.getRegistry("com.teamcenter.rac.aif.aif");
+//      String runnerFile = reg.getString("runnerCommand");
+//      String tcRoot = new File(runnerFile).getParentFile().getAbsolutePath();
+
+		this.getContentPane().setLayout(new BorderLayout());
+		setTitle("LOV Manager");
+
+		JPanel mainPanel = new JPanel(new BorderLayout());
+
+		this.lovItemTableModel = new LovItemTableModel();
+		this.lovTable = new JTable(lovItemTableModel);
+
+		//------------------------------------------------------------------------------------------
+		// [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï. 
+		JTableHeader lovTableHeader = this.lovTable.getTableHeader();
+		lovTableHeader.setUpdateTableInRealTime(true);
+		lovTableHeader.addMouseListener(new LovItemColumnHeaderMouseAdapter(this.lovTable));
+		//------------------------------------------------------------------------------------------
+
+		this.lovTable.getSelectionModel().addListSelectionListener(new TableSelectionListener());
+		this.lovTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+		JScrollPane lovListPain = new JScrollPane(lovTable);
+		lovListPain.setPreferredSize(new Dimension(452, 300));
+
+		JPanel dataPanel = new JPanel(new BorderLayout());
+
+		this.lovDataItemTableModel = new LovDataItemTableModel();
+		this.dataTable = new JTable(lovDataItemTableModel);
+		this.dataTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		this.dataTable.getColumn("Key").setMinWidth(200);
+		this.dataTable.getColumn("Description").setMinWidth(150);
+		this.dataTable.getColumn("Display Name").setMinWidth(200);
+		this.dataTable.getColumn("Status").setMinWidth(100);
+
+		// Í∞? ColumnÎ≥? SellRenderer Setting
+		for (int k = 0; k < lovDataItemTableModel.cNames.length; k++)
+		{
+			// Custom TableCellRenderer
+			LovDataTableCellRenderer tableRenderer = new LovDataTableCellRenderer();
+			TableColumn column = this.dataTable.getColumnModel().getColumn(k);
+			column.setCellRenderer(tableRenderer);
+		}
+
+		//------------------------------------------------------------------------------------------
+		// [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï. 
+		JTableHeader dataTableHeader = this.dataTable.getTableHeader();
+		dataTableHeader.setUpdateTableInRealTime(true);
+		dataTableHeader.addMouseListener(new LovDataColumnHeaderMouseAdapter(this.dataTable));
+		//------------------------------------------------------------------------------------------
+
+		this.dataTable.addMouseListener(new MouseAdapter()
+		{
+			public void mouseReleased(MouseEvent ee)
+			{
+			}
+
+			public void mousePressed(MouseEvent ee)
+			{
+				// ?çîÎ∏îÌÅ¥Î¶? ?ùº Í≤ΩÏö∞, ?Ñ†?Éù?êú ?ñâ?ùò ?àò?†ï?ôîÎ©¥ÏúºÎ°? ?ù¥?èô
+				if (ee.getClickCount() == 2)
+				{
+					int nSelected = dataTable.getSelectedRow();
+
+					if (nSelected < 0)
+						return;
+
+					LovDataItem selectedLOVItem = dataList.get(nSelected);
+					LovDataDialog dlg = new LovDataDialog(selectedLOVItem);
+
+					dlg.setVisible(true);
+
+				}
+			}
+
+			public void mouseClicked(MouseEvent ee)
+			{
+			}
+		});
+
+		JScrollPane dataTablePain = new JScrollPane(dataTable);
+		dataTablePain.setPreferredSize(new Dimension(452, 300));
+
+		JPanel buttonPanel = new JPanel(new BorderLayout());
+		JPanel leftBtnPanel = new JPanel();
+		JPanel centerBtnPanel = new JPanel();
+		JPanel rightBtnPanel = new JPanel();
+
+		// LOV Ï∂îÍ?
+		JButton plusBtn = new JButton("+");
+		plusBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ee)
+			{
+				final int nSelected = lovTable.getSelectedRow();
+				if (nSelected < 0)
+					return;
+				LovItem selectedLOVItem = lovList.get(nSelected);
+				// LOV Ï∂îÍ? Dialog
+				LovDataDialog dlg = new LovDataDialog();
+
+				dlg.setVisible(true);
+
+			}
+		});
+
+		// LOV ?Ç≠?†ú
+		JButton minusBtn = new JButton("-");
+		minusBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ee)
+			{
+				int nSelected = dataTable.getSelectedRow();
+
+				if (nSelected < 0)
+					return;
+
+				LovDataItem selectedLOVItem = dataList.get(nSelected);
+
+				if (selectedLOVItem.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_ADD))
+				{
+					dataList.remove(nSelected);
+				} else
+				{
+					selectedLOVItem.setData(LovDataItem.INDEX_STATUS, LovDataItem.STATUS_DELETE);
+				}
+
+				lovDataItemTableModel.fireTableDataChanged();
+			}
+		});
+
+		leftBtnPanel.add(plusBtn);
+		leftBtnPanel.add(minusBtn);
+
+		final JButton selectTargetBtn = new JButton("Select Target");
+		selectTargetBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ee)
+			{
+				int nSelected = dataTable.getSelectedRow();
+
+				if (nSelected < 0)
+					return;
+
+				LovDataItem selectedLOVItem = dataList.get(nSelected);
+
+				selectedList.clear();
+
+				selectedList.add(selectedLOVItem);
+
+				selectTargetBtn.setText("Select Target:" + selectedList.size());
+
+			}
+		});
+
+		JButton moveToBtn = new JButton("Move To");
+		moveToBtn.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ee)
+			{
+				int nSelected = dataTable.getSelectedRow();
+
+				if (nSelected < 0)
+					return;
+
+				LovDataItem selectedLOVItem = dataList.get(nSelected);
+
+				dataList.removeAll(selectedList);
+
+				dataList.addAll(nSelected, selectedList);
+
+				lovDataItemTableModel.fireTableDataChanged();
+
+				selectTargetBtn.setText("Select Target");
+			}
+		});
+
+		centerBtnPanel.add(selectTargetBtn);
+		centerBtnPanel.add(moveToBtn);
+
+		buttonPanel.add(leftBtnPanel, BorderLayout.WEST);
+		buttonPanel.add(rightBtnPanel, BorderLayout.EAST);
+		buttonPanel.add(centerBtnPanel, BorderLayout.CENTER);
+
+		JButton btnSaveTc = new JButton("Save TC");
+		btnSaveTc.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ee)
+			{
+				/** ?Ñ†?Éù?êú LOV DataÎ•? TeamCenter?óê ???û•?ï©?ãà?ã§. */
+				saveActionTC();
+				/** Dialog?ùò Status Í∞íÏùÑ Ï¥àÍ∏∞?ôî?ïú?ã§. */
+				initStatus();
+			}
+		});
+
+		/** ?ï¥?ãπ LOV?ùò Í∞íÏùÑ Excel ?åå?ùºÎ°? ???û•?ïú?ã§. */
+		JButton btnExcelExport = new JButton("Excel Export");
+		btnExcelExport.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ee)
+			{
+
+				excelExport();
+			}
+		});
+
+		/** Î™®Îì† LOV?ùò Í∞íÏùÑ Excel ?åå?ùºÎ°? ???û•?ïú?ã§. */
+		JButton btnExcelFullExport = new JButton("Excel Full Export");
+		btnExcelFullExport.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent ee)
+			{
+
+				excelFullExport();
+			}
+		});
+
+		JButton btnCloseDialog = new JButton("EXIT");
+		btnCloseDialog.addActionListener(new ActionListener()
+		{
+
+			@Override
+			public void actionPerformed(ActionEvent arg0)
+			{
+				setVisible(false);
+				dispose();
+			}
+		});
+
+		rightBtnPanel.add(btnSaveTc);
+		rightBtnPanel.add(btnExcelExport);
+		rightBtnPanel.add(btnExcelFullExport);
+		rightBtnPanel.add(btnCloseDialog);
+
+//    JButton btnSaveTcAll = new JButton("Save TC All");
+//    btnSaveTcAll.addActionListener(new ActionListener()
+//    {
+//      public void actionPerformed(ActionEvent ee)
+//      {
+//        // Î™®Îì† LOV DataÎ•? TeamCenter?óê ???û•?ï©?ãà?ã§.
+//        saveActionTCAll();
+//      }
+//    });
+//    rightBtnPanel.add(btnSaveTcAll);
+
+		dataPanel.add(dataTablePain, BorderLayout.CENTER);
+		dataPanel.add(buttonPanel, BorderLayout.SOUTH);
+
+		JSplitPane splitPane = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, lovListPain, dataPanel);
+		splitPane.setContinuousLayout(true);
+		// splitPane.setOneTouchExpandable(true);
+		splitPane.setDividerSize(8);
+		splitPane.setDividerLocation(200);
+
+		mainPanel.add(splitPane, BorderLayout.CENTER);
+
+		this.getContentPane().add(mainPanel, BorderLayout.CENTER);
+
+		// add for lov file export & import...
+//    openFile();
+	}
+
+	/**
+	 * XML ?åå?ùº?ùÑ parse?ïò?ó¨ Document Í∞ùÏ≤¥Î•? ?Éù?Ñ±?ïú?ã§.
+	 * 
+	 * @param xmlFile
+	 * @throws Exception
+	 */
+	public void openFile() throws Exception
+	{
+		// xml ?åå?ùº?ùÑ parse?ïò?ó¨ document?óê ?Ñ£?ñ¥?ë†
+		dbf = DocumentBuilderFactory.newInstance();
+		db = dbf.newDocumentBuilder();
+
+		String path = xmlDownloadPath + oldXMLFile + strXMLExtension; // ex) C:\Temp\lovname20130326\lov_values_201303261041.xml
+		File file1 = new File(path);
+
+		String path_lang = xmlDownloadPath_lang + oldXMLFile_lang + strXMLExtension;
+
+		if (file1.exists())
+		{
+			document = db.parse(path);
+			document_lang = db.parse(path_lang);
+		} else
+		{
+			String message = "Ïß??†ï?êú ?úÑÏπ?(" + path + ")?óê ?åå?ùº?ù¥ Ï°¥Ïû¨?ïòÏß? ?ïä?äµ?ãà?ã§.";
+			throw new Exception(message);
+		}
+	}
+
+	/**
+	 * LOV Dialog?ùò ?†ïÎ≥¥Î?? Excel ?åå?ùºÎ°? export?ïú?ã§.
+	 */
+	public void excelExport()
+	{
+		try
+		{
+			// 1. ?åå?ùº ???û• ???ôî?ÉÅ?ûêÎ•? ?ùÑ?ö¥?ã§
+			JFileChooser fileChooser = new JFileChooser("C:/");
+
+			/** ?ï¥?ãπ ?îî?†â?Ü†Î¶¨Ïóê?Ñú xls ?åå?ùºÎß? Î≥¥Ïù¥?èÑÎ°? ?Ñ§?†ï?ïú?ã§. */
+			FileFilter fileFilter = fileChooser.getAcceptAllFileFilter();
+			fileChooser.removeChoosableFileFilter(fileFilter);
+			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "?óë?? (.xls)");
+			fileChooser.addChoosableFileFilter(filterXLS);
+
+			// 2. Ïß??†ï?ïú ?ù¥Î¶ÑÏúºÎ°? ?óë?? ?åå?ùº?ùÑ ?Éù?Ñ±?ïú?ã§
+			File file = new File("C:/" + strExportExcelFileName + ".xls");
+			fileChooser.setSelectedFile(file);
+
+			if (fileChooser.showSaveDialog(AIFDesktop.getActiveDesktop().getFrame()) == JFileChooser.APPROVE_OPTION)
+			{
+				File selectedFile = fileChooser.getSelectedFile();
+
+				if (selectedFile != null)
+				{
+					String strExtension = getExtension(selectedFile);
+					strExtension = strExtension == null ? "" : strExtension;
+
+					// ?Ç¨?ö©?ûêÍ∞? ?ûÖ?†•?ïú ?åå?ùºÎ™ÖÏóê xls ?ôï?û•?ûêÍπåÏ? ?ûÖ?†• ?ïà?ñà?ùÑ Í≤ΩÏö∞
+					if (!strExtension.equalsIgnoreCase("xls"))
+					{
+						selectedFile = new File(selectedFile.getAbsolutePath() + ".xls");
+					}
+
+					// ?ì∞Í∏∞Í??ä•?ïú ?óë?? Workbook Í∞ùÏ≤¥ ?Éù?Ñ±
+					WritableWorkbook workBook = Workbook.createWorkbook(selectedFile);
+
+					/** LOV Í∞íÏúºÎ°? Excel ?åå?ùº?óê Write?ïú?ã§. */
+					workBook = exportDataXLS(workBook, dataTable, selectedFile, strExportExcelFileName, 0);
+
+					workBook.write();
+					workBook.close();
+				}
+
+				AIFShell aif = new AIFShell("application/vnd.ms-excel", selectedFile.getAbsolutePath());
+				aif.start();
+			}
+		} catch (Exception e1)
+		{
+			e1.printStackTrace();
+		}
+	}
+
+	/**
+	 * LOV Dialog?ùò Î™®Îì† LOVÍ∞íÏùÑ Excel?åå?ùºÎ°? ???û•?ïú?ã§.
+	 * LOV Name?? Í∞ÅÍ∞Å?ùò SheetÎ™ÖÏù¥ ?êú?ã§.
+	 */
+	public void excelFullExport()
+	{
+		try
+		{
+			// 1. ?åå?ùº ???û• ???ôî?ÉÅ?ûêÎ•? ?ùÑ?ö¥?ã§
+			JFileChooser fileChooser = new JFileChooser("C:/");
+			FileFilter fileFilter = fileChooser.getAcceptAllFileFilter();
+			fileChooser.removeChoosableFileFilter(fileFilter);
+			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "?óë?? (.xls)");
+			fileChooser.addChoosableFileFilter(filterXLS);
+
+			// 2. Ïß??†ï?ïú ?ù¥Î¶ÑÏúºÎ°? ?óë?? ?åå?ùº?ùÑ ?Éù?Ñ±?ïú?ã§
+			File file = new File("C:/LOV_All_List_" + getTodayDate(true) + ".xls");
+			fileChooser.setSelectedFile(file);
+
+			if (fileChooser.showSaveDialog(AIFDesktop.getActiveDesktop().getFrame()) == JFileChooser.APPROVE_OPTION)
+			{
+				File selectedFile = fileChooser.getSelectedFile();
+
+				if (selectedFile != null)
+				{
+					// ?åå?ùº?ùò ?ôï?û•?ûêÎ•? return?ïú?ã§.
+					String strExtension = getExtension(selectedFile);
+					strExtension = strExtension == null ? "" : strExtension;
+
+					// ?Ç¨?ö©?ûêÍ∞? ?ûÖ?†•?ïú ?åå?ùºÎ™ÖÏóê xls ?ôï?û•?ûêÍπåÏ? ?ûÖ?†• ?ïà?ñà?ùÑ Í≤ΩÏö∞
+					if (!strExtension.equalsIgnoreCase("xls"))
+					{
+						selectedFile = new File(selectedFile.getAbsolutePath() + ".xls");
+						strExtension = "xls";
+					}
+
+					// ?ì∞Í∏∞Í??ä•?ïú ?óë?? Workbook Í∞ùÏ≤¥ ?Éù?Ñ±
+					WritableWorkbook workBook = Workbook.createWorkbook(selectedFile);
+
+					/** LOV Î™ÖÏùÑ Í∞ÅÍ∞Å?ùò Sheet Name?úºÎ°? Ïß??†ï?ïòÍ≥?, LOV Í∞íÏùÑ Excel?óê Write?ïú?ã§. */
+					for (int i = 0; i < lovList.size(); i++)
+					{
+						LovItem selectedLOVItem = lovList.get(i);
+						dataList = selectedLOVItem.getAllLovData();
+
+						String sheetName = selectedLOVItem.toString();
+						workBook = exportDataXLS(workBook, dataTable, selectedFile, sheetName, i);
+					}
+
+					workBook.write();
+					workBook.close();
+				}
+
+				/** Excel ?åå?ùº?ùÑ ?ã§?ñâ?ïú?ã§. **/
+				AIFShell aif = new AIFShell("application/vnd.ms-excel", selectedFile.getAbsolutePath());
+				aif.start();
+			}
+		} catch (Exception e1)
+		{
+			e1.printStackTrace();
+		}
+	}
+
+	/**
+	 * LOV Dialog?ùò JTable ?ùò ?Ç¥?ö©?ùÑ XLS ?è¨Îß∑ÏúºÎ°? ???û•?ïú?ã§.
+	 * 
+	 * @param jtable
+	 *            JTable
+	 * @param selectedFile
+	 *            File
+	 */
+	private WritableWorkbook exportDataXLS(WritableWorkbook workBook, JTable jtable, File selectedFile, String strItemKey, int sheetNum) throws Exception
+	{
+		int iRowCnt = jtable.getRowCount();
+		int iColumnCnt = jtable.getColumnCount() - 1;
+
+		try
+		{
+			// ?ì∞Í∏∞Í??ä•?ïú ?óë?? Workbook Í∞ùÏ≤¥ ?Éù?Ñ±
+//    	WritableWorkbook workBook = null;
+//      if(sheetNum == 0) {
+//    	  workBook = Workbook.createWorkbook(selectedFile);
+//      } else {
+//    	  Workbook workBook1 = Workbook.getWorkbook(selectedFile);
+//    	  workBook = Workbook.createWorkbook(selectedFile, workBook1);
+//      }
+
+			// nÎ≤àÏß∏ Sheet ?Éù?Ñ±
+			WritableSheet sheet = workBook.createSheet(strItemKey, sheetNum);
+
+			SheetSettings printSet = sheet.getSettings();
+			printSet.setFitWidth(1);
+			printSet.setFitToPages(true);
+			printSet.setOrientation(PageOrientation.LANDSCAPE);
+
+			// 1. ?ó§?çî ?†ïÎ≥? Í∞??†∏?ò§Í∏?
+			int[] iColumnWidth = new int[iColumnCnt];
+			int iRemoveCol = 0;
+			int iRemoveRow = 0;
+
+			for (int kCnt = 0; kCnt < iColumnCnt; kCnt++)
+			{
+
+				Label cellTitle = new Label(kCnt, 0, jtable.getColumnName(kCnt), setCellValueFormat(2));
+				sheet.addCell(cellTitle);
+
+				sheet.setRowView(0, 300);
+				if (iColumnWidth[kCnt - iRemoveCol] < jtable.getColumnName(kCnt).getBytes().length + 2)
+				{
+					iColumnWidth[kCnt - iRemoveCol] = jtable.getColumnName(kCnt).getBytes().length + 2;
+				}
+			}
+
+			// 2. ?†ÑÏ≤? Row ?†ïÎ≥? Í∞??†∏?ò§Í∏?
+			for (int iCnt = 0; iCnt < iRowCnt; iCnt++)
+			{
+				for (int kCnt = 0; kCnt < iColumnCnt; kCnt++)
+				{
+					Object obj = jtable.getValueAt(iCnt, kCnt);
+					String strObj = obj != null ? obj.toString() : "";
+
+					Label cellValue = new Label(kCnt, iCnt + 1, obj != null ? obj.toString() : "", setCellValueFormat(0));
+
+					sheet.addCell(cellValue);
+
+					if (iColumnWidth[kCnt - iRemoveCol] < strObj.getBytes().length + 2)
+					{
+						iColumnWidth[kCnt - iRemoveCol] = strObj.getBytes().length + 2;
+					}
+				}
+				sheet.setRowView(iCnt - iRemoveRow + 1, 300);
+			}
+
+			for (int kCnt = 0; kCnt < iColumnCnt; kCnt++)
+			{
+				sheet.setColumnView(kCnt, iColumnWidth[kCnt]);
+			}
+
+//      workBook.write();
+//      workBook.close();
+		} catch (Exception ex)
+		{
+			ex.printStackTrace();
+		}
+		return workBook;
+	}
+
+	/**
+	 * jxl ?ùò Cell Format ?ùÑ ?Ñ§?†ï?ïú?ã§.
+	 * 
+	 * @param feature
+	 * @return
+	 * @throws WriteException
+	 */
+	private WritableCellFormat setCellValueFormat(int status) throws Exception
+	{
+		WritableFont wf = new WritableFont(WritableFont.createFont("Íµ¥Î¶º"), 9, WritableFont.NO_BOLD);
+
+		WritableCellFormat wcf = new WritableCellFormat(wf);
+		wcf.setWrap(false);
+		wcf.setLocked(false);
+		// wcf.setBorder(Border.ALL, BorderLineStyle.THIN);
+		wcf.setBorder(Border.ALL, BorderLineStyle.HAIR);
+
+		switch (status)
+		{
+			case 0:
+				wcf.setAlignment(Alignment.LEFT);
+				wcf.setVerticalAlignment(VerticalAlignment.CENTRE);
+				break;
+
+			case 1:
+				wcf.setAlignment(Alignment.LEFT);
+				wcf.setVerticalAlignment(VerticalAlignment.CENTRE);
+				wcf.setBackground(Colour.LIGHT_BLUE);
+				break;
+
+			case 2:
+				wcf.setAlignment(Alignment.LEFT);
+				wcf.setVerticalAlignment(VerticalAlignment.CENTRE);
+				wcf.setBackground(Colour.GREY_25_PERCENT);
+				break;
+
+		}
+		return wcf;
+	}
+
+	/**
+	 * ?åå?ùº?ùò ?ôï?û•?ûêÎ•? Return
+	 * 
+	 * @param f
+	 *            File
+	 * @return String
+	 */
+	private String getExtension(File f) throws Exception
+	{
+		if (f != null)
+		{
+			String filename = f.getName();
+			int i = filename.lastIndexOf('.');
+			if (i > 0 && i < filename.length() - 1)
+			{
+				return filename.substring(i + 1).toLowerCase();
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * LOV ListÎ•? Loading?ï©?ãà?ã§.
+	 * 1. bmide_manage_batch_lovs.bat UtilityÎ•? ?ã§?ñâ?ïò?ó¨ Xml?ùÑ ?Éù?Ñ±?ï©?ãà?ã§.
+	 * 2. XML?ùÑ Loading?ïò?ó¨ LOV/LOVDataÎ•? Loading?ï©?ãà?ã§.
+	 */
+	void loadLovList()
+	{
+		Thread lovLoad = new Thread()
+		{
+			public void run()
+			{
+				try
+				{
+
+					/** Document Í∞ùÏ≤¥Î•? ?Éù?Ñ±?ïú?ã§. */
+					openFile();
+
+					/** newXML ?åå?ùº?ùÑ ?Éù?Ñ±?ïòÍ∏? ?úÑ?ï¥ oldXML ?åå?ùº?ùò NodeÍ∞íÏùÑ ?ùΩ?ñ¥?ò®?ã§. **/
+					setDefaultXML();
+
+					/** newXML_lang ?åå?ùº?ùÑ ?Éù?Ñ±?ïòÍ∏? ?úÑ?ï¥ oldXML ?åå?ùº?ùò NodeÍ∞íÏùÑ ?ùΩ?ñ¥?ò®?ã§. **/
+					setDefaultXMLForLang();
+
+					Element rootElement = document.getDocumentElement();
+
+					NodeList memberList = rootElement.getElementsByTagName("TcLOV");
+
+					// LOV?ùò Í∞íÏùÑ Íµ¨Ìïú?ã§. - 1 Level
+					String lovName = "";
+					for (int i = 0; i < memberList.getLength(); i++)
+					{ // for 1
+						Node node = memberList.item(i);
+
+						if (node.getNodeType() == Node.ELEMENT_NODE)
+						{
+							LovItem lov = null;
+							NamedNodeMap attrs = node.getAttributes();
+							for (int j = 0; j < attrs.getLength(); j++)
+							{ // for 2
+								if ((attrs.item(j).getNodeName()).equals("name"))
+								{
+									lovName = attrs.item(j).getNodeValue();
+									lov = new LovItem(lovName);
+									break;
+								}
+							}
+
+							NodeList childNodeList = node.getChildNodes();
+							// ?Ñ†?Éù?êú TCLov?ùò ListÍ∞íÏùÑ Íµ¨Ìïú?ã§. - 2 Level
+							for (int k = 0; k < childNodeList.getLength(); k++)
+							{ // for 3
+								Node childNode = childNodeList.item(k);
+
+								if ((childNode.getNodeName()).equals("TcLOVValue"))
+								{ // LOV?ùò Key, ValueÍ∞?
+									LovDataItem dataItem = new LovDataItem();
+									NamedNodeMap childAttrs = childNode.getAttributes();
+									String key = "";
+									for (int y = 0; y < childAttrs.getLength(); y++)
+									{ // for 4
+										if ((childAttrs.item(y).getNodeName()).equals("value"))
+										{
+											key = childAttrs.item(y).getNodeValue();
+											dataItem.setData(LovDataItem.INDEX_KEY, key);
+										} else if ((childAttrs.item(y).getNodeName()).equals("description"))
+										{
+											dataItem.setData(LovDataItem.INDEX_DESC, childAttrs.item(y).getNodeValue());
+											dataItem.setData(LovDataItem.INDEX_STATUS, LovDataItem.STATUS_NORMAL);
+										}
+
+									} // end for 4
+
+									// ?ó¨Í∏∞Ïóê?Ñú XML_Lang?ùò desc Í∞íÏùÑ Íµ¨Ìïú?ã§.
+									String lang_Desc = getDescToXMLFileForLang(lovName, key);
+									dataItem.setData(LovDataItem.INDEX_VALUE, lang_Desc);
+
+									lov.setLovData(dataItem);
+
+//                    		if( lov.strName.equals("S7_MAIN_NAME") && dataItem != null && dataItem.getData(LovDataItem.INDEX_KEY).equals("REINF"))
+//                    		{
+//                    			System.out.println("____ lovName="+ lovName +", key="+ key +", lang_Desc="+ lang_Desc +"::");
+//
+//                        		System.out.println(dataItem.getData(LovDataItem.INDEX_KEY));
+//                        		System.out.println(dataItem.getData(LovDataItem.INDEX_DESC));
+//                        		System.out.println(dataItem.getData(LovDataItem.INDEX_VALUE));
+//                    		}
+
+								} // end if
+							} // end for 3
+							lovList.add(lov);
+						} // if(node.getNodeType() == Node.ELEMENT_NODE)
+					} // end for 1
+
+					lovItemTableModel.fireTableDataChanged();
+				} catch (Exception e)
+				{
+					MessageBox.post(LovManagerDialog.this, e);
+					e.printStackTrace();
+				}
+			}
+		};
+
+		lovLoad.start();
+
+	}
+
+	/**
+	 * import?ï† xml ?åå?ùº?ùÑ ?Éù?Ñ±?ïòÍ∏? ?úÑ?ï¥ Xmlns ?? batchXSDVersion Í∞íÏùÑ lov_values_yyyyMMdd.xml ?óê?Ñú Í∞??†∏?ò®?ã§.
+	 * 
+	 * @throws Exception
+	 */
+	public void setDefaultXML()
+	{
+		Element rootElement = document.getDocumentElement();
+
+		// XML ?åå?ùº?óê?Ñú xmlns ?? batchXSDVersion ?†ïÎ≥¥Î?? Í∞??†∏?ò®?ã§.
+		NamedNodeMap topNodeMap = rootElement.getAttributes();
+		for (int i = 0; i < topNodeMap.getLength(); i++)
+		{
+			if (topNodeMap.item(i).getNodeName().equals(TOP_NODE_ATTR_NAME_XMLNS))
+			{
+				topNodeAttrXmlns = topNodeMap.item(i).getNodeValue();
+			} else if (topNodeMap.item(i).getNodeName().equals(TOP_NODE_ATTR_NAME_VERSION))
+			{
+				topNodeAttrVersion = topNodeMap.item(i).getNodeValue();
+			}
+		}
+	}
+
+	/**
+	 * import?ï† xml ?åå?ùº?ùÑ ?Éù?Ñ±?ïòÍ∏? ?úÑ?ï¥ Xmlns ?? batchXSDVersion Í∞íÏùÑ lov_values_yyyyMMdd_Lang.xml ?óê?Ñú Í∞??†∏?ò®?ã§.
+	 * download?êú XML_Lang ?åå?ùº?ùò Í∏∞Î≥∏ ?†ïÎ≥¥Î?? ?ùΩ?ñ¥?Ñú ???û•?ïú?ã§.
+	 */
+	public void setDefaultXMLForLang() throws SAXException, IOException
+	{
+		Element rootElement_lang = document_lang.getDocumentElement();
+
+		// XML_lang ?åå?ùº?óê?Ñú xmlns ?? batchXSDVersion ?†ïÎ≥¥Î?? Í∞??†∏?ò®?ã§.
+		NamedNodeMap topNodeMap_lang = rootElement_lang.getAttributes();
+		for (int i = 0; i < topNodeMap_lang.getLength(); i++)
+		{
+			if (topNodeMap_lang.item(i).getNodeName().equals(TOP_NODE_ATTR_NAME_XMLNS))
+			{
+				topNodeAttrXmlns_lang = topNodeMap_lang.item(i).getNodeValue();
+			} else if (topNodeMap_lang.item(i).getNodeName().equals(TOP_NODE_ATTR_NAME_VERSION))
+			{
+				topNodeAttrVersion_lang = topNodeMap_lang.item(i).getNodeValue();
+			}
+		}
+	}
+
+	/**
+	 * XML_Lang ?åå?ùº?óê?Ñú ?ï¥?ãπ LOV?ùò Description Í∞íÏùÑ ?ùΩ?ñ¥?ò®?ã§.
+	 * 
+	 * @return
+	 * @throws IOException
+	 * @throws SAXException
+	 */
+	public String getDescToXMLFileForLang(String lovName, String keyValue) throws SAXException, IOException
+	{
+		String strReturn = "";
+		Element rootElement_lang = document_lang.getDocumentElement();
+		NodeList memberList = rootElement_lang.getElementsByTagName("Add");
+
+		// LOV?ùò Í∞íÏùÑ Íµ¨Ìïú?ã§. - 1 Level
+		for (int i = 0; i < memberList.getLength(); i++)
+		{ // for 1
+			Node node = memberList.item(i);
+
+			if (node.getNodeType() == Node.ELEMENT_NODE)
+			{
+
+				NodeList childNodeList = node.getChildNodes();
+				// ?Ñ†?Éù?êú TCLov?ùò ListÍ∞íÏùÑ Íµ¨Ìïú?ã§. - 2 Level
+				for (int k = 0; k < childNodeList.getLength(); k++)
+				{ // for 3
+					Node childNode = childNodeList.item(k);
+
+					if ((childNode.getNodeName()).equals("key"))
+					{ // LOV?ùò Key, ValueÍ∞?
+						NamedNodeMap childAttrs = childNode.getAttributes();
+
+						for (int y = 0; y < childAttrs.getLength(); y++)
+						{ // for 4
+							if ((childAttrs.item(y).getNodeName()).equals("id"))
+							{
+								//[20190225 kch] xml ?åå?ùºÎ°? Î∂??Ñ∞ lov List ?†ïÎ≥? read ?ãú bug Í∞úÏÑ† ( contains -> equals )
+								//if (childAttrs.item(y).getNodeValue().contains("LOVValue{::}" + lovName + "{::}" + keyValue )) { // && childAttrs.item(y).getNodeValue().endsWith(keyValue)) {
+								if (childAttrs.item(y).getNodeValue().equals("LOVValue{::}" + lovName + "{::}" + keyValue))
+								{
+									strReturn = childNode.getTextContent();
+									return strReturn;
+								}
+							}
+						}
+					}
+				}
+			} // if(node.getNodeType() == Node.ELEMENT_NODE)
+		} // end for 1
+
+		return strReturn;
+	}
+
+	/**
+	 * Î™®Îì† LOV DataÎ•? TeamCenter?óê ???û•?ï©?ãà?ã§.
+	 */
+	void saveActionTCAll()
+	{
+		Thread partListThread = new Thread()
+		{
+
+			public void run()
+			{
+				try
+				{
+
+					for (int i = 0; i < lovList.size(); i++)
+					{
+						// ?ï¥?ãπ LOVÎ•? Í∞ïÏ†ú ?Ñ†?Éù?ï©?ãà?ã§.
+						lovTable.getSelectionModel().setSelectionInterval(0, i);
+						Thread.sleep(1000);
+						saveActionTC();
+					}
+
+				} catch (Exception e)
+				{
+				}
+			}
+
+		};
+
+		partListThread.start();
+
+	}
+
+	/**
+	 * XML Import ?õÑ dialog?ùò ?ÉÅ?ÉúÍ∞íÏùÑ Ï¥àÍ∏∞?ôî?ïú?ã§.
+	 */
+	void initStatus()
+	{
+		// STATUS_DELETE ?äî table?óê?Ñú ?Ç≠?†ú?ïú?ã§.
+		for (int i = 0; i < dataList.size(); i++)
+		{
+			LovDataItem selectedLOVItem = dataList.get(i);
+
+			if (selectedLOVItem.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_DELETE))
+			{
+				dataList.remove(i);
+			}
+		}
+
+		// table?ùò StatusÍ∞íÏùÑ Ï¥àÍ∏∞?ôî?ïú?ã§.
+		for (int i = 0; i < dataList.size(); i++)
+		{
+			LovDataItem selectedLOVItem = dataList.get(i);
+
+			selectedLOVItem.setData(LovDataItem.INDEX_STATUS, LovDataItem.STATUS_NORMAL);
+		}
+		lovDataItemTableModel.fireTableDataChanged();
+	}
+
+	/**
+	 * ?Ñ†?Éù?êú LOV DataÎ•? TeamCenter?óê ???û•?ï©?ãà?ã§.
+	 * 
+	 */
+	void saveActionTC()
+	{
+
+		ArrayList<LovDataItem> addList = new ArrayList<LovDataItem>();
+		ArrayList<LovDataItem> modifyList = new ArrayList<LovDataItem>();
+		ArrayList<LovDataItem> removeList = new ArrayList<LovDataItem>();
+
+		for (int i = 0; i < dataList.size(); i++)
+		{
+			LovDataItem dataItem = dataList.get(i);
+
+			if (dataItem.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_ADD))
+			{
+				addList.add(dataItem);
+			} else if (dataItem.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_MODIFY))
+			{
+				modifyList.add(dataItem);
+			} else if (dataItem.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_DELETE))
+			{
+				removeList.add(dataItem);
+			}
+
+		}
+
+		// xml ?åå?ùº ?Éù?Ñ±
+		writeXML();
+		executeLogMessage();
+	}
+
+	void writeXML()
+	{
+		/** document Í∞ùÏ≤¥ ?Éù?Ñ± */
+		org.jdom.Document doc = new org.jdom.Document();
+		org.jdom.Document doc_Lang = new org.jdom.Document();
+
+		/** NameSpace ?Éù?Ñ± */
+		org.jdom.Namespace nameSpace = org.jdom.Namespace.getNamespace(topNodeAttrXmlns);
+		org.jdom.Namespace nameSpace_Lang = org.jdom.Namespace.getNamespace(topNodeAttrXmlns_lang);
+
+		/** Element Í∞ùÏ≤¥ ?Éù?Ñ± */
+		org.jdom.Element topElement = new org.jdom.Element("TcBusinessData", nameSpace); // TcBusinessData
+		org.jdom.Element changeElement = new org.jdom.Element("Change", nameSpace); // <Change>
+		org.jdom.Element tclovElement = new org.jdom.Element("TcLOV", nameSpace); // <TcLOV
+		org.jdom.Element topElement_Lang = new org.jdom.Element("TcBusinessDataLocalization", nameSpace_Lang); // TcBusinessDataLocalization
+		org.jdom.Element addElement_Lang = new org.jdom.Element("Add", nameSpace_Lang); // Add
+
+		// ?òÑ?û¨ ?ãúÍ∞?
+		Date currentDate = new Date();
+
+		topElement.setAttribute(TOP_NODE_ATTR_NAME_VERSION, topNodeAttrVersion);
+		topElement.setAttribute("Date", currentDate.toString());
+
+		// Change Tag ?Üç?Ñ±
+		tclovElement.setAttribute("name", lovName);
+		tclovElement.setAttribute("usage", "Exhaustive");
+		tclovElement.setAttribute("lovType", "ListOfValuesString");
+		tclovElement.setAttribute("isManagedExternally", "true");
+
+		// XML_Lang ?åå?ùº ?Éù?Ñ±
+		topElement_Lang.setAttribute(TOP_NODE_ATTR_NAME_VERSION, topNodeAttrVersion_lang);
+		topElement_Lang.setAttribute("Date", currentDate.toString());
+
+		/** xml ?åå?ùº Î∞? lang.xml ?åå?ùº?ùò LOVValue tag Î∂?Î∂? set */
+		for (int i = 0; i < dataList.size(); i++)
+		{
+			LovDataItem dataItem = dataList.get(i);
+
+			if (dataItem.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_DELETE))
+			{
+				continue;
+			}
+
+			org.jdom.Element valueElement = new org.jdom.Element("TcLOVValue", nameSpace);
+			org.jdom.Element keyElement = new org.jdom.Element("key", nameSpace_Lang);
+
+			String strKey = dataItem.getData(LovDataItem.INDEX_KEY);
+			String strValue = dataItem.getData(LovDataItem.INDEX_DESC);
+
+			/** .xml File Node setting */
+			valueElement.setAttribute("value", strKey);
+			valueElement.setAttribute("description", strValue);
+			valueElement.setAttribute("conditionName", "isTrue");
+
+			/** ~~_lang.xml File Node setting */
+			keyElement.setAttribute("id", "LOVValue{::}" + lovName + "{::}" + strKey);
+			keyElement.setAttribute("locale", "en_US");
+			keyElement.setAttribute("status", "Approved");
+
+			keyElement.setText(dataItem.getData(LovDataItem.INDEX_VALUE));
+
+			//Í∞? ?óòÎ¶¨Î®º?ä∏?ì§ Î∞∞Ïπò ?ûë?óÖ (?óòÎ¶¨Î®º?ä∏?óê ?ûê?ãù ?öî?ÜåÎ•? Ï∂îÍ??ï† ?ñÑ?äî )(?úÑ?ùò Ï£ºÏÑù??Î°? Î∞∞ÏπòÎ•? ?ï¥Ï§òÏïº ?ïú?ã§).  addContent()Î©îÏÑú?ìúÎ•? ?ù¥?ö©?ïú?ã§.
+			tclovElement.addContent(valueElement);
+			addElement_Lang.addContent(keyElement);
+		}
+
+		/** lang.xml ?åå?ùº?ùò LOVValueDescription Î∂?Î∂? set */
+		for (int i = 0; i < dataList.size(); i++)
+		{
+			LovDataItem dataItem = dataList.get(i);
+
+			if (dataItem.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_DELETE))
+			{
+				continue;
+			}
+
+			org.jdom.Element keyDescElement = new org.jdom.Element("key", nameSpace_Lang);
+
+			String strKey = dataItem.getData(LovDataItem.INDEX_KEY);
+
+			/** ~~_lang.xml File Node setting */
+			keyDescElement.setAttribute("id", "LOVValueDescription{::}" + lovName + "{::}" + strKey);
+			keyDescElement.setAttribute("locale", "ko_KR");
+			keyDescElement.setAttribute("status", "Approved");
+
+			keyDescElement.setText(dataItem.getData(LovDataItem.INDEX_DESC));//yunjae
+
+			//Í∞? ?óòÎ¶¨Î®º?ä∏?ì§ Î∞∞Ïπò ?ûë?óÖ (?óòÎ¶¨Î®º?ä∏?óê ?ûê?ãù ?öî?ÜåÎ•? Ï∂îÍ??ï† ?ñÑ?äî )(?úÑ?ùò Ï£ºÏÑù??Î°? Î∞∞ÏπòÎ•? ?ï¥Ï§òÏïº ?ïú?ã§).  addContent()Î©îÏÑú?ìúÎ•? ?ù¥?ö©?ïú?ã§.
+			addElement_Lang.addContent(keyDescElement);
+		}
+
+		changeElement.addContent(tclovElement);
+		topElement.addContent(changeElement);
+		topElement_Lang.addContent(addElement_Lang);
+
+		// ÎßàÏ?ÎßâÏúºÎ°? Document?óê ÏµúÏÉÅ?úÑ ElementÎ•? ?Ñ§?†ï?ïú?ã§.
+		doc.setRootElement(topElement);
+		doc_Lang.setRootElement(topElement_Lang);
+
+		// ?åå?ùºÎ°? ???û•?ïòÍ∏? ?úÑ?ï¥?Ñú XMLOutputter Í∞ùÏ≤¥Í∞? ?ïÑ?öî?ïò?ã§
+		XMLOutputter xout = new XMLOutputter();
+
+		// Í∏∞Î≥∏ ?è¨Îß? ?òï?ÉúÎ•? Î∂àÎü¨?? ?àò?†ï?ïú?ã§.
+		Format fm = xout.getFormat();
+
+		/** ?ã§Íµ??ñ¥ Ïß??õê?ùÑ ?úÑ?ï¥ encodeing ?òï?ÉúÎ•? UTF-8Î°? Î≥?Í≤ΩÌïú?ã§. */
+//      fm.setEncoding("euc-kr");
+		fm.setEncoding("UTF-8");
+
+		// Î∂?Î™?, ?ûê?ãù ?ÉúÍ∑∏Î?? Íµ¨Î≥Ñ?ïòÍ∏? ?úÑ?ïú ?É≠ Î≤îÏúÑÎ•? ?†ï?ïú?ã§.
+		fm.setIndent("   ");
+		//?ÉúÍ∑∏ÎÅºÎ¶? Ï§ÑÎ∞îÍøàÏùÑ Ïß??†ï?ïú?ã§.
+		fm.setLineSeparator("\r\n");
+
+		// ?Ñ§?†ï?ïú XML ?åå?ùº?ùò ?è¨Îß∑ÏùÑ set?ïú?ã§.
+		xout.setFormat(fm);
+		try
+		{
+//    	  xout.output(doc, new FileWriter(strExportPath + strImportXMLFileName + strXMLExtension));
+//    	  xout.output(doc_Lang, new FileWriter(strExportLangPath + strImportXMLLangFileName + strXMLExtension));
+
+			/** XML ?åå?ùº ???û•?ùÑ UTF-8Î°? ?ï¥?ïº ?ïòÍ∏∞Ïóê FileOutputStream?úºÎ°? ???û•?ï®.(FileWriter?äî UTF-8Î°? ???û•?ù¥ ?ïà?ê®) */
+			xout.output(doc, new FileOutputStream(xmlDownloadPath + newXMLFile + strXMLExtension));
+			xout.output(doc_Lang, new FileOutputStream(xmlDownloadPath_lang + newXMLFile_lang + strXMLExtension));
+
+		} catch (IOException e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * bmide_mamage_batch_lovs.bat ?åå?ùº?ùÑ ?ã§?ñâ?ïòÍ∏? ?úÑ?ïú ?åå?ùºÎØ∏ÌÑ∞ Í∞íÏùÑ Î¶¨ÌÑ¥?ïú?ã§.
+	 * 
+	 * @param isExport
+	 *            : true?ù¥Î©? extract(XML ?åå?ùº Export), false?ù¥Î©? update(XML ?åå?ùº Import)
+	 * @param file
+	 *            : xml ?åå?ùº?ùò full path
+	 * @return
+	 */
+	public String getExecuteBatch(boolean isExport, String file)
+	{
+		String value = "";
+
+		if (isExport)
+		{
+			value = "call bmide_manage_batch_lovs.bat -u=infodba -p=" + infodbaPassword + " -g=dba -option=extract -file=" + file + "";
+		} else
+		{
+			value = "call bmide_manage_batch_lovs.bat -u=infodba -p=" + infodbaPassword + " -g=dba -option=update -file=" + file + " \n";
+			value += "call generate_client_meta_cache.exe -u=infodba -p=" + infodbaPassword + " -g=dba update lovs";
+		}
+		return value;
+	}
+
+	/**
+	 * ?àò?†ï?êú LOV Í∞íÏùÑ ?ÑúÎ≤ÑÎ°ú Export?ïú?ã§.
+	 */
+//  void executeLogMessage(){
+//	  File pFile = new File("C:\\Tc9.properties.txt");		// ?ù¥ ?åå?ùº?? ?ï≠?ÉÅ Ï°¥Ïû¨?ï¥?ïº ?ïú?ã§.
+//	  FileWriter fw = null;
+//	  
+//	  try {
+//		  if(!pFile.exists()) {
+////			   String message = "Ïß??†ï?êú ?úÑÏπ?(" + pFile + ")?óê ?åå?ùº?ù¥ Ï°¥Ïû¨?ïòÏß? ?ïä?äµ?ãà?ã§.";
+//			  String message = registry.getString("lovmanage.MESSAGE.Front") + pFile + registry.getString("lovmanage.MESSAGE.Back");
+//			  MessageBox.post(message, "?ïåÎ¶?", MessageBox.INFORMATION);
+//			  return;
+//		  }
+//		  
+//		  /** ?åå?ùº Í∞ùÏ≤¥ ?Éù?Ñ± */
+//		  File tmpDir = new File(xmlDownloadPath);
+//		  File batFile = new File(tmpDir, "updateTmpBatch.bat");
+//		  if(!batFile.exists()) {
+//			  batFile.createNewFile();
+//		  }
+//			
+//		  fw = new FileWriter(batFile);
+//			 
+//		  FileInputStream fis = new FileInputStream(pFile);
+//		  Scanner s = new Scanner(fis);
+//		  while (s.hasNext()) {
+//			  fw.write(s.nextLine().toString() + "\n");
+//		  }
+//
+//		  /** bmide_mamage_batch_lovs.bat ?åå?ùº?ùÑ ?ã§?ñâ?ïòÍ∏? ?úÑ?ïú Î™ÖÎ†π?ñ¥Î•? Î∞õÏïÑ?ò¥ */
+//		  String exportFile = xmlDownloadPath + newXMLFile + strXMLExtension;
+//		  String command = getExecuteBatch(false, exportFile);
+//		  fw.write(command);
+//		  s.close();
+//		  fw.close();
+//
+//		  /** Progress bar ?ã§?ñâ */
+//		  WaitProgressBar simpleProgressBar = new WaitProgressBar(AIFUtility.getActiveDesktop());
+//		  simpleProgressBar.setWindowSize(500, 300);
+//		  simpleProgressBar.start();
+//		  simpleProgressBar.setStatus("LOV Import is start..."	, true);
+//		  
+//		  /** Î∞∞Ïπò?åå?ùº ?ã§?ñâ */
+//		  String[] cmd = { "CMD", "/C", batFile.getPath() };
+//		  Process p = Runtime.getRuntime().exec(cmd);
+//	  
+//		  // ?ô∏Î∂? ?îÑÎ°úÍ∑∏?û®?óê ???ïú InputStream ?ùÑ ?Éù?Ñ±
+//	      DataInputStream inputstream = new DataInputStream(p.getInputStream());
+//	      BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
+//	      
+//	      String strOutput = "";
+//	      while (true)
+//	      {
+//	    	  // ?ô∏Î∂? ?îÑÎ°úÍ∑∏?û®?ù¥ Ï∂úÎ†•?ïò?äî Î©îÏÑ∏Ïß?Î•? ?ïúÏ§ÑÏî© ?ùΩ?ñ¥?ì§?ûÑ
+//	    	  strOutput = reader.readLine();
+//
+//	    	  if (strOutput != null)
+//	    	  {
+//	    		  simpleProgressBar.setStatus(strOutput, true);
+//	    	  }
+//	    	  if (strOutput == null)
+//	    	  {
+//	    		  p.destroy();
+//	    		  break;
+//	    	  }
+//	      }
+//	      simpleProgressBar.setStatus("LOV Import is end..."	, false);
+//		  simpleProgressBar.close("the end", false);
+//	      
+//	} catch (Exception e) {
+//		e.printStackTrace();
+//	} 
+//  }
+
+	//progress bar ?àò?†ï
+	void executeLogMessage()
+	{
+		final TransOperation initOp = new TransOperation();
+		initOp.addOperationListener(new InterfaceAIFOperationListener()
+		{
+			@Override
+			public void startOperation(String arg0)
+			{
+			}
+
+			@Override
+			public void endOperation()
+			{
+
+			}
+		});
+		session.queueOperation(initOp);
+	}
+
+	public class TransOperation extends AbstractAIFOperation
+	{
+		public TransOperation()
+		{
+		}
+
+		@Override
+		public void executeOperation() throws Exception
+		{
+			FileWriter fw = null;
+
+			try
+			{
+				/** ?åå?ùº Í∞ùÏ≤¥ ?Éù?Ñ± */
+				File tmpDir = new File(xmlDownloadPath);
+				File batFile = new File(tmpDir, "updateTmpBatch.bat");
+				if (!batFile.exists())
+				{
+					batFile.createNewFile();
+				}
+
+				fw = new FileWriter(batFile);
+				fw.write("SET TC_ROOT=D:\\SIEMENS\\TC10\r\n");
+				fw.write("SET TC_DATA=Y:\\tcdata10\r\n");
+				fw.write("call %TC_DATA%\\tc_profilevars.bat\r\n\r\n");
+
+				/** bmide_mamage_batch_lovs.bat ?åå?ùº?ùÑ ?ã§?ñâ?ïòÍ∏? ?úÑ?ïú Î™ÖÎ†π?ñ¥Î•? Î∞õÏïÑ?ò¥ */
+				String exportFile = xmlDownloadPath + newXMLFile + strXMLExtension;
+				String command = getExecuteBatch(false, exportFile);
+				fw.write(command);
+				fw.close();
+
+				/** Progress bar ?ã§?ñâ */
+				WaitProgressBar simpleProgressBar = new WaitProgressBar(AIFUtility.getActiveDesktop());
+				simpleProgressBar.setWindowSize(500, 300);
+				simpleProgressBar.start();
+				simpleProgressBar.setStatus("LOV Import is start...", true);
+
+				/** Î∞∞Ïπò?åå?ùº ?ã§?ñâ */
+				String[] cmd = { "CMD", "/C", batFile.getPath() };
+				Process p = Runtime.getRuntime().exec(cmd);
+
+				// ?ô∏Î∂? ?îÑÎ°úÍ∑∏?û®?óê ???ïú InputStream ?ùÑ ?Éù?Ñ±
+				DataInputStream inputstream = new DataInputStream(p.getInputStream());
+				BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
+
+				String strOutput = "";
+				while (true)
+				{
+					// ?ô∏Î∂? ?îÑÎ°úÍ∑∏?û®?ù¥ Ï∂úÎ†•?ïò?äî Î©îÏÑ∏Ïß?Î•? ?ïúÏ§ÑÏî© ?ùΩ?ñ¥?ì§?ûÑ
+					strOutput = reader.readLine();
+
+					if (strOutput != null)
+					{
+						simpleProgressBar.setStatus(strOutput, true);
+					}
+					if (strOutput == null)
+					{
+						p.destroy();
+						break;
+					}
+				}
+				simpleProgressBar.setStatus("LOV Import is end...", false);
+				simpleProgressBar.close("the end", false);
+
+			} catch (Exception e)
+			{
+				e.printStackTrace();
+			}
+		}
+	}
+
+	/**
+	 * ?ò§?äò ?Ç†ÏßúÎ?? 20130101 or 20130101HHmm?òï?ÉúÎ°? Î≥??ôò?ãúÏº? Î¶¨ÌÑ¥?ïú?ã§.
+	 * 
+	 * @param isFolder
+	 *            : true : 20130101 , false : 20130101HHmm
+	 * @return
+	 */
+	public String getTodayDate(boolean isFolder)
+	{
+		Date date = new Date();
+		SimpleDateFormat dateFormat = null;
+
+		if (isFolder)
+		{
+			dateFormat = new SimpleDateFormat("yyyyMMdd");
+		} else
+		{
+			dateFormat = new SimpleDateFormat("yyyyMMddHHmm");
+		}
+
+		return dateFormat.format(date).toString(); // 20130101
+	}
+
+	void changeTableData()
+	{
+		final int nSelected = lovTable.getSelectedRow();
+		if (nSelected < 0)
+			return;
+
+		LovItem selectedLOVItem = lovList.get(nSelected);
+		dataList = selectedLOVItem.getAllLovData();
+		lovDataItemTableModel.fireTableDataChanged();
+	}
+
+	class TableSelectionListener implements ListSelectionListener
+	{
+		public void valueChanged(ListSelectionEvent e)
+		{
+			final int nSelected = lovTable.getSelectedRow();
+
+			if (nSelected < 0)
+				return;
+
+			Thread lovDataLoad = new Thread()
+			{
+				public void run()
+				{
+
+					try
+					{
+						LovItem selectedLOVItem = lovList.get(nSelected);
+						newXMLFile = selectedLOVItem.toString() + "_" + getTodayDate(false); // LOV name?úºÎ°? xml ?åå?ùºÎ™ÖÏùÑ ÎßåÎì†?ã§.
+						strExportExcelFileName = selectedLOVItem.toString();
+						newXMLFile_lang = newXMLFile + "_lang";
+
+						dataList = selectedLOVItem.getAllLovData();
+						lovDataItemTableModel.fireTableDataChanged();
+
+						lovName = selectedLOVItem.strName;
+					} catch (Exception e)
+					{
+						e.printStackTrace();
+					}
+				}
+			};
+
+			lovDataLoad.start();
+		}
+	}
+
+	class LovItemTableModel extends AbstractTableModel
+	{
+		// Table Column Names
+		public String[] cNames = { "List Of Value" };
+		// Table Column Classes
+		public Class[] colClasses = { String.class };
+
+		//------------------------------------------------------------------------------------------
+		// [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï. 
+		int sortBy = 0;
+		int sortType = LovItemComparator.SORT_BY_CODE;
+		int sortOrder = LovItemComparator.SORT_ASC;
+
+		//------------------------------------------------------------------------------------------
+
+		public int getColumnCount()
+		{
+			return cNames.length;
+		}
+
+		public int getRowCount()
+		{
+			return lovList.size();
+		}
+
+		public Object getValueAt(int row, int col)
+		{
+
+			return lovList.get(row).strName;
+		}
+
+		public String getColumnName(int column)
+		{
+			return cNames[column];
+		}
+
+		public Class getColumnClass(int c)
+		{
+			return colClasses[c];
+		}
+
+		public boolean isCellEditable(int row, int col)
+		{
+			return false;
+		}
+
+		/**
+		 * [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï.
+		 * sort method
+		 */
+		public void sort()
+		{
+			Collections.sort(lovList, new LovItemComparator(sortType, sortOrder));
+		}// sort
+
+		/**
+		 * [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï.
+		 * sort Í∏∞Ï? column Ïß??†ï.
+		 * 
+		 * @param sortBy
+		 */
+		public void setSortBy(int sortBy)
+		{
+			if (this.sortBy == sortBy)
+			{
+				this.sortOrder = sortOrder * -1;
+			} else
+			{
+				this.sortOrder = LovItemComparator.SORT_ASC;
+				this.sortBy = sortBy;
+			}// if
+		}// setSortBy
+
+	}
+
+	class LovDataItemTableModel extends AbstractTableModel
+	{
+		// Table Column Names
+		public String[] cNames = { "Key", "Display Name", "Description", "Status" };
+		// Table Column Classes
+		// [20140422] bskwak, column Î™? ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• Ï∂îÍ?. 
+		// 3Í∞úÏ??çò Í≤ÉÏùÑ 4Í∞úÎ°ú Î≥?Í≤? Sort Í∏∞Îä•?ùÑ ?ì∞Î©? ?ëúÍ∏∞ÎêòÏß? ?ïä?äî column?èÑ Î™®Îëê ?Ñ§?†ï?ï¥?ïº ?ïò?äî ?ìØ. 
+		public Class[] colClasses = { String.class, String.class, String.class, String.class };
+
+		//------------------------------------------------------------------------------------------
+		// [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï. 
+		int sortBy = 0;
+		int sortType = LovDataItemComparator.SORT_BY_CODE;
+		int sortOrder = LovDataItemComparator.SORT_ASC;
+
+		//------------------------------------------------------------------------------------------
+
+		public int getColumnCount()
+		{
+			return cNames.length;
+		}
+
+		public int getRowCount()
+		{
+			return dataList.size();
+		}
+
+		public Object getValueAt(int row, int col)
+		{
+
+			return dataList.get(row).getData(col);
+		}
+
+		public String getColumnName(int column)
+		{
+			return cNames[column];
+		}
+
+		public Class getColumnClass(int c)
+		{
+			return colClasses[c];
+		}
+
+		public boolean isCellEditable(int row, int col)
+		{
+			return false;
+		}
+
+		/**
+		 * [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï.
+		 * sort method
+		 * 
+		 */
+		public void sort()
+		{
+			Collections.sort(dataList, new LovDataItemComparator(sortBy, sortType, sortOrder));
+		}// sort
+
+		/**
+		 * [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï.
+		 * sort Í∏∞Ï? column Ïß??†ï.
+		 * 
+		 * @param sortBy
+		 */
+		public void setSortBy(int sortBy)
+		{
+			if (this.sortBy == sortBy)
+			{
+				this.sortOrder = sortOrder * -1;
+			} else
+			{
+				this.sortOrder = LovDataItemComparator.SORT_ASC;
+				this.sortBy = sortBy;
+			}// if
+		}// setSortBy
+
+	}
+
+	public class LovDataTableCellRenderer extends DefaultTableCellRenderer
+	{
+		Object value;
+		boolean isImageIcon = false;
+		boolean isSelected = false;
+		boolean isLightGray = false;
+
+		public LovDataTableCellRenderer()
+		{
+		}
+
+		/**
+		 * Invoked as part of DefaultTableCellRenderers implemention. Sets the text of the label.
+		 */
+		public void setValue(Object value)
+		{
+			super.setValue(value);
+
+			this.value = value;
+		}
+
+		/**
+		 * Returns this.
+		 */
+		public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column)
+		{
+			super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
+
+			this.isSelected = isSelected;
+
+			setForeground(Color.black);
+			setBackground(Color.white);
+
+			LovDataItem selectedData = dataList.get(row);
+
+			if (selectedData.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_DELETE))
+				setBackground(Color.RED);
+			else if (selectedData.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_MODIFY))
+				setBackground(Color.YELLOW);
+
+			else if (selectedData.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_ADD))
+				setBackground(Color.BLUE);
+
+			// Tooltip Ïß??†ï
+			if (value != null && value.getClass().getName().endsWith("String"))
+			{
+				setToolTipText(value.toString());
+			}
+
+			// ?Ñ†?Éù Background Ïß??†ï
+			if (isSelected)
+			{
+				setBackground(new Color(49, 106, 197));
+			}
+
+			return this;
+		}
+
+	}
+
+	class LovItem
+	{
+
+		String strName = null;
+
+		ArrayList<LovDataItem> lovData = null;
+
+		LovItem(String strName)
+		{
+
+			this.strName = strName;
+			this.lovData = new ArrayList<LovDataItem>();
+		}
+
+		void setLovData(LovDataItem data)
+		{
+			this.lovData.add(data);
+
+		}
+
+		LovDataItem getLovData(int nIndex)
+		{
+			return this.lovData.get(nIndex);
+		}
+
+		ArrayList<LovDataItem> getAllLovData()
+		{
+			return this.lovData;
+		}
+
+		public String toString()
+		{
+			return this.strName;
+		}
+	}
+
+	class LovDataItem
+	{
+
+		public static final int INDEX_KEY = 0;
+		public static final int INDEX_VALUE = 1;
+		public static final int INDEX_DESC = 2;
+		public static final int INDEX_STATUS = 3;
+
+		public static final String STATUS_NORMAL = "";
+		public static final String STATUS_ADD = "Need To Add";
+		public static final String STATUS_MODIFY = "Need To Update";
+		public static final String STATUS_DELETE = "Need To Delete";
+
+		HashMap<Integer, String> extraData = null;
+
+		LovDataItem()
+		{
+			this.extraData = new HashMap<Integer, String>();
+		}
+
+		void setData(int nIndex, String strValue)
+		{
+			this.extraData.put(nIndex, strValue);
+		}
+
+		String getData(int nKey)
+		{
+			if (this.extraData.containsKey(nKey))
+			{
+				return this.extraData.get(nKey);
+			} else
+			{
+				return "";
+			}
+		}
+
+		public String toString()
+		{
+			return this.getData(INDEX_KEY) + ":" + this.getData(INDEX_VALUE);
+		}
+
+	}
+
+	class LovDataDialog extends AbstractAIFDialog
+	{
+		LovDataItem lovDataItem;
+
+		JTextField keyField; // Key	
+		JTextArea valueField; // Desc
+		JTextField descField; // Display Î™?
+
+		/**
+		 * ?ã†Í∑úÏÉù?Ñ±?ù∏ Í≤ΩÏö∞
+		 */
+		LovDataDialog()
+		{
+			super(LovManagerDialog.this);
+
+			this.setTitle("Create LOV Data");
+
+			this.init();
+
+			this.setModal(true);
+			this.setResizable(false);
+			this.setPreferredSize(new Dimension(300, 300));
+			this.centerToScreen();
+		}
+
+		/**
+		 * ?ã†Í∑úÏÉù?Ñ±?ù∏ Í≤ΩÏö∞
+		 */
+		LovDataDialog(String key, String seq)
+		{
+
+			this();
+			this.init();
+
+		}
+
+		/**
+		 * ?àò?†ï?ù∏ Í≤ΩÏö∞
+		 * 
+		 * @param lovItem
+		 */
+		LovDataDialog(LovDataItem lovDataItem)
+		{
+			this();
+			this.setTitle("Update LOV Data");
+			this.lovDataItem = lovDataItem;
+			this.keyField.setText(lovDataItem.getData(LovDataItem.INDEX_KEY));
+			this.valueField.setText(lovDataItem.getData(LovDataItem.INDEX_DESC));
+			this.descField.setText(lovDataItem.getData(LovDataItem.INDEX_VALUE));
+			keyField.setEditable(false);
+		}
+
+		void init()
+		{
+			JPanel mainPanel = new JPanel(new BorderLayout());
+
+			JPanel dataPanel = new JPanel(null);
+
+			JLabel keyLabel = new JLabel("Key");
+			JLabel descLabel = new JLabel("Display Name");
+			JLabel valueLabel = new JLabel("Desc");
+
+			this.keyField = new JTextField();
+			this.descField = new JTextField();
+			this.valueField = new JTextArea();
+
+			keyLabel.setBounds(15, 15, 60, 20);
+			keyField.setBounds(85, 15, 180, 20);
+
+			valueLabel.setBounds(15, 75, 60, 20);
+			valueField.setBounds(85, 75, 180, 50);
+
+			descLabel.setBounds(15, 45, 60, 20);
+			descField.setBounds(85, 45, 180, 20);
+
+			dataPanel.add(keyLabel);
+			dataPanel.add(keyField);
+			dataPanel.add(descLabel);
+			dataPanel.add(descField);
+			dataPanel.add(valueLabel);
+			dataPanel.add(valueField);
+
+			JPanel btnPanel = new JPanel();
+			JButton okBtn = new JButton("Ok");
+			okBtn.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent ee)
+				{
+					okAction();
+
+				}
+			});
+
+			JButton cancelBtn = new JButton("Cancel");
+			cancelBtn.addActionListener(new ActionListener()
+			{
+				public void actionPerformed(ActionEvent ee)
+				{
+					LovDataDialog.this.dispose();
+				}
+			});
+
+			keyField.addKeyListener(new KeyAdapter()
+			{
+				@Override
+				public void keyPressed(KeyEvent e)
+				{
+					if (e.getKeyCode() == KeyEvent.VK_ENTER)
+					{
+						okAction();
+					}
+				}
+			});
+
+			valueField.addKeyListener(new KeyAdapter()
+			{
+				@Override
+				public void keyPressed(KeyEvent e)
+				{
+					if (e.getKeyCode() == KeyEvent.VK_ENTER)
+					{
+						okAction();
+					}
+				}
+			});
+
+			descField.addKeyListener(new KeyAdapter()
+			{
+				@Override
+				public void keyPressed(KeyEvent e)
+				{
+					if (e.getKeyCode() == KeyEvent.VK_ENTER)
+					{
+						okAction();
+					}
+				}
+			});
+
+			btnPanel.add(okBtn);
+			btnPanel.add(cancelBtn);
+
+			mainPanel.add(dataPanel, BorderLayout.CENTER);
+			mainPanel.add(btnPanel, BorderLayout.SOUTH);
+
+			this.getContentPane().add(mainPanel, BorderLayout.CENTER);
+		}
+
+		public void okAction()
+		{
+			if ("".equals(keyField.getText().trim()))
+			{
+//          MessageBox.post(LovDataDialog.this, "Key FieldÍ∞? Í≥µÎ??ûÖ?ãà?ã§.", "Warning", MessageBox.INFORMATION);
+				String message = registry.getString("lovmanage.MESSAGE.KeyField");
+				MessageBox.post(LovDataDialog.this, message, "Warning", MessageBox.INFORMATION);
+				return;
+			}
+			if ("".equals(valueField.getText().trim()))
+			{
+//          MessageBox.post(LovDataDialog.this, "Desc FieldÍ∞? Í≥µÎ??ûÖ?ãà?ã§.", "Warning", MessageBox.INFORMATION);
+				String message = registry.getString("lovmanage.MESSAGE.ValueField");
+				MessageBox.post(LovDataDialog.this, message, "Warning", MessageBox.INFORMATION);
+				return;
+			}
+			if ("".equals(descField.getText().trim()))
+			{
+//          MessageBox.post(LovDataDialog.this, "DisplayÎ™? FieldÍ∞? Í≥µÎ??ûÖ?ãà?ã§.", "Warning", MessageBox.INFORMATION);
+				String message = registry.getString("lovmanage.MESSAGE.DisplayField");
+				MessageBox.post(LovDataDialog.this, message, "Warning", MessageBox.INFORMATION);
+				return;
+			}
+
+			// ?Éù?Ñ±?ù∏ Í≤ΩÏö∞
+			if (lovDataItem == null)
+			{
+				LovDataItem dataItem = new LovDataItem();
+				dataItem.setData(LovDataItem.INDEX_KEY, keyField.getText());
+				dataItem.setData(LovDataItem.INDEX_VALUE, descField.getText());
+				dataItem.setData(LovDataItem.INDEX_DESC, valueField.getText());
+				dataItem.setData(LovDataItem.INDEX_STATUS, LovDataItem.STATUS_ADD);
+
+				int nSelected = dataTable.getSelectedRow();
+
+				if (nSelected < 0)
+					dataList.add(dataItem);
+				else
+					dataList.add(nSelected, dataItem);
+
+			}
+			// ?àò?†ï?ù∏ Í≤ΩÏö∞
+			else
+			{
+				lovDataItem.setData(LovDataItem.INDEX_KEY, keyField.getText());
+				lovDataItem.setData(LovDataItem.INDEX_VALUE, descField.getText());
+				lovDataItem.setData(LovDataItem.INDEX_DESC, valueField.getText());
+
+				if (!lovDataItem.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_ADD))
+					lovDataItem.setData(LovDataItem.INDEX_STATUS, LovDataItem.STATUS_MODIFY);
+			}
+
+			lovDataItemTableModel.fireTableDataChanged();
+			LovDataDialog.this.dispose();
+		}
+
+	}
+
+	/**
+	 * 
+	 * [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï.
+	 * LovItemComparator class
+	 * ?Üå?åÖ?óê ?Ç¨?ö©?êò?äî Comparator Class
+	 */
+	class LovItemComparator implements Comparator
+	{
+		final static int SORT_BY_NUMBER = 0;
+		final static int SORT_BY_CODE = 1;
+		final static int SORT_BY_RESERVATION = 2;
+		final static int SORT_ASC = 1;
+		final static int SORT_DESC = -1;
+		protected int sortType = SORT_BY_NUMBER;
+		protected int sortOrder = SORT_ASC;
+
+		public LovItemComparator(int sortType, int sortOrder)
+		{
+			this.sortType = sortType;
+			this.sortOrder = sortOrder;
+		}// ?Éù?Ñ±?ûê
+
+		public int compare(Object o1, Object o2)
+		{
+			int result = 0;
+			// STEP 1. Í∞ùÏ≤¥ ???ûÖ?ù¥ LovItem ?ù∏Ïß? ÎπÑÍµê
+			if (!(o1 instanceof LovManagerDialog.LovItem))
+				return 0;
+			if (!(o2 instanceof LovManagerDialog.LovItem))
+				return 0;
+
+			String str1 = ((LovManagerDialog.LovItem) o1).strName;
+			String str2 = ((LovManagerDialog.LovItem) o2).strName;
+
+			// STEP 2. Ïª¨Îüº Ï¢ÖÎ•ò?óê ?î∞?ùº?Ñú ???ÜåÎ•? ÎπÑÍµê?ïú?ã§.
+			switch (sortType)
+			{
+				case SORT_BY_NUMBER:
+					int i1 = Integer.parseInt(str1);
+					int i2 = Integer.parseInt(str2);
+					result = (i1 > i2) ? 1 : -1;
+					break;
+				case SORT_BY_CODE:
+				case SORT_BY_RESERVATION:
+					result = str1.compareTo(str2);
+			}// switch
+
+			// STEP 3. ?Üå?åÖ Î∞©Ìñ•?ùÑ ?†Å?ö©?ïú?ã§.
+			result *= sortOrder;
+			return result;
+		}// compare
+	}
+
+	/**
+	 * 
+	 * [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï.
+	 * ?Üå?åÖ?óê ?Ç¨?ö©?êò?äî Comparator Class
+	 * 
+	 * @author bs
+	 * 
+	 */
+	class LovDataItemComparator implements Comparator
+	{
+		final static int SORT_BY_NUMBER = 0;
+		final static int SORT_BY_CODE = 1;
+		final static int SORT_BY_RESERVATION = 2;
+		final static int SORT_ASC = 1;
+		final static int SORT_DESC = -1;
+		protected int sortBy = 0;
+		protected int sortType = SORT_BY_NUMBER;
+		protected int sortOrder = SORT_ASC;
+
+		public LovDataItemComparator(int sortBy, int sortType, int sortOrder)
+		{
+			this.sortBy = sortBy;
+			this.sortType = sortType;
+			this.sortOrder = sortOrder;
+		}// ?Éù?Ñ±?ûê
+
+		public int compare(Object o1, Object o2)
+		{
+			int result = 0;
+			// STEP 1. Í∞ùÏ≤¥ ???ûÖ?ù¥ LovItem ?ù∏Ïß? ÎπÑÍµê
+			if (!(o1 instanceof LovManagerDialog.LovDataItem))
+				return 0;
+			if (!(o2 instanceof LovManagerDialog.LovDataItem))
+				return 0;
+
+			String str1 = ((LovManagerDialog.LovDataItem) o1).getData(this.sortBy);
+			String str2 = ((LovManagerDialog.LovDataItem) o2).getData(this.sortBy);
+
+			// STEP 2. Ïª¨Îüº Ï¢ÖÎ•ò?óê ?î∞?ùº?Ñú ???ÜåÎ•? ÎπÑÍµê?ïú?ã§.
+			switch (sortType)
+			{
+				case SORT_BY_NUMBER:
+					int i1 = Integer.parseInt(str1);
+					int i2 = Integer.parseInt(str2);
+					result = (i1 > i2) ? 1 : -1;
+					break;
+				case SORT_BY_CODE:
+				case SORT_BY_RESERVATION:
+					result = str1.compareTo(str2);
+			}// switch
+
+			// STEP 3. ?Üå?åÖ Î∞©Ìñ•?ùÑ ?†Å?ö©?ïú?ã§.
+			result *= sortOrder;
+			return result;
+		}// compare
+	}
+
+	/**
+	 * [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï.
+	 * LovItemTableModel ?ö© header mouse adapter
+	 * 
+	 * @author bs
+	 * 
+	 */
+	public class LovItemColumnHeaderMouseAdapter extends MouseAdapter
+	{
+		JTable table;
+
+		public LovItemColumnHeaderMouseAdapter(JTable table)
+		{
+			this.table = table;
+		}// ?Éù?Ñ±?ûê
+
+		public void mouseClicked(MouseEvent e)
+		{
+			// STEP 1. ?ñ¥?äê Ïª¨Îüº?ù¥ ?Å¥Î¶??êò?óà?äîÏß? Ï∞æÏïÑ?Ç∏?ã§.
+			TableColumnModel colModel = table.getColumnModel();
+			int columnModelIndex = colModel.getColumnIndexAtX(e.getX());
+			int modelIndex = colModel.getColumn(columnModelIndex).getModelIndex();
+
+			if (modelIndex < 0)
+				return;
+
+			// STEP 2. ?Å¥Î¶??êú Ïª¨Îüº?óê ?î∞?ùº ?Üå?åÖ ?àú?Ñú Î∞? ?Üå?åÖ Í∏∞Ï??ùÑ Î≥?Í≤ΩÌïú?ã§.
+			LovItemTableModel tableModel = (LovItemTableModel) table.getModel();
+			tableModel.setSortBy(modelIndex);
+			tableModel.sort();
+			table.repaint();
+		}// mouseClicked
+	}
+
+	/**
+	 * [SR140513-015][20140512] bskwak, column ?ó¥ ?Å¥Î¶? ?ãú ?†ï?†¨ Í∏∞Îä• ?ò§Î•? ?àò?†ï.
+	 * LovDataItemTableModel ?ö© header mouse adapter
+	 * 
+	 * @author bs
+	 * 
+	 */
+	public class LovDataColumnHeaderMouseAdapter extends MouseAdapter
+	{
+		JTable table;
+
+		public LovDataColumnHeaderMouseAdapter(JTable table)
+		{
+			this.table = table;
+		}// ?Éù?Ñ±?ûê
+
+		public void mouseClicked(MouseEvent e)
+		{
+			// STEP 1. ?ñ¥?äê Ïª¨Îüº?ù¥ ?Å¥Î¶??êò?óà?äîÏß? Ï∞æÏïÑ?Ç∏?ã§.
+			TableColumnModel colModel = table.getColumnModel();
+			int columnModelIndex = colModel.getColumnIndexAtX(e.getX());
+			int modelIndex = colModel.getColumn(columnModelIndex).getModelIndex();
+
+			if (modelIndex < 0)
+				return;
+
+			// STEP 2. ?Å¥Î¶??êú Ïª¨Îüº?óê ?î∞?ùº ?Üå?åÖ ?àú?Ñú Î∞? ?Üå?åÖ Í∏∞Ï??ùÑ Î≥?Í≤ΩÌïú?ã§.
+			LovDataItemTableModel tableModel = (LovDataItemTableModel) table.getModel();
+			tableModel.setSortBy(modelIndex);
+			tableModel.sort();
+			table.repaint();
+		}// mouseClicked
+	}
+}

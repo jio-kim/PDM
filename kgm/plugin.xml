@@ -1,0 +1,4223 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.6"?>
+<plugin>
+   <extension
+         point="com.teamcenter.rac.util.tc_properties">
+   </extension>
+   <!-- Command -->
+   <extension
+         point="org.eclipse.ui.commands">
+      <category
+            id="ssangyong.commands.category"
+            name="SYMC Category">
+      </category>
+      <category
+            id="ssangyong.standard"
+            name="SYMC Standard Category">
+      </category>
+      <category
+            id="ssangyong.bom"
+            name="SYMC BOM Category">
+      </category>
+      
+      <!-- Corporate Folder Start -->
+      <command
+            name="Cut From Corporate Folder"
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.common.CutFromCorporateFolderCommand">
+      </command>
+      <command
+            name="Paste on Corporate Folder"
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.common.PasteToCorporateFolderCommand">
+      </command>
+      <!-- Corporate Folder End -->
+      
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.partmaster.SYMCPartManagerCommand"
+            name="Part Mng Command">
+      </command>
+
+
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.partmaster.SYMCProductManagerCommand"
+            name="Part Mng Command">
+      </command>
+
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.partmaster.project.ProjectCreCommand"
+            name="Project Mng Command">
+      </command>
+
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.document.TechDocCreCommand"
+            name="Tech Doc">
+      </command>
+      
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.partmaster.vehiclepart.UpdateActWeightCommand"
+            name="Act. Weight Update">
+      </command>
+
+     <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.partmaster.vehiclepart.UpdateSESSpecNoCommand"
+            name="SES Spec No Update">
+      </command>
+
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.newdataset.NewDatasetCommand"
+            name="New DataSet Command">
+      </command>
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.ec.eco.ECOCommand"
+            name="ECO Command">
+      </command>
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.ec.eci.ECICommand"
+            name="ECI Command">
+      </command>
+      <command
+            id="com.kgm.commands.ec.report.ECOReportCommand"
+            name="Create ECO Report">
+      </command>
+      <command
+            id="com.kgm.commands.ec.workflow.ECOProcessCommand"
+            name="Create ECO Workflow">
+      </command>
+      <command
+            id="com.kgm.commands.ec.monitor.MonitoringECOCommand"
+            name="Monitoring ECO">
+      </command>
+      <command
+            id="com.kgm.commands.ec.history.EPLCorrectionHistoryCommand"
+            name="EPL Correction History">
+      </command>
+      <command
+            id="com.kgm.commands.getparent.GetParentCommand"
+            name="Get Parents">
+      </command>
+      
+      <!-- BOM Viewer -->
+      <command
+            id="com.kgm.commands.bomviewer.BOMViewerCommand"
+            name="BOM Viewer">
+      </command>
+      
+      <command
+            id="com.kgm.commands.ec.report.ReportEPLCommand"
+            name="Report EPL">
+      </command>
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.saveas.SYMCSaveAsCommand"
+            name="SaveAs Command">
+      </command>
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.revise.SYMCReviseCommand"
+            name="Revise Command">
+      </command>
+      <command
+      		categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.revise.DatasetChangeCommand"
+            name="Change DataSet Command">
+      </command>
+      <command
+      		categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.ec.monitor.DatasetCheckCommand"
+            name="Check Saving DataSet">
+      </command>
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.variantoptioneditor.OptionSetCommand"
+            name="Variant Option Editor">
+      </command>
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.variantconditionset.ConditionSetCommand"
+            name="Variant Condition setter">
+      </command>
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.variantoptioncompare.OptionCompareCommand"
+            name="Option Comparison">
+      </command>
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.conditionmapper.AutoConditionMapperCommand"
+            name="Auto Condition Mapper">
+      </command>
+      <!--
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.mig.MigrationCommand"
+            name="SSANG YONG Migration">
+       </command>
+       -->     
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.migration.MigrationCommand"
+            name="Migration">
+       </command>
+       
+       <!--<command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.migration.stdsesno.StdpartSESMigCommand"
+            name="SES Spec No. Migration">
+       </command>-->
+       
+      <command
+            id="com.kgm.commands.masterdata.MasterDataCommand"
+            name="Master Data Command">
+      </command>
+      
+      <command
+            id="com.kgm.common.bundlework.command.PartImportCommand"
+            name="Part Import">
+      </command>
+      <command
+            id="com.kgm.common.bundlework.command.PartBOMImportDbCommand"
+            name="Part/BOM DB Import">
+      </command>
+      
+      <command
+            id="com.kgm.common.bundlework.command.PartAllReleaseDBCommand"
+            name="Part All Release">
+      </command>
+
+    <!-- [SR140725-012][20141106][jclee] BOM Upload -->
+      <command
+            id="com.kgm.common.bundlework.command.ProductImportCommand"
+            name="Product Part Import">
+      </command>
+      <command
+            id="com.kgm.common.bundlework.command.VariantImportCommand"
+            name="Variant Part Import">
+      </command>
+      <command
+            id="com.kgm.common.bundlework.command.FunctionImportCommand"
+            name="Function Part Import">
+      </command>
+      <command
+            id="com.kgm.common.bundlework.command.FunctionMastImportCommand"
+            name="Function Master Product Part Import">
+      </command>
+      
+      <command
+            id="com.kgm.common.bundlework.command.VehiclePartImportCommand"
+            name="Part Import">
+      </command>
+      
+            <command
+            id="com.kgm.common.bundlework.command.TechDocImportCommand"
+            name="TechDoc Import">
+      </command>
+      
+      <command
+            id="com.kgm.common.bundlework.command.DPVExportCommand"
+            name="Part Export">
+      </command>      
+      
+      
+      <command
+            id="com.kgm.common.bundlework.command.StandardPartImportCommand"
+            name="Part Import">
+      </command>
+  
+      <command
+            id="com.kgm.common.bundlework.command.PartBOMImportCommand"
+            name="Part/BOM Import">
+      </command>      
+
+      <command
+            id="com.kgm.admin.lovmanage.LovManageCommand"
+            name="LOV Manager">
+      </command>      
+      
+      <command
+            id="com.kgm.commands.vpm.report.VPMReportCommand"
+            name="VPM Report">
+      </command>
+      
+      <command
+            id="com.kgm.commands.vpm.report.TCReportCommand"
+            name="VPM Report">
+      </command>
+      
+      <command
+            id="com.kgm.commands.vpm.report.VehPartReportCommand"
+            name="VehPart Report">
+      </command>      
+      
+      <command
+            id="com.kgm.commands.downdataset.DownDatasetCommand"
+            name="Down DataSet Command">
+      </command>
+
+      <command
+            id="com.kgm.commands.showon.ViewShowOnCommand"
+            name="View 2D ShowOn">
+      </command>
+
+      <command
+            id="com.kgm.commands.release.SelfReleaseCommand"
+            name="Self Release Command">
+      </command>
+
+      <command
+            id="com.kgm.commands.release.SelfReleasePSRCommand"
+            name="Self Release Command">
+      </command>
+
+      <!-- [SR160411-030][20160414][jclee] Obsolete 기능 추가. -->
+      <command
+            id="com.kgm.commands.release.ObsoleteCommand"
+            name="Obsolete Command">
+      </command>
+      
+      <command
+            id="com.kgm.commands.logview.LogViewCommand"
+            name="Log View Command">
+      </command>
+      <command
+            categoryId="ssangyong.standard"
+            id="com.kgm.commands.createfolder.CreateFolderCommand"
+            name="Create Folder Command">
+      </command>
+      
+      <command
+            categoryId="ssangyong.standard"
+            id="com.kgm.common.bundlework.command.ReviseAllCommand"
+            name="Revise All">
+      </command>      
+      
+      
+      <command
+            categoryId="ssangyong.bom"
+            id="com.kgm.commands.bomedit.BOMLineEditCommand"
+            name="Edit BOMLine">
+      </command>
+      <!-- [20160928][ymjang] 미사용 메뉴 삭제 BOM Compare With Released... 
+      <command
+            categoryId="ssangyong.bom"
+            id="com.kgm.commands.bomcompare.BOMCompareCommand"
+            name="BOM Compare">
+      </command>
+      -->
+      <command
+            categoryId="ssangyong.bom"
+            id="com.kgm.commands.bomcompare.BOMCompareECOCommand"
+            name="BOM Compare">
+      </command>
+      <command
+            categoryId="ssangyong.bom"
+            id="com.kgm.commands.ecoview.ECOViewCommand"
+            name="ECO View...">
+      </command>
+      <command
+            id="com.kgm.commands.optiondefine.VariantOptionDefinitionCommand"
+            name="Option Definition">
+      </command>
+      <command
+            id="com.kgm.commands.optiondefine.VariantOptionCombinationCommand"
+            name="Option Combination">
+      </command>
+      <command
+            categoryId="test.commands.category"
+            id="com.kgm.commands.dmu.DMUReportCommand"
+            name="DMU Report">
+      </command>
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.common.bundlework.command.ClassificationImportCommand"
+            name="Classification Import">
+      </command>
+      <command
+            id="com.kgm.common.bundlework.command.VariantOptionImportCommand"
+            name="Option Import">
+      </command>
+      
+      <command
+            id="com.kgm.commands.buildspecimport.BuildSpecImportCommand"
+            name="Build Spec Import">
+      </command>
+      
+      <command
+            categoryId="ssangyong.commands.category"
+            id="com.kgm.commands.validation.PartValidationCommand"
+            name="Function Name Master">
+      </command>
+      
+      <command
+            id="com.kgm.commands.ospec.OSpecSpreadOutCommand"
+            name="OSpec Spread Out">
+      </command> 
+      <command
+            id="com.kgm.commands.namegroup.PngCommand"
+            name="Name Group Manager">
+      </command>
+      <!-- 2022-07-06 wiring 체크 관련 메뉴 추가 -->
+      <command
+            id="com.kgm.commands.wiringoption.WiringCategoryNoCommand"
+            name="Wiring Category No Manager">
+      </command>
+      <command
+            id="com.kgm.commands.wiringoption.WiringMailListCommand"
+            name="Wiring Mail List">
+      </command>
+      
+      <command
+            id="com.kgm.commands.replace.MultiReplaceCommand"
+            name="Multi Replace">
+      </command>
+      
+      <command
+            id="com.kgm.commands.revise.MultiReviseCommand"
+            name="Multi Revise">
+      </command>             
+      <command
+            id="com.kgm.commands.editMultiPartsCommand"
+            name="Edit Multi Parts(Vehpart Rev)">
+      </command>             
+      
+      <command
+            id="com.kgm.commands.delete.DeleteVehiclePartCommand"
+            name="Delete Vehicle Part">
+      </command>             
+      <!-- Guide Manual -->
+      <command
+            id="com.kgm.commands.community.FaqCommand"
+            name="Guide Manual">
+      </command>
+      <!-- Guide Manual Admin -->
+      <command
+            id="com.kgm.commands.community.FaqAdminCommand"
+            name="Guide Manual Admin">
+      </command>
+      
+      <!-- [SR없음][20160126][jclee] Option Copy, Paste 기능 추가 -->
+      <command
+            id="com.kgm.commands.bomedit.option.CopyOptionCommand"
+            name="Option Copy">
+      </command>
+      
+      <command
+            id="com.kgm.commands.bomedit.option.PasteOptionCommand"
+            name="Option Paste">
+      </command>
+      
+      <!-- [SR160329-015][20160421][jclee] Spec Excel Upload (SOS 생성) 기능 추가 -->
+      <command
+            id="com.kgm.commands.sos.SpecExcelUploadCommand"
+            name="Stored Option Set(Excel)">
+      </command>
+      <!-- 설계변경 현황 관리-->
+      <command
+            id="com.kgm.commands.ec.ecostatus.ECOStatusMangerCommand"
+            name="ECO Status Manager">
+      </command>
+      <!-- BOM REPORT -->
+      <command
+            id="com.kgm.commands.common.BOMStructureReportCommand"
+            name="Report BOM">
+      </command>
+      <!-- Function EPL Check -->
+            <command
+            id="com.kgm.commands.ec.fncepl.FunctionEplCheckCommand"
+            name="Function EPL Check">
+      </command>
+            <command
+                  id="com.kgm.commands.weight.EBOMWeightMasterListCommand"
+                  name="E-BOM Weight Report (TeamCheck)">
+            </command>
+             <command
+                  id="com.kgm.commands.weight.EBOMWeightCommand"
+                  name="E-BOM Weight Report">
+            </command>
+            <command
+                  id="com.kgm.commands.commonpartcheck.CommonPartCheckCommand"
+                  name="Common Part Check">
+            </command>
+            <command
+                  id="com.kgm.commands.nmcd.NmcdCommand"
+                  name="NMCD Management">
+            </command>
+            <command
+                  id="com.kgm.commands.eciecr.EciEcrCommand"
+                  name="ECI ECR Interface">
+            </command>
+            <command
+                  id="com.kgm.admin.CheckList"
+                  name="Check List">
+            </command>
+            <command
+                  id="com.kgm.admin.MonthlyAllVehicleECOStatus"
+                  name="월별 전차종(ECO/E-ITEM)">
+            </command>
+            <command
+                  id="com.kgm.admin.MonthlyVehicleECOStatus"
+                  name="월별 차종 설계변경 현황">
+            </command>
+            <command
+                  id="com.kgm.admin.MonthlyEngineECOStatus"
+                  name="월별 엔진 설계변경 현황">
+            </command>
+            <command
+                  id="com.kgm.admin.EcoStatusByTeam"
+                  name="팀별 ECO 발행 현항(VEH/ENG/TM)">
+            </command>
+            <command
+                  id="com.kgm.admin.MonthlyVehicleECOAnalysis"
+                  name="월별 차량 설계변경 분석(변경사유1,2,3)">
+            </command>
+            <command
+                  id="com.kgm.admin.MonthlyEngineECOAnalysis"
+                  name="월별 엔진 설계변경 분석(변경사유1,2,3)">
+            </command>
+   </extension>
+   <!-- Command END... -->
+   <extension point="org.eclipse.ui.commandImages"> 
+        <image commandId="com.kgm.commands.editMultiPartsCommand" 
+            icon="platform:/plugin/com.teamcenter.rac.common/icons/properties_16.png"/>
+        <image commandId="com.kgm.commands.bomedit.BOMLineEditCommand"
+               icon="platform:/plugin/com.teamcenter.rac.common/icons/BOM_line_edit_16.png"/>
+        <image commandId="com.kgm.commands.ecoview.ECOViewCommand"
+               icon="platform:/plugin/com.teamcenter.rac.common/icons/viewer_16.png"/>
+        <image commandId="com.kgm.commands.partmaster.vehiclepart.UpdateActWeightCommand" 
+            icon="icons/update_16.png"/>
+        <image commandId="com.kgm.commands.partmaster.vehiclepart.UpdateSESSpecNoCommand" 
+            icon="icons/update_16.png"/>
+        <image
+            commandId="com.kgm.commands.weight.EBOMWeightMasterListCommand"
+            icon="icons/weight_16.png">
+        </image>
+        <image
+            commandId="com.kgm.commands.weight.EBOMWeightCommand"
+            icon="icons/weight_16.png">
+        </image>
+        <image
+            commandId="com.kgm.commands.commonpartcheck.CommonPartCheckCommand"
+            icon="icons/ok_16.png">
+        </image>
+   </extension>
+   <!-- SYMCCommandHandler -->
+   <extension
+         point="org.eclipse.ui.handlers">
+         
+      <!-- Corporate Folder Start -->
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.common.CutFromCorporateFolderCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.common.PasteToCorporateFolderCommand">
+      </handler>
+      <!-- Corporate Folder End -->
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.newdataset.NewDatasetCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.eco.ECOCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.eci.ECICommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.partmaster.SYMCPartManagerCommand">
+      </handler>
+      
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.partmaster.vehiclepart.UpdateActWeightCommand">
+            
+
+            <enabledWhen>
+                <iterate ifEmpty="false">
+                    <adapt type="com.teamcenter.rac.kernel.TCComponent">
+                        <and>
+                            <test property="com.teamcenter.rac.kernel.TCComponent.typeClass" 
+                                value="S7_VehpartRevision"/>
+                        </and>
+                    </adapt>
+                </iterate>
+            </enabledWhen>
+            
+      </handler>
+      
+       <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.partmaster.vehiclepart.UpdateSESSpecNoCommand">
+          <!--  <enabledWhen>
+                <iterate ifEmpty="false">
+                    <adapt type="com.teamcenter.rac.kernel.TCComponent">
+                        <and>
+                            <test property="com.teamcenter.rac.kernel.TCComponent.typeClass" 
+                                value="S7_VehpartRevision,S7_StdpartRevision"/>
+                        </and>
+                    </adapt>
+                </iterate>
+            </enabledWhen> -->
+      </handler>
+      
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.partmaster.SYMCProductManagerCommand">
+      </handler>
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.partmaster.project.ProjectCreCommand">
+      </handler>
+    
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.document.TechDocCreCommand">
+      </handler>      
+      
+      
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.saveas.SYMCSaveAsCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.revise.SYMCReviseCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.revise.DatasetChangeCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.monitor.DatasetCheckCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.variantoptioneditor.OptionSetCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.variantconditionset.ConditionSetCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.variantoptioncompare.OptionCompareCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.conditionmapper.AutoConditionMapperCommand">
+      </handler>
+       <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.mig.MigrationCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.migration.MigrationCommand">
+      </handler>
+      <!--<handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.migration.stdsesno.StdpartSESMigCommand">
+      </handler>-->
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.masterdata.MasterDataCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.PartImportCommand">
+      </handler>      
+       <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.PartBOMImportDbCommand">
+      </handler>     
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.PartAllReleaseDBCommand">
+      </handler>  
+      
+      
+      
+      <!-- [SR140725-012][20141106][jclee] BOM Upload -->
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.ProductImportCommand">
+      </handler> 
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.VariantImportCommand">
+      </handler> 
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.FunctionImportCommand">
+      </handler> 
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.FunctionMastImportCommand">
+      </handler> 
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.VehiclePartImportCommand">
+      </handler> 
+   
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.TechDocImportCommand">
+      </handler>    
+      
+
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.DPVExportCommand">
+      </handler> 
+
+      
+      
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.StandardPartImportCommand">
+      </handler>           
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.PartBOMImportCommand">
+      </handler>          
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.admin.lovmanage.LovManageCommand">
+      </handler>         
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.downdataset.DownDatasetCommand">
+      </handler>
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.showon.ViewShowOnCommand">
+      </handler>
+      
+      
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.release.SelfReleaseCommand">
+      </handler>
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.release.SelfReleasePSRCommand">
+      </handler>
+      
+      <!-- [SR160411-030][20160414][jclee] Obsolete 기능 추가. -->
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.release.ObsoleteCommand">
+      </handler>
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.logview.LogViewCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.createfolder.CreateFolderCommand">
+      </handler>
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.ReviseAllCommand">
+      </handler>      
+      
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.bomedit.BOMLineEditCommand">
+      </handler>
+      <!-- [20160928][ymjang] 미사용 메뉴 삭제 BOM Compare With Released... 
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.bomcompare.BOMCompareCommand">
+      </handler>
+      -->
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.bomcompare.BOMCompareECOCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ecoview.ECOViewCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.workflow.ECOProcessCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.report.ECOReportCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.optiondefine.VariantOptionDefinitionCommand">      
+      </handler>
+       <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.optiondefine.VariantOptionCombinationCommand">      
+      </handler>      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.dmu.DMUReportCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.monitor.MonitoringECOCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.history.EPLCorrectionHistoryCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.getparent.GetParentCommand">
+      </handler>
+      
+      <!-- BOM Viewer -->
+      <handler
+            commandId="com.kgm.commands.bomviewer.BOMViewerCommand"
+            class="com.kgm.commands.bomviewer.BOMViewerHandler">
+      </handler>       
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.ClassificationImportCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.common.bundlework.command.VariantOptionImportCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.report.ReportEPLCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.vpm.report.VPMReportCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.vpm.report.TCReportCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.vpm.report.VehPartReportCommand">
+      </handler>  
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.buildspecimport.BuildSpecImportCommand">
+      </handler>  
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.validation.PartValidationCommand">
+      </handler>  
+      
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ospec.OSpecSpreadOutCommand">
+      </handler>   
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.namegroup.PngCommand">
+      </handler>
+      <!-- 2022-07-06 wiring 체크 관련 메뉴 추가 -->
+      <handler
+            class="com.kgm.handlers.WiringCategoryNoHandler"
+            commandId="com.kgm.commands.wiringoption.WiringCategoryNoCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.WiringMailListHandler"
+            commandId="com.kgm.commands.wiringoption.WiringMailListCommand">
+      </handler>
+
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.replace.MultiReplaceCommand">
+      </handler>
+           
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.revise.MultiReviseCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.EditMultiPartsHandler"
+            commandId="com.kgm.commands.editMultiPartsCommand">
+            <enabledWhen>
+                <iterate ifEmpty="false">
+                    <adapt type="com.teamcenter.rac.kernel.TCComponent">
+                        <and>
+                            <test property="com.teamcenter.rac.kernel.TCComponent.typeClass" 
+                                value="S7_VehpartRevision,BOMLine"/>
+                        </and>
+                    </adapt>
+                </iterate>
+            </enabledWhen>
+      </handler>
+
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.delete.DeleteVehiclePartCommand">
+      </handler>               
+           
+      <!-- Guide Manual -->
+      <handler
+            commandId="com.kgm.commands.community.FaqCommand"
+            class="com.kgm.commands.faq.FaqHandler">
+            <!--
+                <activeWhen>
+                    <reference
+                        definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                </activeWhen>
+            -->
+      </handler>
+      <!-- Guide Manual Admin -->
+      <handler
+            commandId="com.kgm.commands.community.FaqAdminCommand"
+            class="com.kgm.commands.faq.FaqAdminHandler">
+            <!--
+                <activeWhen>
+                    <reference
+                        definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                </activeWhen>
+            -->
+      </handler>               
+      
+      <!-- [SR없음][20160126][jclee] Option Copy, Paste 기능 추가 -->               
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.bomedit.option.CopyOptionCommand">
+      </handler>
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.bomedit.option.PasteOptionCommand">
+      </handler>
+      
+      <!-- [SR160329-015][20160421][jclee] Spec Excel Upload (SOS 생성) 기능 추가 -->
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.sos.SpecExcelUploadCommand">
+      </handler>
+      <!-- 설계변경현황 관리-->
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.ecostatus.ECOStatusMangerCommand">
+      </handler>
+      <!-- Report BOM -->
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.common.BOMStructureReportCommand">
+      </handler>      
+     <!-- Function EPL Check-->
+      <handler
+            class="com.kgm.handlers.SYMCCommonHandler"
+            commandId="com.kgm.commands.ec.fncepl.FunctionEplCheckCommand">
+      </handler>
+      <handler
+            class="com.kgm.commands.weight.EBOMWeightReportHandler"
+            commandId="com.kgm.commands.weight.EBOMWeightMasterListCommand">
+      </handler>
+      <handler
+            class="com.kgm.commands.weight.EBOMWeightAllReportHandler"
+            commandId="com.kgm.commands.weight.EBOMWeightCommand">
+      </handler>
+      <handler
+            class="com.kgm.commands.commonpartcheck.CommonPartCheckHandler"
+            commandId="com.kgm.commands.commonpartcheck.CommonPartCheckCommand">
+      </handler> 
+      <handler
+            class="com.kgm.commands.nmcd.NmcdHandler"
+            commandId="com.kgm.commands.nmcd.NmcdCommand">
+      </handler> 
+      <handler
+            class="com.kgm.commands.eciecr.EciEcrHandler"
+            commandId="com.kgm.commands.eciecr.EciEcrCommand">
+      </handler>
+		<handler
+		      commandId="com.kgm.admin.CheckList"
+		      class="com.kgm.handlers.CheckListHandler">
+		</handler>
+		<handler
+		      commandId="com.kgm.admin.MonthlyAllVehicleECOStatus"
+		      class="com.kgm.handlers.MonthlyAllVehicleECOStatusHandler">
+		</handler>
+		<handler
+		      commandId="com.kgm.admin.MonthlyVehicleECOStatus"
+		      class="com.kgm.handlers.MonthlyVehicleECOStatusHandler">
+		</handler>
+		<handler
+		      commandId="com.kgm.admin.MonthlyEngineECOStatus"
+		      class="com.kgm.handlers.MonthlyEngineECOStatusHandler">
+		</handler>
+		<handler
+		      commandId="com.kgm.admin.EcoStatusByTeam"
+		      class="com.kgm.handlers.EcoStatusByTeamHandler">
+		</handler>
+		<handler
+		      commandId="com.kgm.admin.MonthlyVehicleECOAnalysis"
+		      class="com.kgm.handlers.MonthlyVehicleECOAnalysisHandler">
+		</handler>
+		<handler
+		      commandId="com.kgm.admin.MonthlyEngineECOAnalysis"
+		      class="com.kgm.handlers.MonthlyEngineECOAnalysisHandler">
+		</handler>
+   </extension>
+   
+   <!-- SYMCCommandHandler END... -->
+   <!-- Explorer SYMC Menu -->
+   <extension
+         point="org.eclipse.ui.menus">
+        
+        <!-- Corporate Folder Start -->
+        <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command
+                commandId="com.kgm.commands.common.CutFromCorporateFolderCommand"
+                mnemonic="S"
+                icon="icons/cut_16.png"
+                id="com.kgm.commands.common.addshortcut.menus.CutFromCorporateFolderCommand">
+                <visibleWhen>
+                    <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"></reference>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        
+        <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command
+                commandId="com.kgm.commands.common.PasteToCorporateFolderCommand"
+                mnemonic="S"
+                icon="icons/paste_16.png"
+                id="com.kgm.commands.common.addshortcut.menus.PasteToCorporateFolderCommand">
+                <visibleWhen>
+                    <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"></reference>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <!-- Corporate Folder End -->
+        
+        <!-- [SR없음][20151230][jclee] BOM Viewer Start -->
+        <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command
+                commandId="com.kgm.commands.bomviewer.BOMViewerCommand"
+                mnemonic="S"
+                id="com.kgm.commands.common.addshortcut.menus.BOMViewerCommand">
+                <visibleWhen>
+                    <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"></reference>
+                </visibleWhen>
+            </command>
+            <separator
+                  name="ssangyong.getparent_sep"
+                  visible="true">
+            </separator>
+        </menuContribution>
+        
+        <!-- [SR151204-010][20151209][jclee] Get Parent Start -->
+        <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command
+                commandId="com.kgm.commands.getparent.GetParentCommand"
+                mnemonic="S"
+                id="com.kgm.commands.common.addshortcut.menus.GetParentCommand">
+                <visibleWhen>
+                    <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"></reference>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        
+        <!-- [SR151204-008][20151209][jclee] Load In Catia V5 Start -->
+        <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command
+                commandId="com.ebsolutions.tmcv5.loadAssemblyAction"
+                mnemonic="S"
+                id="com.kgm.commands.common.addshortcut.menus.LoadAssemblyAction">
+                <visibleWhen>
+                    <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"></reference>
+                </visibleWhen>
+            </command>
+            <separator
+                  name="ssangyong.loadassemblyaction_sep"
+                  visible="true">
+            </separator>
+        </menuContribution>
+        
+        <menuContribution
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+            <command commandId="com.kgm.commands.ec.monitor.DatasetCheckCommand"
+                mnemonic="S"
+                id="com.kgm.commands.ec.addshortcut.menus.DatasetCheckCommand">
+                <visibleWhen checkEnabled="true">
+                	<and>
+						<reference definitionId="com.teamcenter.rac.ui.inMainPerspective"></reference>
+						<iterate ifEmpty="false">
+							<and>
+			                	<adapt type="com.teamcenter.rac.kernel.TCComponent">
+			                		<test 
+	                                    property="com.teamcenter.rac.kernel.TCComponent.typeClass" 
+	                                    value="EPMTask">
+	                                </test>
+			                	</adapt>
+		                	</and>
+		                </iterate>
+		                
+                	</and>
+                </visibleWhen>
+            </command>
+            
+            <separator
+                  name="ssangyong.datasetcheck_sep"
+                  visible="true">
+            </separator>
+        </menuContribution>
+        
+<!--         
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=tools">
+         <menu
+               label="%SYMC.LABEL"
+               tooltip="%SYMC.TOOLTIP">
+            <visibleWhen
+                  checkEnabled="true">
+               <and>
+                  <reference
+                        definitionId="ssangyong.explorerMainView">
+                  </reference>
+               </and>
+            </visibleWhen>
+            
+            
+            <command
+                  commandId="com.kgm.commands.ec.workflow.ECOProcessCommand"
+                  label="%ECOWorkflow.LABEL"
+                  style="push"
+                  tooltip="%ECOWorkflow.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.workflow.ECOProcessCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.commands.ec.report.ECOReportCommand"
+                  label="%ECOReport.LABEL"
+                  style="push"
+                  tooltip="%ECOReport.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.report.ECOReportCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            
+            <separator
+                  name="ssangyong.separator3"
+                  visible="true">
+            </separator>
+            
+            <separator
+                  name="ssangyong.separator4"
+                  visible="true">
+            </separator>
+            
+            <separator
+                  name="ssangyong.separator5"
+                  visible="true">
+            </separator>
+            
+            <separator
+                  name="ssangyong.separator6"
+                  visible="true">
+            </separator>
+            
+
+            
+            
+            
+            
+         </menu>
+      </menuContribution>
+      -->
+      
+      <menuContribution
+            locationURI="menu:edit?after=org.eclipse.ui.edit.delete">
+            <!-- Delete Vehicle Part -->
+            <command
+                  commandId="com.kgm.commands.delete.DeleteVehiclePartCommand"
+                  label="%DeleteVehiclePart.LABEL"
+                  style="push"
+                  tooltip="%DeleteVehiclePart.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerAndpseMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.delete.DeleteVehiclePartCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      </menuContribution>
+      
+      <!-- View - Monitoring progress of ECO -->
+      <menuContribution
+            locationURI="menu:view?before=org.eclipse.ui.file.refresh">
+            <command
+                  commandId="com.kgm.commands.ec.monitor.MonitoringECOCommand"
+                  label="%MonitoringECO.LABEL"
+                  style="push"
+                  tooltip="%MonitoringECO.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerAndpseMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.monitor.MonitoringECOCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <command
+                  commandId="com.kgm.commands.ec.history.EPLCorrectionHistoryCommand"
+                  label="%EPLCorrectionHistory.LABEL"
+                  style="push"
+                  tooltip="%EPLCorrectionHistory.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerAndpseMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.history.EPLCorrectionHistoryCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <command
+                  commandId="com.kgm.commands.getparent.GetParentCommand"
+                  label="%GetParent.LABEL"
+                  style="push"
+                  tooltip="%GetParent.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerAndpseMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.getparent.GetParentCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <command
+                commandId="com.kgm.commands.bomviewer.BOMViewerCommand"
+                  label="%BOMViewer.LABEL"
+                  style="push"
+                  tooltip="%BOMViewer.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerAndpseMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.bomviewer.BOMViewerCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      </menuContribution>
+      
+      <!-- Tool - File Download -->
+      <menuContribution
+            locationURI="menu:tools?before=tools.CheckInOut">
+            
+             <command
+                  commandId="com.kgm.commands.showon.ViewShowOnCommand"
+                  icon="icons/Download_16.png"
+                  label="%VIEWSHOWON.LABEL"
+                  style="push"
+                  tooltip="%VIEWSHOWON.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.showon.ViewShowOnCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            
+            <command
+                  commandId="com.kgm.commands.downdataset.DownDatasetCommand"
+                  icon="icons/Download_16.png"
+                  label="%DOWNDATASET.LABEL"
+                  style="push"
+                  tooltip="%DOWNDATASET.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.downdataset.DownDatasetCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <!-- Tools- DownLoad - Vehicle Part -->
+            <menu id="tools.Main.Upload" label="%Upload.NAME.LABEL">
+               <command
+                    commandId="com.kgm.common.bundlework.command.TechDocImportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%TECHDOCEXCELUPLAOD.LABEL"
+                    style="push"
+                    tooltip="%TECHDOCEXCELUPLAOD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.TechDocImportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>  
+              
+                <!-- [SR140725-012][20141106][jclee] Product Part Upload -->
+                <command
+                    commandId="com.kgm.common.bundlework.command.ProductImportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%PRODUCTEXCELUPLOAD.LABEL"
+                    style="push"
+                    tooltip="%PRODUCTEXCELUPLOAD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.ProductImportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+              
+                <command
+                    commandId="com.kgm.common.bundlework.command.VariantImportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%VARIANTEXCELUPLOAD.LABEL"
+                    style="push"
+                    tooltip="%VARIANTEXCELUPLOAD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.VariantImportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+              
+                <command
+                    commandId="com.kgm.common.bundlework.command.FunctionImportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%FUNCTIONEXCELUPLOAD.LABEL"
+                    style="push"
+                    tooltip="%FUNCTIONEXCELUPLOAD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.FunctionImportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+              
+                <command
+                    commandId="com.kgm.common.bundlework.command.FunctionMastImportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%FUNCTIONMASTEXCELUPLOAD.LABEL"
+                    style="push"
+                    tooltip="%FUNCTIONMASTEXCELUPLOAD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.FunctionMastImportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+            
+                <command
+                    commandId="com.kgm.common.bundlework.command.VehiclePartImportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%VEHICLEPARTEXCELUPLAOD.LABEL"
+                    style="push"
+                    tooltip="%VEHICLEPARTEXCELUPLAOD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.VehiclePartImportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+            </menu>
+            
+            <menu id="tools.Main.DownLoad" label="%DownLoad.NAME.LABEL">
+                <command
+                    commandId="com.kgm.common.bundlework.command.DPVExportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%VEHICLEPARTEXCELDOWNLOAD.LABEL"
+                    style="push"
+                    tooltip="%VEHICLEPARTEXCELDOWNLOAD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.DPVExportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>  
+            </menu>
+            
+             <command
+                  commandId="com.kgm.commands.ospec.OSpecSpreadOutCommand"
+                  label="OSpec Spread out"
+                  style="push"
+                  tooltip="OSpec Spread out">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ospec.OSpecSpreadOutCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+             <command
+                  commandId="com.kgm.commands.namegroup.PngCommand"
+                  label="Name Group Manager"
+                  style="push"
+                  tooltip="Name Group Manager">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.namegroup.PngCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <!-- 2022-07-06 wiring 체크 관련 메뉴 추가 -->
+             <command
+                  commandId="com.kgm.commands.wiringoption.WiringCategoryNoCommand"
+                  label="Wiring Category No Manager"
+                  style="push"
+                  tooltip="Wiring Category No Manager">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.wiringoption.WiringCategoryNoCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+             <command
+                  commandId="com.kgm.commands.wiringoption.WiringMailListCommand"
+                  label="Wiring Mail List"
+                  style="push"
+                  tooltip="Wiring Mail List">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.wiringoption.WiringMailListCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+         <command
+               commandId="com.kgm.commands.commonpartcheck.CommonPartCheckCommand"
+               label="Common Part Check"
+               style="push"
+               tooltip="Common Part Check">
+            <visibleWhen
+                  checkEnabled="true">
+               <and>
+                  <reference
+                        definitionId="ssangyong.explorerMainView">
+                  </reference>
+                  <with
+                        variable="rac_command_suppression">
+                     <not>
+                        <iterate
+                              operator="or">
+                           <equals
+                                 value="com.kgm.commands.commonpartcheck.CommonPartCheckCommand">
+                           </equals>
+                        </iterate>
+                     </not>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>     
+            <!-- 설계변경 현황관리 -->
+            
+            <command
+                  commandId="com.kgm.commands.ec.ecostatus.ECOStatusMangerCommand"
+                  label="Changing Item Management"
+                  style="push"
+                  tooltip="Changing Item Management">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.ecostatus.ECOStatusMangerCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <!-- Function EPL Check -->
+            <command
+                  commandId="com.kgm.commands.ec.fncepl.FunctionEplCheckCommand"
+                  label="Function EPL Check"
+                  style="push"
+                  tooltip="Function EPL Check">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.fncepl.FunctionEplCheckCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+
+             <command
+                  commandId="com.kgm.commands.replace.MultiReplaceCommand"
+                  label="Multi Replace"
+                  style="push"
+                  tooltip="Multi Replace">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.replace.MultiReplaceCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>                     
+            
+             <command
+                  commandId="com.kgm.commands.revise.MultiReviseCommand"
+                  label="Multi Revise"
+                  style="push"
+                  tooltip="Multi Revise">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.revise.MultiReviseCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>                     
+            <command
+               commandId="com.kgm.commands.nmcd.NmcdCommand"
+               label="NMCD Management"
+               style="push"
+               tooltip="NMCD Management">
+            <visibleWhen
+                  checkEnabled="true">
+               <and>
+                  <reference
+                        definitionId="ssangyong.explorerMainView">
+                  </reference>
+                  <with
+                        variable="rac_command_suppression">
+                     <not>
+                        <iterate
+                              operator="or">
+                           <equals
+                                 value="com.kgm.commands.nmcd.NMCDCommand">
+                           </equals>
+                        </iterate>
+                     </not>
+                  </with>
+               </and>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      
+      <!-- Tools - Report - EPL Report-->
+      <menuContribution locationURI="menu:tools.Reports?before=tools.ReportsStart">
+            <command
+                      commandId="com.kgm.commands.ec.report.ReportEPLCommand"
+                      label="%ReportEPL.LABEL"
+                      style="push"
+                      tooltip="%ReportEPL.TOOLTIP">
+                   <visibleWhen
+                         checkEnabled="true">
+                      <and>
+                         <reference
+                               definitionId="ssangyong.explorerMainView">
+                         </reference>
+                         <with
+                               variable="rac_command_suppression">
+                            <not>
+                               <iterate
+                                     operator="or">
+                                  <equals
+                                        value="com.kgm.commands.ec.report.ReportEPLCommand">
+                                  </equals>
+                               </iterate>
+                            </not>
+                         </with>
+                      </and>
+                   </visibleWhen>
+                </command>
+   <command
+                     commandId="com.kgm.commands.weight.EBOMWeightMasterListCommand"
+                     label="%EBOM_TEAM_WEIGHT_REPORT.LABEL"
+                     style="push"
+                     tooltip="%EBOM_TEAM_WEIGHT_REPORT.TOOLTIP">
+                  <visibleWhen
+                        checkEnabled="true">
+                     <and>
+                        <reference
+                              definitionId="ssangyong.explorerMainView">
+                        </reference>
+                        <with
+                              variable="rac_command_suppression">
+                           <not>
+                              <iterate
+                                    operator="or">
+                                 <equals
+                                       value="com.kgm.commands.weight.EBOMWeightMasterListCommand">
+                                 </equals>
+                              </iterate>
+                           </not>
+                        </with>
+                     </and>
+                  </visibleWhen>
+               </command>
+               <command
+                     commandId="com.kgm.commands.weight.EBOMWeightCommand"
+                     label="%EBOM_WEIGHT_REPORT.LABEL"
+                     style="push"
+                     tooltip="%EBOM_WEIGHT_REPORT.TOOLTIP">
+                  <visibleWhen
+                        checkEnabled="true">
+                     <and>
+                        <reference
+                              definitionId="ssangyong.explorerMainView">
+                        </reference>
+                        <with
+                              variable="rac_command_suppression">
+                           <not>
+                              <iterate
+                                    operator="or">
+                                 <equals
+                                       value="com.kgm.commands.weight.EBOMWeightCommand">
+                                 </equals>
+                              </iterate>
+                           </not>
+                        </with>
+                     </and>
+                  </visibleWhen>
+               </command>
+        </menuContribution>
+      
+      <!-- File - Save As , Revise, Revise Multi-Part -->
+      <menuContribution
+            locationURI="menu:file?add=file.Save_As">
+            <command
+                  commandId="com.kgm.commands.saveas.SYMCSaveAsCommand"
+                  icon="icons/saveas_16.png"
+                  label="%SAVEAS.LABEL"
+                  style="push"
+                  tooltip="%SAVEAS.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.saveas.SYMCSaveAsCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.commands.revise.SYMCReviseCommand"
+                  icon="icons/revise_16.png"
+                  label="%REVISE.LABEL"
+                  style="push"
+                  tooltip="%REVISE.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.revise.SYMCReviseCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <!-- Dataset Revise -->
+            <command
+                  commandId="com.kgm.commands.revise.DatasetChangeCommand"
+                  label="%CHANGEDATASET.LABEL"
+                  style="push"
+                  tooltip="%CHANGEDATASET.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.revise.DatasetChangeCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.common.bundlework.command.ReviseAllCommand"
+                  icon="icons/folder_create_16.png"
+                  label="%bundlerevise.LABEL"
+                  style="push"
+                  tooltip="%bundlerevise.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.common.bundlework.command.ReviseAllCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      </menuContribution>
+      
+      <!-- File - New - Part Mng.Action -->
+      <menuContribution locationURI="menu:file.new?before=file.newStart">
+            <command
+                  commandId="com.kgm.commands.partmaster.SYMCPartManagerCommand"
+                  icon="platform:/plugin/com.teamcenter.rac.common/icons/newitem_16.png"
+                  label="%createPart.LABEL"
+                  style="push"
+                  tooltip="Manage SSangYoung Part..">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.partmaster.SYMCPartManagerCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      </menuContribution>
+      
+      <menuContribution locationURI="menu:file.new?before=file.newStart">
+            <command
+                  commandId="com.kgm.commands.partmaster.SYMCProductManagerCommand"
+                  icon="platform:/plugin/com.teamcenter.rac.common/icons/newitem_16.png"
+                  label="%createProduct.LABEL"
+                  style="push"
+                  tooltip="Manage SSangYoung Part..">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.partmaster.SYMCProductManagerCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      </menuContribution>
+      
+      
+      
+      
+      
+      <menuContribution locationURI="menu:file.new?before=file.newStart">
+            <command
+                  commandId="com.kgm.commands.partmaster.project.ProjectCreCommand"
+                  icon="platform:/plugin/com.teamcenter.rac.common/icons/newitem_16.png"
+                  label="%createProject.LABEL"
+                  style="push"
+                  tooltip="Manage SSangYoung Part..">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerAndpseMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.partmaster.project.ProjectCreCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      </menuContribution>  
+      
+      
+      
+      
+      
+       
+      <!-- File - New - Create Product, Create ECO, Create ECI, CreateTech. Doc, Create Folder, Attach File -->
+      <menuContribution locationURI="menu:file.new?before=file.newStart">
+
+            
+            <command
+                  commandId="com.kgm.commands.ec.eco.ECOCommand"
+                  icon="icons/eco_16.png"
+                  label="%ECO.LABEL"
+                  style="push"
+                  tooltip="%ECO.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.eco.ECOCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <!--
+            <command
+                  commandId="com.kgm.commands.ec.eci.ECICommand"
+                  icon="icons/ecr_16.png"
+                  label="%ECI.LABEL"
+                  style="push"
+                  tooltip="%ECI.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.eci.ECICommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            -->
+            <command
+                  commandId="com.kgm.commands.document.TechDocCreCommand"
+                  icon="platform:/plugin/com.teamcenter.rac.common/icons/newitem_16.png"
+                  label="%techdoccre.LABEL"
+                  style="push"
+                  tooltip="Manage SSangYoung Part..">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.document.TechDocCreCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <command
+                  commandId="com.kgm.commands.createfolder.CreateFolderCommand"
+                  icon="icons/folder_create_16.png"
+                  label="%FOLDERCREATE.LABEL"
+                  style="push"
+                  tooltip="%FOLDERCREATE.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.createfolder.CreateFolderCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <command
+                  commandId="com.kgm.commands.newdataset.NewDatasetCommand"
+                  icon="icons/newfile_16.png"
+                  label="%NewDataSet.LABEL"
+                  style="push"
+                  tooltip="%NewDataSet.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.newdataset.NewDatasetCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <separator name="ssangyong.separator98" visible="true">
+            </separator>
+            
+            <command
+                  commandId="com.kgm.commands.release.SelfReleaseCommand"
+                  label="%DSR.LABEL"
+                  style="push"
+                  tooltip="%DSR.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.release.SelfReleaseCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <command
+                  commandId="com.kgm.commands.release.SelfReleasePSRCommand"
+                  label="%PSR.LABEL"
+                  style="push"
+                  tooltip="%PSR.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.release.SelfReleasePSRCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <!-- [SR160411-030][20160414][jclee] Obsolete 기능 추가. -->
+            <command
+                  commandId="com.kgm.commands.release.ObsoleteCommand"
+                  label="%OBSOLETE.LABEL"
+                  style="push"
+                  tooltip="%OBSOLETE.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.release.ObsoleteCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <separator name="ssangyong.separator99" visible="true">
+            </separator>
+            
+            
+      </menuContribution>
+      
+      <!-- File - New - Function Part --> 
+      <!-- Edit - BOMLineEdit -->
+      <menuContribution locationURI="menu:edit?after=org.eclipse.ui.edit.paste">
+            <command commandId="com.kgm.commands.bomedit.option.CopyOptionCommand"
+                    label="Option Copy">
+                <visibleWhen>
+                    <and>
+                        <iterate ifEmpty="false">
+                            <reference 
+                                definitionId="com.teamcenter.rac.pse.inMainView"/>
+                        </iterate>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals 
+                                        value="com.kgm.commands.bomedit.option.CopyOptionCommand"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.kgm.commands.bomedit.option.PasteOptionCommand"
+                    label="Option Paste">
+                <visibleWhen>
+                    <and>
+                        <iterate ifEmpty="false">
+                            <reference 
+                                definitionId="com.teamcenter.rac.pse.inMainView"/>
+                        </iterate>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals 
+                                        value="com.kgm.commands.bomedit.option.PasteOptionCommand"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command commandId="com.kgm.commands.editMultiPartsCommand">
+                <visibleWhen>
+                  <and>
+                     <or>
+	                     <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+	                     <reference definitionId="com.teamcenter.rac.pse.inMainView"/>
+                     </or>
+                     <with variable="rac_command_suppression">
+                        <not>
+                           <iterate operator="or">
+                              <equals value="com.kgm.commands.editMultiPartsCommand"/>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>                     
+            <command commandId="com.kgm.commands.bomedit.BOMLineEditCommand"
+                    label="%BOMLineEdit.LABEL">
+                <visibleWhen>
+                    <and>
+                        <iterate ifEmpty="false">
+                            <reference 
+                                definitionId="com.teamcenter.rac.pse.inMainView"/>
+                        </iterate>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals 
+                                        value="com.kgm.commands.bomedit.BOMLineEditCommand"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+      </menuContribution>
+      
+      <menuContribution locationURI="menu:view?before=org.eclipse.ui.file.refresh">
+            <command commandId="com.kgm.commands.ecoview.ECOViewCommand"
+                    label="ECO View...">
+                <visibleWhen>
+                    <and>
+                        <iterate ifEmpty="false">
+                            <reference 
+                                definitionId="com.teamcenter.rac.pse.inMainView"/>
+                        </iterate>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals 
+                                        value="com.kgm.commands.ecoview.ECOViewCommand"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+      </menuContribution>            
+
+        <!-- Guide Manual -->
+        <menuContribution
+            locationURI="menu:help?before=additions">
+            <command
+                commandId="com.kgm.commands.community.FaqCommand"
+                mnemonic="S"
+                id="com.kgm.commands.community.Faq"
+                icon="icons/help_16.png">
+                <visibleWhen>
+                    <with variable="rac_command_suppression">
+                        <not>
+                            <iterate operator="or">
+                                <equals value="com.kgm.commands.community.FaqCommand" />
+                            </iterate>
+                        </not>
+                    </with>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <!-- Guide Manual Admin -->
+        <menuContribution
+            locationURI="menu:help?after=com.kgm.commands.community.Faq">
+            <command
+                commandId="com.kgm.commands.community.FaqAdminCommand"
+                mnemonic="S"
+                id="com.kgm.commands.community.FaqAdmin"
+                icon="icons/help_16.png">
+                <visibleWhen>
+                    <and>
+                        <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals value="com.kgm.commands.community.FaqAdminCommand" />
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+      
+   </extension>
+   <!-- Explorer SYMC Menu END... -->
+      
+   <!-- SYMC Admin Menu -->
+   <extension
+          point="org.eclipse.ui.menus">
+        <menuContribution
+              locationURI="menu:org.eclipse.ui.main.menu?after=tools">
+           <menu
+                 label="%SYMC_ADMIN.LABEL"
+                 tooltip="%SYMC_ADMIN.TOOLTIP">
+              <visibleWhen
+                    checkEnabled="true">
+                 <and>
+                    <reference
+                          definitionId="ssangyong.explorerMainView">
+                    </reference>
+                 </and>
+              </visibleWhen>
+              <!--
+              <command
+                    commandId="com.kgm.commands.mig.MigrationCommand"
+                    icon="icons/upload_16.png"
+                    label="%MIGRATION.LABEL"
+                    style="push"
+                    tooltip="%MIGRATION.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <reference
+                             definitionId="ssangyong.adminMenuView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.commands.mig.MigrationCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+              <command
+                    commandId="com.kgm.commands.migration.MigrationCommand"
+                    icon="icons/upload_16.png"
+                    label="%MIGRATION.LABEL"
+                    style="push"
+                    tooltip="%MIGRATION.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <reference
+                             definitionId="ssangyong.adminMenuView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.commands.migration.MigrationCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+              <command
+                    commandId="com.kgm.commands.masterdata.MasterDataCommand"
+                    icon="icons/masterdata_16.png"
+
+                    label="기준 정보 관리"
+                    style="push"
+
+                    tooltip="기준 정보를 관리 합니다.">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <reference
+                             definitionId="ssangyong.adminMenuView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.commands.masterdata.MasterDataCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+              -->
+               <!--<command
+                    commandId="com.kgm.commands.migration.stdsesno.StdpartSESMigCommand"
+                    icon="icons/upload_16.png"
+                    label="SES Spec No. Migration"
+                    style="push"
+                    tooltip="SES Spec No. Migration">
+              </command>-->
+              
+              <command
+                    commandId="com.kgm.common.bundlework.command.PartImportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%PARTDBUPLAOD.LABEL"
+                    style="push"
+                    tooltip="%PARTDBUPLAOD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <reference
+                             definitionId="ssangyong.adminMenuView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.PartImportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>      
+              
+              <command
+                    commandId="com.kgm.common.bundlework.command.PartBOMImportDbCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%BOMDBUPLAOD.LABEL"
+                    style="push"
+                    tooltip="%BOMDBUPLAOD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <reference
+                             definitionId="ssangyong.adminMenuView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.PartBOMImportDbCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+              
+              
+              <command
+                    commandId="com.kgm.common.bundlework.command.PartAllReleaseDBCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%BWPARTRELASE.LABEL"
+                    style="push"
+                    tooltip="%BWPARTRELASE.LABEL">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <reference
+                             definitionId="ssangyong.adminMenuView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.PartAllReleaseDBCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>
+              
+              
+              
+              
+               <command
+                    commandId="com.kgm.common.bundlework.command.StandardPartImportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%STANDARDPARTEXCELUPLAOD.LABEL"
+                    style="push"
+                    tooltip="%STANDARDPARTEXCELUPLAOD.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <reference
+                             definitionId="ssangyong.adminMenuView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.PartImportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>                             
+              
+                  
+              
+              
+              <command
+                    commandId="com.kgm.admin.lovmanage.LovManageCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%LOVMANAGE.LABEL"
+                    style="push"
+                    tooltip="%LOVMANAGE.TOOLTIP">
+                 <visibleWhen
+                       checkEnabled="true">
+                    <and>
+                       <reference
+                             definitionId="ssangyong.explorerMainView">
+                       </reference>
+                       <reference
+                             definitionId="ssangyong.adminMenuView">
+                       </reference>
+                       <with
+                             variable="rac_command_suppression">
+                          <not>
+                             <iterate
+                                   operator="or">
+                                <equals
+                                      value="com.kgm.common.bundlework.command.PartBOMImportCommand">
+                                </equals>
+                             </iterate>
+                          </not>
+                       </with>
+                    </and>
+                 </visibleWhen>
+              </command>      
+              
+              <command
+                  commandId="com.kgm.commands.logview.LogViewCommand"
+                  icon="icons/log_open_16.png"
+                  label="%LOGVIEW.LABEL"
+                  style="push"
+                  tooltip="%LOGVIEW.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.logview.LogViewCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      
+            <command
+                  commandId="com.kgm.commands.eciecr.EciEcrCommand"
+                  label="%ECI_ECR_IF.LABEL"
+                  style="push"
+                  tooltip="%ECI_ECR_IF.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <reference
+                             definitionId="ssangyong.adminMenuView">
+                       </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.eciecr.EciEcrCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+              
+           </menu>
+        </menuContribution>
+        <menuContribution
+              locationURI="menu:org.eclipse.ui.main.menu?after=tools">
+           <menu
+                 label="ECO Admin Check"
+                 tooltip="ECO Admin Check">
+              <visibleWhen
+                    checkEnabled="true">
+                 <and>
+                    <reference
+                          definitionId="ssangyong.explorerMainView">
+                    </reference>
+                 </and>
+              </visibleWhen>
+				<command commandId="com.kgm.admin.CheckList">
+					<visibleWhen checkEnabled="true">
+						<and>
+							<reference definitionId="ssangyong.explorerMainView">
+							</reference>
+							<reference definitionId="ssangyong.adminMenuView">
+							</reference>
+							<with variable="rac_command_suppression">
+								<not>
+									<equals value="com.kgm.admin.CheckList">
+									</equals>
+								</not>
+							</with>
+						</and>
+					</visibleWhen>
+				</command>
+				<command commandId="com.kgm.admin.MonthlyAllVehicleECOStatus">
+					<visibleWhen checkEnabled="true">
+						<and>
+							<reference definitionId="ssangyong.explorerMainView">
+							</reference>
+							<reference definitionId="ssangyong.adminMenuView">
+							</reference>
+							<with variable="rac_command_suppression">
+								<not>
+									<equals value="com.kgm.admin.MonthlyAllVehicleECOStatus">
+									</equals>
+								</not>
+							</with>
+						</and>
+					</visibleWhen>
+				</command>
+				<command commandId="com.kgm.admin.MonthlyVehicleECOStatus">
+					<visibleWhen checkEnabled="true">
+						<and>
+							<reference definitionId="ssangyong.explorerMainView">
+							</reference>
+							<reference definitionId="ssangyong.adminMenuView">
+							</reference>
+							<with variable="rac_command_suppression">
+								<not>
+									<equals value="com.kgm.admin.MonthlyVehicleECOStatus">
+									</equals>
+								</not>
+							</with>
+						</and>
+					</visibleWhen>
+				</command>
+				<command commandId="com.kgm.admin.MonthlyEngineECOStatus">
+					<visibleWhen checkEnabled="true">
+						<and>
+							<reference definitionId="ssangyong.explorerMainView">
+							</reference>
+							<reference definitionId="ssangyong.adminMenuView">
+							</reference>
+							<with variable="rac_command_suppression">
+								<not>
+									<equals value="com.kgm.admin.MonthlyEngineECOStatus">
+									</equals>
+								</not>
+							</with>
+						</and>
+					</visibleWhen>
+				</command>
+				<command commandId="com.kgm.admin.EcoStatusByTeam">
+					<visibleWhen checkEnabled="true">
+						<and>
+							<reference definitionId="ssangyong.explorerMainView">
+							</reference>
+							<reference definitionId="ssangyong.adminMenuView">
+							</reference>
+							<with variable="rac_command_suppression">
+								<not>
+									<equals value="com.kgm.admin.EcoStatusByTeam">
+									</equals>
+								</not>
+							</with>
+						</and>
+					</visibleWhen>
+				</command>
+				<command commandId="com.kgm.admin.MonthlyVehicleECOAnalysis">
+					<visibleWhen checkEnabled="true">
+						<and>
+							<reference definitionId="ssangyong.explorerMainView">
+							</reference>
+							<reference definitionId="ssangyong.adminMenuView">
+							</reference>
+							<with variable="rac_command_suppression">
+								<not>
+									<equals value="com.kgm.admin.MonthlyVehicleECOAnalysis">
+									</equals>
+								</not>
+							</with>
+						</and>
+					</visibleWhen>
+				</command>
+				<command commandId="com.kgm.admin.MonthlyEngineECOAnalysis">
+					<visibleWhen checkEnabled="true">
+						<and>
+							<reference definitionId="ssangyong.explorerMainView">
+							</reference>
+							<reference definitionId="ssangyong.adminMenuView">
+							</reference>
+							<with variable="rac_command_suppression">
+								<not>
+									<equals value="com.kgm.admin.MonthlyEngineECOAnalysis">
+									</equals>
+								</not>
+							</with>
+						</and>
+					</visibleWhen>
+				</command>
+           </menu>
+        </menuContribution>
+   </extension>
+   <!-- SYMC Admin Menu END... -->
+   
+   <!-- PSE SYMC Menu -->
+   <extension  point="org.eclipse.ui.menus">
+      <!-- PSE: File - Save As -->
+      <menuContribution
+            locationURI="menu:file?add=file.Save_As">
+            <command
+                  commandId="com.kgm.commands.saveas.SYMCSaveAsCommand"
+                  icon="icons/saveas_16.png"
+                  label="%SAVEAS.LABEL"
+                  style="push"
+                  tooltip="%SAVEAS.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.saveas.SYMCSaveAsCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      </menuContribution>
+      
+      <!-- PSE: File - Revise, Revise Multi-Part -->
+      <menuContribution
+            locationURI="menu:file?after=file.Open_Session">
+            <command
+                  commandId="com.kgm.commands.revise.SYMCReviseCommand"
+                  icon="icons/revise_16.png"
+                  label="%REVISE.LABEL"
+                  style="push"
+                  tooltip="%REVISE.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.revise.SYMCReviseCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.common.bundlework.command.ReviseAllCommand"
+                  icon="icons/folder_create_16.png"
+                  label="%bundlerevise.LABEL"
+                  style="push"
+                  tooltip="%bundlerevise.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.common.bundlework.command.ReviseAllCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      </menuContribution>
+<!--      
+      <menuContribution
+            locationURI="menu:view?before=org.eclipse.ui.file.refresh">
+            <command
+                  commandId="com.kgm.commands.ec.monitor.MonitoringECOCommand"
+                  label="%MonitoringECO.LABEL"
+                  style="push"
+                  tooltip="%MonitoringECO.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.pseMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.monitor.MonitoringECOCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+      </menuContribution>
+   -->
+   
+      <!-- PSE:Admin -->
+      <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=tools">
+         <menu
+               label="%SYMC.LABEL"
+               tooltip="%SYMC.TOOLTIP">
+            <visibleWhen
+                  checkEnabled="true">
+               <and>
+                  <reference
+                        definitionId="com.teamcenter.rac.pse.inMainView">
+                  </reference>
+               </and>
+            </visibleWhen>
+            <command
+                  commandId="com.kgm.commands.variantoptioneditor.OptionSetCommand"
+                  icon="icons/OptionManage.PNG"
+                  label="%PRODUCTOPTIONManager.LABEL"
+                  style="push"
+                  tooltip="%PRODUCTOPTIONManager.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.variantoptioneditor.OptionSetCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <!--
+            <command
+                  commandId="com.kgm.commands.variantconditionset.ConditionSetCommand"
+                  icon="icons/OptionManage.PNG"
+                  label="%VARIANT.CONDITION..LABEL"
+                  style="push"
+                  tooltip="%VARIANT.CONDITION..TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.variantconditionset.ConditionSetCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            -->
+            <command
+                  commandId="com.kgm.commands.variantoptioncompare.OptionCompareCommand"
+                  icon="icons/OptionManage.PNG"
+                  label="%VARIANT.OPTION.COMPARE.LABEL"
+                  style="push"
+                  tooltip="%VARIANT.OPTION.COMPARE.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.variantoptioncompare.OptionCompareCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.commands.optiondefine.VariantOptionDefinitionCommand"
+                  icon="icons/OptionManage.PNG"
+                  label="%OPTIONDEFINE.LABEL"
+                  style="push"
+                  tooltip="%OPTIONDEFINE.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.optiondefine.VariantOptionDefinitionCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.common.bundlework.command.VariantOptionImportCommand"
+                  icon="icons/OptionManage.PNG"
+                  label="%OPTION.IMPORT.LABEL"
+                  style="push"
+                  tooltip="%OPTION.IMPORT.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.common.bundlework.command.VariantOptionImportCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.commands.conditionmapper.AutoConditionMapperCommand"
+                  icon="icons/OptionManage.PNG"
+                  label="%OPTION.CONDITION.SETTER.LABEL"
+                  style="push"
+                  tooltip="%OPTION.CONDITION.SETTER.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.conditionmapper.AutoConditionMapperCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.commands.buildspecimport.BuildSpecImportCommand"
+                  icon="icons/OptionManage.PNG"
+                  label="%OPTION.BUILD.SPEC.LABEL"
+                  style="push"
+                  tooltip="%OPTION.BUILD.SPEC.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.buildspecimport.BuildSpecImportCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <command
+                  commandId="com.kgm.commands.validation.PartValidationCommand"
+                  icon="icons/OptionManage.PNG"
+                  label="%PART.VALIDATION.LABEL"
+                  style="push"
+                  tooltip="%PART.VALIDATION.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.validation.PartValidationCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <!--
+            <command
+                  commandId="com.kgm.commands.optiondefine.VariantOptionCombinationCommand"
+                  icon="icons/OptionManage.PNG"
+                  label="%OPTIONCOMBINATION.LABEL"
+                  style="push"
+                  tooltip="%OPTIONCOMBINATION.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.optiondefine.VariantOptionCombinationCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            -->
+         </menu>
+      </menuContribution>
+      
+      <!-- PSE:Tools -->
+      <menuContribution
+            locationURI="menu:tools?before=tools.CheckInOut">
+            <menu id="tools.Upload" label="%Upload.NAME.LABEL">
+                <command
+                    commandId="com.kgm.common.bundlework.command.PartBOMImportCommand"
+                    icon="icons/masterdata_16.png"
+                    label="%PARTBOMEXCELUPLAOD.LABEL"
+                    style="push"
+                    tooltip="%PARTBOMEXCELUPLAOD.TOOLTIP">
+                     <visibleWhen
+                           checkEnabled="true">
+                        <and>
+                           <reference
+                                 definitionId="com.teamcenter.rac.pse.inMainView">
+                           </reference>
+                           <with
+                                 variable="rac_command_suppression">
+                              <not>
+                                 <iterate
+                                       operator="or">
+                                    <equals
+                                          value="com.kgm.common.bundlework.command.PartBOMImportCommand">
+                                    </equals>
+                                 </iterate>
+                              </not>
+                           </with>
+                        </and>
+                     </visibleWhen>
+                </command>
+              
+                <command
+                      commandId="com.kgm.commands.optiondefine.VariantOptionCombinationCommand"
+                      icon="icons/OptionManage.PNG"
+                      label="%OPTIONCOMBINATION.LABEL"
+                      style="push"
+                      tooltip="%OPTIONCOMBINATION.TOOLTIP">
+                   <visibleWhen
+                         checkEnabled="true">
+                      <and>
+                         <reference
+                               definitionId="com.teamcenter.rac.pse.inMainView">
+                         </reference>
+                         <with
+                               variable="rac_command_suppression">
+                            <not>
+                               <iterate
+                                     operator="or">
+                                  <equals
+                                        value="com.kgm.commands.optiondefine.VariantOptionCombinationCommand">
+                                  </equals>
+                               </iterate>
+                            </not>
+                         </with>
+                      </and>
+                   </visibleWhen>
+                </command>
+                
+                <!-- [SR160329-015][20160421][jclee] Spec Excel Upload (SOS 생성) 기능 추가 -->
+                <command
+                        commandId="com.kgm.commands.sos.SpecExcelUploadCommand"
+                        icon="icons/OptionManage.PNG"
+                        label="%SPECEXCELUPLOAD.LABEL"
+                        style="push"
+                        tooltip="%SPECEXCELUPLOAD.TOOLTIP">
+                    <visibleWhen checkEnabled="true">
+                        <and>
+                            <reference definitionId="com.teamcenter.rac.pse.inMainView"> </reference>
+                            <with variable="rac_command_suppression">
+                                <not>
+                                    <iterate operator="or">
+                                        <equals value="com.kgm.commands.sos.SpecExcelUploadCommand"> </equals>
+                                    </iterate>
+                                </not>
+                            </with>
+                        </and>
+                    </visibleWhen>
+                </command>
+            </menu>
+            <!-- [20160928][ymjang] 미사용 메뉴 삭제 BOM Compare With Released...
+            <command
+                  commandId="com.kgm.commands.bomcompare.BOMCompareCommand"
+                  icon="icons/splitbom_16.png"
+                  label="%BOMCompare.LABEL"
+                  style="push"
+                  tooltip="%BOMCompare.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.bomcompare.BOMCompareCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            -->
+            <command
+                  commandId="com.kgm.commands.bomcompare.BOMCompareECOCommand"
+                  icon="icons/execute_structure_map_16.png"
+                  label="%BOMCompareECO.LABEL"
+                  style="push"
+                  tooltip="%BOMCompareECO.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.bomcompare.BOMCompareECOCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>            
+            <menu id="tools.Report" label="%Report.NAME.LABEL">
+                <command
+                      commandId="com.kgm.commands.ec.report.ReportEPLCommand"
+                      label="%ReportEPL.LABEL"
+                      style="push"
+                      tooltip="%ReportEPL.TOOLTIP">
+                   <visibleWhen
+                         checkEnabled="true">
+                      <and>
+                         <reference
+                               definitionId="com.teamcenter.rac.pse.inMainView">
+                         </reference>
+                         <with
+                               variable="rac_command_suppression">
+                            <not>
+                               <iterate
+                                     operator="or">
+                                  <equals
+                                        value="com.kgm.commands.ec.report.ReportEPLCommand">
+                                  </equals>
+                               </iterate>
+                            </not>
+                         </with>
+                      </and>
+                   </visibleWhen>
+                </command>
+                <command
+                      commandId="com.kgm.commands.common.BOMStructureReportCommand"
+                      label="Report BOM"
+                      style="push"
+                      tooltip="Report BOM">
+                   <visibleWhen
+                         checkEnabled="true">
+                      <and>
+                         <reference
+                               definitionId="com.teamcenter.rac.pse.inMainView">
+                         </reference>
+                         <with
+                               variable="rac_command_suppression">
+                            <not>
+                               <iterate
+                                     operator="or">
+                                  <equals
+                                        value="com.kgm.commands.common.BOMStructureReportCommand">
+                                  </equals>
+                               </iterate>
+                            </not>
+                         </with>
+                      </and>
+                   </visibleWhen>
+                </command>
+            </menu>
+      </menuContribution>
+      <!-- PSE SYMC Toolbar -->
+      <menuContribution
+            locationURI="toolbar:org.eclipse.ui.main.toolbar?after=additions">
+         <toolbar
+               id="com.kgm.commands.dmu.DMUReport.Toolbar">
+            <command
+                  commandId="com.kgm.commands.dmu.DMUReportCommand"
+                  icon="icons/report_16.png"
+                  tooltip="%DMU_REPORT.TOOLTIP">
+                  <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.pse.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.dmu.DMUReportCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+         </toolbar>
+      </menuContribution>
+      <!-- PSE SYMC Toolbar END -->
+   </extension>
+
+   <!-- SYMC Popup Menu -->
+   <extension
+         point="org.eclipse.ui.menus">
+        <menuContribution 
+            locationURI="popup:org.eclipse.ui.popup.any?before=group.refresh">
+            <command commandId="com.kgm.commands.partmaster.SYMCPartManagerCommand"
+                    icon="platform:/plugin/com.teamcenter.rac.common/icons/newitem_16.png"
+                    label="%createPart.LABEL">
+                <visibleWhen>
+                    <and>
+                        <iterate ifEmpty="false">
+                            <adapt type="com.teamcenter.rac.kernel.TCComponent">
+                                <test 
+                                    property="com.teamcenter.rac.kernel.TCComponent.typeClass" 
+                                    value="Folder">
+                                </test>
+                            </adapt>
+                        </iterate>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals value="com.kgm.commands.partmaster.SYMCPartManagerCommand"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            
+            
+             <command commandId="com.kgm.commands.partmaster.SYMCProductManagerCommand"
+                    icon="platform:/plugin/com.teamcenter.rac.common/icons/newitem_16.png"
+                    label="%createProduct.LABEL">
+                <visibleWhen>
+                    <and>
+                        <iterate ifEmpty="false">
+                            <adapt type="com.teamcenter.rac.kernel.TCComponent">
+                                <test 
+                                    property="com.teamcenter.rac.kernel.TCComponent.typeClass" 
+                                    value="Folder">
+                                </test>
+                            </adapt>
+                        </iterate>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals value="com.kgm.commands.partmaster.SYMCProductManagerCommand"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.commands.ec.eco.ECOCommand"
+                  icon="icons/eco_16.png"
+                  label="%ECO.LABEL"
+                  style="push"
+                  tooltip="%ECO.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.eco.ECOCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <!--
+            <command
+                  commandId="com.kgm.commands.ec.eci.ECICommand"
+                  icon="icons/ecr_16.png"
+                  label="%ECI.LABEL"
+                  style="push"
+                  tooltip="%ECI.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.ec.eci.ECICommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            -->
+            <command
+                  commandId="com.kgm.commands.document.TechDocCreCommand"
+                  icon="platform:/plugin/com.teamcenter.rac.common/icons/newitem_16.png"
+                  label="%techdoccre.LABEL"
+                  style="push"
+                  tooltip="Manage SSangYoung Part..">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.document.TechDocCreCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <command
+                  commandId="com.kgm.commands.createfolder.CreateFolderCommand"
+                  icon="icons/folder_create_16.png"
+                  label="%FOLDERCREATE.LABEL"
+                  style="push"
+                  tooltip="%FOLDERCREATE.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.createfolder.CreateFolderCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+            <command
+                  commandId="com.kgm.commands.newdataset.NewDatasetCommand"
+                  icon="icons/newfile_16.png"
+                  label="%NewDataSet.LABEL"
+                  style="push"
+                  tooltip="%NewDataSet.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.newdataset.NewDatasetCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+                  <separator
+                  name="ssangyong.separator2"
+                  visible="true">
+            </separator>
+            <command
+                  commandId="com.kgm.commands.saveas.SYMCSaveAsCommand"
+                  icon="icons/saveas_16.png"
+                  label="%SAVEAS.LABEL"
+                  style="push"
+                  tooltip="%SAVEAS.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.saveas.SYMCSaveAsCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.commands.revise.SYMCReviseCommand"
+                  icon="icons/revise_16.png"
+                  label="%REVISE.LABEL"
+                  style="push"
+                  tooltip="%REVISE.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.revise.SYMCReviseCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <!-- Dataset Revise -->
+            <command
+                  commandId="com.kgm.commands.revise.DatasetChangeCommand"
+                  label="%CHANGEDATASET.LABEL"
+                  style="push"
+                  tooltip="%CHANGEDATASET.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.commands.revise.DatasetChangeCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            <command
+                  commandId="com.kgm.common.bundlework.command.ReviseAllCommand"
+                  icon="icons/folder_create_16.png"
+                  label="%bundlerevise.LABEL"
+                  style="push"
+                  tooltip="%bundlerevise.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="ssangyong.explorerMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.common.bundlework.command.ReviseAllCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+            
+        </menuContribution>
+        <menuContribution 
+            locationURI="popup:org.eclipse.ui.popup.any?before=org.eclipse.ui.edit.cut">
+            <command commandId="com.kgm.commands.editMultiPartsCommand">
+                <visibleWhen>
+                  <and>
+                     <or>
+	                     <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+	                     <reference definitionId="com.teamcenter.rac.pse.inMainView"/>
+                     </or>
+                     <with variable="rac_command_suppression">
+                        <not>
+                           <iterate operator="or">
+                              <equals value="com.kgm.commands.editMultiPartsCommand"/>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>                     
+            <command commandId="com.kgm.commands.bomedit.BOMLineEditCommand"
+                    label="%BOMLineEdit.LABEL">
+                <visibleWhen>
+                    <and>
+                        <iterate ifEmpty="false">
+                            <reference 
+                                definitionId="com.teamcenter.rac.pse.inMainView"/>
+                        </iterate>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals 
+                                        value="com.kgm.commands.bomedit.BOMLineEditCommand"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution 
+            locationURI="popup:org.eclipse.ui.popup.any?before=additions">
+            <command commandId="com.kgm.commands.ecoview.ECOViewCommand"
+                    label="ECO View...">
+                <visibleWhen>
+                    <and>
+                        <iterate ifEmpty="false">
+                            <reference 
+                                definitionId="com.teamcenter.rac.pse.inMainView"/>
+                        </iterate>
+                        <with variable="rac_command_suppression">
+                            <not>
+                                <iterate operator="or">
+                                    <equals 
+                                        value="com.kgm.commands.ecoview.ECOViewCommand"/>
+                                </iterate>
+                            </not>
+                        </with>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution 
+            locationURI="popup:org.eclipse.ui.popup.any?after=com.teamcenter.rac.pasteAs">
+            <!-- locationURI="popup:org.eclipse.ui.popup.any?after=org.eclipse.ui.edit.paste"> -->
+            <!-- Replace -->
+            <command commandId="com.teamcenter.rac.replaceFromClipboard">
+                <visibleWhen>
+                    <and>
+                       <or>
+                        <reference definitionId="com.teamcenter.rac.pse.inMainView" />
+                       </or>
+                        <iterate ifEmpty="false">
+                            <and>
+                                <adapt
+                                    type="com.teamcenter.rac.kernel.TCComponentBOMLine">
+                                </adapt>
+                                <not>
+                                    <adapt
+                                        type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine">
+                                    </adapt>
+                                </not>
+                                <!-- [SR141226-001][2014.12.30][jclee] BOP Window에서 마우스우클릭 시 replace 메뉴 보이지 않도록 기능 추가 -->
+                                <not>
+                                    <adapt
+                                        type="com.teamcenter.rac.kernel.TCComponentBOPLine">
+                                    </adapt>
+                                </not>
+                            </and>
+                        </iterate>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        <menuContribution 
+            locationURI="popup:org.eclipse.ui.popup.any?after=org.eclipse.ui.edit.paste">
+            <!-- [SR151204-009][20151209][jclee] Paste Special... -->
+            <command commandId="com.teamcenter.rac.pasteAs">
+                <visibleWhen>
+                    <and>
+                       <or>
+                        <reference definitionId="com.teamcenter.rac.pse.inMainView" />
+                       </or>
+                        <iterate ifEmpty="false">
+                            <and>
+                                <adapt
+                                    type="com.teamcenter.rac.kernel.TCComponentBOMLine">
+                                </adapt>
+                                <not>
+                                    <adapt
+                                        type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine">
+                                    </adapt>
+                                </not>
+                                <!-- [SR141226-001][2014.12.30][jclee] BOP Window에서 마우스우클릭 시 replace 메뉴 보이지 않도록 기능 추가 -->
+                                <not>
+                                    <adapt
+                                        type="com.teamcenter.rac.kernel.TCComponentBOPLine">
+                                    </adapt>
+                                </not>
+                            </and>
+                        </iterate>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        
+        <!-- [NoSR][20160128][jclee] Option Copy -->
+        <menuContribution 
+            locationURI="popup:org.eclipse.ui.popup.any?after=com.teamcenter.rac.pasteAs">
+            <separator
+                name="ssangyong.optioncopy_sep"
+                visible="true">
+            </separator>
+            <command commandId="com.kgm.commands.bomedit.option.CopyOptionCommand">
+                <visibleWhen>
+                    <and>
+                       <or>
+                        <reference definitionId="com.teamcenter.rac.pse.inMainView" />
+                       </or>
+                        <iterate ifEmpty="false">
+                            <and>
+                                <adapt
+                                    type="com.teamcenter.rac.kernel.TCComponentBOMLine">
+                                </adapt>
+                                <not>
+                                    <adapt
+                                        type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine">
+                                    </adapt>
+                                </not>
+                                <not>
+                                    <adapt
+                                        type="com.teamcenter.rac.kernel.TCComponentBOPLine">
+                                    </adapt>
+                                </not>
+                            </and>
+                        </iterate>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+        
+        <!-- [NoSR][20160128][jclee] Option Paste -->
+        <menuContribution 
+            locationURI="popup:org.eclipse.ui.popup.any?after=com.kgm.commands.bomedit.option.CopyOptionCommand">
+            <command commandId="com.kgm.commands.bomedit.option.PasteOptionCommand">
+                <visibleWhen>
+                    <and>
+                       <or>
+                        <reference definitionId="com.teamcenter.rac.pse.inMainView" />
+                       </or>
+                        <iterate ifEmpty="false">
+                            <and>
+                                <adapt
+                                    type="com.teamcenter.rac.kernel.TCComponentBOMLine">
+                                </adapt>
+                                <not>
+                                    <adapt
+                                        type="com.teamcenter.rac.kernel.TCComponentAppGroupBOPLine">
+                                    </adapt>
+                                </not>
+                                <not>
+                                    <adapt
+                                        type="com.teamcenter.rac.kernel.TCComponentBOPLine">
+                                    </adapt>
+                                </not>
+                            </and>
+                        </iterate>
+                    </and>
+                </visibleWhen>
+            </command>
+        </menuContribution>
+   </extension>
+   <!-- SYMC Popup END... -->
+   <!-- Classification SYMC Menu -->
+   <extension
+         point="org.eclipse.ui.menus">
+       <menuContribution
+            locationURI="menu:org.eclipse.ui.main.menu?after=tools">
+         <menu
+               label="%SYMC.LABEL"
+               tooltip="%SYMC.TOOLTIP">
+            <visibleWhen
+                  checkEnabled="true">
+               <and>
+                  <reference
+                        definitionId="com.teamcenter.rac.classification.icadmin.inMainView">
+                  </reference>
+               </and>
+            </visibleWhen>
+         <command
+                  commandId="com.kgm.common.bundlework.command.ClassificationImportCommand"
+                  icon="icons/upload_16.png"
+                  label="%STANDARDPART.LABEL"
+                  style="push"
+                  tooltip="%STANDARDPART.TOOLTIP">
+               <visibleWhen
+                     checkEnabled="true">
+                  <and>
+                     <reference
+                           definitionId="com.teamcenter.rac.classification.icadmin.inMainView">
+                     </reference>
+                     <with
+                           variable="rac_command_suppression">
+                        <not>
+                           <iterate
+                                 operator="or">
+                              <equals
+                                    value="com.kgm.common.bundlework.command.ClassificationImportCommand">
+                              </equals>
+                           </iterate>
+                        </not>
+                     </with>
+                  </and>
+               </visibleWhen>
+            </command>
+          </menu>
+      </menuContribution>
+   </extension>
+   <!-- Classification SYMC Menu END -->
+
+   <!-- Teamcenter Menu Definition -->
+   <extension point="org.eclipse.core.expressions.definitions">
+        <!-- explorer & pse Menu view -->
+        <definition
+            id="ssangyong.explorerAndpseMainView">
+            <or>
+                <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                <reference definitionId="com.teamcenter.rac.explorer.inMainView"/>
+                <reference definitionId="com.teamcenter.rac.pse.inMainView"/>
+            </or>
+        </definition>
+        <!-- pse Menu view -->
+        <definition
+            id="ssangyong.pseMainView">
+            <or>
+                <reference definitionId="com.teamcenter.rac.pse.inMainView"/>
+                <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+            </or>
+        </definition>
+        <!-- explorer Menu view -->
+        <definition
+            id="ssangyong.explorerMainView">
+            <or>
+                <reference definitionId="com.teamcenter.rac.ui.inMainPerspective"/>
+                <reference definitionId="com.teamcenter.rac.explorer.inMainView"/>  
+            </or>
+        </definition>
+        <!-- explorer Admin Menu view -->
+        <definition
+            id="ssangyong.adminMenuView">
+            <or>
+                <test
+                    property="com.teamcenter.rac.kernel.TCComponentUser.role"
+                    value="DBA">
+                </test>
+            </or>
+        </definition>
+        <!-- classification Admin Menu view -->
+        <definition
+            id="ssangyong.classificationAdminMenuView">
+            <or>
+                <reference definitionId="com.teamcenter.rac.classification.icadmin.inMainView"/>
+            </or>
+        </definition>
+    </extension>
+    <!-- Teamcenter Menu Definition END... -->
+    
+    <!-- SYMC TCUA Start -->
+    <extension point = "org.eclipse.ui.startup" >
+        <startup class = "com.kgm.Start"/>
+    </extension>
+    <!-- SYMC TCUA Start END... -->
+    <extension point="com.teamcenter.rac.viewer.ViewerViewRegistry">
+        <viewer
+            autoCheckout="false"
+            factoryClassName="com.kgm.viewer.SYMCPropertyViewerFactory"
+            id="SYMCPropertyViewer"
+            isSwing="false"
+            priority="100">
+            <enableWhen
+                checkEnabled="false">
+            </enableWhen>
+        </viewer>
+    </extension>
+            <!--##### 1.메뉴 정의 #####-->
+    <!-- <extension point="org.eclipse.ui.menus"> -->    
+    <!--  popUp 메뉴 생성  >> item,itemRevision name edit -->
+    <!-- 
+        <menuContribution locationURI = "popup:org.eclipse.ui.popup.any?after=additions">
+         <command commandId="com.dtr.explore.addshortcut.commands.ChangeName"  mnemonic="S" icon="icons/sample.gif" id="com.dtr.explore.addshortcut.commands.ChangeName">
+            <visibleWhen>
+                <iterate ifEmpty="false">
+                    <adapt type="com.teamcenter.rac.kernel.TCComponent">                                
+                            <or>
+                                <test property="com.teamcenter.rac.kernel.TCComponent.typeClass" value="ItemRevision">
+                                </test>
+                            </or>
+                    </adapt>
+                </iterate>
+                <with variable="rac_command_suppression">
+                    <not>
+                        <iterate operator="or">
+                            <equals
+                                value="com.teamcenter.rac.createSubProcess"/>
+                        </iterate>
+                    </not>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+    </extension>
+    -->
+    
+    <!-- [20140122][jclee] 단축키 기능 추가, 류강하 책임 요청 -->
+    <extension point="org.eclipse.ui.bindings">
+        <key commandId="com.kgm.commands.revise.SYMCReviseCommand"
+            schemeId="com.teamcenter.rac.scheme" sequence="F4"/>
+        <!-- <key commandId="com.teamcenter.rac.replaceFromClipboard"
+            schemeId="com.teamcenter.rac.scheme" sequence="M1+A"/> -->
+    </extension>
+    
+    <!-- View Part 정의 -->
+    <extension
+        point="org.eclipse.ui.views">
+        <!-- BOM Viewer -->
+        <view
+            allowMultiple="true"
+            class="com.kgm.commands.bomviewer.BOMViewerViewPart"
+            id="com.kgm.commands.bomviewer.BOMViewerViewPart"
+            name="BOM Viewer">
+        </view>
+        <!-- Guide Manual -->
+        <view
+            class="com.kgm.commands.faq.FaqViewPart"
+            id="com.kgm.commands.faq.FaqViewPart"
+            name="Guide Manual">
+        </view>
+        <!-- Guide Manual Admin -->
+        <view
+            class="com.kgm.commands.faq.FaqAdminViewPart"
+            id="com.kgm.commands.faq.FaqAdminViewPart"
+            name="Guide Manual Admin">
+        </view>
+    </extension>
+    
+</plugin>

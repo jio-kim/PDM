@@ -54,7 +54,7 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 
-import com.ssangyong.common.utils.variant.VariantTableCellRenderer;
+import com.kgm.common.utils.variant.VariantTableCellRenderer;
 import com.symc.plm.me.sdv.operation.option.OptionSetOperation;
 import com.symc.plm.me.utils.variant.OptionManager;
 import com.symc.plm.me.utils.variant.VariantCheckBoxTableCellEditor;

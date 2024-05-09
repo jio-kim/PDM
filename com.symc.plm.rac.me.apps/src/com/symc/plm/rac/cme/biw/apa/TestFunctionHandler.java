@@ -20,7 +20,7 @@ import com.teamcenter.rac.kernel.TCException;
 public class TestFunctionHandler extends AbstractHandler
 implements IExecutableExtension{
 
-    private final String serviceClassName = "com.ssangyong.service.BopPertService";
+    private final String serviceClassName = "com.kgm.service.BopPertService";
 
     @Override
     public Object execute(ExecutionEvent arg0) throws ExecutionException {

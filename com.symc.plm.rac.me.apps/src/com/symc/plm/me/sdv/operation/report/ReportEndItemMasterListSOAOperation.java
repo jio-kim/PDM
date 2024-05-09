@@ -9,9 +9,9 @@ import org.sdv.core.beans.DialogStubBean;
 import org.sdv.core.common.IDialog;
 import org.sdv.core.ui.UIManager;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCSoaWebUtil;
-import com.ssangyong.common.remote.SecurityUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCSoaWebUtil;
+import com.kgm.common.remote.SecurityUtil;
 import com.symc.plm.me.sdv.operation.AbstractTCSDVOperation;
 import com.teamcenter.rac.aif.AIFPortal;
 import com.teamcenter.rac.aif.AbstractAIFUIApplication;
@@ -138,7 +138,7 @@ public class ReportEndItemMasterListSOAOperation extends AbstractTCSDVOperation 
 		ds.put("ccObjectName", ccName);
 		
 		SYMCSoaWebUtil soaWebUtil = new SYMCSoaWebUtil();
-		String returnVal = (String)soaWebUtil.execute("com.ssangyong.soa.service.BOPReportService",
+		String returnVal = (String)soaWebUtil.execute("com.kgm.soa.service.BOPReportService",
 			"makeReport",
 			ds);
 		

@@ -15,12 +15,12 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.StringUtil;
-import com.ssangyong.common.utils.variant.VariantErrorCheck;
-import com.ssangyong.common.utils.variant.VariantOption;
-import com.ssangyong.common.utils.variant.VariantValue;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.StringUtil;
+import com.kgm.common.utils.variant.VariantErrorCheck;
+import com.kgm.common.utils.variant.VariantOption;
+import com.kgm.common.utils.variant.VariantValue;
 import com.symc.plm.rac.prebom.common.util.OptionManager;
 import com.teamcenter.rac.aif.AbstractAIFOperation;
 import com.teamcenter.rac.aifrcp.AIFUtility;

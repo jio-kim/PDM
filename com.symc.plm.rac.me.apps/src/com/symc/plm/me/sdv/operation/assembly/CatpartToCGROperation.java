@@ -8,10 +8,10 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.ProgressBar;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.ProgressBar;
 import com.symc.plm.me.common.LogFileUtility;
 import com.symc.plm.me.sdv.operation.AbstractTCSDVOperation;
 import com.symc.plm.me.sdv.service.resource.DatasetUtilities;
@@ -58,7 +58,7 @@ public class CatpartToCGROperation extends AbstractTCSDVOperation {
     	
      	 try{
             ds.put("JOB_PUID", "");
-	     	ArrayList<HashMap<String, Object>> resultList = (ArrayList<HashMap<String, Object>>) remoteQuery.execute("com.ssangyong.service.SMTestService", "getNotUploadCGRFile", ds);
+	     	ArrayList<HashMap<String, Object>> resultList = (ArrayList<HashMap<String, Object>>) remoteQuery.execute("com.kgm.service.SMTestService", "getNotUploadCGRFile", ds);
 	    	uploadCGRFile(resultList);
 	    	
 	    	MessageBox.post(AIFUtility.getActiveDesktop(), "변환 요청이 완료 되었습니다.\n C:\\Temp 폴더에 Simple_오늘날짜_CGRFileTransform.txt 로 저장 되어 있습니다.", "INFORMATION", MessageBox.INFORMATION);

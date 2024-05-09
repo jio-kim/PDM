@@ -4,7 +4,7 @@ import org.eclipse.swt.custom.ScrolledComposite;
 import org.eclipse.swt.widgets.Composite;
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.dialog.SYMCAbstractDialog;
 import com.symc.plm.me.sdv.operation.meco.CreateMECOOperation;
 import com.symc.plm.me.sdv.view.meco.MECOSWTRenderingView;
 import com.teamcenter.rac.kernel.TCComponentChangeItemRevision;

@@ -8,7 +8,7 @@ import java.util.Map;
 
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.rac.kernel.InterfaceSYMCECOSelect;
+import com.kgm.rac.kernel.InterfaceSYMCECOSelect;
 import com.teamcenter.rac.aif.kernel.AIFComponentContext;
 import com.teamcenter.rac.aifrcp.AIFUtility;
 import com.teamcenter.rac.util.ConfirmationDialog;
@@ -927,7 +927,7 @@ public class SYMCBOMLine extends TCComponentBOMLine {
      */
 	private TCComponentItemRevision getRevisionECO(TCComponentItemRevision parentRev) throws TCException {
 		final Shell shell = AIFUtility.getActiveDesktop().getShell();
-		final Registry registry = Registry.getRegistry("com.ssangyong.commands.ec.history.history");
+		final Registry registry = Registry.getRegistry("com.kgm.commands.ec.history.history");
 
 		ecoRev = null;
 		ecoRev = (TCComponentItemRevision) parentRev.getReferenceProperty("s7_ECO_NO");

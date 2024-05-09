@@ -22,7 +22,7 @@ import org.eclipse.swt.widgets.Table;
 import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 
-import com.ssangyong.common.utils.PreferenceService;
+import com.kgm.common.utils.PreferenceService;
 import com.symc.plm.rac.prebom.ccn.commands.dao.CustomCCNDao;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;

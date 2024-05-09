@@ -2,7 +2,7 @@ package com.symc.plm.rac.prebom.prebom.commands;
 
 import org.eclipse.swt.widgets.Shell;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.prebom.dialog.updateweight.UpdateEstWeightDialog;
 import com.teamcenter.rac.aif.AIFDesktop;

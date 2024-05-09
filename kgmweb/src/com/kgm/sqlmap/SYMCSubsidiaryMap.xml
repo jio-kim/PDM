@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">  
+  
+<mapper namespace="com.kgm.mapper.SYMCSubsidiaryMapper">
+    
+    <select id="searchSubsidiary" resultType="java.util.HashMap">
+		SELECT
+			TC.PITEM_ID AS "tc_item_id",
+		    STEPS.PARTNO AS "item_id",
+		    STEPS.PARTNAME AS "object_name",
+		    STEPS.ACNT AS "m7_MATERIAL_TYPE",
+		    STEPS.GROUP_CODE AS "m7_SUBSIDIARY_GROUP",
+		    STEPS.PARTQUAL AS "m7_PARTQUAL",
+		    STEPS.PARTSTAND AS "m7_SPEC_KOR",
+		    STEPS.OLDPART AS "m7_OLDPART",
+		    STEPS.UNIT AS "m7_UNIT_AMOUNT",
+		    NULL AS "m7_BUY_UNIT",
+		    STEPS.MANUFACTURER AS "m7_MAKER",
+		    STEPS.REMARK AS "m7_REMARK"
+		FROM
+		    FTA.SAP_MA01TB@LINK_101_STEPS STEPS,
+            INFODBA.PITEM TC
+		WHERE
+            STEPS.PARTNO = TC.PITEM_ID(+)
+  		<!-- [20140509][SR140507-042] shcho, 검색 결과 Excel로 내보내기 기능 추가하면서 검색 조건 변경 (멀티검색조건추가) -->
+		<if test="!(PART_NO == null || PART_NO == '')">
+			<if test="PART_NO_MULTI != null and PART_NO_MULTI eq 'N'.toString()">
+				AND STEPS.PARTNO LIKE '%'||#{PART_NO}||'%'
+	  		</if>
+			<if test="PART_NO_MULTI != null and PART_NO_MULTI eq 'Y'.toString()">
+				AND STEPS.PARTNO IN (${PART_NO})
+	  		</if>
+  		</if>
+		<if test="!(PART_NAME == null || PART_NAME == '')">
+			<if test="PART_NAME_MULTI != null and PART_NAME_MULTI eq 'N'.toString()">
+	    		AND STEPS.PARTNAME LIKE '%'||#{PART_NAME}||'%'
+	  		</if>
+			<if test="PART_NAME_MULTI != null and PART_NAME_MULTI eq 'Y'.toString()">
+				AND STEPS.PARTNAME IN (${PART_NAME})
+	  		</if>
+  		</if>
+		<if test="!(OLD_PART_NO == null || OLD_PART_NO == '')">
+			<if test="OLD_PART_NO_MULTI != null and OLD_PART_NO_MULTI eq 'N'.toString()">
+	    		AND STEPS.OLDPART LIKE '%'||#{OLD_PART_NO}||'%'
+	  		</if>
+			<if test="OLD_PART_NO_MULTI != null and OLD_PART_NO_MULTI eq 'Y'.toString()">
+				AND STEPS.OLDPART IN (${OLD_PART_NO})
+	  		</if>
+  		</if>
+		<if test="!(SUBSIDIARY_GROUP == null || SUBSIDIARY_GROUP == '')">
+			<if test="SUBSIDIARY_GROUP_MULTI != null  and SUBSIDIARY_GROUP_MULTI eq 'N'.toString()">	    		
+	    		AND STEPS.GROUP_CODE LIKE '%'||#{SUBSIDIARY_GROUP}||'%'
+	  		</if>
+			<if test="SUBSIDIARY_GROUP_MULTI != null and SUBSIDIARY_GROUP_MULTI eq 'Y'.toString()">
+				AND STEPS.GROUP_CODE IN (${SUBSIDIARY_GROUP})
+	  		</if>
+  		</if>
+  		
+    </select>
+</mapper>

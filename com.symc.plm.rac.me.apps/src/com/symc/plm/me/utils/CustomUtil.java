@@ -28,8 +28,8 @@ import org.eclipse.jface.fieldassist.FieldDecoration;
 import org.eclipse.jface.fieldassist.FieldDecorationRegistry;
 import org.eclipse.swt.widgets.Control;
 
-import com.ssangyong.common.SYMCClass;
-import com.ssangyong.rac.kernel.SYMCBOPEditData;
+import com.kgm.rac.kernel.SYMCBOPEditData;
+import com.kgm.common.SYMCClass;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
@@ -2840,7 +2840,7 @@ public class CustomUtil {
 	 * @throws Exception
 	 */
 	public static TCComponentItemRevision relateDatasetToItemRevision(TCComponentItemRevision targetRevision, TCComponentItemRevision newRevision, boolean is3DCheck, boolean is2DCheck, boolean isSoftwareCheck, TCComponentItemRevision ecoRevision, boolean isSucceeded) throws Exception {
-		Registry registry = Registry.getRegistry("com.ssangyong.commands.revise.revise");
+		Registry registry = Registry.getRegistry("com.kgm.commands.revise.revise");
 		TCComponent[] relatedComponents = targetRevision.getRelatedComponents();
   		boolean isNotAllChecked = !is3DCheck && !is2DCheck && !isSoftwareCheck ? true : false;
 

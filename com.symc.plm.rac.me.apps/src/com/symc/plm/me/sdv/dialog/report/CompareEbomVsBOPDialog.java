@@ -22,7 +22,7 @@ import org.sdv.core.common.ISDVOperation;
 import org.sdv.core.util.SDVSpringContextUtil;
 import org.sdv.core.util.UIUtil;
 
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.dialog.SYMCAbstractDialog;
 import com.symc.plm.me.sdv.view.report.CompareEbomVsBOPView;
 import com.teamcenter.rac.aifrcp.AIFUtility;
 import com.teamcenter.rac.util.Registry;
@@ -66,7 +66,7 @@ public class CompareEbomVsBOPDialog extends SYMCAbstractDialog {
     }
 
     protected void createButtonsForButtonBar(Composite parent) {
-        registry = Registry.getRegistry("com.ssangyong.common.common");
+        registry = Registry.getRegistry("com.kgm.common.common");
 
         compareButton = createButton(parent, 0, "Compare", false);
         compareButton.setImage(registry.getImage("compareReport.ICON"));

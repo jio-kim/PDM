@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN" "http://ibatis.apache.org/dtd/ibatis-3-mapper.dtd">
+
+<mapper namespace="com.kgm.mapper.DCSFavoritesMapper">
+
+	<insert id="insertDCSFavoritesTeam" parameterType="java.util.HashMap">
+		insert into dcs_favorites_team (
+			user_id,
+			user_name,
+			team_code,
+			team_name
+		) values (
+			#{user_id},
+			#{user_name},
+			#{team_code},
+			#{team_name}
+		)
+	</insert>
+
+	<delete id="deleteDCSFavoritesTeam" parameterType="java.util.HashMap">
+		delete from dcs_favorites_team
+		where
+			user_id = #{user_id} and
+			team_code = #{team_code}
+	</delete>
+
+	<select id="selectDCSFavoritesTeamList" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select
+			user_id,
+			user_name,
+			team_code,
+			team_name
+		from dcs_favorites_team
+		where
+			user_id = #{user_id}
+		order by team_name
+	</select>
+
+</mapper>

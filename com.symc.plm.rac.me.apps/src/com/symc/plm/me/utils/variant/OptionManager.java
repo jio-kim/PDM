@@ -10,9 +10,9 @@ import java.util.List;
 import java.util.Set;
 import java.util.Vector;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.common.utils.TcDefinition;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.common.utils.TcDefinition;
 import com.symc.plm.me.common.SDVBOPUtilities;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.teamcenter.rac.aif.kernel.AIFComponentContext;
@@ -1051,7 +1051,7 @@ public class OptionManager {
         try {
             DataSet ds = new DataSet();
             ds.put("code_name", null);
-            List<HashMap<String, String>> list = (List<HashMap<String, String>>)remote.execute("com.ssangyong.service.VariantService", "getVariantValueDesc", ds);
+            List<HashMap<String, String>> list = (List<HashMap<String, String>>)remote.execute("com.kgm.service.VariantService", "getVariantValueDesc", ds);
             if (list != null) {
                 for (HashMap<String, String> map : list) {
                     valueDescMap.put(map.get("CODE_NAME"), map.get("CODE_DESC"));

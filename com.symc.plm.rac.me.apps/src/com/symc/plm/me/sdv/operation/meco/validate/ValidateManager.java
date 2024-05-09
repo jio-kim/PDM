@@ -5,7 +5,7 @@ package com.symc.plm.me.sdv.operation.meco.validate;
 
 import java.util.ArrayList;
 
-import com.ssangyong.common.WaitProgressBar;
+import com.kgm.common.WaitProgressBar;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
 import com.symc.plm.me.utils.CustomUtil;

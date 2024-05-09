@@ -48,10 +48,10 @@ import jxl.write.WritableSheet;
 import jxl.write.WritableWorkbook;
 import jxl.write.WriteException;
 
-import com.ssangyong.commands.ospec.op.OSpec;
-import com.ssangyong.commands.ospec.op.OpGroup;
-import com.ssangyong.commands.ospec.op.OpUtil;
-import com.ssangyong.common.ui.mergetable.MultiSpanCellTable;
+import com.kgm.commands.ospec.op.OSpec;
+import com.kgm.commands.ospec.op.OpGroup;
+import com.kgm.commands.ospec.op.OpUtil;
+import com.kgm.common.ui.mergetable.MultiSpanCellTable;
 import com.symc.plm.rac.prebom.preospec.ui.OSpecTable;
 import com.teamcenter.rac.aif.AIFShell;
 import com.teamcenter.rac.aif.AbstractAIFDialog;

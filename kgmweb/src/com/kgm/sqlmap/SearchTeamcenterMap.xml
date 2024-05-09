@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgm.mapper.SearchTeamcenterMapper">
+
+	<select id="searchItemRevision" resultType="java.util.HashMap">
+		SELECT I.PITEM_ID ID,
+		       R.PITEM_REVISION_ID REVISION,
+		       RWSO.POBJECT_NAME NAME,
+		       U.PUSER_NAME || ' (' || U.PUSER_ID || ')' OWNER,
+		       DECODE(RWSO.PDATE_RELEASED, NULL, 'WORKING', 'RELEASED') STATUS,
+		       R.PS7_MATURITY MATURITY,
+		       R.PUID REV_PUID,
+				<choose>
+					<when test="TYPE == 'S7_MaterialRevision' or TYPE == 'S7_PROJECTRevision'">
+						GETLATESTREVISION(I.PUID) LATEST_RELEASED_REVISION
+					</when>
+					<otherwise>
+						GETLATESTRELEASEDREVISION(I.PUID) LATEST_RELEASED_REVISION
+					</otherwise>
+				</choose>
+		FROM   INFODBA.PITEM I,
+		       INFODBA.PITEMREVISION R,
+		       INFODBA.PWORKSPACEOBJECT RWSO,
+			   INFODBA.PPOM_APPLICATION_OBJECT RPAO,
+			   INFODBA.PPOM_USER U
+		WHERE  I.PUID = R.RITEMS_TAGU
+		AND    R.PUID = RWSO.PUID
+		AND    R.PUID = RPAO.PUID
+		AND    RPAO.ROWNING_USERU = U.PUID
+		AND    RWSO.POBJECT_TYPE = #{TYPE, jdbcType=VARCHAR}
+		<if test="ID != null and ID != ''">
+		AND    UPPER(I.PITEM_ID) LIKE UPPER(#{ID, jdbcType=VARCHAR})
+		</if>
+		<if test="NAME != null and NAME != ''">
+		AND    UPPER(RWSO.POBJECT_NAME) LIKE UPPER(#{NAME, jdbcType=VARCHAR})
+		</if>
+		<if test="IS_ONLY_LATEST_RELEASED_REVISION == 'true'">
+			<choose>
+				<when test="TYPE == 'S7_MaterialRevision' or TYPE == 'S7_PROJECTRevision'">
+					AND    R.PUID = GETLATESTREVISION(I.PUID)
+				</when>
+				<otherwise>
+					AND    R.PUID = GETLATESTRELEASEDREVISION(I.PUID)
+				</otherwise>
+			</choose>
+		</if>
+		<if test="TYPE == 'S7_MaterialRevision'">
+		AND    R.PUID IN (SELECT PUID FROM INFODBA.PS7_MATERIALREVISION WHERE PS7_ACTIVATION = 'Y')
+		</if>
+		ORDER BY 1, 2
+	</select>
+
+	<!-- sql -->
+    <select id="executeSqlSelect" resultType="java.util.HashMap">
+    	${sqlqry}
+    </select>
+    <insert id="executeSqlInsert">
+        ${sqlqry}
+    </insert>
+    <update id="executeSqlUpdate">
+        ${sqlqry}
+    </update> 
+    <delete id="executeSqlDelete">
+        ${sqlqry}
+    </delete>  
+
+</mapper>

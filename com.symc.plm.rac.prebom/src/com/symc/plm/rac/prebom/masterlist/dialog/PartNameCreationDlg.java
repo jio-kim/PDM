@@ -17,8 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.StringUtil;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.StringUtil;
 import com.symc.plm.rac.prebom.common.util.lov.LovCombo;
 import com.symc.plm.rac.prebom.masterlist.view.MasterListReq;
 import com.teamcenter.rac.aif.AbstractAIFDialog;
@@ -373,7 +373,7 @@ public class PartNameCreationDlg extends AbstractAIFDialog {
 				SYMCRemoteUtil remote = new SYMCRemoteUtil();
 				DataSet ds = new DataSet();
 				ds.put("partName", strEnName);
-				Object result = remote.execute("com.ssangyong.service.VPMIfService", "getExistDRNameCnt", ds);
+				Object result = remote.execute("com.kgm.service.VPMIfService", "getExistDRNameCnt", ds);
 	
 				if (result instanceof Integer)
 				{

@@ -3,9 +3,9 @@ package com.symc.plm.rac.prebom.optionedit.commands;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.ssangyong.common.WaitProgressBar;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.variant.VariantOption;
+import com.kgm.common.WaitProgressBar;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.variant.VariantOption;
 import com.symc.plm.rac.prebom.common.TypeConstant;
 import com.symc.plm.rac.prebom.common.util.BomUtil;
 import com.symc.plm.rac.prebom.common.util.OptionManager;

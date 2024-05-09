@@ -29,10 +29,10 @@ import org.eclipse.wb.swt.SWTResourceManager;
 
 import swing2swt.layout.BorderLayout;
 
-import com.ssangyong.common.SYMCText;
-import com.ssangyong.common.dialog.SYMCAbstractDialog;
-import com.ssangyong.common.utils.CustomUtil;
-import com.ssangyong.common.utils.SWTUtilities;
+import com.kgm.common.SYMCText;
+import com.kgm.common.dialog.SYMCAbstractDialog;
+import com.kgm.common.utils.CustomUtil;
+import com.kgm.common.utils.SWTUtilities;
 import com.symc.plm.rac.prebom.common.PropertyConstant;
 import com.symc.plm.rac.prebom.prebom.dialog.preccn.CCNSearchDialog;
 import com.teamcenter.rac.aif.common.AIFTableLine;
@@ -100,7 +100,7 @@ public class PreReviseDialog extends SYMCAbstractDialog {
     }
 
     /* (non-Javadoc)
-     * @see com.ssangyong.common.dialog.SYMCAbstractDialog#createDialogPanel(org.eclipse.swt.custom.ScrolledComposite)
+     * @see com.kgm.common.dialog.SYMCAbstractDialog#createDialogPanel(org.eclipse.swt.custom.ScrolledComposite)
      */
     @Override
     protected Composite createDialogPanel(ScrolledComposite parentScrolledComposite) {
@@ -213,7 +213,7 @@ public class PreReviseDialog extends SYMCAbstractDialog {
     }
 
     /* (non-Javadoc)
-     * @see com.ssangyong.common.dialog.SYMCAbstractDialog#validationCheck()
+     * @see com.kgm.common.dialog.SYMCAbstractDialog#validationCheck()
      */
     @Override
     protected boolean validationCheck() {
@@ -236,7 +236,7 @@ public class PreReviseDialog extends SYMCAbstractDialog {
     }
 
     /* (non-Javadoc)
-     * @see com.ssangyong.common.dialog.SYMCAbstractDialog#apply()
+     * @see com.kgm.common.dialog.SYMCAbstractDialog#apply()
      */
     @Override
     protected boolean apply() {

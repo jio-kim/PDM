@@ -3,14 +3,14 @@ package com.symc.plm.rac.prebom.dcs.service;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
 
 public class DCSVisionNetQueryService {
 
 	private SYMCRemoteUtil remoteUtil;
 
-	private final String SERVICE_CLASS_NAME = "com.ssangyong.service.DCSVisionNetService";
+	private final String SERVICE_CLASS_NAME = "com.kgm.service.DCSVisionNetService";
 
 	public DCSVisionNetQueryService() {
 		remoteUtil = new SYMCRemoteUtil();

@@ -10,7 +10,7 @@ import org.sdv.core.common.data.IDataMap;
 import org.sdv.core.common.data.IDataSet;
 import org.sdv.core.common.data.RawDataMap;
 
-import com.ssangyong.rac.kernel.SYMCBOPEditData;
+import com.kgm.rac.kernel.SYMCBOPEditData;
 import com.symc.plm.me.common.SDVLOVUtils;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;

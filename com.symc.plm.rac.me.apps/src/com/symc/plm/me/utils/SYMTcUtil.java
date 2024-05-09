@@ -17,9 +17,9 @@ import java.util.Vector;
 import org.apache.log4j.Logger;
 import org.eclipse.swt.widgets.Combo;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.rac.kernel.SYMCECODwgData;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.rac.kernel.SYMCECODwgData;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.teamcenter.rac.aif.kernel.AIFComponentContext;
 import com.teamcenter.rac.aif.kernel.AbstractAIFSession;
@@ -1153,7 +1153,7 @@ public class SYMTcUtil {
         for (int i = 0; i < ecos.length; i++) {
             ds.put("ecoNo", ecos[i]);
             // ECO DWG-B List를 조회
-            ArrayList<SYMCECODwgData> rows = (ArrayList<SYMCECODwgData>) remote.execute("com.ssangyong.service.ECOHistoryService", "selectECODwgList", ds);
+            ArrayList<SYMCECODwgData> rows = (ArrayList<SYMCECODwgData>) remote.execute("com.kgm.service.ECOHistoryService", "selectECODwgList", ds);
             // [다운로드 Path]/[ECO No.] 하위에 파일을 생성한다.
             String ecoDownloadPath = strDownloadPath + "/" + ecos[i];
             File desti = new File(ecoDownloadPath);
@@ -1472,7 +1472,7 @@ public class SYMTcUtil {
             DataSet ds = new DataSet();
             ds.put("PRE_FIX", preFix);
             ds.put("TO_LEN", entire_len);
-            newId = (String) remote.execute("com.ssangyong.service.VariantService", "getNewId", ds);
+            newId = (String) remote.execute("com.kgm.service.VariantService", "getNewId", ds);
         } catch (Exception e) {
             e.printStackTrace();
         }

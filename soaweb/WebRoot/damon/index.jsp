@@ -14,7 +14,7 @@
 <!--[if lt IE 9]><script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
-	<form method="post" action="/ssangyongweb/AdminLoginServlet" class="login">
+	<form method="post" action="/kgmweb/AdminLoginServlet" class="login">
 		<p>
 			<label for="login">ID :</label> <input type="text" name="id"
 				id="id" value="">

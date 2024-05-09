@@ -5,18 +5,18 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Vector;
 
-import com.ssangyong.common.remote.DataSet;
-import com.ssangyong.common.remote.SYMCRemoteUtil;
-import com.ssangyong.dto.ApprovalLineData;
-import com.ssangyong.rac.kernel.SYMCBOMEditData;
-import com.ssangyong.rac.kernel.SYMCBOPEditData;
+import com.kgm.common.remote.DataSet;
+import com.kgm.common.remote.SYMCRemoteUtil;
+import com.kgm.dto.ApprovalLineData;
+import com.kgm.rac.kernel.SYMCBOMEditData;
+import com.kgm.rac.kernel.SYMCBOPEditData;
 
 @SuppressWarnings("unchecked")
 public class CustomMECODao {
 
-	public static final String MECO_INFO_SERVICE_CLASS = "com.ssangyong.service.MECOService";//com.ssangyong.dao.ECOInfoDao·Î ÇØµµ µÊ
-	public static final String MECO_HISTORY_SERVICE_CLASS = "com.ssangyong.service.MECOHistoryService";
-	public static final String ECO_INFO_SERVICE_CLASS = "com.ssangyong.service.ECOService";//com.ssangyong.dao.ECOInfoDao·Î ÇØµµ µÊ
+	public static final String MECO_INFO_SERVICE_CLASS = "com.kgm.service.MECOService";//com.kgm.dao.ECOInfoDao·Î ÇØµµ µÊ
+	public static final String MECO_HISTORY_SERVICE_CLASS = "com.kgm.service.MECOHistoryService";
+	public static final String ECO_INFO_SERVICE_CLASS = "com.kgm.service.ECOService";//com.kgm.dao.ECOInfoDao·Î ÇØµµ µÊ
 
 	private SYMCRemoteUtil remoteQuery;
 	private DataSet ds;

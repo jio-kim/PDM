@@ -1,0 +1,604 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kgm.mapper.masterlist">
+
+	<select id="selectWorkingCCN" resultType="java.util.HashMap">
+		select it.pItem_id ccn_no, rev.puid 
+        from infodba.pitem it
+           , infodba.pitemrevision rev
+           , infodba.ps7_preccnrevision ccn
+           , infodba.pworkSpaceObject obj
+           , infodba.prelease_status_list RSL
+           , infodba.preleasestatus rs
+           , infodba.ppom_application_object pao
+           , infodba.ppom_user puser
+        where it.puid = rev.ritems_tagu
+        and ccn.puid = rev.puid
+        and rev.puid = obj.puid
+        and rev.puid = pao.puid
+        and obj.pactive_seq = '1'
+        and obj.pobject_type = 'S7_PreCCNRevision'
+        and rev.puid = rsl.puid(+)
+        and rsl.pvalu_0 = rs.puid(+)
+        and rs.pdate_Released is null
+        and pao.rowning_useru = puser.puid
+		and puser.puser_id = #{USER_ID, jdbcType=VARCHAR}
+	</select>
+
+    <!-- [SR190930-042][CSH] Rev이 000이면서 Working 이면 Carry Over 못하도록 제한-->
+	<select id="selectPart" resultType="java.util.HashMap">
+        select item.pitem_id item_id, item.puid, obj.pobject_type 
+        from infodba.pitem item 
+           , infodba.pworkspaceobject obj
+        where item.puid = obj.puid
+        and obj.pactive_seq = '1'
+        and obj.pobject_type in ('S7_Vehpart', 'S7_Stdpart')
+        and exists (select 1
+                    from infodba.pitemrevision ir
+                       , infodba.pworkspaceobject w
+                     where item.puid = ir.ritems_tagu
+                     and ir.puid = w.puid
+                     and (ir.pitem_revision_id != '000' or w.pdate_released is not null))
+        and item.pItem_id = #{ITEM_ID, jdbcType=VARCHAR}
+      
+        <!-- 
+		select item.pItem_id item_id, item.puid, obj.pObject_type 
+		  from infodba.pitem item , infodba.pWorkSpaceObject obj
+		 where item.puid = obj.puid
+		   and OBJ.PACTIVE_SEQ = '1'
+	   	   and obj.pObject_type in ('S7_Vehpart', 'S7_Stdpart')
+		   and item.pItem_id = #{ITEM_ID, jdbcType=VARCHAR}
+       -->
+	</select>
+	
+	<select id="selectStoredOptionSet" resultType="java.util.HashMap">
+		select pOption, pString_value from INFODBA.PSTOREDOPTIONVALUE where rParentu= #{PUID, jdbcType=VARCHAR}
+	</select>
+	
+	<select id="selectEssentialName" resultType="string">
+		select PART_NAME from MASTER_LIST_ESSENTIAL_NAME
+	</select>
+	
+    <select id="selectSysGuid" resultType="string">
+    	SELECT SYS_GUID() SYSTEM_ROW_KEY FROM DUAL
+    </select>	
+    
+    <select id="selectDwgDeployableDate" resultType="string">
+    	select to_char(ps7_dwg_deployable_date + 9/24, 'YYYY-MM-DD') dwg_deployable_date from infodba.PS7_PREVEHPARTREVISION  where puid=#{PUID, jdbcType=VARCHAR}
+    </select>
+    
+    <select id="selectBVRModifyDate" resultType="string">
+        select to_char(bvrpao.plast_mod_date + 9/24, 'YYYY-MM-DD HH24:MI') dwg_deployable_date from infodba.pitemrevision prev, infodba.pstructure_revisions pstr, infodba.ppom_application_object bvrpao  where prev.puid = pstr.puid and pstr.pvalu_0 = bvrpao.puid and prev.puid=#{PUID, jdbcType=VARCHAR}
+    </select>
+    
+    <select id="selectExistPart" resultType="string">
+		select piw.puid as puid
+		  from infodba.pitem pi
+		     , infodba.pitemrevision pir
+		     , infodba.pWorkSpaceObject piw
+		 where piw.puid = pir.puid
+		   and piw.pactive_seq = 1
+           and pi.puid = pir.ritems_tagu 
+	   	   and piw.pObject_type in ('S7_StdpartRevision', 'S7_VehpartRevision', 'S7_PreVehPartRevision')
+		   <if test="ITEM_NAME != null and ITEM_NAME != ''">
+		   and piw.pObject_name=#{ITEM_NAME, jdbcType=VARCHAR}
+		   </if>
+		   <if test="ITEM_ID != null and ITEM_ID != ''">
+		   and pi.pItem_id = #{ITEM_ID, jdbcType=VARCHAR}
+		   </if>
+		   and rownum <![CDATA[<]]> 2
+    </select>
+    <!-- 최신 Total Weight Master List 대상-->
+    <select id="getLatestWMLMTargetData" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
+    WITH MASTER_DATA AS (SELECT MAX (EAI_CREATE_TIME) MASTER_CREATE_TIME FROM IF_PREBOM_MASTER_FULL_LIST WHERE TARGET_PROJECT =#{PROJECT_NO, jdbcType=VARCHAR})
+             ,OSPEC_DATA  AS  (SELECT MAX (EAI_CREATE_TIME) OSPEC_CREATE_TIME FROM IF_PREBOM_OSPEC_TRIM WHERE PROJECT_CODE =#{PROJECT_NO, jdbcType=VARCHAR})
+             ,USAGE_DATA AS (SELECT MAX (EAI_CREATE_TIME) AS USAGE_CREATE_TIME FROM IF_PREBOM_USAGE_FULL WHERE PROJECT_CODE =#{PROJECT_NO, jdbcType=VARCHAR})           
+        SELECT TO_CHAR(TO_DATE(MASTER_DATA.MASTER_CREATE_TIME, 'YYYYMMDDHH24MISS'), 'YYYY-MM-DD HH24:MI:SS') AS LATEST_M_CREATE_TIME, 
+                    MASTER_DATA.*,OSPEC_DATA.*,USAGE_DATA.*  FROM  MASTER_DATA,OSPEC_DATA,USAGE_DATA 
+    </select>
+    <!-- 최신 Total Weight Master List BOM 정보 조회-->
+    <select id="getWeightMasterDataList" parameterType="java.util.HashMap" resultType="java.util.HashMap" >
+        WITH BOM_INFO AS(    
+        SELECT M.ENG_DEPT_NM,POMUSER.PUSER_NAME USER_NAME,M.SYSTEM_CODE SYS_CODE,M.FUNCTION, PARENT_NO, SEQ, M.LEV_M, CHILD_NO, CHILD_REV,M.CHILD_UNIQUE_NO, CHILD_NAME, 
+               M.SMODE, M.EST_WEIGHT, M.VC , M.SYSTEM_ROW_KEY, PWSO.POBJECT_TYPE, PREV.PUID CHILD_PUID, M.project, M.chg_type_engconcept, M.system_name 
+           FROM IF_PREBOM_MASTER_FULL_LIST  M ,INFODBA.PITEM PI , INFODBA.PITEMREVISION PREV, INFODBA.PWORKSPACEOBJECT PWSO
+                    ,INFODBA.PUSER PUSER,INFODBA.PPOM_USER POMUSER           
+         WHERE M.TARGET_PROJECT=#{PROJECT_NO, jdbcType=VARCHAR}
+            AND SUBSTR(M.EAI_CREATE_TIME, 0, 8)= SUBSTR(#{EAI_CREATE_TIME, jdbcType=VARCHAR}, 0, 8)
+            AND M.LEV =1
+            AND PREV.RITEMS_TAGU = PI.PUID  
+            AND PREV.PUID = PWSO.PUID  
+            AND PI.PITEM_ID = M.CHILD_UNIQUE_NO
+            AND PREV.PITEM_REVISION_ID =M.CHILD_REV
+            AND PREV.PUID = PWSO.PUID
+            AND PUSER.PUID = POMUSER.PUID
+            AND M.ENG_RESPONSIBLITY = POMUSER.PUSER_ID(+)
+            ORDER BY M.SORT_ORDER
+        )
+       SELECT BOM_INFO.* ,
+              CASE WHEN BOM_INFO.POBJECT_TYPE = 'S7_VehpartRevision' THEN 
+                            (SELECT VEH_REF.PS7_ACT_WEIGHT FROM INFODBA.PS7_VEHPARTREVISION VHPART, INFODBA.PS7_VEHPART_TYPEDREFERENCE VEH_REF 
+                                WHERE VHPART.PUID = CHILD_PUID
+                                    AND VHPART.RS7_VEHPART_TYPEDREFERENCEU = VEH_REF.PUID
+                            )
+                        WHEN BOM_INFO.POBJECT_TYPE ='S7_StdpartRevision' THEN 
+                           (SELECT STDPART.PS7_ACT_WEIGHT FROM INFODBA.PS7_STDPARTREVISION STDPART WHERE STDPART.PUID = CHILD_PUID) 
+              ELSE NULL END ACT_WEIGHT
+              FROM BOM_INFO 
+     </select>
+     <!-- BOMLine에 해당하는 Trim Count -->
+     <select id="getBOMLineTrimList" parameterType="java.util.HashMap" resultType="java.util.HashMap"  >
+     SELECT SYSTEM_ROW_KEY, USAGE_QTY, LISTAGG(TRIM,',')WITHIN GROUP (ORDER BY TRIM) TRIM_LIST FROM IF_PREBOM_USAGE_FULL U
+        WHERE PROJECT_CODE = #{PROJECT_NO, jdbcType=VARCHAR}
+            AND SUBSTR(EAI_CREATE_TIME, 0, 8)= SUBSTR(#{EAI_CREATE_TIME, jdbcType=VARCHAR}, 0, 8)
+            AND USAGE_TYPE ='STD'
+            GROUP BY SYSTEM_ROW_KEY, USAGE_QTY                
+     </select>
+     
+     <!-- [SR170703-020][LJG]Proto Tooling 컬럼 추가로 인한 쿼리 수정 
+      S7_PROTO_TOOLING 포함되는 문구 2줄 추가 -->
+       <!-- [20180222][LJG]system code 리비전 정보에서 BOMLine정보로 이동에 따른 쿼리 수정 
+      S7_BUDGET_CODE 포함되는 문구 2줄 추가 -->
+      
+      <!-- [20180405][CSH]OSPEC NO 추가 및 chgtype에 따른 dcs info 연결로직 변경 
+      dcs_info, s7_OSPEC_NO --> 
+      <!-- [SR181211-009][20190314][CSH]DCS 시스템 이관에 따른 dcs info 연결로직 변경 --> 
+     <select id="getMLMLoadProp" parameterType="java.util.HashMap" resultType="java.util.HashMap"  >
+        <![CDATA[
+		select ci.puid item_puid, ci.pitem_id ITEM_ID, uom.psymbol uom_tag
+		     , cir.puid as item_rev_puid, cir.pitem_revision_id item_rev_id
+		     , cir.ps7_project_code as s7_PROJECT_CODE, irp.ps7_prd_project_code as s7_PRD_PROJECT_CODE
+		     , irp.ps7_old_part_no as s7_OLD_PART_NO, cir.ps7_display_part_no as s7_DISPLAY_PART_NO
+		     , ciw.pobject_name as object_name, ciw.pobject_type as object_type
+		     , irp.ps7_contents as s7_CONTENTS, irv.ps7_responsibility as s7_RESPONSIBILITY, ciw.pobject_desc as object_desc
+		     , irp.ps7_chg_type_nm as s7_CHG_TYPE_NM
+		     , irv.ps7_est_weight as s7_EST_WEIGHT
+		     , case when ciw.pobject_type = 'S7_StdpartRevision' then irs.ps7_act_weight
+		            when ciw.pobject_type = 'S7_VehpartRevision' then 
+		                 ( select ps7_act_weight from infodba.ps7_vehpart_typedreference where puid = irv.rs7_vehpart_typedreferenceu )
+		            else 0
+		       end as s7_ACT_WEIGHT
+		     , irp.ps7_tgt_weight as s7_TGT_WEIGHT
+		     , irv.ps7_regulation as s7_REGULATION
+		     , ( select ps7_est_cost_material from infodba.ps7_preveh_typedreference where puid = irp.rs7_preveh_typedreferenceu ) as s7_EST_COST_MATERIAL
+		     , ( select ps7_target_cost_material from infodba.ps7_preveh_typedreference where puid = irp.rs7_preveh_typedreferenceu ) as s7_TARGET_COST_MATERIAL
+		     , irp.ps7_selected_company as s7_SELECTED_COMPANY
+		     , irp.ps7_con_dwg_plan as s7_CON_DWG_PLAN
+		     , irp.ps7_con_dwg_performance as s7_CON_DWG_PERFORMANCE
+		     , irp.ps7_con_dwg_type as s7_CON_DWG_TYPE
+		     , irp.ps7_prd_dwg_plan as s7_PRD_DWG_PLAN
+		     , irp.ps7_prd_dwg_performance as s7_PRD_DWG_PERFORMANCE
+		     , irp.ps7_eco as s7_ECO
+		     , irp.ps7_prt_toolg_investment as s7_PRT_TOOLG_INVESTMENT
+		     , ( select ps7_prd_tool_cost from infodba.ps7_preveh_typedreference where puid = irp.rs7_preveh_typedreferenceu ) as s7_PRD_TOOL_COST
+		     , ( select ps7_prd_service_cost from infodba.ps7_preveh_typedreference where puid = irp.rs7_preveh_typedreferenceu ) as s7_PRD_SERVICE_COST
+		     , ( select ps7_prd_sample_cost from infodba.ps7_preveh_typedreference where puid = irp.rs7_preveh_typedreferenceu ) as s7_PRD_SAMPLE_COST
+		     , irp.ps7_pur_dept_nm as s7_PUR_DEPT_NM
+		     , irp.ps7_pur_responsibility as s7_PUR_RESPONSIBILITY
+		     , to_char(irp.ps7_dwg_deployable_date + 9/24, 'YYYY/MM/DD') as s7_DWG_DEPLOYABLE_DATE
+		     , to_char(ciw.pdate_released, 'YYYYMMDD HH24:MI:SS'), to_char(ciw.pdate_released + 9/24, 'YYYYMMDD HH24:MI:SS')
+		     , (  select m.dc_id || ',' || to_char(m.dc_released_date, 'YYYY/MM/DD') as pdate_released
+                  from dcs_info m
+                  where m.project_code =  
+                                  (
+                                      CASE WHEN NVL(irp.ps7_chg_type_nm,'X') LIKE 'M%' then #{PRODUCT_PROJECT_CODE, jdbcType=VARCHAR}     
+                                           else cir.ps7_project_code
+                                      end   
+                                   )
+                  and m.system_code = irv.ps7_budget_code
+                  and m.dc_rev = (select max(s.dc_rev)
+                                   from dcs_info s
+                                   where s.dc_id = m.dc_id)
+		       ) dcs_info
+		     , a.child_rev_puid
+		     , a.rChild_itemu
+		     , a.parent_id, a.parent_rev_id, a.parent_rev_puid
+		     , a.display_p_part_no, a.parent_rev_type, a.parent_rev_view_puid
+		     , a.occ_puid, a.bl_occurrence_uid, a.order_no
+		     , a.bl_sequence_no, a.child_view_puid, a.occ_note_ref_puid
+		     , a.S7_SYSTEM_ROW_KEY, a.S7_PRE_ALTER_PART, a.S7_SPECIFICATION
+		     , a.S7_SUPPLY_MODE, a.S7_MODULE_CODE, a.S7_REQ_OPT, a.S7_CHG_CD
+		     , a.S7_LEV_M, a.S7_DVP_NEEDED_QTY, a.S7_DVP_USE
+		     , a.S7_DVP_REQ_DEPT, a.S7_ENG_DEPT_NM, a.S7_ENG_RESPONSIBLITY
+             , a.S7_PROTO_TOOLING, a.S7_BUDGET_CODE
+             --20200923 seho EJS Column 추가.
+             , S7_EJS
+             --20201228 전성용 WEIGHT MANAGEMENT Column 추가.
+             , a.S7_Weight_Management
+		     , a.bl_occ_mvl_condition, a.bl_quantity
+             , (select pccnr.ps7_ospec_no
+                    from infodba.PS7_PRECCNREVISION pccnr
+                    where irp.RS7_CCN_NOU = pccnr.puid) as s7_OSPEC_NO
+		  from (
+		       select f_get_date_revision(occ.rChild_itemu, #{BASE_DATE, jdbcType=VARCHAR}, #{IS_WORKING, jdbcType=VARCHAR}) child_rev_puid
+		            , occ.rChild_itemu
+		            , basic.*
+		            , occ.puid occ_puid, occ.rocc_threadu bl_occurrence_uid, occ.porder_no order_no
+		            , occ.pseq_no bl_sequence_no
+		            , occ.rchild_bvu child_view_puid
+		            , occ.rnotes_refu occ_note_ref_puid
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_SYSTEM_ROW_KEY') S7_SYSTEM_ROW_KEY
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_PRE_ALTER_PART') S7_PRE_ALTER_PART
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_SPECIFICATION') S7_SPECIFICATION
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_SUPPLY_MODE') S7_SUPPLY_MODE
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_MODULE_CODE') S7_MODULE_CODE
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_REQ_OPT') S7_REQ_OPT
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_CHG_CD') S7_CHG_CD
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_LEV_M') S7_LEV_M
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_DVP_NEEDED_QTY') S7_DVP_NEEDED_QTY
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_DVP_USE') S7_DVP_USE
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_DVP_REQ_DEPT') S7_DVP_REQ_DEPT
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_ENG_DEPT_NM') S7_ENG_DEPT_NM
+		            , get_bom_note_text(occ.rnotes_refu, 'S7_ENG_RESPONSIBLITY') S7_ENG_RESPONSIBLITY
+                    , get_bom_note_text(occ.rnotes_refu, 'S7_PROTO_TOOLING') S7_PROTO_TOOLING
+                    , get_bom_note_text(occ.rnotes_refu, 'S7_BUDGET_CODE') S7_BUDGET_CODE
+                    --20200923 seho EJS Column 추가.
+                    , get_bom_note_text(occ.rnotes_refu, 'S7_EJS') S7_EJS
+                    --20201228 전성용 S7_Weight_Management Column 추가.
+                    , get_bom_note_text(occ.rnotes_refu, 'S7_Weight_Management') S7_Weight_Management
+		            , convert_to_simple_lower(mvl.data) as bl_occ_mvl_condition
+		            , case when occ.pqty_value is null or occ.pqty_value < 0 then 1 
+		                   else occ.pqty_value 
+		              end bl_quantity
+		          from
+		          (
+		             select item.pItem_id parent_id, revision.pitem_revision_id parent_rev_id, revision.puid parent_rev_puid
+		                  , revision.ps7_display_part_no display_p_part_no
+		                  , obj.pObject_type parent_rev_type, strrev.pvalu_0 parent_rev_view_puid
+		               from infodba.PSTRUCTURE_REVISIONS strRev
+		                  , infodba.ppsbomviewrevision bvr
+		                  , infodba.ppsbomview bv
+		                  , infodba.pworkspaceobject obj
+		                  , infodba.pItemRevision revision
+		                  , infodba.pItem item
+		              where STRREV.pvalu_0 = bvr.puid    --BOM view revision PUID
+		                and bv.puid = bvr.rbom_viewu        --BOM view PUID
+		                and STRREV.PUID = obj.puid
+		                and STRREV.puid = revision.puid
+		                and revision.rItems_tagu = item.puid
+		                and revision.puid = #{PARENT_REV_PUID, jdbcType=VARCHAR}
+		          ) basic
+		          , infodba.ppsoccurrence occ, infodba.iman_mvlblob mvl
+		      where occ.rparent_bvru = basic.parent_rev_view_puid
+		        and occ.puid = mvl.name (+)
+		        ) a
+		     , infodba.pitem ci
+		     , infodba.pworkspaceobject ciw
+		     , infodba.pitemrevision cir
+		     , infodba.ps7_vehpartrevision irv
+		     , infodba.ps7_stdpartrevision irs
+		     , infodba.ps7_prevehpartrevision irp
+		     , infodba.ps7_prefuncmasterrevision irf
+		     , infodba.punitofmeasure uom
+		 where ciw.puid = cir.puid
+		   and ciw.pactive_seq = 1
+		   and cir.puid = a.child_rev_puid
+		   and cir.ritems_tagu = ci.puid
+		   and irv.puid (+) = cir.puid
+		   and irs.puid (+) = cir.puid
+		   and irp.puid (+) = cir.puid
+		   and irf.puid (+) = cir.puid
+		   and ci.ruom_tagu = uom.puid (+)
+		   and ci.pitem_id = #{CHILD_ID, jdbcType=VARCHAR}
+		   and a.S7_SYSTEM_ROW_KEY = #{SYSTEM_ROW_KEY, jdbcType=VARCHAR}
+		   and rownum = 1
+		]]>		   
+     </select>
+     
+     <!-- [SR170707-024][ljg] Product의 Variant 가져 오는 쿼리 -->
+     <!-- [20240424][UPGRADE] HBOM DBLink 제거 -->
+    <select id="getVariantList" parameterType="java.lang.String" resultType="java.lang.String" >
+    SELECT CI.PITEM_ID                                                          
+               , CI.PITEM_ID ||' '||V.PS7_ENGINE_NO AS DISP_VARIANT_NO                
+               , CIW.POBJECT_NAME                                                     
+               , TO_CHAR(CIRAO.PLAST_MOD_DATE + 9 / 24,'YYYY-MM-DD') AS PLAST_MOD_DATE
+               , CIR.PITEM_REVISION_ID                                                
+               , CIR.PUID                                                             
+               , ( SELECT PUSER_NAME FROM INFODBA.PPOM_USER WHERE PUID = CIRAO.RLAST_MOD_USERU ) AS PUSER_NAME                                             
+               , ( SELECT MAX(HBOM.VARIANT_SEQ)                                                                                                            
+                     FROM INFODBA.PITEM PI                                                                                                                 
+                        , INFODBA.PWORKSPACEOBJECT PIRW                                                                                                    
+                        , INFODBA.PS7_PRODUCTREVISION P                                                                                                    
+                        , INFODBA.PITEMREVISION PIR                                                                                                        
+                        , PRODUCT_VARIANT_MAINT HBOM                                                                                    
+                    WHERE PIRW.PUID = PIR.PUID                                                                                                             
+                      AND PIRW.PACTIVE_SEQ = '1'                                                                                                           
+                      AND PIRW.PDATE_RELEASED IS NOT NULL                                                                                                  
+                      AND P.PUID = PIR.PUID                                                                                                                
+                      AND PI.PUID = PIR.RITEMS_TAGU                                                                                                        
+                      AND PIR.PS7_MATURITY NOT IN ('Obsolete')                                                                                             
+                      AND HBOM.PRODUCT_NO = PI.PITEM_ID                                                                                                    
+                      AND HBOM.VARIANT_NO LIKE SUBSTR(DECODE(SUBSTR(CI.PITEM_ID, 7, 2), 'XA', REPLACE (CI.PITEM_ID, 'XA', 'X20'), CI.PITEM_ID), 0,         
+                                               LENGTH(DECODE(SUBSTR(CI.PITEM_ID, 7, 2), 'XA', REPLACE (CI.PITEM_ID, 'XA', 'X20'), CI.PITEM_ID)) - 4) || '%'
+                ) AS VARIANT_SEQ                                                                                                                           
+            FROM INFODBA.PITEM PI                                                          
+               , INFODBA.PWORKSPACEOBJECT PIW                                              
+               , INFODBA.PITEMREVISION PIR                                                 
+               , INFODBA.PWORKSPACEOBJECT PIRW                                             
+               , INFODBA.PSTRUCTURE_REVISIONS PSR                                          
+               , INFODBA.PPSBOMVIEWREVISION PBVR                                           
+               , INFODBA.PPSOCCURRENCE OCC                                                 
+               , INFODBA.PITEM CI                                                          
+               , INFODBA.PWORKSPACEOBJECT CIW                                              
+               , INFODBA.PITEMREVISION CIR                                                 
+               , INFODBA.PWORKSPACEOBJECT CIRW                                             
+               , INFODBA.PPOM_APPLICATION_OBJECT CIRAO                                     
+               , INFODBA.PS7_VARIANTREVISION V                                             
+           WHERE PI.PITEM_ID = #{PRODUCT_ID, jdbcType=VARCHAR}                                                        
+             AND PI.PUID = PIW.PUID                                                        
+             AND PI.PUID = PIR.RITEMS_TAGU                                                 
+             AND PIR.PITEM_REVISION_ID = '000'                                             
+             AND PIR.PUID = PIRW.PUID                                                      
+             AND PIRW.PACTIVE_SEQ = 1                                                      
+             AND PIR.PUID = PSR.PUID                                                       
+             AND PSR.PVALU_0 = PBVR.PUID                                                   
+             AND PBVR.PUID = OCC.RPARENT_BVRU                                              
+             AND CI.PUID = OCC.RCHILD_ITEMU                                                
+             AND CI.PUID = CIW.PUID                                                        
+             AND CI.PUID = CIR.RITEMS_TAGU                                                 
+             AND CIR.PUID = CIRW.PUID                                                      
+             AND CIR.PUID = V.PUID                                                         
+             AND CIRW.PACTIVE_SEQ = 1                                                      
+             AND CIR.PUID = CIRAO.PUID                                                     
+             AND CIR.PS7_MATURITY NOT IN ('Obsolete')                                      
+        ORDER BY 8, 1
+    </select>
+    
+    <!-- [SR170707-024][ljg] Product의 OSI No를 가져 오는 쿼리 -->
+    <select id="getOSINo" parameterType="java.lang.String" resultType="java.lang.String" >
+    <!-- [UPGRADE][240322] DESC의 처음 ROWNUM 못가져옴. 오류 수정 -->
+    <!-- select OSI_NO 
+           from IF_OSPEC_MASTER_FROM_HBOM 
+           where PRODUCT_NO = #{PRODUCT_NO, jdbcType=VARCHAR} 
+           and rownum = 1 
+           order by OSI_NO desc -->
+		WITH OSI_INFORM AS(
+		     SELECT OSI_NO
+		       	FROM IF_OSPEC_MASTER_FROM_HBOM 
+           	  WHERE PRODUCT_NO = #{PRODUCT_NO, jdbcType=VARCHAR} 
+           	  ORDER BY OSI_NO DESC
+		)
+		SELECT OSI_NO FROM OSI_INFORM
+			WHERE ROWNUM = 1           
+    </select>
+    
+    <!-- [SR170707-024][ljg] E-BOM EPL의 Job ID 가져오기 -->
+    <select id="getEplJobID" parameterType="java.lang.String" resultType="java.lang.String" >
+    SELECT /*+ INDEX_DESC (HBOM_TC_EPL_JOB PK_HBOM_TC_EPL_JOB) */
+        JOB_PUID
+        FROM HBOM_TC_EPL_JOB
+        WHERE PRODUCT_ID = #{PRODUCT_ID, jdbcType=VARCHAR}
+        AND WHAT_EPL_JOB = 'V'
+        AND ROWNUM  = 1
+    </select>
+    
+    <!-- [SR170707-024][ljg] 해당 FMP 하위의 최하위까지 모든 Part 가져 오기 -->
+    <select id="getEpl" parameterType="java.lang.String" resultType="java.util.HashMap" >
+    SELECT
+        TTMP.IDX
+        ,TTMP.PRODUCT
+        ,TTMP.VARIANT
+        ,TTMP.FUNC_NO
+        ,TTMP.FMP
+        ,TTMP.P_PART_NO
+        ,TTMP.P_VER
+        ,TTMP.PART_NO
+        ,TTMP.PART_NAME
+        ,TTMP.SEQ
+        ,TTMP.VER
+        ,TTMP.BLEVEL
+        ,(SELECT ENDITEM_YN FROM IF_EITEM_FROM_HBOM WHERE S_PART_NUMBER = TTMP.SUPPMODE) EITEM_YN
+        ,TTMP.SUPPMODE
+        ,VP.SYSTEM_CODE
+        ,VP.U_FORWGT
+        ,VP.U_CALWGT
+        ,VP.U_REALWGT
+        ,VP.U_OWNER
+        ,VP.U_TEAM
+        ,TTMP.OPTIONS
+        FROM    (
+                SELECT 
+                        ROWNUM                  IDX
+                        ,#{PRODUCT_ID, jdbcType=VARCHAR}    PRODUCT
+                        ,#{VARIANT_ID, jdbcType=VARCHAR}    VARIANT
+                        ,#{FUNCTION_ID, jdbcType=VARCHAR}   FUNC_NO
+                        ,#{FMP_ID, jdbcType=VARCHAR}        FMP
+                        ,TMP.P_PART_NO                      P_PART_NO
+                        ,TMP.P_VER                          P_VER
+                        ,TMP.PART_NO                        PART_NO
+                        ,TMP.PART_NAME                      PART_NAME
+                        ,TMP.SEQ                            SEQ
+                        ,TMP.VER                            VER
+                        ,TMP.BOM_LEVEL+1                    BLEVEL
+                        ,TMP.SUPPMODE                       SUPPMODE    
+                        ,TMP.OPTIONS                        OPTIONS
+                        ,TMP.P_PART_REV_PUID                P_PUID
+                        ,TMP.PART_REV_PUID                  PUID
+                        --,TMP.* 
+                FROM    TABLE(ECO_EBOM_EPL_PACKAGE.get_ebom_structure(#{PRODUCT_ID, jdbcType=VARCHAR},#{FMP_ID, jdbcType=VARCHAR},'')) TMP   
+                WHERE   1=1
+                ) TTMP
+                , VIEW_PART VP
+        WHERE   1=1
+        AND     VP.PART_NO = TTMP.PART_NO        
+        AND     VP.VER = TTMP.VER
+        ORDER BY TTMP.IDX ASC
+    </select>
+    
+    <!-- [SR170707-024][ljg] 바로 1레벨 하위 자식 노드 가져오기(BOM 정전개) -->
+    <select id="getChildren" parameterType="java.lang.String" resultType="java.lang.String" >
+      SELECT PITEM_ID CHILD_ID
+      FROM INFODBA.PPSOCCURRENCE, (
+          SELECT PPSBOMVIEWREVISION.PUID AS BOM_VEW_PUID,
+              PITEM.PITEM_ID AS ITEM_ID,
+              PITEMREVISION.PITEM_REVISION_ID AS REV_ID,
+              PITEMREVISION.PUID AS ITEM_REV_PUID
+          FROM INFODBA.PITEM, INFODBA.PITEMREVISION,
+              INFODBA.PSTRUCTURE_REVISIONS, INFODBA.PPSBOMVIEWREVISION
+          WHERE PITEMREVISION.RITEMS_TAGU=PITEM.PUID
+              AND PITEMREVISION.PUID=PSTRUCTURE_REVISIONS.PUID
+              AND PSTRUCTURE_REVISIONS.PVALU_0=PPSBOMVIEWREVISION.PUID
+              AND PITEM.PITEM_ID=#{PARENT_ID, jdbcType=VARCHAR}
+      ) PARENT_VIEW, INFODBA.PITEM, INFODBA.PWORKSPACEOBJECT 
+      WHERE PPSOCCURRENCE.RPARENT_BVRU IN (
+          SELECT PUID
+          FROM infodba.PPSBOMVIEWREVISION
+          WHERE PUID IN (
+              SELECT PVALU_0
+              FROM infodba.PSTRUCTURE_REVISIONS
+              WHERE PUID IN (
+                  SELECT PITEMREVISION.PUID
+                  FROM INFODBA.PITEM, INFODBA.PITEMREVISION
+                  WHERE PITEM.PUID=PITEMREVISION.RITEMS_TAGU
+                      AND (PITEM.PITEM_ID , PITEMREVISION.PITEM_REVISION_ID) IN (
+                          SELECT DISTINCT PITEM.PITEM_ID AS ITEM_ID, MAX(PITEMREVISION.PITEM_REVISION_ID) AS REVISION_ID
+                          FROM INFODBA.PITEM, INFODBA.PITEMREVISION, INFODBA.PWORKSPACEOBJECT
+                          WHERE PITEM.PUID=PITEMREVISION.RITEMS_TAGU
+                              AND PITEM.PUID=PWORKSPACEOBJECT.PUID
+                          GROUP BY PITEM.PITEM_ID
+                      )
+              )
+          )
+      )
+      AND PPSOCCURRENCE.RPARENT_BVRU=PARENT_VIEW.BOM_VEW_PUID
+      AND PPSOCCURRENCE.RCHILD_ITEMU=PITEM.PUID
+      AND PITEM.PUID=PWORKSPACEOBJECT.PUID
+    </select>
+    
+    <!-- [csh] 전체 하위 자식 노드 가져오기(BOM 정전개 latest working) -->
+    <select id="getAllChildren" parameterType="java.lang.String" resultType="java.util.HashMap" >
+      select /*+RULE*/ level
+     , pi.pitem_id pid
+     , pir.pitem_revision_id prev
+     , occ.pseq_no seq
+     , ci.pitem_id cid
+     , cir.ps7_display_part_no cdisid
+     , cir.pitem_revision_id crev
+     , cirw.pobject_name cname
+     , occ.rocc_threadu
+     , case when level = '1' then ci.pitem_id else '' end as function_cd
+     , GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SUPPLY_MODE') as supply_mode
+     , convert_to_simple((select data from INFODBA.IMAN_MVLBLOB where name = occ.puid)) vc
+     , GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_ALTER_PART') as alter_part
+     , case when cirw.pobject_type = 'S7_VehpartRevision' 
+            then (select ps7_budget_code from infodba.ps7_vehpartrevision where puid = cir.puid) 
+            else 'X00' 
+            end as system_cd
+     , (select gr.pname from infodba.ppom_application_object pao, infodba.ppom_group gr where pao.ROWNING_GROUPU = gr.puid and pao.puid = cir.puid) as dept
+     , (select ur.puser_name from infodba.ppom_application_object pao, infodba.ppom_user ur where pao.rowning_useru = ur.puid and pao.puid = cir.puid) as res
+     <!--, (select ps7_est_weight from infodba.ps7_vehpartrevision where puid = cir.puid) est_weight-->
+     , case 
+       when cirw.pobject_type = 'S7_VehpartRevision'
+       then (select vrf.ps7_act_weight from infodba.ps7_vehpartrevision vr, infodba.ps7_vehpart_typedreference vrf where vr.puid = cir.puid and vr.rs7_vehpart_typedreferenceu = vrf.puid) 
+       when cirw.pobject_type = 'S7_StdpartRevision'
+       then (select ps7_act_weight from infodba.ps7_stdpartrevision where puid = cir.puid)
+       else 0
+       end as act_weight
+     , occ.pqty_value qty
+     , (select u.psymbol from infodba.punitofmeasure u where u.puid = ci.ruom_tagu) as uom
+    from infodba.pitem pi
+       , infodba.pitemrevision pir
+       , infodba.pworkspaceobject pirw
+       , infodba.pstructure_revisions psr
+       , infodba.ppsbomviewrevision pbvr
+       , infodba.ppsbomview pbv
+       , infodba.ppsviewtype vt
+       , infodba.ppsoccurrence occ
+       , infodba.pitem ci
+       , infodba.pworkspaceobject cirw
+       , infodba.pitemrevision cir
+    where pi.puid = pir.ritems_tagu
+    and pirw.puid = pir.puid
+    and pirw.PACTIVE_SEQ = 1 
+    and pir.puid = psr.puid
+    and psr.pvalu_0 = pbvr.puid
+    and pbvr.RBOM_VIEWU =pbv.PUID
+    and pbv.RVIEW_TYPEU = vt.PUID
+    and vt.PNAME = 'view'
+    and pbvr.puid = occ.rparent_bvru
+    and occ.rchild_itemu = ci.puid
+    and cirw.PACTIVE_SEQ = 1 
+    and cirw.puid = cir.puid
+    and ci.puid = cir.ritems_tagu
+    and cir.pitem_revision_id = (select max(ir.pitem_revision_id) from infodba.pitemrevision ir where ci.puid = ir.ritems_tagu )
+    and pir.pitem_revision_id = (select max(ir.pitem_revision_id) from infodba.pitemrevision ir where pi.puid = ir.ritems_tagu )
+    start with pi.pitem_id = #{ID, jdbcType=VARCHAR}
+    and pir.pitem_revision_id = #{REV, jdbcType=VARCHAR}
+    connect by prior ci.pitem_id = pi.pitem_id
+    and prior cir.pitem_revision_id = pir.pitem_revision_id
+    and cir.pitem_revision_id = (select max(ir.pitem_revision_id) from infodba.pitemrevision ir where ci.puid = ir.ritems_tagu )
+    and pir.pitem_revision_id = (select max(ir.pitem_revision_id) from infodba.pitemrevision ir where pi.puid = ir.ritems_tagu )
+    order siblings by occ.pseq_no
+    </select>
+    
+    <!-- [csh] 전체 하위 자식 노드 가져오기(BOM 정전개 latest Released) -->
+    <select id="getAllChildrenReleased" parameterType="java.lang.String" resultType="java.util.HashMap" >
+      select /*+RULE*/ level
+     , pi.pitem_id pid
+     , pir.pitem_revision_id prev
+     , occ.pseq_no seq
+     , ci.pitem_id cid
+     , cir.ps7_display_part_no cdisid
+     , cir.pitem_revision_id crev
+     , cirw.pobject_name cname
+     , occ.rocc_threadu
+     , case when level = '1' then ci.pitem_id else '' end as function_cd
+     , GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_SUPPLY_MODE') as supply_mode
+     , convert_to_simple((select data from INFODBA.IMAN_MVLBLOB where name = occ.puid)) vc
+     , GET_BOM_NOTE_TEXT(occ.RNOTES_REFU, 'S7_ALTER_PART') as alter_part
+     , case when cirw.pobject_type = 'S7_VehpartRevision' 
+            then (select ps7_budget_code from infodba.ps7_vehpartrevision where puid = cir.puid) 
+            else 'X00' 
+            end as system_cd
+     , (select gr.pname from infodba.ppom_application_object pao, infodba.ppom_group gr where pao.ROWNING_GROUPU = gr.puid and pao.puid = cir.puid) as dept
+     , (select ur.puser_name from infodba.ppom_application_object pao, infodba.ppom_user ur where pao.rowning_useru = ur.puid and pao.puid = cir.puid) as res
+     <!--, (select ps7_est_weight from infodba.ps7_vehpartrevision where puid = cir.puid) est_weight-->
+     , case 
+       when cirw.pobject_type = 'S7_VehpartRevision'
+       then (select vrf.ps7_act_weight from infodba.ps7_vehpartrevision vr, infodba.ps7_vehpart_typedreference vrf where vr.puid = cir.puid and vr.rs7_vehpart_typedreferenceu = vrf.puid) 
+       when cirw.pobject_type = 'S7_StdpartRevision'
+       then (select ps7_act_weight from infodba.ps7_stdpartrevision where puid = cir.puid)
+       else 0
+       end as act_weight
+     , occ.pqty_value qty
+     , (select u.psymbol from infodba.punitofmeasure u where u.puid = ci.ruom_tagu) as uom
+    from infodba.pitem pi
+       , infodba.pitemrevision pir
+       , infodba.pworkspaceobject pirw
+       , infodba.pstructure_revisions psr
+       , infodba.ppsbomviewrevision pbvr
+       , infodba.ppsbomview pbv
+       , infodba.ppsviewtype vt
+       , infodba.ppsoccurrence occ
+       , infodba.pitem ci
+       , infodba.pworkspaceobject cirw
+       , infodba.pitemrevision cir
+    where pi.puid = pir.ritems_tagu
+    and pirw.puid = pir.puid
+    and pirw.PACTIVE_SEQ = 1 
+    and pirw.pdate_released is not null
+    and pir.puid = psr.puid
+    and psr.pvalu_0 = pbvr.puid
+    and pbvr.RBOM_VIEWU =pbv.PUID
+    and pbv.RVIEW_TYPEU = vt.PUID
+    and vt.PNAME = 'view'
+    and pbvr.puid = occ.rparent_bvru
+    and occ.rchild_itemu = ci.puid
+    and cirw.PACTIVE_SEQ = 1 
+    and cirw.pdate_released is not null
+    and cirw.puid = cir.puid
+    and ci.puid = cir.ritems_tagu
+    and cir.pitem_revision_id = (select max(ir.pitem_revision_id) from infodba.pitemrevision ir, infodba.pworkspaceobject w where ci.puid = ir.ritems_tagu and ir.puid = w.puid and w.pdate_released is not null)
+    and pir.pitem_revision_id = (select max(ir.pitem_revision_id) from infodba.pitemrevision ir, infodba.pworkspaceobject w where pi.puid = ir.ritems_tagu and ir.puid = w.puid and w.pdate_released is not null)
+    start with pi.pitem_id = #{ID, jdbcType=VARCHAR}
+    and pir.pitem_revision_id = #{REV, jdbcType=VARCHAR}
+    connect by prior ci.pitem_id = pi.pitem_id
+    and prior cir.pitem_revision_id = pir.pitem_revision_id
+    and cir.pitem_revision_id = (select max(ir.pitem_revision_id) from infodba.pitemrevision ir, infodba.pworkspaceobject w where ci.puid = ir.ritems_tagu and ir.puid = w.puid and w.pdate_released is not null)
+    and pir.pitem_revision_id = (select max(ir.pitem_revision_id) from infodba.pitemrevision ir, infodba.pworkspaceobject w where pi.puid = ir.ritems_tagu and ir.puid = w.puid and w.pdate_released is not null)
+    order siblings by occ.pseq_no
+    </select>
+     
+</mapper>

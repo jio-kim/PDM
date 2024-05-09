@@ -29,14 +29,14 @@ import org.eclipse.swt.widgets.TableColumn;
 import org.eclipse.swt.widgets.TableItem;
 import org.eclipse.swt.widgets.Text;
 
-import com.ssangyong.commands.ec.SYMCECConstant;
-import com.ssangyong.commands.ec.assign.AskMyAssignDialog;
-import com.ssangyong.commands.ec.assign.SearchMyAssignDialog;
-import com.ssangyong.commands.ec.search.SearchUserDialog;
-import com.ssangyong.common.SYMCDateTimeButton;
-import com.ssangyong.common.utils.progressbar.WaitProgressor;
-import com.ssangyong.dto.ApprovalLineData;
-import com.ssangyong.rac.kernel.SYMCBOPEditData;
+import com.kgm.dto.ApprovalLineData;
+import com.kgm.rac.kernel.SYMCBOPEditData;
+import com.kgm.commands.ec.SYMCECConstant;
+import com.kgm.commands.ec.assign.AskMyAssignDialog;
+import com.kgm.commands.ec.assign.SearchMyAssignDialog;
+import com.kgm.commands.ec.search.SearchUserDialog;
+import com.kgm.common.SYMCDateTimeButton;
+import com.kgm.common.utils.progressbar.WaitProgressor;
 import com.symc.plm.me.common.SDVLOVUtils;
 import com.symc.plm.me.common.SDVPropertyConstant;
 import com.symc.plm.me.common.SDVTypeConstant;
@@ -1146,7 +1146,7 @@ public class MECOSWTRenderingView extends AbstractSDVViewer {
 
     private void setMandatory(Control con) {
         ControlDecoration dec = new ControlDecoration(con, SWT.TOP | SWT.RIGHT);
-        Registry registry = Registry.getRegistry("com.ssangyong.common.common");
+        Registry registry = Registry.getRegistry("com.kgm.common.common");
         dec.setImage(registry.getImage("CONTROL_MANDATORY"));
         dec.setDescriptionText("This value will be required.");
         madatoryControls.add(con);

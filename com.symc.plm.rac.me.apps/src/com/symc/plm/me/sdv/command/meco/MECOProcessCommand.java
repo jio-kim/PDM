@@ -2,7 +2,7 @@ package com.symc.plm.me.sdv.command.meco;
 
 import org.eclipse.swt.SWT;
 
-import com.ssangyong.common.utils.CustomUtil;
+import com.kgm.common.utils.CustomUtil;
 import com.symc.plm.me.sdv.operation.meco.MECOProcessOperation;
 import com.teamcenter.rac.aif.AbstractAIFCommand;
 import com.teamcenter.rac.aif.kernel.InterfaceAIFComponent;

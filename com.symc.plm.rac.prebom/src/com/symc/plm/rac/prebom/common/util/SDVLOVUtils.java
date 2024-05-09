@@ -164,7 +164,7 @@ public class SDVLOVUtils {
 
    public static void setMandatory(Control con) {
        ControlDecoration dec = new ControlDecoration(con, SWT.TOP | SWT.RIGHT);
-       Registry registry = Registry.getRegistry("com.ssangyong.common.common");
+       Registry registry = Registry.getRegistry("com.kgm.common.common");
        dec.setImage(registry.getImage("CONTROL_MANDATORY"));
        dec.setDescriptionText("This value will be required.");
    }

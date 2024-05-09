@@ -2,7 +2,7 @@ package com.symc.plm.me.sdv.operation.resource;
 
 import org.sdv.core.common.IDialogOpertation;
 
-import com.ssangyong.common.bundlework.command.PartBOMImportCommand;
+import com.kgm.common.bundlework.command.PartBOMImportCommand;
 import com.symc.plm.me.sdv.operation.AbstractTCSDVOperation;
 
 public class BOMImportOperation extends AbstractTCSDVOperation implements IDialogOpertation {
