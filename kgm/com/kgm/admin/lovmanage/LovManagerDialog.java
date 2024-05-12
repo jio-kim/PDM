@@ -1,11 +1,11 @@
 /**
  * LovManagerDialog.java
  * 
- * 1. bmide_manage_batch_lovs.bat Utility瑜? ?궗?슜?븯?뿬 External Lov List XML濡? 異붿텧?빀?땲?떎.
- * 2. 異붿텧?맂 Xml?쓣 Loading?븯?뿬 ?솕硫댁뿉 ?몴?떆 ?빀?땲?떎.
- * 3. 媛? LOV Data ?깮?꽦/?닔?젙/?궘?젣 湲곕뒫?쓣 援ы쁽?빀?땲?떎.
- * 4. ?깮?꽦/?닔?젙/?궘?젣 ?맂 LOV Data瑜? Xml濡? 蹂??솚?빀?땲?떎.
- * 5. 蹂??솚?맂 Xml?쓣 bmide_manage_batch_lovs.bat Utility瑜? ?궗?슜?븯?뿬 TeamCenter?뿉 諛섏쁺?빀?땲?떎.
+ * 1. bmide_manage_batch_lovs.bat Utility를 사용하여 External Lov List XML로 추출합니다.
+ * 2. 추출된 Xml을 Loading하여 화면에 표시 합니다.
+ * 3. 각 LOV Data 생성/수정/삭제 기능을 구현합니다.
+ * 4. 생성/수정/삭제 된 LOV Data를 Xml로 변환합니다.
+ * 5. 변환된 Xml을 bmide_manage_batch_lovs.bat Utility를 사용하여 TeamCenter에 반영합니다.
  */
 package com.kgm.admin.lovmanage;
 
@@ -89,8 +89,8 @@ import com.teamcenter.rac.util.MessageBox;
 import com.teamcenter.rac.util.Registry;
 
 /**
- * [20140422][SR140401-044] bskwak, column 紐? ?겢由? ?떆 ?젙?젹 湲곕뒫 異붽?.
- * [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙.
+ * [20140422][SR140401-044] bskwak, column 명 클릭 시 정렬 기능 추가.
+ * [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정.
  * 
  * @author bs
  * 
@@ -107,13 +107,13 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	/** Lov Data List */
 	ArrayList<LovDataItem> dataList = null;
 	/** Lov Table */
-	JTable lovTable = null; // LOV List瑜? ???옣?븷 Table
+	JTable lovTable = null; // LOV List를 저장할 Table
 	/** Lov Data Table */
-	JTable dataTable = null; // LOV?쓽 Data瑜? ???옣?븷 由ъ뒪?듃
+	JTable dataTable = null; // LOV의 Data를 저장할 리스트
 	/** Lov Table Model */
 	LovItemTableModel lovItemTableModel = null; // LOV List
 	/** Lov Data Table Model */
-	LovDataItemTableModel lovDataItemTableModel = null; // LOV?쓽 Data List
+	LovDataItemTableModel lovDataItemTableModel = null; // LOV의 Data List
 
 	private DocumentBuilderFactory dbf;
 	private DocumentBuilder db;
@@ -122,52 +122,52 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	private String lovName = "";
 
 	/**
-	 * LOV 媛믪쓣 BMIDE?뿉?꽌 ?깮?꽦?븯吏? ?븡怨? Reference(?) ?삎?깭濡? 愿?由ы븯湲? ?쐞?븳 遺?遺?.
+	 * LOV 값을 BMIDE에서 생성하지 않고 Reference(?) 형태로 관리하기 위한 부분.
 	 * SET TC_ROOT=C:\Siemens\Teamcenter9
 	 * SET TC_DATA=\\10.80.28.162\d$\Siemens\tcdata
 	 * call %TC_DATA%\tc_profilevars.bat
 	 * call bmide_manage_batch_lovs.bat -u=infodba -p=infodba -g=dba -option=extract -file=C:/temp/lovname20130326/lov_values_201303261041.xml
-	 * ?쐞?? 媛숈씠 ?솚寃폮etting?쓣 ?븳 ?썑 bmide_manage_batch_lovs.bat ?쓣 ?떎?뻾?븯硫? 吏??젙?븳 寃쎈줈?뿉 xml?뙆?씪?씠 ?깮?꽦(?뙆?씪紐?.xml怨? lang/?뙆?씪紐?_lang.xml)?릺怨?
-	 * ?씠 xml?뙆?씪?븞?뿉 LOV?쓽 List?? Value媛? ?엳?뒾.
-	 * ?씠 Class?뒗 ?씠?윭?븳 LOV?뿉 ?떎?젣 媛믪쓣 異붽?, ?닔?젙, ?궘?젣?븯怨? 諛섏쁺?븯湲? ?쐞?븳 Class?엫.
-	 * LOV ?옄泥대?? ?깮?꽦?븯吏??뒗 紐삵븿.
+	 * 위와 같이 환경Setting을 한 후 bmide_manage_batch_lovs.bat 을 실행하면 지정한 경로에 xml파일이 생성(파일명.xml과 lang/파일명_lang.xml)되고
+	 * 이 xml파일안에 LOV의 List와 Value가 있슴.
+	 * 이 Class는 이러한 LOV에 실제 값을 추가, 수정, 삭제하고 반영하기 위한 Class임.
+	 * LOV 자체를 생성하지는 못함.
 	 */
 
 	/**
 	 * SET TC_ROOT=C:\Siemens\Teamcenter9
 	 * SET TC_DATA=\\10.80.28.162\d$\Siemens\tcdata
 	 * call %TC_DATA%\tc_profilevars.bat
-	 * ?쐞 3媛쒖쓽 ?씪?씤?? C:\Tc9.properties.txt ?뙆?씪?뿉 諛섎뱶?떆 湲곕줉?릺?뼱 ?엳?뼱?빞 ?븳?떎.
+	 * 위 3개의 라인은 C:\Tc9.properties.txt 파일에 반드시 기록되어 있어야 한다.
 	 */
 
 	public static String TOP_NODE_ATTR_NAME_XMLNS = "xmlns";
 	public static String TOP_NODE_ATTR_NAME_VERSION = "batchXSDVersion";
 
-	/** xml ?뙆?씪 ?긽?떒?쓽 湲곕낯 ?젙?쓽瑜? ?쐞?븳 蹂??닔 **/
+	/** xml 파일 상단의 기본 정의를 위한 변수 **/
 	private String topNodeAttrXmlns = ""; // xmlns="http://teamcenter.com/BusinessModel/TcBusinessData"
 	private String topNodeAttrVersion = ""; // batchXSDVersion="1.0"
 
-	/** lang/_lang.xml ?뙆?씪 ?긽?떒?쓽 湲곕낯 ?젙?쓽瑜? ?쐞?븳 蹂??닔 **/
+	/** lang/_lang.xml 파일 상단의 기본 정의를 위한 변수 **/
 	private String topNodeAttrXmlns_lang = ""; // xmlns="http://teamcenter.com/BusinessModel/TcBusinessDataLocalization"
 	private String topNodeAttrVersion_lang = ""; // batchXSDVersion="1.0"
 
-	/** xml?뙆?씪?쓣 ?궡?젮諛쏄린 ?쐞?븳 寃쎈줈 **/
+	/** xml파일을 내려받기 위한 경로 **/
 	private String xmlDownloadPath = "C:/Temp/lovname"; // ex) C:\Temp\lovname20130326				 
 	private String xmlDownloadPath_lang = "C:/Temp/lovname"; // ex) C:\Temp\lovname20130326\lang
 
-	/** ?궡?젮諛쏆쓣 xml?뙆?씪紐? **/
-	private String oldXMLFile = "lov_values"; // BMIDE?뿉?꽌 export 諛쏆? xml ?뙆?씪紐?(lov_values_20130101)
-	private String oldXMLFile_lang = ""; // BMIDE?뿉?꽌 export 諛쏆? xml Lang ?뙆?씪紐?(lov_values_20130101_lang)
+	/** 내려받을 xml파일명 **/
+	private String oldXMLFile = "lov_values"; // BMIDE에서 export 받은 xml 파일명(lov_values_20130101)
+	private String oldXMLFile_lang = ""; // BMIDE에서 export 받은 xml Lang 파일명(lov_values_20130101_lang)
 
-	/** Import?븷 xml?뙆?씪 紐?(?깮?꽦, ?닔?젙, ?궘?젣?벑?쓽 蹂?寃쎌궗?빆 ?쟻?슜) **/
-	private String newXMLFile = ""; // BMIDE濡? import ?븷 xml ?뙆?씪紐? (XXX_20130101)
-	private String newXMLFile_lang = ""; // BMIDE濡? import ?븷 xml Lang?뙆?씪紐?(XXX_20130101)
+	/** Import할 xml파일 명(생성, 수정, 삭제등의 변경사항 적용) **/
+	private String newXMLFile = ""; // BMIDE로 import 할 xml 파일명 (XXX_20130101)
+	private String newXMLFile_lang = ""; // BMIDE로 import 할 xml Lang파일명(XXX_20130101)
 
-	/** LOV Manager Table?쓣 Excel?뙆?씪濡? Export **/
-	private String strExportExcelFileName = ""; // Export?븷 Excel?뙆?씪 紐?
+	/** LOV Manager Table을 Excel파일로 Export **/
+	private String strExportExcelFileName = ""; // Export할 Excel파일 명
 
-	/** xml?뙆?씪 ?솗?옣?옄 **/
-	private String strXMLExtension = ".xml"; // ?솗?옣?옄
+	/** xml파일 확장자 **/
+	private String strXMLExtension = ".xml"; // 확장자
 
 	public Registry registry;
 
@@ -176,7 +176,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	public String infodbaPassword = "";
 
 	/**
-	 * ?깮?꽦?옄
+	 * 생성자
 	 */
 	public LovManagerDialog(String _infodbaPassword) throws Exception
 	{
@@ -189,11 +189,11 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		this.registry = Registry.getRegistry(this);
 		this.selectedList = new ArrayList<LovDataItem>();
 
-		/** xml?뙆?씪 download 寃쎈줈 吏??젙 **/
+		/** xml파일 download 경로 지정 **/
 		initDownloadDir();
 
-		/** ?꽌踰꾩뿉 ?엳?뒗 LOV媛믪쓣 xml?뙆?씪濡? 媛??졇?삩?떎. */
-		this.exportFile(); // LOV 媛믪쓣 xml ?뙆?씪濡? export?븳?떎.
+		/** 서버에 있는 LOV값을 xml파일로 가져온다. */
+		this.exportFile(); // LOV 값을 xml 파일로 export한다.
 
 		this.init();
 
@@ -207,14 +207,14 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * XML?뙆?씪?씠 ???옣?맆 ?뤃?뜑?쓽 ?쐞移섎?? ?깮?꽦?븳?떎.
+	 * XML파일이 저장될 폴더의 위치를 생성한다.
 	 */
 	public void initDownloadDir()
 	{
 		xmlDownloadPath = xmlDownloadPath + getTodayDate(true).toString() + "/"; // ex) C:/Temp/lovname20130326	
 		xmlDownloadPath_lang = xmlDownloadPath + "lang/"; // ex) C:/Temp/lovname20130326/lang/
 
-		/** c:\temp\lovnameyyMMdd ?뤃?뜑媛? ?뾾?쑝硫? ?깮?꽦 */
+		/** c:\temp\lovnameyyMMdd 폴더가 없으면 생성 */
 		File tmpDir = new File(xmlDownloadPath);
 		if (!tmpDir.exists())
 			tmpDir.mkdir();
@@ -229,10 +229,10 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * executeTmpBatch.bat ?뙆?씪 ?깮?꽦 ?썑 bmide_manage_batch_lovs.bat 諛곗튂瑜? ?떎?뻾?븯?뿬
-	 * BMIDE?뿉?꽌 LOV 媛믪쓣 XML ?뙆?씪濡? export ?븳?떎.
-	 * ?뙆?씪 ?삎?떇?? lov_values_201303261041.xml ?삎?깭濡? ?깮?꽦?맂?떎.
-	 * C:\\Tc9.properties.txt ?궡?슜 : SET TC_ROOT=C:\Siemens\Teamcenter9
+	 * executeTmpBatch.bat 파일 생성 후 bmide_manage_batch_lovs.bat 배치를 실행하여
+	 * BMIDE에서 LOV 값을 XML 파일로 export 한다.
+	 * 파일 형식은 lov_values_201303261041.xml 형태로 생성된다.
+	 * C:\\Tc9.properties.txt 내용 : SET TC_ROOT=C:\Siemens\Teamcenter9
 	 * SET TC_DATA=\\10.80.28.162\d$\Siemens\tcdata
 	 * call %TC_DATA%\tc_profilevars.bat
 	 * 
@@ -241,7 +241,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	public void exportFile() throws Exception
 	{
 
-		/** bmide_manage_batch_lovs.bat 紐낅졊?쓣 ?떎?뻾?븯湲? ?쐞?븳 ?솚寃쎈??닔媛믪씠 ?엳?뒗 ?뙆?씪 */
+		/** bmide_manage_batch_lovs.bat 명령을 실행하기 위한 환경변수값이 있는 파일 */
 //	   File pFile = new File("C:\\Tc9.properties.txt");
 //	   
 //	   if(!pFile.exists()) {
@@ -252,7 +252,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		WaitProgressBar simpleProgressBar = new WaitProgressBar(AIFUtility.getActiveDesktop());
 		simpleProgressBar.setWindowSize(500, 300);
 
-		/** bmide_manage_batch_lovs.bat(-> XML?뙆?씪 ?깮?꽦?맖) ?뙆?씪?쓣 ?떎?뻾?븷 batch ?뙆?씪?쓣 ?깮?꽦?븳?떎. **/
+		/** bmide_manage_batch_lovs.bat(-> XML파일 생성됨) 파일을 실행할 batch 파일을 생성한다. **/
 		File path = new File(xmlDownloadPath);
 		File batFile = new File(path, "executeTmpBatch.bat");
 		if (!batFile.exists())
@@ -265,33 +265,32 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		FileWriter fw = new FileWriter(batFile);
 //	   while (s.hasNext()) {
-		// [20240306] ?슫?쁺 TC Server ?솚寃쎌뿉 留욎떠 寃쎈줈 蹂?寃? ?븘?슂
-		fw.write("SET TC_ROOT=D:\\SIEMENS\\TC13\r\n");
+		fw.write("SET TC_ROOT=D:\\SIEMENS\\TC10\r\n");
 		fw.write("SET TC_DATA=Y:\\tcdata10\r\n");
 		fw.write("call %TC_DATA%\\tc_profilevars.bat\r\n\r\n");
 //	   }
 //	   s.close();
 
-		/** oldXML ?뙆?씪紐? ?깮?꽦 */
+		/** oldXML 파일명 생성 */
 		setOldXmlFileName();
 
-		/** oldXML ?뙆?씪?쓽 ?젅??寃쎈줈 吏??젙 */
+		/** oldXML 파일의 절대경로 지정 */
 		String exportFile = xmlDownloadPath + oldXMLFile + strXMLExtension; // ex) C:\Temp\lovname20130326\lov_values_201303261041.xml
 
-		/** bmide_mamage_batch_lovs.bat ?뙆?씪?쓣 ?떎?뻾?븯湲? ?쐞?븳 紐낅졊?뼱瑜? 諛쏆븘?샂 */
+		/** bmide_mamage_batch_lovs.bat 파일을 실행하기 위한 명령어를 받아옴 */
 		String command = getExecuteBatch(true, exportFile);
 		fw.write(command);
 		fw.close();
 
-		/** ProgressBar ?떎?뻾 */
+		/** ProgressBar 실행 */
 		simpleProgressBar.start();
 		simpleProgressBar.setStatus("LOV Export is start...", true);
 
-		/** 諛곗튂 ?뙆?씪 ?떎?뻾 */
+		/** 배치 파일 실행 */
 		String[] cmd = { "CMD", "/C", batFile.getPath() };
 		Process p = Runtime.getRuntime().exec(cmd);
 
-		/** ?쇅遺? ?봽濡쒓렇?옩?뿉 ???븳 InputStream ?쓣 ?깮?꽦 */
+		/** 외부 프로그램에 대한 InputStream 을 생성 */
 		DataInputStream inputstream = new DataInputStream(p.getInputStream());
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
 
@@ -299,7 +298,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		while (true)
 		{
-			// ?쇅遺? ?봽濡쒓렇?옩?씠 異쒕젰?븯?뒗 硫붿꽭吏?瑜? ?븳以꾩뵫 ?씫?뼱?뱾?엫
+			// 외부 프로그램이 출력하는 메세지를 한줄씩 읽어들임
 			strOutput = reader.readLine();
 
 			if (strOutput != null)
@@ -318,20 +317,20 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * xml?뙆?씪紐낆쓣 ?깮?꽦?븳?떎.
+	 * xml파일명을 생성한다.
 	 * xml : lov_values_201303261041
 	 * xml_lang : lov_values_201303261041_lang
 	 */
 	public void setOldXmlFileName()
 	{
-		/** ?삤?뒛 ?궇吏쒕?? 媛??졇?샂(20130101) */
+		/** 오늘 날짜를 가져옴(20130101) */
 		String currentDate = getTodayDate(false);
 		oldXMLFile = oldXMLFile + "_" + currentDate;
 		oldXMLFile_lang = oldXMLFile + "_lang";
 	}
 
 	/**
-	 * LOV Dialog瑜? 珥덇린?솕?븳?떎.
+	 * LOV Dialog를 초기화한다.
 	 * 
 	 * @throws Exception
 	 */
@@ -350,7 +349,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		this.lovTable = new JTable(lovItemTableModel);
 
 		//------------------------------------------------------------------------------------------
-		// [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙. 
+		// [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정. 
 		JTableHeader lovTableHeader = this.lovTable.getTableHeader();
 		lovTableHeader.setUpdateTableInRealTime(true);
 		lovTableHeader.addMouseListener(new LovItemColumnHeaderMouseAdapter(this.lovTable));
@@ -372,7 +371,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		this.dataTable.getColumn("Display Name").setMinWidth(200);
 		this.dataTable.getColumn("Status").setMinWidth(100);
 
-		// 媛? Column蹂? SellRenderer Setting
+		// 각 Column별 SellRenderer Setting
 		for (int k = 0; k < lovDataItemTableModel.cNames.length; k++)
 		{
 			// Custom TableCellRenderer
@@ -382,7 +381,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		//------------------------------------------------------------------------------------------
-		// [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙. 
+		// [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정. 
 		JTableHeader dataTableHeader = this.dataTable.getTableHeader();
 		dataTableHeader.setUpdateTableInRealTime(true);
 		dataTableHeader.addMouseListener(new LovDataColumnHeaderMouseAdapter(this.dataTable));
@@ -396,7 +395,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 			public void mousePressed(MouseEvent ee)
 			{
-				// ?뜑釉뷀겢由? ?씪 寃쎌슦, ?꽑?깮?맂 ?뻾?쓽 ?닔?젙?솕硫댁쑝濡? ?씠?룞
+				// 더블클릭 일 경우, 선택된 행의 수정화면으로 이동
 				if (ee.getClickCount() == 2)
 				{
 					int nSelected = dataTable.getSelectedRow();
@@ -425,7 +424,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		JPanel centerBtnPanel = new JPanel();
 		JPanel rightBtnPanel = new JPanel();
 
-		// LOV 異붽?
+		// LOV 추가
 		JButton plusBtn = new JButton("+");
 		plusBtn.addActionListener(new ActionListener()
 		{
@@ -435,7 +434,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 				if (nSelected < 0)
 					return;
 				LovItem selectedLOVItem = lovList.get(nSelected);
-				// LOV 異붽? Dialog
+				// LOV 추가 Dialog
 				LovDataDialog dlg = new LovDataDialog();
 
 				dlg.setVisible(true);
@@ -443,7 +442,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			}
 		});
 
-		// LOV ?궘?젣
+		// LOV 삭제
 		JButton minusBtn = new JButton("-");
 		minusBtn.addActionListener(new ActionListener()
 		{
@@ -526,14 +525,14 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		{
 			public void actionPerformed(ActionEvent ee)
 			{
-				/** ?꽑?깮?맂 LOV Data瑜? TeamCenter?뿉 ???옣?빀?땲?떎. */
+				/** 선택된 LOV Data를 TeamCenter에 저장합니다. */
 				saveActionTC();
-				/** Dialog?쓽 Status 媛믪쓣 珥덇린?솕?븳?떎. */
+				/** Dialog의 Status 값을 초기화한다. */
 				initStatus();
 			}
 		});
 
-		/** ?빐?떦 LOV?쓽 媛믪쓣 Excel ?뙆?씪濡? ???옣?븳?떎. */
+		/** 해당 LOV의 값을 Excel 파일로 저장한다. */
 		JButton btnExcelExport = new JButton("Excel Export");
 		btnExcelExport.addActionListener(new ActionListener()
 		{
@@ -544,7 +543,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			}
 		});
 
-		/** 紐⑤뱺 LOV?쓽 媛믪쓣 Excel ?뙆?씪濡? ???옣?븳?떎. */
+		/** 모든 LOV의 값을 Excel 파일로 저장한다. */
 		JButton btnExcelFullExport = new JButton("Excel Full Export");
 		btnExcelFullExport.addActionListener(new ActionListener()
 		{
@@ -577,7 +576,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 //    {
 //      public void actionPerformed(ActionEvent ee)
 //      {
-//        // 紐⑤뱺 LOV Data瑜? TeamCenter?뿉 ???옣?빀?땲?떎.
+//        // 모든 LOV Data를 TeamCenter에 저장합니다.
 //        saveActionTCAll();
 //      }
 //    });
@@ -601,14 +600,14 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * XML ?뙆?씪?쓣 parse?븯?뿬 Document 媛앹껜瑜? ?깮?꽦?븳?떎.
+	 * XML 파일을 parse하여 Document 객체를 생성한다.
 	 * 
 	 * @param xmlFile
 	 * @throws Exception
 	 */
 	public void openFile() throws Exception
 	{
-		// xml ?뙆?씪?쓣 parse?븯?뿬 document?뿉 ?꽔?뼱?몺
+		// xml 파일을 parse하여 document에 넣어둠
 		dbf = DocumentBuilderFactory.newInstance();
 		db = dbf.newDocumentBuilder();
 
@@ -623,28 +622,28 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			document_lang = db.parse(path_lang);
 		} else
 		{
-			String message = "吏??젙?맂 ?쐞移?(" + path + ")?뿉 ?뙆?씪?씠 議댁옱?븯吏? ?븡?뒿?땲?떎.";
+			String message = "지정된 위치(" + path + ")에 파일이 존재하지 않습니다.";
 			throw new Exception(message);
 		}
 	}
 
 	/**
-	 * LOV Dialog?쓽 ?젙蹂대?? Excel ?뙆?씪濡? export?븳?떎.
+	 * LOV Dialog의 정보를 Excel 파일로 export한다.
 	 */
 	public void excelExport()
 	{
 		try
 		{
-			// 1. ?뙆?씪 ???옣 ???솕?긽?옄瑜? ?쓣?슫?떎
+			// 1. 파일 저장 대화상자를 띄운다
 			JFileChooser fileChooser = new JFileChooser("C:/");
 
-			/** ?빐?떦 ?뵒?젆?넗由ъ뿉?꽌 xls ?뙆?씪留? 蹂댁씠?룄濡? ?꽕?젙?븳?떎. */
+			/** 해당 디렉토리에서 xls 파일만 보이도록 설정한다. */
 			FileFilter fileFilter = fileChooser.getAcceptAllFileFilter();
 			fileChooser.removeChoosableFileFilter(fileFilter);
-			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "?뿊?? (.xls)");
+			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "엑셀 (.xls)");
 			fileChooser.addChoosableFileFilter(filterXLS);
 
-			// 2. 吏??젙?븳 ?씠由꾩쑝濡? ?뿊?? ?뙆?씪?쓣 ?깮?꽦?븳?떎
+			// 2. 지정한 이름으로 엑셀 파일을 생성한다
 			File file = new File("C:/" + strExportExcelFileName + ".xls");
 			fileChooser.setSelectedFile(file);
 
@@ -657,16 +656,16 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					String strExtension = getExtension(selectedFile);
 					strExtension = strExtension == null ? "" : strExtension;
 
-					// ?궗?슜?옄媛? ?엯?젰?븳 ?뙆?씪紐낆뿉 xls ?솗?옣?옄源뚯? ?엯?젰 ?븞?뻽?쓣 寃쎌슦
+					// 사용자가 입력한 파일명에 xls 확장자까지 입력 안했을 경우
 					if (!strExtension.equalsIgnoreCase("xls"))
 					{
 						selectedFile = new File(selectedFile.getAbsolutePath() + ".xls");
 					}
 
-					// ?벐湲곌??뒫?븳 ?뿊?? Workbook 媛앹껜 ?깮?꽦
+					// 쓰기가능한 엑셀 Workbook 객체 생성
 					WritableWorkbook workBook = Workbook.createWorkbook(selectedFile);
 
-					/** LOV 媛믪쑝濡? Excel ?뙆?씪?뿉 Write?븳?떎. */
+					/** LOV 값으로 Excel 파일에 Write한다. */
 					workBook = exportDataXLS(workBook, dataTable, selectedFile, strExportExcelFileName, 0);
 
 					workBook.write();
@@ -683,21 +682,21 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * LOV Dialog?쓽 紐⑤뱺 LOV媛믪쓣 Excel?뙆?씪濡? ???옣?븳?떎.
-	 * LOV Name?? 媛곴컖?쓽 Sheet紐낆씠 ?맂?떎.
+	 * LOV Dialog의 모든 LOV값을 Excel파일로 저장한다.
+	 * LOV Name은 각각의 Sheet명이 된다.
 	 */
 	public void excelFullExport()
 	{
 		try
 		{
-			// 1. ?뙆?씪 ???옣 ???솕?긽?옄瑜? ?쓣?슫?떎
+			// 1. 파일 저장 대화상자를 띄운다
 			JFileChooser fileChooser = new JFileChooser("C:/");
 			FileFilter fileFilter = fileChooser.getAcceptAllFileFilter();
 			fileChooser.removeChoosableFileFilter(fileFilter);
-			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "?뿊?? (.xls)");
+			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "엑셀 (.xls)");
 			fileChooser.addChoosableFileFilter(filterXLS);
 
-			// 2. 吏??젙?븳 ?씠由꾩쑝濡? ?뿊?? ?뙆?씪?쓣 ?깮?꽦?븳?떎
+			// 2. 지정한 이름으로 엑셀 파일을 생성한다
 			File file = new File("C:/LOV_All_List_" + getTodayDate(true) + ".xls");
 			fileChooser.setSelectedFile(file);
 
@@ -707,21 +706,21 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 				if (selectedFile != null)
 				{
-					// ?뙆?씪?쓽 ?솗?옣?옄瑜? return?븳?떎.
+					// 파일의 확장자를 return한다.
 					String strExtension = getExtension(selectedFile);
 					strExtension = strExtension == null ? "" : strExtension;
 
-					// ?궗?슜?옄媛? ?엯?젰?븳 ?뙆?씪紐낆뿉 xls ?솗?옣?옄源뚯? ?엯?젰 ?븞?뻽?쓣 寃쎌슦
+					// 사용자가 입력한 파일명에 xls 확장자까지 입력 안했을 경우
 					if (!strExtension.equalsIgnoreCase("xls"))
 					{
 						selectedFile = new File(selectedFile.getAbsolutePath() + ".xls");
 						strExtension = "xls";
 					}
 
-					// ?벐湲곌??뒫?븳 ?뿊?? Workbook 媛앹껜 ?깮?꽦
+					// 쓰기가능한 엑셀 Workbook 객체 생성
 					WritableWorkbook workBook = Workbook.createWorkbook(selectedFile);
 
-					/** LOV 紐낆쓣 媛곴컖?쓽 Sheet Name?쑝濡? 吏??젙?븯怨?, LOV 媛믪쓣 Excel?뿉 Write?븳?떎. */
+					/** LOV 명을 각각의 Sheet Name으로 지정하고, LOV 값을 Excel에 Write한다. */
 					for (int i = 0; i < lovList.size(); i++)
 					{
 						LovItem selectedLOVItem = lovList.get(i);
@@ -735,7 +734,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					workBook.close();
 				}
 
-				/** Excel ?뙆?씪?쓣 ?떎?뻾?븳?떎. **/
+				/** Excel 파일을 실행한다. **/
 				AIFShell aif = new AIFShell("application/vnd.ms-excel", selectedFile.getAbsolutePath());
 				aif.start();
 			}
@@ -746,7 +745,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * LOV Dialog?쓽 JTable ?쓽 ?궡?슜?쓣 XLS ?룷留룹쑝濡? ???옣?븳?떎.
+	 * LOV Dialog의 JTable 의 내용을 XLS 포맷으로 저장한다.
 	 * 
 	 * @param jtable
 	 *            JTable
@@ -760,7 +759,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		try
 		{
-			// ?벐湲곌??뒫?븳 ?뿊?? Workbook 媛앹껜 ?깮?꽦
+			// 쓰기가능한 엑셀 Workbook 객체 생성
 //    	WritableWorkbook workBook = null;
 //      if(sheetNum == 0) {
 //    	  workBook = Workbook.createWorkbook(selectedFile);
@@ -769,7 +768,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 //    	  workBook = Workbook.createWorkbook(selectedFile, workBook1);
 //      }
 
-			// n踰덉㎏ Sheet ?깮?꽦
+			// n번째 Sheet 생성
 			WritableSheet sheet = workBook.createSheet(strItemKey, sheetNum);
 
 			SheetSettings printSet = sheet.getSettings();
@@ -777,7 +776,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			printSet.setFitToPages(true);
 			printSet.setOrientation(PageOrientation.LANDSCAPE);
 
-			// 1. ?뿤?뜑 ?젙蹂? 媛??졇?삤湲?
+			// 1. 헤더 정보 가져오기
 			int[] iColumnWidth = new int[iColumnCnt];
 			int iRemoveCol = 0;
 			int iRemoveRow = 0;
@@ -795,7 +794,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 				}
 			}
 
-			// 2. ?쟾泥? Row ?젙蹂? 媛??졇?삤湲?
+			// 2. 전체 Row 정보 가져오기
 			for (int iCnt = 0; iCnt < iRowCnt; iCnt++)
 			{
 				for (int kCnt = 0; kCnt < iColumnCnt; kCnt++)
@@ -830,7 +829,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * jxl ?쓽 Cell Format ?쓣 ?꽕?젙?븳?떎.
+	 * jxl 의 Cell Format 을 설정한다.
 	 * 
 	 * @param feature
 	 * @return
@@ -838,7 +837,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	 */
 	private WritableCellFormat setCellValueFormat(int status) throws Exception
 	{
-		WritableFont wf = new WritableFont(WritableFont.createFont("援대┝"), 9, WritableFont.NO_BOLD);
+		WritableFont wf = new WritableFont(WritableFont.createFont("굴림"), 9, WritableFont.NO_BOLD);
 
 		WritableCellFormat wcf = new WritableCellFormat(wf);
 		wcf.setWrap(false);
@@ -870,7 +869,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * ?뙆?씪?쓽 ?솗?옣?옄瑜? Return
+	 * 파일의 확장자를 Return
 	 * 
 	 * @param f
 	 *            File
@@ -891,9 +890,9 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * LOV List瑜? Loading?빀?땲?떎.
-	 * 1. bmide_manage_batch_lovs.bat Utility瑜? ?떎?뻾?븯?뿬 Xml?쓣 ?깮?꽦?빀?땲?떎.
-	 * 2. XML?쓣 Loading?븯?뿬 LOV/LOVData瑜? Loading?빀?땲?떎.
+	 * LOV List를 Loading합니다.
+	 * 1. bmide_manage_batch_lovs.bat Utility를 실행하여 Xml을 생성합니다.
+	 * 2. XML을 Loading하여 LOV/LOVData를 Loading합니다.
 	 */
 	void loadLovList()
 	{
@@ -904,20 +903,20 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 				try
 				{
 
-					/** Document 媛앹껜瑜? ?깮?꽦?븳?떎. */
+					/** Document 객체를 생성한다. */
 					openFile();
 
-					/** newXML ?뙆?씪?쓣 ?깮?꽦?븯湲? ?쐞?빐 oldXML ?뙆?씪?쓽 Node媛믪쓣 ?씫?뼱?삩?떎. **/
+					/** newXML 파일을 생성하기 위해 oldXML 파일의 Node값을 읽어온다. **/
 					setDefaultXML();
 
-					/** newXML_lang ?뙆?씪?쓣 ?깮?꽦?븯湲? ?쐞?빐 oldXML ?뙆?씪?쓽 Node媛믪쓣 ?씫?뼱?삩?떎. **/
+					/** newXML_lang 파일을 생성하기 위해 oldXML 파일의 Node값을 읽어온다. **/
 					setDefaultXMLForLang();
 
 					Element rootElement = document.getDocumentElement();
 
 					NodeList memberList = rootElement.getElementsByTagName("TcLOV");
 
-					// LOV?쓽 媛믪쓣 援ы븳?떎. - 1 Level
+					// LOV의 값을 구한다. - 1 Level
 					String lovName = "";
 					for (int i = 0; i < memberList.getLength(); i++)
 					{ // for 1
@@ -938,13 +937,13 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 							}
 
 							NodeList childNodeList = node.getChildNodes();
-							// ?꽑?깮?맂 TCLov?쓽 List媛믪쓣 援ы븳?떎. - 2 Level
+							// 선택된 TCLov의 List값을 구한다. - 2 Level
 							for (int k = 0; k < childNodeList.getLength(); k++)
 							{ // for 3
 								Node childNode = childNodeList.item(k);
 
 								if ((childNode.getNodeName()).equals("TcLOVValue"))
-								{ // LOV?쓽 Key, Value媛?
+								{ // LOV의 Key, Value값
 									LovDataItem dataItem = new LovDataItem();
 									NamedNodeMap childAttrs = childNode.getAttributes();
 									String key = "";
@@ -962,7 +961,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 									} // end for 4
 
-									// ?뿬湲곗뿉?꽌 XML_Lang?쓽 desc 媛믪쓣 援ы븳?떎.
+									// 여기에서 XML_Lang의 desc 값을 구한다.
 									String lang_Desc = getDescToXMLFileForLang(lovName, key);
 									dataItem.setData(LovDataItem.INDEX_VALUE, lang_Desc);
 
@@ -997,7 +996,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * import?븷 xml ?뙆?씪?쓣 ?깮?꽦?븯湲? ?쐞?빐 Xmlns ?? batchXSDVersion 媛믪쓣 lov_values_yyyyMMdd.xml ?뿉?꽌 媛??졇?삩?떎.
+	 * import할 xml 파일을 생성하기 위해 Xmlns 와 batchXSDVersion 값을 lov_values_yyyyMMdd.xml 에서 가져온다.
 	 * 
 	 * @throws Exception
 	 */
@@ -1005,7 +1004,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	{
 		Element rootElement = document.getDocumentElement();
 
-		// XML ?뙆?씪?뿉?꽌 xmlns ?? batchXSDVersion ?젙蹂대?? 媛??졇?삩?떎.
+		// XML 파일에서 xmlns 와 batchXSDVersion 정보를 가져온다.
 		NamedNodeMap topNodeMap = rootElement.getAttributes();
 		for (int i = 0; i < topNodeMap.getLength(); i++)
 		{
@@ -1020,14 +1019,14 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * import?븷 xml ?뙆?씪?쓣 ?깮?꽦?븯湲? ?쐞?빐 Xmlns ?? batchXSDVersion 媛믪쓣 lov_values_yyyyMMdd_Lang.xml ?뿉?꽌 媛??졇?삩?떎.
-	 * download?맂 XML_Lang ?뙆?씪?쓽 湲곕낯 ?젙蹂대?? ?씫?뼱?꽌 ???옣?븳?떎.
+	 * import할 xml 파일을 생성하기 위해 Xmlns 와 batchXSDVersion 값을 lov_values_yyyyMMdd_Lang.xml 에서 가져온다.
+	 * download된 XML_Lang 파일의 기본 정보를 읽어서 저장한다.
 	 */
 	public void setDefaultXMLForLang() throws SAXException, IOException
 	{
 		Element rootElement_lang = document_lang.getDocumentElement();
 
-		// XML_lang ?뙆?씪?뿉?꽌 xmlns ?? batchXSDVersion ?젙蹂대?? 媛??졇?삩?떎.
+		// XML_lang 파일에서 xmlns 와 batchXSDVersion 정보를 가져온다.
 		NamedNodeMap topNodeMap_lang = rootElement_lang.getAttributes();
 		for (int i = 0; i < topNodeMap_lang.getLength(); i++)
 		{
@@ -1042,7 +1041,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * XML_Lang ?뙆?씪?뿉?꽌 ?빐?떦 LOV?쓽 Description 媛믪쓣 ?씫?뼱?삩?떎.
+	 * XML_Lang 파일에서 해당 LOV의 Description 값을 읽어온다.
 	 * 
 	 * @return
 	 * @throws IOException
@@ -1054,7 +1053,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		Element rootElement_lang = document_lang.getDocumentElement();
 		NodeList memberList = rootElement_lang.getElementsByTagName("Add");
 
-		// LOV?쓽 媛믪쓣 援ы븳?떎. - 1 Level
+		// LOV의 값을 구한다. - 1 Level
 		for (int i = 0; i < memberList.getLength(); i++)
 		{ // for 1
 			Node node = memberList.item(i);
@@ -1063,20 +1062,20 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			{
 
 				NodeList childNodeList = node.getChildNodes();
-				// ?꽑?깮?맂 TCLov?쓽 List媛믪쓣 援ы븳?떎. - 2 Level
+				// 선택된 TCLov의 List값을 구한다. - 2 Level
 				for (int k = 0; k < childNodeList.getLength(); k++)
 				{ // for 3
 					Node childNode = childNodeList.item(k);
 
 					if ((childNode.getNodeName()).equals("key"))
-					{ // LOV?쓽 Key, Value媛?
+					{ // LOV의 Key, Value값
 						NamedNodeMap childAttrs = childNode.getAttributes();
 
 						for (int y = 0; y < childAttrs.getLength(); y++)
 						{ // for 4
 							if ((childAttrs.item(y).getNodeName()).equals("id"))
 							{
-								//[20190225 kch] xml ?뙆?씪濡? 遺??꽣 lov List ?젙蹂? read ?떆 bug 媛쒖꽑 ( contains -> equals )
+								//[20190225 kch] xml 파일로 부터 lov List 정보 read 시 bug 개선 ( contains -> equals )
 								//if (childAttrs.item(y).getNodeValue().contains("LOVValue{::}" + lovName + "{::}" + keyValue )) { // && childAttrs.item(y).getNodeValue().endsWith(keyValue)) {
 								if (childAttrs.item(y).getNodeValue().equals("LOVValue{::}" + lovName + "{::}" + keyValue))
 								{
@@ -1094,7 +1093,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * 紐⑤뱺 LOV Data瑜? TeamCenter?뿉 ???옣?빀?땲?떎.
+	 * 모든 LOV Data를 TeamCenter에 저장합니다.
 	 */
 	void saveActionTCAll()
 	{
@@ -1108,7 +1107,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 					for (int i = 0; i < lovList.size(); i++)
 					{
-						// ?빐?떦 LOV瑜? 媛뺤젣 ?꽑?깮?빀?땲?떎.
+						// 해당 LOV를 강제 선택합니다.
 						lovTable.getSelectionModel().setSelectionInterval(0, i);
 						Thread.sleep(1000);
 						saveActionTC();
@@ -1126,11 +1125,11 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * XML Import ?썑 dialog?쓽 ?긽?깭媛믪쓣 珥덇린?솕?븳?떎.
+	 * XML Import 후 dialog의 상태값을 초기화한다.
 	 */
 	void initStatus()
 	{
-		// STATUS_DELETE ?뒗 table?뿉?꽌 ?궘?젣?븳?떎.
+		// STATUS_DELETE 는 table에서 삭제한다.
 		for (int i = 0; i < dataList.size(); i++)
 		{
 			LovDataItem selectedLOVItem = dataList.get(i);
@@ -1141,7 +1140,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			}
 		}
 
-		// table?쓽 Status媛믪쓣 珥덇린?솕?븳?떎.
+		// table의 Status값을 초기화한다.
 		for (int i = 0; i < dataList.size(); i++)
 		{
 			LovDataItem selectedLOVItem = dataList.get(i);
@@ -1152,7 +1151,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * ?꽑?깮?맂 LOV Data瑜? TeamCenter?뿉 ???옣?빀?땲?떎.
+	 * 선택된 LOV Data를 TeamCenter에 저장합니다.
 	 * 
 	 */
 	void saveActionTC()
@@ -1179,45 +1178,45 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		}
 
-		// xml ?뙆?씪 ?깮?꽦
+		// xml 파일 생성
 		writeXML();
 		executeLogMessage();
 	}
 
 	void writeXML()
 	{
-		/** document 媛앹껜 ?깮?꽦 */
+		/** document 객체 생성 */
 		org.jdom.Document doc = new org.jdom.Document();
 		org.jdom.Document doc_Lang = new org.jdom.Document();
 
-		/** NameSpace ?깮?꽦 */
+		/** NameSpace 생성 */
 		org.jdom.Namespace nameSpace = org.jdom.Namespace.getNamespace(topNodeAttrXmlns);
 		org.jdom.Namespace nameSpace_Lang = org.jdom.Namespace.getNamespace(topNodeAttrXmlns_lang);
 
-		/** Element 媛앹껜 ?깮?꽦 */
+		/** Element 객체 생성 */
 		org.jdom.Element topElement = new org.jdom.Element("TcBusinessData", nameSpace); // TcBusinessData
 		org.jdom.Element changeElement = new org.jdom.Element("Change", nameSpace); // <Change>
 		org.jdom.Element tclovElement = new org.jdom.Element("TcLOV", nameSpace); // <TcLOV
 		org.jdom.Element topElement_Lang = new org.jdom.Element("TcBusinessDataLocalization", nameSpace_Lang); // TcBusinessDataLocalization
 		org.jdom.Element addElement_Lang = new org.jdom.Element("Add", nameSpace_Lang); // Add
 
-		// ?쁽?옱 ?떆媛?
+		// 현재 시간
 		Date currentDate = new Date();
 
 		topElement.setAttribute(TOP_NODE_ATTR_NAME_VERSION, topNodeAttrVersion);
 		topElement.setAttribute("Date", currentDate.toString());
 
-		// Change Tag ?냽?꽦
+		// Change Tag 속성
 		tclovElement.setAttribute("name", lovName);
 		tclovElement.setAttribute("usage", "Exhaustive");
 		tclovElement.setAttribute("lovType", "ListOfValuesString");
 		tclovElement.setAttribute("isManagedExternally", "true");
 
-		// XML_Lang ?뙆?씪 ?깮?꽦
+		// XML_Lang 파일 생성
 		topElement_Lang.setAttribute(TOP_NODE_ATTR_NAME_VERSION, topNodeAttrVersion_lang);
 		topElement_Lang.setAttribute("Date", currentDate.toString());
 
-		/** xml ?뙆?씪 諛? lang.xml ?뙆?씪?쓽 LOVValue tag 遺?遺? set */
+		/** xml 파일 및 lang.xml 파일의 LOVValue tag 부분 set */
 		for (int i = 0; i < dataList.size(); i++)
 		{
 			LovDataItem dataItem = dataList.get(i);
@@ -1245,12 +1244,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 			keyElement.setText(dataItem.getData(LovDataItem.INDEX_VALUE));
 
-			//媛? ?뿕由щ㉫?듃?뱾 諛곗튂 ?옉?뾽 (?뿕由щ㉫?듃?뿉 ?옄?떇 ?슂?냼瑜? 異붽??븷 ?뻹?뒗 )(?쐞?쓽 二쇱꽍??濡? 諛곗튂瑜? ?빐以섏빞 ?븳?떎).  addContent()硫붿꽌?뱶瑜? ?씠?슜?븳?떎.
+			//각 엘리먼트들 배치 작업 (엘리먼트에 자식 요소를 추가할 떄는 )(위의 주석대로 배치를 해줘야 한다).  addContent()메서드를 이용한다.
 			tclovElement.addContent(valueElement);
 			addElement_Lang.addContent(keyElement);
 		}
 
-		/** lang.xml ?뙆?씪?쓽 LOVValueDescription 遺?遺? set */
+		/** lang.xml 파일의 LOVValueDescription 부분 set */
 		for (int i = 0; i < dataList.size(); i++)
 		{
 			LovDataItem dataItem = dataList.get(i);
@@ -1271,7 +1270,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 			keyDescElement.setText(dataItem.getData(LovDataItem.INDEX_DESC));//yunjae
 
-			//媛? ?뿕由щ㉫?듃?뱾 諛곗튂 ?옉?뾽 (?뿕由щ㉫?듃?뿉 ?옄?떇 ?슂?냼瑜? 異붽??븷 ?뻹?뒗 )(?쐞?쓽 二쇱꽍??濡? 諛곗튂瑜? ?빐以섏빞 ?븳?떎).  addContent()硫붿꽌?뱶瑜? ?씠?슜?븳?떎.
+			//각 엘리먼트들 배치 작업 (엘리먼트에 자식 요소를 추가할 떄는 )(위의 주석대로 배치를 해줘야 한다).  addContent()메서드를 이용한다.
 			addElement_Lang.addContent(keyDescElement);
 		}
 
@@ -1279,33 +1278,33 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		topElement.addContent(changeElement);
 		topElement_Lang.addContent(addElement_Lang);
 
-		// 留덉?留됱쑝濡? Document?뿉 理쒖긽?쐞 Element瑜? ?꽕?젙?븳?떎.
+		// 마지막으로 Document에 최상위 Element를 설정한다.
 		doc.setRootElement(topElement);
 		doc_Lang.setRootElement(topElement_Lang);
 
-		// ?뙆?씪濡? ???옣?븯湲? ?쐞?빐?꽌 XMLOutputter 媛앹껜媛? ?븘?슂?븯?떎
+		// 파일로 저장하기 위해서 XMLOutputter 객체가 필요하다
 		XMLOutputter xout = new XMLOutputter();
 
-		// 湲곕낯 ?룷留? ?삎?깭瑜? 遺덈윭?? ?닔?젙?븳?떎.
+		// 기본 포맷 형태를 불러와 수정한다.
 		Format fm = xout.getFormat();
 
-		/** ?떎援??뼱 吏??썝?쓣 ?쐞?빐 encodeing ?삎?깭瑜? UTF-8濡? 蹂?寃쏀븳?떎. */
+		/** 다국어 지원을 위해 encodeing 형태를 UTF-8로 변경한다. */
 //      fm.setEncoding("euc-kr");
 		fm.setEncoding("UTF-8");
 
-		// 遺?紐?, ?옄?떇 ?깭洹몃?? 援щ퀎?븯湲? ?쐞?븳 ?꺆 踰붿쐞瑜? ?젙?븳?떎.
+		// 부모, 자식 태그를 구별하기 위한 탭 범위를 정한다.
 		fm.setIndent("   ");
-		//?깭洹몃겮由? 以꾨컮轅덉쓣 吏??젙?븳?떎.
+		//태그끼리 줄바꿈을 지정한다.
 		fm.setLineSeparator("\r\n");
 
-		// ?꽕?젙?븳 XML ?뙆?씪?쓽 ?룷留룹쓣 set?븳?떎.
+		// 설정한 XML 파일의 포맷을 set한다.
 		xout.setFormat(fm);
 		try
 		{
 //    	  xout.output(doc, new FileWriter(strExportPath + strImportXMLFileName + strXMLExtension));
 //    	  xout.output(doc_Lang, new FileWriter(strExportLangPath + strImportXMLLangFileName + strXMLExtension));
 
-			/** XML ?뙆?씪 ???옣?쓣 UTF-8濡? ?빐?빞 ?븯湲곗뿉 FileOutputStream?쑝濡? ???옣?븿.(FileWriter?뒗 UTF-8濡? ???옣?씠 ?븞?맖) */
+			/** XML 파일 저장을 UTF-8로 해야 하기에 FileOutputStream으로 저장함.(FileWriter는 UTF-8로 저장이 안됨) */
 			xout.output(doc, new FileOutputStream(xmlDownloadPath + newXMLFile + strXMLExtension));
 			xout.output(doc_Lang, new FileOutputStream(xmlDownloadPath_lang + newXMLFile_lang + strXMLExtension));
 
@@ -1316,12 +1315,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * bmide_mamage_batch_lovs.bat ?뙆?씪?쓣 ?떎?뻾?븯湲? ?쐞?븳 ?뙆?씪誘명꽣 媛믪쓣 由ы꽩?븳?떎.
+	 * bmide_mamage_batch_lovs.bat 파일을 실행하기 위한 파라미터 값을 리턴한다.
 	 * 
 	 * @param isExport
-	 *            : true?씠硫? extract(XML ?뙆?씪 Export), false?씠硫? update(XML ?뙆?씪 Import)
+	 *            : true이면 extract(XML 파일 Export), false이면 update(XML 파일 Import)
 	 * @param file
-	 *            : xml ?뙆?씪?쓽 full path
+	 *            : xml 파일의 full path
 	 * @return
 	 */
 	public String getExecuteBatch(boolean isExport, String file)
@@ -1340,21 +1339,21 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * ?닔?젙?맂 LOV 媛믪쓣 ?꽌踰꾨줈 Export?븳?떎.
+	 * 수정된 LOV 값을 서버로 Export한다.
 	 */
 //  void executeLogMessage(){
-//	  File pFile = new File("C:\\Tc9.properties.txt");		// ?씠 ?뙆?씪?? ?빆?긽 議댁옱?빐?빞 ?븳?떎.
+//	  File pFile = new File("C:\\Tc9.properties.txt");		// 이 파일은 항상 존재해야 한다.
 //	  FileWriter fw = null;
 //	  
 //	  try {
 //		  if(!pFile.exists()) {
-////			   String message = "吏??젙?맂 ?쐞移?(" + pFile + ")?뿉 ?뙆?씪?씠 議댁옱?븯吏? ?븡?뒿?땲?떎.";
+////			   String message = "지정된 위치(" + pFile + ")에 파일이 존재하지 않습니다.";
 //			  String message = registry.getString("lovmanage.MESSAGE.Front") + pFile + registry.getString("lovmanage.MESSAGE.Back");
-//			  MessageBox.post(message, "?븣由?", MessageBox.INFORMATION);
+//			  MessageBox.post(message, "알림", MessageBox.INFORMATION);
 //			  return;
 //		  }
 //		  
-//		  /** ?뙆?씪 媛앹껜 ?깮?꽦 */
+//		  /** 파일 객체 생성 */
 //		  File tmpDir = new File(xmlDownloadPath);
 //		  File batFile = new File(tmpDir, "updateTmpBatch.bat");
 //		  if(!batFile.exists()) {
@@ -1369,31 +1368,31 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 //			  fw.write(s.nextLine().toString() + "\n");
 //		  }
 //
-//		  /** bmide_mamage_batch_lovs.bat ?뙆?씪?쓣 ?떎?뻾?븯湲? ?쐞?븳 紐낅졊?뼱瑜? 諛쏆븘?샂 */
+//		  /** bmide_mamage_batch_lovs.bat 파일을 실행하기 위한 명령어를 받아옴 */
 //		  String exportFile = xmlDownloadPath + newXMLFile + strXMLExtension;
 //		  String command = getExecuteBatch(false, exportFile);
 //		  fw.write(command);
 //		  s.close();
 //		  fw.close();
 //
-//		  /** Progress bar ?떎?뻾 */
+//		  /** Progress bar 실행 */
 //		  WaitProgressBar simpleProgressBar = new WaitProgressBar(AIFUtility.getActiveDesktop());
 //		  simpleProgressBar.setWindowSize(500, 300);
 //		  simpleProgressBar.start();
 //		  simpleProgressBar.setStatus("LOV Import is start..."	, true);
 //		  
-//		  /** 諛곗튂?뙆?씪 ?떎?뻾 */
+//		  /** 배치파일 실행 */
 //		  String[] cmd = { "CMD", "/C", batFile.getPath() };
 //		  Process p = Runtime.getRuntime().exec(cmd);
 //	  
-//		  // ?쇅遺? ?봽濡쒓렇?옩?뿉 ???븳 InputStream ?쓣 ?깮?꽦
+//		  // 외부 프로그램에 대한 InputStream 을 생성
 //	      DataInputStream inputstream = new DataInputStream(p.getInputStream());
 //	      BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
 //	      
 //	      String strOutput = "";
 //	      while (true)
 //	      {
-//	    	  // ?쇅遺? ?봽濡쒓렇?옩?씠 異쒕젰?븯?뒗 硫붿꽭吏?瑜? ?븳以꾩뵫 ?씫?뼱?뱾?엫
+//	    	  // 외부 프로그램이 출력하는 메세지를 한줄씩 읽어들임
 //	    	  strOutput = reader.readLine();
 //
 //	    	  if (strOutput != null)
@@ -1414,7 +1413,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 //	} 
 //  }
 
-	//progress bar ?닔?젙
+	//progress bar 수정
 	void executeLogMessage()
 	{
 		final TransOperation initOp = new TransOperation();
@@ -1447,7 +1446,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 			try
 			{
-				/** ?뙆?씪 媛앹껜 ?깮?꽦 */
+				/** 파일 객체 생성 */
 				File tmpDir = new File(xmlDownloadPath);
 				File batFile = new File(tmpDir, "updateTmpBatch.bat");
 				if (!batFile.exists())
@@ -1460,30 +1459,30 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 				fw.write("SET TC_DATA=Y:\\tcdata10\r\n");
 				fw.write("call %TC_DATA%\\tc_profilevars.bat\r\n\r\n");
 
-				/** bmide_mamage_batch_lovs.bat ?뙆?씪?쓣 ?떎?뻾?븯湲? ?쐞?븳 紐낅졊?뼱瑜? 諛쏆븘?샂 */
+				/** bmide_mamage_batch_lovs.bat 파일을 실행하기 위한 명령어를 받아옴 */
 				String exportFile = xmlDownloadPath + newXMLFile + strXMLExtension;
 				String command = getExecuteBatch(false, exportFile);
 				fw.write(command);
 				fw.close();
 
-				/** Progress bar ?떎?뻾 */
+				/** Progress bar 실행 */
 				WaitProgressBar simpleProgressBar = new WaitProgressBar(AIFUtility.getActiveDesktop());
 				simpleProgressBar.setWindowSize(500, 300);
 				simpleProgressBar.start();
 				simpleProgressBar.setStatus("LOV Import is start...", true);
 
-				/** 諛곗튂?뙆?씪 ?떎?뻾 */
+				/** 배치파일 실행 */
 				String[] cmd = { "CMD", "/C", batFile.getPath() };
 				Process p = Runtime.getRuntime().exec(cmd);
 
-				// ?쇅遺? ?봽濡쒓렇?옩?뿉 ???븳 InputStream ?쓣 ?깮?꽦
+				// 외부 프로그램에 대한 InputStream 을 생성
 				DataInputStream inputstream = new DataInputStream(p.getInputStream());
 				BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
 
 				String strOutput = "";
 				while (true)
 				{
-					// ?쇅遺? ?봽濡쒓렇?옩?씠 異쒕젰?븯?뒗 硫붿꽭吏?瑜? ?븳以꾩뵫 ?씫?뼱?뱾?엫
+					// 외부 프로그램이 출력하는 메세지를 한줄씩 읽어들임
 					strOutput = reader.readLine();
 
 					if (strOutput != null)
@@ -1507,7 +1506,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * ?삤?뒛 ?궇吏쒕?? 20130101 or 20130101HHmm?삎?깭濡? 蹂??솚?떆耳? 由ы꽩?븳?떎.
+	 * 오늘 날짜를 20130101 or 20130101HHmm형태로 변환시켜 리턴한다.
 	 * 
 	 * @param isFolder
 	 *            : true : 20130101 , false : 20130101HHmm
@@ -1557,7 +1556,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					try
 					{
 						LovItem selectedLOVItem = lovList.get(nSelected);
-						newXMLFile = selectedLOVItem.toString() + "_" + getTodayDate(false); // LOV name?쑝濡? xml ?뙆?씪紐낆쓣 留뚮뱺?떎.
+						newXMLFile = selectedLOVItem.toString() + "_" + getTodayDate(false); // LOV name으로 xml 파일명을 만든다.
 						strExportExcelFileName = selectedLOVItem.toString();
 						newXMLFile_lang = newXMLFile + "_lang";
 
@@ -1584,7 +1583,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		public Class[] colClasses = { String.class };
 
 		//------------------------------------------------------------------------------------------
-		// [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙. 
+		// [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정. 
 		int sortBy = 0;
 		int sortType = LovItemComparator.SORT_BY_CODE;
 		int sortOrder = LovItemComparator.SORT_ASC;
@@ -1623,7 +1622,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		/**
-		 * [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙.
+		 * [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정.
 		 * sort method
 		 */
 		public void sort()
@@ -1632,8 +1631,8 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}// sort
 
 		/**
-		 * [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙.
-		 * sort 湲곗? column 吏??젙.
+		 * [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정.
+		 * sort 기준 column 지정.
 		 * 
 		 * @param sortBy
 		 */
@@ -1656,12 +1655,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		// Table Column Names
 		public String[] cNames = { "Key", "Display Name", "Description", "Status" };
 		// Table Column Classes
-		// [20140422] bskwak, column 紐? ?겢由? ?떆 ?젙?젹 湲곕뒫 異붽?. 
-		// 3媛쒖??뜕 寃껋쓣 4媛쒕줈 蹂?寃? Sort 湲곕뒫?쓣 ?벐硫? ?몴湲곕릺吏? ?븡?뒗 column?룄 紐⑤몢 ?꽕?젙?빐?빞 ?븯?뒗 ?벏. 
+		// [20140422] bskwak, column 명 클릭 시 정렬 기능 추가. 
+		// 3개였던 것을 4개로 변경 Sort 기능을 쓰면 표기되지 않는 column도 모두 설정해야 하는 듯. 
 		public Class[] colClasses = { String.class, String.class, String.class, String.class };
 
 		//------------------------------------------------------------------------------------------
-		// [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙. 
+		// [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정. 
 		int sortBy = 0;
 		int sortType = LovDataItemComparator.SORT_BY_CODE;
 		int sortOrder = LovDataItemComparator.SORT_ASC;
@@ -1700,7 +1699,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		/**
-		 * [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙.
+		 * [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정.
 		 * sort method
 		 * 
 		 */
@@ -1710,8 +1709,8 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}// sort
 
 		/**
-		 * [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙.
-		 * sort 湲곗? column 吏??젙.
+		 * [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정.
+		 * sort 기준 column 지정.
 		 * 
 		 * @param sortBy
 		 */
@@ -1772,13 +1771,13 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			else if (selectedData.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_ADD))
 				setBackground(Color.BLUE);
 
-			// Tooltip 吏??젙
+			// Tooltip 지정
 			if (value != null && value.getClass().getName().endsWith("String"))
 			{
 				setToolTipText(value.toString());
 			}
 
-			// ?꽑?깮 Background 吏??젙
+			// 선택 Background 지정
 			if (isSelected)
 			{
 				setBackground(new Color(49, 106, 197));
@@ -1874,10 +1873,10 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		JTextField keyField; // Key	
 		JTextArea valueField; // Desc
-		JTextField descField; // Display 紐?
+		JTextField descField; // Display 명
 
 		/**
-		 * ?떊洹쒖깮?꽦?씤 寃쎌슦
+		 * 신규생성인 경우
 		 */
 		LovDataDialog()
 		{
@@ -1894,7 +1893,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		/**
-		 * ?떊洹쒖깮?꽦?씤 寃쎌슦
+		 * 신규생성인 경우
 		 */
 		LovDataDialog(String key, String seq)
 		{
@@ -1905,7 +1904,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		/**
-		 * ?닔?젙?씤 寃쎌슦
+		 * 수정인 경우
 		 * 
 		 * @param lovItem
 		 */
@@ -2019,27 +2018,27 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		{
 			if ("".equals(keyField.getText().trim()))
 			{
-//          MessageBox.post(LovDataDialog.this, "Key Field媛? 怨듬??엯?땲?떎.", "Warning", MessageBox.INFORMATION);
+//          MessageBox.post(LovDataDialog.this, "Key Field가 공란입니다.", "Warning", MessageBox.INFORMATION);
 				String message = registry.getString("lovmanage.MESSAGE.KeyField");
 				MessageBox.post(LovDataDialog.this, message, "Warning", MessageBox.INFORMATION);
 				return;
 			}
 			if ("".equals(valueField.getText().trim()))
 			{
-//          MessageBox.post(LovDataDialog.this, "Desc Field媛? 怨듬??엯?땲?떎.", "Warning", MessageBox.INFORMATION);
+//          MessageBox.post(LovDataDialog.this, "Desc Field가 공란입니다.", "Warning", MessageBox.INFORMATION);
 				String message = registry.getString("lovmanage.MESSAGE.ValueField");
 				MessageBox.post(LovDataDialog.this, message, "Warning", MessageBox.INFORMATION);
 				return;
 			}
 			if ("".equals(descField.getText().trim()))
 			{
-//          MessageBox.post(LovDataDialog.this, "Display紐? Field媛? 怨듬??엯?땲?떎.", "Warning", MessageBox.INFORMATION);
+//          MessageBox.post(LovDataDialog.this, "Display명 Field가 공란입니다.", "Warning", MessageBox.INFORMATION);
 				String message = registry.getString("lovmanage.MESSAGE.DisplayField");
 				MessageBox.post(LovDataDialog.this, message, "Warning", MessageBox.INFORMATION);
 				return;
 			}
 
-			// ?깮?꽦?씤 寃쎌슦
+			// 생성인 경우
 			if (lovDataItem == null)
 			{
 				LovDataItem dataItem = new LovDataItem();
@@ -2056,7 +2055,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					dataList.add(nSelected, dataItem);
 
 			}
-			// ?닔?젙?씤 寃쎌슦
+			// 수정인 경우
 			else
 			{
 				lovDataItem.setData(LovDataItem.INDEX_KEY, keyField.getText());
@@ -2075,9 +2074,9 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 	/**
 	 * 
-	 * [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙.
+	 * [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정.
 	 * LovItemComparator class
-	 * ?냼?똿?뿉 ?궗?슜?릺?뒗 Comparator Class
+	 * 소팅에 사용되는 Comparator Class
 	 */
 	class LovItemComparator implements Comparator
 	{
@@ -2093,12 +2092,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		{
 			this.sortType = sortType;
 			this.sortOrder = sortOrder;
-		}// ?깮?꽦?옄
+		}// 생성자
 
 		public int compare(Object o1, Object o2)
 		{
 			int result = 0;
-			// STEP 1. 媛앹껜 ???엯?씠 LovItem ?씤吏? 鍮꾧탳
+			// STEP 1. 객체 타입이 LovItem 인지 비교
 			if (!(o1 instanceof LovManagerDialog.LovItem))
 				return 0;
 			if (!(o2 instanceof LovManagerDialog.LovItem))
@@ -2107,7 +2106,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			String str1 = ((LovManagerDialog.LovItem) o1).strName;
 			String str2 = ((LovManagerDialog.LovItem) o2).strName;
 
-			// STEP 2. 而щ읆 醫낅쪟?뿉 ?뵲?씪?꽌 ???냼瑜? 鍮꾧탳?븳?떎.
+			// STEP 2. 컬럼 종류에 따라서 대소를 비교한다.
 			switch (sortType)
 			{
 				case SORT_BY_NUMBER:
@@ -2120,7 +2119,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					result = str1.compareTo(str2);
 			}// switch
 
-			// STEP 3. ?냼?똿 諛⑺뼢?쓣 ?쟻?슜?븳?떎.
+			// STEP 3. 소팅 방향을 적용한다.
 			result *= sortOrder;
 			return result;
 		}// compare
@@ -2128,8 +2127,8 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 	/**
 	 * 
-	 * [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙.
-	 * ?냼?똿?뿉 ?궗?슜?릺?뒗 Comparator Class
+	 * [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정.
+	 * 소팅에 사용되는 Comparator Class
 	 * 
 	 * @author bs
 	 * 
@@ -2150,12 +2149,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			this.sortBy = sortBy;
 			this.sortType = sortType;
 			this.sortOrder = sortOrder;
-		}// ?깮?꽦?옄
+		}// 생성자
 
 		public int compare(Object o1, Object o2)
 		{
 			int result = 0;
-			// STEP 1. 媛앹껜 ???엯?씠 LovItem ?씤吏? 鍮꾧탳
+			// STEP 1. 객체 타입이 LovItem 인지 비교
 			if (!(o1 instanceof LovManagerDialog.LovDataItem))
 				return 0;
 			if (!(o2 instanceof LovManagerDialog.LovDataItem))
@@ -2164,7 +2163,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			String str1 = ((LovManagerDialog.LovDataItem) o1).getData(this.sortBy);
 			String str2 = ((LovManagerDialog.LovDataItem) o2).getData(this.sortBy);
 
-			// STEP 2. 而щ읆 醫낅쪟?뿉 ?뵲?씪?꽌 ???냼瑜? 鍮꾧탳?븳?떎.
+			// STEP 2. 컬럼 종류에 따라서 대소를 비교한다.
 			switch (sortType)
 			{
 				case SORT_BY_NUMBER:
@@ -2177,15 +2176,15 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					result = str1.compareTo(str2);
 			}// switch
 
-			// STEP 3. ?냼?똿 諛⑺뼢?쓣 ?쟻?슜?븳?떎.
+			// STEP 3. 소팅 방향을 적용한다.
 			result *= sortOrder;
 			return result;
 		}// compare
 	}
 
 	/**
-	 * [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙.
-	 * LovItemTableModel ?슜 header mouse adapter
+	 * [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정.
+	 * LovItemTableModel 용 header mouse adapter
 	 * 
 	 * @author bs
 	 * 
@@ -2197,11 +2196,11 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		public LovItemColumnHeaderMouseAdapter(JTable table)
 		{
 			this.table = table;
-		}// ?깮?꽦?옄
+		}// 생성자
 
 		public void mouseClicked(MouseEvent e)
 		{
-			// STEP 1. ?뼱?뒓 而щ읆?씠 ?겢由??릺?뿀?뒗吏? 李얠븘?궦?떎.
+			// STEP 1. 어느 컬럼이 클릭되었는지 찾아낸다.
 			TableColumnModel colModel = table.getColumnModel();
 			int columnModelIndex = colModel.getColumnIndexAtX(e.getX());
 			int modelIndex = colModel.getColumn(columnModelIndex).getModelIndex();
@@ -2209,7 +2208,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			if (modelIndex < 0)
 				return;
 
-			// STEP 2. ?겢由??맂 而щ읆?뿉 ?뵲?씪 ?냼?똿 ?닚?꽌 諛? ?냼?똿 湲곗??쓣 蹂?寃쏀븳?떎.
+			// STEP 2. 클릭된 컬럼에 따라 소팅 순서 및 소팅 기준을 변경한다.
 			LovItemTableModel tableModel = (LovItemTableModel) table.getModel();
 			tableModel.setSortBy(modelIndex);
 			tableModel.sort();
@@ -2218,8 +2217,8 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * [SR140513-015][20140512] bskwak, column ?뿴 ?겢由? ?떆 ?젙?젹 湲곕뒫 ?삤瑜? ?닔?젙.
-	 * LovDataItemTableModel ?슜 header mouse adapter
+	 * [SR140513-015][20140512] bskwak, column 열 클릭 시 정렬 기능 오류 수정.
+	 * LovDataItemTableModel 용 header mouse adapter
 	 * 
 	 * @author bs
 	 * 
@@ -2231,11 +2230,11 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		public LovDataColumnHeaderMouseAdapter(JTable table)
 		{
 			this.table = table;
-		}// ?깮?꽦?옄
+		}// 생성자
 
 		public void mouseClicked(MouseEvent e)
 		{
-			// STEP 1. ?뼱?뒓 而щ읆?씠 ?겢由??릺?뿀?뒗吏? 李얠븘?궦?떎.
+			// STEP 1. 어느 컬럼이 클릭되었는지 찾아낸다.
 			TableColumnModel colModel = table.getColumnModel();
 			int columnModelIndex = colModel.getColumnIndexAtX(e.getX());
 			int modelIndex = colModel.getColumn(columnModelIndex).getModelIndex();
@@ -2243,7 +2242,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			if (modelIndex < 0)
 				return;
 
-			// STEP 2. ?겢由??맂 而щ읆?뿉 ?뵲?씪 ?냼?똿 ?닚?꽌 諛? ?냼?똿 湲곗??쓣 蹂?寃쏀븳?떎.
+			// STEP 2. 클릭된 컬럼에 따라 소팅 순서 및 소팅 기준을 변경한다.
 			LovDataItemTableModel tableModel = (LovDataItemTableModel) table.getModel();
 			tableModel.setSortBy(modelIndex);
 			tableModel.sort();
