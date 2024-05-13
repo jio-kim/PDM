@@ -1,11 +1,11 @@
 /**
  * LovManagerDialog.java
  * 
- * 1. bmide_manage_batch_lovs.bat Utility¸¦ »ç¿ëÇÏ¿© External Lov List XML·Î ÃßÃâÇÕ´Ï´Ù.
- * 2. ÃßÃâµÈ XmlÀ» LoadingÇÏ¿© È­¸é¿¡ Ç¥½Ã ÇÕ´Ï´Ù.
- * 3. °¢ LOV Data »ı¼º/¼öÁ¤/»èÁ¦ ±â´ÉÀ» ±¸ÇöÇÕ´Ï´Ù.
- * 4. »ı¼º/¼öÁ¤/»èÁ¦ µÈ LOV Data¸¦ Xml·Î º¯È¯ÇÕ´Ï´Ù.
- * 5. º¯È¯µÈ XmlÀ» bmide_manage_batch_lovs.bat Utility¸¦ »ç¿ëÇÏ¿© TeamCenter¿¡ ¹İ¿µÇÕ´Ï´Ù.
+ * 1. bmide_manage_batch_lovs.bat Utilityë¥¼ ì‚¬ìš©í•˜ì—¬ External Lov List XMLë¡œ ì¶”ì¶œí•©ë‹ˆë‹¤.
+ * 2. ì¶”ì¶œëœ Xmlì„ Loadingí•˜ì—¬ í™”ë©´ì— í‘œì‹œ í•©ë‹ˆë‹¤.
+ * 3. ê° LOV Data ìƒì„±/ìˆ˜ì •/ì‚­ì œ ê¸°ëŠ¥ì„ êµ¬í˜„í•©ë‹ˆë‹¤.
+ * 4. ìƒì„±/ìˆ˜ì •/ì‚­ì œ ëœ LOV Dataë¥¼ Xmlë¡œ ë³€í™˜í•©ë‹ˆë‹¤.
+ * 5. ë³€í™˜ëœ Xmlì„ bmide_manage_batch_lovs.bat Utilityë¥¼ ì‚¬ìš©í•˜ì—¬ TeamCenterì— ë°˜ì˜í•©ë‹ˆë‹¤.
  */
 package com.kgm.admin.lovmanage;
 
@@ -89,8 +89,8 @@ import com.teamcenter.rac.util.MessageBox;
 import com.teamcenter.rac.util.Registry;
 
 /**
- * [20140422][SR140401-044] bskwak, column ¸í Å¬¸¯ ½Ã Á¤·Ä ±â´É Ãß°¡.
- * [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤.
+ * [20140422][SR140401-044] bskwak, column ëª… í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì¶”ê°€.
+ * [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •.
  * 
  * @author bs
  * 
@@ -107,13 +107,13 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	/** Lov Data List */
 	ArrayList<LovDataItem> dataList = null;
 	/** Lov Table */
-	JTable lovTable = null; // LOV List¸¦ ÀúÀåÇÒ Table
+	JTable lovTable = null; // LOV Listë¥¼ ì €ì¥í•  Table
 	/** Lov Data Table */
-	JTable dataTable = null; // LOVÀÇ Data¸¦ ÀúÀåÇÒ ¸®½ºÆ®
+	JTable dataTable = null; // LOVì˜ Dataë¥¼ ì €ì¥í•  ë¦¬ìŠ¤íŠ¸
 	/** Lov Table Model */
 	LovItemTableModel lovItemTableModel = null; // LOV List
 	/** Lov Data Table Model */
-	LovDataItemTableModel lovDataItemTableModel = null; // LOVÀÇ Data List
+	LovDataItemTableModel lovDataItemTableModel = null; // LOVì˜ Data List
 
 	private DocumentBuilderFactory dbf;
 	private DocumentBuilder db;
@@ -122,52 +122,52 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	private String lovName = "";
 
 	/**
-	 * LOV °ªÀ» BMIDE¿¡¼­ »ı¼ºÇÏÁö ¾Ê°í Reference(?) ÇüÅÂ·Î °ü¸®ÇÏ±â À§ÇÑ ºÎºĞ.
+	 * LOV ê°’ì„ BMIDEì—ì„œ ìƒì„±í•˜ì§€ ì•Šê³  Reference(?) í˜•íƒœë¡œ ê´€ë¦¬í•˜ê¸° ìœ„í•œ ë¶€ë¶„.
 	 * SET TC_ROOT=C:\Siemens\Teamcenter9
 	 * SET TC_DATA=\\10.80.28.162\d$\Siemens\tcdata
 	 * call %TC_DATA%\tc_profilevars.bat
 	 * call bmide_manage_batch_lovs.bat -u=infodba -p=infodba -g=dba -option=extract -file=C:/temp/lovname20130326/lov_values_201303261041.xml
-	 * À§¿Í °°ÀÌ È¯°æSettingÀ» ÇÑ ÈÄ bmide_manage_batch_lovs.bat À» ½ÇÇàÇÏ¸é ÁöÁ¤ÇÑ °æ·Î¿¡ xmlÆÄÀÏÀÌ »ı¼º(ÆÄÀÏ¸í.xml°ú lang/ÆÄÀÏ¸í_lang.xml)µÇ°í
-	 * ÀÌ xmlÆÄÀÏ¾È¿¡ LOVÀÇ List¿Í Value°¡ ÀÖ½¿.
-	 * ÀÌ Class´Â ÀÌ·¯ÇÑ LOV¿¡ ½ÇÁ¦ °ªÀ» Ãß°¡, ¼öÁ¤, »èÁ¦ÇÏ°í ¹İ¿µÇÏ±â À§ÇÑ ClassÀÓ.
-	 * LOV ÀÚÃ¼¸¦ »ı¼ºÇÏÁö´Â ¸øÇÔ.
+	 * ìœ„ì™€ ê°™ì´ í™˜ê²½Settingì„ í•œ í›„ bmide_manage_batch_lovs.bat ì„ ì‹¤í–‰í•˜ë©´ ì§€ì •í•œ ê²½ë¡œì— xmlíŒŒì¼ì´ ìƒì„±(íŒŒì¼ëª….xmlê³¼ lang/íŒŒì¼ëª…_lang.xml)ë˜ê³ 
+	 * ì´ xmlíŒŒì¼ì•ˆì— LOVì˜ Listì™€ Valueê°€ ìˆìŠ´.
+	 * ì´ ClassëŠ” ì´ëŸ¬í•œ LOVì— ì‹¤ì œ ê°’ì„ ì¶”ê°€, ìˆ˜ì •, ì‚­ì œí•˜ê³  ë°˜ì˜í•˜ê¸° ìœ„í•œ Classì„.
+	 * LOV ìì²´ë¥¼ ìƒì„±í•˜ì§€ëŠ” ëª»í•¨.
 	 */
 
 	/**
 	 * SET TC_ROOT=C:\Siemens\Teamcenter9
 	 * SET TC_DATA=\\10.80.28.162\d$\Siemens\tcdata
 	 * call %TC_DATA%\tc_profilevars.bat
-	 * À§ 3°³ÀÇ ¶óÀÎÀº C:\Tc9.properties.txt ÆÄÀÏ¿¡ ¹İµå½Ã ±â·ÏµÇ¾î ÀÖ¾î¾ß ÇÑ´Ù.
+	 * ìœ„ 3ê°œì˜ ë¼ì¸ì€ C:\Tc9.properties.txt íŒŒì¼ì— ë°˜ë“œì‹œ ê¸°ë¡ë˜ì–´ ìˆì–´ì•¼ í•œë‹¤.
 	 */
 
 	public static String TOP_NODE_ATTR_NAME_XMLNS = "xmlns";
 	public static String TOP_NODE_ATTR_NAME_VERSION = "batchXSDVersion";
 
-	/** xml ÆÄÀÏ »ó´ÜÀÇ ±âº» Á¤ÀÇ¸¦ À§ÇÑ º¯¼ö **/
+	/** xml íŒŒì¼ ìƒë‹¨ì˜ ê¸°ë³¸ ì •ì˜ë¥¼ ìœ„í•œ ë³€ìˆ˜ **/
 	private String topNodeAttrXmlns = ""; // xmlns="http://teamcenter.com/BusinessModel/TcBusinessData"
 	private String topNodeAttrVersion = ""; // batchXSDVersion="1.0"
 
-	/** lang/_lang.xml ÆÄÀÏ »ó´ÜÀÇ ±âº» Á¤ÀÇ¸¦ À§ÇÑ º¯¼ö **/
+	/** lang/_lang.xml íŒŒì¼ ìƒë‹¨ì˜ ê¸°ë³¸ ì •ì˜ë¥¼ ìœ„í•œ ë³€ìˆ˜ **/
 	private String topNodeAttrXmlns_lang = ""; // xmlns="http://teamcenter.com/BusinessModel/TcBusinessDataLocalization"
 	private String topNodeAttrVersion_lang = ""; // batchXSDVersion="1.0"
 
-	/** xmlÆÄÀÏÀ» ³»·Á¹Ş±â À§ÇÑ °æ·Î **/
+	/** xmlíŒŒì¼ì„ ë‚´ë ¤ë°›ê¸° ìœ„í•œ ê²½ë¡œ **/
 	private String xmlDownloadPath = "C:/Temp/lovname"; // ex) C:\Temp\lovname20130326				 
 	private String xmlDownloadPath_lang = "C:/Temp/lovname"; // ex) C:\Temp\lovname20130326\lang
 
-	/** ³»·Á¹ŞÀ» xmlÆÄÀÏ¸í **/
-	private String oldXMLFile = "lov_values"; // BMIDE¿¡¼­ export ¹ŞÀº xml ÆÄÀÏ¸í(lov_values_20130101)
-	private String oldXMLFile_lang = ""; // BMIDE¿¡¼­ export ¹ŞÀº xml Lang ÆÄÀÏ¸í(lov_values_20130101_lang)
+	/** ë‚´ë ¤ë°›ì„ xmlíŒŒì¼ëª… **/
+	private String oldXMLFile = "lov_values"; // BMIDEì—ì„œ export ë°›ì€ xml íŒŒì¼ëª…(lov_values_20130101)
+	private String oldXMLFile_lang = ""; // BMIDEì—ì„œ export ë°›ì€ xml Lang íŒŒì¼ëª…(lov_values_20130101_lang)
 
-	/** ImportÇÒ xmlÆÄÀÏ ¸í(»ı¼º, ¼öÁ¤, »èÁ¦µîÀÇ º¯°æ»çÇ× Àû¿ë) **/
-	private String newXMLFile = ""; // BMIDE·Î import ÇÒ xml ÆÄÀÏ¸í (XXX_20130101)
-	private String newXMLFile_lang = ""; // BMIDE·Î import ÇÒ xml LangÆÄÀÏ¸í(XXX_20130101)
+	/** Importí•  xmlíŒŒì¼ ëª…(ìƒì„±, ìˆ˜ì •, ì‚­ì œë“±ì˜ ë³€ê²½ì‚¬í•­ ì ìš©) **/
+	private String newXMLFile = ""; // BMIDEë¡œ import í•  xml íŒŒì¼ëª… (XXX_20130101)
+	private String newXMLFile_lang = ""; // BMIDEë¡œ import í•  xml LangíŒŒì¼ëª…(XXX_20130101)
 
-	/** LOV Manager TableÀ» ExcelÆÄÀÏ·Î Export **/
-	private String strExportExcelFileName = ""; // ExportÇÒ ExcelÆÄÀÏ ¸í
+	/** LOV Manager Tableì„ ExcelíŒŒì¼ë¡œ Export **/
+	private String strExportExcelFileName = ""; // Exportí•  ExcelíŒŒì¼ ëª…
 
-	/** xmlÆÄÀÏ È®ÀåÀÚ **/
-	private String strXMLExtension = ".xml"; // È®ÀåÀÚ
+	/** xmlíŒŒì¼ í™•ì¥ì **/
+	private String strXMLExtension = ".xml"; // í™•ì¥ì
 
 	public Registry registry;
 
@@ -176,7 +176,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	public String infodbaPassword = "";
 
 	/**
-	 * »ı¼ºÀÚ
+	 * ìƒì„±ì
 	 */
 	public LovManagerDialog(String _infodbaPassword) throws Exception
 	{
@@ -189,11 +189,11 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		this.registry = Registry.getRegistry(this);
 		this.selectedList = new ArrayList<LovDataItem>();
 
-		/** xmlÆÄÀÏ download °æ·Î ÁöÁ¤ **/
+		/** xmlíŒŒì¼ download ê²½ë¡œ ì§€ì • **/
 		initDownloadDir();
 
-		/** ¼­¹ö¿¡ ÀÖ´Â LOV°ªÀ» xmlÆÄÀÏ·Î °¡Á®¿Â´Ù. */
-		this.exportFile(); // LOV °ªÀ» xml ÆÄÀÏ·Î exportÇÑ´Ù.
+		/** ì„œë²„ì— ìˆëŠ” LOVê°’ì„ xmlíŒŒì¼ë¡œ ê°€ì ¸ì˜¨ë‹¤. */
+		this.exportFile(); // LOV ê°’ì„ xml íŒŒì¼ë¡œ exportí•œë‹¤.
 
 		this.init();
 
@@ -207,14 +207,14 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * XMLÆÄÀÏÀÌ ÀúÀåµÉ Æú´õÀÇ À§Ä¡¸¦ »ı¼ºÇÑ´Ù.
+	 * XMLíŒŒì¼ì´ ì €ì¥ë  í´ë”ì˜ ìœ„ì¹˜ë¥¼ ìƒì„±í•œë‹¤.
 	 */
 	public void initDownloadDir()
 	{
 		xmlDownloadPath = xmlDownloadPath + getTodayDate(true).toString() + "/"; // ex) C:/Temp/lovname20130326	
 		xmlDownloadPath_lang = xmlDownloadPath + "lang/"; // ex) C:/Temp/lovname20130326/lang/
 
-		/** c:\temp\lovnameyyMMdd Æú´õ°¡ ¾øÀ¸¸é »ı¼º */
+		/** c:\temp\lovnameyyMMdd í´ë”ê°€ ì—†ìœ¼ë©´ ìƒì„± */
 		File tmpDir = new File(xmlDownloadPath);
 		if (!tmpDir.exists())
 			tmpDir.mkdir();
@@ -229,10 +229,10 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * executeTmpBatch.bat ÆÄÀÏ »ı¼º ÈÄ bmide_manage_batch_lovs.bat ¹èÄ¡¸¦ ½ÇÇàÇÏ¿©
-	 * BMIDE¿¡¼­ LOV °ªÀ» XML ÆÄÀÏ·Î export ÇÑ´Ù.
-	 * ÆÄÀÏ Çü½ÄÀº lov_values_201303261041.xml ÇüÅÂ·Î »ı¼ºµÈ´Ù.
-	 * C:\\Tc9.properties.txt ³»¿ë : SET TC_ROOT=C:\Siemens\Teamcenter9
+	 * executeTmpBatch.bat íŒŒì¼ ìƒì„± í›„ bmide_manage_batch_lovs.bat ë°°ì¹˜ë¥¼ ì‹¤í–‰í•˜ì—¬
+	 * BMIDEì—ì„œ LOV ê°’ì„ XML íŒŒì¼ë¡œ export í•œë‹¤.
+	 * íŒŒì¼ í˜•ì‹ì€ lov_values_201303261041.xml í˜•íƒœë¡œ ìƒì„±ëœë‹¤.
+	 * C:\\Tc9.properties.txt ë‚´ìš© : SET TC_ROOT=C:\Siemens\Teamcenter9
 	 * SET TC_DATA=\\10.80.28.162\d$\Siemens\tcdata
 	 * call %TC_DATA%\tc_profilevars.bat
 	 * 
@@ -241,7 +241,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	public void exportFile() throws Exception
 	{
 
-		/** bmide_manage_batch_lovs.bat ¸í·ÉÀ» ½ÇÇàÇÏ±â À§ÇÑ È¯°æº¯¼ö°ªÀÌ ÀÖ´Â ÆÄÀÏ */
+		/** bmide_manage_batch_lovs.bat ëª…ë ¹ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ í™˜ê²½ë³€ìˆ˜ê°’ì´ ìˆëŠ” íŒŒì¼ */
 //	   File pFile = new File("C:\\Tc9.properties.txt");
 //	   
 //	   if(!pFile.exists()) {
@@ -252,7 +252,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		WaitProgressBar simpleProgressBar = new WaitProgressBar(AIFUtility.getActiveDesktop());
 		simpleProgressBar.setWindowSize(500, 300);
 
-		/** bmide_manage_batch_lovs.bat(-> XMLÆÄÀÏ »ı¼ºµÊ) ÆÄÀÏÀ» ½ÇÇàÇÒ batch ÆÄÀÏÀ» »ı¼ºÇÑ´Ù. **/
+		/** bmide_manage_batch_lovs.bat(-> XMLíŒŒì¼ ìƒì„±ë¨) íŒŒì¼ì„ ì‹¤í–‰í•  batch íŒŒì¼ì„ ìƒì„±í•œë‹¤. **/
 		File path = new File(xmlDownloadPath);
 		File batFile = new File(path, "executeTmpBatch.bat");
 		if (!batFile.exists())
@@ -265,32 +265,32 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		FileWriter fw = new FileWriter(batFile);
 //	   while (s.hasNext()) {
-		fw.write("SET TC_ROOT=D:\\SIEMENS\\TC10\r\n");
-		fw.write("SET TC_DATA=Y:\\tcdata10\r\n");
+		fw.write("SET TC_ROOT=D:\\SIEMENS\\TC13\r\n");
+		fw.write("SET TC_DATA=D:\\SIEMENS\\tcdata13\r\n");
 		fw.write("call %TC_DATA%\\tc_profilevars.bat\r\n\r\n");
 //	   }
 //	   s.close();
 
-		/** oldXML ÆÄÀÏ¸í »ı¼º */
+		/** oldXML íŒŒì¼ëª… ìƒì„± */
 		setOldXmlFileName();
 
-		/** oldXML ÆÄÀÏÀÇ Àı´ë°æ·Î ÁöÁ¤ */
+		/** oldXML íŒŒì¼ì˜ ì ˆëŒ€ê²½ë¡œ ì§€ì • */
 		String exportFile = xmlDownloadPath + oldXMLFile + strXMLExtension; // ex) C:\Temp\lovname20130326\lov_values_201303261041.xml
 
-		/** bmide_mamage_batch_lovs.bat ÆÄÀÏÀ» ½ÇÇàÇÏ±â À§ÇÑ ¸í·É¾î¸¦ ¹Ş¾Æ¿È */
+		/** bmide_mamage_batch_lovs.bat íŒŒì¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ëª…ë ¹ì–´ë¥¼ ë°›ì•„ì˜´ */
 		String command = getExecuteBatch(true, exportFile);
 		fw.write(command);
 		fw.close();
 
-		/** ProgressBar ½ÇÇà */
+		/** ProgressBar ì‹¤í–‰ */
 		simpleProgressBar.start();
 		simpleProgressBar.setStatus("LOV Export is start...", true);
 
-		/** ¹èÄ¡ ÆÄÀÏ ½ÇÇà */
+		/** ë°°ì¹˜ íŒŒì¼ ì‹¤í–‰ */
 		String[] cmd = { "CMD", "/C", batFile.getPath() };
 		Process p = Runtime.getRuntime().exec(cmd);
 
-		/** ¿ÜºÎ ÇÁ·Î±×·¥¿¡ ´ëÇÑ InputStream À» »ı¼º */
+		/** ì™¸ë¶€ í”„ë¡œê·¸ë¨ì— ëŒ€í•œ InputStream ì„ ìƒì„± */
 		DataInputStream inputstream = new DataInputStream(p.getInputStream());
 		BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
 
@@ -298,7 +298,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		while (true)
 		{
-			// ¿ÜºÎ ÇÁ·Î±×·¥ÀÌ Ãâ·ÂÇÏ´Â ¸Ş¼¼Áö¸¦ ÇÑÁÙ¾¿ ÀĞ¾îµéÀÓ
+			// ì™¸ë¶€ í”„ë¡œê·¸ë¨ì´ ì¶œë ¥í•˜ëŠ” ë©”ì„¸ì§€ë¥¼ í•œì¤„ì”© ì½ì–´ë“¤ì„
 			strOutput = reader.readLine();
 
 			if (strOutput != null)
@@ -317,20 +317,20 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * xmlÆÄÀÏ¸íÀ» »ı¼ºÇÑ´Ù.
+	 * xmlíŒŒì¼ëª…ì„ ìƒì„±í•œë‹¤.
 	 * xml : lov_values_201303261041
 	 * xml_lang : lov_values_201303261041_lang
 	 */
 	public void setOldXmlFileName()
 	{
-		/** ¿À´Ã ³¯Â¥¸¦ °¡Á®¿È(20130101) */
+		/** ì˜¤ëŠ˜ ë‚ ì§œë¥¼ ê°€ì ¸ì˜´(20130101) */
 		String currentDate = getTodayDate(false);
 		oldXMLFile = oldXMLFile + "_" + currentDate;
 		oldXMLFile_lang = oldXMLFile + "_lang";
 	}
 
 	/**
-	 * LOV Dialog¸¦ ÃÊ±âÈ­ÇÑ´Ù.
+	 * LOV Dialogë¥¼ ì´ˆê¸°í™”í•œë‹¤.
 	 * 
 	 * @throws Exception
 	 */
@@ -349,7 +349,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		this.lovTable = new JTable(lovItemTableModel);
 
 		//------------------------------------------------------------------------------------------
-		// [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤. 
+		// [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •. 
 		JTableHeader lovTableHeader = this.lovTable.getTableHeader();
 		lovTableHeader.setUpdateTableInRealTime(true);
 		lovTableHeader.addMouseListener(new LovItemColumnHeaderMouseAdapter(this.lovTable));
@@ -371,7 +371,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		this.dataTable.getColumn("Display Name").setMinWidth(200);
 		this.dataTable.getColumn("Status").setMinWidth(100);
 
-		// °¢ Columnº° SellRenderer Setting
+		// ê° Columnë³„ SellRenderer Setting
 		for (int k = 0; k < lovDataItemTableModel.cNames.length; k++)
 		{
 			// Custom TableCellRenderer
@@ -381,7 +381,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		//------------------------------------------------------------------------------------------
-		// [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤. 
+		// [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •. 
 		JTableHeader dataTableHeader = this.dataTable.getTableHeader();
 		dataTableHeader.setUpdateTableInRealTime(true);
 		dataTableHeader.addMouseListener(new LovDataColumnHeaderMouseAdapter(this.dataTable));
@@ -395,7 +395,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 			public void mousePressed(MouseEvent ee)
 			{
-				// ´õºíÅ¬¸¯ ÀÏ °æ¿ì, ¼±ÅÃµÈ ÇàÀÇ ¼öÁ¤È­¸éÀ¸·Î ÀÌµ¿
+				// ë”ë¸”í´ë¦­ ì¼ ê²½ìš°, ì„ íƒëœ í–‰ì˜ ìˆ˜ì •í™”ë©´ìœ¼ë¡œ ì´ë™
 				if (ee.getClickCount() == 2)
 				{
 					int nSelected = dataTable.getSelectedRow();
@@ -424,7 +424,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		JPanel centerBtnPanel = new JPanel();
 		JPanel rightBtnPanel = new JPanel();
 
-		// LOV Ãß°¡
+		// LOV ì¶”ê°€
 		JButton plusBtn = new JButton("+");
 		plusBtn.addActionListener(new ActionListener()
 		{
@@ -434,7 +434,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 				if (nSelected < 0)
 					return;
 				LovItem selectedLOVItem = lovList.get(nSelected);
-				// LOV Ãß°¡ Dialog
+				// LOV ì¶”ê°€ Dialog
 				LovDataDialog dlg = new LovDataDialog();
 
 				dlg.setVisible(true);
@@ -442,7 +442,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			}
 		});
 
-		// LOV »èÁ¦
+		// LOV ì‚­ì œ
 		JButton minusBtn = new JButton("-");
 		minusBtn.addActionListener(new ActionListener()
 		{
@@ -525,14 +525,14 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		{
 			public void actionPerformed(ActionEvent ee)
 			{
-				/** ¼±ÅÃµÈ LOV Data¸¦ TeamCenter¿¡ ÀúÀåÇÕ´Ï´Ù. */
+				/** ì„ íƒëœ LOV Dataë¥¼ TeamCenterì— ì €ì¥í•©ë‹ˆë‹¤. */
 				saveActionTC();
-				/** DialogÀÇ Status °ªÀ» ÃÊ±âÈ­ÇÑ´Ù. */
+				/** Dialogì˜ Status ê°’ì„ ì´ˆê¸°í™”í•œë‹¤. */
 				initStatus();
 			}
 		});
 
-		/** ÇØ´ç LOVÀÇ °ªÀ» Excel ÆÄÀÏ·Î ÀúÀåÇÑ´Ù. */
+		/** í•´ë‹¹ LOVì˜ ê°’ì„ Excel íŒŒì¼ë¡œ ì €ì¥í•œë‹¤. */
 		JButton btnExcelExport = new JButton("Excel Export");
 		btnExcelExport.addActionListener(new ActionListener()
 		{
@@ -543,7 +543,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			}
 		});
 
-		/** ¸ğµç LOVÀÇ °ªÀ» Excel ÆÄÀÏ·Î ÀúÀåÇÑ´Ù. */
+		/** ëª¨ë“  LOVì˜ ê°’ì„ Excel íŒŒì¼ë¡œ ì €ì¥í•œë‹¤. */
 		JButton btnExcelFullExport = new JButton("Excel Full Export");
 		btnExcelFullExport.addActionListener(new ActionListener()
 		{
@@ -576,7 +576,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 //    {
 //      public void actionPerformed(ActionEvent ee)
 //      {
-//        // ¸ğµç LOV Data¸¦ TeamCenter¿¡ ÀúÀåÇÕ´Ï´Ù.
+//        // ëª¨ë“  LOV Dataë¥¼ TeamCenterì— ì €ì¥í•©ë‹ˆë‹¤.
 //        saveActionTCAll();
 //      }
 //    });
@@ -600,14 +600,14 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * XML ÆÄÀÏÀ» parseÇÏ¿© Document °´Ã¼¸¦ »ı¼ºÇÑ´Ù.
+	 * XML íŒŒì¼ì„ parseí•˜ì—¬ Document ê°ì²´ë¥¼ ìƒì„±í•œë‹¤.
 	 * 
 	 * @param xmlFile
 	 * @throws Exception
 	 */
 	public void openFile() throws Exception
 	{
-		// xml ÆÄÀÏÀ» parseÇÏ¿© document¿¡ ³Ö¾îµÒ
+		// xml íŒŒì¼ì„ parseí•˜ì—¬ documentì— ë„£ì–´ë‘ 
 		dbf = DocumentBuilderFactory.newInstance();
 		db = dbf.newDocumentBuilder();
 
@@ -622,28 +622,28 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			document_lang = db.parse(path_lang);
 		} else
 		{
-			String message = "ÁöÁ¤µÈ À§Ä¡(" + path + ")¿¡ ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+			String message = "ì§€ì •ëœ ìœ„ì¹˜(" + path + ")ì— íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 			throw new Exception(message);
 		}
 	}
 
 	/**
-	 * LOV DialogÀÇ Á¤º¸¸¦ Excel ÆÄÀÏ·Î exportÇÑ´Ù.
+	 * LOV Dialogì˜ ì •ë³´ë¥¼ Excel íŒŒì¼ë¡œ exportí•œë‹¤.
 	 */
 	public void excelExport()
 	{
 		try
 		{
-			// 1. ÆÄÀÏ ÀúÀå ´ëÈ­»óÀÚ¸¦ ¶ç¿î´Ù
+			// 1. íŒŒì¼ ì €ì¥ ëŒ€í™”ìƒìë¥¼ ë„ìš´ë‹¤
 			JFileChooser fileChooser = new JFileChooser("C:/");
 
-			/** ÇØ´ç µğ·ºÅä¸®¿¡¼­ xls ÆÄÀÏ¸¸ º¸ÀÌµµ·Ï ¼³Á¤ÇÑ´Ù. */
+			/** í•´ë‹¹ ë””ë ‰í† ë¦¬ì—ì„œ xls íŒŒì¼ë§Œ ë³´ì´ë„ë¡ ì„¤ì •í•œë‹¤. */
 			FileFilter fileFilter = fileChooser.getAcceptAllFileFilter();
 			fileChooser.removeChoosableFileFilter(fileFilter);
-			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "¿¢¼¿ (.xls)");
+			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "ì—‘ì…€ (.xls)");
 			fileChooser.addChoosableFileFilter(filterXLS);
 
-			// 2. ÁöÁ¤ÇÑ ÀÌ¸§À¸·Î ¿¢¼¿ ÆÄÀÏÀ» »ı¼ºÇÑ´Ù
+			// 2. ì§€ì •í•œ ì´ë¦„ìœ¼ë¡œ ì—‘ì…€ íŒŒì¼ì„ ìƒì„±í•œë‹¤
 			File file = new File("C:/" + strExportExcelFileName + ".xls");
 			fileChooser.setSelectedFile(file);
 
@@ -656,16 +656,16 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					String strExtension = getExtension(selectedFile);
 					strExtension = strExtension == null ? "" : strExtension;
 
-					// »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ÆÄÀÏ¸í¿¡ xls È®ÀåÀÚ±îÁö ÀÔ·Â ¾ÈÇßÀ» °æ¿ì
+					// ì‚¬ìš©ìê°€ ì…ë ¥í•œ íŒŒì¼ëª…ì— xls í™•ì¥ìê¹Œì§€ ì…ë ¥ ì•ˆí–ˆì„ ê²½ìš°
 					if (!strExtension.equalsIgnoreCase("xls"))
 					{
 						selectedFile = new File(selectedFile.getAbsolutePath() + ".xls");
 					}
 
-					// ¾²±â°¡´ÉÇÑ ¿¢¼¿ Workbook °´Ã¼ »ı¼º
+					// ì“°ê¸°ê°€ëŠ¥í•œ ì—‘ì…€ Workbook ê°ì²´ ìƒì„±
 					WritableWorkbook workBook = Workbook.createWorkbook(selectedFile);
 
-					/** LOV °ªÀ¸·Î Excel ÆÄÀÏ¿¡ WriteÇÑ´Ù. */
+					/** LOV ê°’ìœ¼ë¡œ Excel íŒŒì¼ì— Writeí•œë‹¤. */
 					workBook = exportDataXLS(workBook, dataTable, selectedFile, strExportExcelFileName, 0);
 
 					workBook.write();
@@ -682,21 +682,21 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * LOV DialogÀÇ ¸ğµç LOV°ªÀ» ExcelÆÄÀÏ·Î ÀúÀåÇÑ´Ù.
-	 * LOV NameÀº °¢°¢ÀÇ Sheet¸íÀÌ µÈ´Ù.
+	 * LOV Dialogì˜ ëª¨ë“  LOVê°’ì„ ExcelíŒŒì¼ë¡œ ì €ì¥í•œë‹¤.
+	 * LOV Nameì€ ê°ê°ì˜ Sheetëª…ì´ ëœë‹¤.
 	 */
 	public void excelFullExport()
 	{
 		try
 		{
-			// 1. ÆÄÀÏ ÀúÀå ´ëÈ­»óÀÚ¸¦ ¶ç¿î´Ù
+			// 1. íŒŒì¼ ì €ì¥ ëŒ€í™”ìƒìë¥¼ ë„ìš´ë‹¤
 			JFileChooser fileChooser = new JFileChooser("C:/");
 			FileFilter fileFilter = fileChooser.getAcceptAllFileFilter();
 			fileChooser.removeChoosableFileFilter(fileFilter);
-			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "¿¢¼¿ (.xls)");
+			SimpleStructureFilter filterXLS = new SimpleStructureFilter("xls", "ì—‘ì…€ (.xls)");
 			fileChooser.addChoosableFileFilter(filterXLS);
 
-			// 2. ÁöÁ¤ÇÑ ÀÌ¸§À¸·Î ¿¢¼¿ ÆÄÀÏÀ» »ı¼ºÇÑ´Ù
+			// 2. ì§€ì •í•œ ì´ë¦„ìœ¼ë¡œ ì—‘ì…€ íŒŒì¼ì„ ìƒì„±í•œë‹¤
 			File file = new File("C:/LOV_All_List_" + getTodayDate(true) + ".xls");
 			fileChooser.setSelectedFile(file);
 
@@ -706,21 +706,21 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 				if (selectedFile != null)
 				{
-					// ÆÄÀÏÀÇ È®ÀåÀÚ¸¦ returnÇÑ´Ù.
+					// íŒŒì¼ì˜ í™•ì¥ìë¥¼ returní•œë‹¤.
 					String strExtension = getExtension(selectedFile);
 					strExtension = strExtension == null ? "" : strExtension;
 
-					// »ç¿ëÀÚ°¡ ÀÔ·ÂÇÑ ÆÄÀÏ¸í¿¡ xls È®ÀåÀÚ±îÁö ÀÔ·Â ¾ÈÇßÀ» °æ¿ì
+					// ì‚¬ìš©ìê°€ ì…ë ¥í•œ íŒŒì¼ëª…ì— xls í™•ì¥ìê¹Œì§€ ì…ë ¥ ì•ˆí–ˆì„ ê²½ìš°
 					if (!strExtension.equalsIgnoreCase("xls"))
 					{
 						selectedFile = new File(selectedFile.getAbsolutePath() + ".xls");
 						strExtension = "xls";
 					}
 
-					// ¾²±â°¡´ÉÇÑ ¿¢¼¿ Workbook °´Ã¼ »ı¼º
+					// ì“°ê¸°ê°€ëŠ¥í•œ ì—‘ì…€ Workbook ê°ì²´ ìƒì„±
 					WritableWorkbook workBook = Workbook.createWorkbook(selectedFile);
 
-					/** LOV ¸íÀ» °¢°¢ÀÇ Sheet NameÀ¸·Î ÁöÁ¤ÇÏ°í, LOV °ªÀ» Excel¿¡ WriteÇÑ´Ù. */
+					/** LOV ëª…ì„ ê°ê°ì˜ Sheet Nameìœ¼ë¡œ ì§€ì •í•˜ê³ , LOV ê°’ì„ Excelì— Writeí•œë‹¤. */
 					for (int i = 0; i < lovList.size(); i++)
 					{
 						LovItem selectedLOVItem = lovList.get(i);
@@ -734,7 +734,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					workBook.close();
 				}
 
-				/** Excel ÆÄÀÏÀ» ½ÇÇàÇÑ´Ù. **/
+				/** Excel íŒŒì¼ì„ ì‹¤í–‰í•œë‹¤. **/
 				AIFShell aif = new AIFShell("application/vnd.ms-excel", selectedFile.getAbsolutePath());
 				aif.start();
 			}
@@ -745,7 +745,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * LOV DialogÀÇ JTable ÀÇ ³»¿ëÀ» XLS Æ÷¸ËÀ¸·Î ÀúÀåÇÑ´Ù.
+	 * LOV Dialogì˜ JTable ì˜ ë‚´ìš©ì„ XLS í¬ë§·ìœ¼ë¡œ ì €ì¥í•œë‹¤.
 	 * 
 	 * @param jtable
 	 *            JTable
@@ -759,7 +759,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		try
 		{
-			// ¾²±â°¡´ÉÇÑ ¿¢¼¿ Workbook °´Ã¼ »ı¼º
+			// ì“°ê¸°ê°€ëŠ¥í•œ ì—‘ì…€ Workbook ê°ì²´ ìƒì„±
 //    	WritableWorkbook workBook = null;
 //      if(sheetNum == 0) {
 //    	  workBook = Workbook.createWorkbook(selectedFile);
@@ -768,7 +768,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 //    	  workBook = Workbook.createWorkbook(selectedFile, workBook1);
 //      }
 
-			// n¹øÂ° Sheet »ı¼º
+			// në²ˆì§¸ Sheet ìƒì„±
 			WritableSheet sheet = workBook.createSheet(strItemKey, sheetNum);
 
 			SheetSettings printSet = sheet.getSettings();
@@ -776,7 +776,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			printSet.setFitToPages(true);
 			printSet.setOrientation(PageOrientation.LANDSCAPE);
 
-			// 1. Çì´õ Á¤º¸ °¡Á®¿À±â
+			// 1. í—¤ë” ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 			int[] iColumnWidth = new int[iColumnCnt];
 			int iRemoveCol = 0;
 			int iRemoveRow = 0;
@@ -794,7 +794,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 				}
 			}
 
-			// 2. ÀüÃ¼ Row Á¤º¸ °¡Á®¿À±â
+			// 2. ì „ì²´ Row ì •ë³´ ê°€ì ¸ì˜¤ê¸°
 			for (int iCnt = 0; iCnt < iRowCnt; iCnt++)
 			{
 				for (int kCnt = 0; kCnt < iColumnCnt; kCnt++)
@@ -829,7 +829,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * jxl ÀÇ Cell Format À» ¼³Á¤ÇÑ´Ù.
+	 * jxl ì˜ Cell Format ì„ ì„¤ì •í•œë‹¤.
 	 * 
 	 * @param feature
 	 * @return
@@ -837,7 +837,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	 */
 	private WritableCellFormat setCellValueFormat(int status) throws Exception
 	{
-		WritableFont wf = new WritableFont(WritableFont.createFont("±¼¸²"), 9, WritableFont.NO_BOLD);
+		WritableFont wf = new WritableFont(WritableFont.createFont("êµ´ë¦¼"), 9, WritableFont.NO_BOLD);
 
 		WritableCellFormat wcf = new WritableCellFormat(wf);
 		wcf.setWrap(false);
@@ -869,7 +869,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * ÆÄÀÏÀÇ È®ÀåÀÚ¸¦ Return
+	 * íŒŒì¼ì˜ í™•ì¥ìë¥¼ Return
 	 * 
 	 * @param f
 	 *            File
@@ -890,9 +890,9 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * LOV List¸¦ LoadingÇÕ´Ï´Ù.
-	 * 1. bmide_manage_batch_lovs.bat Utility¸¦ ½ÇÇàÇÏ¿© XmlÀ» »ı¼ºÇÕ´Ï´Ù.
-	 * 2. XMLÀ» LoadingÇÏ¿© LOV/LOVData¸¦ LoadingÇÕ´Ï´Ù.
+	 * LOV Listë¥¼ Loadingí•©ë‹ˆë‹¤.
+	 * 1. bmide_manage_batch_lovs.bat Utilityë¥¼ ì‹¤í–‰í•˜ì—¬ Xmlì„ ìƒì„±í•©ë‹ˆë‹¤.
+	 * 2. XMLì„ Loadingí•˜ì—¬ LOV/LOVDataë¥¼ Loadingí•©ë‹ˆë‹¤.
 	 */
 	void loadLovList()
 	{
@@ -903,20 +903,20 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 				try
 				{
 
-					/** Document °´Ã¼¸¦ »ı¼ºÇÑ´Ù. */
+					/** Document ê°ì²´ë¥¼ ìƒì„±í•œë‹¤. */
 					openFile();
 
-					/** newXML ÆÄÀÏÀ» »ı¼ºÇÏ±â À§ÇØ oldXML ÆÄÀÏÀÇ Node°ªÀ» ÀĞ¾î¿Â´Ù. **/
+					/** newXML íŒŒì¼ì„ ìƒì„±í•˜ê¸° ìœ„í•´ oldXML íŒŒì¼ì˜ Nodeê°’ì„ ì½ì–´ì˜¨ë‹¤. **/
 					setDefaultXML();
 
-					/** newXML_lang ÆÄÀÏÀ» »ı¼ºÇÏ±â À§ÇØ oldXML ÆÄÀÏÀÇ Node°ªÀ» ÀĞ¾î¿Â´Ù. **/
+					/** newXML_lang íŒŒì¼ì„ ìƒì„±í•˜ê¸° ìœ„í•´ oldXML íŒŒì¼ì˜ Nodeê°’ì„ ì½ì–´ì˜¨ë‹¤. **/
 					setDefaultXMLForLang();
 
 					Element rootElement = document.getDocumentElement();
 
 					NodeList memberList = rootElement.getElementsByTagName("TcLOV");
 
-					// LOVÀÇ °ªÀ» ±¸ÇÑ´Ù. - 1 Level
+					// LOVì˜ ê°’ì„ êµ¬í•œë‹¤. - 1 Level
 					String lovName = "";
 					for (int i = 0; i < memberList.getLength(); i++)
 					{ // for 1
@@ -937,13 +937,13 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 							}
 
 							NodeList childNodeList = node.getChildNodes();
-							// ¼±ÅÃµÈ TCLovÀÇ List°ªÀ» ±¸ÇÑ´Ù. - 2 Level
+							// ì„ íƒëœ TCLovì˜ Listê°’ì„ êµ¬í•œë‹¤. - 2 Level
 							for (int k = 0; k < childNodeList.getLength(); k++)
 							{ // for 3
 								Node childNode = childNodeList.item(k);
 
 								if ((childNode.getNodeName()).equals("TcLOVValue"))
-								{ // LOVÀÇ Key, Value°ª
+								{ // LOVì˜ Key, Valueê°’
 									LovDataItem dataItem = new LovDataItem();
 									NamedNodeMap childAttrs = childNode.getAttributes();
 									String key = "";
@@ -961,7 +961,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 									} // end for 4
 
-									// ¿©±â¿¡¼­ XML_LangÀÇ desc °ªÀ» ±¸ÇÑ´Ù.
+									// ì—¬ê¸°ì—ì„œ XML_Langì˜ desc ê°’ì„ êµ¬í•œë‹¤.
 									String lang_Desc = getDescToXMLFileForLang(lovName, key);
 									dataItem.setData(LovDataItem.INDEX_VALUE, lang_Desc);
 
@@ -996,7 +996,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * importÇÒ xml ÆÄÀÏÀ» »ı¼ºÇÏ±â À§ÇØ Xmlns ¿Í batchXSDVersion °ªÀ» lov_values_yyyyMMdd.xml ¿¡¼­ °¡Á®¿Â´Ù.
+	 * importí•  xml íŒŒì¼ì„ ìƒì„±í•˜ê¸° ìœ„í•´ Xmlns ì™€ batchXSDVersion ê°’ì„ lov_values_yyyyMMdd.xml ì—ì„œ ê°€ì ¸ì˜¨ë‹¤.
 	 * 
 	 * @throws Exception
 	 */
@@ -1004,7 +1004,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	{
 		Element rootElement = document.getDocumentElement();
 
-		// XML ÆÄÀÏ¿¡¼­ xmlns ¿Í batchXSDVersion Á¤º¸¸¦ °¡Á®¿Â´Ù.
+		// XML íŒŒì¼ì—ì„œ xmlns ì™€ batchXSDVersion ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 		NamedNodeMap topNodeMap = rootElement.getAttributes();
 		for (int i = 0; i < topNodeMap.getLength(); i++)
 		{
@@ -1019,14 +1019,14 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * importÇÒ xml ÆÄÀÏÀ» »ı¼ºÇÏ±â À§ÇØ Xmlns ¿Í batchXSDVersion °ªÀ» lov_values_yyyyMMdd_Lang.xml ¿¡¼­ °¡Á®¿Â´Ù.
-	 * downloadµÈ XML_Lang ÆÄÀÏÀÇ ±âº» Á¤º¸¸¦ ÀĞ¾î¼­ ÀúÀåÇÑ´Ù.
+	 * importí•  xml íŒŒì¼ì„ ìƒì„±í•˜ê¸° ìœ„í•´ Xmlns ì™€ batchXSDVersion ê°’ì„ lov_values_yyyyMMdd_Lang.xml ì—ì„œ ê°€ì ¸ì˜¨ë‹¤.
+	 * downloadëœ XML_Lang íŒŒì¼ì˜ ê¸°ë³¸ ì •ë³´ë¥¼ ì½ì–´ì„œ ì €ì¥í•œë‹¤.
 	 */
 	public void setDefaultXMLForLang() throws SAXException, IOException
 	{
 		Element rootElement_lang = document_lang.getDocumentElement();
 
-		// XML_lang ÆÄÀÏ¿¡¼­ xmlns ¿Í batchXSDVersion Á¤º¸¸¦ °¡Á®¿Â´Ù.
+		// XML_lang íŒŒì¼ì—ì„œ xmlns ì™€ batchXSDVersion ì •ë³´ë¥¼ ê°€ì ¸ì˜¨ë‹¤.
 		NamedNodeMap topNodeMap_lang = rootElement_lang.getAttributes();
 		for (int i = 0; i < topNodeMap_lang.getLength(); i++)
 		{
@@ -1041,7 +1041,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * XML_Lang ÆÄÀÏ¿¡¼­ ÇØ´ç LOVÀÇ Description °ªÀ» ÀĞ¾î¿Â´Ù.
+	 * XML_Lang íŒŒì¼ì—ì„œ í•´ë‹¹ LOVì˜ Description ê°’ì„ ì½ì–´ì˜¨ë‹¤.
 	 * 
 	 * @return
 	 * @throws IOException
@@ -1053,7 +1053,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		Element rootElement_lang = document_lang.getDocumentElement();
 		NodeList memberList = rootElement_lang.getElementsByTagName("Add");
 
-		// LOVÀÇ °ªÀ» ±¸ÇÑ´Ù. - 1 Level
+		// LOVì˜ ê°’ì„ êµ¬í•œë‹¤. - 1 Level
 		for (int i = 0; i < memberList.getLength(); i++)
 		{ // for 1
 			Node node = memberList.item(i);
@@ -1062,20 +1062,20 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			{
 
 				NodeList childNodeList = node.getChildNodes();
-				// ¼±ÅÃµÈ TCLovÀÇ List°ªÀ» ±¸ÇÑ´Ù. - 2 Level
+				// ì„ íƒëœ TCLovì˜ Listê°’ì„ êµ¬í•œë‹¤. - 2 Level
 				for (int k = 0; k < childNodeList.getLength(); k++)
 				{ // for 3
 					Node childNode = childNodeList.item(k);
 
 					if ((childNode.getNodeName()).equals("key"))
-					{ // LOVÀÇ Key, Value°ª
+					{ // LOVì˜ Key, Valueê°’
 						NamedNodeMap childAttrs = childNode.getAttributes();
 
 						for (int y = 0; y < childAttrs.getLength(); y++)
 						{ // for 4
 							if ((childAttrs.item(y).getNodeName()).equals("id"))
 							{
-								//[20190225 kch] xml ÆÄÀÏ·Î ºÎÅÍ lov List Á¤º¸ read ½Ã bug °³¼± ( contains -> equals )
+								//[20190225 kch] xml íŒŒì¼ë¡œ ë¶€í„° lov List ì •ë³´ read ì‹œ bug ê°œì„  ( contains -> equals )
 								//if (childAttrs.item(y).getNodeValue().contains("LOVValue{::}" + lovName + "{::}" + keyValue )) { // && childAttrs.item(y).getNodeValue().endsWith(keyValue)) {
 								if (childAttrs.item(y).getNodeValue().equals("LOVValue{::}" + lovName + "{::}" + keyValue))
 								{
@@ -1093,7 +1093,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * ¸ğµç LOV Data¸¦ TeamCenter¿¡ ÀúÀåÇÕ´Ï´Ù.
+	 * ëª¨ë“  LOV Dataë¥¼ TeamCenterì— ì €ì¥í•©ë‹ˆë‹¤.
 	 */
 	void saveActionTCAll()
 	{
@@ -1107,7 +1107,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 					for (int i = 0; i < lovList.size(); i++)
 					{
-						// ÇØ´ç LOV¸¦ °­Á¦ ¼±ÅÃÇÕ´Ï´Ù.
+						// í•´ë‹¹ LOVë¥¼ ê°•ì œ ì„ íƒí•©ë‹ˆë‹¤.
 						lovTable.getSelectionModel().setSelectionInterval(0, i);
 						Thread.sleep(1000);
 						saveActionTC();
@@ -1125,11 +1125,11 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * XML Import ÈÄ dialogÀÇ »óÅÂ°ªÀ» ÃÊ±âÈ­ÇÑ´Ù.
+	 * XML Import í›„ dialogì˜ ìƒíƒœê°’ì„ ì´ˆê¸°í™”í•œë‹¤.
 	 */
 	void initStatus()
 	{
-		// STATUS_DELETE ´Â table¿¡¼­ »èÁ¦ÇÑ´Ù.
+		// STATUS_DELETE ëŠ” tableì—ì„œ ì‚­ì œí•œë‹¤.
 		for (int i = 0; i < dataList.size(); i++)
 		{
 			LovDataItem selectedLOVItem = dataList.get(i);
@@ -1140,7 +1140,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			}
 		}
 
-		// tableÀÇ Status°ªÀ» ÃÊ±âÈ­ÇÑ´Ù.
+		// tableì˜ Statusê°’ì„ ì´ˆê¸°í™”í•œë‹¤.
 		for (int i = 0; i < dataList.size(); i++)
 		{
 			LovDataItem selectedLOVItem = dataList.get(i);
@@ -1151,7 +1151,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * ¼±ÅÃµÈ LOV Data¸¦ TeamCenter¿¡ ÀúÀåÇÕ´Ï´Ù.
+	 * ì„ íƒëœ LOV Dataë¥¼ TeamCenterì— ì €ì¥í•©ë‹ˆë‹¤.
 	 * 
 	 */
 	void saveActionTC()
@@ -1178,45 +1178,45 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		}
 
-		// xml ÆÄÀÏ »ı¼º
+		// xml íŒŒì¼ ìƒì„±
 		writeXML();
 		executeLogMessage();
 	}
 
 	void writeXML()
 	{
-		/** document °´Ã¼ »ı¼º */
+		/** document ê°ì²´ ìƒì„± */
 		org.jdom.Document doc = new org.jdom.Document();
 		org.jdom.Document doc_Lang = new org.jdom.Document();
 
-		/** NameSpace »ı¼º */
+		/** NameSpace ìƒì„± */
 		org.jdom.Namespace nameSpace = org.jdom.Namespace.getNamespace(topNodeAttrXmlns);
 		org.jdom.Namespace nameSpace_Lang = org.jdom.Namespace.getNamespace(topNodeAttrXmlns_lang);
 
-		/** Element °´Ã¼ »ı¼º */
+		/** Element ê°ì²´ ìƒì„± */
 		org.jdom.Element topElement = new org.jdom.Element("TcBusinessData", nameSpace); // TcBusinessData
 		org.jdom.Element changeElement = new org.jdom.Element("Change", nameSpace); // <Change>
 		org.jdom.Element tclovElement = new org.jdom.Element("TcLOV", nameSpace); // <TcLOV
 		org.jdom.Element topElement_Lang = new org.jdom.Element("TcBusinessDataLocalization", nameSpace_Lang); // TcBusinessDataLocalization
 		org.jdom.Element addElement_Lang = new org.jdom.Element("Add", nameSpace_Lang); // Add
 
-		// ÇöÀç ½Ã°£
+		// í˜„ì¬ ì‹œê°„
 		Date currentDate = new Date();
 
 		topElement.setAttribute(TOP_NODE_ATTR_NAME_VERSION, topNodeAttrVersion);
 		topElement.setAttribute("Date", currentDate.toString());
 
-		// Change Tag ¼Ó¼º
+		// Change Tag ì†ì„±
 		tclovElement.setAttribute("name", lovName);
 		tclovElement.setAttribute("usage", "Exhaustive");
 		tclovElement.setAttribute("lovType", "ListOfValuesString");
 		tclovElement.setAttribute("isManagedExternally", "true");
 
-		// XML_Lang ÆÄÀÏ »ı¼º
+		// XML_Lang íŒŒì¼ ìƒì„±
 		topElement_Lang.setAttribute(TOP_NODE_ATTR_NAME_VERSION, topNodeAttrVersion_lang);
 		topElement_Lang.setAttribute("Date", currentDate.toString());
 
-		/** xml ÆÄÀÏ ¹× lang.xml ÆÄÀÏÀÇ LOVValue tag ºÎºĞ set */
+		/** xml íŒŒì¼ ë° lang.xml íŒŒì¼ì˜ LOVValue tag ë¶€ë¶„ set */
 		for (int i = 0; i < dataList.size(); i++)
 		{
 			LovDataItem dataItem = dataList.get(i);
@@ -1244,12 +1244,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 			keyElement.setText(dataItem.getData(LovDataItem.INDEX_VALUE));
 
-			//°¢ ¿¤¸®¸ÕÆ®µé ¹èÄ¡ ÀÛ¾÷ (¿¤¸®¸ÕÆ®¿¡ ÀÚ½Ä ¿ä¼Ò¸¦ Ãß°¡ÇÒ ‹š´Â )(À§ÀÇ ÁÖ¼®´ë·Î ¹èÄ¡¸¦ ÇØÁà¾ß ÇÑ´Ù).  addContent()¸Ş¼­µå¸¦ ÀÌ¿ëÇÑ´Ù.
+			//ê° ì—˜ë¦¬ë¨¼íŠ¸ë“¤ ë°°ì¹˜ ì‘ì—… (ì—˜ë¦¬ë¨¼íŠ¸ì— ìì‹ ìš”ì†Œë¥¼ ì¶”ê°€í•  ë–„ëŠ” )(ìœ„ì˜ ì£¼ì„ëŒ€ë¡œ ë°°ì¹˜ë¥¼ í•´ì¤˜ì•¼ í•œë‹¤).  addContent()ë©”ì„œë“œë¥¼ ì´ìš©í•œë‹¤.
 			tclovElement.addContent(valueElement);
 			addElement_Lang.addContent(keyElement);
 		}
 
-		/** lang.xml ÆÄÀÏÀÇ LOVValueDescription ºÎºĞ set */
+		/** lang.xml íŒŒì¼ì˜ LOVValueDescription ë¶€ë¶„ set */
 		for (int i = 0; i < dataList.size(); i++)
 		{
 			LovDataItem dataItem = dataList.get(i);
@@ -1270,7 +1270,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 			keyDescElement.setText(dataItem.getData(LovDataItem.INDEX_DESC));//yunjae
 
-			//°¢ ¿¤¸®¸ÕÆ®µé ¹èÄ¡ ÀÛ¾÷ (¿¤¸®¸ÕÆ®¿¡ ÀÚ½Ä ¿ä¼Ò¸¦ Ãß°¡ÇÒ ‹š´Â )(À§ÀÇ ÁÖ¼®´ë·Î ¹èÄ¡¸¦ ÇØÁà¾ß ÇÑ´Ù).  addContent()¸Ş¼­µå¸¦ ÀÌ¿ëÇÑ´Ù.
+			//ê° ì—˜ë¦¬ë¨¼íŠ¸ë“¤ ë°°ì¹˜ ì‘ì—… (ì—˜ë¦¬ë¨¼íŠ¸ì— ìì‹ ìš”ì†Œë¥¼ ì¶”ê°€í•  ë–„ëŠ” )(ìœ„ì˜ ì£¼ì„ëŒ€ë¡œ ë°°ì¹˜ë¥¼ í•´ì¤˜ì•¼ í•œë‹¤).  addContent()ë©”ì„œë“œë¥¼ ì´ìš©í•œë‹¤.
 			addElement_Lang.addContent(keyDescElement);
 		}
 
@@ -1278,33 +1278,33 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		topElement.addContent(changeElement);
 		topElement_Lang.addContent(addElement_Lang);
 
-		// ¸¶Áö¸·À¸·Î Document¿¡ ÃÖ»óÀ§ Element¸¦ ¼³Á¤ÇÑ´Ù.
+		// ë§ˆì§€ë§‰ìœ¼ë¡œ Documentì— ìµœìƒìœ„ Elementë¥¼ ì„¤ì •í•œë‹¤.
 		doc.setRootElement(topElement);
 		doc_Lang.setRootElement(topElement_Lang);
 
-		// ÆÄÀÏ·Î ÀúÀåÇÏ±â À§ÇØ¼­ XMLOutputter °´Ã¼°¡ ÇÊ¿äÇÏ´Ù
+		// íŒŒì¼ë¡œ ì €ì¥í•˜ê¸° ìœ„í•´ì„œ XMLOutputter ê°ì²´ê°€ í•„ìš”í•˜ë‹¤
 		XMLOutputter xout = new XMLOutputter();
 
-		// ±âº» Æ÷¸Ë ÇüÅÂ¸¦ ºÒ·¯¿Í ¼öÁ¤ÇÑ´Ù.
+		// ê¸°ë³¸ í¬ë§· í˜•íƒœë¥¼ ë¶ˆëŸ¬ì™€ ìˆ˜ì •í•œë‹¤.
 		Format fm = xout.getFormat();
 
-		/** ´Ù±¹¾î Áö¿øÀ» À§ÇØ encodeing ÇüÅÂ¸¦ UTF-8·Î º¯°æÇÑ´Ù. */
+		/** ë‹¤êµ­ì–´ ì§€ì›ì„ ìœ„í•´ encodeing í˜•íƒœë¥¼ UTF-8ë¡œ ë³€ê²½í•œë‹¤. */
 //      fm.setEncoding("euc-kr");
 		fm.setEncoding("UTF-8");
 
-		// ºÎ¸ğ, ÀÚ½Ä ÅÂ±×¸¦ ±¸º°ÇÏ±â À§ÇÑ ÅÇ ¹üÀ§¸¦ Á¤ÇÑ´Ù.
+		// ë¶€ëª¨, ìì‹ íƒœê·¸ë¥¼ êµ¬ë³„í•˜ê¸° ìœ„í•œ íƒ­ ë²”ìœ„ë¥¼ ì •í•œë‹¤.
 		fm.setIndent("   ");
-		//ÅÂ±×³¢¸® ÁÙ¹Ù²ŞÀ» ÁöÁ¤ÇÑ´Ù.
+		//íƒœê·¸ë¼ë¦¬ ì¤„ë°”ê¿ˆì„ ì§€ì •í•œë‹¤.
 		fm.setLineSeparator("\r\n");
 
-		// ¼³Á¤ÇÑ XML ÆÄÀÏÀÇ Æ÷¸ËÀ» setÇÑ´Ù.
+		// ì„¤ì •í•œ XML íŒŒì¼ì˜ í¬ë§·ì„ setí•œë‹¤.
 		xout.setFormat(fm);
 		try
 		{
 //    	  xout.output(doc, new FileWriter(strExportPath + strImportXMLFileName + strXMLExtension));
 //    	  xout.output(doc_Lang, new FileWriter(strExportLangPath + strImportXMLLangFileName + strXMLExtension));
 
-			/** XML ÆÄÀÏ ÀúÀåÀ» UTF-8·Î ÇØ¾ß ÇÏ±â¿¡ FileOutputStreamÀ¸·Î ÀúÀåÇÔ.(FileWriter´Â UTF-8·Î ÀúÀåÀÌ ¾ÈµÊ) */
+			/** XML íŒŒì¼ ì €ì¥ì„ UTF-8ë¡œ í•´ì•¼ í•˜ê¸°ì— FileOutputStreamìœ¼ë¡œ ì €ì¥í•¨.(FileWriterëŠ” UTF-8ë¡œ ì €ì¥ì´ ì•ˆë¨) */
 			xout.output(doc, new FileOutputStream(xmlDownloadPath + newXMLFile + strXMLExtension));
 			xout.output(doc_Lang, new FileOutputStream(xmlDownloadPath_lang + newXMLFile_lang + strXMLExtension));
 
@@ -1315,12 +1315,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * bmide_mamage_batch_lovs.bat ÆÄÀÏÀ» ½ÇÇàÇÏ±â À§ÇÑ ÆÄ¶ó¹ÌÅÍ °ªÀ» ¸®ÅÏÇÑ´Ù.
+	 * bmide_mamage_batch_lovs.bat íŒŒì¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ íŒŒë¼ë¯¸í„° ê°’ì„ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param isExport
-	 *            : trueÀÌ¸é extract(XML ÆÄÀÏ Export), falseÀÌ¸é update(XML ÆÄÀÏ Import)
+	 *            : trueì´ë©´ extract(XML íŒŒì¼ Export), falseì´ë©´ update(XML íŒŒì¼ Import)
 	 * @param file
-	 *            : xml ÆÄÀÏÀÇ full path
+	 *            : xml íŒŒì¼ì˜ full path
 	 * @return
 	 */
 	public String getExecuteBatch(boolean isExport, String file)
@@ -1339,21 +1339,21 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * ¼öÁ¤µÈ LOV °ªÀ» ¼­¹ö·Î ExportÇÑ´Ù.
+	 * ìˆ˜ì •ëœ LOV ê°’ì„ ì„œë²„ë¡œ Exportí•œë‹¤.
 	 */
 //  void executeLogMessage(){
-//	  File pFile = new File("C:\\Tc9.properties.txt");		// ÀÌ ÆÄÀÏÀº Ç×»ó Á¸ÀçÇØ¾ß ÇÑ´Ù.
+//	  File pFile = new File("C:\\Tc9.properties.txt");		// ì´ íŒŒì¼ì€ í•­ìƒ ì¡´ì¬í•´ì•¼ í•œë‹¤.
 //	  FileWriter fw = null;
 //	  
 //	  try {
 //		  if(!pFile.exists()) {
-////			   String message = "ÁöÁ¤µÈ À§Ä¡(" + pFile + ")¿¡ ÆÄÀÏÀÌ Á¸ÀçÇÏÁö ¾Ê½À´Ï´Ù.";
+////			   String message = "ì§€ì •ëœ ìœ„ì¹˜(" + pFile + ")ì— íŒŒì¼ì´ ì¡´ì¬í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.";
 //			  String message = registry.getString("lovmanage.MESSAGE.Front") + pFile + registry.getString("lovmanage.MESSAGE.Back");
-//			  MessageBox.post(message, "¾Ë¸²", MessageBox.INFORMATION);
+//			  MessageBox.post(message, "ì•Œë¦¼", MessageBox.INFORMATION);
 //			  return;
 //		  }
 //		  
-//		  /** ÆÄÀÏ °´Ã¼ »ı¼º */
+//		  /** íŒŒì¼ ê°ì²´ ìƒì„± */
 //		  File tmpDir = new File(xmlDownloadPath);
 //		  File batFile = new File(tmpDir, "updateTmpBatch.bat");
 //		  if(!batFile.exists()) {
@@ -1368,31 +1368,31 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 //			  fw.write(s.nextLine().toString() + "\n");
 //		  }
 //
-//		  /** bmide_mamage_batch_lovs.bat ÆÄÀÏÀ» ½ÇÇàÇÏ±â À§ÇÑ ¸í·É¾î¸¦ ¹Ş¾Æ¿È */
+//		  /** bmide_mamage_batch_lovs.bat íŒŒì¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ëª…ë ¹ì–´ë¥¼ ë°›ì•„ì˜´ */
 //		  String exportFile = xmlDownloadPath + newXMLFile + strXMLExtension;
 //		  String command = getExecuteBatch(false, exportFile);
 //		  fw.write(command);
 //		  s.close();
 //		  fw.close();
 //
-//		  /** Progress bar ½ÇÇà */
+//		  /** Progress bar ì‹¤í–‰ */
 //		  WaitProgressBar simpleProgressBar = new WaitProgressBar(AIFUtility.getActiveDesktop());
 //		  simpleProgressBar.setWindowSize(500, 300);
 //		  simpleProgressBar.start();
 //		  simpleProgressBar.setStatus("LOV Import is start..."	, true);
 //		  
-//		  /** ¹èÄ¡ÆÄÀÏ ½ÇÇà */
+//		  /** ë°°ì¹˜íŒŒì¼ ì‹¤í–‰ */
 //		  String[] cmd = { "CMD", "/C", batFile.getPath() };
 //		  Process p = Runtime.getRuntime().exec(cmd);
 //	  
-//		  // ¿ÜºÎ ÇÁ·Î±×·¥¿¡ ´ëÇÑ InputStream À» »ı¼º
+//		  // ì™¸ë¶€ í”„ë¡œê·¸ë¨ì— ëŒ€í•œ InputStream ì„ ìƒì„±
 //	      DataInputStream inputstream = new DataInputStream(p.getInputStream());
 //	      BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
 //	      
 //	      String strOutput = "";
 //	      while (true)
 //	      {
-//	    	  // ¿ÜºÎ ÇÁ·Î±×·¥ÀÌ Ãâ·ÂÇÏ´Â ¸Ş¼¼Áö¸¦ ÇÑÁÙ¾¿ ÀĞ¾îµéÀÓ
+//	    	  // ì™¸ë¶€ í”„ë¡œê·¸ë¨ì´ ì¶œë ¥í•˜ëŠ” ë©”ì„¸ì§€ë¥¼ í•œì¤„ì”© ì½ì–´ë“¤ì„
 //	    	  strOutput = reader.readLine();
 //
 //	    	  if (strOutput != null)
@@ -1413,7 +1413,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 //	} 
 //  }
 
-	//progress bar ¼öÁ¤
+	//progress bar ìˆ˜ì •
 	void executeLogMessage()
 	{
 		final TransOperation initOp = new TransOperation();
@@ -1446,7 +1446,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 			try
 			{
-				/** ÆÄÀÏ °´Ã¼ »ı¼º */
+				/** íŒŒì¼ ê°ì²´ ìƒì„± */
 				File tmpDir = new File(xmlDownloadPath);
 				File batFile = new File(tmpDir, "updateTmpBatch.bat");
 				if (!batFile.exists())
@@ -1459,30 +1459,30 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 				fw.write("SET TC_DATA=Y:\\tcdata10\r\n");
 				fw.write("call %TC_DATA%\\tc_profilevars.bat\r\n\r\n");
 
-				/** bmide_mamage_batch_lovs.bat ÆÄÀÏÀ» ½ÇÇàÇÏ±â À§ÇÑ ¸í·É¾î¸¦ ¹Ş¾Æ¿È */
+				/** bmide_mamage_batch_lovs.bat íŒŒì¼ì„ ì‹¤í–‰í•˜ê¸° ìœ„í•œ ëª…ë ¹ì–´ë¥¼ ë°›ì•„ì˜´ */
 				String exportFile = xmlDownloadPath + newXMLFile + strXMLExtension;
 				String command = getExecuteBatch(false, exportFile);
 				fw.write(command);
 				fw.close();
 
-				/** Progress bar ½ÇÇà */
+				/** Progress bar ì‹¤í–‰ */
 				WaitProgressBar simpleProgressBar = new WaitProgressBar(AIFUtility.getActiveDesktop());
 				simpleProgressBar.setWindowSize(500, 300);
 				simpleProgressBar.start();
 				simpleProgressBar.setStatus("LOV Import is start...", true);
 
-				/** ¹èÄ¡ÆÄÀÏ ½ÇÇà */
+				/** ë°°ì¹˜íŒŒì¼ ì‹¤í–‰ */
 				String[] cmd = { "CMD", "/C", batFile.getPath() };
 				Process p = Runtime.getRuntime().exec(cmd);
 
-				// ¿ÜºÎ ÇÁ·Î±×·¥¿¡ ´ëÇÑ InputStream À» »ı¼º
+				// ì™¸ë¶€ í”„ë¡œê·¸ë¨ì— ëŒ€í•œ InputStream ì„ ìƒì„±
 				DataInputStream inputstream = new DataInputStream(p.getInputStream());
 				BufferedReader reader = new BufferedReader(new InputStreamReader(inputstream));
 
 				String strOutput = "";
 				while (true)
 				{
-					// ¿ÜºÎ ÇÁ·Î±×·¥ÀÌ Ãâ·ÂÇÏ´Â ¸Ş¼¼Áö¸¦ ÇÑÁÙ¾¿ ÀĞ¾îµéÀÓ
+					// ì™¸ë¶€ í”„ë¡œê·¸ë¨ì´ ì¶œë ¥í•˜ëŠ” ë©”ì„¸ì§€ë¥¼ í•œì¤„ì”© ì½ì–´ë“¤ì„
 					strOutput = reader.readLine();
 
 					if (strOutput != null)
@@ -1506,7 +1506,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * ¿À´Ã ³¯Â¥¸¦ 20130101 or 20130101HHmmÇüÅÂ·Î º¯È¯½ÃÄÑ ¸®ÅÏÇÑ´Ù.
+	 * ì˜¤ëŠ˜ ë‚ ì§œë¥¼ 20130101 or 20130101HHmmí˜•íƒœë¡œ ë³€í™˜ì‹œì¼œ ë¦¬í„´í•œë‹¤.
 	 * 
 	 * @param isFolder
 	 *            : true : 20130101 , false : 20130101HHmm
@@ -1556,7 +1556,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					try
 					{
 						LovItem selectedLOVItem = lovList.get(nSelected);
-						newXMLFile = selectedLOVItem.toString() + "_" + getTodayDate(false); // LOV nameÀ¸·Î xml ÆÄÀÏ¸íÀ» ¸¸µç´Ù.
+						newXMLFile = selectedLOVItem.toString() + "_" + getTodayDate(false); // LOV nameìœ¼ë¡œ xml íŒŒì¼ëª…ì„ ë§Œë“ ë‹¤.
 						strExportExcelFileName = selectedLOVItem.toString();
 						newXMLFile_lang = newXMLFile + "_lang";
 
@@ -1583,7 +1583,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		public Class[] colClasses = { String.class };
 
 		//------------------------------------------------------------------------------------------
-		// [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤. 
+		// [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •. 
 		int sortBy = 0;
 		int sortType = LovItemComparator.SORT_BY_CODE;
 		int sortOrder = LovItemComparator.SORT_ASC;
@@ -1622,7 +1622,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		/**
-		 * [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤.
+		 * [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •.
 		 * sort method
 		 */
 		public void sort()
@@ -1631,8 +1631,8 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}// sort
 
 		/**
-		 * [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤.
-		 * sort ±âÁØ column ÁöÁ¤.
+		 * [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •.
+		 * sort ê¸°ì¤€ column ì§€ì •.
 		 * 
 		 * @param sortBy
 		 */
@@ -1655,12 +1655,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		// Table Column Names
 		public String[] cNames = { "Key", "Display Name", "Description", "Status" };
 		// Table Column Classes
-		// [20140422] bskwak, column ¸í Å¬¸¯ ½Ã Á¤·Ä ±â´É Ãß°¡. 
-		// 3°³¿´´ø °ÍÀ» 4°³·Î º¯°æ Sort ±â´ÉÀ» ¾²¸é Ç¥±âµÇÁö ¾Ê´Â columnµµ ¸ğµÎ ¼³Á¤ÇØ¾ß ÇÏ´Â µí. 
+		// [20140422] bskwak, column ëª… í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì¶”ê°€. 
+		// 3ê°œì˜€ë˜ ê²ƒì„ 4ê°œë¡œ ë³€ê²½ Sort ê¸°ëŠ¥ì„ ì“°ë©´ í‘œê¸°ë˜ì§€ ì•ŠëŠ” columnë„ ëª¨ë‘ ì„¤ì •í•´ì•¼ í•˜ëŠ” ë“¯. 
 		public Class[] colClasses = { String.class, String.class, String.class, String.class };
 
 		//------------------------------------------------------------------------------------------
-		// [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤. 
+		// [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •. 
 		int sortBy = 0;
 		int sortType = LovDataItemComparator.SORT_BY_CODE;
 		int sortOrder = LovDataItemComparator.SORT_ASC;
@@ -1699,7 +1699,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		/**
-		 * [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤.
+		 * [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •.
 		 * sort method
 		 * 
 		 */
@@ -1709,8 +1709,8 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}// sort
 
 		/**
-		 * [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤.
-		 * sort ±âÁØ column ÁöÁ¤.
+		 * [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •.
+		 * sort ê¸°ì¤€ column ì§€ì •.
 		 * 
 		 * @param sortBy
 		 */
@@ -1771,13 +1771,13 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			else if (selectedData.getData(LovDataItem.INDEX_STATUS).equals(LovDataItem.STATUS_ADD))
 				setBackground(Color.BLUE);
 
-			// Tooltip ÁöÁ¤
+			// Tooltip ì§€ì •
 			if (value != null && value.getClass().getName().endsWith("String"))
 			{
 				setToolTipText(value.toString());
 			}
 
-			// ¼±ÅÃ Background ÁöÁ¤
+			// ì„ íƒ Background ì§€ì •
 			if (isSelected)
 			{
 				setBackground(new Color(49, 106, 197));
@@ -1873,10 +1873,10 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 		JTextField keyField; // Key	
 		JTextArea valueField; // Desc
-		JTextField descField; // Display ¸í
+		JTextField descField; // Display ëª…
 
 		/**
-		 * ½Å±Ô»ı¼ºÀÎ °æ¿ì
+		 * ì‹ ê·œìƒì„±ì¸ ê²½ìš°
 		 */
 		LovDataDialog()
 		{
@@ -1893,7 +1893,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		/**
-		 * ½Å±Ô»ı¼ºÀÎ °æ¿ì
+		 * ì‹ ê·œìƒì„±ì¸ ê²½ìš°
 		 */
 		LovDataDialog(String key, String seq)
 		{
@@ -1904,7 +1904,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		}
 
 		/**
-		 * ¼öÁ¤ÀÎ °æ¿ì
+		 * ìˆ˜ì •ì¸ ê²½ìš°
 		 * 
 		 * @param lovItem
 		 */
@@ -2018,27 +2018,27 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		{
 			if ("".equals(keyField.getText().trim()))
 			{
-//          MessageBox.post(LovDataDialog.this, "Key Field°¡ °ø¶õÀÔ´Ï´Ù.", "Warning", MessageBox.INFORMATION);
+//          MessageBox.post(LovDataDialog.this, "Key Fieldê°€ ê³µë€ì…ë‹ˆë‹¤.", "Warning", MessageBox.INFORMATION);
 				String message = registry.getString("lovmanage.MESSAGE.KeyField");
 				MessageBox.post(LovDataDialog.this, message, "Warning", MessageBox.INFORMATION);
 				return;
 			}
 			if ("".equals(valueField.getText().trim()))
 			{
-//          MessageBox.post(LovDataDialog.this, "Desc Field°¡ °ø¶õÀÔ´Ï´Ù.", "Warning", MessageBox.INFORMATION);
+//          MessageBox.post(LovDataDialog.this, "Desc Fieldê°€ ê³µë€ì…ë‹ˆë‹¤.", "Warning", MessageBox.INFORMATION);
 				String message = registry.getString("lovmanage.MESSAGE.ValueField");
 				MessageBox.post(LovDataDialog.this, message, "Warning", MessageBox.INFORMATION);
 				return;
 			}
 			if ("".equals(descField.getText().trim()))
 			{
-//          MessageBox.post(LovDataDialog.this, "Display¸í Field°¡ °ø¶õÀÔ´Ï´Ù.", "Warning", MessageBox.INFORMATION);
+//          MessageBox.post(LovDataDialog.this, "Displayëª… Fieldê°€ ê³µë€ì…ë‹ˆë‹¤.", "Warning", MessageBox.INFORMATION);
 				String message = registry.getString("lovmanage.MESSAGE.DisplayField");
 				MessageBox.post(LovDataDialog.this, message, "Warning", MessageBox.INFORMATION);
 				return;
 			}
 
-			// »ı¼ºÀÎ °æ¿ì
+			// ìƒì„±ì¸ ê²½ìš°
 			if (lovDataItem == null)
 			{
 				LovDataItem dataItem = new LovDataItem();
@@ -2055,7 +2055,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					dataList.add(nSelected, dataItem);
 
 			}
-			// ¼öÁ¤ÀÎ °æ¿ì
+			// ìˆ˜ì •ì¸ ê²½ìš°
 			else
 			{
 				lovDataItem.setData(LovDataItem.INDEX_KEY, keyField.getText());
@@ -2074,9 +2074,9 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 	/**
 	 * 
-	 * [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤.
+	 * [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •.
 	 * LovItemComparator class
-	 * ¼ÒÆÃ¿¡ »ç¿ëµÇ´Â Comparator Class
+	 * ì†ŒíŒ…ì— ì‚¬ìš©ë˜ëŠ” Comparator Class
 	 */
 	class LovItemComparator implements Comparator
 	{
@@ -2092,12 +2092,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		{
 			this.sortType = sortType;
 			this.sortOrder = sortOrder;
-		}// »ı¼ºÀÚ
+		}// ìƒì„±ì
 
 		public int compare(Object o1, Object o2)
 		{
 			int result = 0;
-			// STEP 1. °´Ã¼ Å¸ÀÔÀÌ LovItem ÀÎÁö ºñ±³
+			// STEP 1. ê°ì²´ íƒ€ì…ì´ LovItem ì¸ì§€ ë¹„êµ
 			if (!(o1 instanceof LovManagerDialog.LovItem))
 				return 0;
 			if (!(o2 instanceof LovManagerDialog.LovItem))
@@ -2106,7 +2106,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			String str1 = ((LovManagerDialog.LovItem) o1).strName;
 			String str2 = ((LovManagerDialog.LovItem) o2).strName;
 
-			// STEP 2. ÄÃ·³ Á¾·ù¿¡ µû¶ó¼­ ´ë¼Ò¸¦ ºñ±³ÇÑ´Ù.
+			// STEP 2. ì»¬ëŸ¼ ì¢…ë¥˜ì— ë”°ë¼ì„œ ëŒ€ì†Œë¥¼ ë¹„êµí•œë‹¤.
 			switch (sortType)
 			{
 				case SORT_BY_NUMBER:
@@ -2119,7 +2119,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					result = str1.compareTo(str2);
 			}// switch
 
-			// STEP 3. ¼ÒÆÃ ¹æÇâÀ» Àû¿ëÇÑ´Ù.
+			// STEP 3. ì†ŒíŒ… ë°©í–¥ì„ ì ìš©í•œë‹¤.
 			result *= sortOrder;
 			return result;
 		}// compare
@@ -2127,8 +2127,8 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 
 	/**
 	 * 
-	 * [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤.
-	 * ¼ÒÆÃ¿¡ »ç¿ëµÇ´Â Comparator Class
+	 * [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •.
+	 * ì†ŒíŒ…ì— ì‚¬ìš©ë˜ëŠ” Comparator Class
 	 * 
 	 * @author bs
 	 * 
@@ -2149,12 +2149,12 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			this.sortBy = sortBy;
 			this.sortType = sortType;
 			this.sortOrder = sortOrder;
-		}// »ı¼ºÀÚ
+		}// ìƒì„±ì
 
 		public int compare(Object o1, Object o2)
 		{
 			int result = 0;
-			// STEP 1. °´Ã¼ Å¸ÀÔÀÌ LovItem ÀÎÁö ºñ±³
+			// STEP 1. ê°ì²´ íƒ€ì…ì´ LovItem ì¸ì§€ ë¹„êµ
 			if (!(o1 instanceof LovManagerDialog.LovDataItem))
 				return 0;
 			if (!(o2 instanceof LovManagerDialog.LovDataItem))
@@ -2163,7 +2163,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			String str1 = ((LovManagerDialog.LovDataItem) o1).getData(this.sortBy);
 			String str2 = ((LovManagerDialog.LovDataItem) o2).getData(this.sortBy);
 
-			// STEP 2. ÄÃ·³ Á¾·ù¿¡ µû¶ó¼­ ´ë¼Ò¸¦ ºñ±³ÇÑ´Ù.
+			// STEP 2. ì»¬ëŸ¼ ì¢…ë¥˜ì— ë”°ë¼ì„œ ëŒ€ì†Œë¥¼ ë¹„êµí•œë‹¤.
 			switch (sortType)
 			{
 				case SORT_BY_NUMBER:
@@ -2176,15 +2176,15 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 					result = str1.compareTo(str2);
 			}// switch
 
-			// STEP 3. ¼ÒÆÃ ¹æÇâÀ» Àû¿ëÇÑ´Ù.
+			// STEP 3. ì†ŒíŒ… ë°©í–¥ì„ ì ìš©í•œë‹¤.
 			result *= sortOrder;
 			return result;
 		}// compare
 	}
 
 	/**
-	 * [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤.
-	 * LovItemTableModel ¿ë header mouse adapter
+	 * [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •.
+	 * LovItemTableModel ìš© header mouse adapter
 	 * 
 	 * @author bs
 	 * 
@@ -2196,11 +2196,11 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		public LovItemColumnHeaderMouseAdapter(JTable table)
 		{
 			this.table = table;
-		}// »ı¼ºÀÚ
+		}// ìƒì„±ì
 
 		public void mouseClicked(MouseEvent e)
 		{
-			// STEP 1. ¾î´À ÄÃ·³ÀÌ Å¬¸¯µÇ¾ú´ÂÁö Ã£¾Æ³½´Ù.
+			// STEP 1. ì–´ëŠ ì»¬ëŸ¼ì´ í´ë¦­ë˜ì—ˆëŠ”ì§€ ì°¾ì•„ë‚¸ë‹¤.
 			TableColumnModel colModel = table.getColumnModel();
 			int columnModelIndex = colModel.getColumnIndexAtX(e.getX());
 			int modelIndex = colModel.getColumn(columnModelIndex).getModelIndex();
@@ -2208,7 +2208,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			if (modelIndex < 0)
 				return;
 
-			// STEP 2. Å¬¸¯µÈ ÄÃ·³¿¡ µû¶ó ¼ÒÆÃ ¼ø¼­ ¹× ¼ÒÆÃ ±âÁØÀ» º¯°æÇÑ´Ù.
+			// STEP 2. í´ë¦­ëœ ì»¬ëŸ¼ì— ë”°ë¼ ì†ŒíŒ… ìˆœì„œ ë° ì†ŒíŒ… ê¸°ì¤€ì„ ë³€ê²½í•œë‹¤.
 			LovItemTableModel tableModel = (LovItemTableModel) table.getModel();
 			tableModel.setSortBy(modelIndex);
 			tableModel.sort();
@@ -2217,8 +2217,8 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 	}
 
 	/**
-	 * [SR140513-015][20140512] bskwak, column ¿­ Å¬¸¯ ½Ã Á¤·Ä ±â´É ¿À·ù ¼öÁ¤.
-	 * LovDataItemTableModel ¿ë header mouse adapter
+	 * [SR140513-015][20140512] bskwak, column ì—´ í´ë¦­ ì‹œ ì •ë ¬ ê¸°ëŠ¥ ì˜¤ë¥˜ ìˆ˜ì •.
+	 * LovDataItemTableModel ìš© header mouse adapter
 	 * 
 	 * @author bs
 	 * 
@@ -2230,11 +2230,11 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 		public LovDataColumnHeaderMouseAdapter(JTable table)
 		{
 			this.table = table;
-		}// »ı¼ºÀÚ
+		}// ìƒì„±ì
 
 		public void mouseClicked(MouseEvent e)
 		{
-			// STEP 1. ¾î´À ÄÃ·³ÀÌ Å¬¸¯µÇ¾ú´ÂÁö Ã£¾Æ³½´Ù.
+			// STEP 1. ì–´ëŠ ì»¬ëŸ¼ì´ í´ë¦­ë˜ì—ˆëŠ”ì§€ ì°¾ì•„ë‚¸ë‹¤.
 			TableColumnModel colModel = table.getColumnModel();
 			int columnModelIndex = colModel.getColumnIndexAtX(e.getX());
 			int modelIndex = colModel.getColumn(columnModelIndex).getModelIndex();
@@ -2242,7 +2242,7 @@ public class LovManagerDialog<maxSeq> extends AbstractAIFDialog
 			if (modelIndex < 0)
 				return;
 
-			// STEP 2. Å¬¸¯µÈ ÄÃ·³¿¡ µû¶ó ¼ÒÆÃ ¼ø¼­ ¹× ¼ÒÆÃ ±âÁØÀ» º¯°æÇÑ´Ù.
+			// STEP 2. í´ë¦­ëœ ì»¬ëŸ¼ì— ë”°ë¼ ì†ŒíŒ… ìˆœì„œ ë° ì†ŒíŒ… ê¸°ì¤€ì„ ë³€ê²½í•œë‹¤.
 			LovDataItemTableModel tableModel = (LovDataItemTableModel) table.getModel();
 			tableModel.setSortBy(modelIndex);
 			tableModel.sort();
