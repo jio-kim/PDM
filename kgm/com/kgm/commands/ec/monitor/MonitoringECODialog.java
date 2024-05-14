@@ -708,10 +708,10 @@ public class MonitoringECODialog extends SYMCAbstractDialog {
 //		String caaPath = "C:\\Siemens\\TC\\OTW10\\rac\\catiav5_integration\\bin\\CAA\\V5R21\\win_b64\\code\\bin\\CAADrawingTCBatch.exe";
 		
 		// [20140112_TC10 Upgrade] FMS_HOME으로부터 Path를 생성하도록 변경.
-		String caaPath = "C:\\Siemens\\TC\\OTW10\\rac\\catiav5_integration\\bin\\CAA\\V5R21\\win_b64\\code\\bin\\CAADrawingTCBatch.exe";
+		String caaPath = "C:\\Siemens\\TC13\\portal\\catiav5_integration\\bin\\CAA\\V5R33\\win_b64\\code\\bin\\CAADrawingTCBatch.exe";
 		String fmsHome = System.getenv("FMS_HOME");
 		if(fmsHome != null && !fmsHome.isEmpty()) {
-			caaPath = fmsHome.substring(0, fmsHome.lastIndexOf("\\")) + "\\rac\\catiav5_integration\\bin\\CAA\\V5R21\\win_b64\\code\\bin\\CAADrawingTCBatch.exe";		
+			caaPath = fmsHome.substring(0, fmsHome.lastIndexOf("\\")) + "\\portal\\catiav5_integration\\bin\\CAA\\V5R33\\win_b64\\code\\bin\\CAADrawingTCBatch.exe";		
 		}
 		
 		File caaFile = new File(caaPath);

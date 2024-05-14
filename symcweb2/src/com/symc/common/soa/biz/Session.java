@@ -216,7 +216,7 @@ public class Session
 //            Process oProcess = new ProcessBuilder("C:\\siemens\\TC\\OTW9\\tccs\\bin\\fccstat.exe", "-start").start();
             
         	// [TC10 Upgrade] fccstat.exe 파일 Path를 환경변수 FMS_HOME을 통해서 가져옴
-            String path = "C:\\siemens\\TC\\OTW10\\tccs\\bin\\fccstat.exe";
+            String path = "C:\\Siemens\\TC13\\tccs\\bin\\fccstat.exe";
             String fmsHome = System.getenv("FMS_HOME");
             if(fmsHome != null && !fmsHome.isEmpty()) {
             	path = fmsHome + "\\bin\\fccstat.exe";

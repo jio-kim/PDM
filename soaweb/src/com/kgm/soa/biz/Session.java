@@ -243,7 +243,7 @@ public class Session
      */
     public void startFcc() {
         try {
-            String path = "C:\\siemens\\TC\\OTW10\\tccs\\bin\\fccstat.exe";
+            String path = "C:\\Siemens\\TC13\\tccs\\bin\\fccstat.exe";
             String fmsHome = System.getenv("FMS_HOME");
             if(fmsHome != null && !fmsHome.isEmpty()) {
             	path = fmsHome + "\\bin\\fccstat.exe";
