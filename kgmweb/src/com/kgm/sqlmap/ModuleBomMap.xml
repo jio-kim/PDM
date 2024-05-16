@@ -5,7 +5,7 @@
  <mapper namespace="com.symc.module">
 
 	<select id="validateModule" statementType="CALLABLE">
-	    {call PKG_MODULE_VALIDATION.validate_module(#{eco_no, jdbcType=VARCHAR}, #{list, javaType=Object, jdbcType=ARRAY, jdbcTypeName=VALIDATION_TABLE_TYPE, mode=OUT, typeHandler=xxxxxxxxxxx.typehandler.ModuleBomValidationTypeHandler})}
+	    {call PKG_MODULE_VALIDATION.validate_module(#{eco_no, jdbcType=VARCHAR}, #{list, javaType=Object, jdbcType=ARRAY, jdbcTypeName=VALIDATION_TABLE_TYPE, mode=OUT, typeHandler=com.kgm.typehandler.ModuleBomValidationTypeHandler})}
 	</select>
 
 	<select id="getModulePart" resultType="java.util.HashMap">
