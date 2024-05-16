@@ -706,7 +706,7 @@ public class AutoConditionMapperDialog extends AbstractAIFDialog {
 					});
 					{
 						JButton btnExcelExport = new JButton("Excel Export");
-						btnExcelExport.setIcon(new ImageIcon(VariantOptionDefinitionDialog.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+						btnExcelExport.setIcon(new ImageIcon(VariantOptionDefinitionDialog.class.getResource("/com/kgm/common/images/excel_16.png")));
 						panel.add(btnExcelExport);
 						btnExcelExport.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent e) {

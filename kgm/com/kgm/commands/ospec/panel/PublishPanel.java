@@ -206,7 +206,7 @@ public class PublishPanel extends JPanel {
 		panel_3.add(panel_5, BorderLayout.EAST);
 		
 		JButton btnApply = new JButton("Apply");
-		btnApply.setIcon(new ImageIcon(PublishPanel.class.getResource("/com/ssangyong/common/images/ok_16.png")));
+		btnApply.setIcon(new ImageIcon(PublishPanel.class.getResource("/com/kgm/common/images/ok_16.png")));
 		btnApply.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				try {

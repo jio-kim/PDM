@@ -292,7 +292,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		updateProjectCodeButton.setToolTipText("\uC120\uD0DD\uD55C \uB300\uC0C1\uC5D0 \uC5C5\uB370\uC774\uD2B8");
-		updateProjectCodeButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/apply_16.png"));
+		updateProjectCodeButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/apply_16.png"));
 
 		lblNewLabel_1 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_1.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -334,7 +334,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		updateCategoryButton.setToolTipText("\uC120\uD0DD\uD55C \uB300\uC0C1\uC5D0 \uC5C5\uB370\uC774\uD2B8");
-		updateCategoryButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/apply_16.png"));
+		updateCategoryButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/apply_16.png"));
 
 		lblNewLabel_2 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_2.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -348,7 +348,7 @@ public class EditMultiPartsDialog extends Dialog
 
 		searchShownOnButton = new Button(composite_2, SWT.NONE);
 		searchShownOnButton.setToolTipText("\uAC80\uC0C9");
-		searchShownOnButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/search_16.png"));
+		searchShownOnButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/search_16.png"));
 		searchShownOnButton.addSelectionListener(new SelectionAdapter()
 		{
 			@Override
@@ -390,7 +390,7 @@ public class EditMultiPartsDialog extends Dialog
 				shownOnText.setData(null);
 			}
 		});
-		removeShownOnButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/clear_16.png"));
+		removeShownOnButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/clear_16.png"));
 
 		updateShownOnButton = new Button(composite_2, SWT.NONE);
 		updateShownOnButton.addSelectionListener(new SelectionAdapter()
@@ -420,7 +420,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		updateShownOnButton.setToolTipText("\uC120\uD0DD\uD55C \uB300\uC0C1\uC5D0 \uC5C5\uB370\uC774\uD2B8");
-		updateShownOnButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/apply_16.png"));
+		updateShownOnButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/apply_16.png"));
 
 		lblNewLabel_3 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_3.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -457,7 +457,7 @@ public class EditMultiPartsDialog extends Dialog
 				}
 			}
 		});
-		searchMaterialButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/search_16.png"));
+		searchMaterialButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/search_16.png"));
 
 		removeMaterialButton = new Button(composite_2, SWT.NONE);
 		removeMaterialButton.setToolTipText("\uC9C0\uC6B0\uAE30");
@@ -470,7 +470,7 @@ public class EditMultiPartsDialog extends Dialog
 				materialText.setData(null);
 			}
 		});
-		removeMaterialButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/clear_16.png"));
+		removeMaterialButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/clear_16.png"));
 
 		updateMaterialButton = new Button(composite_2, SWT.NONE);
 		updateMaterialButton.addSelectionListener(new SelectionAdapter()
@@ -500,7 +500,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		updateMaterialButton.setToolTipText("\uC120\uD0DD\uD55C \uB300\uC0C1\uC5D0 \uC5C5\uB370\uC774\uD2B8");
-		updateMaterialButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/apply_16.png"));
+		updateMaterialButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/apply_16.png"));
 
 		lblNewLabel_4 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_4.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -579,7 +579,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		updateEstWeightButton.setToolTipText("\uC120\uD0DD\uD55C \uB300\uC0C1\uC5D0 \uC5C5\uB370\uC774\uD2B8");
-		updateEstWeightButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/apply_16.png"));
+		updateEstWeightButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/apply_16.png"));
 
 		lblNewLabel_5 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_5.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -641,7 +641,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		updateActWeightButton.setToolTipText("\uC120\uD0DD\uD55C \uB300\uC0C1\uC5D0 \uC5C5\uB370\uC774\uD2B8");
-		updateActWeightButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/apply_16.png"));
+		updateActWeightButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/apply_16.png"));
 
 		lblNewLabel_6 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_6.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -683,7 +683,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		updateDwgCreatorButton.setToolTipText("\uC120\uD0DD\uD55C \uB300\uC0C1\uC5D0 \uC5C5\uB370\uC774\uD2B8");
-		updateDwgCreatorButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/apply_16.png"));
+		updateDwgCreatorButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/apply_16.png"));
 
 		lblNewLabel_7 = new Label(composite_2, SWT.NONE);
 		lblNewLabel_7.setLayoutData(new GridData(SWT.RIGHT, SWT.CENTER, false, false, 1, 1));
@@ -725,7 +725,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		updateSystemCodeButton.setToolTipText("\uC120\uD0DD\uD55C \uB300\uC0C1\uC5D0 \uC5C5\uB370\uC774\uD2B8");
-		updateSystemCodeButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/apply_16.png"));
+		updateSystemCodeButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/apply_16.png"));
 
 		label = new Label(shell, SWT.SEPARATOR | SWT.HORIZONTAL);
 		label.setLayoutData(new GridData(SWT.FILL, SWT.CENTER, false, false, 1, 1));
@@ -755,7 +755,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		okButton.setToolTipText("\uC800\uC7A5\uD6C4 \uCC3D \uB2EB\uAE30");
-		okButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/ok_16.png"));
+		okButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/ok_16.png"));
 		okButton.setText("OK");
 
 		applyButton = new Button(composite_1, SWT.NONE);
@@ -777,7 +777,7 @@ public class EditMultiPartsDialog extends Dialog
 			}
 		});
 		applyButton.setToolTipText("\uC800\uC7A5");
-		applyButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/apply_16.png"));
+		applyButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/apply_16.png"));
 		applyButton.setText("Apply");
 
 		cancelButton = new Button(composite_1, SWT.NONE);
@@ -799,7 +799,7 @@ public class EditMultiPartsDialog extends Dialog
 				}
 			}
 		});
-		cancelButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/ssangyong/common/images/cancel_16.png"));
+		cancelButton.setImage(SWTResourceManager.getImage(EditMultiPartsDialog.class, "/com/kgm/common/images/cancel_16.png"));
 		cancelButton.setText("Cancel");
 	}
 

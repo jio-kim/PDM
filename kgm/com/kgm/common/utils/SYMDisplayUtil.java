@@ -140,13 +140,13 @@ public class SYMDisplayUtil {
 				switch(columnIndex){
 				case 0:
 				    if(target_rev.getType().equals(STCPART_REVISION)){
-						return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/ssangyong/common/images/itemrevision_16.png");
+						return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/kgm/common/images/itemrevision_16.png");
 				    }else if(target_rev.getType().equals(STCDOCUMENT_REVISION)){
-						return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/ssangyong/common/images/document_16.png");
+						return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/kgm/common/images/document_16.png");
 				    }else if(target_rev.getType().equals(STCSW_REVISION)){
-				        return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/ssangyong/common/images/SoftwareRevision16.png");
+				        return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/kgm/common/images/SoftwareRevision16.png");
 				    }else if(target_rev.getType().equals(STCNPI_REVISION)){
-				        return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/ssangyong/common/images/stcnpirevision_16.png");
+				        return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/kgm/common/images/stcnpirevision_16.png");
 				    }
 				}
 				
@@ -223,7 +223,7 @@ public class SYMDisplayUtil {
 	        public Image getColumnImage(Object element, int columnIndex) {
 				switch(columnIndex){
 				case 1:
-						return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/ssangyong/common/images/user_16.png");
+						return SWTResourceManager.getImage(SYMDisplayUtil.class, "/com/kgm/common/images/user_16.png");
 				}
 				
 				return null;

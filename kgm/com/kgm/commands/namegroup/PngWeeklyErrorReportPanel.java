@@ -133,7 +133,7 @@ public class PngWeeklyErrorReportPanel extends JPanel {
 			btnSearch.requestFocus();
 			
 			JButton btnExport = new JButton("Export");
-			btnExport.setIcon(new ImageIcon(PngWeeklyErrorReportPanel.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+			btnExport.setIcon(new ImageIcon(PngWeeklyErrorReportPanel.class.getResource("/com/kgm/common/images/excel_16.png")));
 			btnExport.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent paramActionEvent) {
 					if(tableModel.getRowCount() <= 0){

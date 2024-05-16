@@ -150,10 +150,10 @@ public class PngVerificationPanel extends JPanel {
 		JPanel panel_4 = new JPanel();
 
 		// [SR160412-013][20160414][jclee] Spec Excel Export
-		Registry registry = Registry.getRegistry("/com/ssangyong/common/common");
+		Registry registry = Registry.getRegistry("/com/kgm/common/common");
 
 		JButton btnSpecExport = new JButton("");
-		btnSpecExport.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/ssangyong/common/images/export_16.png")));
+		btnSpecExport.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/kgm/common/images/export_16.png")));
 		btnSpecExport.setToolTipText("Excel Export");
 		btnSpecExport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionevent) {
@@ -165,7 +165,7 @@ public class PngVerificationPanel extends JPanel {
 
 		// [SR160412-013][20160414][jclee] Spec Excel Import
 		JButton btnSpecImport = new JButton("");
-		btnSpecImport.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/ssangyong/common/images/import_16.png")));
+		btnSpecImport.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/kgm/common/images/import_16.png")));
 		btnSpecImport.setToolTipText("Excel Import");
 		btnSpecImport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionevent) {
@@ -270,7 +270,7 @@ public class PngVerificationPanel extends JPanel {
 		 * [SR181211-012][CSH] 1레벨 아이템 전체 검토(P+, C+와 같이 1레벨의 모든 내용 검토) 이보현책임
 		 */
 		JButton btnSpecEndItemExcelExport = new JButton("1 Level Item List Export");
-		btnSpecEndItemExcelExport.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+		btnSpecEndItemExcelExport.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/kgm/common/images/excel_16.png")));
 		btnSpecEndItemExcelExport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionevent) {
 				final WaitProgressBar waitProgress = new WaitProgressBar(parentDlg);
@@ -307,7 +307,7 @@ public class PngVerificationPanel extends JPanel {
 		panel_3.add(btnSpecEndItemExcelExport);
 
 		JButton btnVerify = new JButton("Verify");
-		btnVerify.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/ssangyong/common/images/ok_16.png")));
+		btnVerify.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/kgm/common/images/ok_16.png")));
 		btnVerify.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionevent) {
 				
@@ -409,7 +409,7 @@ public class PngVerificationPanel extends JPanel {
 		resultPanel.add(panel_6, BorderLayout.SOUTH);
 
 		JButton btnExport = new JButton("Export");
-		btnExport.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+		btnExport.setIcon(new ImageIcon(PngVerificationPanel.class.getResource("/com/kgm/common/images/excel_16.png")));
 		btnExport.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent actionevent) {
 				if (!lbTargetProd.getText().equals(".")) {

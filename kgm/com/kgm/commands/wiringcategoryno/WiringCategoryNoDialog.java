@@ -405,7 +405,7 @@ public class WiringCategoryNoDialog extends Dialog
 				ExportPOIExcel.exportDialog(shell, grid, "Wiring Category No", "프로젝트별 Wiring Category No", "", null);
 			}
 		});
-		exportExcelButton.setImage(SWTResourceManager.getImage(WiringCategoryNoDialog.class, "/com/ssangyong/common/images/excel_16.png"));
+		exportExcelButton.setImage(SWTResourceManager.getImage(WiringCategoryNoDialog.class, "/com/kgm/common/images/excel_16.png"));
 		exportExcelButton.setText("\uC5D1\uC140 \uC800\uC7A5");
 
 		reLoadButton = new Button(composite, SWT.NONE);

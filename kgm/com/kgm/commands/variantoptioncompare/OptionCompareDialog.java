@@ -212,7 +212,7 @@ public class OptionCompareDialog extends AbstractAIFDialog {
 			{
 				JButton exportButton = new JButton("Export");
 				exportButton.setBackground(Color.WHITE);
-				exportButton.setIcon(new ImageIcon(VariantOptionDefinitionDialog.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+				exportButton.setIcon(new ImageIcon(VariantOptionDefinitionDialog.class.getResource("/com/kgm/common/images/excel_16.png")));
 				exportButton.addActionListener(new ActionListener(){
 
 					@Override

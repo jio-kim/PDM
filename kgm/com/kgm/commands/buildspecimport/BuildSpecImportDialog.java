@@ -478,7 +478,7 @@ public class BuildSpecImportDialog extends AbstractAIFDialog {
 				});
 				{
 					JButton exportBtn = new JButton("Export");
-					exportBtn.setIcon(new ImageIcon(BuildSpecImportDialog.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+					exportBtn.setIcon(new ImageIcon(BuildSpecImportDialog.class.getResource("/com/kgm/common/images/excel_16.png")));
 					exportBtn.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent arg0) {
 

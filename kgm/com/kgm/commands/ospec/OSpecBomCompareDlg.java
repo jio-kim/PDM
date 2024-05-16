@@ -312,7 +312,7 @@ public class OSpecBomCompareDlg extends JDialog {
 			// [NoSR][2016.01.07][jclee] Compare with Excel 기능 추가
 			{
 				JButton compareWithExcelButton = new JButton("Compare With Excel");
-				compareWithExcelButton.setIcon(new ImageIcon(OSpecBomCompareDlg.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+				compareWithExcelButton.setIcon(new ImageIcon(OSpecBomCompareDlg.class.getResource("/com/kgm/common/images/excel_16.png")));
 				compareWithExcelButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						ArrayList<String> optionCombinations = getOptionCombinationsFromExcel();
@@ -334,7 +334,7 @@ public class OSpecBomCompareDlg extends JDialog {
 				buttonPane.add(rightButtnPanel);
 				
 				JButton compareButton = new JButton("Compare");
-				compareButton.setIcon(new ImageIcon(OSpecBomCompareDlg.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+				compareButton.setIcon(new ImageIcon(OSpecBomCompareDlg.class.getResource("/com/kgm/common/images/excel_16.png")));
 				compareButton.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent arg0) {
 						// [NoSR][2016.01.06][jclee] Compare Method 분리

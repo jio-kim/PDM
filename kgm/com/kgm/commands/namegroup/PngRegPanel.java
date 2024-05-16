@@ -389,7 +389,7 @@ public class PngRegPanel extends JPanel {
 		panel.add(panel_3, BorderLayout.SOUTH);
 		
 		JButton btnNewButton = new JButton("Export");
-		btnNewButton.setIcon(new ImageIcon(PngRegPanel.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+		btnNewButton.setIcon(new ImageIcon(PngRegPanel.class.getResource("/com/kgm/common/images/excel_16.png")));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				exportToExcel();

@@ -171,7 +171,7 @@ public class CategoryOspecCompareDialog extends Dialog {
 	protected void createButtonsForButtonBar(Composite parent) {
 		parent.setBackground(SWTResourceManager.getColor(SWT.COLOR_WHITE));
 		Button btnExport = createButton(parent, 100, "Export", false);
-		btnExport.setImage(SWTResourceManager.getImage(CategoryOspecCompareDialog.class, "/com/ssangyong/common/images/export_16.png"));
+		btnExport.setImage(SWTResourceManager.getImage(CategoryOspecCompareDialog.class, "/com/kgm/common/images/export_16.png"));
 		btnExport.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {

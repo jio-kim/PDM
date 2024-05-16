@@ -322,7 +322,7 @@ public class DeleteVehiclePartDlg extends AbstractAIFDialog {
 		pnlButton.setLayout(new FlowLayout(FlowLayout.RIGHT));
 		
 		JButton btnCutSelected = new JButton("Cut Selected Reference");
-		btnCutSelected.setIcon(new ImageIcon(DeleteVehiclePartDlg.class.getResource("/com/ssangyong/common/images/removeAll_16.png")));
+		btnCutSelected.setIcon(new ImageIcon(DeleteVehiclePartDlg.class.getResource("/com/kgm/common/images/removeAll_16.png")));
 		btnCutSelected.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -337,7 +337,7 @@ public class DeleteVehiclePartDlg extends AbstractAIFDialog {
 		pnlButton.add(btnCutSelected);
 		
 		JButton btnDelete = new JButton("Delete Part");
-		btnDelete.setIcon(new ImageIcon(DeleteVehiclePartDlg.class.getResource("/com/ssangyong/common/images/ok_16.png")));
+		btnDelete.setIcon(new ImageIcon(DeleteVehiclePartDlg.class.getResource("/com/kgm/common/images/ok_16.png")));
 		btnDelete.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {

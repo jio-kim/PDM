@@ -306,7 +306,7 @@ public class ModuleBomValidationDlg extends AbstractAIFDialog {
 						
 					}
 				});
-				okButton.setIcon(new ImageIcon(ModuleBomValidationDlg.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+				okButton.setIcon(new ImageIcon(ModuleBomValidationDlg.class.getResource("/com/kgm/common/images/excel_16.png")));
 				okButton.setActionCommand("");
 				buttonPane.add(okButton);
 				getRootPane().setDefaultButton(okButton);

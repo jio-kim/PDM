@@ -520,7 +520,7 @@ public class EcoChangeListMgrComposite extends Composite {
 		btnExport.setBounds(0, 0, 76, 25);
 		toolkit.adapt(btnExport, true, true);
 		btnExport.setText("Excel Export");
-		btnExport.setImage(SWTResourceManager.getImage(EcoChangeListMgrComposite.class, "/com/ssangyong/common/images/export_16.png"));
+		btnExport.setImage(SWTResourceManager.getImage(EcoChangeListMgrComposite.class, "/com/kgm/common/images/export_16.png"));
 		btnExport.addSelectionListener(new SelectionAdapter() {
 			@Override
 			public void widgetSelected(SelectionEvent e) {

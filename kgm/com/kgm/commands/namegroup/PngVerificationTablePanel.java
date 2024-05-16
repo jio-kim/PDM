@@ -225,7 +225,7 @@ public class PngVerificationTablePanel extends JPanel {
 		
 		final JPopupMenu popupMenu = new JPopupMenu();
 	    JMenuItem menuItem = new JMenuItem("Export Spec to Excel");
-	    menuItem.setIcon(new ImageIcon(PngVerificationTablePanel.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+	    menuItem.setIcon(new ImageIcon(PngVerificationTablePanel.class.getResource("/com/kgm/common/images/excel_16.png")));
 	    menuItem.addActionListener(new ActionListener() {
 			
 			@Override

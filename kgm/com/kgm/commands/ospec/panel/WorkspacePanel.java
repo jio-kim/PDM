@@ -252,7 +252,7 @@ public class WorkspacePanel extends JPanel {
 				panel.add(panel_1, BorderLayout.SOUTH);
 				{
 					JButton btnLoad = new JButton("Load");
-					btnLoad.setIcon(new ImageIcon(WorkspacePanel.class.getResource("/com/ssangyong/common/images/ok_16.png")));
+					btnLoad.setIcon(new ImageIcon(WorkspacePanel.class.getResource("/com/kgm/common/images/ok_16.png")));
 					btnLoad.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent e) {
 							
@@ -350,7 +350,7 @@ public class WorkspacePanel extends JPanel {
 				}
 				{
 					JButton btnExport = new JButton("Export");
-					btnExport.setIcon(new ImageIcon(WorkspacePanel.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+					btnExport.setIcon(new ImageIcon(WorkspacePanel.class.getResource("/com/kgm/common/images/excel_16.png")));
 					panel.add(btnExport);
 					btnExport.addActionListener(new ActionListener() {
 						

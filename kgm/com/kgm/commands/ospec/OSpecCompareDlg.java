@@ -241,7 +241,7 @@ public class OSpecCompareDlg extends AbstractAIFDialog {
 				 */
 				{
 					JButton btnExcelExport = new JButton("Export Merged O/Spec");
-					btnExcelExport.setIcon(new ImageIcon(OSpecCompareDlg.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+					btnExcelExport.setIcon(new ImageIcon(OSpecCompareDlg.class.getResource("/com/kgm/common/images/excel_16.png")));
 					btnExcelExport.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent actionevent) {
 							// [20150728][jclee] Source보다 Target이 더 높아야만 OSpec Merge를 할 수 있도록 수정.
@@ -307,7 +307,7 @@ public class OSpecCompareDlg extends AbstractAIFDialog {
 				
 				{
 					JButton btnExcelExport = new JButton("Excel Export");
-					btnExcelExport.setIcon(new ImageIcon(OSpecCompareDlg.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+					btnExcelExport.setIcon(new ImageIcon(OSpecCompareDlg.class.getResource("/com/kgm/common/images/excel_16.png")));
 					btnExcelExport.addActionListener(new ActionListener() {
 						public void actionPerformed(ActionEvent actionevent) {
 							

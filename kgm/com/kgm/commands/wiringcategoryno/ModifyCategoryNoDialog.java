@@ -189,7 +189,7 @@ public class ModifyCategoryNoDialog extends Dialog
 			}
 		});
 		addButton.setToolTipText("\uCD94\uAC00");
-		addButton.setImage(SWTResourceManager.getImage(ModifyCategoryNoDialog.class, "/com/ssangyong/commands/variantoptioneditor/images/backarrow.png"));
+		addButton.setImage(SWTResourceManager.getImage(ModifyCategoryNoDialog.class, "/com/kgm/commands/variantoptioneditor/images/backarrow.png"));
 
 		removeButton = new Button(composite, SWT.NONE);
 		removeButton.addSelectionListener(new SelectionAdapter()
@@ -201,7 +201,7 @@ public class ModifyCategoryNoDialog extends Dialog
 			}
 		});
 		removeButton.setToolTipText("\uC81C\uAC70");
-		removeButton.setImage(SWTResourceManager.getImage(ModifyCategoryNoDialog.class, "/com/ssangyong/commands/variantoptioneditor/images/forwardarrow.png"));
+		removeButton.setImage(SWTResourceManager.getImage(ModifyCategoryNoDialog.class, "/com/kgm/commands/variantoptioneditor/images/forwardarrow.png"));
 
 		grpProjectCategory = new Group(grpCategoryNo, SWT.NONE);
 		grpProjectCategory.setText("Project \uC804\uCCB4 Category No \uB9AC\uC2A4\uD2B8");

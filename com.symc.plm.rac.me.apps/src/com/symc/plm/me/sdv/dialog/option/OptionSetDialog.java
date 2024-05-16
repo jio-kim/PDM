@@ -369,7 +369,7 @@ public class OptionSetDialog extends AbstractAIFDialog {
                 {
                     JButton exportBtn = new JButton("Export");
                     exportBtn.setBackground(Color.WHITE);
-                    exportBtn.setIcon(new ImageIcon(OptionSetDialog.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+                    exportBtn.setIcon(new ImageIcon(OptionSetDialog.class.getResource("/com/kgm/common/images/excel_16.png")));
                     exportBtn.addActionListener(new ActionListener() {
 
                         @Override

@@ -787,7 +787,7 @@ public class VariantOptionDefinitionDialog extends AbstractAIFDialog {
 							JButton exportBtn = new JButton("Export");
 							exportBtn.setBackground(Color.WHITE);
 							exportBtn.setOpaque(true);
-							exportBtn.setIcon(new ImageIcon(VariantOptionDefinitionDialog.class.getResource("/com/ssangyong/common/images/excel_16.png")));
+							exportBtn.setIcon(new ImageIcon(VariantOptionDefinitionDialog.class.getResource("/com/kgm/common/images/excel_16.png")));
 							
 							//Excel·Î Export ÇÔ.
 							exportBtn.addActionListener(new ActionListener(){

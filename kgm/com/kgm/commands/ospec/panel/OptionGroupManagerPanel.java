@@ -498,7 +498,7 @@ public class OptionGroupManagerPanel extends JPanel {
 					{
 						JButton btnNewButton_6 = new JButton("");
 						btnNewButton_6.setPreferredSize(new Dimension(40, 40));
-						btnNewButton_6.setIcon(new ImageIcon(OptionGroupManagerPanel.class.getResource("/com/ssangyong/commands/variantoptioneditor/images/backarrow2.png")));
+						btnNewButton_6.setIcon(new ImageIcon(OptionGroupManagerPanel.class.getResource("/com/kgm/commands/variantoptioneditor/images/backarrow2.png")));
 						btnNewButton_6.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent actionevent) {
 								
@@ -567,7 +567,7 @@ public class OptionGroupManagerPanel extends JPanel {
 					panel_1_1.setLayout(new BorderLayout(0, 0));
 					{
 						JButton btnNewButton_7 = new JButton("");
-						btnNewButton_7.setIcon(new ImageIcon(OptionGroupManagerPanel.class.getResource("/com/ssangyong/commands/variantoptioneditor/images/forwardarrow2.png")));
+						btnNewButton_7.setIcon(new ImageIcon(OptionGroupManagerPanel.class.getResource("/com/kgm/commands/variantoptioneditor/images/forwardarrow2.png")));
 						btnNewButton_7.setPreferredSize(new Dimension(40, 40));
 						btnNewButton_7.addActionListener(new ActionListener() {
 							public void actionPerformed(ActionEvent actionevent) {

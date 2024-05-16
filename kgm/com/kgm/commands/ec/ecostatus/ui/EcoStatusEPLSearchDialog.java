@@ -183,7 +183,7 @@ public class EcoStatusEPLSearchDialog extends Dialog {
 				doExport();
 			}
 		});
-		btnExport.setImage(SWTResourceManager.getImage(EcoStatusEPLSearchDialog.class, "/com/ssangyong/common/images/export_16.png"));
+		btnExport.setImage(SWTResourceManager.getImage(EcoStatusEPLSearchDialog.class, "/com/kgm/common/images/export_16.png"));
 		new Label(compositeTopRightButton, SWT.NONE);
 
 		Section sectionResult = toolkit.createSection(container, Section.TITLE_BAR);
