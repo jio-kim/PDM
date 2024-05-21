@@ -235,14 +235,17 @@ public abstract class SYMCAWTAbstractDialog extends AbstractAIFDialog implements
 				okButton.removeActionListener(null);
 				try
 				{
-					saveAction(e);
+					// [20240522][UPGRADE] Validation Check 결과에 따라 창이 닫히도록 수정
+					if (saveAction(e)) {
+						closeDialog();
+					}
 				} catch (Exception e1)
 				{
 					MessageBox.post(SYMCAWTAbstractDialog.this, e1);
 					e1.printStackTrace();
 					return;
 				}
-				closeDialog();
+//				closeDialog();
 //				okButton.addActionListener(this);
 			}
 		});
@@ -286,12 +289,16 @@ public abstract class SYMCAWTAbstractDialog extends AbstractAIFDialog implements
 	 * @author : 이정건
 	 * @since : 2011. 9. 26.
 	 */
-	public void saveAction(ActionEvent e) throws Exception {
+	// [20240522][UPGRADE] validation Check 후 return 값 추가 
+	public boolean saveAction(ActionEvent e) throws Exception {
 		if (validCheck()) {
 			if (confirmCheck()) {
 				invokeOperation(e);
 			}
+		} else {
+			return false;
 		}
+		return true;
 	}
 
 	/**
