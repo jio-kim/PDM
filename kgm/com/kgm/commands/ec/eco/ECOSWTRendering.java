@@ -1823,6 +1823,8 @@ public class ECOSWTRendering extends AbstractSYMCViewer{
 		gridData = new GridData (125, SWT.DEFAULT);
 		veh_dvp_yn = new SYMCYesNoRadio(seNtestGroup, SWT.NONE);
 		veh_dvp_yn.setLayoutData(gridData);
+		// [20240522][UPGRADE] Validation Check Ãß°¡
+		setMadatory(veh_dvp_yn);
 		
 		gridData = new GridData (SWT.FILL, SWT.FILL, true, false);
 		gridData.horizontalSpan = 4;
