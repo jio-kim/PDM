@@ -100,7 +100,7 @@ public class FTPClientUtil {
             {
     			String line = scan.nextLine();
     			if(!(line.startsWith("version"))) {
-    				fileName = line.split(":");
+    				fileName = line.split(";");
             		listVer = Integer.parseInt(fileName[1].replaceAll("\\.", "").trim());
             		if (listVer > localVer && listVer <= remoteVer) { 
             			downloadList.add(fileName[0]);
@@ -130,24 +130,26 @@ public class FTPClientUtil {
     	String downloadFileName = null;
     	String remoteFilePath = null;
     	String localFilePath = null;
-    	String pathHeader = System.getProperty("user.dir");
     	File file = null;
     	ArrayList isUpdate = new ArrayList();
+    	//C:\Siemens\TC13\portal\abcdefg.jar;1.3.4
     	
     	for (int i=0; i<downloadList.size(); i++) {
-    		String path = null;
-        	String paths = "";
     		downloadFileName = (String) downloadList.get(i);
     		
     		int lastIndex = downloadFileName.lastIndexOf("\\");
     		String pathWithoutFileName = downloadFileName.substring(0, lastIndex);
-    		StringTokenizer token = new StringTokenizer(pathWithoutFileName, "\\");
-    		while(token.hasMoreTokens()) {
-    			path = "\\" + token.nextToken();
-    			paths += path;
-    			System.out.println(pathHeader+paths);
-    			file = new File(pathHeader+paths);
-    			if(!file.exists()) {
+    		
+    		String[] pathParts = pathWithoutFileName.split("\\\\");
+    		StringBuilder paths = new StringBuilder(pathParts[0] + "\\");
+    		
+            for (int s = 1; s < pathParts.length; s++) {
+            	if (s > 1) {
+            		paths.append("\\");
+                }
+            	paths.append(pathParts[s]);
+                file = new File(paths.toString());
+                if(!file.exists()) {
     				try 
     	            {
     					file.mkdir();
@@ -157,7 +159,8 @@ public class FTPClientUtil {
     	                System.out.println("path mkdir Error : "+e.toString());
     	            }
     			}
-    		}
+            }
+            
     		localFilePath = downloadFileName.replaceAll("\\\\", "/");
     		lastIndex = downloadFileName.lastIndexOf("\\");
     		if(isBOP) {

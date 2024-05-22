@@ -33,7 +33,11 @@ public class Main
 			
 			boolean isUpdate = ftpClientUtil.downloadFile(downloadList, isBOP);
 			// 다운로드 진행 후 로컬 Version 업데이트 및  Temp 파일 삭제 
-			ftpClientUtil.updateVersion(localVersion, tempFilePath);
+			if(isUpdate) {
+				ftpClientUtil.updateVersion(localVersion, tempFilePath);
+			} else {
+				System.out.println("전송된 데이터가 없거나 전송 중 경로 혹은 파일 이름 문제로 인한 에러가 있습니다. ");
+			}
 			ftpClientUtil.deleteTempFile(tempFilePath);
 			
 			// FTP 연결 종료
