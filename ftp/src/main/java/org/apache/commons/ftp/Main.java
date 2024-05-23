@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Main 
 {	
 	public static void main(String[] args) {
-		String hostIP = "10.50.50.176";
+		String hostIP = "10.50.50.178";
 		int hostPort = 21;
 		String clientID = "user";
 		String ClientPW = "user";
@@ -35,8 +35,6 @@ public class Main
 			// 다운로드 진행 후 로컬 Version 업데이트 및  Temp 파일 삭제 
 			if(isUpdate) {
 				ftpClientUtil.updateVersion(localVersion, tempFilePath);
-			} else {
-				System.out.println("전송된 데이터가 없거나 전송 중 경로 혹은 파일 이름 문제로 인한 에러가 있습니다. ");
 			}
 			ftpClientUtil.deleteTempFile(tempFilePath);
 			
