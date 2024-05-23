@@ -7,7 +7,7 @@ import java.util.ArrayList;
 public class Main 
 {	
 	public static void main(String[] args) {
-		String hostIP = "10.50.50.178";
+		String hostIP = "10.50.50.176";
 		int hostPort = 21;
 		String clientID = "user";
 		String ClientPW = "user";

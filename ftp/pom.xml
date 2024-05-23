@@ -3,8 +3,6 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.apache.commons</groupId>
-  <artifactId>ftp</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
   <packaging>jar</packaging>
 
   <name>ftp</name>
@@ -48,6 +46,7 @@
   </dependencies>
   
   <build>
+  		<finalName>updateJAR</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -73,4 +72,6 @@
         </plugins>
     </build>
   
+  <artifactId>ftp</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
 </project>
