@@ -795,7 +795,7 @@ public class MonitoringECODialog extends SYMCAbstractDialog {
 		bufferedWriter.newLine();
 		bufferedWriter.write("set PATH=C:\\DS\\B33\\win_b64\\code\\bin;%PATH%");
 		bufferedWriter.newLine();
-		bufferedWriter.write(caaFilePath + " " + directoryPath + "\\" + listFileName+ " -pdf");
+		bufferedWriter.write(caaFilePath + " " + "\""+directoryPath + "\\" + listFileName+ "\"" +" -pdf");
 
 		if (bufferedWriter != null) {
 			bufferedWriter.close();
