@@ -613,7 +613,6 @@ public class PreOSpecImportDlg extends AbstractAIFDialog {
         												isRevised = true;
     												
         												newRevision.setReferenceProperty(PropertyConstant.ATTR_NAME_CCNNO, ccnRevision);
-        												newRevision.save();
 
         												((TCComponentChangeItemRevision)ccnRevision).add(TypeConstant.CCN_PROBLEM_ITEM, tRevision);
     											    }
@@ -1582,10 +1581,7 @@ public class PreOSpecImportDlg extends AbstractAIFDialog {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
 			tcproperty.setDateValue(sdf.parse(ospec.getReleasedDate() + " 00:00:00"));
 			
-			revision.lock();
 			revision.setTCProperty(tcproperty);
-			revision.save();
-			revision.unlock();
 			
 			if( latestRevision != null ){
 				AIFComponentContext[] context = revision.getChildren(SYMCECConstant.ITEM_DATASET_REL);
@@ -1775,7 +1771,6 @@ public class PreOSpecImportDlg extends AbstractAIFDialog {
 					tccomponent1.setStringProperty("object_desc", desc);
 //				tccomponent1.setProperty("s7_BUILDSPEC", "Y");
 					tccomponent1.setProperty("s7_PROJECT_CODE", tRevision.getProperty("s7_PROJECT_CODE"));
-					tccomponent1.save();
 				} catch (TCException tcexception) {
 					variantService.deleteVariantConfig(tccomponent);
 					throw tcexception;
