@@ -26,7 +26,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
                 <property name="poolMaximumCheckoutTime" value="200000"/>
 				<!-- <property name="driver" value="core.log.jdbc.driver.OracleDriver" /> -->
 				<property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+<<<<<<< HEAD
 				<property name="url" value="jdbc:oracle:thin:@10.80.1.59:1521:NEWPLM" /> <!-- DEV Server -->
+=======
+				<property name="url" value="jdbc:oracle:thin:@10.50.50.199:1521:NEWPLM" /> <!-- DEV Server -->
+>>>>>>> branch 'master' of https://github.com/jio-kim/PDM
 		 		<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.90:1521:NEWPLM" /> -->     <!-- Live Server -->
 				<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.93:1521:TC" /> -->		<!-- QA Server -->
 				<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.93:1521:NEWPLM" /> -->   <!-- DEV Server -->
@@ -58,7 +62,11 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
                 <property name="poolMaximumIdleConnections" value="10"/>
                 <property name="poolMaximumCheckoutTime" value="20000"/>
                 <property name="driver" value="oracle.jdbc.driver.OracleDriver" />
+<<<<<<< HEAD
             	<property name="url" value="jdbc:oracle:thin:@10.80.1.59:1521:NEWPLM" /> <!-- DEV Server -->
+=======
+            	<property name="url" value="jdbc:oracle:thin:@10.50.50.199:1521:NEWPLM" /> <!-- DEV Server -->
+>>>>>>> branch 'master' of https://github.com/jio-kim/PDM
                 <!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.90:1521:NEWPLM" />  -->     <!-- Live Server -->
 				<!-- <property name="url" value="jdbc:oracle:thin:@10.80.1.93:1521:NEWPLM" />-->   <!-- DEV Server -->
                 <property name="username" value="infodba" />
