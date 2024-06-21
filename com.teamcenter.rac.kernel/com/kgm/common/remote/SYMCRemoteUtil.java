@@ -7,6 +7,9 @@ import java.io.ObjectOutputStream;
 import java.net.URL;
 import java.net.URLConnection;
 
+import com.teamcenter.rac.aifrcp.AIFUtility;
+import com.teamcenter.rac.kernel.TCPreferenceService;
+import com.teamcenter.rac.kernel.TCSession;
 import com.teamcenter.rac.util.Registry;
 
 /**
@@ -97,9 +100,13 @@ public class SYMCRemoteUtil {
 			if (isLocal) {
 				this.strAppletHomeUrl = "http://localhost:7090/kgmweb/HomeServlet";
 			} else {
-				Registry registry = Registry.getRegistry("site_specific");
-				String portalWebServer = registry.getString("portalWebServer");
-				this.strAppletHomeUrl = portalWebServer + ":7090/kgmweb/HomeServlet";
+				//Registry registry = Registry.getRegistry("site_specific");
+				//String portalWebServer = registry.getString("portalWebServer");
+				// [20240621][UPGRADE] preference에서 Server IP 를 가져오도록 변경
+				TCSession session = (TCSession) AIFUtility.getSessionManager().getDefaultSession();
+				TCPreferenceService tcpreferenceservice = session.getPreferenceService();
+				String portalWebServer = tcpreferenceservice.getStringValue("WEB_HOST_VIP");
+				this.strAppletHomeUrl = "http://" + portalWebServer + ":7090/kgmweb/HomeServlet";
 			}
 			
 			this.strEncoding = "EUC-KR";

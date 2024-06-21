@@ -14,6 +14,8 @@ import java.awt.event.MouseEvent;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -144,20 +146,37 @@ public class TcToPeInterfaceDialog extends AbstractAIFDialog {
 		//Preferences에 설정한 이유는 운영은 WAS가 2개이며, 이중 한곳에만 PE I/F를 위한 WAR가 설정됨.
 		//실행되는 WAR IP를 Preference를 통해 가져오도록 처리함. 
 		// [20240510][UPGRADE] site_specific 에서 Server IP 를 가져오도록 변경
-//		TCSession session = CustomUtil.getTCSession();
-//		TCPreferenceService tcpreferenceservice = session.getPreferenceService();
+		TCSession session = CustomUtil.getTCSession();
+		TCPreferenceService tcpreferenceservice = session.getPreferenceService();
 //		String portalWebServer = tcpreferenceservice.getString(0, "PE_IF_HOST_IP");
-//		String portalWebServer = tcpreferenceservice.getStringValue("PE_IF_HOST_IP");
+		String portalWebServer = tcpreferenceservice.getStringValue("PE_IF_HOST_IP");
 		
-		Registry registry = Registry.getRegistry("site_specific");
-		String portalWebServer = registry.getString("portalWebServer");
-		portalWebServer += ":7080";
+//		Registry registry = Registry.getRegistry("site_specific");
+//		String portalWebServer = registry.getString("portalWebServer");
+//		portalWebServer += ":7080";
 		
 		WAS_URL = "http://" + portalWebServer + "/symcweb/remote/invoke.do";
 		
 		//존재하는 Product Item을 모두 검색
 		TCComponent[] products = CustomUtil.queryComponent("Item...", new String[]{"Type"}, new String[]{"Product"});
 		
+		// Products 정렬 추가 [20240619 mskim]
+		Comparator<TCComponent> comparator = new Comparator<TCComponent>() {
+			@Override
+			public int compare(TCComponent o1, TCComponent o2) {
+				String  as1 = null;
+				String  as2 = null;
+				try {
+					as1 = o1.getProperty("object_string");
+					as2 =o2.getProperty("object_string");  
+				} catch (TCException e) {
+					e.printStackTrace();
+				}
+					return as1.compareTo(as2);
+				}
+		};
+		Arrays.sort(products, comparator);
+				
 		getContentPane().setBackground(Color.WHITE);
 		setBounds(100, 100, 503, 398);
 		getContentPane().setLayout(new BorderLayout());
@@ -195,6 +214,7 @@ public class TcToPeInterfaceDialog extends AbstractAIFDialog {
 							
 							productComboForProduct.addItem(SELECT_PRODUCT);
 							productComboForProduct.addItem("All");
+							
 							for( TCComponent product : products){
 								productComboForProduct.addItem(product);
 							}
@@ -736,6 +756,10 @@ public class TcToPeInterfaceDialog extends AbstractAIFDialog {
 						panel.add(panel_1);
 						{
 							TCComponent[] projects = CustomUtil.queryComponent("Item...", new String[]{"Type"}, new String[]{"S7_PROJECT"});
+							
+							// Projects 정렬 추가 [20240619 mskim]
+							Arrays.sort(projects, comparator);
+							
 							projectCombo = new JComboBox();
 							projectCombo.addItem(SELECT_A_PROJECT);
 							for( TCComponent project : projects){
